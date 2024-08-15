@@ -23,13 +23,15 @@ func toggle_pause():
 
 func pause():
 	paused = true
-	pause_menu.show()
+	pause_menu.show()	
 	get_tree().set_pause(true)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func unpause():
 	paused = false
 	pause_menu.hide()
 	get_tree().set_pause(false)
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)	
 
 # Quitting 
 func quit():
