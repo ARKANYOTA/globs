@@ -13,7 +13,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("removeme"):
-		var block = $Game/ScalableBlock
+		var block = $Game/Block
 		block.dimensions = Vector2(block.dimensions.x + 4, 16)
 		print(block.position)
 
