@@ -99,18 +99,22 @@ func update_sprite_size(pos, dimensions):
 func get_dimensions():
 	return Vector2(left_extend_value + right_extend_value, up_extend_value + down_extend_value)
 
+func get_center():
+	return $CollisionShape.position
+
 func _update_scale_handles():
+	var center = get_center()
 	var dimensions = get_dimensions()
 	for direction in handles.keys():
 		var handle = handles[direction]
 		if direction == Direction.LEFT:
-			handle.position = Vector2(0, dimensions.y / 2)
+			handle.position = center - Vector2(dimensions.x / 2, 0)
 		elif direction == Direction.RIGHT:
-			handle.position = Vector2(dimensions.x, dimensions.y / 2)
+			handle.position = center + Vector2(dimensions.x / 2, 0)
 		elif direction == Direction.UP:
-			handle.position = Vector2(dimensions.x / 2, 0)
+			handle.position = center - Vector2(0, dimensions.y / 2)
 		elif direction == Direction.DOWN:
-			handle.position = Vector2(dimensions.x / 2, dimensions.y)
+			handle.position = center + Vector2(0, dimensions.y / 2)
 
 func _create_scale_handle(direction: Direction, name: String):
 	var new_scale_handle: ScaleHandle = scale_handle.instantiate()
