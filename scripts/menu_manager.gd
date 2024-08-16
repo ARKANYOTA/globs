@@ -32,7 +32,6 @@ func exit_menu():
 	
 	hide()
 	get_tree().set_pause(false)
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func set_menu_by_name(menu_name: String, add_to_stack: bool = true):
 	var menu: Control = get_node(str(menu_name))
@@ -47,7 +46,6 @@ func set_menu(menu: Control, add_to_stack: bool = true):
 	
 	show()
 	get_tree().set_pause(true)
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	for child in get_children():
 		child.hide()

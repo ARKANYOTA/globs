@@ -3,6 +3,8 @@ extends CharacterBody2D
 class_name Block
 
 @export var is_gravity_enabled = true
+@onready var ui: Control = $UI
+@onready var focus_zone: Button = $UI/FocusZone
 
 @export var dimensions: Vector2i = Vector2i(16, 16):
 	set(value):
@@ -17,6 +19,12 @@ class_name Block
 		var child_pos: Vector2 = Vector2(dimensions)/2
 		collision_shape.position = child_pos
 		update_sprite_size(child_pos)
+		
+@export_range(-360, 360) var angle: float = 0:
+	set(value):
+		angle = value
+		$CollisionShape.rotation_degrees = value
+		$Sprite.rotation_degrees = value
 
 func update_sprite_size(pos):
 	var sprite: Sprite2D = $Sprite
