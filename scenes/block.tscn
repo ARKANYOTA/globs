@@ -1,28 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlw263gusv16s"]
+[gd_scene load_steps=7 format=3 uid="uid://bxmyi1g5jjvs3"]
 
 [ext_resource type="Script" path="res://scripts/block.gd" id="1_eflyf"]
 [ext_resource type="Texture2D" uid="uid://61djxphiwq5h" path="res://assets/images/debug_black.png" id="2_tvf5u"]
 [ext_resource type="PackedScene" uid="uid://catrwka02j1g0" path="res://scenes/click_area.tscn" id="3_h0fp2"]
 [ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="3_txxm5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivd6l"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1gvo"]
 size = Vector2(16, 16)
 
 [sub_resource type="LabelSettings" id="LabelSettings_arg2h"]
 font = ExtResource("3_txxm5")
 
 [node name="Block" type="CharacterBody2D"]
+collision_mask = 0
 script = ExtResource("1_eflyf")
-is_gravity_enabled = false
-rotatable = null
-up_extendable = null
-up_extend_range = null
-down_extendable = null
-down_extend_range = null
-left_extendable = null
-left_extend_range = null
-right_extendable = null
-right_extend_range = null
+is_gravity_enabled = null
+up_extendable = true
+down_extendable = true
+left_extendable = true
+right_extendable = true
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
@@ -30,13 +26,19 @@ texture = ExtResource("2_tvf5u")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
-shape = SubResource("RectangleShape2D_ivd6l")
+shape = SubResource("RectangleShape2D_m1gvo")
 
 [node name="ClickArea" parent="." instance=ExtResource("3_h0fp2")]
 position = Vector2(8, 8)
+debug_color = Color(0.856684, 0.239735, 0.503651, 0.380392)
+
+[node name="ScaleHandle" parent="." instance=ExtResource("3_h0fp2")]
+size = Vector2i(4, 4)
+debug_color = Color(0.717612, 0.616959, 0, 0.521569)
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "<Object#null>"
 label_settings = SubResource("LabelSettings_arg2h")
+
+[connection signal="clicked" from="ClickArea" to="." method="_on_click_area_clicked"]
