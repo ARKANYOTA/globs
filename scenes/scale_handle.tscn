@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl0k2iare3abe"]
+
+[ext_resource type="PackedScene" uid="uid://catrwka02j1g0" path="res://scenes/click_area.tscn" id="1_okygb"]
+[ext_resource type="Script" path="res://scripts/scale_handle.gd" id="2_a5u7l"]
+
+[node name="ScaleHandle" instance=ExtResource("1_okygb")]
+script = ExtResource("2_a5u7l")
+direction = 0
+size = Vector2i(6, 6)
+debug_color = Color(0.687518, 0.63562, 0, 0.5)
+
+[node name="ClickAreaCollisionShape" parent="." index="0"]
+debug_color = Color(0.687518, 0.63562, 0, 0.5)

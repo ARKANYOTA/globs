@@ -1,58 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://clib81weo65vk"]
+[gd_scene load_steps=6 format=3 uid="uid://clib81weo65vk"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ngeyx"]
-[ext_resource type="PackedScene" uid="uid://bbjoydjf30lj4" path="res://scenes/block.tscn" id="2_0ikgm"]
-[ext_resource type="Script" path="res://scripts/test_character_body_2d.gd" id="3_wicgh"]
+[ext_resource type="PackedScene" uid="uid://b26c54poeaia6" path="res://scenes/scene_1.tscn" id="2_yi14j"]
 [ext_resource type="Script" path="res://scripts/menu_manager.gd" id="4_2uhw3"]
 [ext_resource type="PackedScene" uid="uid://bmdbgomhamteh" path="res://scenes/pause_menu.tscn" id="4_b3d0t"]
 [ext_resource type="PackedScene" uid="uid://bmd45hgh6y1pt" path="res://scenes/options_menu.tscn" id="6_2h5iu"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0k54"]
-size = Vector2(343, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_unh17"]
-size = Vector2(189, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfcbv"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ngeyx")
 
 [node name="Game" type="Node2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Game"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D"]
-position = Vector2(156, 180)
-shape = SubResource("RectangleShape2D_u0k54")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Game"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D2"]
-position = Vector2(77, 103)
-shape = SubResource("RectangleShape2D_unh17")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Game"]
-script = ExtResource("3_wicgh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/CharacterBody2D"]
-shape = SubResource("RectangleShape2D_dfcbv")
-
-[node name="Block2" parent="Game" instance=ExtResource("2_0ikgm")]
-position = Vector2(157, 75)
-up_extend_value = 50.0
-down_extend_value = 5.0
-left_extend_value = 5.0
-right_extend_value = 5.0
-
-[node name="Block" parent="Game" instance=ExtResource("2_0ikgm")]
-position = Vector2(113, 21)
-is_gravity_enabled = true
-angle = -249.7
-up_extend_value = 10.0
-down_extend_value = 5.0
-left_extend_value = 5.0
-right_extend_value = 5.0
+[node name="Scene1" parent="Game" instance=ExtResource("2_yi14j")]
 
 [node name="MenuManager" type="CanvasLayer" parent="."]
 process_mode = 3
