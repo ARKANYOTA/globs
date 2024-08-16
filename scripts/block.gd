@@ -2,6 +2,7 @@
 extends CharacterBody2D
 class_name Block
 
+@export var is_gravity_enabled = true
 @onready var ui: Control = $UI
 @onready var focus_zone: Button = $UI/FocusZone
 
@@ -55,4 +56,7 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	if is_gravity_enabled and not is_on_floor():
+			velocity += get_gravity() * delta
+
 	move_and_slide()
