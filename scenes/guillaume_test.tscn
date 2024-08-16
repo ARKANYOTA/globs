@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://cb74uax4wflwe"]
+[gd_scene load_steps=30 format=4 uid="uid://3usuvwnyqofg"]
 
 [ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="1_ot3gc"]
 [ext_resource type="Texture2D" uid="uid://cym2u0ca0y3ve" path="res://assets/images/face_animation/fat.png" id="2_md1l7"]
@@ -134,7 +134,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wepks")
 }, {
-"duration": 1.0,
+"duration": 15.0,
 "texture": SubResource("AtlasTexture_iga8t")
 }, {
 "duration": 1.0,
@@ -302,8 +302,8 @@ color = Color(0.258824, 0.47451, 0.286275, 0.670588)
 
 [node name="FaceAnimation" type="AnimatedSprite2D" parent="SlimeBlock"]
 sprite_frames = SubResource("SpriteFrames_1oton")
-animation = &"scared"
-frame_progress = 0.78783
+animation = &"o_face"
+frame_progress = 0.773057
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAEAAQAAAAGAAIAAAADAAQAAAAFAAMAAAACAAQAAAAFAAMAAAABAAQAAAAFAAMAAAAAAAQAAAAFAAMAAAD//wQAAAAFAAMAAAD+/wQAAAAFAAMAAAD9/wQAAAAEAAIAAAD9/wMAAAADAAEAAAD9/wIAAAAGAAAAAAAEAAIAAAADAAEAAAAEAAMAAAADAAEAAAAEAAEAAAADAAEAAAAEAAAAAAADAAEAAAAEAP//AAADAAEAAAAEAP7/AAADAAEAAAAEAP3/AAAGAAAAAAADAP3/AAAFAAMAAAACAP3/AAAFAAMAAAABAP3/AAAFAAMAAAAAAP3/AAAFAAMAAAD///3/AAAFAAMAAAD+//3/AAAFAAMAAAD9//3/AAAFAAMAAAD8//3/AAAFAAMAAAD7//3/AAAFAAMAAAD6//3/AAAFAAMAAAD5//3/AAAEAAAAAAD5//7/AAADAAEAAAD5////AAADAAEAAAD5/wAAAAADAAEAAAD5/wEAAAADAAEAAAD5/wIAAAAEAAIAAAD6/wIAAAAFAAMAAAD7/wIAAAAFAAMAAAD8/wIAAAAFAAMAAAA=")

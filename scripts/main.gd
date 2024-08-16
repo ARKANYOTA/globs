@@ -12,10 +12,11 @@ func _ready():
 	menu_manager.exit_menu()
 
 func _process(delta):
-	if Input.is_action_just_pressed("removeme"):
-		var block = $Game/Block
-		block.dimensions = Vector2(block.dimensions.x + 4, 16)
-		print(block.position)
+	#if Input.is_action_just_pressed("removeme"):
+		#var block = $Game/Block
+		#block.dimensions = Vector2(block.dimensions.x + 4, 16)
+		#print(block.position)
+	pass
 
 # Quitting 
 func quit():

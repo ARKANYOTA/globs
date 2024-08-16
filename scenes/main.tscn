@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://clib81weo65vk"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ngeyx"]
-[ext_resource type="PackedScene" uid="uid://dlw263gusv16s" path="res://scenes/block.tscn" id="2_0ikgm"]
+[ext_resource type="PackedScene" uid="uid://bbjoydjf30lj4" path="res://scenes/block.tscn" id="2_0ikgm"]
 [ext_resource type="Script" path="res://scripts/test_character_body_2d.gd" id="3_wicgh"]
 [ext_resource type="Script" path="res://scripts/menu_manager.gd" id="4_2uhw3"]
 [ext_resource type="PackedScene" uid="uid://bmdbgomhamteh" path="res://scenes/pause_menu.tscn" id="4_b3d0t"]
@@ -39,10 +39,20 @@ script = ExtResource("3_wicgh")
 shape = SubResource("RectangleShape2D_dfcbv")
 
 [node name="Block2" parent="Game" instance=ExtResource("2_0ikgm")]
-position = Vector2(158, 75)
+position = Vector2(157, 75)
+up_extend_value = 50.0
+down_extend_value = 5.0
+left_extend_value = 5.0
+right_extend_value = 5.0
 
 [node name="Block" parent="Game" instance=ExtResource("2_0ikgm")]
-position = Vector2(112, 75)
+position = Vector2(113, 21)
+is_gravity_enabled = true
+angle = -249.7
+up_extend_value = 10.0
+down_extend_value = 5.0
+left_extend_value = 5.0
+right_extend_value = 5.0
 
 [node name="MenuManager" type="CanvasLayer" parent="."]
 process_mode = 3
