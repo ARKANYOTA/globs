@@ -11,7 +11,7 @@ extends CharacterBody2D
 			return
 		shape.size = value
 		
-		var child_pos: Vector2 = position + Vector2(dimensions)/2
+		var child_pos: Vector2 = Vector2(dimensions)/2
 		collision_shape.position = child_pos
 		update_sprite_size(child_pos)
 
