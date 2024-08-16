@@ -30,7 +30,7 @@ script = ExtResource("3_wicgh")
 shape = SubResource("RectangleShape2D_dfcbv")
 
 [node name="Block" parent="Game" instance=ExtResource("3_7hhsf")]
-position = Vector2(95, 134)
+position = Vector2(86, 152)
 
 [node name="MenuManager" type="CanvasLayer" parent="."]
 process_mode = 3

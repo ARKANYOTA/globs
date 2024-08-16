@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbjoydjf30lj4"]
+[gd_scene load_steps=7 format=3 uid="uid://bxmyi1g5jjvs3"]
 
 [ext_resource type="Script" path="res://scripts/block.gd" id="1_eflyf"]
 [ext_resource type="Texture2D" uid="uid://61djxphiwq5h" path="res://assets/images/debug_black.png" id="2_tvf5u"]
+[ext_resource type="PackedScene" uid="uid://catrwka02j1g0" path="res://scenes/click_area.tscn" id="3_h0fp2"]
+[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="3_txxm5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m1gvo"]
 size = Vector2(16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_arg2h"]
+font = ExtResource("3_txxm5")
 
 [node name="Block" type="CharacterBody2D"]
 collision_mask = 0
@@ -18,14 +23,11 @@ texture = ExtResource("2_tvf5u")
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_m1gvo")
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ClickArea" parent="." instance=ExtResource("3_h0fp2")]
+position = Vector2(8, 8)
 
-[node name="FocusZone" type="Button" parent="UI"]
-layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
-theme_type_variation = &"FlatButton"
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "<Object#null>"
+label_settings = SubResource("LabelSettings_arg2h")
