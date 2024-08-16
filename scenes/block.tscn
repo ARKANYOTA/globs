@@ -1,14 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbjoydjf30lj4"]
+[gd_scene load_steps=5 format=3 uid="uid://bbjoydjf30lj4"]
 
 [ext_resource type="Script" path="res://scripts/block.gd" id="1_eflyf"]
 [ext_resource type="Texture2D" uid="uid://61djxphiwq5h" path="res://assets/images/debug_black.png" id="2_tvf5u"]
-[ext_resource type="PackedScene" path="res://scenes/click_area.tscn" id="3_h0fp2"]
+[ext_resource type="PackedScene" uid="uid://catrwka02j1g0" path="res://scenes/click_area.tscn" id="3_h0fp2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivd6l"]
-size = Vector2(48.875, 38.335)
-
-[sub_resource type="LabelSettings" id="LabelSettings_arg2h"]
-font = ExtResource("3_txxm5")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1gvo"]
+size = Vector2(10, 10)
 
 [node name="Block" type="CharacterBody2D"]
 collision_mask = 0

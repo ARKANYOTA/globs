@@ -95,8 +95,12 @@ func update_sprite_size(pos, dimensions):
 	var sprite_size = sprite.texture.get_size()
 	sprite.scale.x = dimensions.x / sprite_size.x
 	sprite.scale.y = dimensions.y / sprite_size.y
+	
+func get_dimensions():
+	return Vector2(left_extend_value + right_extend_value, up_extend_value + down_extend_value)
 
 func _update_scale_handles():
+	var dimensions = get_dimensions()
 	for direction in handles.keys():
 		var handle = handles[direction]
 		if direction == Direction.LEFT:
