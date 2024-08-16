@@ -1,0 +1,132 @@
+[gd_scene load_steps=11 format=3 uid="uid://bmd45hgh6y1pt"]
+
+[ext_resource type="FontFile" uid="uid://b3ayaf2x5qddk" path="res://assets/fonts/hardpixel.otf" id="1_8ys7p"]
+[ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_holiv"]
+[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="2_t16me"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dn0js"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0khsp"]
+bg_color = Color(0.431373, 0.431373, 0.431373, 1)
+expand_margin_left = 8.0
+expand_margin_top = 1.0
+expand_margin_right = 8.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0a1v"]
+corner_detail = 1
+expand_margin_left = 8.0
+expand_margin_top = 1.0
+expand_margin_right = 8.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1qbi"]
+bg_color = Color(0.262745, 0.262745, 0.262745, 1)
+expand_margin_left = 8.0
+expand_margin_top = 1.0
+expand_margin_right = 8.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="Theme" id="Theme_5jae5"]
+default_font = ExtResource("2_t16me")
+default_font_size = 0
+Button/styles/focus = SubResource("StyleBoxEmpty_dn0js")
+Button/styles/hover = SubResource("StyleBoxFlat_0khsp")
+Button/styles/normal = SubResource("StyleBoxFlat_a0a1v")
+Button/styles/pressed = SubResource("StyleBoxFlat_m1qbi")
+
+[sub_resource type="LabelSettings" id="LabelSettings_0xasi"]
+font = ExtResource("1_8ys7p")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_qrxd4"]
+font = ExtResource("2_t16me")
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_holiv")
+
+[node name="ColorBackground" type="ColorRect" parent="."]
+z_index = -200
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.364706)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Back" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_5jae5")
+text = "< Back
+"
+
+[node name="Title" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Options
+"
+label_settings = SubResource("LabelSettings_0xasi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+
+[node name="Volume" type="Control" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VolumeText" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/Volume"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 40.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_qrxd4")
+
+[node name="VolumeSlider" type="HSlider" parent="MarginContainer/MarginContainer/VBoxContainer/Volume"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[connection signal="pressed" from="MarginContainer/Back" to="." method="_on_back_pressed"]

@@ -1,9 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmdbgomhamteh"]
+[gd_scene load_steps=10 format=3 uid="uid://bmdbgomhamteh"]
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_ngvjp"]
+[ext_resource type="FontFile" uid="uid://b3ayaf2x5qddk" path="res://assets/fonts/hardpixel.otf" id="2_jsohw"]
+[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="3_e70ye"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ahekt"]
-font_size = 61
+font = ExtResource("2_jsohw")
+font_size = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bfwox"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ggupb"]
+bg_color = Color(0.431373, 0.431373, 0.431373, 1)
+expand_margin_left = 8.0
+expand_margin_top = 1.0
+expand_margin_right = 8.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j56lj"]
+corner_detail = 1
+expand_margin_left = 8.0
+expand_margin_top = 1.0
+expand_margin_right = 8.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eepbu"]
+bg_color = Color(0.262745, 0.262745, 0.262745, 1)
+expand_margin_left = 8.0
+expand_margin_top = 1.0
+expand_margin_right = 8.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="Theme" id="Theme_6ih3i"]
+default_font = ExtResource("3_e70ye")
+default_font_size = 0
+Button/styles/focus = SubResource("StyleBoxEmpty_bfwox")
+Button/styles/hover = SubResource("StyleBoxFlat_ggupb")
+Button/styles/normal = SubResource("StyleBoxFlat_j56lj")
+Button/styles/pressed = SubResource("StyleBoxFlat_eepbu")
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -31,6 +65,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
 [node name="Title" type="Label" parent="MarginContainer"]
 layout_mode = 2
@@ -48,13 +86,23 @@ size_flags_vertical = 4
 [node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme = SubResource("Theme_6ih3i")
 text = "Resume"
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_6ih3i")
+text = "Options
+"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme = SubResource("Theme_6ih3i")
 text = "Quit
 "
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

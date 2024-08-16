@@ -1,15 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://clib81weo65vk"]
+[gd_scene load_steps=9 format=3 uid="uid://clib81weo65vk"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ngeyx"]
 [ext_resource type="Script" path="res://scripts/removeme_player.gd" id="1_uivmd"]
-[ext_resource type="Texture2D" uid="uid://cve2yexujbbt6" path="res://icon.svg" id="2_ascbx"]
+[ext_resource type="Texture2D" uid="uid://b4em7ylud6jbu" path="res://assets/images/buttons/controller/generic/btn_c_generic_a.png" id="3_h4isv"]
+[ext_resource type="Script" path="res://scripts/menu_manager.gd" id="4_2uhw3"]
 [ext_resource type="PackedScene" uid="uid://bmdbgomhamteh" path="res://scenes/pause_menu.tscn" id="4_b3d0t"]
+[ext_resource type="PackedScene" uid="uid://bmd45hgh6y1pt" path="res://scenes/options_menu.tscn" id="6_2h5iu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_35n1k"]
 size = Vector2(1174, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ixr47"]
-size = Vector2(43, 47)
+size = Vector2(10, 10)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ngeyx")
@@ -17,25 +19,26 @@ script = ExtResource("1_ngeyx")
 [node name="Game" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Game"]
+position = Vector2(-258, -460)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D"]
 position = Vector2(574, 642)
 shape = SubResource("RectangleShape2D_35n1k")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Game"]
-position = Vector2(128, 369)
+[node name="Player" type="CharacterBody2D" parent="Game"]
+position = Vector2(55, 95)
 script = ExtResource("1_uivmd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/CharacterBody2D"]
-position = Vector2(1, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Player"]
 shape = SubResource("RectangleShape2D_ixr47")
 
-[node name="Icon" type="Sprite2D" parent="Game/CharacterBody2D"]
-position = Vector2(3, 1)
-scale = Vector2(0.421875, 0.421875)
-texture = ExtResource("2_ascbx")
+[node name="Icon" type="Sprite2D" parent="Game/Player"]
+texture = ExtResource("3_h4isv")
 
-[node name="MenuCanvasLayer" type="CanvasLayer" parent="."]
-process_mode = 2
+[node name="MenuManager" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("4_2uhw3")
 
-[node name="PauseMenu" parent="MenuCanvasLayer" instance=ExtResource("4_b3d0t")]
+[node name="OptionsMenu" parent="MenuManager" instance=ExtResource("6_2h5iu")]
+
+[node name="PauseMenu" parent="MenuManager" instance=ExtResource("4_b3d0t")]
