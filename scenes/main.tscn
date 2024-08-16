@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://clib81weo65vk"]
+[gd_scene load_steps=10 format=3 uid="uid://clib81weo65vk"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ngeyx"]
 [ext_resource type="PackedScene" uid="uid://dlw263gusv16s" path="res://scenes/block.tscn" id="2_0ikgm"]
@@ -10,6 +10,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0k54"]
 size = Vector2(343, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unh17"]
+size = Vector2(189, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dfcbv"]
 
 [node name="Main" type="Node2D"]
@@ -17,20 +20,29 @@ script = ExtResource("1_ngeyx")
 
 [node name="Game" type="Node2D" parent="."]
 
-[node name="Block" parent="Game" instance=ExtResource("2_0ikgm")]
-position = Vector2(47, 102)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="Game"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D"]
 position = Vector2(156, 180)
 shape = SubResource("RectangleShape2D_u0k54")
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="Game"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D2"]
+position = Vector2(77, 103)
+shape = SubResource("RectangleShape2D_unh17")
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Game"]
 script = ExtResource("3_wicgh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/CharacterBody2D"]
 shape = SubResource("RectangleShape2D_dfcbv")
+
+[node name="Block2" parent="Game" instance=ExtResource("2_0ikgm")]
+position = Vector2(158, 75)
+
+[node name="Block" parent="Game" instance=ExtResource("2_0ikgm")]
+position = Vector2(112, 75)
 
 [node name="MenuManager" type="CanvasLayer" parent="."]
 process_mode = 3

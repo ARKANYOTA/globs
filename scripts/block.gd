@@ -2,7 +2,7 @@
 extends CharacterBody2D
 class_name Block
 
-var is_mouse_is_inside_area = 0 # 1 left, 2 up, 3 down, 4 right
+@export var is_gravity_enabled = true
 
 @export var dimensions: Vector2i = Vector2i(16, 16):
 	set(value):
@@ -31,4 +31,7 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	if is_gravity_enabled and not is_on_floor():
+			velocity += get_gravity() * delta
+
 	move_and_slide()
