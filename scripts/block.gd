@@ -1,5 +1,8 @@
 @tool
 extends CharacterBody2D
+class_name Block
+
+var is_mouse_is_inside_area = 0 # 1 left, 2 up, 3 down, 4 right
 
 @export var dimensions: Vector2i = Vector2i(16, 16):
 	set(value):
