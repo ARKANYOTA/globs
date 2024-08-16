@@ -18,12 +18,29 @@ class_name Block
 		var child_pos: Vector2 = Vector2(dimensions)/2
 		collision_shape.position = child_pos
 		update_sprite_size(child_pos)
-		
+
+@export var rotatable: bool = false
 @export_range(-360, 360) var angle: float = 0:
 	set(value):
 		angle = value
 		$CollisionShape.rotation_degrees = value
 		$Sprite.rotation_degrees = value
+
+@export_group("Up Extandable")
+@export var up_extendable: bool = false
+@export var up_extend_range: Vector2i = Vector2i(5, 50)
+
+@export_group("Down Extandable")
+@export var down_extendable: bool = false
+@export var down_extend_range: Vector2i = Vector2i(5, 50)
+
+@export_group("Left Extandable")
+@export var left_extendable: bool = false
+@export var left_extend_range: Vector2i = Vector2i(5, 50)
+
+@export_group("Right Extandable")
+@export var right_extendable: bool = false
+@export var right_extend_range: Vector2i = Vector2i(5, 50)
 
 func update_sprite_size(pos):
 	var sprite: Sprite2D = $Sprite

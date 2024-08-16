@@ -9,6 +9,15 @@ size = Vector2(16, 16)
 [node name="Block" type="CharacterBody2D"]
 collision_mask = 0
 script = ExtResource("1_eflyf")
+rotatable = null
+up_extendable = null
+up_extend_range = null
+down_extendable = null
+down_extend_range = null
+left_extendable = null
+left_extend_range = null
+right_extendable = null
+right_extend_range = null
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
