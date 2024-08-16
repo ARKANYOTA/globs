@@ -40,6 +40,7 @@ shape = SubResource("RectangleShape2D_dfcbv")
 
 [node name="Block" parent="Game" instance=ExtResource("3_7hhsf")]
 position = Vector2(85, 66)
+is_gravity_enabled = false
 
 [node name="MenuManager" type="CanvasLayer" parent="."]
 process_mode = 3
