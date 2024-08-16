@@ -8,6 +8,7 @@ class_name Main
 var paused = false
 
 func _ready():
+	menu_manager.visible = true
 	menu_manager.exit_menu()
 
 # Quitting 
