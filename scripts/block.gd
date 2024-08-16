@@ -6,6 +6,8 @@ enum Direction {
 	LEFT, RIGHT, UP, DOWN
 }
 
+@export var is_gravity_enabled = true
+
 @export var dimensions: Vector2i = Vector2i(16, 16):
 	set(value):
 		dimensions = value
@@ -27,6 +29,7 @@ enum Direction {
 		click_area.position = child_pos
 		update_sprite_size(child_pos)
 
+@export var rotatable: bool = false
 @export_range(-360, 360) var angle: float = 0:
 	set(value):
 		angle = value
@@ -40,6 +43,22 @@ var is_hovered := false
 func expand(direction: Direction, amount: int):
 	if direction == Direction.RIGHT:
 		dimensions.x += amount
+
+@export_group("Up Extandable")
+@export var up_extendable: bool = false
+@export var up_extend_range: Vector2i = Vector2i(5, 50)
+
+@export_group("Down Extandable")
+@export var down_extendable: bool = false
+@export var down_extend_range: Vector2i = Vector2i(5, 50)
+
+@export_group("Left Extandable")
+@export var left_extendable: bool = false
+@export var left_extend_range: Vector2i = Vector2i(5, 50)
+
+@export_group("Right Extandable")
+@export var right_extendable: bool = false
+@export var right_extend_range: Vector2i = Vector2i(5, 50)
 
 func update_sprite_size(pos):
 	var sprite: Sprite2D = $Sprite
@@ -62,6 +81,9 @@ func _process(delta):
 			expand(Direction.RIGHT, 4)
 
 func _physics_process(delta):
+	if is_gravity_enabled and not is_on_floor():
+			velocity += get_gravity() * delta
+
 	move_and_slide()
 
 func _on_scale_handle_mouse_entered():
