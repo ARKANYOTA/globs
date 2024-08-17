@@ -1,23 +1,99 @@
-[gd_scene load_steps=2 format=3 uid="uid://clm2djhlvu4b6"]
+[gd_scene load_steps=16 format=3 uid="uid://bfqqngporpal"]
 
 [ext_resource type="Texture2D" uid="uid://bwtyjhpnl076x" path="res://assets/images/ui/ui_frame.png" id="1_ol84s"]
+[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="2_rcvwh"]
 
-[node name="Text_Button" type="Control"]
-layout_mode = 3
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nxf0q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1ptv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hukna"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rxpea"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kac1l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y5wiu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qtsbe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40hnp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3p3me"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ceo6f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l523s"]
+
+[sub_resource type="GDScript" id="GDScript_81h1k"]
+script/source = "extends Control
+
+@export var text = \"Hello\"
+@export var current_size = Vector2(16, 16)
+
+var is_button_hovered = false
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	var label = $Label
+	label.text = text
+	var nine_patch = $NinePatchRect
+	nine_patch.size = current_size
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+	
+
+func _on_mouse_entered():
+	is_button_hovered = true
+
+
+func _on_mouse_exited():
+	is_button_hovered = false
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_pq0k8"]
+font = ExtResource("2_rcvwh")
+font_size = 20
+
+[node name="Text_Button" type="Button"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -280.0
-offset_bottom = -140.0
+offset_right = -253.0
+offset_bottom = -144.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nxf0q")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_t1ptv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hukna")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_rxpea")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_kac1l")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_y5wiu")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qtsbe")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_40hnp")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3p3me")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ceo6f")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l523s")
+script = SubResource("GDScript_81h1k")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_ol84s")
-patch_margin_left = 17
+patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 63.0
+offset_bottom = 28.0
+text = "Hello"
+label_settings = SubResource("LabelSettings_pq0k8")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
