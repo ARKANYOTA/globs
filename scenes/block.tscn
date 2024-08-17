@@ -221,7 +221,6 @@ debug_color = Color(1, 0.36, 0.829333, 0.247059)
 debug_color = Color(0.4275, 0.57, 0, 0.258824)
 
 [node name="CenterIndicator" type="AnimatedSprite2D" parent="."]
-visible = false
 sprite_frames = SubResource("SpriteFrames_ucdvl")
 animation = &"o_face"
 
