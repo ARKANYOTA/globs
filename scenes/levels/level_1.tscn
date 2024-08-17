@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://cp7rv3tn4v4jg"]
+[gd_scene load_steps=4 format=4 uid="uid://lkaeckf8cygv"]
 
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="1_vx2ym"]
 [ext_resource type="PackedScene" uid="uid://dplrbbylq37dj" path="res://scenes/player.tscn" id="2_w3cne"]
@@ -38,16 +38,11 @@ right_extend_range = Vector2i(8, 136)
 [node name="Block4" parent="." instance=ExtResource("3_5gr1g")]
 position = Vector2(104, 88)
 static_block = true
-up_extendable = false
-down_extendable = false
 left_extend_range = Vector2i(8, 72)
-right_extendable = false
 
 [node name="Block7" parent="." instance=ExtResource("3_5gr1g")]
 position = Vector2(312, 72)
 static_block = true
-up_extendable = false
-down_extendable = false
 left_extend_range = Vector2i(8, 280)
 left_extend_value = 200.0
 right_extendable = false

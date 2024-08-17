@@ -1,24 +1,13 @@
-[gd_scene load_steps=4 format=4 uid="uid://bfc5vu40lrhvu"]
+[gd_scene load_steps=3 format=4 uid="uid://bfc5vu40lrhvu"]
 
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block.tscn" id="1_vrtaw"]
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_3cm0j"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsdap"]
 
 [node name="Scene2" type="Node2D"]
 
 [node name="Block" parent="." instance=ExtResource("1_vrtaw")]
 position = Vector2(92, -4)
 is_gravity_enabled = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(164, 96)
-scale = Vector2(24.4, 1)
-shape = SubResource("RectangleShape2D_xsdap")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(163, 14)

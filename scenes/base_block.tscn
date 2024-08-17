@@ -1,101 +1,101 @@
-[gd_scene load_steps=31 format=3 uid="uid://bxmyi1g5jjvs3"]
+[gd_scene load_steps=31 format=3 uid="uid://csc0reeurrkxl"]
 
-[ext_resource type="Script" path="res://scripts/block.gd" id="1_eflyf"]
-[ext_resource type="PackedScene" uid="uid://catrwka02j1g0" path="res://scenes/click_area.tscn" id="3_h0fp2"]
-[ext_resource type="Texture2D" uid="uid://7nk8tmq0rg35" path="res://assets/images/face_animation/scared.png" id="3_pr5jj"]
-[ext_resource type="Texture2D" uid="uid://cym2u0ca0y3ve" path="res://assets/images/face_animation/fat.png" id="4_3fhqr"]
-[ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="5_afbxe"]
-[ext_resource type="Texture2D" uid="uid://dblb1xh7ytipc" path="res://assets/images/face_animation/o_face.png" id="5_ltiqe"]
+[ext_resource type="Script" path="res://scripts/block.gd" id="1_ni3jr"]
+[ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="2_y80n3"]
+[ext_resource type="PackedScene" uid="uid://catrwka02j1g0" path="res://scenes/click_area.tscn" id="3_edicq"]
+[ext_resource type="Texture2D" uid="uid://cym2u0ca0y3ve" path="res://assets/images/face_animation/fat.png" id="4_mfj0w"]
+[ext_resource type="Texture2D" uid="uid://dblb1xh7ytipc" path="res://assets/images/face_animation/o_face.png" id="5_cdxpn"]
+[ext_resource type="Texture2D" uid="uid://7nk8tmq0rg35" path="res://assets/images/face_animation/scared.png" id="6_fy71u"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hc1jy"]
-size = Vector2(16, 48)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clhwb"]
+size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
-atlas = ExtResource("4_3fhqr")
+atlas = ExtResource("4_mfj0w")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ed746"]
-atlas = ExtResource("4_3fhqr")
+atlas = ExtResource("4_mfj0w")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gtsvw"]
-atlas = ExtResource("4_3fhqr")
+atlas = ExtResource("4_mfj0w")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpafa"]
-atlas = ExtResource("4_3fhqr")
+atlas = ExtResource("4_mfj0w")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c3ekv"]
-atlas = ExtResource("4_3fhqr")
+atlas = ExtResource("4_mfj0w")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk1ww"]
-atlas = ExtResource("4_3fhqr")
+atlas = ExtResource("4_mfj0w")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7pxc"]
-atlas = ExtResource("4_3fhqr")
+atlas = ExtResource("4_mfj0w")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_avs8o"]
-atlas = ExtResource("5_ltiqe")
+atlas = ExtResource("5_cdxpn")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eek1y"]
-atlas = ExtResource("5_ltiqe")
+atlas = ExtResource("5_cdxpn")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bdep4"]
-atlas = ExtResource("5_ltiqe")
+atlas = ExtResource("5_cdxpn")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wepks"]
-atlas = ExtResource("5_ltiqe")
+atlas = ExtResource("5_cdxpn")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iga8t"]
-atlas = ExtResource("5_ltiqe")
+atlas = ExtResource("5_cdxpn")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ni2ie"]
-atlas = ExtResource("5_ltiqe")
+atlas = ExtResource("5_cdxpn")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a5i4k"]
-atlas = ExtResource("5_ltiqe")
+atlas = ExtResource("5_cdxpn")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h23wx"]
-atlas = ExtResource("3_pr5jj")
+atlas = ExtResource("6_fy71u")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7qnjp"]
-atlas = ExtResource("3_pr5jj")
+atlas = ExtResource("6_fy71u")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8em4x"]
-atlas = ExtResource("3_pr5jj")
+atlas = ExtResource("6_fy71u")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_51p7t"]
-atlas = ExtResource("3_pr5jj")
+atlas = ExtResource("6_fy71u")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8j2r2"]
-atlas = ExtResource("3_pr5jj")
+atlas = ExtResource("6_fy71u")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o130r"]
-atlas = ExtResource("3_pr5jj")
+atlas = ExtResource("6_fy71u")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7x4t8"]
-atlas = ExtResource("3_pr5jj")
+atlas = ExtResource("6_fy71u")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ccn38"]
-atlas = ExtResource("3_pr5jj")
+atlas = ExtResource("6_fy71u")
 region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ucdvl"]
@@ -185,9 +185,8 @@ animations = [{
 [node name="Block" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_eflyf")
+script = ExtResource("1_ni3jr")
 is_gravity_enabled = false
-scale_max_speed = 2.0
 
 [node name="NinePatch" type="NinePatchRect" parent="."]
 anchors_preset = 8
@@ -201,7 +200,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_afbxe")
+texture = ExtResource("2_y80n3")
 region_rect = Rect2(48, 48, 16, 16)
 patch_margin_left = 5
 patch_margin_top = 5
@@ -210,13 +209,13 @@ patch_margin_bottom = 5
 axis_stretch_vertical = 2
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_hc1jy")
+shape = SubResource("RectangleShape2D_clhwb")
 debug_color = Color(0, 0.51, 0.6, 0.117647)
 
-[node name="UnClickArea" parent="." instance=ExtResource("3_h0fp2")]
+[node name="UnClickArea" parent="." instance=ExtResource("3_edicq")]
 debug_color = Color(1, 0.36, 0.829333, 0.247059)
 
-[node name="ClickArea" parent="." instance=ExtResource("3_h0fp2")]
+[node name="ClickArea" parent="." instance=ExtResource("3_edicq")]
 debug_color = Color(0.4275, 0.57, 0, 0.258824)
 
 [node name="CenterIndicator" type="AnimatedSprite2D" parent="."]
