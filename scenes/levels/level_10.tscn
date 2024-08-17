@@ -170,15 +170,15 @@ sources/0 = SubResource("TileSetAtlasSource_1ve80")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 1
-position = Vector2(160, 64)
-scale = Vector2(-5.57698, 6.45376)
-energy = 0.2
+position = Vector2(160, 0)
+scale = Vector2(-5.9774, 4.5255)
+energy = 0.4
 shadow_enabled = true
 texture = ExtResource("1_vn4tt")
+offset = Vector2(0, 20)
 texture_scale = 0.2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.700314, 0.752182, 0.889905, 1)
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]

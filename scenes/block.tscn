@@ -1,6 +1,7 @@
-[gd_scene load_steps=50 format=3 uid="uid://bxmyi1g5jjvs3"]
+[gd_scene load_steps=51 format=3 uid="uid://bxmyi1g5jjvs3"]
 
 [ext_resource type="Script" path="res://scripts/block.gd" id="1_eflyf"]
+[ext_resource type="PackedScene" uid="uid://cf0mams6nnmhx" path="res://scenes/block_occluder.tscn" id="2_doa3v"]
 [ext_resource type="PackedScene" uid="uid://catrwka02j1g0" path="res://scenes/click_area.tscn" id="3_h0fp2"]
 [ext_resource type="Texture2D" uid="uid://7nk8tmq0rg35" path="res://assets/images/face_animation/scared.png" id="3_pr5jj"]
 [ext_resource type="Texture2D" uid="uid://cym2u0ca0y3ve" path="res://assets/images/face_animation/fat.png" id="4_3fhqr"]
@@ -10,10 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://betdqfksaytu1" path="res://assets/images/face_animation/sleeping.png" id="8_mafe0"]
 [ext_resource type="Texture2D" uid="uid://d1sgc6ft8ejni" path="res://assets/images/particle/z.png" id="9_ortey"]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hqmy1"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nbgqd"]
+resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0esk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pktd"]
 size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
@@ -313,9 +315,8 @@ script = ExtResource("1_eflyf")
 is_gravity_enabled = false
 scale_max_speed = 2.0
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-modulate = Color(1, 1, 1, 0)
-occluder = SubResource("OccluderPolygon2D_hqmy1")
+[node name="BlockOccluder" parent="." instance=ExtResource("2_doa3v")]
+occluder = SubResource("OccluderPolygon2D_nbgqd")
 
 [node name="NinePatch" type="NinePatchRect" parent="."]
 anchors_preset = 8
@@ -339,7 +340,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_q0esk")
+shape = SubResource("RectangleShape2D_2pktd")
 debug_color = Color(0, 0.51, 0.6, 0.117647)
 
 [node name="UnClickArea" parent="." instance=ExtResource("3_h0fp2")]

@@ -99,7 +99,7 @@ func update_dimensions():
 	var click_area_collision_shape = $ClickArea/ClickAreaCollisionShape
 	var unclick_area_collision_shape = $UnClickArea/ClickAreaCollisionShape
 	var shape = collision_shape.shape
-	var light_occ : LightOccluder2D = $LightOccluder2D
+	var light_occ : LightOccluder2D = $BlockOccluder
 
 	if shape is not RectangleShape2D:
 		print("$CollisionShape.shape is not a RectangleShape2D")

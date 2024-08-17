@@ -64,6 +64,7 @@ _data = {
 }
 
 [node name="SceneTransition" type="CanvasLayer"]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
