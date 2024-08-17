@@ -21,6 +21,7 @@ SceneTransitionAutoLoad="*res://scripts/autoload/scene_transition_auto_load.gd"
 LevelData="*res://scripts/autoload/level_data.gd"
 PauseMenuAutoload="*res://scripts/autoload/pause_menu_autoload.gd"
 BlockManagerAutoload="*res://scripts/autoload/block_manager_autoload.gd"
+GameManager="*res://scripts/autoload/game_manager.gd"
 
 [display]
 
