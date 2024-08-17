@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/scale_handle.gd" id="2_a5u7l"]
 [ext_resource type="Texture2D" uid="uid://d3yvhibvybfbx" path="res://assets/images/ui/handle.png" id="3_kc6dc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wlwwr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iowst"]
 size = Vector2(6, 6)
 
 [node name="ScaleHandle" instance=ExtResource("1_okygb")]
@@ -14,7 +14,7 @@ size = Vector2i(6, 6)
 debug_color = Color(0.687518, 0.63562, 0, 0.5)
 
 [node name="ClickAreaCollisionShape" parent="." index="0"]
-shape = SubResource("RectangleShape2D_wlwwr")
+shape = SubResource("RectangleShape2D_iowst")
 debug_color = Color(0.687518, 0.63562, 0, 0.5)
 
 [node name="Sprite" parent="." index="1"]

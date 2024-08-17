@@ -4,23 +4,53 @@ class_name BlockManager
 @onready var main = get_node("/root/Main")
 
 var selected_block_count: int = 0
+var current_selected_block: Block = null
+var is_dragging: bool = false
+var selection_candidates = []
 
-func can_select_block(block: Block) -> bool:
-	return (selected_block_count <= 0)
+func start_drag():
+	is_dragging = true
+
+func end_drag():
+	is_dragging = false
+
+func new_selection_candidate(block: Block):
+	selection_candidates.append(block)
+
+func can_select(block: Block):
+	return current_selected_block != block and not is_dragging
 
 func on_select_block(block: Block):
 	selected_block_count += 1
 	
-	var current_level: Node = main.current_scene_node
-	if not current_level:
-		return
-	
-	for child in current_level.get_children():
-		if child is Block:
-			child.unselect()
+	current_selected_block = block
 
 func on_unselect_block(block: Block):
 	selected_block_count -= 1
 
+##################################################
+
+func _unselect_non_selected_blocks():
+	var current_level: Node = main.get_current_level()
+	if not current_level:
+		print("No current level")
+		return
+	
+	for child in current_level.get_children():
+		if child is Block:
+			if child != current_selected_block:
+				child.unselect()
+
+func _select_selection_candidate():
+	if is_dragging or selection_candidates.is_empty():
+		return
+	
+	for candidate in selection_candidates:
+		candidate.select()
+		return
+
 func _process(delta):
-	pass
+	_unselect_non_selected_blocks()
+	_select_selection_candidate()
+	
+	selection_candidates.clear()
