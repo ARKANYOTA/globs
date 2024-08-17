@@ -39,4 +39,4 @@ func _process(delta: float) -> void:
 
 func _input(event):
 	if event.is_action_pressed("removeme2_nolan_usge_to_change_scene"):
-		increment_level()
+		increment_level_and_change_scene()
