@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b26c54poeaia6"]
+[gd_scene load_steps=6 format=3 uid="uid://b26c54poeaia6"]
 
+[ext_resource type="Script" path="res://scripts/test_character_body_2d.gd" id="1_okh5p"]
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block.tscn" id="2_2ov2f"]
-[ext_resource type="PackedScene" uid="uid://dplrbbylq37dj" path="res://scenes/player.tscn" id="2_u66xk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxpjx"]
 size = Vector2(343, 20)
@@ -9,35 +9,30 @@ size = Vector2(343, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_syomx"]
 size = Vector2(189, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gty1f"]
+
 [node name="Scene1" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 3
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(156, 180)
 shape = SubResource("RectangleShape2D_gxpjx")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-collision_layer = 3
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(77, 103)
 shape = SubResource("RectangleShape2D_syomx")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-collision_layer = 3
-collision_mask = 3
 script = ExtResource("1_okh5p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_gty1f")
 
 [node name="Block2" parent="." instance=ExtResource("2_2ov2f")]
-position = Vector2(177, 53)
+position = Vector2(176, 75)
 
 [node name="Block" parent="." instance=ExtResource("2_2ov2f")]
-position = Vector2(143, 53)
-is_gravity_enabled = true
+position = Vector2(143, 75)
