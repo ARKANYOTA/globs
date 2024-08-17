@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://cf0mams6nnmhx"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6qewy"]
+resource_local_to_scene = true
 polygon = PackedVector2Array(-80, -8, 80, -8, 80, 8, -80, 8)
 
 [node name="BlockOccluder" type="LightOccluder2D"]

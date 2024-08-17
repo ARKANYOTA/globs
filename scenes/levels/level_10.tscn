@@ -179,6 +179,7 @@ offset = Vector2(0, 20)
 texture_scale = 0.2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.700314, 0.752182, 0.889905, 1)
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
