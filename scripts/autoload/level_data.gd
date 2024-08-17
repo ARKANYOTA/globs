@@ -3,6 +3,7 @@ extends Node
 var levels = {
 	1: { "name": "1", "scene": "res://scenes/levels/level_1.tscn"},
 	2: { "name": "2", "scene": "res://scenes/scene_2.tscn"},
+	3: { "name": "You Win", "scene": "res://scenes/levels/you_win.tscn"},
 }
 
 var level = 1
@@ -10,7 +11,7 @@ var level = 1
 func increment_level() -> void:
 	level += 1
 	if level > len(levels):
-		assert(false, "Levvel out of bounds")
+		level = len(levels)
 	save_level_data()
 
 func increment_level_and_change_scene() -> void:
