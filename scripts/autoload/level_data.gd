@@ -2,8 +2,8 @@ extends Node
 
 var levels = {
 	1: { "name": "Level 1", "scene": "res://scenes/intro_level.tscn"},
-	2: { "name": "Level 2", "scene": "res://scenes/guillaume_test.tscn"},
-	3: { "name": "Level 3", "scene": "res://scenes/scene_2.tscn"},
+	2: { "name": "2", "scene": "res://scenes/levels/level_1.tscn"},
+	3: { "name": "3", "scene": "res://scenes/scene_2.tscn"},
 }
 
 var level = 1
@@ -13,6 +13,15 @@ func increment_level() -> void:
 	if level > len(levels):
 		assert(false, "Levvel out of bounds")
 	save_level_data()
+
+func increment_level_and_change_scene() -> void:
+	increment_level()
+	var scene_path = levels[level]["scene"]
+	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
+
+func reload_scene() -> void:
+	var scene_path = levels[level]["scene"]
+	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
 
 func save_level_data() -> void:
 	var config = ConfigFile.new()
@@ -35,4 +44,7 @@ func _process(delta: float) -> void:
 
 func _input(event):
 	if event.is_action_pressed("removeme2_nolan_usge_to_change_scene"):
-		increment_level()
+		increment_level_and_change_scene()
+	
+	if event.is_action_pressed("reload_button"):
+		reload_scene()

@@ -27,7 +27,7 @@ enum Direction {
 		$CollisionShape.rotation_degrees = value
 		$Sprite.rotation_degrees = value
 
-@export var scale_max_speed : float = 3
+@export var scale_max_speed : float = 1.5
 
 @export_group("Up Extandable")
 @export var up_extendable: bool = false
@@ -213,6 +213,17 @@ func _ready():
 	if Engine.is_editor_hint():
 		return
 	
+	var ninepatch: NinePatchRect = $NinePatch
+	if static_block: # Normal
+		ninepatch.region_rect.position.x = 0
+		ninepatch.region_rect.position.y = 0
+	elif is_gravity_enabled: # rouge
+		ninepatch.region_rect.position.x = 0
+		ninepatch.region_rect.position.y = 16
+	else: # bleu
+		ninepatch.region_rect.position.x = 0
+		ninepatch.region_rect.position.y = 32
+		
 	up_extend_value = up_extend_value
 	down_extend_value = down_extend_value
 	left_extend_value = left_extend_value
