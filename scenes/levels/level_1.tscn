@@ -15,7 +15,15 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAEAAAAAAAAAAEAAAADAAEAAAAAAAIAAAADAAE
 tile_set = ExtResource("1_vx2ym")
 
 [node name="Player" parent="." instance=ExtResource("2_w3cne")]
-position = Vector2(32, 152)
+position = Vector2(-40, 104)
+
+[node name="Block8" parent="." instance=ExtResource("3_5gr1g")]
+position = Vector2(48, 144)
+is_gravity_enabled = true
+up_extendable = false
+down_extendable = false
+left_extendable = false
+right_extendable = false
 
 [node name="Block" parent="." instance=ExtResource("3_5gr1g")]
 position = Vector2(8, 152)
