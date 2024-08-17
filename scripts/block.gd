@@ -214,15 +214,15 @@ func _ready():
 		return
 	
 	var ninepatch: NinePatchRect = $NinePatch
-	if static_block: # Normal
-		ninepatch.region_rect.position.x = 0
-		ninepatch.region_rect.position.y = 0
-	elif is_gravity_enabled: # rouge
-		ninepatch.region_rect.position.x = 0
-		ninepatch.region_rect.position.y = 16
-	else: # bleu
-		ninepatch.region_rect.position.x = 0
-		ninepatch.region_rect.position.y = 32
+	#if static_block: # Normal
+		#ninepatch.region_rect.position.x = 0
+		#ninepatch.region_rect.position.y = 0
+	#elif is_gravity_enabled: # rouge
+		#ninepatch.region_rect.position.x = 0
+		#ninepatch.region_rect.position.y = 16
+	#else: # bleu
+		#ninepatch.region_rect.position.x = 0
+		#ninepatch.region_rect.position.y = 32
 		
 	up_extend_value = up_extend_value
 	down_extend_value = down_extend_value

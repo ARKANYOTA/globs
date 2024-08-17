@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/goal.gd" id="1_0dqw8"]
 [ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="2_hr0rm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8asy"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kxh1"]
+size = Vector2(0, 0)
 
 [node name="Goal" type="Area2D"]
 collision_layer = 2
@@ -24,7 +24,7 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_u8asy")
+shape = SubResource("RectangleShape2D_6kxh1")
 debug_color = Color(0.493207, 0.429172, 1, 0.376471)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
