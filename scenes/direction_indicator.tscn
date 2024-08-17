@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cysde5kl7s4e0"]
+
+[ext_resource type="Texture2D" uid="uid://d28ls2t8m3y00" path="res://assets/images/ui/direction_indicator.png" id="1_pnyxq"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_pnyxq")

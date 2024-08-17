@@ -75,7 +75,9 @@ enum Direction {
 var is_hovered := false
 var is_selected := false
 var handles: Array[ScaleHandle] = []
+var direction_indicators: Array[Sprite2D] = []
 var scale_handle: PackedScene = load("res://scenes/scale_handle.tscn")
+var direction_indicator: PackedScene = load("res://scenes/direction_indicator.tscn")
 
 var animation = "o_face"
 var is_asleep := false
@@ -202,8 +204,9 @@ func _create_scale_handle(direction: Direction, name: String):
 		_on_scale_handle_dragged(new_scale_handle, direction)
 	)
 	add_child(new_scale_handle)
-	
 	handles.append(new_scale_handle)
+	
+	new_scale_handle.initialize()
 
 func _create_scale_handles():
 	if left_extendable:
@@ -222,16 +225,8 @@ func _update_scale_handles():
 	var dimensions = get_dimensions()
 	for handle in handles:
 		var direction = handle.direction
-		if direction == Direction.LEFT:
-			handle.position = center - Vector2(dimensions.x / 2, 0)
-		elif direction == Direction.RIGHT:
-			handle.position = center + Vector2(dimensions.x / 2, 0)
-		elif direction == Direction.UP:
-			handle.position = center - Vector2(0, dimensions.y / 2)
-		elif direction == Direction.DOWN:
-			handle.position = center + Vector2(0, dimensions.y / 2)
-		
-		handle.position = round(handle.position)
+		var handle_position = center + Util.direction_to_vector(direction) * (dimensions/2)
+		handle.position = round(handle_position) 
 
 func _hide_scale_handles():
 	for handle in handles:

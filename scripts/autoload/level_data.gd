@@ -1,6 +1,11 @@
 extends Node
 
 var levels = [
+	{ "name": "1-1", "scene": "res://scenes/levels/level_100_intro.tscn"},
+	{ "name": "1-1", "scene": "res://scenes/levels/level_110_push.tscn"},
+	{ "name": "1-1", "scene": "res://scenes/levels/level_120_support.tscn"},
+	{ "name": "1-1", "scene": "res://scenes/levels/level_140_only_red_wins.tscn"},
+	
 	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
 	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
 	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
