@@ -33,8 +33,7 @@ func change_scene():
 	game.add_child(load_scene)
 
 func _ready():
-	menu_manager.visible = true
-	menu_manager.exit_menu()
+	pass
 
 func _process(delta):
 	pass

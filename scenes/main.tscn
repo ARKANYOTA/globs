@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://clib81weo65vk"]
+[gd_scene load_steps=3 format=3 uid="uid://clib81weo65vk"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ngeyx"]
 [ext_resource type="PackedScene" uid="uid://b26c54poeaia6" path="res://scenes/scene_1.tscn" id="2_yi14j"]
-[ext_resource type="PackedScene" uid="uid://8lw7bps1tiip" path="res://scenes/menu_manager.tscn" id="3_txlr1"]
-[ext_resource type="PackedScene" uid="uid://d3nt0ouwhyl50" path="res://scenes/block_manager.tscn" id="4_orfkg"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ngeyx")
@@ -11,7 +9,3 @@ script = ExtResource("1_ngeyx")
 [node name="Game" type="Node2D" parent="."]
 
 [node name="Scene1" parent="Game" instance=ExtResource("2_yi14j")]
-
-[node name="MenuManager" parent="." instance=ExtResource("3_txlr1")]
-
-[node name="BlockManager" parent="." instance=ExtResource("4_orfkg")]

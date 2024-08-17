@@ -60,7 +60,7 @@ enum Direction {
 ################################################
 
 @onready var main := get_node("/root/Main")
-@onready var block_manager: BlockManager = get_node("/root/Main/BlockManager")
+@onready var block_manager: BlockManager = get_node("/root/BlockManagerAutoload/BlockManager")
 @onready var label := $Label
 
 var is_hovered := false
