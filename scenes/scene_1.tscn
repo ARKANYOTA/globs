@@ -14,18 +14,24 @@ size = Vector2(189, 20)
 [node name="Scene1" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(156, 180)
 shape = SubResource("RectangleShape2D_gxpjx")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(77, 103)
 shape = SubResource("RectangleShape2D_syomx")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_okh5p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
@@ -36,3 +42,4 @@ position = Vector2(143, 75)
 
 [node name="Block2" parent="." instance=ExtResource("2_2ov2f")]
 position = Vector2(176, 75)
+static_block = true
