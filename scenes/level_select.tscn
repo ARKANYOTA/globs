@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bftjrd7plswxb"]
+
+[ext_resource type="Script" path="res://scripts/level_select.gd" id="1_jxoum"]
+[ext_resource type="PackedScene" uid="uid://divqor4b0wvhn" path="res://scenes/level_button.tscn" id="2_fpm2b"]
+
+[node name="SceneSelect" type="Node2D"]
+script = ExtResource("1_jxoum")
+
+[node name="LevelButton" parent="." instance=ExtResource("2_fpm2b")]

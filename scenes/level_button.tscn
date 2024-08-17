@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://divqor4b0wvhn"]
+
+[ext_resource type="Texture2D" uid="uid://cagg1qydmiusw" path="res://assets/images/ui/button.png" id="1_3nrti"]
+[ext_resource type="Script" path="res://scenes/level_button.gd" id="1_op3qd"]
+
+[node name="LevelButton" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 18.0
+offset_top = 19.0
+offset_right = 42.0
+offset_bottom = 43.0
+script = ExtResource("1_op3qd")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.75
+anchor_top = -0.792
+anchor_right = 0.25
+anchor_bottom = 0.208
+offset_top = 0.00800133
+offset_bottom = 0.0080018
+icon = ExtResource("1_3nrti")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
