@@ -18,6 +18,10 @@ func increment_level_and_change_scene() -> void:
 	var scene_path = levels[level]["scene"]
 	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
 
+func reload_scene() -> void:
+	var scene_path = levels[level]["scene"]
+	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
+
 func save_level_data() -> void:
 	var config = ConfigFile.new()
 	config.set_value("level_section","level", level)
@@ -40,3 +44,6 @@ func _process(delta: float) -> void:
 func _input(event):
 	if event.is_action_pressed("removeme2_nolan_usge_to_change_scene"):
 		increment_level_and_change_scene()
+	
+	if event.is_action_pressed("reload_button"):
+		reload_scene()
