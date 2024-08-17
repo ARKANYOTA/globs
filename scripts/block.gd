@@ -25,7 +25,7 @@ enum Direction {
 		$CollisionShape.rotation_degrees = value
 		$Sprite.rotation_degrees = value
 
-@export var scale_max_speed : float = 3
+@export var scale_max_speed : float = 1.5
 
 @export_group("Up Extandable")
 @export var up_extendable: bool = false
