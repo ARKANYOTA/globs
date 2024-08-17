@@ -1,11 +1,11 @@
 extends Node
 
 var levels = {
-	1: { "name": "Level 1", "scene": "res://scenes/scene_1.tscn"},
+	1: { "name": "Level 1", "scene": "res://scenes/guillaume_test.tscn"},
 	2: { "name": "Level 2", "scene": "res://scenes/scene_2.tscn"},
 }
 
-var level = 1
+var level = 200
 
 func increment_level() -> void:
 	level += 1

@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://clm2djhlvu4b6"]
+
+[ext_resource type="Texture2D" uid="uid://bwtyjhpnl076x" path="res://assets/images/ui/ui_frame.png" id="1_ol84s"]
+
+[node name="Text_Button" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -280.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ol84s")
+patch_margin_left = 17
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
