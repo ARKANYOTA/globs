@@ -7,6 +7,17 @@ var block_manager_instance: Node
 func _ready() -> void:
 	block_manager_instance = block_manager.instantiate()
 	add_child(block_manager_instance)
+	var root = get_tree().get_root()
+	for child in root.get_children():
+		if child.name == "BlockManagerAutoload":
+			var root2 = child
+			for child2 in root2.get_children():
+				print("is in the blockmanagerautoload")
+				print(child2.name)
+		print(child.name)
+	
+	#print tree structure
+	print("Block manager autoloaded.")
 	pass # Replace with function body.
 
 
