@@ -15,6 +15,10 @@ run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://assets/images/gmtklogo2024.png"
 
+[autoload]
+
+SceneTransitionAutoLoad="*res://scripts/autoload/scene_transition_auto_load.gd"
+
 [display]
 
 window/size/viewport_width=320
