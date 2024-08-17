@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/click_area.gd" id="1_lsa4i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_id8ij"]
-size = Vector2(0, 0)
+size = Vector2(6, 6)
 
 [node name="ClickArea" type="Area2D"]
 script = ExtResource("1_lsa4i")
@@ -13,7 +13,7 @@ debug_color = Color(0, 0, 0, 1)
 shape = SubResource("RectangleShape2D_id8ij")
 debug_color = Color(0.914239, 8.45176e-05, 0.716974, 0.42)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

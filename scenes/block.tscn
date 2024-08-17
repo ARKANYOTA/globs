@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://7nk8tmq0rg35" path="res://assets/images/face_animation/scared.png" id="3_pr5jj"]
 [ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="5_afbxe"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1gvo"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3yw10"]
 size = Vector2(16, 16)
 
 [node name="Block" type="CharacterBody2D"]
@@ -13,6 +13,8 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_eflyf")
 is_gravity_enabled = false
+up_extendable = true
+down_extendable = true
 left_extendable = true
 right_extendable = true
 
@@ -42,10 +44,15 @@ texture = ExtResource("3_pr5jj")
 hframes = 8
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_m1gvo")
+shape = SubResource("RectangleShape2D_3yw10")
+debug_color = Color(0, 0.51, 0.6, 0.117647)
+
+[node name="UnClickArea" parent="." instance=ExtResource("3_h0fp2")]
+debug_color = Color(1, 0.36, 0.829333, 0.52549)
 
 [node name="ClickArea" parent="." instance=ExtResource("3_h0fp2")]
-debug_color = Color(0.856684, 0.239735, 0.503651, 0.380392)
+debug_color = Color(0.432738, 0.57198, 5.77569e-07, 0.380392)
 
+[connection signal="clicked_outside_area" from="UnClickArea" to="." method="_on_un_click_area_clicked_outside_area"]
 [connection signal="clicked" from="ClickArea" to="." method="_on_click_area_clicked"]
 [connection signal="clicked_outside_area" from="ClickArea" to="." method="_on_click_area_clicked_outside_area"]
