@@ -21,11 +21,13 @@ func increment_level() -> void:
 	save_level_data()
 
 func increment_level_and_change_scene() -> void:
+	BlockManagerAutoload.block_manager_instance.end_drag()
 	increment_level()
 	var scene_path = levels[level - 1]["scene"]
 	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
 
 func reload_scene() -> void:
+	BlockManagerAutoload.block_manager_instance.end_drag()
 	var scene_path = levels[level - 1]["scene"]
 	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
 

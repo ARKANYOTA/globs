@@ -69,7 +69,6 @@ enum Direction {
 ################################################
 
 @onready var main := get_node("/root/Main")
-@onready var block_manager: BlockManager = get_node("/root/BlockManagerAutoload/BlockManager")
 @onready var sleep_particles: CPUParticles2D = $Sleep/SleepParticles
 
 var is_hovered := false
@@ -134,7 +133,7 @@ func select():
 	
 	is_selected = true
 	_show_scale_handles()
-	block_manager.on_select_block(self)
+	BlockManagerAutoload.block_manager_instance.on_select_block(self)
 
 func unselect():
 	if not is_selected:
@@ -142,7 +141,7 @@ func unselect():
 	
 	is_selected = false
 	_hide_scale_handles()
-	block_manager.on_unselect_block(self)
+	BlockManagerAutoload.block_manager_instance.on_unselect_block(self)
 
 func get_dimensions():
 	return Vector2(left_extend_value + right_extend_value, up_extend_value + down_extend_value)
@@ -293,17 +292,17 @@ func _physics_process(delta):
 		move_and_slide()
 
 func _on_click_area_clicked():
-	if block_manager.can_select(self):
-		block_manager.new_selection_candidate(self)
+	if BlockManagerAutoload.block_manager_instance.can_select(self):
+		BlockManagerAutoload.block_manager_instance.new_selection_candidate(self)
 
 func _on_un_click_area_clicked_outside_area():
 	unselect()
 
 func _on_scale_handle_start_drag(handle: ScaleHandle, direction: Direction):
-	block_manager.start_drag()
+	BlockManagerAutoload.block_manager_instance.start_drag()
 
 func _on_scale_handle_end_drag(handle: ScaleHandle, direction: Direction):
-	block_manager.end_drag()
+	BlockManagerAutoload.block_manager_instance.end_drag()
 
 func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 	var pos_diff = Vector2i(get_global_mouse_position() - global_position)
