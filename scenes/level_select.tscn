@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bftjrd7plswxb"]
 
 [ext_resource type="Script" path="res://scripts/level_select.gd" id="1_jxoum"]
-[ext_resource type="PackedScene" uid="uid://divqor4b0wvhn" path="res://scenes/level_button.tscn" id="2_fpm2b"]
+[ext_resource type="Script" path="res://scripts/grid_container.gd" id="3_6yjuw"]
 [ext_resource type="PackedScene" uid="uid://bpqekaydn06nf" path="res://scenes/scene_transition.tscn" id="3_vqf57"]
 
 [node name="SceneSelect" type="Node2D"]
@@ -15,37 +15,4 @@ offset_top = 13.0
 offset_right = 220.0
 offset_bottom = 81.0
 columns = 6
-
-[node name="LevelButton" parent="GridContainer" instance=ExtResource("2_fpm2b")]
-layout_mode = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="LevelButton2" parent="GridContainer" instance=ExtResource("2_fpm2b")]
-layout_mode = 2
-level = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="LevelButton3" parent="GridContainer" instance=ExtResource("2_fpm2b")]
-layout_mode = 2
-level = 3
-metadata/_edit_use_anchors_ = true
-
-[node name="LevelButton4" parent="GridContainer" instance=ExtResource("2_fpm2b")]
-layout_mode = 2
-level = 4
-metadata/_edit_use_anchors_ = true
-
-[node name="LevelButton5" parent="GridContainer" instance=ExtResource("2_fpm2b")]
-layout_mode = 2
-level = 5
-metadata/_edit_use_anchors_ = true
-
-[node name="LevelButton6" parent="GridContainer" instance=ExtResource("2_fpm2b")]
-layout_mode = 2
-level = 6
-metadata/_edit_use_anchors_ = true
-
-[node name="LevelButton7" parent="GridContainer" instance=ExtResource("2_fpm2b")]
-layout_mode = 2
-level = 7
-metadata/_edit_use_anchors_ = true
+script = ExtResource("3_6yjuw")
