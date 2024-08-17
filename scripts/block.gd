@@ -25,6 +25,8 @@ enum Direction {
 		$CollisionShape.rotation_degrees = value
 		$Sprite.rotation_degrees = value
 
+@export var scale_max_speed : float = 3
+
 @export_group("Up Extandable")
 @export var up_extendable: bool = false
 @export var up_extend_range: Vector2i = Vector2i(8, 100)
@@ -67,7 +69,6 @@ var is_hovered := false
 var is_selected := false
 var handles: Array[ScaleHandle] = []
 var scale_handle: PackedScene = load("res://scenes/scale_handle.tscn")
-const scale_max_speed : float = .5
 
 var animation = "o_face"
 
