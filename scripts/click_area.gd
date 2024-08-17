@@ -3,6 +3,7 @@ extends Area2D
 class_name ClickArea
 
 signal clicked
+signal clicked_outside_area
 signal start_drag
 signal dragging
 signal end_drag
@@ -28,11 +29,14 @@ func _input(event):
 	if Engine.is_editor_hint():
 		return
 	
-	if is_hovered and event.is_action_pressed("left_click"):
-		print("press")
-		clicked.emit()
-		start_drag.emit()
-		is_held = true
+	if event.is_action_pressed("left_click"):
+		if is_hovered:
+			print("press")
+			clicked.emit()
+			start_drag.emit()
+			is_held = true
+		else:
+			clicked_outside_area.emit()
 	
 	if is_held and event.is_action_released("left_click"):
 		print("release")

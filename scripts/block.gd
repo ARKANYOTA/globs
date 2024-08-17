@@ -52,7 +52,8 @@ enum Direction {
 @onready var label := $Label
 
 var is_hovered := false
-var handles := Dictionary()
+var is_focused := false
+var handles: Array[ScaleHandle] = []
 var scale_handle: PackedScene = load("res://scenes/scale_handle.tscn")
 
 ################################################
@@ -80,7 +81,7 @@ func update_dimensions():
 	
 	# Update size
 	shape.size = dim
-	click_area_collision_shape.shape = shape
+	click_area_collision_shape.shape.size = dim + Vector2(8, 8)
 	
 	# Update position
 	var child_pos: Vector2 = Vector2(-left_extend_value + right_extend_value,
@@ -121,7 +122,7 @@ func _create_scale_handle(direction: Direction, name: String):
 	)
 	add_child(new_scale_handle)
 	
-	handles[direction] = new_scale_handle
+	handles.append(new_scale_handle)
 
 func _create_scale_handles():
 	if left_extendable:
@@ -138,8 +139,8 @@ func _create_scale_handles():
 func _update_scale_handles():
 	var center = get_center()
 	var dimensions = get_dimensions()
-	for direction in handles.keys():
-		var handle = handles[direction]
+	for handle in handles:
+		var direction = handle.direction
 		if direction == Direction.LEFT:
 			handle.position = center - Vector2(dimensions.x / 2, 0)
 		elif direction == Direction.RIGHT:
@@ -148,6 +149,14 @@ func _update_scale_handles():
 			handle.position = center - Vector2(0, dimensions.y / 2)
 		elif direction == Direction.DOWN:
 			handle.position = center + Vector2(0, dimensions.y / 2)
+
+func _hide_scale_handles():
+	for handle in handles:
+		handle.hide()
+
+func _show_scale_handles():
+	for handle in handles:
+		handle.show()
 
 ################################################
 
@@ -160,6 +169,9 @@ func _ready():
 	left_extend_value = left_extend_value
 	right_extend_value = right_extend_value
 	_create_scale_handles()
+	_hide_scale_handles()
+	
+	update_dimensions()
 
 func _process(delta):
 	if Engine.is_editor_hint():
@@ -187,8 +199,12 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_click_area_clicked():
-	#expand(Direction.UP, 4)
-	pass
+	is_focused = true
+	_show_scale_handles()
+
+func _on_click_area_clicked_outside_area():
+	is_focused = false
+	_hide_scale_handles()
 
 func _on_scale_handle_start_hold(handle: ScaleHandle, direction: Direction):
 	#expand(direction, 4)

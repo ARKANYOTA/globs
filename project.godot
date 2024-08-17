@@ -20,7 +20,7 @@ config/icon="res://assets/images/gmtklogo2024.png"
 window/size/viewport_width=320
 window/size/viewport_height=180
 window/size/mode=2
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [input]
 

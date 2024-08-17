@@ -310,8 +310,9 @@ color = Color(0.258824, 0.47451, 0.286275, 0.670588)
 
 [node name="FaceAnimation" type="AnimatedSprite2D" parent="SlimeBlock"]
 sprite_frames = SubResource("SpriteFrames_1oton")
-animation = &"o_face"
-frame_progress = 0.773057
+animation = &"scared"
+frame = 6
+frame_progress = 0.030506
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 visible = false
