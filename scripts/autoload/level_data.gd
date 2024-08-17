@@ -5,13 +5,18 @@ var levels = {
 	2: { "name": "Level 2", "scene": "res://scenes/scene_2.tscn"},
 }
 
-var level = 200
+var level = 1
 
 func increment_level() -> void:
 	level += 1
 	if level > len(levels):
 		assert(false, "Level out of bounds")
 	save_level_data()
+
+func increment_level_and_change_scene() -> void:
+	increment_level()
+	var scene_path = levels[level]["scene"]
+	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
 
 func save_level_data() -> void:
 	var config = ConfigFile.new()
