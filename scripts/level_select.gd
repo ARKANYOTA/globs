@@ -2,6 +2,8 @@ extends Node2D
 
 var selected_level = 1
 
+@export var button_list : Array[LevelButton] = []
+
 func _ready():
     print(LevelData.level)
 
