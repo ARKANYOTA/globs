@@ -70,7 +70,7 @@ enum Direction {
 
 @onready var main := get_node("/root/Main")
 @onready var block_manager: BlockManager = get_node("/root/BlockManagerAutoload/BlockManager")
-@onready var label := $Label
+@onready var sleep_particles: CPUParticles2D = $Sleep/SleepParticles
 
 var is_hovered := false
 var is_selected := false
@@ -78,6 +78,7 @@ var handles: Array[ScaleHandle] = []
 var scale_handle: PackedScene = load("res://scenes/scale_handle.tscn")
 
 var animation = "o_face"
+var is_asleep := false
 
 ################################################
 
@@ -147,21 +148,7 @@ func get_center():
 
 func _update_sprite():
 	# Update animation
-	var dim = get_dimensions()
-	var size = dim.x * dim.y
-	if not is_selected:
-		animation = "sleeping"
-	elif size <= 24 * 24:
-		animation = "poker"
-	#elif size <= 32 * 32:
-		#animation = "o_face"
-	elif size <= 42 * 42:
-		animation = "fat"
-	else:
-		animation = "scared"
-	
-	if $SleepParticles:
-		$SleepParticles.emitting = not is_selected
+	_update_animation()
 	
 	# Change 9-patch sprite
 	var ninepatch: NinePatchRect = $NinePatch
@@ -174,6 +161,24 @@ func _update_sprite():
 	#else: # bleu
 		#ninepatch.region_rect.position.x = 0
 		#ninepatch.region_rect.position.y = 32
+
+func _update_animation():
+	var dim = get_dimensions()
+	var size = dim.x * dim.y
+	var old_animation = animation
+	if size <= 4*16*16:
+		if not is_selected:
+			animation = "sleeping"
+		else:
+			animation = "poker"
+	
+	elif size <= 6*16*16:
+		animation = "fat"
+	else:
+		animation = "scared"
+	
+	if sleep_particles:
+		sleep_particles.emitting = (animation == "sleeping")
 
 func _create_scale_handle(direction: Direction, name: String):
 	var new_scale_handle: ScaleHandle = scale_handle.instantiate()

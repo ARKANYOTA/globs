@@ -347,7 +347,9 @@ animation = &"sleeping"
 frame = 1
 frame_progress = 0.049075
 
-[node name="SleepParticles" type="CPUParticles2D" parent="."]
+[node name="Sleep" type="Node2D" parent="."]
+
+[node name="SleepParticles" type="CPUParticles2D" parent="Sleep"]
 position = Vector2(0, -7)
 emitting = false
 amount = 2
