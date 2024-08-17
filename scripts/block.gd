@@ -47,11 +47,15 @@ enum Direction {
 		right_extend_value = clamp(value, right_extend_range.x, right_extend_range.y)
 		update_dimensions()
 
+################################################
+
 @onready var label := $Label
 
 var is_hovered := false
 var handles := Dictionary()
 var scale_handle: PackedScene = load("res://scenes/scale_handle.tscn")
+
+################################################
 
 func expand(direction: Direction, amount: int):
 	if direction == Direction.RIGHT:
@@ -84,8 +88,6 @@ func update_dimensions():
 	collision_shape.position = child_pos
 	click_area.position = child_pos
 	update_sprite_size(child_pos, dim)
-	
-	
 
 func update_sprite_size(pos, dimensions):
 	var sprite: Sprite2D = $Sprite
@@ -102,19 +104,7 @@ func get_dimensions():
 func get_center():
 	return $CollisionShape.position
 
-func _update_scale_handles():
-	var center = get_center()
-	var dimensions = get_dimensions()
-	for direction in handles.keys():
-		var handle = handles[direction]
-		if direction == Direction.LEFT:
-			handle.position = center - Vector2(dimensions.x / 2, 0)
-		elif direction == Direction.RIGHT:
-			handle.position = center + Vector2(dimensions.x / 2, 0)
-		elif direction == Direction.UP:
-			handle.position = center - Vector2(0, dimensions.y / 2)
-		elif direction == Direction.DOWN:
-			handle.position = center + Vector2(0, dimensions.y / 2)
+################################################
 
 func _create_scale_handle(direction: Direction, name: String):
 	var new_scale_handle: ScaleHandle = scale_handle.instantiate()
@@ -126,6 +116,9 @@ func _create_scale_handle(direction: Direction, name: String):
 		_on_scale_handle_start_hold(new_scale_handle, direction)
 	)
 	#new_scale_handle.debug_set_label(name[0])
+	new_scale_handle.dragging.connect(func():
+		_on_scale_handle_dragged(new_scale_handle, direction)
+	)
 	add_child(new_scale_handle)
 	
 	handles[direction] = new_scale_handle
@@ -141,6 +134,20 @@ func _create_scale_handles():
 		_create_scale_handle(Direction.DOWN, "DownHandle")
 	
 	_update_scale_handles()
+
+func _update_scale_handles():
+	var center = get_center()
+	var dimensions = get_dimensions()
+	for direction in handles.keys():
+		var handle = handles[direction]
+		if direction == Direction.LEFT:
+			handle.position = center - Vector2(dimensions.x / 2, 0)
+		elif direction == Direction.RIGHT:
+			handle.position = center + Vector2(dimensions.x / 2, 0)
+		elif direction == Direction.UP:
+			handle.position = center - Vector2(0, dimensions.y / 2)
+		elif direction == Direction.DOWN:
+			handle.position = center + Vector2(0, dimensions.y / 2)
 
 ################################################
 
@@ -163,7 +170,7 @@ func _process(delta):
 func _physics_process(delta):
 	if Engine.is_editor_hint():
 		return
-
+	
 	if is_gravity_enabled:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
@@ -176,7 +183,7 @@ func _physics_process(delta):
 				angle -= alpha * rot_speed
 			else:
 				angle += alpha * rot_speed
-
+	
 	move_and_slide()
 
 func _on_click_area_clicked():
@@ -184,4 +191,16 @@ func _on_click_area_clicked():
 	pass
 
 func _on_scale_handle_start_hold(handle: ScaleHandle, direction: Direction):
-	expand(direction, 4)
+	#expand(direction, 4)
+	pass
+
+func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
+	var pos_diff = get_global_mouse_position() - global_position
+	if direction == Direction.LEFT:
+		left_extend_value = abs(min(0, pos_diff.x))
+	elif direction == Direction.RIGHT:
+		right_extend_value = max(0, pos_diff.x)
+	elif direction == Direction.UP:
+		up_extend_value = abs(min(0, pos_diff.y))
+	elif direction == Direction.DOWN:
+		down_extend_value = max(0, pos_diff.y)

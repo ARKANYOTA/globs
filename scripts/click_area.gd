@@ -4,6 +4,7 @@ class_name ClickArea
 
 signal clicked
 signal start_drag
+signal dragging
 signal end_drag
 
 @export var size: Vector2i:
@@ -28,12 +29,22 @@ func _input(event):
 		return
 	
 	if is_hovered and event.is_action_pressed("left_click"):
+		print("press")
 		clicked.emit()
 		start_drag.emit()
 		is_held = true
 	
 	if is_held and event.is_action_released("left_click"):
+		print("release")
+		is_held = false
 		end_drag.emit()
+
+func _process(delta):
+	if Engine.is_editor_hint():
+		return
+	
+	if is_held:
+		dragging.emit()
 
 func _on_mouse_entered():
 	if Engine.is_editor_hint():
