@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://df2246b252g24"]
+
+[sub_resource type="Gradient" id="Gradient_4k5l3"]
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 1, 1)
+
+[node name="YouWinLevel" type="CPUParticles2D"]
+rotation = -1.60673
+amount = 11
+initial_velocity_min = 194.44
+initial_velocity_max = 444.44
+scale_amount_min = 0.0
+scale_amount_max = 7.94
+color_initial_ramp = SubResource("Gradient_4k5l3")
