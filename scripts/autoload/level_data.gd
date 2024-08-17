@@ -1,26 +1,32 @@
 extends Node
 
-var levels = {
-	1: { "name": "1", "scene": "res://scenes/levels/level_100.tscn"},
-	2: { "name": "2", "scene": "res://scenes/levels/level_101.tscn"},
-	3: { "name": "You Win", "scene": "res://scenes/levels/you_win.tscn"},
-}
+var levels = [
+	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
+	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
+	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
+	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
+	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
+	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
+	{ "name": "1-2", "scene": "res://scenes/levels/level_101.tscn"},
+	{ "name": "2-1", "scene": "res://scenes/levels/level_10.tscn"},
+	{ "name": "You Win", "scene": "res://scenes/levels/you_win.tscn"},
+]
 
 var level = 1
 
 func increment_level() -> void:
 	level += 1
-	if level > len(levels):
+	if level >= len(levels):
 		level = len(levels)
 	save_level_data()
 
 func increment_level_and_change_scene() -> void:
 	increment_level()
-	var scene_path = levels[level]["scene"]
+	var scene_path = levels[level - 1]["scene"]
 	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
 
 func reload_scene() -> void:
-	var scene_path = levels[level]["scene"]
+	var scene_path = levels[level - 1]["scene"]
 	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
 
 func save_level_data() -> void:

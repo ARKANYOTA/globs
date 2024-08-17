@@ -2,7 +2,7 @@ extends Control
 
 class_name LevelButton
 
-@export var level: int = 1
+@export var level: int = 0
 @onready var button = $Button
 @onready var label = $Label
 # Called when the node enters the scene tree for the first time.

@@ -69,13 +69,13 @@ _data = {
 libraries = {
 "": SubResource("AnimationLibrary_0rxcp")
 }
-speed_scale = 1.605
+speed_scale = 3.0
 
 [node name="up" type="NinePatchRect" parent="."]
 offset_top = -145.0
 offset_right = 320.0
 texture = ExtResource("1_1y8r4")
-region_rect = Rect2(0, 32, 16, 16)
+region_rect = Rect2(0, 33, 16, 15)
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
