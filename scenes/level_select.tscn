@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/level_select.gd" id="1_jxoum"]
 [ext_resource type="PackedScene" uid="uid://divqor4b0wvhn" path="res://scenes/level_button.tscn" id="2_fpm2b"]
-[ext_resource type="PackedScene" uid="uid://bpqekaydn06nf" path="res://scenes/scene_transition.tscn" id="3_vqf57"]
+[ext_resource type="PackedScene" path="res://scenes/scene_transition.tscn" id="3_vqf57"]
 
 [node name="SceneSelect" type="Node2D"]
 script = ExtResource("1_jxoum")

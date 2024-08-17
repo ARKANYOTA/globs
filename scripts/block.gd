@@ -18,6 +18,8 @@ enum Direction {
 		if value:
 			is_gravity_enabled = false
 
+@export var is_target := false
+
 @export var rotatable: bool = false
 @export_range(-360, 360) var angle: float = 0:
 	set(value):
