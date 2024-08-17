@@ -287,18 +287,19 @@ func _on_scale_handle_end_drag(handle: ScaleHandle, direction: Direction):
 func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 	var pos_diff = Vector2i(get_global_mouse_position() - global_position)
 	pos_diff = round((Vector2(pos_diff) + Vector2(8, 8)) / 16) * 16 - Vector2(8, 8)
+	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	
 	if direction == Direction.LEFT:
-		var variation = clamp(pos_diff.x + left_extend_value, -scale_max_speed, scale_max_speed)
-		left_extend_value = abs(min(0, -left_extend_value + variation))
+		var val = abs(min(0, pos_diff.x))
+		tween.tween_property(self, "left_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
 	elif direction == Direction.RIGHT:
-		var variation = clamp(pos_diff.x - right_extend_value, -scale_max_speed, scale_max_speed)
-		right_extend_value = max(0, right_extend_value + variation)
+		var val = max(0, pos_diff.x)
+		tween.tween_property(self, "right_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
 	elif direction == Direction.UP:
-		var variation = clamp(pos_diff.y + up_extend_value, -scale_max_speed, scale_max_speed)
-		up_extend_value = abs(min(0, -up_extend_value + variation))
+		var val = abs(min(0, pos_diff.y))
+		tween.tween_property(self, "up_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
 	elif direction == Direction.DOWN:
-		var variation = clamp(pos_diff.y - down_extend_value, -scale_max_speed, scale_max_speed)
-		down_extend_value = max(0, down_extend_value + variation)
+		var val = max(0, pos_diff.y)
+		tween.tween_property(self, "down_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
 	
 	_update_scale_handles()
