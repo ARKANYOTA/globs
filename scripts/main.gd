@@ -5,10 +5,12 @@ class_name Main
 @onready var pause_menu = $MenuManager/PauseMenu
 @onready var game = $Game
 @export var current_scene: int = 1
-@export var current_scene_node: Node = null
 @export var number_of_scene: int = 2
 
 var paused = false
+
+func get_current_level():
+	return game.get_child(0)
 
 func set_scene(scene_number: int):
 	current_scene = scene_number
@@ -27,9 +29,8 @@ func change_scene():
 		pass
 	else: 
 		assert("Hé ho trop de fils a Game, il en faut qu'un") 
-		
+	
 	game.add_child(load_scene)
-	current_scene_node = load_scene
 
 func _ready():
 	menu_manager.visible = true

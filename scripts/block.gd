@@ -64,7 +64,7 @@ enum Direction {
 @onready var label := $Label
 
 var is_hovered := false
-var is_focused := false
+var is_selected := false
 var handles: Array[ScaleHandle] = []
 var scale_handle: PackedScene = load("res://scenes/scale_handle.tscn")
 const scale_max_speed : float = .5
@@ -123,18 +123,18 @@ func update_sprite_size(pos, dimensions):
 	nine_patch.size = round(dimensions)
 
 func select():
-	if is_focused:
+	if is_selected:
 		return
 	
-	is_focused = true
+	is_selected = true
 	_show_scale_handles()
 	block_manager.on_select_block(self)
 
 func unselect():
-	if not is_focused:
+	if not is_selected:
 		return
 	
-	is_focused = false
+	is_selected = false
 	_hide_scale_handles()
 	block_manager.on_unselect_block(self)
 
@@ -153,9 +153,11 @@ func _create_scale_handle(direction: Direction, name: String):
 	new_scale_handle.z_index = 10
 	
 	new_scale_handle.start_drag.connect(func():
-		_on_scale_handle_start_hold(new_scale_handle, direction)
+		_on_scale_handle_start_drag(new_scale_handle, direction)
 	)
-	#new_scale_handle.debug_set_label(name[0])
+	new_scale_handle.end_drag.connect(func():
+		_on_scale_handle_end_drag(new_scale_handle, direction)
+	)
 	new_scale_handle.dragging.connect(func():
 		_on_scale_handle_dragged(new_scale_handle, direction)
 	)
@@ -246,15 +248,17 @@ func _physics_process(delta):
 		move_and_slide()
 
 func _on_click_area_clicked():
-	if block_manager.can_select_block(self):
-		select()
+	if block_manager.can_select(self):
+		block_manager.new_selection_candidate(self)
 
 func _on_un_click_area_clicked_outside_area():
 	unselect()
 
-func _on_scale_handle_start_hold(handle: ScaleHandle, direction: Direction):
-	#expand(direction, 4)
-	pass
+func _on_scale_handle_start_drag(handle: ScaleHandle, direction: Direction):
+	block_manager.start_drag()
+
+func _on_scale_handle_end_drag(handle: ScaleHandle, direction: Direction):
+	block_manager.end_drag()
 
 func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 	var pos_diff = get_global_mouse_position() - global_position
