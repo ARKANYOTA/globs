@@ -20,9 +20,9 @@ enum Direction {
 			is_gravity_enabled = false
 		_update_sprite()
 
-@export var is_target := false:
+@export var is_main_character := false:
 	set(value):
-		is_target = value
+		is_main_character = value
 		_update_sprite()
 
 @export var rotatable: bool = false
@@ -108,15 +108,6 @@ func update_dimensions():
 	click_area_collision_shape.shape.size = dim
 	unclick_area_collision_shape.shape.size = dim + Vector2(8, 8)
 	
-	# Update animation
-	var size = dim.x * dim.y
-	if size <= 24 * 24:
-		animation = "scared"
-	elif size <= 64 * 64:
-		animation = "o_face"
-	else:
-		animation = "fat"
-	
 	# Update position
 	var child_pos: Vector2 = Vector2(-left_extend_value + right_extend_value,
 									 -up_extend_value   + down_extend_value) / 2
@@ -155,13 +146,31 @@ func get_center():
 ################################################
 
 func _update_sprite():
+	# Update animation
+	var dim = get_dimensions()
+	var size = dim.x * dim.y
+	if not is_selected:
+		animation = "sleeping"
+	elif size <= 24 * 24:
+		animation = "poker"
+	#elif size <= 32 * 32:
+		#animation = "o_face"
+	elif size <= 42 * 42:
+		animation = "fat"
+	else:
+		animation = "scared"
+	
+	if $SleepParticles:
+		$SleepParticles.emitting = not is_selected
+	
+	# Change 9-patch sprite
 	var ninepatch: NinePatchRect = $NinePatch
-	if static_block: # Normal
-		ninepatch.region_rect.position.x = 16
-		ninepatch.region_rect.position.y = 80
+	if is_main_character: # Normal
+		ninepatch.region_rect.position = Vector2(0, 96)
+	elif static_block: # Normal
+		ninepatch.region_rect.position = Vector2(16, 80)
 	elif is_gravity_enabled: # Gravity
-		ninepatch.region_rect.position.x = 32
-		ninepatch.region_rect.position.y = 80
+		ninepatch.region_rect.position = Vector2(32, 80)
 	#else: # bleu
 		#ninepatch.region_rect.position.x = 0
 		#ninepatch.region_rect.position.y = 32
@@ -245,8 +254,9 @@ func _process(delta):
 	if Engine.is_editor_hint():
 		return
 	
-	$CenterIndicator.play(animation)
+	$CenterIndicator.play(animation) 
 	_update_scale_handles()
+	_update_sprite()
 
 func _physics_process(delta):
 	if Engine.is_editor_hint():

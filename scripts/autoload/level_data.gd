@@ -1,8 +1,8 @@
 extends Node
 
 var levels = {
-	1: { "name": "1", "scene": "res://scenes/levels/level_1.tscn"},
-	2: { "name": "2", "scene": "res://scenes/scene_2.tscn"},
+	1: { "name": "1", "scene": "res://scenes/levels/level_100.tscn"},
+	2: { "name": "2", "scene": "res://scenes/levels/level_101.tscn"},
 	3: { "name": "You Win", "scene": "res://scenes/levels/you_win.tscn"},
 }
 
