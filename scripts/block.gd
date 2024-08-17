@@ -6,7 +6,17 @@ enum Direction {
 	LEFT, RIGHT, UP, DOWN
 }
 
-@export var is_gravity_enabled = true
+@export var is_gravity_enabled := true:
+	set(value):
+		is_gravity_enabled = value
+		if value:
+			static_block = false
+
+@export var static_block := false:
+	set(value):
+		static_block = value
+		if value:
+			is_gravity_enabled = false
 
 @export var rotatable: bool = false
 @export_range(-360, 360) var angle: float = 0:
@@ -58,6 +68,8 @@ var is_focused := false
 var handles: Array[ScaleHandle] = []
 var scale_handle: PackedScene = load("res://scenes/scale_handle.tscn")
 
+var animation = "o_face"
+
 ################################################
 
 func expand(direction: Direction, amount: int):
@@ -86,6 +98,15 @@ func update_dimensions():
 	shape.size = dim
 	click_area_collision_shape.shape.size = dim
 	unclick_area_collision_shape.shape.size = dim + Vector2(8, 8)
+	
+	# Update animation
+	var size = dim.x * dim.y
+	if size <= 24 * 24:
+		animation = "scared"
+	elif size <= 64 * 64:
+		animation = "o_face"
+	else:
+		animation = "fat"
 	
 	# Update position
 	var child_pos: Vector2 = Vector2(-left_extend_value + right_extend_value,
@@ -199,6 +220,7 @@ func _process(delta):
 	if Engine.is_editor_hint():
 		return
 	
+	$CenterIndicator.play(animation)
 	_update_scale_handles()
 
 func _physics_process(delta):
@@ -218,7 +240,8 @@ func _physics_process(delta):
 			else:
 				angle += alpha * rot_speed
 	
-	move_and_slide()
+	if not static_block:
+		move_and_slide()
 
 func _on_click_area_clicked():
 	if block_manager.can_select_block(self):
