@@ -244,6 +244,8 @@ func _physics_process(delta):
 				angle -= alpha * rot_speed
 			else:
 				angle += alpha * rot_speed
+	else:
+		velocity.y /= 2
 	
 	if not static_block:
 		move_and_slide()

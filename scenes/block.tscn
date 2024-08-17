@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="5_afbxe"]
 [ext_resource type="Texture2D" uid="uid://dblb1xh7ytipc" path="res://assets/images/face_animation/o_face.png" id="5_ltiqe"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_csyf3"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw6t5"]
 size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
@@ -214,7 +214,7 @@ patch_margin_bottom = 5
 axis_stretch_vertical = 2
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_csyf3")
+shape = SubResource("RectangleShape2D_dw6t5")
 debug_color = Color(0, 0.51, 0.6, 0.117647)
 
 [node name="UnClickArea" parent="." instance=ExtResource("3_h0fp2")]
