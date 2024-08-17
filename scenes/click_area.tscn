@@ -13,7 +13,7 @@ debug_color = Color(0, 0, 0, 1)
 shape = SubResource("RectangleShape2D_id8ij")
 debug_color = Color(0.914239, 8.45176e-05, 0.716974, 0.42)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
