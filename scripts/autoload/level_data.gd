@@ -8,7 +8,7 @@ var levels = [
 	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
 	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
 	{ "name": "1-2", "scene": "res://scenes/levels/level_101.tscn"},
-	{ "name": "2-1", "scene": "res://scenes/levels/level_10.tscn"},
+	{ "name": "2-1", "scene": "res://scenes/levels/world_2/level_10.tscn"},
 	{ "name": "You Win", "scene": "res://scenes/levels/you_win.tscn"},
 ]
 
