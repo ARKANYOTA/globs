@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dblb1xh7ytipc" path="res://assets/images/face_animation/o_face.png" id="5_ltiqe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hc1jy"]
-size = Vector2(16, 48)
+size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
 atlas = ExtResource("4_3fhqr")
@@ -202,12 +202,13 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_afbxe")
-region_rect = Rect2(48, 48, 16, 16)
+region_rect = Rect2(0, 80, 16, 16)
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
-axis_stretch_vertical = 2
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hc1jy")
@@ -220,6 +221,7 @@ debug_color = Color(1, 0.36, 0.829333, 0.247059)
 debug_color = Color(0.4275, 0.57, 0, 0.258824)
 
 [node name="CenterIndicator" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_ucdvl")
 animation = &"o_face"
 

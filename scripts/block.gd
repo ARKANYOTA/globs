@@ -11,14 +11,19 @@ enum Direction {
 		is_gravity_enabled = value
 		if value:
 			static_block = false
+		_update_sprite()
 
 @export var static_block := false:
 	set(value):
 		static_block = value
 		if value:
 			is_gravity_enabled = false
+		_update_sprite()
 
-@export var is_target := false
+@export var is_target := false:
+	set(value):
+		is_target = value
+		_update_sprite()
 
 @export var rotatable: bool = false
 @export_range(-360, 360) var angle: float = 0:
@@ -149,6 +154,18 @@ func get_center():
 
 ################################################
 
+func _update_sprite():
+	var ninepatch: NinePatchRect = $NinePatch
+	if static_block: # Normal
+		ninepatch.region_rect.position.x = 16
+		ninepatch.region_rect.position.y = 80
+	#elif is_gravity_enabled: # rouge
+		#ninepatch.region_rect.position.x = 0
+		#ninepatch.region_rect.position.y = 16
+	#else: # bleu
+		#ninepatch.region_rect.position.x = 0
+		#ninepatch.region_rect.position.y = 32
+
 func _create_scale_handle(direction: Direction, name: String):
 	var new_scale_handle: ScaleHandle = scale_handle.instantiate()
 	new_scale_handle.name = name
@@ -213,17 +230,8 @@ func _ready():
 	if Engine.is_editor_hint():
 		return
 	
-	var ninepatch: NinePatchRect = $NinePatch
-	#if static_block: # Normal
-		#ninepatch.region_rect.position.x = 0
-		#ninepatch.region_rect.position.y = 0
-	#elif is_gravity_enabled: # rouge
-		#ninepatch.region_rect.position.x = 0
-		#ninepatch.region_rect.position.y = 16
-	#else: # bleu
-		#ninepatch.region_rect.position.x = 0
-		#ninepatch.region_rect.position.y = 32
-		
+	_update_sprite()
+	
 	up_extend_value = up_extend_value
 	down_extend_value = down_extend_value
 	left_extend_value = left_extend_value
@@ -277,7 +285,9 @@ func _on_scale_handle_end_drag(handle: ScaleHandle, direction: Direction):
 	block_manager.end_drag()
 
 func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
-	var pos_diff = get_global_mouse_position() - global_position
+	var pos_diff = Vector2i(get_global_mouse_position() - global_position)
+	pos_diff = round((Vector2(pos_diff) + Vector2(8, 8)) / 16) * 16 - Vector2(8, 8)
+	
 	if direction == Direction.LEFT:
 		var variation = clamp(pos_diff.x + left_extend_value, -scale_max_speed, scale_max_speed)
 		left_extend_value = abs(min(0, -left_extend_value + variation))
