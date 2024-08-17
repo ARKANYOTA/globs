@@ -31,12 +31,11 @@ func on_unselect_block(block: Block):
 ##################################################
 
 func _unselect_non_selected_blocks():
-	var current_level: Node = main.get_current_level()
-	if not current_level:
-		print("No current level")
-		return
-	
-	for child in current_level.get_children():
+	var root: Node = get_tree().get_root()
+	# if not current_level:
+	# 	print("No current level")
+	# 	return
+	for child in root.get_children():
 		if child is Block:
 			if child != current_selected_block:
 				child.unselect()

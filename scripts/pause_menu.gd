@@ -1,13 +1,13 @@
 extends Control
 class_name PauseMenu
 
-@onready var main = get_node("/root/Main")
-
+@onready var main = get_parent()
 func _on_resume_pressed():
-	main.menu_manager.exit_menu()
+	main.exit_menu()
 
 func _on_quit_pressed():
-	main.quit()
+	get_tree().quit()
+	
 
 func _on_options_pressed():
-	main.menu_manager.set_menu_by_name("OptionsMenu")
+	main.set_menu_by_name("OptionsMenu")
