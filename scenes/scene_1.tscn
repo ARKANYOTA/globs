@@ -38,8 +38,9 @@ script = ExtResource("1_okh5p")
 shape = SubResource("RectangleShape2D_gty1f")
 
 [node name="Block" parent="." instance=ExtResource("2_2ov2f")]
-position = Vector2(143, 75)
+position = Vector2(143, 53)
+is_gravity_enabled = true
 
 [node name="Block2" parent="." instance=ExtResource("2_2ov2f")]
-position = Vector2(176, 75)
+position = Vector2(177, 53)
 static_block = true

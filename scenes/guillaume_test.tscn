@@ -230,7 +230,7 @@ animations = [{
 offsets = PackedFloat32Array(0, 0.420732, 0.957317)
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ps1l1"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m8vf2"]
 texture = ExtResource("1_ot3gc")
 0:0/0 = 0
 1:0/0 = 0
@@ -334,7 +334,7 @@ texture = ExtResource("1_ot3gc")
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "autotile"
 terrain_set_0/terrain_0/color = Color(0.55824, 0.164146, 0.268999, 1)
-sources/0 = SubResource("TileSetAtlasSource_ps1l1")
+sources/0 = SubResource("TileSetAtlasSource_m8vf2")
 
 [sub_resource type="Gradient" id="Gradient_jl04d"]
 offsets = PackedFloat32Array(0, 0.72561, 1)
