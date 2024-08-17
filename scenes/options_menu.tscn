@@ -1,39 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bmd45hgh6y1pt"]
+[gd_scene load_steps=15 format=3 uid="uid://bmd45hgh6y1pt"]
 
 [ext_resource type="FontFile" uid="uid://b3ayaf2x5qddk" path="res://assets/fonts/hardpixel.otf" id="1_8ys7p"]
 [ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_holiv"]
 [ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="2_t16me"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dn0js"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0khsp"]
-bg_color = Color(0.431373, 0.431373, 0.431373, 1)
-expand_margin_left = 8.0
-expand_margin_top = 1.0
-expand_margin_right = 8.0
-expand_margin_bottom = 1.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0a1v"]
-corner_detail = 1
-expand_margin_left = 8.0
-expand_margin_top = 1.0
-expand_margin_right = 8.0
-expand_margin_bottom = 1.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1qbi"]
-bg_color = Color(0.262745, 0.262745, 0.262745, 1)
-expand_margin_left = 8.0
-expand_margin_top = 1.0
-expand_margin_right = 8.0
-expand_margin_bottom = 1.0
-
-[sub_resource type="Theme" id="Theme_5jae5"]
-default_font = ExtResource("2_t16me")
-default_font_size = 0
-Button/styles/focus = SubResource("StyleBoxEmpty_dn0js")
-Button/styles/hover = SubResource("StyleBoxFlat_0khsp")
-Button/styles/normal = SubResource("StyleBoxFlat_a0a1v")
-Button/styles/pressed = SubResource("StyleBoxFlat_m1qbi")
+[ext_resource type="StyleBox" uid="uid://d1obvum2g2cax" path="res://assets/textures/option_button_texture.tres" id="4_s7cr1"]
+[ext_resource type="Script" path="res://scenes/button.gd" id="5_brfm7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0xasi"]
 font = ExtResource("1_8ys7p")
@@ -41,6 +12,20 @@ font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_qrxd4"]
 font = ExtResource("2_t16me")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_76b8k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8dg4w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c0fgd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lyfe3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6uicr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u3dnw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0hw06"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -72,14 +57,6 @@ theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
-
-[node name="Back" type="Button" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = SubResource("Theme_5jae5")
-text = "< Back
-"
 
 [node name="Title" type="Label" parent="MarginContainer"]
 layout_mode = 2
@@ -129,4 +106,22 @@ offset_bottom = 8.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[connection signal="pressed" from="MarginContainer/Back" to="." method="_on_back_pressed"]
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 61.0
+offset_bottom = 42.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_76b8k")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_8dg4w")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_c0fgd")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_lyfe3")
+theme_override_styles/hover_pressed = ExtResource("4_s7cr1")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_6uicr")
+theme_override_styles/hover = ExtResource("4_s7cr1")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_u3dnw")
+theme_override_styles/pressed = ExtResource("4_s7cr1")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_0hw06")
+theme_override_styles/normal = ExtResource("4_s7cr1")
+text = "Back"
+script = ExtResource("5_brfm7")
