@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bxmyi1g5jjvs3"]
+[gd_scene load_steps=32 format=3 uid="uid://bxmyi1g5jjvs3"]
 
 [ext_resource type="Script" path="res://scripts/block.gd" id="1_eflyf"]
 [ext_resource type="PackedScene" uid="uid://catrwka02j1g0" path="res://scenes/click_area.tscn" id="3_h0fp2"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="5_afbxe"]
 [ext_resource type="Texture2D" uid="uid://dblb1xh7ytipc" path="res://assets/images/face_animation/o_face.png" id="5_ltiqe"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hc1jy"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hqmy1"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qph0i"]
 size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
@@ -189,6 +192,10 @@ script = ExtResource("1_eflyf")
 is_gravity_enabled = false
 scale_max_speed = 2.0
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+occluder = SubResource("OccluderPolygon2D_hqmy1")
+
 [node name="NinePatch" type="NinePatchRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -211,7 +218,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_hc1jy")
+shape = SubResource("RectangleShape2D_qph0i")
 debug_color = Color(0, 0.51, 0.6, 0.117647)
 
 [node name="UnClickArea" parent="." instance=ExtResource("3_h0fp2")]

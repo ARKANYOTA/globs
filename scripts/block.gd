@@ -99,6 +99,8 @@ func update_dimensions():
 	var click_area_collision_shape = $ClickArea/ClickAreaCollisionShape
 	var unclick_area_collision_shape = $UnClickArea/ClickAreaCollisionShape
 	var shape = collision_shape.shape
+	var light_occ : LightOccluder2D = $LightOccluder2D
+
 	if shape is not RectangleShape2D:
 		print("$CollisionShape.shape is not a RectangleShape2D")
 		return
@@ -106,6 +108,8 @@ func update_dimensions():
 	# Update size
 	shape.size = dim
 	click_area_collision_shape.shape.size = dim
+	if light_occ != null:
+		light_occ.occluder.polygon = [Vector2(-dim.x/2, -dim.y/2), Vector2(dim.x/2, -dim.y/2), Vector2(dim.x/2, dim.y/2), Vector2(-dim.x/2, dim.y/2)]
 	unclick_area_collision_shape.shape.size = dim + Vector2(8, 8)
 	
 	# Update animation
@@ -120,6 +124,8 @@ func update_dimensions():
 	# Update position
 	var child_pos: Vector2 = Vector2(-left_extend_value + right_extend_value,
 									 -up_extend_value   + down_extend_value) / 2
+	if light_occ != null:
+		light_occ.position = child_pos
 	collision_shape.position = child_pos
 	unclick_area_collision_shape.position = child_pos
 	click_area.position = child_pos
