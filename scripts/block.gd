@@ -159,9 +159,9 @@ func _update_sprite():
 	if static_block: # Normal
 		ninepatch.region_rect.position.x = 16
 		ninepatch.region_rect.position.y = 80
-	#elif is_gravity_enabled: # rouge
-		#ninepatch.region_rect.position.x = 0
-		#ninepatch.region_rect.position.y = 16
+	elif is_gravity_enabled: # Gravity
+		ninepatch.region_rect.position.x = 32
+		ninepatch.region_rect.position.y = 80
 	#else: # bleu
 		#ninepatch.region_rect.position.x = 0
 		#ninepatch.region_rect.position.y = 32
