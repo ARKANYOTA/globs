@@ -7,8 +7,6 @@
 
 [sub_resource type="GDScript" id="GDScript_2cj03"]
 script/source = "extends RigidBody2D
-
-
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b04v5"]
@@ -187,6 +185,8 @@ animations = [{
 }]
 
 [node name="Player" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = SubResource("GDScript_2cj03")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
