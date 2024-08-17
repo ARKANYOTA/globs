@@ -11,3 +11,8 @@ func _on_quit_pressed():
 
 func _on_options_pressed():
 	main.set_menu_by_name("OptionsMenu")
+
+
+func _on_levels_pressed():
+	main.exit_menu()
+	SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/level_select.tscn")
