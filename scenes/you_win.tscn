@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://njp8pewvydxc"]
+
+[ext_resource type="FontFile" uid="uid://b3ayaf2x5qddk" path="res://assets/fonts/hardpixel.otf" id="1_7iatr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ggsbr"]
+font = ExtResource("1_7iatr")
+font_size = 60
+
+[node name="You Win" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 51.0
+offset_right = 276.0
+offset_bottom = 123.0
+text = "You Win
+"
+label_settings = SubResource("LabelSettings_ggsbr")
