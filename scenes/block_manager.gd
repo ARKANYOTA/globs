@@ -18,7 +18,7 @@ func new_selection_candidate(block: Block):
 	selection_candidates.append(block)
 
 func can_select(block: Block):
-	return current_selected_block != block and not is_dragging
+	return true
 
 func on_select_block(block: Block):
 	selected_block_count += 1
