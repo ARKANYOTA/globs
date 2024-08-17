@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=4 uid="uid://b5552yy5me2jl"]
+[gd_scene load_steps=32 format=4 uid="uid://b5552yy5me2jl"]
 
 [ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="1_ot3gc"]
 [ext_resource type="Texture2D" uid="uid://cym2u0ca0y3ve" path="res://assets/images/face_animation/fat.png" id="2_md1l7"]
 [ext_resource type="Texture2D" uid="uid://dblb1xh7ytipc" path="res://assets/images/face_animation/o_face.png" id="3_tmn3f"]
 [ext_resource type="Texture2D" uid="uid://7nk8tmq0rg35" path="res://assets/images/face_animation/scared.png" id="4_hqc77"]
+[ext_resource type="Texture2D" uid="uid://d1sgc6ft8ejni" path="res://assets/images/particle/z.png" id="5_iwdj5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
 atlas = ExtResource("2_md1l7")
@@ -177,6 +178,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_hh45e"]
+offsets = PackedFloat32Array(0.0487805, 0.353659, 0.993902)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ps1l1"]
 texture = ExtResource("1_ot3gc")
 0:0/0 = 0
@@ -296,6 +301,7 @@ vframes = 10
 frame = 1
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="SlimeBlock"]
+visible = false
 position = Vector2(0, 7)
 scale = Vector2(2, 2)
 lifetime = 3.0
@@ -311,6 +317,32 @@ color = Color(0.258824, 0.47451, 0.286275, 0.670588)
 [node name="FaceAnimation" type="AnimatedSprite2D" parent="SlimeBlock"]
 sprite_frames = SubResource("SpriteFrames_1oton")
 animation = &"o_face"
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="SlimeBlock"]
+visible = false
+position = Vector2(0, -8)
+amount = 2
+lifetime = 0.3
+speed_scale = 0.2
+emission_shape = 3
+emission_rect_extents = Vector2(8, 0)
+spread = 180.0
+initial_velocity_max = 20.0
+color = Color(0.3256, 0.5328, 0.74, 0.427451)
+
+[node name="sleep_particle" type="CPUParticles2D" parent="SlimeBlock"]
+position = Vector2(45, 36)
+amount = 2
+lifetime = 1.2
+preprocess = 45.28
+speed_scale = 0.7
+texture = ExtResource("5_iwdj5")
+spread = 180.0
+gravity = Vector2(0, -20)
+initial_velocity_min = 3.5
+initial_velocity_max = 3.5
+scale_amount_min = 0.5
+color_ramp = SubResource("Gradient_hh45e")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 visible = false
