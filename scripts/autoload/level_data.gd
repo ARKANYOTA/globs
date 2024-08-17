@@ -5,12 +5,12 @@ var levels = {
 	2: { "name": "Level 2", "scene": "res://scenes/scene_2.tscn"},
 }
 
-var level = 200
+var level = 1
 
 func increment_level() -> void:
 	level += 1
 	if level > len(levels):
-		assert(false, "Level out of bounds")
+		assert(false, "Levvel out of bounds")
 	save_level_data()
 
 func save_level_data() -> void:
@@ -31,3 +31,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func _input(event):
+	if event.is_action_pressed("removeme2_nolan_usge_to_change_scene"):
+		increment_level()

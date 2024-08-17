@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://b26c54poeaia6"]
+[gd_scene load_steps=6 format=3 uid="uid://b26c54poeaia6"]
 
+[ext_resource type="Script" path="res://scripts/test_character_body_2d.gd" id="1_okh5p"]
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block.tscn" id="2_2ov2f"]
-[ext_resource type="PackedScene" uid="uid://dplrbbylq37dj" path="res://scenes/player.tscn" id="2_u66xk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxpjx"]
 size = Vector2(343, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_syomx"]
 size = Vector2(189, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gty1f"]
 
 [node name="Scene1" type="Node2D"]
 
