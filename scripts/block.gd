@@ -67,6 +67,7 @@ var is_hovered := false
 var is_focused := false
 var handles: Array[ScaleHandle] = []
 var scale_handle: PackedScene = load("res://scenes/scale_handle.tscn")
+const scale_max_speed : float = .5
 
 var animation = "o_face"
 
@@ -227,6 +228,7 @@ func _physics_process(delta):
 	if Engine.is_editor_hint():
 		return
 	
+	velocity.x /= 2
 	if is_gravity_enabled:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
@@ -257,12 +259,16 @@ func _on_scale_handle_start_hold(handle: ScaleHandle, direction: Direction):
 func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 	var pos_diff = get_global_mouse_position() - global_position
 	if direction == Direction.LEFT:
-		left_extend_value = abs(min(0, pos_diff.x))
+		var variation = clamp(pos_diff.x + left_extend_value, -scale_max_speed, scale_max_speed)
+		left_extend_value = abs(min(0, -left_extend_value + variation))
 	elif direction == Direction.RIGHT:
-		right_extend_value = max(0, pos_diff.x)
+		var variation = clamp(pos_diff.x - right_extend_value, -scale_max_speed, scale_max_speed)
+		right_extend_value = max(0, right_extend_value + variation)
 	elif direction == Direction.UP:
-		up_extend_value = abs(min(0, pos_diff.y))
+		var variation = clamp(pos_diff.y + up_extend_value, -scale_max_speed, scale_max_speed)
+		up_extend_value = abs(min(0, -up_extend_value + variation))
 	elif direction == Direction.DOWN:
-		down_extend_value = max(0, pos_diff.y)
+		var variation = clamp(pos_diff.y - down_extend_value, -scale_max_speed, scale_max_speed)
+		down_extend_value = max(0, down_extend_value + variation)
 	
 	_update_scale_handles()
