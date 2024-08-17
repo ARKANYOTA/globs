@@ -4,10 +4,10 @@ class_name LevelButton
 
 @export var level: int = 1
 @onready var button = $Button
-
+@onready var label = $Label
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(level, LevelData.level)
+	change_label(LevelData.levels[level].name)
 	if level > LevelData.level:
 		print("Locked")
 		button.icon = preload("res://assets/images/ui/locked_button.png")
@@ -21,6 +21,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func change_label(string: String) -> void:
+	label.text = str(string)
 
 func _on_button_pressed() -> void:
 	if level > LevelData.level:
