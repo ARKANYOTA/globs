@@ -17,32 +17,32 @@ enum Direction {
 
 @export_group("Up Extandable")
 @export var up_extendable: bool = false
-@export var up_extend_range: Vector2i = Vector2i(5, 50)
-@export var up_extend_value: float = 5:
+@export var up_extend_range: Vector2i = Vector2i(8, 100)
+@export var up_extend_value: float = 8:
 	set(value):
 		up_extend_value = clamp(value, up_extend_range.x, up_extend_range.y)
 		update_dimensions()
 
 @export_group("Down Extandable")
 @export var down_extendable: bool = false
-@export var down_extend_range: Vector2i = Vector2i(5, 50)
-@export var down_extend_value: float = 5:
+@export var down_extend_range: Vector2i = Vector2i(8, 100)
+@export var down_extend_value: float = 8:
 	set(value):
 		down_extend_value = clamp(value, down_extend_range.x, down_extend_range.y)
 		update_dimensions()
 
 @export_group("Left Extandable")
 @export var left_extendable: bool = false
-@export var left_extend_range: Vector2i = Vector2i(5, 50)
-@export var left_extend_value: float = 5:
+@export var left_extend_range: Vector2i = Vector2i(8, 100)
+@export var left_extend_value: float = 8:
 	set(value):
 		left_extend_value = clamp(value, left_extend_range.x, left_extend_range.y)
 		update_dimensions()
 
 @export_group("Right Extandable")
 @export var right_extendable: bool = false
-@export var right_extend_range: Vector2i = Vector2i(5, 50)
-@export var right_extend_value: float = 5:
+@export var right_extend_range: Vector2i = Vector2i(8, 100)
+@export var right_extend_value: float = 8:
 	set(value):
 		right_extend_value = clamp(value, right_extend_range.x, right_extend_range.y)
 		update_dimensions()
@@ -91,13 +91,9 @@ func update_dimensions():
 	update_sprite_size(child_pos, dim)
 
 func update_sprite_size(pos, dimensions):
-	var sprite: Sprite2D = $Sprite
-	
-	sprite.position = pos
-	
-	var sprite_size = sprite.texture.get_size()
-	sprite.scale.x = dimensions.x / sprite_size.x
-	sprite.scale.y = dimensions.y / sprite_size.y
+	var nine_patch: NinePatchRect = $NinePatch
+	nine_patch.position = round(get_center() - dimensions/2)
+	nine_patch.size = round(dimensions)
 	
 func get_dimensions():
 	return Vector2(left_extend_value + right_extend_value, up_extend_value + down_extend_value)
@@ -149,6 +145,8 @@ func _update_scale_handles():
 			handle.position = center - Vector2(0, dimensions.y / 2)
 		elif direction == Direction.DOWN:
 			handle.position = center + Vector2(0, dimensions.y / 2)
+		
+		handle.position = floor(handle.position)
 
 func _hide_scale_handles():
 	for handle in handles:
@@ -161,6 +159,9 @@ func _show_scale_handles():
 ################################################
 
 func _ready():
+	$CollisionShape.shape = $CollisionShape.shape.duplicate()
+	$ClickArea/ClickAreaCollisionShape.shape = $ClickArea/ClickAreaCollisionShape.shape.duplicate()
+	
 	if Engine.is_editor_hint():
 		return
 	

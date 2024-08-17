@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b26c54poeaia6"]
 
 [ext_resource type="Script" path="res://scripts/test_character_body_2d.gd" id="1_okh5p"]
-[ext_resource type="PackedScene" uid="uid://bbjoydjf30lj4" path="res://scenes/block.tscn" id="2_2ov2f"]
+[ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block.tscn" id="2_2ov2f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxpjx"]
 size = Vector2(343, 20)
@@ -32,5 +32,7 @@ script = ExtResource("1_okh5p")
 shape = SubResource("RectangleShape2D_gty1f")
 
 [node name="Block" parent="." instance=ExtResource("2_2ov2f")]
-position = Vector2(201, 64)
-is_gravity_enabled = false
+position = Vector2(143, 75)
+
+[node name="Block2" parent="." instance=ExtResource("2_2ov2f")]
+position = Vector2(176, 75)
