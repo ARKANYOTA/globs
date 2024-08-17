@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=4 uid="uid://b5552yy5me2jl"]
+[gd_scene load_steps=39 format=4 uid="uid://b5552yy5me2jl"]
 
 [ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="1_ot3gc"]
 [ext_resource type="Texture2D" uid="uid://cym2u0ca0y3ve" path="res://assets/images/face_animation/fat.png" id="2_md1l7"]
 [ext_resource type="Texture2D" uid="uid://dblb1xh7ytipc" path="res://assets/images/face_animation/o_face.png" id="3_tmn3f"]
 [ext_resource type="Texture2D" uid="uid://7nk8tmq0rg35" path="res://assets/images/face_animation/scared.png" id="4_hqc77"]
 [ext_resource type="Texture2D" uid="uid://d1sgc6ft8ejni" path="res://assets/images/particle/z.png" id="5_iwdj5"]
+[ext_resource type="Texture2D" uid="uid://betdqfksaytu1" path="res://assets/images/face_animation/sleeping.png" id="5_oyljd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
 atlas = ExtResource("2_md1l7")
@@ -94,6 +95,30 @@ region = Rect2(96, 0, 16, 16)
 atlas = ExtResource("4_hqc77")
 region = Rect2(112, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtcqc"]
+atlas = ExtResource("5_oyljd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5wep"]
+atlas = ExtResource("5_oyljd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6ch8"]
+atlas = ExtResource("5_oyljd")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3uxe"]
+atlas = ExtResource("5_oyljd")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj50m"]
+atlas = ExtResource("5_oyljd")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te607"]
+atlas = ExtResource("5_oyljd")
+region = Rect2(80, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_1oton"]
 animations = [{
 "frames": [{
@@ -176,10 +201,33 @@ animations = [{
 "loop": true,
 "name": &"scared",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtcqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5wep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6ch8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3uxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj50m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te607")
+}],
+"loop": true,
+"name": &"sleeping",
+"speed": 3.0
 }]
 
 [sub_resource type="Gradient" id="Gradient_hh45e"]
-offsets = PackedFloat32Array(0.0487805, 0.353659, 0.993902)
+offsets = PackedFloat32Array(0, 0.420732, 0.957317)
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ps1l1"]
@@ -286,6 +334,7 @@ sources/0 = SubResource("TileSetAtlasSource_ps1l1")
 [node name="GuillaumeTest" type="Node2D"]
 
 [node name="SlimeBlock" type="Node2D" parent="."]
+position = Vector2(33, 35)
 
 [node name="Border" type="Sprite2D" parent="SlimeBlock"]
 texture = ExtResource("1_ot3gc")
@@ -316,22 +365,11 @@ color = Color(0.258824, 0.47451, 0.286275, 0.670588)
 
 [node name="FaceAnimation" type="AnimatedSprite2D" parent="SlimeBlock"]
 sprite_frames = SubResource("SpriteFrames_1oton")
-animation = &"o_face"
-
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="SlimeBlock"]
-visible = false
-position = Vector2(0, -8)
-amount = 2
-lifetime = 0.3
-speed_scale = 0.2
-emission_shape = 3
-emission_rect_extents = Vector2(8, 0)
-spread = 180.0
-initial_velocity_max = 20.0
-color = Color(0.3256, 0.5328, 0.74, 0.427451)
+animation = &"sleeping"
+frame_progress = 0.786207
 
 [node name="sleep_particle" type="CPUParticles2D" parent="SlimeBlock"]
-position = Vector2(45, 36)
+position = Vector2(0, -7)
 amount = 2
 lifetime = 1.2
 preprocess = 45.28
@@ -348,3 +386,26 @@ color_ramp = SubResource("Gradient_hh45e")
 visible = false
 tile_map_data = PackedByteArray("AAAJAAMAAAAGAAMAAAAIAAMAAAAFAAEAAAAHAAMAAAAFAAMAAAAGAAMAAAAFAAMAAAAFAAMAAAAFAAMAAAAEAAMAAAAFAAMAAAADAAMAAAAFAAIAAAACAAMAAAAFAAAAAAABAAMAAAAFAAMAAAAAAAMAAAAFAAIAAAD//wMAAAAFAAMAAAD+/wMAAAAFAAAAAAD9/wMAAAAFAAIAAAD8/wMAAAAFAAMAAAD7/wMAAAAFAAIAAAD6/wMAAAAFAAMAAAD5/wMAAAAFAAIAAAD4/wMAAAAFAAMAAAD3/wMAAAAFAAEAAAD2/wMAAAAEAAMAAAAIAAIAAAADAAEAAAAIAAEAAAADAAEAAAAIAAAAAAADAAEAAAAIAP//AAADAAEAAAAIAP7/AAADAAEAAAAIAP3/AAAFAAEAAAAIAPz/AAADAAAAAAAJAP3/AAAGAAMAAAAHAP3/AAAFAAMAAAAGAP3/AAAFAAMAAAAFAP3/AAAFAAMAAAAEAP3/AAAFAAMAAAADAP3/AAAFAAAAAAACAP3/AAAFAAIAAAABAP3/AAAFAAMAAAAAAP3/AAAFAAIAAAD///3/AAAFAAMAAAD+//3/AAAFAAIAAAD9//3/AAAFAAAAAAD8//3/AAAFAAMAAAD7//3/AAAFAAAAAAD6//3/AAAFAAMAAAD5//3/AAAFAAAAAAD4//3/AAAFAAMAAAD3//3/AAAFAAEAAAD3/wQAAAADAAIAAAD3/wIAAAADAAEAAAD3/wEAAAADAAEAAAD3/wAAAAADAAEAAAD3////AAADAAEAAAD3//7/AAADAAEAAAD3//z/AAADAAAAAAD2//3/AAAEAAMAAAAIAAQAAAADAAIAAAD6/wAAAAAFAAMAAAAGAAAAAAADAAMAAAAEAAEAAAAGAAMAAAADAAEAAAAFAAEAAAACAAEAAAAFAAMAAAABAAEAAAAFAAMAAAAAAAEAAAAFAAAAAAD//wEAAAAFAAMAAAD+/wEAAAAFAAMAAAD9/wEAAAAFAAEAAAD8/wEAAAAFAAMAAAAAAPz/AAADAAEAAAAAAPv/AAAFAAEAAAAAAPr/AAADAAAAAAABAPv/AAAFAAMAAAD///v/AAAFAAMAAAD+/wQAAAADAAIAAAACAAQAAAADAAIAAAADAAUAAAADAAMAAAD9/wUAAAADAAMAAAD8/wYAAAADAAAAAAD8/wcAAAAGAAEAAAD8/wgAAAADAAEAAAAEAAYAAAADAAAAAAAEAAkAAAADAAIAAAAEAAgAAAADAAEAAAAEAAcAAAAEAAEAAAD8/wkAAAADAAIAAAADAAoAAAAGAAAAAAACAAoAAAAFAAMAAAABAAoAAAAFAAMAAAAAAAoAAAAFAAMAAAD//woAAAAFAAMAAAD+/woAAAAFAAMAAAD9/woAAAAEAAAAAAADAAsAAAAEAAIAAAAEAAsAAAAGAAMAAAD9/wsAAAAGAAIAAAD8/wsAAAAEAAMAAAAGAAcAAAAFAAMAAAAFAAcAAAAFAAMAAAAHAAgAAAADAAIAAAAHAAcAAAAFAAEAAAAHAAYAAAADAAAAAAAIAAcAAAAGAAMAAAD7/wcAAAAFAAMAAAD6/wcAAAAFAAMAAAD5/wcAAAAFAAEAAAD5/wYAAAADAAAAAAD5/wgAAAADAAIAAAD4/wcAAAAEAAMAAAD5/wIAAAADAAEAAAD5/wEAAAADAAEAAAD5/wAAAAAEAAEAAAD7/wIAAAADAAEAAAD7/wEAAAAEAAEAAAD7/wAAAAAGAAEAAAD9/wAAAAADAAEAAAD9////AAAGAAEAAAD8////AAAFAAMAAAD7////AAAEAAEAAAD9//7/AAADAAEAAAD7//7/AAADAAEAAAADAAAAAAADAAEAAAADAP//AAADAAEAAAADAP7/AAADAAEAAAD5////AAADAAEAAAD5//7/AAADAAEAAAADAAIAAAADAAEAAAAAAAIAAAADAAEAAAD9/wIAAAADAAEAAAD+//z/AAADAAEAAAD+//v/AAAEAAAAAAACAPz/AAADAAEAAAACAPv/AAAGAAAAAAA=")
 tile_set = SubResource("TileSet_rbfmj")
+
+[node name="SlimeBody" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.729412)
+position = Vector2(54, 35)
+texture = ExtResource("1_ot3gc")
+hframes = 10
+vframes = 10
+frame = 1
+
+[node name="FaceAnimation" type="AnimatedSprite2D" parent="SlimeBody"]
+sprite_frames = SubResource("SpriteFrames_1oton")
+animation = &"scared"
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="SlimeBody"]
+position = Vector2(0, -8)
+amount = 2
+lifetime = 0.3
+speed_scale = 0.2
+emission_shape = 3
+emission_rect_extents = Vector2(8, 0)
+spread = 180.0
+initial_velocity_max = 20.0
+color = Color(0.2516, 0.4958, 0.74, 0.729412)
