@@ -70,6 +70,8 @@ enum Direction {
 
 @onready var main := get_node("/root/Main")
 @onready var sleep_particles: CPUParticles2D = $Sleep/SleepParticles
+@onready var click_audio: AudioStreamPlayer2D = $Audio/ClickAudio
+@onready var slide_audio: AudioStreamPlayer2D = $Audio/SlideAudio
 
 var is_hovered := false
 var is_selected := false
@@ -137,6 +139,9 @@ func select():
 	_show_scale_handles()
 	extend_direction_indicator()
 	BlockManagerAutoload.on_select_block(self)
+	
+	click_audio.pitch_scale = 1.0
+	click_audio.play()
 
 func unselect():
 	if not is_selected:
@@ -146,6 +151,9 @@ func unselect():
 	_hide_scale_handles()
 	retract_direction_indicator()
 	BlockManagerAutoload.on_unselect_block(self)
+	
+	click_audio.pitch_scale = 0.8
+	click_audio.play()
 
 func get_dimensions():
 	return Vector2(left_extend_value + right_extend_value, up_extend_value + down_extend_value)
@@ -350,5 +358,8 @@ func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 	elif direction == Direction.DOWN:
 		var val = max(0, pos_diff.y)
 		tween.tween_property(self, "down_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
+	
+	if not slide_audio.is_playing():
+		slide_audio.play()
 	
 	_update_scale_handles()
