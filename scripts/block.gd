@@ -92,6 +92,26 @@ var is_asleep := false
 
 ################################################
 
+func get_extend_value(direction: Direction):
+	if direction == Direction.LEFT:
+		return left_extend_value
+	elif direction == Direction.RIGHT:
+		return right_extend_value
+	elif direction == Direction.UP:
+		return up_extend_value
+	elif direction == Direction.DOWN:
+		return down_extend_value
+
+func set_extend_value(direction: Direction, value):
+	if direction == Direction.LEFT:
+		left_extend_value = value
+	elif direction == Direction.RIGHT:
+		right_extend_value = value
+	elif direction == Direction.UP:
+		up_extend_value = value
+	elif direction == Direction.DOWN:
+		down_extend_value = value
+
 func expand(direction: Direction, amount: int):
 	if direction == Direction.RIGHT:
 		right_extend_value += amount
@@ -525,24 +545,36 @@ func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 		variation = -16
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	
+	var val: float
+	var tween_property = ""
 	if direction == Direction.LEFT:
 		if variation < 0 && not check_movements(direction):
 			return
-		tween.tween_property(self, "left_extend_value", left_extend_value - variation, 0.3).set_ease(Tween.EASE_OUT)
+		val = left_extend_value - variation
+		tween_property = "left_extend_value"
+
 	elif direction == Direction.RIGHT:
 		if variation > 0 && not check_movements(direction):
 			return
-		tween.tween_property(self, "right_extend_value", right_extend_value + variation, 0.3).set_ease(Tween.EASE_OUT)
+		val = right_extend_value + variation
+		tween_property = "right_extend_value"
+
 	elif direction == Direction.UP:
 		if variation < 0 && not check_movements(direction):
 			return
-		tween.tween_property(self, "up_extend_value", up_extend_value - variation, 0.3).set_ease(Tween.EASE_OUT)
+		val = up_extend_value - variation
+		tween_property = "up_extend_value"
+
 	elif direction == Direction.DOWN:
 		if variation > 0 && not check_movements(direction):
 			return
-		tween.tween_property(self, "down_extend_value", down_extend_value + variation, 0.3).set_ease(Tween.EASE_OUT)
+		
+		val = down_extend_value + variation
+		tween_property = "down_extend_value"
 	
-	if not slide_audio.is_playing():
-		slide_audio.play()
+	if tween_property != "":
+		tween.tween_property(self, tween_property, val, 0.3).set_ease(Tween.EASE_OUT)
+		if not slide_audio.is_playing():
+			slide_audio.play()
 	
 	_update_scale_handles()

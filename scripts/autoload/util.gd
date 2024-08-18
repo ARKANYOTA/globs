@@ -22,3 +22,14 @@ func direction_to_rotation(direction: Block.Direction) -> float:
 	elif direction == Block.Direction.DOWN:
 		return PI/2
 	return 0
+
+func direction_to_string(direction: Block.Direction) -> String:
+	if direction == Block.Direction.LEFT:
+		return "left"
+	elif direction == Block.Direction.RIGHT:
+		return "right"
+	elif direction == Block.Direction.UP:
+		return "up"
+	elif direction == Block.Direction.DOWN:
+		return "down"
+	return ""
