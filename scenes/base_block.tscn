@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://csc0reeurrkxl"]
+[gd_scene load_steps=31 format=3 uid="uid://bmy606g2iax2l"]
 
 [ext_resource type="Script" path="res://scripts/block.gd" id="1_ni3jr"]
 [ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="2_y80n3"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dblb1xh7ytipc" path="res://assets/images/face_animation/o_face.png" id="5_cdxpn"]
 [ext_resource type="Texture2D" uid="uid://7nk8tmq0rg35" path="res://assets/images/face_animation/scared.png" id="6_fy71u"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_clhwb"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8ouv"]
 size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
@@ -209,7 +209,7 @@ patch_margin_bottom = 5
 axis_stretch_vertical = 2
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_clhwb")
+shape = SubResource("RectangleShape2D_c8ouv")
 debug_color = Color(0, 0.51, 0.6, 0.117647)
 
 [node name="UnClickArea" parent="." instance=ExtResource("3_edicq")]
