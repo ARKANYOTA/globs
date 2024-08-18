@@ -47,3 +47,10 @@ func win():
 
 func _on_body_exited(body):
 	overlapping_bodies.erase(body)
+
+
+func _on_area_entered(area: Area2D) -> void:
+	overlapping_bodies[area] = true
+	
+	if area is Block and area.is_main_character:
+		win()
