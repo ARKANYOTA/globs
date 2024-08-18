@@ -15,8 +15,8 @@ var levels = [
 	{ "name": "2-7", "scene": "res://scenes/levels/world_2/level_15.tscn"},
 
 	{ "name": "3-1", "scene": "res://scenes/levels/world_3/level_0.tscn"},
-	{ "name": "3-2", "scene": "res://scenes/levels/world_3/level_0_1.tscn"},
-	{ "name": "3-3", "scene": "res://scenes/levels/world_3/level_1.tscn"},
+	# { "name": "3-2", "scene": "res://scenes/levels/world_3/level_0_1.tscn"},
+	{ "name": "3-2", "scene": "res://scenes/levels/world_3/level_1.tscn"},
 	
 	# { "name": "Gumi & Rodo", "scene": "res://scenes/levels/world_2/level_10_0.tscn"},
 	# { "name": "Rise together", "scene": "res://scenes/levels/world_2/level_11_beta.tscn"},
