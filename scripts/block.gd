@@ -39,7 +39,12 @@ const dir_map = [
 		#$CollisionShape.rotation_degrees = value
 		#$Sprite.rotation_degrees = value
 
-@export var scale_max_speed : float = 1.5
+@export var default_gravity_axis := Direction.DOWN :
+	set(value):
+		default_gravity_axis = value
+		gravity_axis = value
+
+var gravity_axis = Direction.DOWN
 
 @export_group("Up Extandable")
 @export var up_extendable: bool = false
@@ -204,6 +209,12 @@ func get_all_tree_nodes(node = get_tree().get_root(), list = []):
 	for childNode in node.get_children():
 		get_all_tree_nodes(childNode, list)
 	return list
+
+func enter_gravity_zone(direction: Direction):
+	gravity_axis = direction
+
+func exit_gravity_zone():
+	gravity_axis = default_gravity_axis
 
 func print_grid(grid):
 	for line in grid:
@@ -528,15 +539,29 @@ func _physics_process(delta):
 		var rect = get_grid_rect()
 		var can_fall = true
 
-		for x in range(rect.size.x):
-			if grid[rect.position.y + rect.size.y][rect.position.x + x] != -2:
+		var spos = get_pos(gravity_axis)
+		var dir = dir_map[gravity_axis]
+		var line_size = rect.size.x if gravity_axis == Direction.DOWN or gravity_axis == Direction.UP else rect.size.y
+
+		for i in range(line_size):
+			var x = spos.x + i + dir.x if gravity_axis == Direction.DOWN or gravity_axis == Direction.UP else spos.x + dir.x
+			var y = spos.y + i + dir.y if gravity_axis == Direction.LEFT or gravity_axis == Direction.RIGHT else spos.y + dir.y
+			if grid[y][x] != -2:
 				can_fall = false
 				break
 		
 		if can_fall:
 			var gravity_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 			is_falling = true
-			gravity_tween.tween_property(self, "position:y", position.y + 16, 0.3).set_ease(Tween.EASE_OUT)
+			if gravity_axis == Direction.DOWN:
+				gravity_tween.tween_property(self, "position:y", position.y + 16, 0.3).set_ease(Tween.EASE_OUT)
+			if gravity_axis == Direction.UP:
+				gravity_tween.tween_property(self, "position:y", position.y - 16, 0.3).set_ease(Tween.EASE_OUT)
+			if gravity_axis == Direction.LEFT:
+				gravity_tween.tween_property(self, "position:x", position.x - 16, 0.3).set_ease(Tween.EASE_OUT)
+			if gravity_axis == Direction.RIGHT:
+				gravity_tween.tween_property(self, "position:x", position.x + 16, 0.3).set_ease(Tween.EASE_OUT)
+
 			gravity_tween.tween_callback(set_is_falling_to_false)
 	
 	_update_scale_handles()
