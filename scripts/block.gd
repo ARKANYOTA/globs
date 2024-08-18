@@ -574,7 +574,6 @@ func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 	
 	if tween_property != "":
 		tween.tween_property(self, tween_property, val, 0.3).set_ease(Tween.EASE_OUT)
-		if not slide_audio.is_playing():
-			slide_audio.play()
+		slide_audio.play()
 	
 	_update_scale_handles()
