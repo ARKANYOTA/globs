@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/click_area.gd" id="1_lsa4i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekcor"]
-size = Vector2(6, 6)
+size = Vector2(32, 32)
 
 [node name="ClickArea" type="Area2D"]
 script = ExtResource("1_lsa4i")
