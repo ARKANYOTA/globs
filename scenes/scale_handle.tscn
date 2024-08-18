@@ -1,11 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cl0k2iare3abe"]
+[gd_scene load_steps=5 format=3 uid="uid://cl0k2iare3abe"]
 
 [ext_resource type="PackedScene" uid="uid://catrwka02j1g0" path="res://scenes/click_area.tscn" id="1_okygb"]
 [ext_resource type="Script" path="res://scripts/scale_handle.gd" id="2_a5u7l"]
-[ext_resource type="Texture2D" uid="uid://d3yvhibvybfbx" path="res://assets/images/ui/handle.png" id="3_kc6dc"]
 [ext_resource type="Texture2D" uid="uid://d28ls2t8m3y00" path="res://assets/images/ui/direction_indicator.png" id="4_67e2x"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_grybu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4h0p"]
 size = Vector2(8, 8)
 
 [node name="ScaleHandle" instance=ExtResource("1_okygb")]
@@ -17,11 +16,8 @@ size = Vector2i(6, 6)
 debug_color = Color(0.687518, 0.63562, 0, 0.5)
 
 [node name="ClickAreaCollisionShape" parent="." index="0"]
-shape = SubResource("RectangleShape2D_grybu")
+shape = SubResource("RectangleShape2D_l4h0p")
 debug_color = Color(0.687518, 0.63562, 0, 0.5)
-
-[node name="Sprite" parent="." index="1"]
-texture = ExtResource("3_kc6dc")
 
 [node name="DirectionIndicator" type="Sprite2D" parent="." index="2"]
 visible = false

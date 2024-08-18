@@ -38,28 +38,36 @@ var names = [
 	"2-4",
 	"2-5",
 ]
-
+var current_level = 0
 var level = 0
 
 func increment_level() -> void:
-	level += 1
+	if level == current_level:
+		level += 1
+	current_level += 1
 	if level >= len(levels):
-		level = len(levels)
+		level = len(levels)-1
+	if current_level >= len(levels):
+		current_level = len(levels)-1
 	save_level_data()
 
-func increment_level_and_change_scene() -> void:
-	BlockManagerAutoload.block_manager_instance.end_drag()
-	increment_level()
-	var scene_path = levels[level]["scene"]
-	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
-
+func win() -> void:
+	increment_level_and_change_scene()
+	
 func reload_scene() -> void:
 	BlockManagerAutoload.block_manager_instance.end_drag()
 	# var scene_path = levels[level]["scene"]
 	#get the current scene path
 	var current_scene = get_tree().current_scene
 	var scene_path = current_scene.scene_file_path
-	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
+	SceneTransitionAutoLoad.change_scene_with_transition(scene_path, false)
+
+func increment_level_and_change_scene() -> void:
+	BlockManagerAutoload.block_manager_instance.end_drag()
+	increment_level()
+	var scene_path = levels[level]["scene"]
+	SceneTransitionAutoLoad.change_scene_with_transition(scene_path, true)
+
 
 func save_level_data() -> void:
 	var config = ConfigFile.new()
@@ -82,7 +90,7 @@ func _process(delta: float) -> void:
 
 func _input(event):
 	if event.is_action_pressed("removeme2_nolan_usge_to_change_scene"):
-		increment_level_and_change_scene()
+		win()
 	
 	if event.is_action_pressed("reload_button"):
 		reload_scene()

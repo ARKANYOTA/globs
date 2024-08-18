@@ -12,6 +12,9 @@ class_name ScaleHandle
 @onready var collision_shape: CollisionShape2D = $ClickAreaCollisionShape
 @onready var sprite: Sprite2D = $Sprite
 
+var texture_normal = load("res://assets/images/ui/handle.png")
+var texture_hover = load("res://assets/images/ui/handle_hover.png")
+var texture_pressed = load("res://assets/images/ui/handle_pressed.png")
 
 func initialize():
 	pass
@@ -34,3 +37,10 @@ func show_handle():
 
 func _process(delta):
 	super._process(delta)
+	
+	if is_held:
+		sprite.texture = texture_pressed
+	elif is_hovered:
+		sprite.texture = texture_hover
+	else:
+		sprite.texture = texture_normal
