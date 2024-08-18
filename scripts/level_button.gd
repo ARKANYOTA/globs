@@ -28,6 +28,7 @@ func _on_button_pressed() -> void:
 	if level > LevelData.level:
 		return
 	var scene = LevelData.levels[level].scene
+	LevelData.current_level = level
 	SceneTransitionAutoLoad.change_scene_with_transition(scene)
 	# get_tree().change_scene_to_file(scene)
 	pass # Replace with function body.
