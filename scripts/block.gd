@@ -69,7 +69,6 @@ enum Direction {
 ################################################
 
 @onready var main := get_node("/root/Main")
-@onready var block_manager: BlockManager = get_node("/root/BlockManagerAutoload/BlockManager")
 @onready var sleep_particles: CPUParticles2D = $Sleep/SleepParticles
 
 var is_hovered := false
@@ -323,17 +322,17 @@ func _physics_process(delta):
 	_update_sprite()
 
 func _on_click_area_clicked():
-	if block_manager.can_select(self):
-		block_manager.new_selection_candidate(self)
+	if BlockManagerAutoload.can_select(self):
+		BlockManagerAutoload.new_selection_candidate(self)
 
 func _on_un_click_area_clicked_outside_area():
 	unselect()
 
 func _on_scale_handle_start_drag(handle: ScaleHandle, direction: Direction):
-	block_manager.start_drag()
+	BlockManagerAutoload.start_drag()
 
 func _on_scale_handle_end_drag(handle: ScaleHandle, direction: Direction):
-	block_manager.end_drag()
+	BlockManagerAutoload.end_drag()
 
 func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 	var pos_diff = Vector2i(get_global_mouse_position() - global_position)
