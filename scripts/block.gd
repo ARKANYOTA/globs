@@ -193,7 +193,12 @@ func get_rect() -> Rect2i:
 
 func get_grid_rect() -> Rect2i:
 	var rect = get_rect()
-	return Rect2i((rect.position.x + 8) / 16, (rect.position.y + 8) / 16, rect.size.x / 16, rect.size.y / 16)
+	var posx = int(fmod(rect.position.x + 8, 16) != 0)
+	var posy = int(fmod(rect.position.y + 8, 16) != 0)
+	var sizex = int(fmod(rect.size.x + 8, 16) != 0)
+	var sizey = int(fmod(rect.size.y + 8, 16) != 0)
+	return Rect2i((rect.position.x + 8) / 16 + posx, (rect.position.y + 8) / 16 + posy,
+				   rect.size.x / 16 + sizex, rect.size.y / 16 + sizey)
 
 func get_center():
 	return $CollisionShape.position
@@ -352,17 +357,6 @@ func check_movements(dir: Direction) -> Array: # value 0: moved_blocks and value
 		moved_blocks = get_elements_by_id(map_data[1], check_move_block(map_data[0], get_opposite_direction(dir)))
 	
 	return [moved_blocks, true]
-
-# func is_moving(dir: Direction) -> bool:
-# 	var val = left_extend_value
-# 	if dir == Direction.RIGHT:
-# 		val = right_extend_value
-# 	if dir == Direction.UP:
-# 		val = up_extend_value
-# 	if dir == Direction.DOWN:
-# 		val = down_extend_value
-# 	
-# 	return fmod(val + 8, 16) != 0
 
 func get_variation(dir: Direction) -> float:
 	var pos_diff = get_global_mouse_position() - global_position
