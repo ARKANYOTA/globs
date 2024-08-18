@@ -14,7 +14,6 @@ _data = [Vector2(0, 0.186813), 0.0, 0.0, 0, 0, Vector2(0.677083, 0.450549), 0.0,
 point_count = 3
 
 [node name="Lantern" type="Node2D"]
-position = Vector2(249, 121)
 
 [node name="BlackFrostSpriteSheet2" type="Sprite2D" parent="."]
 texture = ExtResource("1_7ydve")
