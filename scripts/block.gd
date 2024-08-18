@@ -193,12 +193,8 @@ func get_rect() -> Rect2i:
 
 func get_grid_rect() -> Rect2i:
 	var rect = get_rect()
-	var posx = int(fmod(rect.position.x + 8, 16) != 0)
-	var posy = int(fmod(rect.position.y + 8, 16) != 0)
-	var sizex = int(fmod(rect.size.x + 8, 16) != 0)
-	var sizey = int(fmod(rect.size.y + 8, 16) != 0)
-	return Rect2i((rect.position.x + 8) / 16 + posx, (rect.position.y + 8) / 16 + posy,
-				   rect.size.x / 16 + sizex, rect.size.y / 16 + sizey)
+	return Rect2i((rect.position.x + 8) / 16, (rect.position.y + 8) / 16,
+				   (rect.size.x + 8) / 16, (rect.size.y + 8) / 16)
 
 func get_center():
 	return $CollisionShape.position
@@ -248,7 +244,7 @@ func get_map_data() -> Array:
 				grid[cell.y][cell.x] = -1 # static
 		if node is Block:
 			var id = -1
-			if not node.static_block:
+			if not node.static_block and not node.is_falling:
 				id = blocks.size()
 				blocks.append(node)
 			var rect = node.get_grid_rect()
@@ -526,7 +522,7 @@ func _physics_process(delta):
 	if Engine.is_editor_hint():
 		return
 	
-	if is_gravity_enabled and not is_falling and not is_moving:
+	if is_gravity_enabled and not is_falling:
 		var map_data = get_map_data()
 		var grid = map_data[0]
 		var rect = get_grid_rect()
