@@ -22,7 +22,8 @@ func change_scene_with_transition(scene: String) -> void:
 	var player = root.get_node("Player")
 	if not player == null:
 		player.add_child(youwinlevel_instance)
-	var animation_player : AnimationPlayer = scene_transition_instance.get_node("AnimationPlayer")
+	var animation_player: AnimationPlayer = scene_transition_instance.get_node("AnimationPlayer")
+	var transition_audio: AudioStreamPlayer2D = scene_transition_instance.get_node("TransitionAudio")
 	var title_player : AnimationPlayer = scene_transition_instance.get_node("TitlePlayer")
 	var title : Label = scene_transition_instance.get_node("WorldTitle")
 	var slides = ["bloc_in","block_in_vertical"]
@@ -30,6 +31,7 @@ func change_scene_with_transition(scene: String) -> void:
 	# title.text = LevelData.names[LevelData.level - 1]
 	set_random_sprite_transition()
 	
+	transition_audio.play()
 	animation_player.play(slides[random_slide_transition])
 	await animation_player.animation_finished
 
