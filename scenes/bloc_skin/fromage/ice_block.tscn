@@ -8,7 +8,7 @@ resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hthhv"]
-size = Vector2(16, 16)
+size = Vector2(64, 32)
 
 [node name="Block4" instance=ExtResource("1_2h8e0")]
 
