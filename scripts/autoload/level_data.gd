@@ -17,15 +17,8 @@ var levels = [
 	{ "name": "3-1", "scene": "res://scenes/levels/world_3/level_0.tscn"},
 	# { "name": "3-2", "scene": "res://scenes/levels/world_3/level_0_1.tscn"},
 	{ "name": "3-2", "scene": "res://scenes/levels/world_3/level_1.tscn"},
-	{ "name": "3-3", "scene": "res://scenes/levels/world_3/level_3.tcsn"},
-	{ "name": "3-4", "scene": "res://scenes/levels/world_3/level_4.tcsn"},
-	
-	# { "name": "Gumi & Rodo", "scene": "res://scenes/levels/world_2/level_10_0.tscn"},
-	# { "name": "Rise together", "scene": "res://scenes/levels/world_2/level_11_beta.tscn"},
-	# { "name": "To the star", "scene": "res://scenes/levels/world_2/level_12.tscn"},
-	# { "name": "Return the favor", "scene": "res://scenes/levels/world_2/level_13.tscn"},
-	# { "name": "Soft landing", "scene": "res://scenes/levels/world_2/level_13.tscn"},
-
+	{ "name": "3-3", "scene": "res://scenes/levels/world_3/level_3.tscn"},
+	{ "name": "3-4", "scene": "res://scenes/levels/world_3/level_4.tscn"},
 	{ "name": "You Win", "scene": "res://scenes/levels/you_win.tscn"},
 ]
 
