@@ -6,6 +6,13 @@ enum Direction {
 	LEFT, RIGHT, UP, DOWN
 }
 
+const dir_map = [
+	Vector2i(-1, 0), 
+	Vector2i(1, 0), 
+	Vector2i(0, -1), 
+	Vector2i(0, 1)
+]
+
 @export var is_gravity_enabled := true:
 	set(value):
 		is_gravity_enabled = value
@@ -158,8 +165,171 @@ func unselect():
 func get_dimensions():
 	return Vector2(left_extend_value + right_extend_value, up_extend_value + down_extend_value)
 
+func get_rect() -> Rect2i:
+	return Rect2i(int(position.x - left_extend_value), int(position.y - up_extend_value), 
+				int(left_extend_value + right_extend_value), int(up_extend_value + down_extend_value))
+
+func get_grid_rect() -> Rect2i:
+	var rect = get_rect()
+	return Rect2i((rect.position.x + 8) / 16, (rect.position.y + 8) / 16, rect.size.x / 16, rect.size.y / 16)
+
 func get_center():
 	return $CollisionShape.position
+
+func get_all_tree_nodes(node = get_tree().get_root(), list = []):
+	list.append(node)
+	for childNode in node.get_children():
+		get_all_tree_nodes(childNode, list)
+	return list
+
+func print_grid(grid):
+	for line in grid:
+		var l = ""
+		for row in line:
+			var c = "D"
+			if row == -2:
+				c = " "
+			if row == -1:
+				c = "S"
+			l += c
+		print(l)
+
+func get_grid():
+	var grid := []
+	var block_id = 0
+	
+	for node in get_all_tree_nodes():
+		if node is TileMapLayer:
+			if not node.collision_enabled:
+				continue
+			var cells = node.get_used_cells()
+			var xmax = 0
+			var ymax = 0
+			for cell in cells:
+				if cell.x > xmax:
+					xmax = cell.x
+				if cell.y > ymax:
+					ymax = cell.y
+			for y in range(ymax + 1):
+				grid.append([])
+				for x in range(xmax + 1):
+					grid[y].append(-2) # empty
+			
+			for cell in cells:
+				if cell.x < 0 or cell.y < 0:
+					continue
+				grid[cell.y][cell.x] = -1 # static
+		if node is Block:
+			var id = -1
+			if not node.static_block:
+				id = block_id
+				block_id += 1
+			var rect = node.get_grid_rect()
+			var ymin = rect.position.y
+			var ymax = rect.position.y + rect.size.y
+			var xmin = rect.position.x
+			var xmax = rect.position.x + rect.size.x
+			
+			for y in range(ymin, ymax):
+				for x in range(xmin, xmax):
+					if y < 0 or y >= len(grid) or x < 0 or y >= len(grid[y]):
+						continue
+					grid[y][x] = id
+	return grid
+
+func left(direction):
+	return Vector2i(direction.y, -direction.x)
+
+func right(direction):
+	return Vector2i(-direction.y, direction.x)
+
+func can_move(grid: Array, x: int, y: int, direction: Vector2i) -> bool:
+	if y < 0 or y >= len(grid) or x < 0 or x >= len(grid[y]):
+		return false
+	
+	if grid[y][x] == -2:
+		return true
+	if grid[y][x] == -1:
+		return false
+
+	var val = grid[y][x]
+	grid[y][x] = -2
+	
+	var left_dir = left(direction)
+	if grid[y + left_dir.y][x + left_dir.x] == val and not can_move(grid, x + left_dir.x, y + left_dir.y, direction):
+		return false
+	
+	var right_dir = right(direction)
+	if grid[y + right_dir.y][x + right_dir.x] == val and not can_move(grid, x + right_dir.x, y + right_dir.y, direction):
+		return false
+	
+	return can_move(grid, x + direction.x, y + direction.y, direction)
+
+func get_pos(direction: Direction) -> Vector2i:
+	var rect = get_grid_rect()
+	if direction == Direction.LEFT or direction == Direction.UP:
+		return Vector2i(rect.position.x, rect.position.y)
+	if direction == Direction.RIGHT:
+		return Vector2i(rect.position.x + (rect.size.x - 1), rect.position.y)
+	return Vector2i(rect.position.x, rect.position.y + (rect.size.y - 1))
+
+func get_opposite_direction(direction: Direction) -> Direction:
+	if direction == Direction.LEFT:
+		return Direction.RIGHT
+	if direction == Direction.RIGHT:
+		return Direction.LEFT
+	if direction == Direction.UP:
+		return Direction.DOWN
+	return Direction.UP
+
+func check_move_block(grid: Array, dir: Direction) -> bool:
+	var direction = dir_map[dir]
+	var rect = get_grid_rect()
+	var pos = get_pos(dir)
+
+	if dir == Direction.DOWN or dir == Direction.UP:
+		for x in range(rect.size.x):
+			if not can_move(grid, pos.x + x + direction.x, pos.y + direction.y, direction):
+				return false
+	if dir == Direction.LEFT or dir == Direction.RIGHT:
+		for y in range(rect.size.y):
+			if not can_move(grid, pos.x + direction.x, pos.y + y + direction.y, direction):
+				return false
+	return true
+
+
+func check_movements(dir: Direction) -> bool:
+	var grid = get_grid()
+	if check_move_block(grid, dir):
+		return true
+	
+	if not static_block and check_move_block(grid, get_opposite_direction(dir)):
+		return true
+
+	return false
+
+func is_moving(dir: Direction) -> bool:
+	var val = left_extend_value
+	if dir == Direction.RIGHT:
+		val = right_extend_value
+	if dir == Direction.UP:
+		val = up_extend_value
+	if dir == Direction.DOWN:
+		val = down_extend_value
+	
+	return fmod(val + 8, 16) != 0
+
+func get_variation(dir: Direction) -> float:
+	var pos_diff = get_global_mouse_position() - global_position
+	if dir == Direction.LEFT:
+		return pos_diff.x + left_extend_value
+	if dir == Direction.RIGHT:
+		return pos_diff.x - right_extend_value
+	if dir == Direction.UP:
+		return pos_diff.y + up_extend_value
+	if dir == Direction.DOWN:
+		return pos_diff.y - down_extend_value
+	return -1
 
 ################################################
 
@@ -342,22 +512,35 @@ func _on_scale_handle_end_drag(handle: ScaleHandle, direction: Direction):
 	BlockManagerAutoload.end_drag()
 
 func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
-	var pos_diff = Vector2i(get_global_mouse_position() - global_position)
-	pos_diff = round((Vector2(pos_diff) + Vector2(8, 8)) / 16) * 16 - Vector2(8, 8)
+	if is_moving(direction):
+		return
+
+	var variation = get_variation(direction)
+	if abs(variation) < 8:
+		return
+
+	if variation > 0:
+		variation = 16
+	else:
+		variation = -16
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	
 	if direction == Direction.LEFT:
-		var val = abs(min(0, pos_diff.x))
-		tween.tween_property(self, "left_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
+		if variation < 0 && not check_movements(direction):
+			return
+		tween.tween_property(self, "left_extend_value", left_extend_value - variation, 0.3).set_ease(Tween.EASE_OUT)
 	elif direction == Direction.RIGHT:
-		var val = max(0, pos_diff.x)
-		tween.tween_property(self, "right_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
+		if variation > 0 && not check_movements(direction):
+			return
+		tween.tween_property(self, "right_extend_value", right_extend_value + variation, 0.3).set_ease(Tween.EASE_OUT)
 	elif direction == Direction.UP:
-		var val = abs(min(0, pos_diff.y))
-		tween.tween_property(self, "up_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
+		if variation < 0 && not check_movements(direction):
+			return
+		tween.tween_property(self, "up_extend_value", up_extend_value - variation, 0.3).set_ease(Tween.EASE_OUT)
 	elif direction == Direction.DOWN:
-		var val = max(0, pos_diff.y)
-		tween.tween_property(self, "down_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
+		if variation > 0 && not check_movements(direction):
+			return
+		tween.tween_property(self, "down_extend_value", down_extend_value + variation, 0.3).set_ease(Tween.EASE_OUT)
 	
 	if not slide_audio.is_playing():
 		slide_audio.play()
