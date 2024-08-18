@@ -3,11 +3,13 @@ extends Node2D
 var selected_level = 1
 
 @export var button_list : Array[LevelButton] = []
-@onready var animation = $AnimationPlayer
+@onready var animation: AnimationPlayer = $AnimationPlayer
+
 func _ready():
 	print(LevelData.level)
 
 func _process(delta):
+	#transition_audio.play()
 	animation.play("background")
 	#await animation.animation_finished
 	pass

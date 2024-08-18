@@ -1,12 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://bmdbgomhamteh"]
+[gd_scene load_steps=7 format=3 uid="uid://bmdbgomhamteh"]
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_ngvjp"]
 [ext_resource type="Shader" path="res://shaders/pause_menu_background.gdshader" id="2_0ckwp"]
 [ext_resource type="FontFile" uid="uid://b3ayaf2x5qddk" path="res://assets/fonts/hardpixel.otf" id="2_jsohw"]
-[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="3_7nbsy"]
-[ext_resource type="StyleBox" uid="uid://d1obvum2g2cax" path="res://assets/textures/option_button_texture.tres" id="3_7plsw"]
-[ext_resource type="StyleBox" uid="uid://dv3miaelc86gy" path="res://assets/textures/option_button_texture_pressed.tres" id="4_ahfmc"]
-[ext_resource type="StyleBox" uid="uid://dbwx70quhf42b" path="res://assets/textures/option_button_texture_hover.tres" id="5_6ml0v"]
+[ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui_button.tscn" id="4_ho2vv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hnp6j"]
 shader = ExtResource("2_0ckwp")
@@ -15,20 +12,6 @@ shader_parameter/amount = 3.0
 [sub_resource type="LabelSettings" id="LabelSettings_ahekt"]
 font = ExtResource("2_jsohw")
 font_size = 20
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dge07"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mrjtd"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lmddy"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5rjmr"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8mypg"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4q584"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lhtys"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -85,58 +68,22 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Resume" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_ho2vv")]
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("3_7nbsy")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_dge07")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_mrjtd")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_lmddy")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_5rjmr")
-theme_override_styles/hover_pressed = ExtResource("4_ahfmc")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8mypg")
-theme_override_styles/hover = ExtResource("5_6ml0v")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_4q584")
-theme_override_styles/pressed = ExtResource("4_ahfmc")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_lhtys")
-theme_override_styles/normal = ExtResource("3_7plsw")
-text = "Resume"
 
-[node name="Levels" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Restart" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_ho2vv")]
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("3_7nbsy")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_dge07")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_mrjtd")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_lmddy")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_5rjmr")
-theme_override_styles/hover_pressed = ExtResource("4_ahfmc")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8mypg")
-theme_override_styles/hover = ExtResource("5_6ml0v")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_4q584")
-theme_override_styles/pressed = ExtResource("4_ahfmc")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_lhtys")
-theme_override_styles/normal = ExtResource("3_7plsw")
+text = "Retry"
+
+[node name="Levels" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_ho2vv")]
+layout_mode = 2
 text = "Levels"
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Quit" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_ho2vv")]
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("3_7nbsy")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_dge07")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_mrjtd")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_lmddy")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_5rjmr")
-theme_override_styles/hover_pressed = ExtResource("4_ahfmc")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8mypg")
-theme_override_styles/hover = ExtResource("5_6ml0v")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_4q584")
-theme_override_styles/pressed = ExtResource("4_ahfmc")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_lhtys")
-theme_override_styles/normal = ExtResource("3_7plsw")
-text = "Quit
-"
+text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Levels" to="." method="_on_levels_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
