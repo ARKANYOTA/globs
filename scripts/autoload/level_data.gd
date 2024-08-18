@@ -55,7 +55,10 @@ func increment_level_and_change_scene() -> void:
 
 func reload_scene() -> void:
 	BlockManagerAutoload.block_manager_instance.end_drag()
-	var scene_path = levels[level]["scene"]
+	# var scene_path = levels[level]["scene"]
+	#get the current scene path
+	var current_scene = get_tree().current_scene
+	var scene_path = current_scene.scene_file_path
 	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
 
 func save_level_data() -> void:
