@@ -16,4 +16,4 @@
 
 ## Game engine:
 
-This game was developed using the game engine [**Godot**](https://godotengine.org)
+This game was developed using the [**Godot game engine**](https://godotengine.org)

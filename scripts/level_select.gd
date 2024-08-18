@@ -8,8 +8,8 @@ func _ready():
 	print(LevelData.level)
 
 func _process(delta):
-	animation.play("background")
-	await animation.animation_finished
+	#animation.play("background")
+	#await animation.animation_finished
 	pass
 
 # on input event
