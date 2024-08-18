@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=3 uid="uid://dv7orepl8b082"]
+
+[ext_resource type="Script" path="res://scripts/ui/volume_slider.gd" id="1_6nwaf"]
+[ext_resource type="Texture2D" uid="uid://ckxgkwoiqj3on" path="res://assets/images/ui/slider_button.png" id="1_8jhs6"]
+[ext_resource type="Texture2D" uid="uid://bju77jxdk7mwl" path="res://assets/images/ui/slider_button_hover.png" id="2_8so8b"]
+[ext_resource type="Texture2D" uid="uid://dnish8tdwujum" path="res://assets/images/ui/slider_button_held.png" id="3_ldw6f"]
+[ext_resource type="Texture2D" uid="uid://bektpxlme7plh" path="res://assets/images/ui/slider_bar.png" id="4_p3bw8"]
+[ext_resource type="Texture2D" uid="uid://ci82om0gcdj02" path="res://assets/images/ui/slider_bar_filled.png" id="5_dcn5u"]
+[ext_resource type="Texture2D" uid="uid://cieae2burfs2c" path="res://assets/images/ui/slider_highlight.png" id="6_n4q0d"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n4eiu"]
+texture = ExtResource("4_p3bw8")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(0, 0, 11, 7)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i10qj"]
+texture = ExtResource("5_dcn5u")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 11, 7)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3fvdy"]
+texture = ExtResource("6_n4q0d")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 4.0
+
+[node name="VolumeSlider" type="HSlider"]
+size_flags_horizontal = 3
+theme_override_icons/grabber = ExtResource("1_8jhs6")
+theme_override_icons/grabber_highlight = ExtResource("2_8so8b")
+theme_override_icons/grabber_disabled = ExtResource("3_ldw6f")
+theme_override_icons/tick = ExtResource("1_8jhs6")
+theme_override_styles/slider = SubResource("StyleBoxTexture_n4eiu")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_i10qj")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_3fvdy")
+max_value = 1.0
+step = 0.005
+ticks_on_borders = true
+script = ExtResource("1_6nwaf")
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

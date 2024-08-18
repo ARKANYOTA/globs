@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cl1yg37xye2ku"]
+
+[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="1_igcxd"]
+
+[resource]
+font = ExtResource("1_igcxd")
