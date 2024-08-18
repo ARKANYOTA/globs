@@ -281,7 +281,7 @@ position = Vector2(304, 80)
 scale = Vector2(2, 2)
 
 [node name="Block2" parent="." instance=ExtResource("4_tkjei")]
-position = Vector2(158, -16)
+position = Vector2(154, -7)
 is_main_character = true
 up_extendable = true
 up_extend_range = Vector2i(8, 120)
@@ -307,3 +307,4 @@ initial_velocity_max = 0.0
 color_ramp = SubResource("Gradient_qy64m")
 
 [node name="Lantern" parent="." instance=ExtResource("7_c2sk8")]
+position = Vector2(248, 120)

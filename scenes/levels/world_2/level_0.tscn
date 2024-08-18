@@ -211,5 +211,6 @@ scale = Vector2(2, 2)
 
 [node name="Block2" parent="." instance=ExtResource("5_02cyy")]
 position = Vector2(184, 152)
+scale_max_speed = 2.0
 left_extendable = true
 right_extendable = true

@@ -9,4 +9,8 @@ func _ready() -> void:
 	value = db_to_linear(AudioServer.get_bus_volume_db(_bus))
 
 func _on_value_changed(value: float) -> void:
+	var config = ConfigFile.new()
 	AudioServer.set_bus_volume_db(_bus, linear_to_db(value))
+	config.set_value("volume", audio_bus_name, value)
+	config.save("user://volume.cfg")
+
