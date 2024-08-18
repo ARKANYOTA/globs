@@ -1,5 +1,5 @@
 @tool
-extends CharacterBody2D
+extends Area2D
 class_name Block
 
 enum Direction {
