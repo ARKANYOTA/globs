@@ -14,8 +14,7 @@ class_name ScaleHandle
 
 
 func initialize():
-	var offset = Util.direction_to_vector(direction)
-	var rot = Util.direction_to_rotation(direction)
+	pass
 
 func hide_handle():
 	var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)

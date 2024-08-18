@@ -9,7 +9,7 @@ func _ready():
 
 func _process(delta):
 	animation.play("background")
-	await animation.animation_finished
+	#await animation.animation_finished
 	pass
 
 # on input event

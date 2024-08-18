@@ -24,6 +24,10 @@ BlockManagerAutoload="*res://scripts/autoload/block_manager_autoload.gd"
 GameManager="*res://scripts/autoload/game_manager.gd"
 Util="*res://scripts/autoload/util.gd"
 
+[debug]
+
+gdscript/warnings/unused_variable=0
+
 [display]
 
 window/size/viewport_width=320
