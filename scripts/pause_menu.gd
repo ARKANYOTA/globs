@@ -12,7 +12,7 @@ func _on_quit_pressed():
 
 func _on_levels_pressed():
 	main.exit_menu()
-	SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/level_select.tscn")
+	SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/level_select.tscn", false)
 
 func _on_restart_pressed():
 	main.exit_menu()

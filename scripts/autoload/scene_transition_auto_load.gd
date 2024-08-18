@@ -17,12 +17,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func change_scene_with_transition(scene: String) -> void:
+func change_scene_with_transition(scene: String, put_confetis = false) -> void:
 	var root = get_tree().get_current_scene()
-	for i in root.get_children():
-		if i is Block:
-			if i.is_main_character:
-				i.add_child(youwinlevel_instance)
+	if put_confetis:
+		for i in root.get_children():
+			if i is Block:
+				if i.is_main_character:
+					i.add_child(youwinlevel_instance)
+					
 	var animation_player : AnimationPlayer = scene_transition_instance.get_node("AnimationPlayer")
 	var transition_audio: AudioStreamPlayer2D = scene_transition_instance.get_node("TransitionAudio")
 	var title_player : AnimationPlayer = scene_transition_instance.get_node("TitlePlayer")
@@ -35,18 +37,17 @@ func change_scene_with_transition(scene: String) -> void:
 	transition_audio.play()
 	animation_player.play(slides[random_slide_transition])
 	await animation_player.animation_finished
-
-	for i in root.get_children():
-		if i is Block:
-			if i.is_main_character:
-				i.remove_child(youwinlevel_instance)
+	if put_confetis:
+		for i in root.get_children():
+			if i is Block:
+				if i.is_main_character:
+					i.remove_child(youwinlevel_instance)
 	
 	GameManager.before_scene_change()
 	get_tree().change_scene_to_file(scene)
 
 	animation_player.play(slides[random_slide_transition], -1, -0.7, true)
 	#title_player.play("WorldLevel")
-	pass
 
 func set_random_sprite_transition():
 	var up : NinePatchRect = scene_transition_instance.get_node("up")
