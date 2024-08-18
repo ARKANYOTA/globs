@@ -292,7 +292,6 @@ func check_move_block(grid: Array, dir: Direction) -> bool:
 
 func check_movements(dir: Direction) -> bool:
 	var grid = get_grid()
-	print_grid(grid)
 	if check_move_block(grid, dir):
 		return true
 	
@@ -301,6 +300,28 @@ func check_movements(dir: Direction) -> bool:
 
 	return false
 
+func is_moving(dir: Direction) -> bool:
+	var val = left_extend_value
+	if dir == Direction.RIGHT:
+		val = right_extend_value
+	if dir == Direction.UP:
+		val = up_extend_value
+	if dir == Direction.DOWN:
+		val = down_extend_value
+	
+	return fmod(val + 8, 16) != 0
+
+func get_variation(dir: Direction) -> float:
+	var pos_diff = get_global_mouse_position() - global_position
+	if dir == Direction.LEFT:
+		return pos_diff.x + left_extend_value
+	if dir == Direction.RIGHT:
+		return pos_diff.x - right_extend_value
+	if dir == Direction.UP:
+		return pos_diff.y + up_extend_value
+	if dir == Direction.DOWN:
+		return pos_diff.y - down_extend_value
+	return -1
 
 ################################################
 
@@ -483,29 +504,34 @@ func _on_scale_handle_end_drag(handle: ScaleHandle, direction: Direction):
 	BlockManagerAutoload.end_drag()
 
 func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
-	var pos_diff = Vector2i(get_global_mouse_position() - global_position)
-	pos_diff = round((Vector2(pos_diff) + Vector2(8, 8)) / 16) * 16 - Vector2(8, 8)
+	if is_moving(direction):
+		return
+
+	var variation = get_variation(direction)
+	if abs(variation) < 8:
+		return
+
+	if variation > 0:
+		variation = 16
+	else:
+		variation = -16
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	
 	if direction == Direction.LEFT:
-		var val = abs(min(0, pos_diff.x))
-		if val > left_extend_value && not check_movements(direction):
+		if variation < 0 && not check_movements(direction):
 			return
-		tween.tween_property(self, "left_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
+		tween.tween_property(self, "left_extend_value", left_extend_value - variation, 0.3).set_ease(Tween.EASE_OUT)
 	elif direction == Direction.RIGHT:
-		var val = max(0, pos_diff.x)
-		if val > right_extend_value && not check_movements(direction):
+		if variation > 0 && not check_movements(direction):
 			return
-		tween.tween_property(self, "right_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
+		tween.tween_property(self, "right_extend_value", right_extend_value + variation, 0.3).set_ease(Tween.EASE_OUT)
 	elif direction == Direction.UP:
-		var val = abs(min(0, pos_diff.y))
-		if val > up_extend_value && not check_movements(direction):
+		if variation < 0 && not check_movements(direction):
 			return
-		tween.tween_property(self, "up_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
+		tween.tween_property(self, "up_extend_value", up_extend_value - variation, 0.3).set_ease(Tween.EASE_OUT)
 	elif direction == Direction.DOWN:
-		var val = max(0, pos_diff.y)
-		if val > down_extend_value && not check_movements(direction):
+		if variation > 0 && not check_movements(direction):
 			return
-		tween.tween_property(self, "down_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
+		tween.tween_property(self, "down_extend_value", down_extend_value + variation, 0.3).set_ease(Tween.EASE_OUT)
 	
 	_update_scale_handles()
