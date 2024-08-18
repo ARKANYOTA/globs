@@ -40,6 +40,8 @@ func change_scene_with_transition(scene: String) -> void:
 	await animation_player.animation_finished
 	if not player == null:
 		player.remove_child(youwinlevel_instance)
+	
+	GameManager.before_scene_change()
 	get_tree().change_scene_to_file(scene)
 	animation_player.play("bloc_in", -1, -0.7, true)
 	pass

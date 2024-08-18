@@ -1,6 +1,11 @@
 extends Node
 
 var levels = [
+	{ "name": "1-1", "scene": "res://scenes/levels/level_100_intro.tscn"},
+	{ "name": "1-1", "scene": "res://scenes/levels/level_110_push.tscn"},
+	{ "name": "1-1", "scene": "res://scenes/levels/level_120_support.tscn"},
+	{ "name": "1-1", "scene": "res://scenes/levels/level_140_only_red_wins.tscn"},
+	
 	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
 	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
 	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
@@ -21,11 +26,13 @@ func increment_level() -> void:
 	save_level_data()
 
 func increment_level_and_change_scene() -> void:
+	BlockManagerAutoload.block_manager_instance.end_drag()
 	increment_level()
 	var scene_path = levels[level - 1]["scene"]
 	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
 
 func reload_scene() -> void:
+	BlockManagerAutoload.block_manager_instance.end_drag()
 	var scene_path = levels[level - 1]["scene"]
 	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
 

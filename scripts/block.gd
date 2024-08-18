@@ -29,8 +29,8 @@ enum Direction {
 @export_range(-360, 360) var angle: float = 0:
 	set(value):
 		angle = value
-		$CollisionShape.rotation_degrees = value
-		$Sprite.rotation_degrees = value
+		#$CollisionShape.rotation_degrees = value
+		#$Sprite.rotation_degrees = value
 
 @export var scale_max_speed : float = 1.5
 
@@ -69,13 +69,14 @@ enum Direction {
 ################################################
 
 @onready var main := get_node("/root/Main")
-@onready var block_manager: BlockManager = get_node("/root/BlockManagerAutoload/BlockManager")
 @onready var sleep_particles: CPUParticles2D = $Sleep/SleepParticles
 
 var is_hovered := false
 var is_selected := false
-var handles: Array[ScaleHandle] = []
+var handles: Array = []
+var direction_indicators: Array[Sprite2D] = []
 var scale_handle: PackedScene = load("res://scenes/scale_handle.tscn")
+var direction_indicator: PackedScene = load("res://scenes/direction_indicator.tscn")
 
 var animation = "o_face"
 var is_asleep := false
@@ -134,7 +135,8 @@ func select():
 	
 	is_selected = true
 	_show_scale_handles()
-	block_manager.on_select_block(self)
+	extend_direction_indicator()
+	BlockManagerAutoload.on_select_block(self)
 
 func unselect():
 	if not is_selected:
@@ -142,7 +144,8 @@ func unselect():
 	
 	is_selected = false
 	_hide_scale_handles()
-	block_manager.on_unselect_block(self)
+	retract_direction_indicator()
+	BlockManagerAutoload.on_unselect_block(self)
 
 func get_dimensions():
 	return Vector2(left_extend_value + right_extend_value, up_extend_value + down_extend_value)
@@ -188,6 +191,7 @@ func _update_animation():
 
 func _create_scale_handle(direction: Direction, name: String):
 	var new_scale_handle: ScaleHandle = scale_handle.instantiate()
+	new_scale_handle.block = self
 	new_scale_handle.name = name
 	new_scale_handle.direction = direction
 	new_scale_handle.z_index = 10
@@ -202,8 +206,18 @@ func _create_scale_handle(direction: Direction, name: String):
 		_on_scale_handle_dragged(new_scale_handle, direction)
 	)
 	add_child(new_scale_handle)
+	new_scale_handle.initialize()
 	
-	handles.append(new_scale_handle)
+	var new_direction_indicator = direction_indicator.instantiate()
+	new_direction_indicator.block = self
+	new_direction_indicator.direction = direction
+	add_child(new_direction_indicator)
+	new_direction_indicator.initialize()
+	
+	handles.append({
+		handle = new_scale_handle,
+		direction_indicator = new_direction_indicator,
+	})
 
 func _create_scale_handles():
 	if left_extendable:
@@ -220,26 +234,39 @@ func _create_scale_handles():
 func _update_scale_handles():
 	var center = get_center()
 	var dimensions = get_dimensions()
-	for handle in handles:
+	for handle_info in handles:
+		var handle = handle_info["handle"]
 		var direction = handle.direction
-		if direction == Direction.LEFT:
-			handle.position = center - Vector2(dimensions.x / 2, 0)
-		elif direction == Direction.RIGHT:
-			handle.position = center + Vector2(dimensions.x / 2, 0)
-		elif direction == Direction.UP:
-			handle.position = center - Vector2(0, dimensions.y / 2)
-		elif direction == Direction.DOWN:
-			handle.position = center + Vector2(0, dimensions.y / 2)
+		var handle_position = center + Util.direction_to_vector(direction) * (dimensions/2)
+		handle.position = round(handle_position) 
 		
-		handle.position = round(handle.position)
+		var direction_indicator = handle_info["direction_indicator"]
+		direction_indicator.is_held = handle.is_held
 
 func _hide_scale_handles():
 	for handle in handles:
-		handle.hide_handle()
+		handle["handle"].hide_handle()
 
 func _show_scale_handles():
 	for handle in handles:
-		handle.show_handle()
+		handle["handle"].show_handle()
+
+func retract_direction_indicator():
+	for handle in handles:
+		handle["direction_indicator"].retract_indicator()
+
+func extend_direction_indicator():
+	for handle in handles:
+		handle["direction_indicator"].extend_indicator()
+
+func hide_direction_indicator():
+	for handle in handles:
+		handle["direction_indicator"].hide_indicator()
+
+func show_direction_indicator():
+	for handle in handles:
+		handle["direction_indicator"].show_indicator()
+
 
 ################################################
 
@@ -260,14 +287,13 @@ func _ready():
 	_hide_scale_handles()
 	
 	update_dimensions()
+	BlockManagerAutoload.register_block(self)
 
 func _process(delta):
 	if Engine.is_editor_hint():
 		return
 	
 	$CenterIndicator.play(animation) 
-	_update_scale_handles()
-	_update_sprite()
 
 func _physics_process(delta):
 	if Engine.is_editor_hint():
@@ -291,19 +317,22 @@ func _physics_process(delta):
 	
 	if not static_block:
 		move_and_slide()
+	
+	_update_scale_handles()
+	_update_sprite()
 
 func _on_click_area_clicked():
-	if block_manager.can_select(self):
-		block_manager.new_selection_candidate(self)
+	if BlockManagerAutoload.can_select(self):
+		BlockManagerAutoload.new_selection_candidate(self)
 
 func _on_un_click_area_clicked_outside_area():
 	unselect()
 
 func _on_scale_handle_start_drag(handle: ScaleHandle, direction: Direction):
-	block_manager.start_drag()
+	BlockManagerAutoload.start_drag()
 
 func _on_scale_handle_end_drag(handle: ScaleHandle, direction: Direction):
-	block_manager.end_drag()
+	BlockManagerAutoload.end_drag()
 
 func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 	var pos_diff = Vector2i(get_global_mouse_position() - global_position)
