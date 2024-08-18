@@ -124,7 +124,7 @@ func update_dimensions():
 	click_area.position = child_pos
 	update_sprite_size(child_pos, dim)
 
-func update_sprite_size(pos, dimensions):
+func update_sprite_size(_pos, dimensions):
 	var nine_patch: NinePatchRect = $NinePatch
 	nine_patch.position = round(get_center() - dimensions/2)
 	nine_patch.size = round(dimensions)
@@ -175,12 +175,11 @@ func _update_animation():
 	var dim = get_dimensions()
 	var size = dim.x * dim.y
 	var old_animation = animation
-	if size <= 4*16*16:
-		if not is_selected:
-			animation = "sleeping"
-		else:
-			animation = "poker"
 	
+	if not is_selected:
+		animation = "sleeping"
+	elif size <= 4*16*16:
+		animation = "poker"
 	elif size <= 6*16*16:
 		animation = "fat"
 	else:
@@ -189,10 +188,10 @@ func _update_animation():
 	if sleep_particles:
 		sleep_particles.emitting = (animation == "sleeping")
 
-func _create_scale_handle(direction: Direction, name: String):
+func _create_scale_handle(direction: Direction, handle_name: String):
 	var new_scale_handle: ScaleHandle = scale_handle.instantiate()
 	new_scale_handle.block = self
-	new_scale_handle.name = name
+	new_scale_handle.name = handle_name
 	new_scale_handle.direction = direction
 	new_scale_handle.z_index = 10
 	
@@ -240,8 +239,8 @@ func _update_scale_handles():
 		var handle_position = center + Util.direction_to_vector(direction) * (dimensions/2)
 		handle.position = round(handle_position) 
 		
-		var direction_indicator = handle_info["direction_indicator"]
-		direction_indicator.is_held = handle.is_held
+		var indicator = handle_info["direction_indicator"]
+		indicator.is_held = handle.is_held
 
 func _hide_scale_handles():
 	for handle in handles:
@@ -293,7 +292,7 @@ func _process(delta):
 	if Engine.is_editor_hint():
 		return
 	
-	$CenterIndicator.play(animation) 
+	$CenterIndicator.play(animation)
 
 func _physics_process(delta):
 	if Engine.is_editor_hint():

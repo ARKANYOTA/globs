@@ -1,10 +1,10 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://d1obvum2g2cax"]
 
-[ext_resource type="Texture2D" uid="uid://bwtyjhpnl076x" path="res://assets/images/ui/ui_frame.png" id="1_sko6k"]
+[ext_resource type="Texture2D" uid="uid://c5jjuyqc1ngqk" path="res://assets/images/ui/ui_frame2.png" id="1_xymme"]
 
 [resource]
-texture = ExtResource("1_sko6k")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
+texture = ExtResource("1_xymme")
+texture_margin_left = 8.0
+texture_margin_top = 1.0
+texture_margin_right = 8.0
+texture_margin_bottom = 5.0

@@ -44,7 +44,7 @@ func _input(event):
 		is_held = false
 		end_drag.emit()
 
-func _process(delta):
+func _process(_delta):
 	if Engine.is_editor_hint():
 		return
 	

@@ -40,7 +40,7 @@ func _update_extend_values():
 
 func _update_base_and_final_offsets():
 	var offset = Util.direction_to_vector(direction)
-	base_indicator_pos = offset * (extend_value + 4)
+	base_indicator_pos = offset * (extend_value + 1)
 	final_indicator_pos = offset * extend_range.y
 
 func retract_indicator():
