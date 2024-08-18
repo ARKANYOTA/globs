@@ -197,7 +197,6 @@ tile_set = SubResource("TileSet_hoxn1")
 
 [node name="Block" parent="." instance=ExtResource("3_ujetv")]
 position = Vector2(120, 152)
-is_gravity_enabled = true
 is_main_character = true
 up_extendable = true
 down_extendable = true
