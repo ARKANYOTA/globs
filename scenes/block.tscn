@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bxmyi1g5jjvs3"]
+[gd_scene load_steps=64 format=3 uid="uid://bxmyi1g5jjvs3"]
 
 [ext_resource type="Script" path="res://scripts/block.gd" id="1_eflyf"]
 [ext_resource type="PackedScene" path="res://scenes/block_occluder.tscn" id="2_doa3v"]
@@ -12,7 +12,15 @@
 [ext_resource type="Texture2D" uid="uid://d1sgc6ft8ejni" path="res://assets/images/particle/z.png" id="9_ortey"]
 [ext_resource type="AudioStream" uid="uid://cap752scuhqfu" path="res://assets/sounds/select_block_2.ogg" id="12_ai6ur"]
 [ext_resource type="AudioStream" uid="uid://bb2yl7fhkkfol" path="res://assets/sounds/select_block_3.ogg" id="13_a0xqu"]
-[ext_resource type="AudioStream" uid="uid://bd0ykgemykmyk" path="res://assets/sounds/block_slide.wav" id="13_rj0j7"]
+[ext_resource type="AudioStream" uid="uid://cvufaeconynvl" path="res://assets/sounds/block_slide_2.ogg" id="14_q66xx"]
+[ext_resource type="AudioStream" uid="uid://dupcbk7m22jel" path="res://assets/sounds/block_slide_3.ogg" id="15_46o33"]
+[ext_resource type="AudioStream" uid="uid://hucibo0h16vo" path="res://assets/sounds/block_slide_4.ogg" id="16_88ie2"]
+[ext_resource type="AudioStream" uid="uid://c7gvqfdo7amh0" path="res://assets/sounds/block_slide_5.ogg" id="17_6bhma"]
+[ext_resource type="AudioStream" uid="uid://ce2i6i6icuswi" path="res://assets/sounds/block_slide_6.ogg" id="18_mohyl"]
+[ext_resource type="AudioStream" uid="uid://cxf5wc63ckjr6" path="res://assets/sounds/block_slide_7.ogg" id="19_lofe6"]
+[ext_resource type="AudioStream" uid="uid://dc5fvjp4rau11" path="res://assets/sounds/block_slide_8.ogg" id="20_2e4p3"]
+[ext_resource type="AudioStream" uid="uid://cbf0ppbe11vic" path="res://assets/sounds/block_slide_9.ogg" id="21_qqjdx"]
+[ext_resource type="AudioStream" uid="uid://dxlaa4uuruyow" path="res://assets/sounds/block_slide_10.ogg" id="22_v3oyb"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nbgqd"]
 resource_local_to_scene = true
@@ -319,9 +327,17 @@ stream_0/stream = ExtResource("12_ai6ur")
 stream_1/stream = ExtResource("13_a0xqu")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_avj4k"]
-random_pitch = 1.5
-streams_count = 1
-stream_0/stream = ExtResource("13_rj0j7")
+random_pitch = 1.1
+streams_count = 9
+stream_0/stream = ExtResource("14_q66xx")
+stream_1/stream = ExtResource("15_46o33")
+stream_2/stream = ExtResource("16_88ie2")
+stream_3/stream = ExtResource("17_6bhma")
+stream_4/stream = ExtResource("18_mohyl")
+stream_5/stream = ExtResource("19_lofe6")
+stream_6/stream = ExtResource("20_2e4p3")
+stream_7/stream = ExtResource("21_qqjdx")
+stream_8/stream = ExtResource("22_v3oyb")
 
 [node name="Block" type="CharacterBody2D"]
 collision_layer = 2
@@ -395,7 +411,6 @@ volume_db = 5.0
 
 [node name="SlideAudio" type="AudioStreamPlayer2D" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_avj4k")
-volume_db = 6.0
 
 [connection signal="clicked_outside_area" from="UnClickArea" to="." method="_on_un_click_area_clicked_outside_area"]
 [connection signal="clicked" from="ClickArea" to="." method="_on_click_area_clicked"]

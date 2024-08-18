@@ -83,7 +83,34 @@ var direction_indicator: PackedScene = load("res://scenes/direction_indicator.ts
 var animation = "o_face"
 var is_asleep := false
 
+var extent_targets = {
+	"left" = left_extend_value,
+	"right" = right_extend_value,
+	"up" = up_extend_value,
+	"down" = down_extend_value,
+}
+
 ################################################
+
+func get_extend_value(direction: Direction):
+	if direction == Direction.LEFT:
+		return left_extend_value
+	elif direction == Direction.RIGHT:
+		return right_extend_value
+	elif direction == Direction.UP:
+		return up_extend_value
+	elif direction == Direction.DOWN:
+		return down_extend_value
+
+func set_extend_value(direction: Direction, value):
+	if direction == Direction.LEFT:
+		left_extend_value = value
+	elif direction == Direction.RIGHT:
+		right_extend_value = value
+	elif direction == Direction.UP:
+		up_extend_value = value
+	elif direction == Direction.DOWN:
+		down_extend_value = value
 
 func expand(direction: Direction, amount: int):
 	if direction == Direction.RIGHT:
@@ -346,20 +373,27 @@ func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 	pos_diff = round((Vector2(pos_diff) + Vector2(8, 8)) / 16) * 16 - Vector2(8, 8)
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	
+	var val: float
+	var tween_property = ""
 	if direction == Direction.LEFT:
-		var val = abs(min(0, pos_diff.x))
-		tween.tween_property(self, "left_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
+		val = abs(min(0, pos_diff.x))
+		tween_property = "left_extend_value"
 	elif direction == Direction.RIGHT:
-		var val = max(0, pos_diff.x)
-		tween.tween_property(self, "right_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
+		val = max(0, pos_diff.x)
+		tween_property = "right_extend_value"
 	elif direction == Direction.UP:
-		var val = abs(min(0, pos_diff.y))
-		tween.tween_property(self, "up_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
+		val = abs(min(0, pos_diff.y))
+		tween_property = "up_extend_value"
 	elif direction == Direction.DOWN:
-		var val = max(0, pos_diff.y)
-		tween.tween_property(self, "down_extend_value", val, 0.3).set_ease(Tween.EASE_OUT)
+		val = max(0, pos_diff.y)
+		tween_property = "down_extend_value"
 	
-	if not slide_audio.is_playing():
-		slide_audio.play()
+	var old_val = extent_targets[Util.direction_to_string(direction)]
+	extent_targets[Util.direction_to_string(direction)] = val
+	
+	if tween_property != "" and not is_equal_approx(old_val, val):
+		tween.tween_property(self, tween_property, val, 0.3).set_ease(Tween.EASE_OUT)
+		if not slide_audio.is_playing():
+			slide_audio.play()
 	
 	_update_scale_handles()
