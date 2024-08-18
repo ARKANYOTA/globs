@@ -7,7 +7,7 @@
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2mys"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vncg"]
 size = Vector2(80, 48)
 
 [node name="Block2" instance=ExtResource("1_xdr48")]
@@ -26,7 +26,7 @@ axis_stretch_horizontal = 0
 axis_stretch_vertical = 2
 
 [node name="CollisionShape" parent="." index="2"]
-shape = SubResource("RectangleShape2D_d2mys")
+shape = SubResource("RectangleShape2D_3vncg")
 
 [node name="CenterIndicator" parent="." index="5"]
 frame = 0
