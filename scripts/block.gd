@@ -568,6 +568,9 @@ func set_is_falling_to_false():
 func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 	if is_moving:
 		return
+	
+	if not is_selected:
+		return
 
 	var variation = get_variation(direction)
 	if abs(variation) < 8:
