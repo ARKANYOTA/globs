@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/level_select.gd" id="1_jxoum"]
 [ext_resource type="Script" path="res://scripts/grid_container.gd" id="3_6yjuw"]
 [ext_resource type="Texture2D" uid="uid://baupic3tgrmb3" path="res://assets/images/spritesheet/fromage_sprite_sheet.png" id="3_gnrl0"]
-[ext_resource type="PackedScene" uid="uid://bpqekaydn06nf" path="res://scenes/scene_transition.tscn" id="3_vqf57"]
+[ext_resource type="PackedScene" uid="uid://bec4pda6oux5s" path="res://scenes/scene_transition.tscn" id="3_vqf57"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_as84n"]
 tile_data = PackedInt32Array(0, 262144, 4, 65536, 196608, 2, 1, 196608, 2, 65537, 262144, 4)
@@ -102,11 +102,11 @@ tile_set = SubResource("TileSet_mg37k")
 [node name="SceneTransition" parent="." instance=ExtResource("3_vqf57")]
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 8.0
 offset_top = 13.0
-offset_right = 220.0
+offset_right = 320.0
 offset_bottom = 81.0
-columns = 6
+size_flags_vertical = 0
+columns = 9
 script = ExtResource("3_6yjuw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
