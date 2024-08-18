@@ -89,6 +89,7 @@ var direction_indicator: PackedScene = load("res://scenes/direction_indicator.ts
 
 var animation = "o_face"
 var is_asleep := false
+var is_moving := false
 
 ################################################
 
@@ -214,9 +215,9 @@ func print_grid(grid):
 			l += c
 		print(l)
 
-func get_grid():
+func get_map_data() -> Array:
 	var grid := []
-	var block_id = 0
+	var blocks := []
 	
 	for node in get_all_tree_nodes():
 		if node is TileMapLayer:
@@ -242,8 +243,8 @@ func get_grid():
 		if node is Block:
 			var id = -1
 			if not node.static_block:
-				id = block_id
-				block_id += 1
+				id = blocks.size()
+				blocks.append(node)
 			var rect = node.get_grid_rect()
 			var ymin = rect.position.y
 			var ymax = rect.position.y + rect.size.y
@@ -255,7 +256,7 @@ func get_grid():
 					if y < 0 or y >= len(grid) or x < 0 or y >= len(grid[y]):
 						continue
 					grid[y][x] = id
-	return grid
+	return [grid, blocks]
 
 func left(direction):
 	return Vector2i(direction.y, -direction.x)
@@ -263,27 +264,36 @@ func left(direction):
 func right(direction):
 	return Vector2i(-direction.y, direction.x)
 
-func can_move(grid: Array, x: int, y: int, direction: Vector2i) -> bool:
+func get_moved_blocks(grid: Array, x: int, y: int, direction: Vector2i, moved_blocks: Array) -> Array:
 	if y < 0 or y >= len(grid) or x < 0 or x >= len(grid[y]):
-		return false
+		return []
 	
 	if grid[y][x] == -2:
-		return true
+		return moved_blocks
 	if grid[y][x] == -1:
-		return false
+		return []
 
 	var val = grid[y][x]
 	grid[y][x] = -2
+
+	if not val in moved_blocks:
+		moved_blocks.append(val)
 	
 	var left_dir = left(direction)
-	if grid[y + left_dir.y][x + left_dir.x] == val and not can_move(grid, x + left_dir.x, y + left_dir.y, direction):
-		return false
+	if grid[y + left_dir.y][x + left_dir.x] == val:
+		var mov = get_moved_blocks(grid, x + left_dir.x, y + left_dir.y, direction, moved_blocks)
+		if mov.is_empty():
+			return []
+		moved_blocks = mov
 	
 	var right_dir = right(direction)
-	if grid[y + right_dir.y][x + right_dir.x] == val and not can_move(grid, x + right_dir.x, y + right_dir.y, direction):
-		return false
+	if grid[y + right_dir.y][x + right_dir.x] == val:
+		var mov = get_moved_blocks(grid, x + right_dir.x, y + right_dir.y, direction, moved_blocks)
+		if mov.is_empty():
+			return []
+		moved_blocks = mov
 	
-	return can_move(grid, x + direction.x, y + direction.y, direction)
+	return get_moved_blocks(grid, x + direction.x, y + direction.y, direction, moved_blocks)
 
 func get_pos(direction: Direction) -> Vector2i:
 	var rect = get_grid_rect()
@@ -302,42 +312,56 @@ func get_opposite_direction(direction: Direction) -> Direction:
 		return Direction.DOWN
 	return Direction.UP
 
-func check_move_block(grid: Array, dir: Direction) -> bool:
+func check_move_block(grid: Array, dir: Direction) -> Array:
 	var direction = dir_map[dir]
 	var rect = get_grid_rect()
 	var pos = get_pos(dir)
+	var moved_blocks := [-1]
 
 	if dir == Direction.DOWN or dir == Direction.UP:
 		for x in range(rect.size.x):
-			if not can_move(grid, pos.x + x + direction.x, pos.y + direction.y, direction):
-				return false
+			moved_blocks = get_moved_blocks(grid, pos.x + x + direction.x, pos.y + direction.y, direction, moved_blocks)
+			if moved_blocks.is_empty():
+				return []
 	if dir == Direction.LEFT or dir == Direction.RIGHT:
 		for y in range(rect.size.y):
-			if not can_move(grid, pos.x + direction.x, pos.y + y + direction.y, direction):
-				return false
-	return true
+			moved_blocks = get_moved_blocks(grid, pos.x + direction.x, pos.y + y + direction.y, direction, moved_blocks)
+			if moved_blocks.is_empty():
+				return []
+	return moved_blocks
+
+func get_elements_by_id(blocks: Array, ids: Array) -> Array:
+	var ans := []
+	for id in ids:
+		if id == -1:
+			ans.append(self)
+		else:
+			ans.append(blocks[id])
+	return ans
 
 
-func check_movements(dir: Direction) -> bool:
-	var grid = get_grid()
-	if check_move_block(grid, dir):
-		return true
+func check_movements(dir: Direction) -> Array: # value 0: moved_blocks and value 1: is opposite direction
+	var map_data = get_map_data() # Value 0: Block and1value  :Grid
+	var moved_blocks = get_elements_by_id(map_data[1], check_move_block(map_data[0], dir))
+
+	if not moved_blocks.is_empty():
+		return [moved_blocks, false]
 	
-	if not static_block and check_move_block(grid, get_opposite_direction(dir)):
-		return true
-
-	return false
-
-func is_moving(dir: Direction) -> bool:
-	var val = left_extend_value
-	if dir == Direction.RIGHT:
-		val = right_extend_value
-	if dir == Direction.UP:
-		val = up_extend_value
-	if dir == Direction.DOWN:
-		val = down_extend_value
+	if not static_block:
+		moved_blocks = get_elements_by_id(map_data[1], check_move_block(map_data[0], get_opposite_direction(dir)))
 	
-	return fmod(val + 8, 16) != 0
+	return [moved_blocks, true]
+
+# func is_moving(dir: Direction) -> bool:
+# 	var val = left_extend_value
+# 	if dir == Direction.RIGHT:
+# 		val = right_extend_value
+# 	if dir == Direction.UP:
+# 		val = up_extend_value
+# 	if dir == Direction.DOWN:
+# 		val = down_extend_value
+# 	
+# 	return fmod(val + 8, 16) != 0
 
 func get_variation(dir: Direction) -> float:
 	var pos_diff = get_global_mouse_position() - global_position
@@ -350,6 +374,17 @@ func get_variation(dir: Direction) -> float:
 	if dir == Direction.DOWN:
 		return pos_diff.y - down_extend_value
 	return -1
+
+
+func can_extend(dir: Direction):
+	if dir == Direction.LEFT:
+		return left_extend_value < left_extend_range.y
+	if dir == Direction.RIGHT:
+		return right_extend_value < right_extend_range.y
+	if dir == Direction.UP:
+		return up_extend_value < up_extend_range.y
+	if dir == Direction.DOWN:
+		return down_extend_value < down_extend_range.y
 
 ################################################
 
@@ -496,24 +531,24 @@ func _physics_process(delta):
 	if Engine.is_editor_hint():
 		return
 	
-	velocity.x /= 2
-	if is_gravity_enabled:
-		if not is_on_floor():
-			velocity += get_gravity() * delta
-		
-		const rot_speed = 0.1
-		var alpha = fmod(fmod(angle, 90) + 90, 90)
-		
-		if is_on_floor() and alpha != 0:
-			if alpha < 45:
-				angle -= alpha * rot_speed
-			else:
-				angle += alpha * rot_speed
-	else:
-		velocity.y /= 2
+	# velocity.x /= 2
+	# if is_gravity_enabled:
+	# 	if not is_on_floor():
+	# 		velocity += get_gravity() * delta
+	# 	
+	# 	const rot_speed = 0.1
+	# 	var alpha = fmod(fmod(angle, 90) + 90, 90)
+	# 	
+	# 	if is_on_floor() and alpha != 0:
+	# 		if alpha < 45:
+	# 			angle -= alpha * rot_speed
+	# 		else:
+	# 			angle += alpha * rot_speed
+	# else:
+	# 	velocity.y /= 2
 	
-	if not static_block:
-		move_and_slide()
+	# if not static_block:
+	# 	move_and_slide()
 	
 	_update_scale_handles()
 	_update_sprite()
@@ -531,8 +566,11 @@ func _on_scale_handle_start_drag(handle: ScaleHandle, direction: Direction):
 func _on_scale_handle_end_drag(handle: ScaleHandle, direction: Direction):
 	BlockManagerAutoload.end_drag()
 
+func set_is_moving_to_false():
+	is_moving = false 
+
 func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
-	if is_moving(direction):
+	if is_moving:
 		return
 
 	var variation = get_variation(direction)
@@ -543,37 +581,82 @@ func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 		variation = 16
 	else:
 		variation = -16
+
+	var extend = can_extend(direction)
+
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+	var tween_transition = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	
 	var val: float
 	var tween_property = ""
+	var movements: Array = []
+	var reverse := false
 	if direction == Direction.LEFT:
-		if variation < 0 && not check_movements(direction):
-			return
+		if variation < 0:
+			var check = check_movements(direction)
+			movements = check[0]
+			reverse = check[1]
+			if not extend or movements.is_empty():
+				return
 		val = left_extend_value - variation
 		tween_property = "left_extend_value"
 
 	elif direction == Direction.RIGHT:
-		if variation > 0 && not check_movements(direction):
-			return
+		if variation > 0:
+			var check = check_movements(direction)
+			movements = check[0]
+			reverse = check[1]
+			if not extend or movements.is_empty():
+				return
 		val = right_extend_value + variation
 		tween_property = "right_extend_value"
 
 	elif direction == Direction.UP:
-		if variation < 0 && not check_movements(direction):
-			return
+		if variation < 0:
+			var check = check_movements(direction)
+			movements = check[0]
+			reverse = check[1]
+			if not extend or movements.is_empty():
+				return
 		val = up_extend_value - variation
 		tween_property = "up_extend_value"
 
 	elif direction == Direction.DOWN:
-		if variation > 0 && not check_movements(direction):
-			return
+		if variation > 0:
+			var check = check_movements(direction)
+			movements = check[0]
+			reverse = check[1]
+			if not extend or movements.is_empty():
+				return
 		
 		val = down_extend_value + variation
 		tween_property = "down_extend_value"
 	
+	is_moving = true
+
+	for i in range(int(not reverse), len(movements)):
+		var move_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+		var mul = -1 if reverse else 1
+		if direction == Direction.RIGHT:
+			move_tween.tween_property(movements[i], "position", movements[i].position + Vector2(mul * 16, 0), 0.3).set_ease(Tween.EASE_OUT)
+		if direction == Direction.LEFT:
+			move_tween.tween_property(movements[i], "position", movements[i].position + Vector2(mul * -16, 0), 0.3).set_ease(Tween.EASE_OUT)
+		if direction == Direction.DOWN:
+			move_tween.tween_property(movements[i], "position", movements[i].position + Vector2(0, mul * 16), 0.3).set_ease(Tween.EASE_OUT)
+		if direction == Direction.UP:
+			move_tween.tween_property(movements[i], "position", movements[i].position + Vector2(0, mul * -16), 0.3).set_ease(Tween.EASE_OUT)
+
 	if tween_property != "":
 		tween.tween_property(self, tween_property, val, 0.3).set_ease(Tween.EASE_OUT)
 		slide_audio.play()
+
 	
+		
+	# actualisaliser la gravité de touts le block en partant du bas vers le haut
+	# si gravité a faire:
+		# actualiser la gravité:
+		# is moving = false
+	# else:
+	# 	tween_transition.tween_callback(set_is_moving_to_false).set_delay(0.31)
+	tween_transition.tween_callback(set_is_moving_to_false).set_delay(0.31)
 	_update_scale_handles()

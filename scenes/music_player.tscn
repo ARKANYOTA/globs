@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://x3xrm4cf0on4"]
+
+[ext_resource type="Script" path="res://scripts/music_player.gd" id="1_8kar4"]
+[ext_resource type="AudioStream" uid="uid://cidrqek3wmmd3" path="res://assets/sounds/music/music_cheese_world.mp3" id="1_owo1q"]
+
+[node name="MusicPlayer" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_8kar4")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_owo1q")
+volume_db = -10.0
+bus = &"Music"
+parameters/looping = true
