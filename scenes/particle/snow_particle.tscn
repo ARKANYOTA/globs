@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://y3nsqm2pc0s7"]
+
+[node name="SnowParticle" type="CPUParticles2D"]
+position = Vector2(0, 24)
+rotation = 1.5708
+amount = 80
+lifetime = 3.0
+speed_scale = 0.4
+lifetime_randomness = 0.56
+emission_shape = 3
+emission_rect_extents = Vector2(180, 1)
+spread = 73.87
+gravity = Vector2(150, 10)
+initial_velocity_max = 56.6
+linear_accel_max = 20.0
+tangential_accel_min = 10.0
+tangential_accel_max = 10.0
+scale_amount_max = 2.0

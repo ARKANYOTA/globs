@@ -21,6 +21,8 @@ SceneTransitionAutoLoad="*res://scripts/autoload/scene_transition_auto_load.gd"
 LevelData="*res://scripts/autoload/level_data.gd"
 PauseMenuAutoload="*res://scripts/autoload/pause_menu_autoload.gd"
 BlockManagerAutoload="*res://scripts/autoload/block_manager_autoload.gd"
+GameManager="*res://scripts/autoload/game_manager.gd"
+Util="*res://scripts/autoload/util.gd"
 
 [display]
 
@@ -28,6 +30,8 @@ window/size/viewport_width=320
 window/size/viewport_height=180
 window/size/mode=2
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://assets/images/ui/cursor.png"
+mouse_cursor/custom_image_hotspot=Vector2(1, 1)
 
 [input]
 

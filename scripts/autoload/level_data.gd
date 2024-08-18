@@ -1,25 +1,60 @@
 extends Node
 
-var levels = {
-	1: { "name": "1", "scene": "res://scenes/levels/level_1.tscn"},
-	2: { "name": "2", "scene": "res://scenes/scene_2.tscn"},
-	3: { "name": "You Win", "scene": "res://scenes/levels/you_win.tscn"},
-}
+var levels = [
+	{ "name": "1-1", "scene": "res://scenes/levels/level_100_intro.tscn"},
+	{ "name": "1-1", "scene": "res://scenes/levels/level_110_push.tscn"},
+	{ "name": "1-1", "scene": "res://scenes/levels/level_120_support.tscn"},
+	{ "name": "1-1", "scene": "res://scenes/levels/level_140_only_red_wins.tscn"},
 
-var level = 1
+	{ "name": "2-1", "scene": "res://scenes/levels/world_2/level_10_0.tscn"},
+	{ "name": "2-2", "scene": "res://scenes/levels/world_2/level_11_beta.tscn"},
+	{ "name": "2-3", "scene": "res://scenes/levels/world_2/level_12.tscn"},
+	{ "name": "2-4", "scene": "res://scenes/levels/world_2/level_13.tscn"},
+	{ "name": "2-5", "scene": "res://scenes/levels/world_2/level_14.tscn"},
+	{ "name": "2-6", "scene": "res://scenes/levels/world_2/level_14_bis.tscn"},
+	{ "name": "2-7", "scene": "res://scenes/levels/world_2/level_15.tscn"},
+
+	{ "name": "3-1", "scene": "res://scenes/levels/world_3/level_0.tscn"},
+	{ "name": "3-2", "scene": "res://scenes/levels/world_3/level_0_1.tscn"},
+	{ "name": "3-3", "scene": "res://scenes/levels/world_3/level_1.tscn"},
+	
+	# { "name": "Gumi & Rodo", "scene": "res://scenes/levels/world_2/level_10_0.tscn"},
+	# { "name": "Rise together", "scene": "res://scenes/levels/world_2/level_11_beta.tscn"},
+	# { "name": "To the star", "scene": "res://scenes/levels/world_2/level_12.tscn"},
+	# { "name": "Return the favor", "scene": "res://scenes/levels/world_2/level_13.tscn"},
+	# { "name": "Soft landing", "scene": "res://scenes/levels/world_2/level_13.tscn"},
+
+	{ "name": "You Win", "scene": "res://scenes/levels/you_win.tscn"},
+]
+
+var names = [
+	"Introduction 1-1",
+	"1-2",
+	"1-3",
+	"1-4",
+	"2-1",
+	"2-2",
+	"2-3",
+	"2-4",
+	"2-5",
+]
+
+var level = 0
 
 func increment_level() -> void:
 	level += 1
-	if level > len(levels):
+	if level >= len(levels):
 		level = len(levels)
 	save_level_data()
 
 func increment_level_and_change_scene() -> void:
+	BlockManagerAutoload.block_manager_instance.end_drag()
 	increment_level()
 	var scene_path = levels[level]["scene"]
 	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
 
 func reload_scene() -> void:
+	BlockManagerAutoload.block_manager_instance.end_drag()
 	var scene_path = levels[level]["scene"]
 	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
 

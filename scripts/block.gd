@@ -27,17 +27,17 @@ const dir_map = [
 			is_gravity_enabled = false
 		_update_sprite()
 
-@export var is_target := false:
+@export var is_main_character := false:
 	set(value):
-		is_target = value
+		is_main_character = value
 		_update_sprite()
 
 @export var rotatable: bool = false
 @export_range(-360, 360) var angle: float = 0:
 	set(value):
 		angle = value
-		$CollisionShape.rotation_degrees = value
-		$Sprite.rotation_degrees = value
+		#$CollisionShape.rotation_degrees = value
+		#$Sprite.rotation_degrees = value
 
 @export var scale_max_speed : float = 1.5
 
@@ -76,15 +76,17 @@ const dir_map = [
 ################################################
 
 @onready var main := get_node("/root/Main")
-@onready var block_manager: BlockManager = get_node("/root/BlockManagerAutoload/BlockManager")
-@onready var label := $Label
+@onready var sleep_particles: CPUParticles2D = $Sleep/SleepParticles
 
 var is_hovered := false
 var is_selected := false
-var handles: Array[ScaleHandle] = []
+var handles: Array = []
+var direction_indicators: Array[Sprite2D] = []
 var scale_handle: PackedScene = load("res://scenes/scale_handle.tscn")
+var direction_indicator: PackedScene = load("res://scenes/direction_indicator.tscn")
 
 var animation = "o_face"
+var is_asleep := false
 
 ################################################
 
@@ -106,6 +108,8 @@ func update_dimensions():
 	var click_area_collision_shape = $ClickArea/ClickAreaCollisionShape
 	var unclick_area_collision_shape = $UnClickArea/ClickAreaCollisionShape
 	var shape = collision_shape.shape
+	var light_occ : LightOccluder2D = $BlockOccluder
+
 	if shape is not RectangleShape2D:
 		print("$CollisionShape.shape is not a RectangleShape2D")
 		return
@@ -113,20 +117,15 @@ func update_dimensions():
 	# Update size
 	shape.size = dim
 	click_area_collision_shape.shape.size = dim
+	if light_occ != null:
+		light_occ.occluder.polygon = [Vector2(-dim.x/2, -dim.y/2), Vector2(dim.x/2, -dim.y/2), Vector2(dim.x/2, dim.y/2), Vector2(-dim.x/2, dim.y/2)]
 	unclick_area_collision_shape.shape.size = dim + Vector2(8, 8)
-	
-	# Update animation
-	var size = dim.x * dim.y
-	if size <= 24 * 24:
-		animation = "scared"
-	elif size <= 64 * 64:
-		animation = "o_face"
-	else:
-		animation = "fat"
 	
 	# Update position
 	var child_pos: Vector2 = Vector2(-left_extend_value + right_extend_value,
 									 -up_extend_value   + down_extend_value) / 2
+	if light_occ != null:
+		light_occ.position = child_pos
 	collision_shape.position = child_pos
 	unclick_area_collision_shape.position = child_pos
 	click_area.position = child_pos
@@ -143,7 +142,8 @@ func select():
 	
 	is_selected = true
 	_show_scale_handles()
-	block_manager.on_select_block(self)
+	extend_direction_indicator()
+	BlockManagerAutoload.on_select_block(self)
 
 func unselect():
 	if not is_selected:
@@ -151,7 +151,8 @@ func unselect():
 	
 	is_selected = false
 	_hide_scale_handles()
-	block_manager.on_unselect_block(self)
+	retract_direction_indicator()
+	BlockManagerAutoload.on_unselect_block(self)
 
 func get_dimensions():
 	return Vector2(left_extend_value + right_extend_value, up_extend_value + down_extend_value)
@@ -304,19 +305,42 @@ func check_movements(dir: Direction) -> bool:
 ################################################
 
 func _update_sprite():
+	# Update animation
+	_update_animation()
+	
+	# Change 9-patch sprite
 	var ninepatch: NinePatchRect = $NinePatch
-	if static_block: # Normal
-		ninepatch.region_rect.position.x = 16
-		ninepatch.region_rect.position.y = 80
+	if is_main_character: # Normal
+		ninepatch.region_rect.position = Vector2(0, 96)
+	elif static_block: # Normal
+		ninepatch.region_rect.position = Vector2(16, 80)
 	elif is_gravity_enabled: # Gravity
-		ninepatch.region_rect.position.x = 32
-		ninepatch.region_rect.position.y = 80
+		ninepatch.region_rect.position = Vector2(32, 80)
 	#else: # bleu
 		#ninepatch.region_rect.position.x = 0
 		#ninepatch.region_rect.position.y = 32
 
+func _update_animation():
+	var dim = get_dimensions()
+	var size = dim.x * dim.y
+	var old_animation = animation
+	if size <= 4*16*16:
+		if not is_selected:
+			animation = "sleeping"
+		else:
+			animation = "poker"
+	
+	elif size <= 6*16*16:
+		animation = "fat"
+	else:
+		animation = "scared"
+	
+	if sleep_particles:
+		sleep_particles.emitting = (animation == "sleeping")
+
 func _create_scale_handle(direction: Direction, name: String):
 	var new_scale_handle: ScaleHandle = scale_handle.instantiate()
+	new_scale_handle.block = self
 	new_scale_handle.name = name
 	new_scale_handle.direction = direction
 	new_scale_handle.z_index = 10
@@ -331,8 +355,18 @@ func _create_scale_handle(direction: Direction, name: String):
 		_on_scale_handle_dragged(new_scale_handle, direction)
 	)
 	add_child(new_scale_handle)
+	new_scale_handle.initialize()
 	
-	handles.append(new_scale_handle)
+	var new_direction_indicator = direction_indicator.instantiate()
+	new_direction_indicator.block = self
+	new_direction_indicator.direction = direction
+	add_child(new_direction_indicator)
+	new_direction_indicator.initialize()
+	
+	handles.append({
+		handle = new_scale_handle,
+		direction_indicator = new_direction_indicator,
+	})
 
 func _create_scale_handles():
 	if left_extendable:
@@ -349,26 +383,39 @@ func _create_scale_handles():
 func _update_scale_handles():
 	var center = get_center()
 	var dimensions = get_dimensions()
-	for handle in handles:
+	for handle_info in handles:
+		var handle = handle_info["handle"]
 		var direction = handle.direction
-		if direction == Direction.LEFT:
-			handle.position = center - Vector2(dimensions.x / 2, 0)
-		elif direction == Direction.RIGHT:
-			handle.position = center + Vector2(dimensions.x / 2, 0)
-		elif direction == Direction.UP:
-			handle.position = center - Vector2(0, dimensions.y / 2)
-		elif direction == Direction.DOWN:
-			handle.position = center + Vector2(0, dimensions.y / 2)
+		var handle_position = center + Util.direction_to_vector(direction) * (dimensions/2)
+		handle.position = round(handle_position) 
 		
-		handle.position = round(handle.position)
+		var direction_indicator = handle_info["direction_indicator"]
+		direction_indicator.is_held = handle.is_held
 
 func _hide_scale_handles():
 	for handle in handles:
-		handle.hide_handle()
+		handle["handle"].hide_handle()
 
 func _show_scale_handles():
 	for handle in handles:
-		handle.show_handle()
+		handle["handle"].show_handle()
+
+func retract_direction_indicator():
+	for handle in handles:
+		handle["direction_indicator"].retract_indicator()
+
+func extend_direction_indicator():
+	for handle in handles:
+		handle["direction_indicator"].extend_indicator()
+
+func hide_direction_indicator():
+	for handle in handles:
+		handle["direction_indicator"].hide_indicator()
+
+func show_direction_indicator():
+	for handle in handles:
+		handle["direction_indicator"].show_indicator()
+
 
 ################################################
 
@@ -389,13 +436,13 @@ func _ready():
 	_hide_scale_handles()
 	
 	update_dimensions()
+	BlockManagerAutoload.register_block(self)
 
 func _process(delta):
 	if Engine.is_editor_hint():
 		return
 	
-	$CenterIndicator.play(animation)
-	_update_scale_handles()
+	$CenterIndicator.play(animation) 
 
 func _physics_process(delta):
 	if Engine.is_editor_hint():
@@ -419,19 +466,22 @@ func _physics_process(delta):
 	
 	if not static_block:
 		move_and_slide()
+	
+	_update_scale_handles()
+	_update_sprite()
 
 func _on_click_area_clicked():
-	if block_manager.can_select(self):
-		block_manager.new_selection_candidate(self)
+	if BlockManagerAutoload.can_select(self):
+		BlockManagerAutoload.new_selection_candidate(self)
 
 func _on_un_click_area_clicked_outside_area():
 	unselect()
 
 func _on_scale_handle_start_drag(handle: ScaleHandle, direction: Direction):
-	block_manager.start_drag()
+	BlockManagerAutoload.start_drag()
 
 func _on_scale_handle_end_drag(handle: ScaleHandle, direction: Direction):
-	block_manager.end_drag()
+	BlockManagerAutoload.end_drag()
 
 func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 	var pos_diff = Vector2i(get_global_mouse_position() - global_position)

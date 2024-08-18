@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/click_area.gd" id="1_lsa4i"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvr13"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6l53"]
 size = Vector2(6, 6)
 
 [node name="ClickArea" type="Area2D"]
@@ -10,7 +10,7 @@ script = ExtResource("1_lsa4i")
 debug_color = Color(0, 0, 0, 1)
 
 [node name="ClickAreaCollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_cvr13")
+shape = SubResource("RectangleShape2D_p6l53")
 debug_color = Color(0.914239, 8.45176e-05, 0.716974, 0.42)
 
 [node name="Sprite" type="Sprite2D" parent="."]

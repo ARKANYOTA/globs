@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://baupic3tgrmb3"
-path="res://.godot/imported/fromage_world_sprite_sheet.png-9a3bcf4c86c4040102902ca74e1c4b68.ctex"
+uid="uid://dgmdhx10fde7n"
+path="res://.godot/imported/cursor_big.png-ea9b905b26a67ee91524cc93edb18fd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/spritesheet/fromage_world_sprite_sheet.png"
-dest_files=["res://.godot/imported/fromage_world_sprite_sheet.png-9a3bcf4c86c4040102902ca74e1c4b68.ctex"]
+source_file="res://assets/images/ui/cursor_big.png"
+dest_files=["res://.godot/imported/cursor_big.png-ea9b905b26a67ee91524cc93edb18fd7.ctex"]
 
 [params]
 
