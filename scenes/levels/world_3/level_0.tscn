@@ -289,6 +289,7 @@ left_extendable = true
 left_extend_range = Vector2i(8, 72)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
 rotation = 0.523599
 energy = 0.2
 shadow_enabled = true
