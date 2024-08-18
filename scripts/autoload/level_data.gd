@@ -2,9 +2,9 @@ extends Node
 
 var levels = [
 	{ "name": "1-1", "scene": "res://scenes/levels/level_100_intro.tscn"},
-	{ "name": "1-1", "scene": "res://scenes/levels/level_110_push.tscn"},
-	{ "name": "1-1", "scene": "res://scenes/levels/level_120_support.tscn"},
-	{ "name": "1-1", "scene": "res://scenes/levels/level_140_only_red_wins.tscn"},
+	{ "name": "1-2", "scene": "res://scenes/levels/level_110_push.tscn"},
+	{ "name": "1-3", "scene": "res://scenes/levels/level_120_support.tscn"},
+	{ "name": "1-4", "scene": "res://scenes/levels/level_140_only_red_wins.tscn"},
 
 	{ "name": "2-1", "scene": "res://scenes/levels/world_2/level_10_0.tscn"},
 	{ "name": "2-2", "scene": "res://scenes/levels/world_2/level_11_beta.tscn"},
@@ -17,13 +17,8 @@ var levels = [
 	{ "name": "3-1", "scene": "res://scenes/levels/world_3/level_0.tscn"},
 	# { "name": "3-2", "scene": "res://scenes/levels/world_3/level_0_1.tscn"},
 	{ "name": "3-2", "scene": "res://scenes/levels/world_3/level_1.tscn"},
-	
-	# { "name": "Gumi & Rodo", "scene": "res://scenes/levels/world_2/level_10_0.tscn"},
-	# { "name": "Rise together", "scene": "res://scenes/levels/world_2/level_11_beta.tscn"},
-	# { "name": "To the star", "scene": "res://scenes/levels/world_2/level_12.tscn"},
-	# { "name": "Return the favor", "scene": "res://scenes/levels/world_2/level_13.tscn"},
-	# { "name": "Soft landing", "scene": "res://scenes/levels/world_2/level_13.tscn"},
-
+	{ "name": "3-3", "scene": "res://scenes/levels/world_3/level_3.tscn"},
+	{ "name": "3-4", "scene": "res://scenes/levels/world_3/level_4.tscn"},
 	{ "name": "You Win", "scene": "res://scenes/levels/you_win.tscn"},
 ]
 
@@ -81,6 +76,12 @@ func load_level_data() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var volume_config = ConfigFile.new()
+	volume_config.load("user://volume.cfg")
+	var master_value = volume_config.get_value("volume", "Master", 1)
+	var music_value = volume_config.get_value("volume", "Music", 1)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(master_value))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(music_value))
 	pass # Replace with function body.
 
 
