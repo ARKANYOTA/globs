@@ -22,11 +22,22 @@ func can_select(block: Block):
 
 func on_select_block(block: Block):
 	selected_block_count += 1
-	
 	current_selected_block = block
+	
+	var root: Node = get_tree().get_root()
+	for child in root.get_children():
+		if child is Block:
+			if child != block:
+				child.hide_direction_indicator()
 
 func on_unselect_block(block: Block):
 	selected_block_count -= 1
+	
+	var root: Node = get_tree().get_root()
+	for child in root.get_children():
+		if child is Block:
+			if child != block:
+				child.show_direction_indicator()
 
 ##################################################
 

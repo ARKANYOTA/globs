@@ -5,21 +5,24 @@
 [ext_resource type="Texture2D" uid="uid://d3yvhibvybfbx" path="res://assets/images/ui/handle.png" id="3_kc6dc"]
 [ext_resource type="Texture2D" uid="uid://d28ls2t8m3y00" path="res://assets/images/ui/direction_indicator.png" id="4_67e2x"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fv3vm"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptctu"]
 size = Vector2(6, 6)
 
 [node name="ScaleHandle" instance=ExtResource("1_okygb")]
 script = ExtResource("2_a5u7l")
 direction = 0
+extend_range = Vector2i(0, 0)
+extend_value = 0.0
 size = Vector2i(6, 6)
 debug_color = Color(0.687518, 0.63562, 0, 0.5)
 
 [node name="ClickAreaCollisionShape" parent="." index="0"]
-shape = SubResource("RectangleShape2D_fv3vm")
+shape = SubResource("RectangleShape2D_ptctu")
 debug_color = Color(0.687518, 0.63562, 0, 0.5)
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource("3_kc6dc")
 
 [node name="DirectionIndicator" type="Sprite2D" parent="." index="2"]
+visible = false
 texture = ExtResource("4_67e2x")
