@@ -7,8 +7,8 @@
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pb1c"]
-size = Vector2(160, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejfkg"]
+size = Vector2(48, 16)
 
 [node name="Block4" instance=ExtResource("1_2h8e0")]
 
@@ -22,4 +22,4 @@ axis_stretch_horizontal = 0
 axis_stretch_vertical = 2
 
 [node name="CollisionShape" parent="." index="2"]
-shape = SubResource("RectangleShape2D_0pb1c")
+shape = SubResource("RectangleShape2D_ejfkg")
