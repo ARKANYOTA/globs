@@ -536,7 +536,7 @@ func _physics_process(delta):
 		if can_fall:
 			var gravity_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 			is_falling = true
-			gravity_tween.tween_property(self, "position", position + Vector2(0, 16), 0.3).set_ease(Tween.EASE_OUT)
+			gravity_tween.tween_property(self, "position:y", position.y + 16, 0.3).set_ease(Tween.EASE_OUT)
 			gravity_tween.tween_callback(set_is_falling_to_false)
 	
 	_update_scale_handles()
@@ -633,13 +633,13 @@ func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 		var move_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 		var mul = -1 if reverse else 1
 		if direction == Direction.RIGHT:
-			move_tween.tween_property(movements[i], "position", movements[i].position + Vector2(mul * 16, 0), 0.3).set_ease(Tween.EASE_OUT)
+			move_tween.tween_property(movements[i], "position:x", movements[i].position.x + mul * 16, 0.3).set_ease(Tween.EASE_OUT)
 		if direction == Direction.LEFT:
-			move_tween.tween_property(movements[i], "position", movements[i].position + Vector2(mul * -16, 0), 0.3).set_ease(Tween.EASE_OUT)
+			move_tween.tween_property(movements[i], "position:x", movements[i].position.x + mul * -16, 0.3).set_ease(Tween.EASE_OUT)
 		if direction == Direction.DOWN:
-			move_tween.tween_property(movements[i], "position", movements[i].position + Vector2(0, mul * 16), 0.3).set_ease(Tween.EASE_OUT)
+			move_tween.tween_property(movements[i], "position:y", movements[i].position.y + mul * 16, 0.3).set_ease(Tween.EASE_OUT)
 		if direction == Direction.UP:
-			move_tween.tween_property(movements[i], "position", movements[i].position + Vector2(0, mul * -16), 0.3).set_ease(Tween.EASE_OUT)
+			move_tween.tween_property(movements[i], "position:y", movements[i].position.y + mul * -16, 0.3).set_ease(Tween.EASE_OUT)
 
 	if tween_property != "":
 		tween.tween_property(self, tween_property, val, 0.3).set_ease(Tween.EASE_OUT)
