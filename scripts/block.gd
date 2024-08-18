@@ -90,13 +90,6 @@ var direction_indicator: PackedScene = load("res://scenes/direction_indicator.ts
 var animation = "o_face"
 var is_asleep := false
 
-var extent_targets = {
-	"left" = left_extend_value,
-	"right" = right_extend_value,
-	"up" = up_extend_value,
-	"down" = down_extend_value,
-}
-
 ################################################
 
 func get_extend_value(direction: Direction):
@@ -559,27 +552,27 @@ func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 			return
 		val = left_extend_value - variation
 		tween_property = "left_extend_value"
+
 	elif direction == Direction.RIGHT:
 		if variation > 0 && not check_movements(direction):
 			return
 		val = right_extend_value + variation
 		tween_property = "right_extend_value"
+
 	elif direction == Direction.UP:
 		if variation < 0 && not check_movements(direction):
 			return
 		val = up_extend_value - variation
 		tween_property = "up_extend_value"
+
 	elif direction == Direction.DOWN:
 		if variation > 0 && not check_movements(direction):
 			return
 		
 		val = down_extend_value + variation
 		tween_property = "down_extend_value"
-		
-	var old_val = extent_targets[Util.direction_to_string(direction)]
-	extent_targets[Util.direction_to_string(direction)] = val
 	
-	if tween_property != "" and not is_equal_approx(old_val, val):
+	if tween_property != "":
 		tween.tween_property(self, tween_property, val, 0.3).set_ease(Tween.EASE_OUT)
 		if not slide_audio.is_playing():
 			slide_audio.play()
