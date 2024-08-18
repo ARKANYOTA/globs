@@ -9,6 +9,9 @@ var extend_range: Vector2i
 var base_indicator_pos: Vector2
 var final_indicator_pos: Vector2
 
+@export var texture_retracted: Texture2D
+@export var texture_extended: Texture2D
+
 func initialize():
 	_update_extend_values()
 	_update_base_and_final_offsets()
@@ -43,6 +46,7 @@ func _update_base_and_final_offsets():
 func retract_indicator():
 	var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "position", base_indicator_pos, 0.3).set_ease(Tween.EASE_OUT)
+	texture = texture_retracted
 	#tween.tween_callback(hide)
 
 func extend_indicator():
@@ -50,6 +54,7 @@ func extend_indicator():
 	
 	var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "position", final_indicator_pos, 0.3).set_ease(Tween.EASE_OUT)
+	texture = texture_extended
 
 func hide_indicator():
 	hide()
