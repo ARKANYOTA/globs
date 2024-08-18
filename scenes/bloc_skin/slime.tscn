@@ -7,16 +7,16 @@
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjilg"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bwg8a"]
 size = Vector2(16, 48)
 
-[node name="Block" instance=ExtResource("1_xps01")]
+[node name="Block5" instance=ExtResource("1_xps01")]
 
 [node name="BlockOccluder" parent="." index="0"]
 occluder = SubResource("OccluderPolygon2D_nbgqd")
 
 [node name="CollisionShape" parent="." index="2"]
-shape = SubResource("RectangleShape2D_vjilg")
+shape = SubResource("RectangleShape2D_bwg8a")
 
 [node name="left" type="RayCast2D" parent="." index="7"]
 target_position = Vector2(-16, 0)
