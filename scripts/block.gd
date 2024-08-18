@@ -90,6 +90,7 @@ var direction_indicator: PackedScene = load("res://scenes/direction_indicator.ts
 var animation = "o_face"
 var is_asleep := false
 var is_moving := false
+var is_falling := false
 
 ################################################
 
@@ -531,24 +532,22 @@ func _physics_process(delta):
 	if Engine.is_editor_hint():
 		return
 	
-	# velocity.x /= 2
-	# if is_gravity_enabled:
-	# 	if not is_on_floor():
-	# 		velocity += get_gravity() * delta
-	# 	
-	# 	const rot_speed = 0.1
-	# 	var alpha = fmod(fmod(angle, 90) + 90, 90)
-	# 	
-	# 	if is_on_floor() and alpha != 0:
-	# 		if alpha < 45:
-	# 			angle -= alpha * rot_speed
-	# 		else:
-	# 			angle += alpha * rot_speed
-	# else:
-	# 	velocity.y /= 2
-	
-	# if not static_block:
-	# 	move_and_slide()
+	if is_gravity_enabled and not is_falling and not is_moving:
+		var map_data = get_map_data()
+		var grid = map_data[0]
+		var rect = get_grid_rect()
+		var can_fall = true
+
+		for x in range(rect.size.x):
+			if grid[rect.position.y + rect.size.y][rect.position.x + x] != -2:
+				can_fall = false
+				break
+		
+		if can_fall:
+			var gravity_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+			is_falling = true
+			gravity_tween.tween_property(self, "position", position + Vector2(0, 16), 0.3).set_ease(Tween.EASE_OUT)
+			gravity_tween.tween_callback(set_is_falling_to_false)
 	
 	_update_scale_handles()
 	_update_sprite()
@@ -568,6 +567,9 @@ func _on_scale_handle_end_drag(handle: ScaleHandle, direction: Direction):
 
 func set_is_moving_to_false():
 	is_moving = false 
+
+func set_is_falling_to_false():
+	is_falling = false
 
 func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 	if is_moving:

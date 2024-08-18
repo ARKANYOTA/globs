@@ -201,8 +201,11 @@ tile_set = SubResource("TileSet_hoxn1")
 position = Vector2(136, 152)
 is_main_character = true
 up_extendable = true
+up_extend_range = Vector2i(8, 104)
 down_extendable = true
+down_extend_range = Vector2i(8, 104)
 left_extendable = true
+left_extend_range = Vector2i(8, 104)
 right_extendable = true
 right_extend_range = Vector2i(8, 88)
 
@@ -210,8 +213,11 @@ right_extend_range = Vector2i(8, 88)
 position = Vector2(120, 152)
 is_main_character = true
 up_extendable = true
+up_extend_range = Vector2i(8, 104)
 down_extendable = true
+down_extend_range = Vector2i(8, 104)
 left_extendable = true
+left_extend_range = Vector2i(8, 104)
 right_extendable = true
 right_extend_range = Vector2i(8, 88)
 
