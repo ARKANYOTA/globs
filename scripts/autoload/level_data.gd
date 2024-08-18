@@ -15,8 +15,8 @@ var levels = [
 	{ "name": "2-7", "scene": "res://scenes/levels/world_2/level_15.tscn"},
 
 	{ "name": "3-1", "scene": "res://scenes/levels/world_3/level_0.tscn"},
-	{ "name": "3-2", "scene": "res://scenes/levels/world_3/level_0_1.tscn"},
-	{ "name": "3-3", "scene": "res://scenes/levels/world_3/level_1.tscn"},
+	# { "name": "3-2", "scene": "res://scenes/levels/world_3/level_0_1.tscn"},
+	{ "name": "3-2", "scene": "res://scenes/levels/world_3/level_1.tscn"},
 	
 	# { "name": "Gumi & Rodo", "scene": "res://scenes/levels/world_2/level_10_0.tscn"},
 	# { "name": "Rise together", "scene": "res://scenes/levels/world_2/level_11_beta.tscn"},
@@ -39,7 +39,7 @@ var names = [
 	"2-5",
 ]
 
-var level = 1
+var level = 0
 
 func increment_level() -> void:
 	level += 1
@@ -50,12 +50,12 @@ func increment_level() -> void:
 func increment_level_and_change_scene() -> void:
 	BlockManagerAutoload.block_manager_instance.end_drag()
 	increment_level()
-	var scene_path = levels[level - 1]["scene"]
+	var scene_path = levels[level]["scene"]
 	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
 
 func reload_scene() -> void:
 	BlockManagerAutoload.block_manager_instance.end_drag()
-	var scene_path = levels[level - 1]["scene"]
+	var scene_path = levels[level]["scene"]
 	SceneTransitionAutoLoad.change_scene_with_transition(scene_path)
 
 func save_level_data() -> void:
