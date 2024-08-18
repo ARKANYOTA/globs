@@ -23,6 +23,7 @@ PauseMenuAutoload="*res://scripts/autoload/pause_menu_autoload.gd"
 BlockManagerAutoload="*res://scripts/autoload/block_manager_autoload.gd"
 GameManager="*res://scripts/autoload/game_manager.gd"
 Util="*res://scripts/autoload/util.gd"
+MusicManager="*res://scripts/autoload/music_manager.gd"
 
 [debug]
 
