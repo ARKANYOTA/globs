@@ -5,16 +5,32 @@ var levels = [
 	{ "name": "1-1", "scene": "res://scenes/levels/level_110_push.tscn"},
 	{ "name": "1-1", "scene": "res://scenes/levels/level_120_support.tscn"},
 	{ "name": "1-1", "scene": "res://scenes/levels/level_140_only_red_wins.tscn"},
+
+	{ "name": "2-1", "scene": "res://scenes/levels/world_2/level_10_0.tscn"},
+	{ "name": "2-2", "scene": "res://scenes/levels/world_2/level_11_beta.tscn"},
+	{ "name": "2-3", "scene": "res://scenes/levels/world_2/level_12.tscn"},
+	{ "name": "2-4", "scene": "res://scenes/levels/world_2/level_13.tscn"},
+	{ "name": "2-5", "scene": "res://scenes/levels/world_2/level_14.tscn"},
 	
-	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
-	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
-	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
-	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
-	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
-	{ "name": "1-1", "scene": "res://scenes/levels/level_100.tscn"},
-	{ "name": "1-2", "scene": "res://scenes/levels/level_101.tscn"},
-	{ "name": "2-1", "scene": "res://scenes/levels/world_2/level_10.tscn"},
+	# { "name": "Gumi & Rodo", "scene": "res://scenes/levels/world_2/level_10_0.tscn"},
+	# { "name": "Rise together", "scene": "res://scenes/levels/world_2/level_11_beta.tscn"},
+	# { "name": "To the star", "scene": "res://scenes/levels/world_2/level_12.tscn"},
+	# { "name": "Return the favor", "scene": "res://scenes/levels/world_2/level_13.tscn"},
+	# { "name": "Soft landing", "scene": "res://scenes/levels/world_2/level_13.tscn"},
+
 	{ "name": "You Win", "scene": "res://scenes/levels/you_win.tscn"},
+]
+
+var names = [
+	"Introduction 1-1",
+	"1-2",
+	"1-3",
+	"1-4",
+	"2-1",
+	"2-2",
+	"2-3",
+	"2-4",
+	"2-5",
 ]
 
 var level = 1

@@ -3,9 +3,14 @@ extends Node2D
 var selected_level = 1
 
 @export var button_list : Array[LevelButton] = []
-
+@onready var animation = $AnimationPlayer
 func _ready():
 	print(LevelData.level)
+
+func _process(delta):
+	animation.play("background")
+	await animation.animation_finished
+	pass
 
 # on input event
 func _input(event):

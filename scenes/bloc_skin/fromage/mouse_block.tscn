@@ -11,6 +11,8 @@ polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 size = Vector2(16, 16)
 
 [node name="Block2" instance=ExtResource("1_xdr48")]
+is_gravity_enabled = true
+scale_max_speed = 1.5
 
 [node name="BlockOccluder" parent="." index="0"]
 occluder = SubResource("OccluderPolygon2D_nbgqd")
