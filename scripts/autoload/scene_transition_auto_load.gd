@@ -27,7 +27,7 @@ func change_scene_with_transition(scene: String) -> void:
 	var title : Label = scene_transition_instance.get_node("WorldTitle")
 	var slides = ["bloc_in","block_in_vertical"]
 	var random_slide_transition = randi_range(0, 0) # NOT USED
-	title.text = LevelData.names[LevelData.level - 1]
+	# title.text = LevelData.names[LevelData.level - 1]
 	set_random_sprite_transition()
 	
 	animation_player.play(slides[random_slide_transition])

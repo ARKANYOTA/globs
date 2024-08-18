@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://duqpgsulnccc7"]
+
+[ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block.tscn" id="1_2h8e0"]
+[ext_resource type="Texture2D" uid="uid://cbb0cie1kixop" path="res://assets/images/spritesheet/black_frost_sprite_sheet2.png" id="2_l8ckw"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nbgqd"]
+resource_local_to_scene = true
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1eaf"]
+size = Vector2(160, 16)
+
+[node name="Block2" instance=ExtResource("1_2h8e0")]
+
+[node name="BlockOccluder" parent="." index="0"]
+occluder = SubResource("OccluderPolygon2D_nbgqd")
+
+[node name="NinePatch" parent="." index="1"]
+texture = ExtResource("2_l8ckw")
+region_rect = Rect2(16, 80, 16, 16)
+axis_stretch_horizontal = 0
+axis_stretch_vertical = 2
+
+[node name="CollisionShape" parent="." index="2"]
+shape = SubResource("RectangleShape2D_o1eaf")
