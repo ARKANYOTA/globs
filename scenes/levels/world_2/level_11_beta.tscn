@@ -219,14 +219,12 @@ right_extend_range = Vector2i(8, 72)
 [node name="Block3" parent="." instance=ExtResource("4_yhsa1")]
 position = Vector2(120, 168)
 static_block = true
-scale_max_speed = 1.5
 up_extendable = true
 up_extend_range = Vector2i(8, 72)
 
 [node name="Block4" parent="." instance=ExtResource("4_yhsa1")]
 position = Vector2(8, 104)
 static_block = true
-scale_max_speed = 1.5
 right_extendable = true
 right_extend_range = Vector2i(8, 120)
 right_extend_value = 120.0
