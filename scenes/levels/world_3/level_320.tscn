@@ -251,7 +251,7 @@ sources/0 = SubResource("TileSetAtlasSource_hpaph")
 offsets = PackedFloat32Array(0.0243902, 0.786585, 0.963415)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.588235, 1, 1, 1, 0.0901961)
 
-[node name="Level2" type="Node2D"]
+[node name="Level3" type="Node2D"]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 1
@@ -292,7 +292,7 @@ scale = Vector2(2, 2)
 [node name="Block2" parent="." instance=ExtResource("4_tkjei")]
 position = Vector2(152, -8)
 is_main_character = true
-push_bounce = null
+push_bounce = false
 up_extendable = true
 up_extend_range = Vector2i(8, 120)
 left_extendable = true
@@ -301,7 +301,6 @@ left_extend_range = Vector2i(8, 72)
 [node name="Block3" parent="." instance=ExtResource("5_e7mqh")]
 position = Vector2(216, 168)
 static_block = true
-push_bounce = null
 up_extendable = true
 up_extend_range = Vector2i(8, 88)
 

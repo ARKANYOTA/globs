@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://3wdpn4oulgik" path="res://scenes/block/bloc_skin/Frost/cloud.tscn" id="4_ltocu"]
 [ext_resource type="PackedScene" uid="uid://duqpgsulnccc7" path="res://scenes/block/bloc_skin/fromage/ice_block.tscn" id="5_t8v53"]
 
-[node name="Level2" type="Node2D"]
+[node name="Level3" type="Node2D"]
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="."]
 modulate = Color(0.575174, 0.599421, 0.712752, 1)
@@ -25,6 +25,7 @@ scale = Vector2(2, 2)
 [node name="Block5" parent="." instance=ExtResource("3_61ugo")]
 position = Vector2(104, 152)
 is_main_character = true
+push_bounce = false
 up_extendable = true
 down_extendable = true
 left_extendable = true

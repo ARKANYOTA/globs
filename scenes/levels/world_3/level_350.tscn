@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cw2toebu4uca1" path="res://scenes/levels/background.tscn" id="6_gdpa0"]
 [ext_resource type="PackedScene" uid="uid://y3nsqm2pc0s7" path="res://scenes/ui/particle/snow_particle.tscn" id="7_vkp42"]
 
-[node name="Level2" type="Node2D"]
+[node name="Level3" type="Node2D"]
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 modulate = Color(0.575174, 0.599421, 0.712752, 1)

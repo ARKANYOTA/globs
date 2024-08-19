@@ -176,7 +176,7 @@ sources/0 = SubResource("TileSetAtlasSource_1ve80")
 pattern_0 = SubResource("TileMapPattern_5jnm4")
 pattern_1 = SubResource("TileMapPattern_rnq72")
 
-[node name="Level2" type="Node2D"]
+[node name="Level3" type="Node2D"]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false

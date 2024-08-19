@@ -27,7 +27,6 @@ scale = Vector2(2, 2)
 [node name="Block5" parent="." instance=ExtResource("3_twb8l")]
 position = Vector2(104, 152)
 is_main_character = true
-push_bounce = false
 up_extendable = true
 down_extendable = true
 left_extendable = true
