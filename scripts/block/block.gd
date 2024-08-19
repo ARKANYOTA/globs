@@ -247,10 +247,14 @@ func get_all_tree_nodes(node = get_tree().get_root(), list = []):
 		list = get_all_tree_nodes(childNode, list)
 	return list
 
-func enter_gravity_zone(direction: Direction):
+func enter_gravity_zone(direction: Direction, default: bool):
 	gravity_axis = direction
+	if default:
+		default_gravity_axis = direction
 
-func exit_gravity_zone():
+func exit_gravity_zone(prev_direction: Direction):
+	if gravity_axis != prev_direction:
+		return
 	gravity_axis = default_gravity_axis
 
 func print_grid(grid):
