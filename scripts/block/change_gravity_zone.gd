@@ -35,8 +35,17 @@ func direction_to_rotation(direction: Block.Direction) -> float:
 
 @export var gravity_axis = Block.Direction.DOWN:
 	set(value):
-		$NinePatchRect2.rotation = direction_to_rotation(value) - PI/2
-		
+		gravity_axis = value
+		if value == Block.Direction.RIGHT:
+			$NinePatchRect2.region_rect = Rect2(0,0,16,16)
+		elif value == Block.Direction.LEFT:
+			$NinePatchRect2.region_rect = Rect2(16,0,16,16)
+		elif value == Block.Direction.UP:
+			$NinePatchRect2.region_rect = Rect2(32,0,16,16)
+		else:
+			$NinePatchRect2.region_rect = Rect2(48,0,16,16)
+
+			
 @export var is_effect_permanent = false
 
 func _ready():
