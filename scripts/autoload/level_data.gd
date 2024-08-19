@@ -13,8 +13,9 @@ var levels = [
 	{ "name": "2-3", "music": "cheese", "scene": "res://scenes/levels/world_2/level_230.tscn"},
 	{ "name": "2-4", "music": "cheese", "scene": "res://scenes/levels/world_2/level_240.tscn"},
 	{ "name": "2-5", "music": "cheese", "scene": "res://scenes/levels/world_2/level_250.tscn"},
-	{ "name": "2-6", "music": "cheese", "scene": "res://scenes/levels/world_2/level_260.tscn"},
-	{ "name": "2-7", "music": "cheese", "scene": "res://scenes/levels/world_2/level_270.tscn"},
+	{ "name": "2-6", "music": "cheese", "scene": "res://scenes/levels/world_2/level_255.tscn"},
+	{ "name": "2-7", "music": "cheese", "scene": "res://scenes/levels/world_2/level_260.tscn"},
+	{ "name": "2-8", "music": "cheese", "scene": "res://scenes/levels/world_2/level_270.tscn"},
 	
 	{ "name": "3-1", "music": "snow", "scene": "res://scenes/levels/world_3/level_310.tscn"},
 	{ "name": "3-2", "music": "snow", "scene": "res://scenes/levels/world_3/level_320.tscn"},

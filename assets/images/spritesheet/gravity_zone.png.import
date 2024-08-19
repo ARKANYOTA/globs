@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://ys5rab1y8fdc"
+=======
+uid="uid://dhvflmaf76auh"
+>>>>>>> 88383a223ef676536cdc08293f10e80457a5a0db
 path="res://.godot/imported/gravity_zone.png-14ed12fb9939ca73372dd6c96c24ed1f.ctex"
 metadata={
 "vram_texture": false
