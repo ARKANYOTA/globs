@@ -622,6 +622,9 @@ func set_is_moving_to_false():
 func set_is_falling_to_false():
 	is_falling = false
 
+func is_same_axis(dir: Direction, odir: Direction):
+	return dir == odir or dir == get_opposite_direction(odir)
+
 func extend_block(variation: int, direction: Direction, push: bool):
 	var extend = push or can_extend(direction)
 
@@ -698,14 +701,17 @@ func extend_block(variation: int, direction: Direction, push: bool):
 		if direction == Direction.UP:
 			move_tween.tween_property(block, "position:y", block.position.y + off, move_speed).set_ease(Tween.EASE_OUT)
 
-		if block.remaining_pushs < 0:
-			block.remaining_pushs = block.max_pushs - 1
-		
-		if block.remaining_pushs == 0:
+		if block.is_gravity_enabled and is_same_axis(block.gravity_axis, direction):
 			block.remaining_pushs = -1
 		else:
-			block.remaining_pushs -= 1
-			move_tween.tween_callback(func(): block.extend_block(off, direction, true))
+			if block.remaining_pushs < 0:
+				block.remaining_pushs = block.max_pushs - 1
+			
+			if block.remaining_pushs == 0:
+				block.remaining_pushs = -1
+			else:
+				block.remaining_pushs -= 1
+				move_tween.tween_callback(func(): block.extend_block(off, direction, true))
 
 
 	if tween_property != "" and not push:
