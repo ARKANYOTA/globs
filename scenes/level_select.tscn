@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/level_select.gd" id="1_jxoum"]
 [ext_resource type="Texture2D" uid="uid://baupic3tgrmb3" path="res://assets/images/spritesheet/fromage_sprite_sheet.png" id="3_gnrl0"]
-[ext_resource type="PackedScene" uid="uid://bpqekaydn06nf" path="res://scenes/scene_transition.tscn" id="3_vqf57"]
-[ext_resource type="PackedScene" uid="uid://l2wle6odhayq" path="res://scenes/level_grid_container.tscn" id="4_6v1lx"]
-[ext_resource type="PackedScene" path="res://scenes/ui_button.tscn" id="5_678ah"]
+[ext_resource type="PackedScene" uid="uid://bec4pda6oux5s" path="res://scenes/scene_transition.tscn" id="3_vqf57"]
+[ext_resource type="PackedScene" path="res://scenes/level_grid_container.tscn" id="4_6v1lx"]
+[ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui_button.tscn" id="5_678ah"]
 [ext_resource type="Script" path="res://scripts/reset_button.gd" id="6_whjje"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_as84n"]
@@ -116,7 +116,7 @@ offset_left = 16.0
 offset_top = 160.0
 offset_right = 93.0
 offset_bottom = 179.0
-text = "Level Reset"
+text = "Reset levels"
 
 [node name="Node2D" type="Node2D" parent="UiButton"]
 script = ExtResource("6_whjje")
