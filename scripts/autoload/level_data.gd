@@ -26,6 +26,7 @@ var levels = [
 	{ "name": "3-8", "music": "snow", "scene": "res://scenes/levels/world_3/level_380.tscn"},
 	
 	{ "name": "4-1", "music": "snow", "scene": "res://scenes/levels/world_4/level_410.tscn"},
+	{ "name": "4-2", "music": "snow", "scene": "res://scenes/levels/world_4/level_420.tscn"},
 	
 	{ "name": "You Win", "music": "cheese", "scene": "res://scenes/levels/you_win.tscn"},
 ]
