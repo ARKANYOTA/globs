@@ -7,12 +7,12 @@
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nboyn"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fiek4"]
 size = Vector2(80, 48)
 
 [node name="Block2" instance=ExtResource("1_xdr48")]
 is_gravity_enabled = true
-scale_max_speed = 1.5
+max_pushs = 1
 
 [node name="BlockOccluder" parent="." index="0"]
 occluder = SubResource("OccluderPolygon2D_nbgqd")
@@ -26,7 +26,7 @@ axis_stretch_horizontal = 0
 axis_stretch_vertical = 2
 
 [node name="CollisionShape" parent="." index="2"]
-shape = SubResource("RectangleShape2D_nboyn")
+shape = SubResource("RectangleShape2D_fiek4")
 
 [node name="CenterIndicator" parent="." index="5"]
 frame = 0

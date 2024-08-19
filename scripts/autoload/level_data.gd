@@ -1,10 +1,11 @@
 extends Node
 
 var levels = [
-	{ "name": "1-1", "scene": "res://scenes/levels/level_100_intro.tscn"},
-	{ "name": "1-2", "scene": "res://scenes/levels/level_110_push.tscn"},
-	{ "name": "1-3", "scene": "res://scenes/levels/level_120_support.tscn"},
-	{ "name": "1-4", "scene": "res://scenes/levels/level_140_only_red_wins.tscn"},
+	{ "name": "1-1", "scene": "res://scenes/levels/world_1/level_100_intro.tscn"},
+	{ "name": "1-2", "scene": "res://scenes/levels/world_1/level_110_push.tscn"},
+	{ "name": "1-3", "scene": "res://scenes/levels/world_1/level_120_support.tscn"},
+	{ "name": "1-4", "scene": "res://scenes/levels/world_1/level_140_only_red_wins.tscn"},
+	{ "name": "1-5", "scene": "res://scenes/levels/world_1/level_400.tscn"},
 
 	{ "name": "2-1", "scene": "res://scenes/levels/world_2/level_10_0.tscn"},
 	{ "name": "2-2", "scene": "res://scenes/levels/world_2/level_11_beta.tscn"},
