@@ -55,16 +55,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hoqr1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3d25"]
 size = Vector2(0, 0)
 
 [node name="Goal" type="Area2D"]
+z_index = -2
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_0dqw8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0.556863)
 sprite_frames = SubResource("SpriteFrames_ui1ja")
 script = ExtResource("3_0g71m")
@@ -82,7 +82,7 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_hoqr1")
+shape = SubResource("RectangleShape2D_v3d25")
 debug_color = Color(0.493207, 0.429172, 1, 0.376471)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

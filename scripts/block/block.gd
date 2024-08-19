@@ -51,6 +51,11 @@ var gravity_axis = Direction.DOWN
 @export_group("Up Extandable")
 @export var up_extendable: bool = false
 @export var up_extend_range: Vector2i = Vector2i(8, 24)
+@export var up_extend_block_range: Vector2i = Vector2i(0, 1):
+	set(value):
+		up_extend_block_range = value
+		update_range_from_block_range()
+
 @export var up_extend_value: float = 8:
 	set(value):
 		up_extend_value = clamp(value, up_extend_range.x, up_extend_range.y)
@@ -59,6 +64,10 @@ var gravity_axis = Direction.DOWN
 @export_group("Down Extandable")
 @export var down_extendable: bool = false
 @export var down_extend_range: Vector2i = Vector2i(8, 24)
+@export var down_extend_block_range: Vector2i = Vector2i(0, 1):
+	set(value):
+		down_extend_block_range = value
+		update_range_from_block_range()
 @export var down_extend_value: float = 8:
 	set(value):
 		down_extend_value = clamp(value, down_extend_range.x, down_extend_range.y)
@@ -67,6 +76,10 @@ var gravity_axis = Direction.DOWN
 @export_group("Left Extandable")
 @export var left_extendable: bool = false
 @export var left_extend_range: Vector2i = Vector2i(8, 24)
+@export var left_extend_block_range: Vector2i = Vector2i(0, 1):
+	set(value):
+		left_extend_block_range = value
+		update_range_from_block_range()
 @export var left_extend_value: float = 8:
 	set(value):
 		left_extend_value = clamp(value, left_extend_range.x, left_extend_range.y)
@@ -75,6 +88,10 @@ var gravity_axis = Direction.DOWN
 @export_group("Right Extandable")
 @export var right_extendable: bool = false
 @export var right_extend_range: Vector2i = Vector2i(8, 24)
+@export var right_extend_block_range: Vector2i = Vector2i(0, 1):
+	set(value):
+		right_extend_block_range = value
+		update_range_from_block_range()
 @export var right_extend_value: float = 8:
 	set(value):
 		right_extend_value = clamp(value, right_extend_range.x, right_extend_range.y)
@@ -134,6 +151,12 @@ func expand(direction: Direction, amount: int):
 		up_extend_value += amount
 	if direction == Direction.DOWN:
 		down_extend_value += amount
+
+func update_range_from_block_range():
+	up_extend_range =    Vector2i(up_extend_block_range    * 8 + Vector2i(8, 8))
+	down_extend_range =  Vector2i(down_extend_block_range  * 8 + Vector2i(8, 8))
+	left_extend_range =  Vector2i(left_extend_block_range  * 8 + Vector2i(8, 8))
+	right_extend_range = Vector2i(right_extend_block_range * 8 + Vector2i(8, 8))
 
 func update_dimensions():
 	var dim: Vector2 = Vector2(left_extend_value + right_extend_value, 
