@@ -35,8 +35,17 @@ func direction_to_rotation(direction: Block.Direction) -> float:
 
 @export var gravity_axis = Block.Direction.DOWN:
 	set(value):
-		$NinePatchRect2.rotation = direction_to_rotation(value) - PI/2
-		
+		gravity_axis = value
+		if value == Block.Direction.RIGHT:
+			$NinePatchRect2.region_rect = Rect2(0,0,16,16)
+		elif value == Block.Direction.LEFT:
+			$NinePatchRect2.region_rect = Rect2(16,0,16,16)
+		elif value == Block.Direction.UP:
+			$NinePatchRect2.region_rect = Rect2(32,0,16,16)
+		else:
+			$NinePatchRect2.region_rect = Rect2(48,0,16,16)
+
+			
 @export var is_effect_permanent = false
 
 func _ready():
@@ -47,7 +56,7 @@ func _ready():
 func _on_area_entered(area):
 	if not area is Block:
 		return
-	area.enter_gravity_zone(gravity_axis)
+	area.enter_gravity_zone(gravity_axis, is_effect_permanent)
 
 func _on_area_exited(area):
 	if is_effect_permanent:
@@ -56,6 +65,6 @@ func _on_area_exited(area):
 	if not area is Block:
 		return
 		
-	area.exit_gravity_zone()
+	area.exit_gravity_zone(gravity_axis)
 
 	pass # Replace with function body.
