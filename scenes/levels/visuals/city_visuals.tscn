@@ -25,7 +25,7 @@ texture = ExtResource("2_nr62c")
 [node name="BirdParticles" parent="." instance=ExtResource("3_4v42j")]
 z_index = -9
 material = SubResource("CanvasItemMaterial_1hxnc")
-position = Vector2(2, 93)
+position = Vector2(-24, 88)
 rotation = 0.0
 amount = 10
 lifetime = 10.0
@@ -47,7 +47,7 @@ anim_speed_max = 200.0
 [node name="BirdParticlesLeft" parent="." instance=ExtResource("3_4v42j")]
 z_index = -9
 material = SubResource("CanvasItemMaterial_1hxnc")
-position = Vector2(321, 93)
+position = Vector2(344, 88)
 rotation = 0.0
 amount = 10
 lifetime = 10.0

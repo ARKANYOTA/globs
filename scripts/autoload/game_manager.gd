@@ -18,3 +18,4 @@ func _process(delta):
 
 func before_scene_change():
 	BlockManagerAutoload.blocks.clear()
+	BlockManagerAutoload.reset()
