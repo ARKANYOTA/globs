@@ -48,6 +48,7 @@ const dir_map = [
 		default_gravity_axis = value
 		gravity_axis = value
 
+
 @export var max_pushs := 1
 
 var gravity_axis = Direction.DOWN
@@ -125,6 +126,8 @@ var is_falling := false
 var remaining_pushs := -1
 
 ################################################
+
+	
 
 func get_extend_value(direction: Direction):
 	if direction == Direction.LEFT:
@@ -436,10 +439,24 @@ func _update_sprite():
 	elif static_block: # Normal
 		ninepatch.region_rect.position = Vector2(16, 80)
 	elif is_gravity_enabled: # Gravity
-		ninepatch.region_rect.position = Vector2(32, 80)
+		if default_gravity_axis == Direction.UP:
+			ninepatch.region_rect.position = Vector2(32, 80+16)
+		elif default_gravity_axis == Direction.LEFT:
+			ninepatch.region_rect.position = Vector2(32+16, 80)
+		elif default_gravity_axis == Direction.RIGHT:
+			ninepatch.region_rect.position = Vector2(32+16, 80+16)
+		else:
+			ninepatch.region_rect.position = Vector2(32, 80)
+
+
 	#else: # bleu
 		#ninepatch.region_rect.position.x = 0
 		#ninepatch.region_rect.position.y = 32
+	var centerindicator: AnimatedSprite2D = $CenterIndicator
+	if not centerindicator:
+		return
+	centerindicator.rotation = Util.direction_to_rotation(gravity_axis) - PI/2
+
 
 func _update_animation():
 	var dim = get_dimensions()
