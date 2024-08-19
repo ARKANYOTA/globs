@@ -6,5 +6,8 @@ class_name MusicPlayer
 func play():
 	audio_stream.play()
 
+func set_stream(stream):
+	audio_stream.stream = stream
+
 func stop():
 	audio_stream.play()

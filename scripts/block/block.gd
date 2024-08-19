@@ -13,6 +13,10 @@ const dir_map = [
 	Vector2i(0, 1)
 ]
 
+@export var click_to_update_sprite = false:
+	set(value):
+		_update_sprite()
+
 @export var is_gravity_enabled := true:
 	set(value):
 		is_gravity_enabled = value
@@ -425,6 +429,8 @@ func _update_sprite():
 	
 	# Change 9-patch sprite
 	var ninepatch: NinePatchRect = $NinePatch
+	if not ninepatch:
+		return
 	if is_main_character: # Normal
 		ninepatch.region_rect.position = Vector2(0, 96)
 	elif static_block: # Normal
