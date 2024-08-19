@@ -24,8 +24,8 @@
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_di8dk"]
-size = Vector2(16, 48)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0f4ev"]
+size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
 atlas = ExtResource("4_3fhqr")
@@ -366,14 +366,14 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_di8dk")
-debug_color = Color(0, 0.51, 0.6, 0.117647)
+shape = SubResource("RectangleShape2D_0f4ev")
+debug_color = Color(0, 0.509804, 0.6, 0.0509804)
 
 [node name="UnClickArea" parent="." instance=ExtResource("3_h0fp2")]
-debug_color = Color(1, 0.36, 0.829333, 0.247059)
+debug_color = Color(1, 0.360784, 0.827451, 0.0313726)
 
 [node name="ClickArea" parent="." instance=ExtResource("3_h0fp2")]
-debug_color = Color(0.4275, 0.57, 0, 0.258824)
+debug_color = Color(0.427451, 0.568627, 0, 0.0588235)
 
 [node name="CenterIndicator" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ucdvl")
