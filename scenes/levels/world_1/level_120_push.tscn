@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=4 uid="uid://yyvqhrbvs7to"]
+[gd_scene load_steps=8 format=4 uid="uid://yyvqhrbvs7to"]
 
 [ext_resource type="PackedScene" uid="uid://botnltrx4dsdp" path="res://scenes/levels/level.tscn" id="1_gxpso"]
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="2_5kbl5"]
 [ext_resource type="PackedScene" uid="uid://cmps4e380d2e8" path="res://scenes/block/goal.tscn" id="3_ed3mf"]
-[ext_resource type="LabelSettings" uid="uid://cl1yg37xye2ku" path="res://assets/resources/label_settings.tres" id="6_x3b6n"]
+[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="4_8gbcg"]
 [ext_resource type="Texture2D" uid="uid://bid4lv6yfwbk2" path="res://assets/images/buttons/keyboard/btn_k_r.png" id="7_mc35m"]
 [ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels/visuals/city_visuals.tscn" id="8_r3yl4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ldncd"]
+font = ExtResource("4_8gbcg")
 
 [node name="Level" instance=ExtResource("1_gxpso")]
 
@@ -34,7 +37,7 @@ offset_top = 141.0
 offset_right = 207.0
 offset_bottom = 164.0
 text = "Press    to retry"
-label_settings = ExtResource("6_x3b6n")
+label_settings = SubResource("LabelSettings_ldncd")
 
 [node name="CityVisuals" parent="." index="5" instance=ExtResource("8_r3yl4")]
 
