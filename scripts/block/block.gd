@@ -50,6 +50,7 @@ const dir_map = [
 
 
 @export var max_pushs := 1
+@export var push_bounce := false
 
 var gravity_axis = Direction.DOWN
 
@@ -697,7 +698,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 		val = down_extend_value + variation
 		tween_property = "down_extend_value"
 
-	if reverse and push:
+	if reverse and push and not push_bounce:
 		remaining_pushs = -1
 		return
 	
@@ -709,13 +710,9 @@ func extend_block(variation: int, direction: Direction, push: bool):
 		var move_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 		var block: Block = movements[i]
 
-		if direction == Direction.RIGHT:
+		if direction == Direction.RIGHT or direction == Direction.LEFT:
 			move_tween.tween_property(block, "position:x", block.position.x + off, move_speed).set_ease(Tween.EASE_OUT)
-		if direction == Direction.LEFT:
-			move_tween.tween_property(block, "position:x", block.position.x + off, move_speed).set_ease(Tween.EASE_OUT)
-		if direction == Direction.DOWN:
-			move_tween.tween_property(block, "position:y", block.position.y + off, move_speed).set_ease(Tween.EASE_OUT)
-		if direction == Direction.UP:
+		if direction == Direction.DOWN or direction == Direction.UP:
 			move_tween.tween_property(block, "position:y", block.position.y + off, move_speed).set_ease(Tween.EASE_OUT)
 
 		if block.is_gravity_enabled and is_same_axis(block.gravity_axis, direction):
@@ -728,8 +725,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 				block.remaining_pushs = -1
 			else:
 				block.remaining_pushs -= 1
-				move_tween.tween_callback(func(): block.extend_block(off, direction, true))
-
+				move_tween.tween_callback(func(): block.extend_block(off, direction if not reverse else get_opposite_direction(direction), true))
 
 	if tween_property != "" and not push:
 		tween.tween_property(self, tween_property, val, move_speed).set_ease(Tween.EASE_OUT)
