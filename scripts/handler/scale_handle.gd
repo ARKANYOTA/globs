@@ -20,6 +20,8 @@ func initialize():
 	pass
 
 func hide_handle():
+	is_enabled = false
+	
 	var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(sprite, "scale", Vector2(0, 0), 0.1).set_ease(Tween.EASE_OUT)
 	tween.tween_callback(func():
@@ -29,6 +31,8 @@ func hide_handle():
 
 
 func show_handle():
+	is_enabled = true
+	
 	sprite.show()
 	collision_shape.show()
 	

@@ -16,7 +16,7 @@ var is_locked = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	change_label(LevelData.levels[level].name)
-	if level > LevelData.level:
+	if max(level, 0) > LevelData.level:
 		is_locked = true
 		button.icon = texture_locked
 	else:
@@ -33,7 +33,7 @@ func change_label(string: String) -> void:
 	label.text = str(string)
 
 func _on_button_pressed() -> void:
-	if level > LevelData.level:
+	if max(level, 0) > LevelData.level:
 		return
 	button.icon = texture_pressed
 	var scene = LevelData.levels[level].scene

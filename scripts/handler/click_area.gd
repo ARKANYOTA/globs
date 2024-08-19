@@ -22,6 +22,7 @@ signal end_drag
 		if shape:
 			$ClickAreaCollisionShape.debug_color = value
 
+var is_enabled := true
 var is_hovered := false
 var is_held := false
 
@@ -30,6 +31,9 @@ func _ready():
 
 func _input(event):
 	if Engine.is_editor_hint():
+		return
+	
+	if not is_enabled:
 		return
 	
 	if event.is_action_pressed("left_click"):

@@ -1,27 +1,26 @@
 extends Node
 
 var levels = [
-	{ "name": "1-1", "scene": "res://scenes/levels/world_1/level_110_intro.tscn"},
-	{ "name": "1-2", "scene": "res://scenes/levels/world_1/level_120_push.tscn"},
-	{ "name": "1-3", "scene": "res://scenes/levels/world_1/level_130_support.tscn"},
-	{ "name": "1-4", "scene": "res://scenes/levels/world_1/level_140_only_red_wins.tscn"},
-
-	{ "name": "2-1", "scene": "res://scenes/levels/world_2/level_210.tscn"},
-	{ "name": "2-2", "scene": "res://scenes/levels/world_2/level_220_beta.tscn"},
-	{ "name": "2-3", "scene": "res://scenes/levels/world_2/level_230.tscn"},
-	{ "name": "2-4", "scene": "res://scenes/levels/world_2/level_240.tscn"},
-	{ "name": "2-5", "scene": "res://scenes/levels/world_2/level_250.tscn"},
-	{ "name": "2-6", "scene": "res://scenes/levels/world_2/level_260.tscn"},
-	{ "name": "2-7", "scene": "res://scenes/levels/world_2/level_270.tscn"},
-
-	{ "name": "3-1", "scene": "res://scenes/levels/world_3/level_310.tscn"},
-	{ "name": "3-2", "scene": "res://scenes/levels/world_3/level_320.tscn"},
-	{ "name": "3-3", "scene": "res://scenes/levels/world_3/level_330.tscn"},
-	{ "name": "3-4", "scene": "res://scenes/levels/world_3/level_340.tscn"},
-	{ "name": "3-5", "scene": "res://scenes/levels/world_3/level_350.tscn"},
-
+	{ "name": "1-1", "music": "city", "scene": "res://scenes/levels/world_1/level_110_intro.tscn"},
+	{ "name": "1-2", "music": "city", "scene": "res://scenes/levels/world_1/level_120_push.tscn"},
+	{ "name": "1-3", "music": "city", "scene": "res://scenes/levels/world_1/level_130_support.tscn"},
+	{ "name": "1-4", "music": "city", "scene": "res://scenes/levels/world_1/level_140_only_red_wins.tscn"},
 	
-	{ "name": "You Win", "scene": "res://scenes/levels/you_win.tscn"},
+	{ "name": "2-1", "music": "cheese", "scene": "res://scenes/levels/world_2/level_210.tscn"},
+	{ "name": "2-2", "music": "cheese", "scene": "res://scenes/levels/world_2/level_220_beta.tscn"},
+	{ "name": "2-3", "music": "cheese", "scene": "res://scenes/levels/world_2/level_230.tscn"},
+	{ "name": "2-4", "music": "cheese", "scene": "res://scenes/levels/world_2/level_240.tscn"},
+	{ "name": "2-5", "music": "cheese", "scene": "res://scenes/levels/world_2/level_250.tscn"},
+	{ "name": "2-6", "music": "cheese", "scene": "res://scenes/levels/world_2/level_260.tscn"},
+	{ "name": "2-7", "music": "cheese", "scene": "res://scenes/levels/world_2/level_270.tscn"},
+	
+	{ "name": "3-1", "music": "snow", "scene": "res://scenes/levels/world_3/level_310.tscn"},
+	{ "name": "3-2", "music": "snow", "scene": "res://scenes/levels/world_3/level_320.tscn"},
+	{ "name": "3-3", "music": "snow", "scene": "res://scenes/levels/world_3/level_330.tscn"},
+	{ "name": "3-4", "music": "snow", "scene": "res://scenes/levels/world_3/level_340.tscn"},
+	{ "name": "3-5", "music": "snow", "scene": "res://scenes/levels/world_3/level_350.tscn"},
+	
+	{ "name": "You Win", "music": "cheese", "scene": "res://scenes/levels/you_win.tscn"},
 ]
 
 var names = [
@@ -35,8 +34,13 @@ var names = [
 	"2-4",
 	"2-5",
 ]
-var current_level = 0
+var current_level = -1
 var level = 0
+
+func get_current_level_data():
+	if current_level < 0 or current_level >= levels.size():
+		return null 
+	return levels[current_level]
 
 func increment_level() -> void:
 	if level == current_level:
