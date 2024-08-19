@@ -66,7 +66,7 @@ func reload_scene() -> void:
 func increment_level_and_change_scene() -> void:
 	BlockManagerAutoload.block_manager_instance.end_drag()
 	increment_level()
-	var scene_path = levels[level]["scene"]
+	var scene_path = levels[current_level]["scene"]
 	SceneTransitionAutoLoad.change_scene_with_transition(scene_path, true)
 
 
@@ -82,6 +82,7 @@ func load_level_data() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	load_level_data()
 	var volume_config = ConfigFile.new()
 	volume_config.load("user://volume.cfg")
 	var master_value = volume_config.get_value("volume", "Master", 1)

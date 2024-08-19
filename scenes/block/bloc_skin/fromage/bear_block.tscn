@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdttvr6awstj3"]
+[gd_scene load_steps=7 format=3 uid="uid://bdttvr6awstj3"]
 
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="1_iuvq1"]
 [ext_resource type="Texture2D" uid="uid://cbb0cie1kixop" path="res://assets/images/spritesheet/black_frost_sprite_sheet2.png" id="2_lp0vd"]
+[ext_resource type="AudioStream" uid="uid://bo08h4gql4fl4" path="res://assets/sounds/block/mouse_sound.mp3" id="3_nor20"]
+[ext_resource type="Script" path="res://scripts/block/mouse_block_sound.gd" id="4_u7l0a"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nbgqd"]
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhwms"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgl0u"]
 size = Vector2(16, 16)
 
 [node name="Block5" instance=ExtResource("1_iuvq1")]
@@ -25,8 +27,17 @@ axis_stretch_horizontal = 0
 axis_stretch_vertical = 2
 
 [node name="CollisionShape" parent="." index="2"]
-shape = SubResource("RectangleShape2D_xhwms")
+shape = SubResource("RectangleShape2D_dgl0u")
 
 [node name="CenterIndicator" parent="." index="5"]
 frame = 0
 frame_progress = 0.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = ExtResource("3_nor20")
+volume_db = -13.915
+pitch_scale = 0.7
+script = ExtResource("4_u7l0a")
+block_name = null
+mouse_pitch_scale = null
+bear_pitch_scale = null
