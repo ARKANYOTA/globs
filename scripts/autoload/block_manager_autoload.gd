@@ -12,6 +12,8 @@ var blocks = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	reset()
+	
 	block_manager_instance = block_manager.instantiate()
 	add_child(block_manager_instance)
 	var root = get_tree().get_root()
@@ -23,9 +25,14 @@ func _ready() -> void:
 				print(child2.name)
 		print(child.name)
 	
-	#print tree structure
 	print("Block manager autoloaded.")
-	pass # Replace with function body.
+
+func reset():
+	selected_block_count = 0
+	current_selected_block = null
+	is_dragging = false
+	selection_candidates = []
+	blocks = []
 
 func register_block(block: Block):
 	blocks.append(block)

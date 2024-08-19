@@ -24,7 +24,7 @@
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8b60"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p65lt"]
 size = Vector2(16, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
@@ -366,7 +366,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_l8b60")
+shape = SubResource("RectangleShape2D_p65lt")
 debug_color = Color(0, 0.509804, 0.6, 0.0509804)
 
 [node name="UnClickArea" parent="." instance=ExtResource("3_h0fp2")]
@@ -406,6 +406,7 @@ volume_db = 5.0
 [node name="SlideAudio" type="AudioStreamPlayer2D" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_avj4k")
 volume_db = -5.0
+pitch_scale = 0.7
 
 [connection signal="clicked_outside_area" from="UnClickArea" to="." method="_on_un_click_area_clicked_outside_area"]
 [connection signal="clicked" from="ClickArea" to="." method="_on_click_area_clicked"]

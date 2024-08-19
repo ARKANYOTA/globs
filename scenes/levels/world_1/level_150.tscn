@@ -46,8 +46,8 @@ position = Vector2(120, 136)
 up_extendable = true
 
 [node name="CityVisuals" parent="." index="6" instance=ExtResource("4_88wc0")]
-metadata/_edit_lock_ = true
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." index="7"]
 z_index = -1
+tile_map_data = PackedByteArray("AAADAAIAAAAEAAcAAAAOAAkAAAAEAAgAAAADAAkAAAAFAAcAAAAOAAIAAAAGAAcAAAA=")
 tile_set = ExtResource("5_1hqbr")
