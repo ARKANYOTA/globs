@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw2toebu4uca1"]
+
+[ext_resource type="Texture2D" uid="uid://bbtfnnfhieyks" path="res://assets/images/backgrounds/snow_background.png" id="1_wbp1q"]
+
+[node name="Background" type="Sprite2D"]
+z_index = -50
+texture = ExtResource("1_wbp1q")
+centered = false
