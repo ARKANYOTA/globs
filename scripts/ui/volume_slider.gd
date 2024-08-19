@@ -7,9 +7,19 @@ extends HSlider
 
 func _ready() -> void:
 	value = db_to_linear(AudioServer.get_bus_volume_db(_bus))
+	pass
 
 func _on_value_changed(value: float) -> void:
 	var config = ConfigFile.new()
-	AudioServer.set_bus_volume_db(_bus, linear_to_db(value))
-	config.set_value("volume", audio_bus_name, value)
+	config.load("user://volume.cfg")
+	var music_value = config.get_value("Sound", "Music", 1)
+	var master_value = config.get_value("Sound", "Master", 1)
+	config.set_value("Sound", "Music", music_value)
+	config.set_value("Sound", "Master", master_value)
+	if audio_bus_name == "Master":
+		config.set_value("Sound", "Master", value)
+	else:
+		config.set_value("Sound", "Music", value)
 	config.save("user://volume.cfg")
+	
+	AudioServer.set_bus_volume_db(_bus, linear_to_db(value))

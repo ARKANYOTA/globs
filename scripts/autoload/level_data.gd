@@ -85,8 +85,8 @@ func _ready() -> void:
 	load_level_data()
 	var volume_config = ConfigFile.new()
 	volume_config.load("user://volume.cfg")
-	var master_value = volume_config.get_value("volume", "Master", 1)
-	var music_value = volume_config.get_value("volume", "Music", 1)
+	var master_value = volume_config.get_value("Sound", "Master", 1)
+	var music_value = volume_config.get_value("Sound", "Music", 1)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(master_value))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(music_value))
 	pass # Replace with function body.
