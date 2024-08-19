@@ -16,7 +16,8 @@ var overlapping_bodies = Dictionary()
 
 func _ready():
 	collision_shape.shape = collision_shape.shape.duplicate()
-	collision_shape.shape.size = Vector2(size_pixels)
+	collision_shape.shape.size = Vector2(size_pixels) - Vector2(2,2)
+	collision_shape.position = Vector2(0,0)
 
 func _physics_process(delta):
 	if Engine.is_editor_hint():
