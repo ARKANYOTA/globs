@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://wmysu03x830w"]
+
+[ext_resource type="PackedScene" uid="uid://cw2toebu4uca1" path="res://scenes/levels/background.tscn" id="1_w6roc"]
+[ext_resource type="Texture2D" uid="uid://cf6y4eeok4xld" path="res://assets/images/backgrounds/city_background.png" id="2_nr62c"]
+[ext_resource type="PackedScene" uid="uid://y3nsqm2pc0s7" path="res://scenes/ui/particle/snow_particle.tscn" id="3_4v42j"]
+[ext_resource type="Texture2D" uid="uid://b8sbhw87orqsu" path="res://assets/images/particle/bird_fly.png" id="4_8cl4a"]
+[ext_resource type="Texture2D" uid="uid://cxonbiyobii1" path="res://assets/images/particle/bird_fly_left.png" id="5_rtxu3"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1hxnc"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_6q51f"]
+offsets = PackedFloat32Array(0.0243902, 0.844291, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[node name="CityVisuals" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="Background" parent="." instance=ExtResource("1_w6roc")]
+texture = ExtResource("2_nr62c")
+
+[node name="BirdParticles" parent="." instance=ExtResource("3_4v42j")]
+z_index = -9
+material = SubResource("CanvasItemMaterial_1hxnc")
+position = Vector2(2, 93)
+rotation = 0.0
+amount = 10
+lifetime = 10.0
+preprocess = 3.5
+speed_scale = 0.2
+lifetime_randomness = 0.31
+texture = ExtResource("4_8cl4a")
+emission_rect_extents = Vector2(0, 100)
+direction = Vector2(300, 0)
+spread = 8.51
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 400.0
+scale_amount_max = 1.0
+color_ramp = SubResource("Gradient_6q51f")
+anim_speed_min = 103.5
+anim_speed_max = 200.0
+
+[node name="BirdParticlesLeft" parent="." instance=ExtResource("3_4v42j")]
+z_index = -9
+material = SubResource("CanvasItemMaterial_1hxnc")
+position = Vector2(321, 93)
+rotation = 0.0
+amount = 10
+lifetime = 10.0
+preprocess = 3.5
+speed_scale = 0.2
+lifetime_randomness = 0.31
+texture = ExtResource("5_rtxu3")
+emission_rect_extents = Vector2(0, 100)
+direction = Vector2(-300, 0)
+spread = 8.51
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 400.0
+scale_amount_max = 1.0
+color_ramp = SubResource("Gradient_6q51f")
+anim_speed_min = 103.5
+anim_speed_max = 200.0
