@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://divqor4b0wvhn"]
+
+[ext_resource type="Texture2D" uid="uid://cagg1qydmiusw" path="res://assets/images/ui/button.png" id="1_3nrti"]
+[ext_resource type="Script" path="res://scripts/ui/level_button.gd" id="1_op3qd"]
+[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="3_fvd24"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_836hb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j3yx2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1igd3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g6ncf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jdagr"]
+
+[sub_resource type="Theme" id="Theme_flmwo"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_836hb")
+Button/styles/focus = SubResource("StyleBoxEmpty_j3yx2")
+Button/styles/hover = SubResource("StyleBoxEmpty_1igd3")
+Button/styles/normal = SubResource("StyleBoxEmpty_g6ncf")
+Button/styles/pressed = SubResource("StyleBoxEmpty_jdagr")
+
+[node name="LevelButton" type="Control"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchor_right = 0.075
+anchor_bottom = 0.133
+offset_bottom = 0.0599995
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_op3qd")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource("Theme_flmwo")
+icon = ExtResource("1_3nrti")
+flat = true
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -7.0
+offset_right = 37.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("3_fvd24")
+text = "[insert]"
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

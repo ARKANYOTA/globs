@@ -1,0 +1,54 @@
+[gd_scene load_steps=15 format=3 uid="uid://l4uy665qgi6n"]
+
+[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="1_tjc5n"]
+[ext_resource type="StyleBox" uid="uid://dv3miaelc86gy" path="res://assets/textures/option_button_texture_pressed.tres" id="2_frkiv"]
+[ext_resource type="StyleBox" uid="uid://dbwx70quhf42b" path="res://assets/textures/option_button_texture_hover.tres" id="3_q5fg8"]
+[ext_resource type="StyleBox" uid="uid://d1obvum2g2cax" path="res://assets/textures/option_button_texture.tres" id="4_0mqmd"]
+[ext_resource type="Script" path="res://scripts/ui/ui_button.gd" id="5_bt5wv"]
+[ext_resource type="AudioStream" uid="uid://lgkwwx64ps4o" path="res://assets/sounds/ui/button_click_1.ogg" id="6_h307p"]
+[ext_resource type="AudioStream" uid="uid://dqr8ttoiwibip" path="res://assets/sounds/ui/button_hover.ogg" id="7_5ca5j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dge07"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mrjtd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5rjmr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8mypg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4q584"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lhtys"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jod3y"]
+random_pitch = 1.08
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("7_5ca5j")
+
+[node name="UiButton" type="Button"]
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_tjc5n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dge07")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_mrjtd")
+theme_override_styles/disabled = ExtResource("2_frkiv")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_5rjmr")
+theme_override_styles/hover_pressed = ExtResource("2_frkiv")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8mypg")
+theme_override_styles/hover = ExtResource("3_q5fg8")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_4q584")
+theme_override_styles/pressed = ExtResource("2_frkiv")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_lhtys")
+theme_override_styles/normal = ExtResource("4_0mqmd")
+text = "Resume"
+script = ExtResource("5_bt5wv")
+
+[node name="ClickAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_h307p")
+
+[node name="HoverAudio" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_jod3y")
+volume_db = -8.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

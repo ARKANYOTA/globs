@@ -5,7 +5,7 @@ var current_selected_block: Block = null
 var selection_candidates = []
 var is_dragging = false
 
-var block_manager: PackedScene = preload("res://scenes/block_manager.tscn")
+var block_manager: PackedScene = preload("res://scenes/block/block_manager.tscn")
 var block_manager_instance: Node
 
 var blocks = []

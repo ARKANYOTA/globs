@@ -2,7 +2,7 @@ extends Node
 
 @onready var audio_player
 
-var music_player_prefab: PackedScene = load("res://scenes/music_player.tscn")
+var music_player_prefab: PackedScene = load("res://scenes/music/music_player.tscn")
 var music_player: MusicPlayer
 
 func _ready():

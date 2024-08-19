@@ -14,7 +14,7 @@ func _ready():
 func _input(event):
 	if not clicked and event.is_action_pressed("left_click"):
 		clicked = true
-		SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/level_select.tscn", false)
+		SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/ui/level_select.tscn", false)
 
 # Quitting 
 func quit():

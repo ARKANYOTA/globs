@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://diuwnd0u0ilb5"]
+
+[ext_resource type="Texture2D" uid="uid://cbb0cie1kixop" path="res://assets/images/spritesheet/black_frost_sprite_sheet2.png" id="1_w5tpu"]
+[ext_resource type="Texture2D" uid="uid://bvi6fu374g530" path="res://assets/images/light/round_blured.png" id="2_alaep"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_svkfn"]
+polygon = PackedVector2Array(-8, -2, 7, -2, 7, -6, 4, -8, -4, -8, -8, -5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uu7b0"]
+polygon = PackedVector2Array(-8, 4, 8, 4, 8, 8, -8, 8)
+
+[sub_resource type="Curve" id="Curve_2avv3"]
+_data = [Vector2(0, 0.186813), 0.0, 0.0, 0, 0, Vector2(0.677083, 0.450549), 0.0, 0.0, 0, 0, Vector2(1, 0.626374), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Lantern" type="Node2D"]
+
+[node name="BlackFrostSpriteSheet2" type="Sprite2D" parent="."]
+texture = ExtResource("1_w5tpu")
+hframes = 10
+vframes = 10
+frame = 42
+
+[node name="BlackFrostSpriteSheet3" type="Sprite2D" parent="."]
+texture = ExtResource("1_w5tpu")
+hframes = 10
+vframes = 10
+frame = 43
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(-0.504062, -0.504062)
+color = Color(1, 0.462745, 0.145098, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("2_alaep")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+occluder = SubResource("OccluderPolygon2D_svkfn")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+occluder = SubResource("OccluderPolygon2D_uu7b0")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(0.314316, 0.314316, 0.314316, 1)
+position = Vector2(0, 2)
+amount = 5
+preprocess = 1.0
+speed_scale = 0.3
+spread = 180.0
+gravity = Vector2(0, -40)
+initial_velocity_max = 10.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_2avv3")

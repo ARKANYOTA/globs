@@ -1,25 +1,24 @@
 extends Node
 
 var levels = [
-	{ "name": "1-1", "scene": "res://scenes/levels/world_1/level_100_intro.tscn"},
-	{ "name": "1-2", "scene": "res://scenes/levels/world_1/level_110_push.tscn"},
-	{ "name": "1-3", "scene": "res://scenes/levels/world_1/level_120_support.tscn"},
+	{ "name": "1-1", "scene": "res://scenes/levels/world_1/level_110_intro.tscn"},
+	{ "name": "1-2", "scene": "res://scenes/levels/world_1/level_120_push.tscn"},
+	{ "name": "1-3", "scene": "res://scenes/levels/world_1/level_130_support.tscn"},
 	{ "name": "1-4", "scene": "res://scenes/levels/world_1/level_140_only_red_wins.tscn"},
-	{ "name": "1-5", "scene": "res://scenes/levels/world_1/level_400.tscn"},
 
-	{ "name": "2-1", "scene": "res://scenes/levels/world_2/level_10_0.tscn"},
-	{ "name": "2-2", "scene": "res://scenes/levels/world_2/level_11_beta.tscn"},
-	{ "name": "2-3", "scene": "res://scenes/levels/world_2/level_12.tscn"},
-	{ "name": "2-4", "scene": "res://scenes/levels/world_2/level_13.tscn"},
-	{ "name": "2-5", "scene": "res://scenes/levels/world_2/level_14.tscn"},
-	{ "name": "2-6", "scene": "res://scenes/levels/world_2/level_14_bis.tscn"},
-	{ "name": "2-7", "scene": "res://scenes/levels/world_2/level_15.tscn"},
+	{ "name": "2-1", "scene": "res://scenes/levels/world_2/level_210.tscn"},
+	{ "name": "2-2", "scene": "res://scenes/levels/world_2/level_220_beta.tscn"},
+	{ "name": "2-3", "scene": "res://scenes/levels/world_2/level_230.tscn"},
+	{ "name": "2-4", "scene": "res://scenes/levels/world_2/level_240.tscn"},
+	{ "name": "2-5", "scene": "res://scenes/levels/world_2/level_250.tscn"},
+	{ "name": "2-6", "scene": "res://scenes/levels/world_2/level_260.tscn"},
+	{ "name": "2-7", "scene": "res://scenes/levels/world_2/level_270.tscn"},
 
-	{ "name": "3-1", "scene": "res://scenes/levels/world_3/level_0.tscn"},
-	# { "name": "3-2", "scene": "res://scenes/levels/world_3/level_0_1.tscn"},
-	{ "name": "3-2", "scene": "res://scenes/levels/world_3/level_1.tscn"},
-	{ "name": "3-3", "scene": "res://scenes/levels/world_3/level_3.tscn"},
-	{ "name": "3-4", "scene": "res://scenes/levels/world_3/level_4.tscn"},
+	{ "name": "3-1", "scene": "res://scenes/levels/world_3/level_310.tscn"},
+	{ "name": "3-2", "scene": "res://scenes/levels/world_3/level_320.tscn"},
+	{ "name": "3-3", "scene": "res://scenes/levels/world_3/level_330.tscn"},
+	{ "name": "3-4", "scene": "res://scenes/levels/world_3/level_340.tscn"},
+	
 	{ "name": "You Win", "scene": "res://scenes/levels/you_win.tscn"},
 ]
 

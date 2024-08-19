@@ -1,11 +1,14 @@
-extends Node
+extends GridContainer
 
-@onready var pause_menu = preload("res://scenes/ui/menu/menu_manager.tscn")
+var LevelButton = preload("res://scenes/ui/level_button.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pause_menu = pause_menu.instantiate()
-	add_child(pause_menu)
+	var len_list = len(LevelData.levels)
+	for i in range(len_list - 1):
+		var button = LevelButton.instantiate()
+		button.level = i
+		add_child(button)
 	pass # Replace with function body.
 
 

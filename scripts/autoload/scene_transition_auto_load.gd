@@ -1,9 +1,9 @@
 extends Node
 
-var scene_transition: PackedScene = preload("res://scenes/scene_transition.tscn")
+var scene_transition: PackedScene = preload("res://scenes/ui/scene_transition.tscn")
 var scene_transition_instance: Node
 var pos_list : Array = [[0,32],[0,16],[16,32],[0,48]]
-var youwinlevel: PackedScene = preload("res://scenes/you_win_level.tscn")
+var youwinlevel: PackedScene = preload("res://scenes/ui/particle/you_win_level.tscn")
 var youwinlevel_instance: Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
