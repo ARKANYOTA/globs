@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://id7bhi4xpwux"]
+
+[ext_resource type="Script" path="res://scripts/block/change_gravity_zone.gd" id="1_nvhnp"]
+[ext_resource type="Texture2D" uid="uid://boh0sn4axcuwy" path="res://assets/images/spritesheet/goal_animation.png" id="2_gtvvg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcvur"]
+size = Vector2(14, 14)
+
+[node name="ChangeGravityZone" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_nvhnp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qcvur")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("2_gtvvg")
+region_rect = Rect2(0, 0, 16, 16)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
