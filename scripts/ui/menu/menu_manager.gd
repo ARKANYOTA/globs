@@ -23,6 +23,8 @@ func _process(delta):
 			pause()
 
 func pause():
+	if not PauseMenuAutoload.can_pause:
+		return
 	paused = true
 	set_menu_by_name("PauseMenu")
 

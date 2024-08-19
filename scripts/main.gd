@@ -9,11 +9,12 @@ var paused = false
 var clicked = false
 
 func _ready():
-	pass
+	PauseMenuAutoload.can_pause = false
 
 func _input(event):
 	if not clicked and event.is_action_pressed("left_click"):
 		clicked = true
+		PauseMenuAutoload.can_pause = true
 		SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/ui/level_select.tscn", false)
 
 # Quitting 
