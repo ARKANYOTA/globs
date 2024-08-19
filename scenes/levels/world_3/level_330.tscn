@@ -272,7 +272,7 @@ tile_set = ExtResource("2_ioplo")
 collision_enabled = false
 
 [node name="Goal" parent="." instance=ExtResource("2_ojxyp")]
-position = Vector2(-80, 64)
+position = Vector2(-80, 80)
 scale = Vector2(2, 2)
 size = Vector2i(7, 1)
 
