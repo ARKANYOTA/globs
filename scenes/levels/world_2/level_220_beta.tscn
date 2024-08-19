@@ -202,7 +202,6 @@ tile_set = SubResource("TileSet_hoxn1")
 [node name="Block2" parent="." instance=ExtResource("3_8h8dd")]
 position = Vector2(56, 152)
 is_main_character = true
-push_bounce = false
 down_extendable = true
 down_extend_range = Vector2i(8, 104)
 left_extendable = true
@@ -213,7 +212,6 @@ right_extend_range = Vector2i(8, 72)
 [node name="Block" parent="." instance=ExtResource("3_8h8dd")]
 position = Vector2(120, 152)
 is_main_character = true
-push_bounce = false
 left_extendable = true
 left_extend_range = Vector2i(8, 104)
 right_extendable = true
