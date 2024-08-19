@@ -263,7 +263,6 @@ right_extend_value = 136.0
 [node name="Block2" parent="." instance=ExtResource("5_4hq62")]
 position = Vector2(40, 168)
 static_block = true
-right_extendable = true
 right_extend_range = Vector2i(8, 120)
 right_extend_value = 120.0
 

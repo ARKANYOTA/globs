@@ -206,16 +206,13 @@ right_extendable = true
 right_extend_range = Vector2i(8, 88)
 
 [node name="Block2" parent="." instance=ExtResource("3_enpca")]
-position = Vector2(88, 121)
+position = Vector2(88, 136)
 is_main_character = true
 up_extendable = true
-up_extend_range = Vector2i(8, 108)
 down_extendable = true
-down_extend_range = Vector2i(8, 108)
 left_extendable = true
 right_extendable = true
 right_extend_range = Vector2i(8, 88)
 
 [node name="Goal" parent="." instance=ExtResource("4_nuj81")]
-position = Vector2(152, 64)
-scale = Vector2(2, 2)
+position = Vector2(152, 72)
