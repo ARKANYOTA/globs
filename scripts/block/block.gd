@@ -646,6 +646,9 @@ func is_same_axis(dir: Direction, odir: Direction):
 func extend_block(variation: int, direction: Direction, push: bool):
 	var extend = push or can_extend(direction)
 
+	if get_tree() == null:
+		return
+	
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	var tween_transition = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	
