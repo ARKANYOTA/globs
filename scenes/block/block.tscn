@@ -24,7 +24,7 @@
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m21ur"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0f4ev"]
 size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
@@ -340,10 +340,6 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_eflyf")
 is_gravity_enabled = false
-up_extend_block_range = null
-down_extend_block_range = null
-left_extend_block_range = null
-right_extend_block_range = null
 
 [node name="BlockOccluder" parent="." instance=ExtResource("2_doa3v")]
 occluder = SubResource("OccluderPolygon2D_nbgqd")
@@ -370,7 +366,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_m21ur")
+shape = SubResource("RectangleShape2D_0f4ev")
 debug_color = Color(0, 0.509804, 0.6, 0.0509804)
 
 [node name="UnClickArea" parent="." instance=ExtResource("3_h0fp2")]

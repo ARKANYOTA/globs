@@ -153,10 +153,10 @@ func expand(direction: Direction, amount: int):
 		down_extend_value += amount
 
 func update_range_from_block_range():
-	up_extend_range =    Vector2i(up_extend_block_range    * 8 + Vector2i(8, 8))
-	down_extend_range =  Vector2i(down_extend_block_range  * 8 + Vector2i(8, 8))
-	left_extend_range =  Vector2i(left_extend_block_range  * 8 + Vector2i(8, 8))
-	right_extend_range = Vector2i(right_extend_block_range * 8 + Vector2i(8, 8))
+	up_extend_range =    Vector2i(up_extend_block_range    * 16 + Vector2i(8, 8))
+	down_extend_range =  Vector2i(down_extend_block_range  * 16 + Vector2i(8, 8))
+	left_extend_range =  Vector2i(left_extend_block_range  * 16 + Vector2i(8, 8))
+	right_extend_range = Vector2i(right_extend_block_range * 16 + Vector2i(8, 8))
 
 func update_dimensions():
 	var dim: Vector2 = Vector2(left_extend_value + right_extend_value, 
