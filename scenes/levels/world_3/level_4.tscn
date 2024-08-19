@@ -497,7 +497,7 @@ scale = Vector2(2, 2)
 size = Vector2i(7, 1)
 
 [node name="Block2" parent="." instance=ExtResource("3_kmfr2")]
-position = Vector2(80, 200)
+position = Vector2(72, 200)
 is_main_character = true
 rotatable = true
 angle = -77.034
