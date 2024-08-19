@@ -1,19 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://3wdpn4oulgik"]
+[gd_scene load_steps=5 format=3 uid="uid://3wdpn4oulgik"]
 
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="1_0kkrs"]
+[ext_resource type="Texture2D" uid="uid://cbb0cie1kixop" path="res://assets/images/spritesheet/black_frost_sprite_sheet2.png" id="2_sbi8i"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nbgqd"]
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejb2g"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3u68e"]
 size = Vector2(16, 48)
 
 [node name="Block" instance=ExtResource("1_0kkrs")]
-max_pushs = 1
+up_extend_block_range = Vector2i(0, 1)
+down_extend_block_range = Vector2i(0, 1)
+left_extend_block_range = Vector2i(0, 1)
+right_extend_block_range = Vector2i(0, 1)
 
 [node name="BlockOccluder" parent="." index="0"]
 occluder = SubResource("OccluderPolygon2D_nbgqd")
 
+[node name="NinePatch" parent="." index="1"]
+texture = ExtResource("2_sbi8i")
+
 [node name="CollisionShape" parent="." index="2"]
-shape = SubResource("RectangleShape2D_ejb2g")
+shape = SubResource("RectangleShape2D_3u68e")
