@@ -44,6 +44,8 @@ const dir_map = [
 		default_gravity_axis = value
 		gravity_axis = value
 
+@export var max_pushs := 1
+
 var gravity_axis = Direction.DOWN
 
 @export_group("Up Extandable")
@@ -85,6 +87,8 @@ var gravity_axis = Direction.DOWN
 @onready var click_audio: AudioStreamPlayer2D = $Audio/ClickAudio
 @onready var slide_audio: AudioStreamPlayer2D = $Audio/SlideAudio
 
+const move_speed := 0.1
+
 var is_hovered := false
 var is_selected := false
 var handles: Array = []
@@ -96,6 +100,8 @@ var animation = "o_face"
 var is_asleep := false
 var is_moving := false
 var is_falling := false
+
+var remaining_pushs := -1
 
 ################################################
 
@@ -207,7 +213,7 @@ func get_center():
 func get_all_tree_nodes(node = get_tree().get_root(), list = []):
 	list.append(node)
 	for childNode in node.get_children():
-		get_all_tree_nodes(childNode, list)
+		list = get_all_tree_nodes(childNode, list)
 	return list
 
 func enter_gravity_zone(direction: Direction):
@@ -554,13 +560,13 @@ func _physics_process(delta):
 			var gravity_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 			is_falling = true
 			if gravity_axis == Direction.DOWN:
-				gravity_tween.tween_property(self, "position:y", position.y + 16, 0.3).set_ease(Tween.EASE_OUT)
+				gravity_tween.tween_property(self, "position:y", position.y + 16, move_speed).set_ease(Tween.EASE_OUT)
 			if gravity_axis == Direction.UP:
-				gravity_tween.tween_property(self, "position:y", position.y - 16, 0.3).set_ease(Tween.EASE_OUT)
+				gravity_tween.tween_property(self, "position:y", position.y - 16, move_speed).set_ease(Tween.EASE_OUT)
 			if gravity_axis == Direction.LEFT:
-				gravity_tween.tween_property(self, "position:x", position.x - 16, 0.3).set_ease(Tween.EASE_OUT)
+				gravity_tween.tween_property(self, "position:x", position.x - 16, move_speed).set_ease(Tween.EASE_OUT)
 			if gravity_axis == Direction.RIGHT:
-				gravity_tween.tween_property(self, "position:x", position.x + 16, 0.3).set_ease(Tween.EASE_OUT)
+				gravity_tween.tween_property(self, "position:x", position.x + 16, move_speed).set_ease(Tween.EASE_OUT)
 
 			gravity_tween.tween_callback(set_is_falling_to_false)
 	
@@ -586,23 +592,8 @@ func set_is_moving_to_false():
 func set_is_falling_to_false():
 	is_falling = false
 
-func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
-	if is_moving:
-		return
-	
-	if not is_selected:
-		return
-
-	var variation = get_variation(direction)
-	if abs(variation) < 8:
-		return
-
-	if variation > 0:
-		variation = 16
-	else:
-		variation = -16
-
-	var extend = can_extend(direction)
+func extend_block(variation: int, direction: Direction, push: bool):
+	var extend = push or can_extend(direction)
 
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	var tween_transition = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
@@ -617,6 +608,7 @@ func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 			movements = check[0]
 			reverse = check[1]
 			if not extend or movements.is_empty():
+				remaining_pushs = -1
 				return
 		val = left_extend_value - variation
 		tween_property = "left_extend_value"
@@ -627,6 +619,7 @@ func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 			movements = check[0]
 			reverse = check[1]
 			if not extend or movements.is_empty():
+				remaining_pushs = -1
 				return
 		val = right_extend_value + variation
 		tween_property = "right_extend_value"
@@ -637,6 +630,7 @@ func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 			movements = check[0]
 			reverse = check[1]
 			if not extend or movements.is_empty():
+				remaining_pushs = -1
 				return
 		val = up_extend_value - variation
 		tween_property = "up_extend_value"
@@ -647,36 +641,61 @@ func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 			movements = check[0]
 			reverse = check[1]
 			if not extend or movements.is_empty():
+				remaining_pushs = -1
 				return
 		
 		val = down_extend_value + variation
 		tween_property = "down_extend_value"
+
+	if reverse and push:
+		remaining_pushs = -1
+		return
 	
 	is_moving = true
+	var mul = -1 if reverse else 1
+	var off = mul * 16 if direction == Direction.RIGHT or direction == Direction.DOWN else mul * -16
 
-	for i in range(int(not reverse), len(movements)):
+	for i in range(int(not reverse and not push), len(movements)):
 		var move_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
-		var mul = -1 if reverse else 1
-		if direction == Direction.RIGHT:
-			move_tween.tween_property(movements[i], "position:x", movements[i].position.x + mul * 16, 0.3).set_ease(Tween.EASE_OUT)
-		if direction == Direction.LEFT:
-			move_tween.tween_property(movements[i], "position:x", movements[i].position.x + mul * -16, 0.3).set_ease(Tween.EASE_OUT)
-		if direction == Direction.DOWN:
-			move_tween.tween_property(movements[i], "position:y", movements[i].position.y + mul * 16, 0.3).set_ease(Tween.EASE_OUT)
-		if direction == Direction.UP:
-			move_tween.tween_property(movements[i], "position:y", movements[i].position.y + mul * -16, 0.3).set_ease(Tween.EASE_OUT)
+		var block: Block = movements[i]
 
-	if tween_property != "":
-		tween.tween_property(self, tween_property, val, 0.3).set_ease(Tween.EASE_OUT)
+		if direction == Direction.RIGHT:
+			move_tween.tween_property(block, "position:x", block.position.x + off, move_speed).set_ease(Tween.EASE_OUT)
+		if direction == Direction.LEFT:
+			move_tween.tween_property(block, "position:x", block.position.x + off, move_speed).set_ease(Tween.EASE_OUT)
+		if direction == Direction.DOWN:
+			move_tween.tween_property(block, "position:y", block.position.y + off, move_speed).set_ease(Tween.EASE_OUT)
+		if direction == Direction.UP:
+			move_tween.tween_property(block, "position:y", block.position.y + off, move_speed).set_ease(Tween.EASE_OUT)
+
+		if block.remaining_pushs < 0:
+			block.remaining_pushs = block.max_pushs - 1
+		
+		if block.remaining_pushs == 0:
+			block.remaining_pushs = -1
+		else:
+			block.remaining_pushs -= 1
+			move_tween.tween_callback(func(): block.extend_block(off, direction, true))
+
+
+	if tween_property != "" and not push:
+		tween.tween_property(self, tween_property, val, move_speed).set_ease(Tween.EASE_OUT)
 		slide_audio.play()
 
-	
-		
-	# actualisaliser la gravité de touts le block en partant du bas vers le haut
-	# si gravité a faire:
-		# actualiser la gravité:
-		# is moving = false
-	# else:
-	# 	tween_transition.tween_callback(set_is_moving_to_false).set_delay(0.31)
-	tween_transition.tween_callback(set_is_moving_to_false).set_delay(0.31)
+	tween_transition.tween_callback(set_is_moving_to_false).set_delay(move_speed)
 	_update_scale_handles()
+
+func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
+	if is_moving or not is_selected:
+		return
+
+	var variation = get_variation(direction)
+	if abs(variation) < 8:
+		return
+
+	if variation > 0:
+		variation = 16
+	else:
+		variation = -16
+	
+	extend_block(variation, direction, false)
