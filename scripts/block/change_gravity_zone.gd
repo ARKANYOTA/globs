@@ -47,7 +47,7 @@ func _ready():
 func _on_area_entered(area):
 	if not area is Block:
 		return
-	area.enter_gravity_zone(gravity_axis)
+	area.enter_gravity_zone(gravity_axis, is_effect_permanent)
 
 func _on_area_exited(area):
 	if is_effect_permanent:
@@ -56,6 +56,6 @@ func _on_area_exited(area):
 	if not area is Block:
 		return
 		
-	area.exit_gravity_zone()
+	area.exit_gravity_zone(gravity_axis)
 
 	pass # Replace with function body.
