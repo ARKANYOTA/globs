@@ -20,17 +20,9 @@ scale = Vector2(2, 2)
 position = Vector2(104, 152)
 is_main_character = true
 up_extendable = true
-up_extend_range = Vector2i(8, 104)
-up_extend_block_range = Vector2i(0, 1)
 down_extendable = true
-down_extend_range = Vector2i(8, 104)
-down_extend_block_range = Vector2i(0, 1)
 left_extendable = true
-left_extend_range = Vector2i(8, 104)
-left_extend_block_range = Vector2i(0, 1)
 right_extendable = true
-right_extend_range = Vector2i(8, 104)
-right_extend_block_range = Vector2i(0, 1)
 
 [node name="Block" parent="." instance=ExtResource("4_ljiqj")]
 position = Vector2(120, 136)
@@ -47,7 +39,3 @@ right_extend_range = Vector2i(8, 184)
 position = Vector2(104, 168)
 static_block = true
 up_extendable = true
-up_extend_block_range = Vector2i(0, 1)
-down_extend_block_range = Vector2i(0, 1)
-left_extend_block_range = Vector2i(0, 1)
-right_extend_block_range = Vector2i(0, 1)
