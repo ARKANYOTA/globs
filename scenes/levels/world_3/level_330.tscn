@@ -246,17 +246,12 @@ sources/0 = SubResource("TileSetAtlasSource_hpaph")
 [node name="Level3" type="Node2D"]
 position = Vector2(40, -48)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-modulate = Color(0.843184, 0.843184, 0.843184, 1)
-tile_set = SubResource("TileSet_qaac7")
-collision_enabled = false
-
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAMAAwAAAAFAAAAAAANAAwAAAAGAAAAAAANAA0AAAAIAAIAAAAPAA0AAAAGAAEAAAAOAA0AAAAGAAEAAAAQAA0AAAAGAAEAAAARAA0AAAAGAAEAAAASAA0AAAAHAAIAAAASAAwAAAAGAAEAAAATAAwAAAAHAAIAAAARAAwAAAAGAAEAAAAQAAwAAAAGAAEAAAAPAAwAAAAGAAEAAAAOAAwAAAAGAAAAAAAMAA0AAAAFAAEAAAAJAA0AAAAHAAAAAAAIAA0AAAAGAAAAAAAHAA0AAAAGAAAAAAAGAA0AAAAGAAAAAAAFAA0AAAAGAAAAAAAEAA0AAAAGAAAAAAADAA0AAAAGAAAAAAACAA0AAAAGAAAAAAABAA0AAAAGAAAAAAAAAA0AAAAGAAAAAAD//w0AAAAGAAAAAAD+/wwAAAAHAAEAAAD+/w0AAAAGAAEAAAD+/wsAAAAHAAEAAAD+/woAAAAGAAEAAAD+/wkAAAAGAAEAAAD+/wgAAAAGAAEAAAD//wkAAAAGAAEAAAAAAAkAAAAGAAAAAAACAAkAAAABAAUAAAD+/wcAAAAGAAEAAAD//wcAAAAHAAEAAAD//wYAAAAHAAEAAAD+/wYAAAAIAAAAAAD//wgAAAAHAAEAAAATAAsAAAAHAAEAAAATAAoAAAAHAAEAAAATAAkAAAAHAAEAAAATAAgAAAAHAAEAAAATAAcAAAAGAAEAAAAUAAcAAAAHAAIAAAAUAAYAAAAHAAEAAAAUAAUAAAAHAAEAAAAUAAQAAAAHAAAAAAATAAYAAAAGAAEAAAATAAUAAAAGAAEAAAATAAQAAAAGAAEAAAATAAMAAAAHAAAAAAASAAMAAAAGAAAAAAASAAQAAAAGAAEAAAASAAYAAAAIAAAAAAASAAcAAAAGAAEAAAASAAsAAAAGAAEAAAASAAoAAAAGAAEAAAASAAkAAAAGAAEAAAASAAgAAAAGAAEAAAAPAAkAAAAFAAEAAAAPAAoAAAAFAAEAAAAPAAsAAAAFAAEAAAAOAAsAAAAGAAcAAAANAAsAAAAHAAYAAAAMAAsAAAAIAAYAAAAQAAsAAAAGAAEAAAARAAsAAAAGAAEAAAD//wUAAAAGAAAAAAD+/wUAAAAGAAAAAAAAAAUAAAAHAAMAAAAPAAgAAAAFAAAAAAAQAAgAAAAGAAEAAAAQAAcAAAAFAAEAAAAQAAYAAAAGAAEAAAAPAAYAAAAFAAIAAAAPAAUAAAAFAAEAAAAPAAQAAAAFAAEAAAAQAAUAAAAGAAEAAAAQAAQAAAAIAAIAAAAQAAMAAAAGAAAAAAAPAAMAAAAFAAAAAAARAAMAAAAGAAAAAAARAAQAAAAGAAEAAAARAAUAAAAGAAEAAAARAAYAAAAGAAEAAAARAAcAAAAGAAEAAAASAAUAAAAGAAEAAAARAAgAAAAGAAEAAAARAAkAAAAIAAIAAAARAAoAAAAGAAEAAAAQAAoAAAAIAAAAAAAQAAkAAAAGAAEAAAARAA4AAAAHAAIAAAAQAA4AAAAGAAIAAAAOAA4AAAAGAAIAAAAPAA4AAAAGAAIAAAANAA4AAAAGAAIAAAAKAA4AAAAGAAMAAAALAA4AAAAGAAMAAAAMAA4AAAAGAAIAAAAJAA4AAAAGAAIAAAAIAA4AAAAGAAIAAAAHAA4AAAAGAAIAAAAGAA4AAAAGAAIAAAAFAA4AAAAGAAIAAAAEAA4AAAAGAAIAAAADAA4AAAAGAAIAAAACAA4AAAAGAAIAAAABAA4AAAAGAAIAAAAAAA4AAAAGAAIAAAD//w4AAAAGAAIAAAD+/w4AAAAGAAIAAAD9/w4AAAAFAAIAAAD9/w0AAAAFAAEAAAD9/wwAAAAFAAEAAAD9/wsAAAAFAAEAAAD9/woAAAAFAAEAAAD9/wkAAAAFAAEAAAD9/wUAAAAFAAAAAAD9/wYAAAAFAAEAAAD9/wcAAAAFAAEAAAD9/wgAAAAFAAEAAAD//woAAAAGAAIAAAACAAoAAAABAAUAAAABAAoAAAAHAAIAAAAAAAoAAAAGAAIAAAD//wQAAAAFAAYAAAD+/wQAAAAEAAcAAAABAAkAAAAHAAAAAAANAAoAAAAIAAYAAAADAAoAAAACAAUAAAA=")
 tile_set = SubResource("TileSet_qaac7")
 
 [node name="Goal" parent="." instance=ExtResource("2_ojxyp")]
-position = Vector2(-56, 64)
+position = Vector2(-80, 64)
 scale = Vector2(2, 2)
 size = Vector2i(7, 1)
 
@@ -266,69 +261,51 @@ is_main_character = true
 rotatable = true
 angle = -77.034
 up_extendable = true
-up_extend_range = Vector2i(8, 56)
-up_extend_block_range = Vector2i(0, 1)
-down_extend_block_range = Vector2i(0, 1)
+up_extend_range = Vector2i(8, 40)
+up_extend_block_range = Vector2i(0, 2)
 left_extendable = true
 left_extend_range = Vector2i(8, 88)
-left_extend_block_range = Vector2i(0, 1)
+left_extend_block_range = Vector2i(0, 5)
 right_extendable = true
-right_extend_block_range = Vector2i(0, 1)
 
 [node name="Block4" parent="." instance=ExtResource("4_dulq0")]
-position = Vector2(120, 72)
+position = Vector2(136, 104)
 is_gravity_enabled = true
-up_extend_block_range = Vector2i(0, 1)
-up_extend_value = 24.0
-down_extend_block_range = Vector2i(0, 1)
-left_extend_block_range = Vector2i(0, 1)
-right_extend_block_range = Vector2i(0, 1)
+up_extend_range = Vector2i(8, 104)
+up_extend_block_range = Vector2i(0, 8)
+up_extend_value = 104.0
 right_extend_value = 24.0
 
 [node name="Block8" parent="." instance=ExtResource("4_dulq0")]
 position = Vector2(184, 216)
 static_block = true
 up_extendable = true
-up_extend_range = Vector2i(8, 88)
-up_extend_block_range = Vector2i(0, 1)
-down_extend_block_range = Vector2i(0, 1)
-left_extend_block_range = Vector2i(0, 1)
+up_extend_range = Vector2i(8, 104)
+up_extend_block_range = Vector2i(0, 6)
 left_extend_value = 24.0
-right_extend_block_range = Vector2i(0, 1)
 
 [node name="Block5" parent="." instance=ExtResource("4_dulq0")]
 position = Vector2(248, 121)
 static_block = true
-up_extend_block_range = Vector2i(0, 1)
-down_extend_block_range = Vector2i(0, 1)
 left_extendable = true
-left_extend_range = Vector2i(8, 136)
-left_extend_block_range = Vector2i(0, 1)
-left_extend_value = 136.0
-right_extend_block_range = Vector2i(0, 1)
+left_extend_range = Vector2i(8, 120)
+left_extend_block_range = Vector2i(0, 7)
+left_extend_value = 120.0
 
 [node name="Block6" parent="." instance=ExtResource("4_dulq0")]
 position = Vector2(8, 105)
 static_block = true
-up_extend_block_range = Vector2i(0, 1)
-down_extend_block_range = Vector2i(0, 1)
-left_extend_range = Vector2i(8, 136)
-left_extend_block_range = Vector2i(0, 1)
 right_extendable = true
-right_extend_range = Vector2i(8, 104)
-right_extend_block_range = Vector2i(0, 1)
+right_extend_range = Vector2i(8, 40)
+right_extend_block_range = Vector2i(0, 2)
 right_extend_value = 40.0
 
 [node name="Block7" parent="." instance=ExtResource("4_dulq0")]
 position = Vector2(40, 88)
 is_gravity_enabled = true
-up_extend_block_range = Vector2i(0, 1)
-down_extend_block_range = Vector2i(0, 1)
-left_extend_range = Vector2i(8, 136)
-left_extend_block_range = Vector2i(0, 1)
 right_extendable = true
-right_extend_range = Vector2i(8, 152)
-right_extend_block_range = Vector2i(0, 1)
+right_extend_range = Vector2i(8, 200)
+right_extend_block_range = Vector2i(0, 12)
 
 [node name="SnowParticle" parent="." instance=ExtResource("5_qkncg")]
 position = Vector2(-48, 32)

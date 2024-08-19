@@ -82,6 +82,7 @@ func load_level_data() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	load_level_data()
 	var volume_config = ConfigFile.new()
 	volume_config.load("user://volume.cfg")
 	var master_value = volume_config.get_value("volume", "Master", 1)
