@@ -241,6 +241,11 @@ sources/0 = SubResource("TileSetAtlasSource_hpaph")
 
 [node name="Level2" type="Node2D"]
 
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -50
+texture = ExtResource("6_s02x4")
+centered = false
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0.700314, 0.752182, 0.889905, 1)
@@ -261,9 +266,8 @@ position = Vector2(64, 208)
 size = Vector2i(6, 3)
 
 [node name="Block2" parent="." instance=ExtResource("3_u2ali")]
-position = Vector2(112, 56)
+position = Vector2(104, 56)
 is_main_character = true
-max_pushs = 1
 up_extendable = true
 up_extend_range = Vector2i(8, 120)
 left_extendable = true
@@ -272,14 +276,12 @@ left_extend_range = Vector2i(8, 88)
 [node name="Block3" parent="." instance=ExtResource("3_u2ali")]
 position = Vector2(264, 40)
 is_main_character = true
-max_pushs = 1
 up_extend_range = Vector2i(8, 120)
 left_extend_range = Vector2i(8, 88)
 
 [node name="Block4" parent="." instance=ExtResource("3_u2ali")]
 position = Vector2(280, 40)
 is_main_character = true
-max_pushs = 1
 up_extend_range = Vector2i(8, 120)
 up_extend_value = 16.0
 left_extend_range = Vector2i(8, 88)
@@ -288,7 +290,6 @@ right_extend_value = 16.0
 [node name="Block5" parent="." instance=ExtResource("4_jevqh")]
 position = Vector2(136, 56)
 static_block = true
-max_pushs = 1
 left_extendable = true
 left_extend_range = Vector2i(8, 72)
 
@@ -303,8 +304,3 @@ amount = 120
 preprocess = 3.0
 lifetime_randomness = 0.1
 scale_amount_max = 3.0
-
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -50
-texture = ExtResource("6_s02x4")
-centered = false
