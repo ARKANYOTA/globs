@@ -476,6 +476,7 @@ func _update_scale_handles():
 		
 		var indicator = handle_info["direction_indicator"]
 		indicator.is_held = handle.is_held
+		#indicator.base_position = round(handle_position) #TODO
 
 func _hide_scale_handles():
 	for handle in handles:

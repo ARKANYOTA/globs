@@ -1,9 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://clib81weo65vk"]
+[gd_scene load_steps=10 format=3 uid="uid://clib81weo65vk"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ngeyx"]
 [ext_resource type="PackedScene" uid="uid://8lw7bps1tiip" path="res://scenes/menu_manager.tscn" id="3_txlr1"]
 [ext_resource type="PackedScene" uid="uid://bec4pda6oux5s" path="res://scenes/scene_transition.tscn" id="4_mholn"]
 [ext_resource type="PackedScene" uid="uid://d3nt0ouwhyl50" path="res://scenes/block_manager.tscn" id="4_orfkg"]
+[ext_resource type="LabelSettings" uid="uid://cl1yg37xye2ku" path="res://assets/resources/label_settings.tres" id="5_mcfcx"]
+[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="5_v4ddl"]
+[ext_resource type="Texture2D" uid="uid://by67joaxcae5y" path="res://assets/images/gmtklogo2024.png" id="7_h4773"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u3bde"]
+font = ExtResource("5_v4ddl")
+font_size = 8
+font_color = Color(0.73511, 0.73511, 0.73511, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_utmwf"]
+font = ExtResource("5_v4ddl")
+font_color = Color(0.73511, 0.73511, 0.73511, 1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ngeyx")
@@ -15,3 +27,52 @@ script = ExtResource("1_ngeyx")
 [node name="BlockManager" parent="." instance=ExtResource("4_orfkg")]
 
 [node name="SceneTransition" parent="." instance=ExtResource("4_mholn")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 148.0
+offset_right = 41.0
+offset_bottom = 188.0
+
+[node name="Title" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 321.0
+offset_bottom = 32.0
+text = "A game by 9-Slice Team: Arkanyota, Notgoyome, Strochnis, Theobosse, Yolwoocle"
+label_settings = SubResource("LabelSettings_u3bde")
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="Control/Title"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = -166.0
+offset_right = 355.0
+offset_bottom = -157.0
+text = "Created for the GMTK Game Jam 2024"
+label_settings = SubResource("LabelSettings_u3bde")
+
+[node name="Game name" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = -116.0
+offset_right = 321.0
+offset_bottom = -99.0
+text = "Game name here"
+label_settings = SubResource("LabelSettings_utmwf")
+horizontal_alignment = 1
+
+[node name="Click anywhere" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = -15.0
+offset_right = 321.0
+offset_bottom = 2.0
+text = "Click anywhere"
+label_settings = ExtResource("5_mcfcx")
+horizontal_alignment = 1
+
+[node name="Gmtklogo2024" type="Sprite2D" parent="Control"]
+position = Vector2(16, -131)
+scale = Vector2(0.011788, 0.0113168)
+texture = ExtResource("7_h4773")

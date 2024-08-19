@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_ngvjp"]
 [ext_resource type="Shader" path="res://shaders/pause_menu_background.gdshader" id="2_0ckwp"]
 [ext_resource type="FontFile" uid="uid://b3ayaf2x5qddk" path="res://assets/fonts/hardpixel.otf" id="2_jsohw"]
-[ext_resource type="PackedScene" path="res://scenes/ui_button.tscn" id="4_ho2vv"]
+[ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui_button.tscn" id="4_ho2vv"]
 [ext_resource type="PackedScene" uid="uid://dv7orepl8b082" path="res://scenes/ui/volume_slider.tscn" id="5_n5ih0"]
 [ext_resource type="LabelSettings" uid="uid://cl1yg37xye2ku" path="res://assets/resources/label_settings.tres" id="5_pyikg"]
 
@@ -81,6 +81,12 @@ layout_mode = 2
 layout_mode = 2
 text = "Retry"
 
+[node name="Skip" parent="MarginContainer/Items/Buttons" instance=ExtResource("4_ho2vv")]
+visible = false
+layout_mode = 2
+disabled = true
+text = "Skip"
+
 [node name="Levels" parent="MarginContainer/Items/Buttons" instance=ExtResource("4_ho2vv")]
 layout_mode = 2
 text = "Levels"
@@ -115,8 +121,10 @@ label_settings = ExtResource("5_pyikg")
 
 [node name="MasterVolumeSlider" parent="MarginContainer/Items/HBoxContainer/MusicVolume" instance=ExtResource("5_n5ih0")]
 layout_mode = 2
+audio_bus_name = "Music"
 
 [connection signal="pressed" from="MarginContainer/Items/Buttons/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MarginContainer/Items/Buttons/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MarginContainer/Items/Buttons/Skip" to="." method="_on_skip_pressed"]
 [connection signal="pressed" from="MarginContainer/Items/Buttons/Levels" to="." method="_on_levels_pressed"]
 [connection signal="pressed" from="MarginContainer/Items/Buttons/Quit" to="." method="_on_quit_pressed"]
