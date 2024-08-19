@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://8lw7bps1tiip"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/menu_manager.gd" id="1_mddol"]
+[ext_resource type="PackedScene" uid="uid://bmdbgomhamteh" path="res://scenes/ui/menu/pause_menu.tscn" id="3_751oy"]
+
+[node name="MenuManager" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_mddol")
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_751oy")]

@@ -7,6 +7,9 @@ var menu_stack: Array = []
 var current_menu: Control = null
 var paused: bool = false
 
+var music_bus_name := "Music"
+@onready var _music_bus_index := AudioServer.get_bus_index(music_bus_name)
+
 func _ready():
 	pass
 
@@ -25,12 +28,17 @@ func _process(delta):
 func pause():
 	if not PauseMenuAutoload.can_pause:
 		return
+	
+	AudioServer.set_bus_effect_enabled(_music_bus_index, 0, true)
+	
 	paused = true
 	set_menu_by_name("PauseMenu")
 
 func exit_menu():
 	menu_stack = []
 	paused = false
+	
+	AudioServer.set_bus_effect_enabled(_music_bus_index, 0, false)
 	
 	hide()
 	get_tree().set_pause(false)
