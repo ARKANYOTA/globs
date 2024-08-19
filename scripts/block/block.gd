@@ -13,6 +13,10 @@ const dir_map = [
 	Vector2i(0, 1)
 ]
 
+@export var click_to_update_sprite = false:
+	set(value):
+		_update_sprite()
+
 @export var is_gravity_enabled := true:
 	set(value):
 		is_gravity_enabled = value
@@ -51,6 +55,11 @@ var gravity_axis = Direction.DOWN
 @export_group("Up Extandable")
 @export var up_extendable: bool = false
 @export var up_extend_range: Vector2i = Vector2i(8, 24)
+@export var up_extend_block_range: Vector2i = Vector2i(0, 1):
+	set(value):
+		up_extend_block_range = value
+		update_range_from_block_range()
+
 @export var up_extend_value: float = 8:
 	set(value):
 		up_extend_value = clamp(value, up_extend_range.x, up_extend_range.y)
@@ -59,6 +68,10 @@ var gravity_axis = Direction.DOWN
 @export_group("Down Extandable")
 @export var down_extendable: bool = false
 @export var down_extend_range: Vector2i = Vector2i(8, 24)
+@export var down_extend_block_range: Vector2i = Vector2i(0, 1):
+	set(value):
+		down_extend_block_range = value
+		update_range_from_block_range()
 @export var down_extend_value: float = 8:
 	set(value):
 		down_extend_value = clamp(value, down_extend_range.x, down_extend_range.y)
@@ -67,6 +80,10 @@ var gravity_axis = Direction.DOWN
 @export_group("Left Extandable")
 @export var left_extendable: bool = false
 @export var left_extend_range: Vector2i = Vector2i(8, 24)
+@export var left_extend_block_range: Vector2i = Vector2i(0, 1):
+	set(value):
+		left_extend_block_range = value
+		update_range_from_block_range()
 @export var left_extend_value: float = 8:
 	set(value):
 		left_extend_value = clamp(value, left_extend_range.x, left_extend_range.y)
@@ -75,6 +92,10 @@ var gravity_axis = Direction.DOWN
 @export_group("Right Extandable")
 @export var right_extendable: bool = false
 @export var right_extend_range: Vector2i = Vector2i(8, 24)
+@export var right_extend_block_range: Vector2i = Vector2i(0, 1):
+	set(value):
+		right_extend_block_range = value
+		update_range_from_block_range()
 @export var right_extend_value: float = 8:
 	set(value):
 		right_extend_value = clamp(value, right_extend_range.x, right_extend_range.y)
@@ -134,6 +155,12 @@ func expand(direction: Direction, amount: int):
 		up_extend_value += amount
 	if direction == Direction.DOWN:
 		down_extend_value += amount
+
+func update_range_from_block_range():
+	up_extend_range =    Vector2i(up_extend_block_range    * 16 + Vector2i(8, 8))
+	down_extend_range =  Vector2i(down_extend_block_range  * 16 + Vector2i(8, 8))
+	left_extend_range =  Vector2i(left_extend_block_range  * 16 + Vector2i(8, 8))
+	right_extend_range = Vector2i(right_extend_block_range * 16 + Vector2i(8, 8))
 
 func update_dimensions():
 	var dim: Vector2 = Vector2(left_extend_value + right_extend_value, 
@@ -402,6 +429,8 @@ func _update_sprite():
 	
 	# Change 9-patch sprite
 	var ninepatch: NinePatchRect = $NinePatch
+	if not ninepatch:
+		return
 	if is_main_character: # Normal
 		ninepatch.region_rect.position = Vector2(0, 96)
 	elif static_block: # Normal
@@ -593,6 +622,9 @@ func set_is_moving_to_false():
 func set_is_falling_to_false():
 	is_falling = false
 
+func is_same_axis(dir: Direction, odir: Direction):
+	return dir == odir or dir == get_opposite_direction(odir)
+
 func extend_block(variation: int, direction: Direction, push: bool):
 	var extend = push or can_extend(direction)
 
@@ -669,14 +701,17 @@ func extend_block(variation: int, direction: Direction, push: bool):
 		if direction == Direction.UP:
 			move_tween.tween_property(block, "position:y", block.position.y + off, move_speed).set_ease(Tween.EASE_OUT)
 
-		if block.remaining_pushs < 0:
-			block.remaining_pushs = block.max_pushs - 1
-		
-		if block.remaining_pushs == 0:
+		if block.is_gravity_enabled and is_same_axis(block.gravity_axis, direction):
 			block.remaining_pushs = -1
 		else:
-			block.remaining_pushs -= 1
-			move_tween.tween_callback(func(): block.extend_block(off, direction, true))
+			if block.remaining_pushs < 0:
+				block.remaining_pushs = block.max_pushs - 1
+			
+			if block.remaining_pushs == 0:
+				block.remaining_pushs = -1
+			else:
+				block.remaining_pushs -= 1
+				move_tween.tween_callback(func(): block.extend_block(off, direction, true))
 
 
 	if tween_property != "" and not push:

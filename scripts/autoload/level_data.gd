@@ -18,6 +18,8 @@ var levels = [
 	{ "name": "3-2", "scene": "res://scenes/levels/world_3/level_320.tscn"},
 	{ "name": "3-3", "scene": "res://scenes/levels/world_3/level_330.tscn"},
 	{ "name": "3-4", "scene": "res://scenes/levels/world_3/level_340.tscn"},
+	{ "name": "3-5", "scene": "res://scenes/levels/world_3/level_350.tscn"},
+
 	
 	{ "name": "You Win", "scene": "res://scenes/levels/you_win.tscn"},
 ]
