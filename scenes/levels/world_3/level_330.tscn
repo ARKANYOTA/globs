@@ -281,7 +281,7 @@ position = Vector2(-8, 200)
 is_main_character = true
 rotatable = true
 angle = -77.034
-push_bounce = null
+push_bounce = false
 up_extendable = true
 up_extend_range = Vector2i(8, 40)
 up_extend_block_range = Vector2i(0, 2)
@@ -293,7 +293,6 @@ right_extendable = true
 [node name="Block4" parent="." instance=ExtResource("4_dulq0")]
 position = Vector2(136, 104)
 is_gravity_enabled = true
-push_bounce = null
 up_extend_range = Vector2i(8, 136)
 up_extend_block_range = Vector2i(0, 8)
 up_extend_value = 104.0
@@ -302,7 +301,6 @@ right_extend_value = 24.0
 [node name="Block8" parent="." instance=ExtResource("4_dulq0")]
 position = Vector2(184, 216)
 static_block = true
-push_bounce = null
 up_extendable = true
 up_extend_range = Vector2i(8, 104)
 up_extend_block_range = Vector2i(0, 6)
@@ -311,7 +309,6 @@ left_extend_value = 24.0
 [node name="Block5" parent="." instance=ExtResource("4_dulq0")]
 position = Vector2(248, 121)
 static_block = true
-push_bounce = null
 left_extendable = true
 left_extend_range = Vector2i(8, 120)
 left_extend_block_range = Vector2i(0, 7)
@@ -320,7 +317,6 @@ left_extend_value = 120.0
 [node name="Block6" parent="." instance=ExtResource("4_dulq0")]
 position = Vector2(8, 105)
 static_block = true
-push_bounce = null
 right_extendable = true
 right_extend_range = Vector2i(8, 40)
 right_extend_block_range = Vector2i(0, 2)
@@ -329,7 +325,6 @@ right_extend_value = 40.0
 [node name="Block7" parent="." instance=ExtResource("4_dulq0")]
 position = Vector2(40, 88)
 is_gravity_enabled = true
-push_bounce = null
 right_extendable = true
 right_extend_range = Vector2i(8, 200)
 right_extend_block_range = Vector2i(0, 12)
