@@ -226,6 +226,11 @@ texture = ExtResource("1_5ej0x")
 5:7/0 = 0
 6:7/0 = 0
 6:8/0 = 0
+4:4/0 = 0
+4:4/0/terrain_set = 0
+4:4/0/terrain = 2
+4:4/0/terrains_peering_bit/bottom_side = 2
+4:4/0/terrains_peering_bit/top_side = 2
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_51rts"]
 texture = ExtResource("2_7f04h")
