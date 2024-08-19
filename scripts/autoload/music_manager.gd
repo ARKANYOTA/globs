@@ -6,8 +6,8 @@ var music_player_prefab: PackedScene = load("res://scenes/music/music_player.tsc
 var music_player: MusicPlayer
 
 var streams = {
-	"main_menu" = load("res://assets/sounds/music/music_cheese_world.mp3"),
-	"city" = load("res://assets/sounds/music/music_snow_world.mp3"),
+	"main_menu" = load("res://assets/sounds/music/music_city_world.mp3"),
+	"city" = load("res://assets/sounds/music/music_city_world.mp3"),
 	"cheese" = load("res://assets/sounds/music/music_cheese_world.mp3"),
 	"snow" = load("res://assets/sounds/music/music_snow_world.mp3"),
 }

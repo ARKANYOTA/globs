@@ -1,39 +1,40 @@
-[gd_scene load_steps=8 format=4 uid="uid://80y2wixyo4nt"]
+[gd_scene load_steps=8 format=4 uid="uid://bx71scbtkwigw"]
 
-[ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="1_3twr5"]
-[ext_resource type="PackedScene" uid="uid://cmps4e380d2e8" path="res://scenes/block/goal.tscn" id="2_d26be"]
-[ext_resource type="PackedScene" uid="uid://bdttvr6awstj3" path="res://scenes/block/bloc_skin/fromage/bear_block.tscn" id="3_8u4o4"]
-[ext_resource type="PackedScene" uid="uid://3wdpn4oulgik" path="res://scenes/block/bloc_skin/Frost/cloud.tscn" id="4_4xs8o"]
-[ext_resource type="PackedScene" uid="uid://duqpgsulnccc7" path="res://scenes/block/bloc_skin/fromage/ice_block.tscn" id="5_nta3e"]
-[ext_resource type="PackedScene" uid="uid://cw2toebu4uca1" path="res://scenes/levels/background.tscn" id="6_gdpa0"]
-[ext_resource type="PackedScene" uid="uid://y3nsqm2pc0s7" path="res://scenes/ui/particle/snow_particle.tscn" id="7_vkp42"]
+[ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="1_smmu4"]
+[ext_resource type="PackedScene" uid="uid://cmps4e380d2e8" path="res://scenes/block/goal.tscn" id="2_i8ovn"]
+[ext_resource type="PackedScene" uid="uid://bdttvr6awstj3" path="res://scenes/block/bloc_skin/fromage/bear_block.tscn" id="3_twb8l"]
+[ext_resource type="PackedScene" uid="uid://3wdpn4oulgik" path="res://scenes/block/bloc_skin/Frost/cloud.tscn" id="4_qtjhc"]
+[ext_resource type="PackedScene" uid="uid://duqpgsulnccc7" path="res://scenes/block/bloc_skin/fromage/ice_block.tscn" id="5_o8kt2"]
+[ext_resource type="PackedScene" uid="uid://cw2toebu4uca1" path="res://scenes/levels/background.tscn" id="6_ckvh7"]
+[ext_resource type="PackedScene" uid="uid://y3nsqm2pc0s7" path="res://scenes/ui/particle/snow_particle.tscn" id="7_adelw"]
 
-[node name="Level3" type="Node2D"]
+[node name="Level2" type="Node2D"]
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 modulate = Color(0.575174, 0.599421, 0.712752, 1)
 tile_map_data = PackedByteArray("AAABAAgAAQAGAAEAAAABAAkAAQAGAAEAAAABAAcAAQAGAAEAAAABAAYAAQAIAAAAAAACAAUAAQAGAAEAAAACAAQAAQAFAAEAAAACAAgAAQAGAAEAAAACAAcAAQAIAAAAAAACAAYAAQAGAAEAAAACAAkAAQAHAAEAAAADAAcAAQAHAAEAAAADAAUAAQAHAAEAAAADAAYAAQAHAAEAAAADAAgAAQAHAAIAAAADAAQAAQAHAAEAAAABAAUAAQAGAAAAAAACAAMAAQAFAAAAAAADAAMAAQAHAAAAAAAAAAQAAQAEAAAAAAAAAAUAAQAFAAEAAAAAAAYAAQAFAAEAAAAAAAcAAQAFAAEAAAAAAAgAAQAFAAEAAAAAAAkAAQAFAAEAAAAAAAoAAQAFAAIAAAABAAoAAQAGAAIAAAACAAoAAQAHAAIAAAA=")
-tile_set = ExtResource("1_3twr5")
+tile_set = ExtResource("1_smmu4")
 collision_enabled = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAAAAQAFAAAAAAAAAAEAAQAFAAEAAAAAAAIAAQAFAAEAAAAAAAMAAQAFAAEAAAAAAAQAAQAFAAEAAAAAAAUAAQAFAAEAAAAAAAYAAQAEAAEAAAAAAAcAAQAEAAEAAAAAAAgAAQAEAAEAAAAAAAkAAQAEAAEAAAAAAAoAAQAFAAEAAAATAAoAAQAHAAEAAAASAAoAAQAGAAEAAAARAAoAAQAGAAEAAAAQAAoAAQAIAAAAAAAPAAoAAQAGAAEAAAAOAAoAAQAGAAEAAAANAAoAAQAGAAAAAAAMAAoAAQAGAAAAAAALAAoAAQAGAAAAAAAKAAoAAQAGAAAAAAAJAAoAAQAGAAAAAAAIAAoAAQAGAAAAAAAHAAoAAQAFAAAAAAAFAAoAAQAHAAAAAAAEAAoAAQAGAAAAAAADAAoAAQAGAAAAAAACAAoAAQAGAAAAAAABAAoAAQAGAAAAAAATAAkAAQAHAAEAAAATAAgAAQAHAAEAAAATAAcAAQAHAAEAAAATAAYAAQAHAAEAAAATAAUAAQAHAAEAAAATAAQAAQAHAAEAAAATAAMAAQAHAAEAAAATAAIAAQAHAAEAAAATAAEAAQAHAAEAAAATAAAAAQAEAAAAAAATAAsAAQAHAAIAAAASAAsAAQAGAAIAAAARAAsAAQAGAAIAAAAQAAsAAQAGAAIAAAAPAAsAAQAGAAIAAAAOAAsAAQAGAAIAAAANAAsAAQAGAAIAAAAMAAsAAQAGAAIAAAALAAsAAQAGAAIAAAAKAAsAAQAGAAIAAAAJAAsAAQAGAAIAAAAIAAsAAQAGAAIAAAAHAAsAAQAGAAIAAAAFAAsAAQAGAAIAAAAEAAsAAQAGAAIAAAADAAsAAQAGAAIAAAACAAsAAQAGAAIAAAABAAsAAQAGAAIAAAAAAAsAAQAFAAIAAAABAAQAAQAGAAEAAAACAAQAAQAHAAIAAAADAAMAAQAHAAIAAAADAAIAAQAGAAEAAAAEAAIAAQAHAAIAAAAEAAEAAQAGAAEAAAACAAMAAQAGAAEAAAABAAMAAQAIAAAAAAACAAIAAQAGAAEAAAADAAEAAQAGAAEAAAACAAEAAQAIAAAAAAABAAIAAQAIAAIAAAABAAEAAQAGAAEAAAABAAAAAQAGAAAAAAACAAAAAQAGAAAAAAADAAAAAQAGAAAAAAAEAAAAAQAGAAAAAAAFAAAAAQAHAAAAAAABAAUAAQAHAAIAAAAFAAEAAQAHAAIAAAAOAAkAAQAFAAAAAAAPAAkAAQAGAAEAAAAQAAgAAQAGAAEAAAARAAcAAQAGAAEAAAARAAYAAQAGAAEAAAASAAYAAQAGAAEAAAASAAUAAQAGAAEAAAARAAgAAQAGAAEAAAAQAAkAAQAGAAEAAAARAAkAAQAIAAIAAAASAAcAAQAIAAAAAAASAAgAAQAGAAEAAAASAAkAAQAGAAEAAAAPAAgAAQAFAAEAAAAPAAcAAQAFAAAAAAAPAAYAAQAEAAcAAAAQAAYAAQAFAAEAAAAQAAcAAQAGAAEAAAAQAAUAAQAFAAAAAAARAAUAAQAGAAAAAAASAAQAAQAFAAEAAAASAAMAAQAFAAEAAAASAAIAAQAFAAEAAAASAAEAAQAFAAAAAAARAAQAAQAEAAcAAAANAAkAAQAHAAcAAAAGAAAAAQACAAUAAAAGAAsAAQAGAAMAAAA=")
-tile_set = ExtResource("1_3twr5")
+tile_set = ExtResource("1_smmu4")
 
-[node name="Goal" parent="." instance=ExtResource("2_d26be")]
+[node name="Goal" parent="." instance=ExtResource("2_i8ovn")]
 position = Vector2(272, 48)
 scale = Vector2(2, 2)
 
-[node name="Block5" parent="." instance=ExtResource("3_8u4o4")]
+[node name="Block5" parent="." instance=ExtResource("3_twb8l")]
 position = Vector2(104, 152)
 is_main_character = true
-push_bounce = false
 up_extendable = true
 down_extendable = true
 left_extendable = true
+left_extend_range = Vector2i(8, 88)
+left_extend_block_range = Vector2i(0, 5)
 right_extendable = true
 
-[node name="Block" parent="." instance=ExtResource("4_4xs8o")]
+[node name="Block" parent="." instance=ExtResource("4_qtjhc")]
 position = Vector2(120, 136)
 up_extendable = true
 up_extend_range = Vector2i(8, 184)
@@ -44,15 +45,14 @@ left_extend_range = Vector2i(8, 184)
 right_extendable = true
 right_extend_range = Vector2i(8, 184)
 
-[node name="Block4" parent="." instance=ExtResource("5_nta3e")]
+[node name="Block4" parent="." instance=ExtResource("5_o8kt2")]
 position = Vector2(104, 168)
 static_block = true
 up_extendable = true
 
-[node name="Background" parent="." instance=ExtResource("6_gdpa0")]
-metadata/_edit_lock_ = true
+[node name="Background" parent="." instance=ExtResource("6_ckvh7")]
 
-[node name="SnowParticle" parent="." instance=ExtResource("7_vkp42")]
+[node name="SnowParticle" parent="." instance=ExtResource("7_adelw")]
 position = Vector2(184, 0)
 rotation = 3.14159
 gravity = Vector2(-150, 150)

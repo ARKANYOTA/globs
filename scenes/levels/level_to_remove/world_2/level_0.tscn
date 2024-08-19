@@ -172,7 +172,7 @@ terrain_set_0/terrain_0/color = Color(0.623518, 0.224386, 0.329756, 1)
 sources/0 = SubResource("TileSetAtlasSource_1ve80")
 pattern_0 = SubResource("TileMapPattern_5jnm4")
 
-[node name="Level2" type="Node2D"]
+[node name="Level3" type="Node2D"]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 1
@@ -199,6 +199,7 @@ tile_set = SubResource("TileSet_hoxn1")
 [node name="Block" parent="." instance=ExtResource("3_ujetv")]
 position = Vector2(120, 152)
 is_main_character = true
+push_bounce = false
 up_extendable = true
 down_extendable = true
 left_extendable = true

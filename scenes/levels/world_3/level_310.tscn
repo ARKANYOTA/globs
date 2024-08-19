@@ -239,7 +239,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 terrain_set_1/mode = 0
 sources/0 = SubResource("TileSetAtlasSource_hpaph")
 
-[node name="Level2" type="Node2D"]
+[node name="Level3" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_acjtg")]
 
@@ -265,6 +265,7 @@ size = Vector2i(6, 3)
 [node name="Block2" parent="." instance=ExtResource("3_u2ali")]
 position = Vector2(104, 56)
 is_main_character = true
+push_bounce = false
 up_extendable = true
 up_extend_range = Vector2i(8, 120)
 left_extendable = true
@@ -273,12 +274,14 @@ left_extend_range = Vector2i(8, 88)
 [node name="Block3" parent="." instance=ExtResource("3_u2ali")]
 position = Vector2(264, 40)
 is_main_character = true
+push_bounce = false
 up_extend_range = Vector2i(8, 120)
 left_extend_range = Vector2i(8, 88)
 
 [node name="Block4" parent="." instance=ExtResource("3_u2ali")]
 position = Vector2(280, 40)
 is_main_character = true
+push_bounce = false
 up_extend_range = Vector2i(8, 120)
 up_extend_value = 16.0
 left_extend_range = Vector2i(8, 88)

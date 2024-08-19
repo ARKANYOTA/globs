@@ -5,6 +5,8 @@ var levels = [
 	{ "name": "1-2", "music": "city", "scene": "res://scenes/levels/world_1/level_120_push.tscn"},
 	{ "name": "1-3", "music": "city", "scene": "res://scenes/levels/world_1/level_130_support.tscn"},
 	{ "name": "1-4", "music": "city", "scene": "res://scenes/levels/world_1/level_140_only_red_wins.tscn"},
+	{ "name": "1-5", "music": "city", "scene": "res://scenes/levels/world_1/level_150.tscn"},
+	{ "name": "1-6", "music": "city", "scene": "res://scenes/levels/world_1/level_160.tscn"},
 	
 	{ "name": "2-1", "music": "cheese", "scene": "res://scenes/levels/world_2/level_210.tscn"},
 	{ "name": "2-2", "music": "cheese", "scene": "res://scenes/levels/world_2/level_220_beta.tscn"},
@@ -19,6 +21,10 @@ var levels = [
 	{ "name": "3-3", "music": "snow", "scene": "res://scenes/levels/world_3/level_330.tscn"},
 	{ "name": "3-4", "music": "snow", "scene": "res://scenes/levels/world_3/level_340.tscn"},
 	{ "name": "3-5", "music": "snow", "scene": "res://scenes/levels/world_3/level_350.tscn"},
+	{ "name": "3-6", "music": "snow", "scene": "res://scenes/levels/world_3/level_360.tscn"},
+	{ "name": "3-7", "music": "snow", "scene": "res://scenes/levels/world_3/level_370_arkan.tscn"},
+	
+	
 	
 	{ "name": "You Win", "music": "cheese", "scene": "res://scenes/levels/you_win.tscn"},
 ]
