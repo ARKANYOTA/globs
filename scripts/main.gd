@@ -6,12 +6,15 @@ class_name Main
 @onready var game = $Game
 
 var paused = false
+var clicked = false
 
 func _ready():
 	pass
 
-func _process(delta):
-	pass
+func _input(event):
+	if not clicked and event.is_action_pressed("left_click"):
+		clicked = true
+		SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/level_select.tscn", false)
 
 # Quitting 
 func quit():

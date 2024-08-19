@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://3wdpn4oulgik"]
+
+[ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block.tscn" id="1_ogdnh"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nbgqd"]
+resource_local_to_scene = true
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpdfg"]
+size = Vector2(16, 48)
+
+[node name="Block" instance=ExtResource("1_ogdnh")]
+
+[node name="BlockOccluder" parent="." index="0"]
+occluder = SubResource("OccluderPolygon2D_nbgqd")
+
+[node name="CollisionShape" parent="." index="2"]
+shape = SubResource("RectangleShape2D_cpdfg")

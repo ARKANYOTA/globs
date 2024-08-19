@@ -211,6 +211,7 @@ right_extend_range = Vector2i(8, 88)
 position = Vector2(120, 152)
 is_main_character = true
 up_extendable = true
+up_extend_range = Vector2i(8, 72)
 down_extendable = true
 left_extendable = true
 right_extendable = true

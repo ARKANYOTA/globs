@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://l4uy665qgi6n"]
+[gd_scene load_steps=15 format=3 uid="uid://l4uy665qgi6n"]
 
 [ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="1_tjc5n"]
 [ext_resource type="StyleBox" uid="uid://dv3miaelc86gy" path="res://assets/textures/option_button_texture_pressed.tres" id="2_frkiv"]
@@ -11,8 +11,6 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dge07"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mrjtd"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lmddy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5rjmr"]
 
@@ -33,7 +31,7 @@ size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_tjc5n")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dge07")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_mrjtd")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_lmddy")
+theme_override_styles/disabled = ExtResource("2_frkiv")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_5rjmr")
 theme_override_styles/hover_pressed = ExtResource("2_frkiv")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8mypg")
