@@ -13,4 +13,4 @@ func _process(delta):
 	if fmod(time, 1.0) < 0.5:
 		label_settings.font_color = Color.WHITE
 	else:
-		label_settings.font_color = Color(.8, .8, .8)
+		label_settings.font_color = Color(0.5, 0.5, 0.5)

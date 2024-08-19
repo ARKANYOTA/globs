@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=4 uid="uid://c5yrc5driuu63"]
 
 [ext_resource type="PackedScene" uid="uid://botnltrx4dsdp" path="res://scenes/levels/level.tscn" id="1_mwibn"]
-[ext_resource type="PackedScene" uid="uid://id7bhi4xpwux" path="res://scenes/block/change_gravity_zone.tscn" id="2_cvp8n"]
+[ext_resource type="PackedScene" path="res://scenes/block/change_gravity_zone.tscn" id="2_cvp8n"]
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="3_sek4b"]
 
 [node name="Level" instance=ExtResource("1_mwibn")]

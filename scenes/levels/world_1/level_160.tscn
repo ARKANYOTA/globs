@@ -19,8 +19,9 @@ position = Vector2(152, 56)
 is_main_character = true
 up_extendable = true
 left_extendable = true
-right_extend_range = Vector2i(24, 24)
-right_extend_block_range = Vector2i(1, 1)
+right_extendable = true
+right_extend_range = Vector2i(24, 40)
+right_extend_block_range = Vector2i(1, 2)
 right_extend_value = 24.0
 
 [node name="Block" parent="." index="3" instance=ExtResource("3_n1scc")]
