@@ -36,6 +36,8 @@ const dir_map = [
 		is_main_character = value
 		_update_sprite()
 
+@export var happy_probability = 0.333
+
 @export var rotatable: bool = false
 @export_range(-360, 360) var angle: float = 0:
 	set(value):
@@ -112,6 +114,7 @@ var gravity_axis = Direction.DOWN
 
 const move_speed := 0.1
 
+var is_happy := false
 var is_hovered := false
 var is_selected := false
 var handles: Array = []
@@ -483,7 +486,10 @@ func _update_animation():
 	if not is_selected:
 		animation = "sleeping"
 	elif size <= 4*16*16:
-		animation = "poker"
+		if is_happy:
+			animation = "happy"
+		else:
+			animation = "poker"
 	elif size <= 6*16*16:
 		animation = "fat"
 	else:
@@ -511,7 +517,10 @@ func _create_scale_handle(direction: Direction, handle_name: String):
 	add_child(new_scale_handle)
 	new_scale_handle.initialize()
 	
+	var dimensions = get_dimensions()
+	var handle_position = get_center() + Util.direction_to_vector(direction) * (dimensions/2)
 	var new_direction_indicator = direction_indicator.instantiate()
+	new_direction_indicator.base_position = handle_position
 	new_direction_indicator.block = self
 	new_direction_indicator.direction = direction
 	add_child(new_direction_indicator)
@@ -545,7 +554,7 @@ func _update_scale_handles():
 		
 		var indicator = handle_info["direction_indicator"]
 		indicator.is_held = handle.is_held
-		#indicator.base_position = round(handle_position) #TODO
+		indicator.base_position = round(handle_position)
 
 func _hide_scale_handles():
 	for handle in handles:
@@ -581,6 +590,8 @@ func _ready():
 	if Engine.is_editor_hint():
 		return
 	
+	if randf() < happy_probability:
+		is_happy = true
 	_update_sprite()
 	
 	up_extend_value = up_extend_value
@@ -744,6 +755,8 @@ func extend_block(variation: int, direction: Direction, push: bool):
 				block.remaining_pushs = -1
 			else:
 				block.remaining_pushs -= 1
+				if block == null:
+					return
 				move_tween.tween_callback(func(): block.extend_block(off, direction if not reverse else get_opposite_direction(direction), true))
 
 	if tween_property != "" and not push:
