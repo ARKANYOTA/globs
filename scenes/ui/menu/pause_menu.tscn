@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmdbgomhamteh"]
+[gd_scene load_steps=11 format=3 uid="uid://bmdbgomhamteh"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu/pause_menu.gd" id="1_xt0kk"]
 [ext_resource type="Shader" path="res://shaders/pause_menu_background.gdshader" id="2_hs6ai"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui/ui_button.tscn" id="4_35rns"]
 [ext_resource type="LabelSettings" uid="uid://cl1yg37xye2ku" path="res://assets/resources/label_settings.tres" id="5_657dq"]
 [ext_resource type="PackedScene" uid="uid://dv7orepl8b082" path="res://scenes/ui/volume_slider.tscn" id="6_8i4tu"]
+[ext_resource type="PackedScene" uid="uid://njqkv5i1atvi" path="res://scenes/ui/ui_icon_button.tscn" id="7_d68ow"]
+[ext_resource type="Texture2D" uid="uid://ceybtyquad8dn" path="res://assets/images/ui/fullscreen_on.png" id="8_eqsy5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hnp6j"]
 shader = ExtResource("2_hs6ai")
@@ -121,8 +123,13 @@ label_settings = ExtResource("5_657dq")
 layout_mode = 2
 audio_bus_name = "Music"
 
+[node name="FullscreenButton" parent="MarginContainer/Items/HBoxContainer" instance=ExtResource("7_d68ow")]
+layout_mode = 2
+icon = ExtResource("8_eqsy5")
+
 [connection signal="pressed" from="MarginContainer/Items/Buttons/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MarginContainer/Items/Buttons/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MarginContainer/Items/Buttons/Skip" to="." method="_on_skip_pressed"]
 [connection signal="pressed" from="MarginContainer/Items/Buttons/Levels" to="." method="_on_levels_pressed"]
 [connection signal="pressed" from="MarginContainer/Items/Buttons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/Items/HBoxContainer/FullscreenButton" to="." method="_on_fullscreen_button_pressed"]

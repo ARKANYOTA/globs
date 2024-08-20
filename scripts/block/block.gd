@@ -185,10 +185,10 @@ func update_dimensions():
 	
 	# Update size
 	shape.size = dim
-	click_area_collision_shape.shape.size = dim
+	click_area_collision_shape.shape.size = dim + Vector2(6, 6)
 	if light_occ != null:
 		light_occ.occluder.polygon = [Vector2(-dim.x/2, -dim.y/2), Vector2(dim.x/2, -dim.y/2), Vector2(dim.x/2, dim.y/2), Vector2(-dim.x/2, dim.y/2)]
-	unclick_area_collision_shape.shape.size = dim + Vector2(8, 8)
+	unclick_area_collision_shape.shape.size = click_area_collision_shape.shape.size + Vector2(4, 4)
 	
 	# Update position
 	var child_pos: Vector2 = Vector2(-left_extend_value + right_extend_value,
@@ -550,7 +550,7 @@ func _update_scale_handles():
 	for handle_info in handles:
 		var handle = handle_info["handle"]
 		var direction = handle.direction
-		var handle_position = center + Util.direction_to_vector(direction) * (dimensions/2)
+		var handle_position = center + Util.direction_to_vector(direction) * (Vector2(2, 2) + dimensions/2)
 		handle.position = round(handle_position) 
 		
 		var indicator = handle_info["direction_indicator"]

@@ -1,12 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://drxrivhmpwume"]
+[gd_scene load_steps=17 format=3 uid="uid://2nkl8ep25jgk"]
 
 [ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="1_0napy"]
 [ext_resource type="StyleBox" uid="uid://dv3miaelc86gy" path="res://assets/textures/option_button_texture_pressed.tres" id="2_0iqod"]
 [ext_resource type="StyleBox" uid="uid://dbwx70quhf42b" path="res://assets/textures/option_button_texture_hover.tres" id="3_sj47v"]
 [ext_resource type="StyleBox" uid="uid://d1obvum2g2cax" path="res://assets/textures/option_button_texture.tres" id="4_to3es"]
+[ext_resource type="Texture2D" uid="uid://cfccdei10ptjn" path="res://assets/images/ui/pause.png" id="5_kmbaj"]
 [ext_resource type="Script" path="res://scripts/ui/escape_button.gd" id="5_vkv6p"]
 [ext_resource type="AudioStream" uid="uid://lgkwwx64ps4o" path="res://assets/sounds/ui/button_click_1.ogg" id="6_rcd1y"]
 [ext_resource type="AudioStream" uid="uid://dqr8ttoiwibip" path="res://assets/sounds/ui/button_hover.ogg" id="7_tjwse"]
+
+[sub_resource type="Theme" id="Theme_6t05i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dge07"]
 
@@ -30,9 +33,12 @@ stream_0/stream = ExtResource("7_tjwse")
 z_index = 5
 offset_left = 296.0
 offset_top = 8.0
-offset_right = 312.0
+offset_right = 319.0
 offset_bottom = 24.0
+size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = SubResource("Theme_6t05i")
+theme_type_variation = &"FlatButton"
 theme_override_fonts/font = ExtResource("1_0napy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dge07")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_mrjtd")
@@ -45,6 +51,7 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_4q584")
 theme_override_styles/pressed = ExtResource("2_0iqod")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_lhtys")
 theme_override_styles/normal = ExtResource("4_to3es")
+icon = ExtResource("5_kmbaj")
 script = ExtResource("5_vkv6p")
 
 [node name="ClickAudio" type="AudioStreamPlayer2D" parent="."]

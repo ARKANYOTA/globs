@@ -46,7 +46,10 @@ func change_scene_with_transition(scene: String, put_confetis = false) -> void:
 	# Music 
 	var level_data = LevelData.get_current_level_data()
 	if level_data:
+		PauseMenuAutoload.game_gui.show_gui()
 		MusicManager.set_music(level_data["music"])
+	else:
+		PauseMenuAutoload.game_gui.hide_gui()
 	
 	GameManager.before_scene_change()
 	get_tree().change_scene_to_file(scene)

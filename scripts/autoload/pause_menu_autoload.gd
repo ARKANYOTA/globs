@@ -1,9 +1,9 @@
 extends Node
 
 @onready var pause_menu_file = preload("res://scenes/ui/menu/menu_manager.tscn")
-@onready var escape_button_file = preload("res://scenes/ui/escape_button.tscn")
+@onready var game_gui_file = preload("res://scenes/ui/game_gui.tscn")
 var pause_menu: Node
-var escape_button: Node
+var game_gui: Node
 
 var can_pause = true
 var is_skip_enabled = true
@@ -13,5 +13,5 @@ var paused: bool = false
 func _ready() -> void:
 	pause_menu = pause_menu_file.instantiate()
 	add_child(pause_menu)
-	escape_button = escape_button_file.instantiate()
-	add_child(escape_button)
+	game_gui = game_gui_file.instantiate()
+	add_child(game_gui)

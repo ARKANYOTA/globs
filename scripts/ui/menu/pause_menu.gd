@@ -5,6 +5,9 @@ class_name PauseMenu
 @onready var click_audio = $ClickAudio
 @onready var skip_button = $MarginContainer/Items/Buttons/Skip
 
+func exit_menu():
+	main.exit_menu()
+
 func _on_resume_pressed():
 	main.exit_menu()
 
@@ -24,3 +27,7 @@ func _on_levels_pressed():
 func _on_skip_pressed():
 	main.exit_menu()
 	LevelData.win()
+
+
+func _on_fullscreen_button_pressed():
+	GameManager.toggle_fullscreen()

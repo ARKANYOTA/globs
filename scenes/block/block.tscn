@@ -25,7 +25,7 @@
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcb0h"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ixk8"]
 size = Vector2(16, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
@@ -428,7 +428,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_rcb0h")
+shape = SubResource("RectangleShape2D_3ixk8")
 debug_color = Color(0, 0.509804, 0.6, 0.0509804)
 
 [node name="UnClickArea" parent="." instance=ExtResource("3_h0fp2")]
