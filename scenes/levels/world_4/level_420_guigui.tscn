@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://botnltrx4dsdp" path="res://scenes/levels/level.tscn" id="1_cy6h6"]
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_2hplm"]
-[ext_resource type="PackedScene" uid="uid://id7bhi4xpwux" path="res://scenes/block/change_gravity_zone.tscn" id="4_s52lr"]
+[ext_resource type="PackedScene" path="res://scenes/block/change_gravity_zone.tscn" id="4_s52lr"]
 [ext_resource type="PackedScene" uid="uid://cmps4e380d2e8" path="res://scenes/block/goal.tscn" id="5_aifhe"]
 [ext_resource type="PackedScene" uid="uid://cyuc4qkh71ogh" path="res://scenes/block/bloc_skin/space/alien.tscn" id="7_k4adp"]
 

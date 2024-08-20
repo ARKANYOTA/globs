@@ -88,4 +88,7 @@ func _process(_delta: float) -> void:
 	_unselect_non_selected_blocks()
 	_select_selection_candidate()
 	
+	if not Input.is_action_pressed("left_click"):
+		end_drag()
+	
 	selection_candidates.clear()
