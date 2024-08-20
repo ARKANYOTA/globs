@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://mhaimoh5vyb1"]
+[gd_scene load_steps=7 format=4 uid="uid://ckhlydpbbwwje"]
 
 [ext_resource type="PackedScene" uid="uid://botnltrx4dsdp" path="res://scenes/levels/level.tscn" id="1_xc4tv"]
 [ext_resource type="PackedScene" uid="uid://bolbefhicktwp" path="res://scenes/block/bloc_skin/Frost/bat.tscn" id="3_0esdt"]
