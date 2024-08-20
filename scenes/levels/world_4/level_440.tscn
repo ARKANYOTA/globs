@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://msddn0mdeij7"]
+[gd_scene load_steps=5 format=4 uid="uid://dttb1dkx4abug"]
 
 [ext_resource type="PackedScene" uid="uid://botnltrx4dsdp" path="res://scenes/levels/level.tscn" id="1_t40eq"]
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="2_qv7to"]
-[ext_resource type="PackedScene" uid="uid://bjee424xeo7lh" path="res://scenes/block/change_gravity_zone.tscn" id="3_ko3yb"]
+[ext_resource type="PackedScene" uid="uid://id7bhi4xpwux" path="res://scenes/block/change_gravity_zone.tscn" id="3_ko3yb"]
 [ext_resource type="PackedScene" uid="uid://cmps4e380d2e8" path="res://scenes/block/goal.tscn" id="4_1vpiq"]
 
 [node name="Level" instance=ExtResource("1_t40eq")]

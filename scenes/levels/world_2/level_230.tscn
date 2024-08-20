@@ -172,7 +172,7 @@ terrain_set_0/terrain_0/color = Color(0.623518, 0.224386, 0.329756, 1)
 sources/0 = SubResource("TileSetAtlasSource_1ve80")
 pattern_0 = SubResource("TileMapPattern_5jnm4")
 
-[node name="Level3" type="Node2D"]
+[node name="Level4" type="Node2D"]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false

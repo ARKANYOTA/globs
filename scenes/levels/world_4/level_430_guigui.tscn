@@ -45,8 +45,8 @@ size = Vector2i(2, 2)
 [node name="ChangeGravityZone3" parent="." index="3" instance=ExtResource("5_bwevk")]
 position = Vector2(136, 96)
 size = Vector2i(1, 2)
-gravity_axis = 2
 is_effect_permanent = true
+gravity_axis = 2
 
 [node name="Block4" parent="." index="4" instance=ExtResource("6_57p71")]
 position = Vector2(152, 120)
