@@ -214,8 +214,7 @@ offset = Vector2(0, 15)
 texture_scale = 0.2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0.700314, 0.752182, 0.889905, 1)
+color = Color(0.914075, 0.92978, 0.970216, 1)
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 z_index = -2
@@ -263,5 +262,6 @@ right_extend_range = Vector2i(8, 120)
 right_extend_value = 120.0
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(1, 0.509333, 0.36, 1)
 energy = 0.3
 shadow_enabled = true
