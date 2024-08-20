@@ -35,12 +35,13 @@ func _on_fullscreen_button_pressed():
 	GameManager.toggle_fullscreen()
 
 func _process(delta):
-	pass
 	# SCOTCH !!
-	#print($"/root/SceneSelect")
-	#var levels_button = $MarginContainer/Items/Buttons/Levels
-	#if $"/root/SceneSelect":
-		#levels_button.text = "Title"
-	#else:
-		#levels_button.text = "Levels"
+	print($"/root/SceneSelect")
+	var levels_button = $MarginContainer/Items/Buttons/Levels
+	if $"/root/SceneSelect":
+		levels_scene_path = "res://scenes/ui/main.tscn"
+		levels_button.text = "Title screen"
+	else:
+		levels_scene_path = "res://scenes/ui/level_select.tscn"
+		levels_button.text = "Level selection"
 		
