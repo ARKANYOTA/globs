@@ -119,8 +119,8 @@ var is_hovered := false
 var is_selected := false
 var handles: Array = []
 var direction_indicators: Array[Sprite2D] = []
-var scale_handle: PackedScene = load("res://scenes/handler/scale_handle.tscn")
-var direction_indicator: PackedScene = load("res://scenes/handler/direction_indicator.tscn")
+var scale_handle: PackedScene = preload("res://scenes/handler/scale_handle.tscn")
+var direction_indicator: PackedScene = preload("res://scenes/handler/direction_indicator.tscn")
 
 var animation = "o_face"
 var is_asleep := false

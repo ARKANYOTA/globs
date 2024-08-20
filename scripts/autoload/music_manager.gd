@@ -2,14 +2,14 @@ extends Node
 
 @onready var audio_player
 
-var music_player_prefab: PackedScene = load("res://scenes/music/music_player.tscn")
+var music_player_prefab: PackedScene = preload("res://scenes/music/music_player.tscn")
 var music_player: MusicPlayer
 
 var streams = {
-	"main_menu" = load("res://assets/sounds/music/music_city.ogg"),
-	"city" = load("res://assets/sounds/music/music_city.ogg"),
-	"cheese" = load("res://assets/sounds/music/music_cheese.ogg"),
-	"snow" = load("res://assets/sounds/music/music_snow.ogg"),
+	"main_menu" = preload("res://assets/sounds/music/music_city.ogg"),
+	"city" = preload("res://assets/sounds/music/music_city.ogg"),
+	"cheese" = preload("res://assets/sounds/music/music_cheese.ogg"),
+	"snow" = preload("res://assets/sounds/music/music_snow.ogg"),
 }
 var current_music_name: String = "main_menu"
 

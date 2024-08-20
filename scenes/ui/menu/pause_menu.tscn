@@ -33,7 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.364706)
+color = Color(0, 0, 0, 0.439216)
 
 [node name="BlurBackground" type="ColorRect" parent="."]
 z_index = -200
@@ -97,6 +97,7 @@ text = "Quit"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Items"]
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="MasterVolume" type="VBoxContainer" parent="MarginContainer/Items/HBoxContainer"]
 layout_mode = 2

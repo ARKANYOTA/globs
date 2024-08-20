@@ -9,6 +9,8 @@ var paused = false
 var clicked = false
 
 func _ready():
+	if PauseMenuAutoload.game_gui:
+		PauseMenuAutoload.game_gui.hide_gui()
 	PauseMenuAutoload.can_pause = false
 
 func _input(event):
