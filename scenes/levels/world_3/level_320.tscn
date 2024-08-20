@@ -251,7 +251,7 @@ sources/0 = SubResource("TileSetAtlasSource_hpaph")
 offsets = PackedFloat32Array(0.0243902, 0.786585, 0.963415)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.588235, 1, 1, 1, 0.0901961)
 
-[node name="Level4" type="Node2D"]
+[node name="Level6" type="Node2D"]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 1

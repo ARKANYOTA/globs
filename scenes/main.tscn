@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://clib81weo65vk"]
+[gd_scene load_steps=33 format=3 uid="uid://clib81weo65vk"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ngeyx"]
 [ext_resource type="PackedScene" uid="uid://bpqekaydn06nf" path="res://scenes/ui/scene_transition.tscn" id="4_mholn"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://b3ayaf2x5qddk" path="res://assets/fonts/hardpixel.otf" id="7_rnnxt"]
 [ext_resource type="Texture2D" uid="uid://dlbopyuw333uu" path="res://assets/images/gmtklogo2024_pixel.png" id="8_qbdri"]
 [ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels/visuals/city_visuals.tscn" id="10_m3m4d"]
+[ext_resource type="Texture2D" uid="uid://c8srf7vwt813x" path="res://assets/images/backgrounds/title_blocks_bg.png" id="11_fps7l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_knqgm"]
 atlas = ExtResource("4_rggb7")
@@ -69,7 +70,9 @@ font_color = Color(0.13023, 0.13023, 0.13023, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_u3bde"]
 font = ExtResource("5_v4ddl")
 font_size = 12
-font_color = Color(0.73511, 0.73511, 0.73511, 1)
+font_color = Color(0.878098, 0.878098, 0.878098, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_txos7"]
 font = ExtResource("7_rnnxt")
@@ -115,12 +118,12 @@ offset_right = 41.0
 offset_bottom = 188.0
 
 [node name="GameLogo" type="AnimatedSprite2D" parent="Control"]
-position = Vector2(156, -84)
+position = Vector2(156, -67)
 sprite_frames = SubResource("SpriteFrames_0emse")
-frame_progress = 0.528659
+frame_progress = 0.587083
 script = ExtResource("5_73l6m")
 
-[node name="Title2" type="Label" parent="Control"]
+[node name="GMTK" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 43.0
 offset_top = -142.0
@@ -129,7 +132,7 @@ offset_bottom = -129.0
 text = "Created for the GMTK Game Jam 2024"
 label_settings = SubResource("LabelSettings_o2d5n")
 
-[node name="Title" type="Label" parent="Control"]
+[node name="Credits" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = -2.0
 offset_top = 18.0
@@ -187,6 +190,11 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_xxikv")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_37qlw")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_n7jyf")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mcj60")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(160, 112)
+texture = ExtResource("11_fps7l")
 
 [connection signal="pressed" from="ActivationButton" to="." method="_on_activation_button_pressed"]
 [connection signal="pressed" from="ActivationButton2" to="." method="_on_activation_button_pressed"]
