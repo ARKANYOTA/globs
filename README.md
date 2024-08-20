@@ -1,4 +1,4 @@
-# GMTK Game Jam 2024
+# GMTK Game Jam 2024 
 
 [GMTK Game Jam 2024](https://gmtk.itch.io)
 
