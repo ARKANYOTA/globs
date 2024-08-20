@@ -431,6 +431,18 @@ func can_extend(dir: Direction):
 
 ################################################
 
+
+func direction_to_rotation(direction: Block.Direction) -> float:
+	if direction == Block.Direction.LEFT:
+		return PI
+	elif direction == Block.Direction.RIGHT:
+		return 0
+	elif direction == Block.Direction.UP:
+		return -PI/2
+	elif direction == Block.Direction.DOWN:
+		return PI/2
+	return 0
+
 func _update_sprite():
 	# Update animation
 	_update_animation()
@@ -460,7 +472,7 @@ func _update_sprite():
 	var centerindicator: AnimatedSprite2D = $CenterIndicator
 	if not centerindicator:
 		return
-	centerindicator.rotation = Util.direction_to_rotation(gravity_axis) - PI/2
+	centerindicator.rotation = direction_to_rotation(gravity_axis) - PI/2
 
 
 func _update_animation():
@@ -732,6 +744,8 @@ func extend_block(variation: int, direction: Direction, push: bool):
 				block.remaining_pushs = -1
 			else:
 				block.remaining_pushs -= 1
+				if block == null:
+					return
 				move_tween.tween_callback(func(): block.extend_block(off, direction if not reverse else get_opposite_direction(direction), true))
 
 	if tween_property != "" and not push:
