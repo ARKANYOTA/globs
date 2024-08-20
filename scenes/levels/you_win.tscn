@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://njp8pewvydxc"]
+[gd_scene load_steps=21 format=4 uid="uid://dicq5mh3tjll6"]
 
 [ext_resource type="Texture2D" uid="uid://bbtfnnfhieyks" path="res://assets/images/backgrounds/snow_background.png" id="1_f72bv"]
 [ext_resource type="Texture2D" uid="uid://cf6y4eeok4xld" path="res://assets/images/backgrounds/city_background.png" id="1_im1mg"]
@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="11_06exw"]
 [ext_resource type="Texture2D" uid="uid://b3l0i7o6emx6i" path="res://assets/images/logo.png" id="12_rvxq1"]
 [ext_resource type="Shader" path="res://shaders/pause_menu_background.gdshader" id="13_uhqbu"]
+[ext_resource type="Texture2D" uid="uid://bsuxxmkm78ho5" path="res://assets/images/backgrounds/planet.png" id="14_k7ilc"]
 
 [sub_resource type="Animation" id="Animation_gkfhx"]
 length = 0.001
@@ -81,15 +82,18 @@ shader_parameter/amount = null
 [node name="Level" instance=ExtResource("1_ntcnh")]
 
 [node name="CityBackground" type="Sprite2D" parent="." index="0"]
+z_index = -2
 position = Vector2(96, 88)
 texture = ExtResource("1_im1mg")
 metadata/_edit_lock_ = true
 
 [node name="SnowBackground" type="Sprite2D" parent="." index="1"]
+z_index = -2
 position = Vector2(240, 88)
 texture = ExtResource("1_f72bv")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." index="2"]
+z_index = -2
 tile_map_data = PackedByteArray("AAATAAcAAwAGAAQAAAATAAYAAwAGAAQAAAASAAYAAwAGAAQAAAASAAUAAwAIAAYAAAASAAQAAwAGAAQAAAARAAQAAwAGAAQAAAARAAMAAwAGAAQAAAAQAAMAAwAGAAQAAAAQAAIAAwAGAAQAAAAPAAIAAwAGAAQAAAAPAAEAAwAGAAQAAAAQAAEAAwAGAAQAAAAPAAMAAwAGAAQAAAAPAAQAAwAGAAQAAAAPAAUAAwAHAAUAAAATAAUAAwAGAAQAAAATAAQAAwAIAAQAAAATAAMAAwAHAAYAAAATAAIAAwAGAAQAAAATAAEAAwAGAAQAAAATAAAAAwAGAAQAAAASAAcAAwAHAAQAAAASAAMAAwAGAAQAAAASAAIAAwAGAAQAAAASAAEAAwAGAAQAAAASAAAAAwAGAAQAAAARAAcAAwAGAAQAAAARAAYAAwAHAAYAAAARAAUAAwAGAAQAAAARAAIAAwAGAAQAAAARAAEAAwAGAAQAAAARAAAAAwAGAAQAAAAQAAcAAwAGAAQAAAAQAAYAAwAGAAQAAAAQAAUAAwAGAAQAAAAQAAQAAwAGAAQAAAAQAAAAAwAHAAUAAAAPAAcAAwAGAAQAAAAPAAYAAwAGAAQAAAAPAAAAAwAGAAQAAAAFAAAAAgADAAIAAAAGAAAAAgAFAAQAAAAFAAEAAgAFAAQAAAAGAAEAAgADAAIAAAAFAAIAAgADAAIAAAAGAAIAAgAFAAQAAAAFAAMAAgAFAAQAAAAGAAMAAgADAAIAAAAFAAQAAgADAAIAAAAGAAQAAgAFAAQAAAAFAAUAAgAFAAQAAAAGAAUAAgADAAIAAAAFAAYAAgADAAIAAAAGAAYAAgAFAAQAAAAFAAcAAgAFAAQAAAAGAAcAAgADAAIAAAAHAAEAAgAFAAQAAAAIAAEAAgADAAIAAAAHAAIAAgADAAIAAAAIAAIAAgAFAAQAAAAHAAMAAgAFAAQAAAAIAAMAAgADAAIAAAAHAAQAAgADAAIAAAAIAAQAAgAFAAQAAAAHAAUAAgAFAAQAAAAIAAUAAgADAAIAAAAHAAYAAgADAAIAAAAIAAYAAgAFAAQAAAAHAAcAAgAFAAQAAAAIAAcAAgADAAIAAAAJAAAAAgADAAIAAAAJAAEAAgAFAAQAAAAJAAIAAgADAAIAAAAJAAMAAgAFAAQAAAAJAAQAAgADAAIAAAAJAAUAAgAFAAQAAAAJAAYAAgADAAIAAAAJAAcAAgAFAAQAAAAAAAQAAAAGAAcAAAAHAAAAAgADAAIAAAAIAAAAAgAFAAQAAAA=")
 tile_set = ExtResource("2_1wk4v")
 collision_enabled = false
@@ -240,3 +244,8 @@ visible = false
 z_index = -10
 material = SubResource("ShaderMaterial_k607s")
 color = Color(0.68262, 0.718532, 0.744568, 1)
+
+[node name="Planet" type="Sprite2D" parent="." index="22"]
+z_index = -1
+position = Vector2(336, 128)
+texture = ExtResource("14_k7ilc")
