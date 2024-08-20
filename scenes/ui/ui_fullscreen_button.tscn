@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciguail0coyfn"]
+
+[ext_resource type="PackedScene" uid="uid://njqkv5i1atvi" path="res://scenes/ui/ui_icon_button.tscn" id="1_erw6o"]
+[ext_resource type="Texture2D" uid="uid://ceybtyquad8dn" path="res://assets/images/ui/fullscreen_on.png" id="2_cps3r"]
+[ext_resource type="Script" path="res://scenes/ui/ui_fullscreen_button.gd" id="2_lpdkv"]
+
+[node name="UiFullscreenButton" instance=ExtResource("1_erw6o")]
+icon = ExtResource("2_cps3r")
+script = ExtResource("2_lpdkv")

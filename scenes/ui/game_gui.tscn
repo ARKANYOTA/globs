@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/game_gui.gd" id="1_72ffu"]
 [ext_resource type="PackedScene" uid="uid://njqkv5i1atvi" path="res://scenes/ui/ui_icon_button.tscn" id="2_jx3wm"]
 [ext_resource type="Texture2D" uid="uid://2na74y5ctym2" path="res://assets/images/ui/retry.png" id="3_xf12s"]
-[ext_resource type="Texture2D" uid="uid://ceybtyquad8dn" path="res://assets/images/ui/fullscreen_on.png" id="4_qpvuc"]
+[ext_resource type="PackedScene" uid="uid://ciguail0coyfn" path="res://scenes/ui/ui_fullscreen_button.tscn" id="4_rid88"]
 
 [node name="GameGUI" type="Control"]
 z_index = 20
@@ -31,14 +31,12 @@ offset_right = 17.0
 offset_bottom = 19.0
 icon = ExtResource("3_xf12s")
 
-[node name="FullscreenButton" parent="." instance=ExtResource("2_jx3wm")]
+[node name="FullscreenButton" parent="." instance=ExtResource("4_rid88")]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 144.0
 offset_right = 41.0
 offset_bottom = 163.0
-icon = ExtResource("4_qpvuc")
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
-[connection signal="pressed" from="FullscreenButton" to="." method="_on_fullscreen_button_pressed"]

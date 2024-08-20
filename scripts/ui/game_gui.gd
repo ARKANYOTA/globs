@@ -9,10 +9,12 @@ func _ready():
 func hide_gui():
 	$PauseButton.hide()
 	$RetryButton.hide()
+	$FullscreenButton.show()
 
 func show_gui():
 	$PauseButton.show()
 	$RetryButton.show()
+	$FullscreenButton.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,7 +33,3 @@ func _on_retry_button_pressed():
 	PauseMenuAutoload.pause_menu.exit_menu()
 	LevelData.reload_scene()
 	GameManager.on_restart()
-
-
-func _on_fullscreen_button_pressed():
-	GameManager.toggle_fullscreen()

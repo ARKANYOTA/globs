@@ -32,6 +32,7 @@ right_extend_range = Vector2i(8, 88)
 position = Vector2(200, 56)
 
 [node name="Label" type="Label" parent="." index="4"]
+visible = false
 offset_left = 117.0
 offset_top = 141.0
 offset_right = 207.0
@@ -42,5 +43,6 @@ label_settings = SubResource("LabelSettings_ldncd")
 [node name="CityVisuals" parent="." index="5" instance=ExtResource("8_r3yl4")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="6"]
+visible = false
 position = Vector2(156, 148)
 texture = ExtResource("7_mc35m")
