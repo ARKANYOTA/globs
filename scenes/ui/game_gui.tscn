@@ -21,14 +21,16 @@ script = ExtResource("1_72ffu")
 
 [node name="PauseButton" parent="." instance=ExtResource("2_jx3wm")]
 layout_mode = 0
-offset_left = 24.0
-offset_right = 41.0
-offset_bottom = 19.0
+offset_left = 20.0
+offset_top = 1.0
+offset_right = 37.0
+offset_bottom = 20.0
 
 [node name="RetryButton" parent="." instance=ExtResource("2_jx3wm")]
 layout_mode = 0
+offset_top = 1.0
 offset_right = 17.0
-offset_bottom = 19.0
+offset_bottom = 20.0
 icon = ExtResource("3_xf12s")
 
 [node name="FullscreenButton" parent="." instance=ExtResource("4_rid88")]

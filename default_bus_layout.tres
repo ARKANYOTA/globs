@@ -2,7 +2,7 @@
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_n7hd4"]
 resource_name = "LowPassFilter"
-cutoff_hz = 700.0
+cutoff_hz = 1000.0
 
 [resource]
 bus/1/name = &"Music"
