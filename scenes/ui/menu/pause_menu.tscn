@@ -91,6 +91,7 @@ layout_mode = 2
 text = "Levels"
 
 [node name="Quit" parent="MarginContainer/Items/Buttons" instance=ExtResource("4_35rns")]
+visible = false
 layout_mode = 2
 text = "Quit"
 
