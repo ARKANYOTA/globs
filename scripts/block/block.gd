@@ -36,7 +36,7 @@ const dir_map = [
 		is_main_character = value
 		_update_sprite()
 
-@export var happy_probability = 0.333
+@export var happy_probability := 0.333
 
 @export var rotatable: bool = false
 @export_range(-360, 360) var angle: float = 0:

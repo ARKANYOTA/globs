@@ -16,6 +16,9 @@ func _process(delta):
 	else:
 		Input.set_custom_mouse_cursor(cursor)
 
+func on_restart():
+	pass
+
 func before_scene_change():
 	BlockManagerAutoload.blocks.clear()
 	BlockManagerAutoload.reset()
