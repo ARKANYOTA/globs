@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://bftjrd7plswxb"]
+[gd_scene load_steps=15 format=4 uid="uid://bftjrd7plswxb"]
 
 [ext_resource type="Script" path="res://scripts/ui/level_select.gd" id="1_o5v0p"]
 [ext_resource type="Texture2D" uid="uid://baupic3tgrmb3" path="res://assets/images/spritesheet/fromage_sprite_sheet.png" id="2_f8p86"]
 [ext_resource type="PackedScene" uid="uid://bpqekaydn06nf" path="res://scenes/ui/scene_transition.tscn" id="3_nsbc3"]
+[ext_resource type="FontFile" uid="uid://b3ayaf2x5qddk" path="res://assets/fonts/hardpixel.otf" id="4_63lu3"]
 [ext_resource type="PackedScene" uid="uid://l2wle6odhayq" path="res://scenes/ui/level_grid_container.tscn" id="4_mi7hb"]
 [ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui/ui_button.tscn" id="5_7vo62"]
 [ext_resource type="Script" path="res://scripts/ui/reset_button.gd" id="6_52lfc"]
@@ -55,6 +56,10 @@ texture = ExtResource("2_f8p86")
 sources/0 = SubResource("TileSetAtlasSource_jkjx8")
 pattern_0 = SubResource("TileMapPattern_as84n")
 
+[sub_resource type="LabelSettings" id="LabelSettings_n3x8x"]
+font = ExtResource("4_63lu3")
+font_size = 10
+
 [sub_resource type="Animation" id="Animation_hidgp"]
 length = 0.001
 tracks/0/type = "value"
@@ -103,9 +108,17 @@ tile_set = SubResource("TileSet_mg37k")
 
 [node name="SceneTransition" parent="." instance=ExtResource("3_nsbc3")]
 
+[node name="Label" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 25.0
+offset_bottom = 21.0
+text = "Level selection"
+label_settings = SubResource("LabelSettings_n3x8x")
+
 [node name="GridContainer" parent="." instance=ExtResource("4_mi7hb")]
-offset_top = 32.0
-offset_bottom = 100.0
+offset_top = 37.0
+offset_bottom = 105.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

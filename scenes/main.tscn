@@ -23,7 +23,7 @@ font_color = Color(0.73511, 0.73511, 0.73511, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_txos7"]
 font = ExtResource("7_rnnxt")
-font_size = 20
+font_size = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4il2s"]
 
@@ -91,9 +91,9 @@ horizontal_alignment = 1
 [node name="Click anywhere" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = -2.0
-offset_top = -34.0
+offset_top = -15.0
 offset_right = 319.0
-offset_bottom = -17.0
+offset_bottom = 2.0
 text = "Click anywhere"
 label_settings = SubResource("LabelSettings_txos7")
 horizontal_alignment = 1
