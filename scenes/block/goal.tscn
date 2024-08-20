@@ -55,7 +55,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1c4r8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq5wx"]
 size = Vector2(0, 0)
 
 [node name="Goal" type="Area2D"]
@@ -77,13 +77,13 @@ offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("2_hr0rm")
 region_rect = Rect2(16, 48, 16, 16)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_1c4r8")
+shape = SubResource("RectangleShape2D_dq5wx")
 debug_color = Color(0.493207, 0.429172, 1, 0.376471)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
