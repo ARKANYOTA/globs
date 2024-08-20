@@ -144,9 +144,9 @@ horizontal_alignment = 1
 
 [node name="Credits2" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 148.0
+offset_left = 147.0
 offset_top = -145.0
-offset_right = 468.0
+offset_right = 467.0
 offset_bottom = -128.0
 text = "v1.0
 "
