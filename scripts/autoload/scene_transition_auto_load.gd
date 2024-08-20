@@ -44,8 +44,11 @@ func change_scene_with_transition(scene: String, put_confetis = false) -> void:
 					i.remove_child(youwinlevel_instance)
 	
 	# Music 
+	# SCOTCH!!
 	var level_data = LevelData.get_current_level_data()
-	if level_data:
+	if scene == "res://scenes/ui/level_select.tscn": # <--- PAS BEAU!!!
+		PauseMenuAutoload.game_gui.show_level_select()
+	elif level_data: 
 		PauseMenuAutoload.game_gui.show_gui()
 		MusicManager.set_music(level_data["music"])
 	else:

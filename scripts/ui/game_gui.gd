@@ -6,6 +6,11 @@ extends Control
 func _ready():
 	hide_gui()
 
+func show_level_select():
+	$PauseButton.show()
+	$RetryButton.hide()
+	$FullscreenButton.show()
+
 func hide_gui():
 	$PauseButton.hide()
 	$RetryButton.hide()
