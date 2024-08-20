@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://msddn0mdeij7"]
 
 [ext_resource type="PackedScene" uid="uid://botnltrx4dsdp" path="res://scenes/levels/level.tscn" id="1_t40eq"]
-[ext_resource type="PackedScene" path="res://scenes/block/change_gravity_zone.tscn" id="3_ko3yb"]
+[ext_resource type="PackedScene" uid="uid://id7bhi4xpwux" path="res://scenes/block/change_gravity_zone.tscn" id="3_ko3yb"]
 [ext_resource type="PackedScene" uid="uid://cmps4e380d2e8" path="res://scenes/block/goal.tscn" id="4_1vpiq"]
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="5_ctf3m"]
 [ext_resource type="PackedScene" uid="uid://cyuc4qkh71ogh" path="res://scenes/block/bloc_skin/space/alien.tscn" id="5_ea7bi"]
