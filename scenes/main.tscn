@@ -1,13 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://clib81weo65vk"]
+[gd_scene load_steps=14 format=3 uid="uid://clib81weo65vk"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ngeyx"]
 [ext_resource type="Texture2D" uid="uid://b3l0i7o6emx6i" path="res://assets/images/logo.png" id="4_2ix4r"]
 [ext_resource type="PackedScene" uid="uid://bpqekaydn06nf" path="res://scenes/ui/scene_transition.tscn" id="4_mholn"]
 [ext_resource type="PackedScene" uid="uid://d3nt0ouwhyl50" path="res://scenes/block/block_manager.tscn" id="4_orfkg"]
 [ext_resource type="Script" path="res://scripts/ui/game_logo.gd" id="5_73l6m"]
-[ext_resource type="LabelSettings" uid="uid://cl1yg37xye2ku" path="res://assets/resources/label_settings.tres" id="5_mcfcx"]
 [ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="5_v4ddl"]
 [ext_resource type="Script" path="res://scripts/ui/click_anywhere_text.gd" id="7_h54yi"]
+[ext_resource type="FontFile" uid="uid://b3ayaf2x5qddk" path="res://assets/fonts/hardpixel.otf" id="7_rnnxt"]
 [ext_resource type="Texture2D" uid="uid://dlbopyuw333uu" path="res://assets/images/gmtklogo2024_pixel.png" id="8_qbdri"]
 [ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels/visuals/city_visuals.tscn" id="10_m3m4d"]
 
@@ -20,6 +20,10 @@ font_color = Color(0.13023, 0.13023, 0.13023, 1)
 font = ExtResource("5_v4ddl")
 font_size = 12
 font_color = Color(0.73511, 0.73511, 0.73511, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_txos7"]
+font = ExtResource("7_rnnxt")
+font_size = 20
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ngeyx")
@@ -70,7 +74,7 @@ offset_top = -34.0
 offset_right = 319.0
 offset_bottom = -17.0
 text = "Click anywhere"
-label_settings = ExtResource("5_mcfcx")
+label_settings = SubResource("LabelSettings_txos7")
 horizontal_alignment = 1
 script = ExtResource("7_h54yi")
 

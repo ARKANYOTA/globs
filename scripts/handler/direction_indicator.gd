@@ -9,6 +9,9 @@ var extend_range: Vector2i
 var base_indicator_pos: Vector2
 var final_indicator_pos: Vector2
 
+var base_position: Vector2 = position
+var is_extended = false
+
 @export var texture_retracted: Texture2D
 @export var texture_extended: Texture2D
 
@@ -39,22 +42,20 @@ func _update_extend_values():
 		extend_range = block.down_extend_range
 
 func _update_base_and_final_offsets():
-	var offset = Util.direction_to_vector(direction)
-	base_indicator_pos = offset * (extend_value + 1)
-	final_indicator_pos = offset * extend_range.y
+	var dir_offset = Util.direction_to_vector(direction)
+	var center = block.get_center()
+	var dimensions = block.get_dimensions()
+	
+	base_indicator_pos = center + (dimensions / 2) * dir_offset
+	final_indicator_pos = base_indicator_pos + dir_offset * (extend_range.y - extend_value)
 
 func retract_indicator():
-	var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(self, "position", base_indicator_pos, 0.3).set_ease(Tween.EASE_OUT)
-	texture = texture_retracted
+	is_extended = false
 	#tween.tween_callback(hide)
 
 func extend_indicator():
+	is_extended = true
 	show()
-	
-	var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(self, "position", final_indicator_pos, 0.3).set_ease(Tween.EASE_OUT)
-	texture = texture_extended
 
 func hide_indicator():
 	hide()
@@ -69,4 +70,14 @@ func _ready():
 func _process(delta):
 	_update_extend_values()
 	_update_base_and_final_offsets()
+	
+	if is_extended:
+		var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property(self, "position", final_indicator_pos, 0.3).set_ease(Tween.EASE_OUT)
+		texture = texture_extended
+	else:
+		var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property(self, "position", base_indicator_pos, 0.3).set_ease(Tween.EASE_OUT)
+		texture = texture_retracted
+
 	
