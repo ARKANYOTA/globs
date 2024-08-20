@@ -348,7 +348,7 @@ up_extendable = true
 position = Vector2(264, 168)
 
 [node name="Background" parent="." instance=ExtResource("8_du825")]
-position = Vector2(-48, 48)
+position = Vector2(-40, 48)
 
 [node name="Goal" parent="." instance=ExtResource("2_4so3r")]
 z_index = 0
