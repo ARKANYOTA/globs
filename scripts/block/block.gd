@@ -744,6 +744,8 @@ func extend_block(variation: int, direction: Direction, push: bool):
 				block.remaining_pushs = -1
 			else:
 				block.remaining_pushs -= 1
+				if block == null:
+					return
 				move_tween.tween_callback(func(): block.extend_block(off, direction if not reverse else get_opposite_direction(direction), true))
 
 	if tween_property != "" and not push:
