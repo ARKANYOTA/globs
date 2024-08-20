@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_7t3xo"]
 [ext_resource type="PackedScene" uid="uid://cmps4e380d2e8" path="res://scenes/block/goal.tscn" id="2_buhnq"]
 [ext_resource type="PackedScene" uid="uid://3wdpn4oulgik" path="res://scenes/block/bloc_skin/Frost/cloud.tscn" id="5_d40iu"]
-[ext_resource type="PackedScene" path="res://scenes/block/bloc_skin/Frost/bat.tscn" id="6_efbe3"]
+[ext_resource type="PackedScene" uid="uid://bolbefhicktwp" path="res://scenes/block/bloc_skin/Frost/bat.tscn" id="6_efbe3"]
 
 [node name="Level2" instance=ExtResource("1_l0xyy")]
 

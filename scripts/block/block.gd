@@ -467,7 +467,8 @@ func _update_sprite():
 			ninepatch.region_rect.position = Vector2(32+16, 80+16)
 		else:
 			ninepatch.region_rect.position = Vector2(32, 80)
-
+	else:
+		ninepatch.region_rect.position = Vector2(0, 80)
 
 	#else: # bleu
 		#ninepatch.region_rect.position.x = 0
