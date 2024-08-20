@@ -9,6 +9,8 @@ func win():
 	LevelData.increment_level_and_change_scene()
 
 func _ready():
+	process_mode = ProcessMode.PROCESS_MODE_ALWAYS
+	
 	Input.set_custom_mouse_cursor(cursor)
 	#Input.set_custom_mouse_cursor(cursor_click, Input.CURSOR_IBEAM)
 

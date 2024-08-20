@@ -81,11 +81,10 @@ label_settings = SubResource("LabelSettings_o2d5n")
 [node name="Title" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = -2.0
-offset_top = 6.0
+offset_top = 18.0
 offset_right = 318.0
 offset_bottom = 35.0
-text = "A game by 9-Slice Team
-Arkanyota, Notgoyome, Strochnis, Theobosse, Yolwoocle"
+text = "A game by Arkanyota, Notgoyome, Strochnis, Theobosse, Yolwoocle"
 label_settings = SubResource("LabelSettings_u3bde")
 horizontal_alignment = 1
 
