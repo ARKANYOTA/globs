@@ -124,7 +124,6 @@ layout_mode = 2
 audio_bus_name = "Music"
 
 [node name="FullscreenButton" parent="MarginContainer/Items/HBoxContainer" instance=ExtResource("7_q7xqu")]
-visible = false
 layout_mode = 2
 
 [connection signal="pressed" from="MarginContainer/Items/Buttons/Resume" to="." method="_on_resume_pressed"]
