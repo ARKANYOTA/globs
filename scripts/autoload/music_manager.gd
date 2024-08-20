@@ -6,10 +6,10 @@ var music_player_prefab: PackedScene = load("res://scenes/music/music_player.tsc
 var music_player: MusicPlayer
 
 var streams = {
-	"main_menu" = load("res://assets/sounds/music/music_city_world.mp3"),
-	"city" = load("res://assets/sounds/music/music_city_world.mp3"),
-	"cheese" = load("res://assets/sounds/music/music_cheese_world.mp3"),
-	"snow" = load("res://assets/sounds/music/music_snow_world.mp3"),
+	"main_menu" = load("res://assets/sounds/music/music_city.ogg"),
+	"city" = load("res://assets/sounds/music/music_city.ogg"),
+	"cheese" = load("res://assets/sounds/music/music_cheese.ogg"),
+	"snow" = load("res://assets/sounds/music/music_snow.ogg"),
 }
 var current_music_name: String = "main_menu"
 
@@ -19,6 +19,7 @@ func _ready():
 	
 	set_music("main_menu")
 	music_player.play()
+	set_music("main_menu")
 
 func set_music(music_name: String):
 	if music_name == current_music_name:
