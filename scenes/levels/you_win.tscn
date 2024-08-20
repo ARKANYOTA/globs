@@ -1,24 +1,220 @@
-[gd_scene load_steps=4 format=4 uid="uid://njp8pewvydxc"]
+[gd_scene load_steps=20 format=4 uid="uid://dicq5mh3tjll6"]
 
-[ext_resource type="FontFile" uid="uid://b3ayaf2x5qddk" path="res://assets/fonts/hardpixel.otf" id="1_kmdsl"]
+[ext_resource type="Texture2D" uid="uid://bbtfnnfhieyks" path="res://assets/images/backgrounds/snow_background.png" id="1_f72bv"]
+[ext_resource type="Texture2D" uid="uid://cf6y4eeok4xld" path="res://assets/images/backgrounds/city_background.png" id="1_im1mg"]
+[ext_resource type="PackedScene" uid="uid://botnltrx4dsdp" path="res://scenes/levels/level.tscn" id="1_ntcnh"]
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_1wk4v"]
+[ext_resource type="PackedScene" uid="uid://cyuc4qkh71ogh" path="res://scenes/block/bloc_skin/space/alien.tscn" id="3_1ht6e"]
+[ext_resource type="Texture2D" uid="uid://c28n08aegta7w" path="res://assets/images/light/triangle_sharp.png" id="5_bcc5y"]
+[ext_resource type="PackedScene" uid="uid://mfybqoo28hl2" path="res://scenes/block/bloc_skin/fromage/mouse_block.tscn" id="6_wermb"]
+[ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="8_1tfqp"]
+[ext_resource type="PackedScene" uid="uid://bdttvr6awstj3" path="res://scenes/block/bloc_skin/fromage/bear_block.tscn" id="8_w2r0h"]
+[ext_resource type="PackedScene" uid="uid://bolbefhicktwp" path="res://scenes/block/bloc_skin/Frost/bat.tscn" id="9_pyx41"]
+[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="11_06exw"]
+[ext_resource type="Texture2D" uid="uid://b3l0i7o6emx6i" path="res://assets/images/logo.png" id="12_rvxq1"]
+[ext_resource type="Shader" path="res://shaders/pause_menu_background.gdshader" id="13_uhqbu"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_epnd3"]
-font = ExtResource("1_kmdsl")
-font_size = 60
+[sub_resource type="Animation" id="Animation_gkfhx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(48, 160)]
+}
 
-[node name="YouWin" type="Node2D"]
+[sub_resource type="Animation" id="Animation_2pqpi"]
+resource_name = "scroll_text"
+length = 8.5333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8.53333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(48, 265), Vector2(48, -519.998)]
+}
 
-[node name="Label" type="Label" parent="."]
-offset_left = 39.0
-offset_top = 51.0
-offset_right = 285.0
-offset_bottom = 123.0
-text = "You Win
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ygkpm"]
+_data = {
+"RESET": SubResource("Animation_gkfhx"),
+"scroll_text": SubResource("Animation_2pqpi")
+}
+
+[sub_resource type="GDScript" id="GDScript_ookyf"]
+script/source = "extends AnimationPlayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if is_playing():
+		return
+	play(\"scroll_text\")
+	pass
 "
-label_settings = SubResource("LabelSettings_epnd3")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Label"]
-position = Vector2(-39, -51)
-tile_map_data = PackedByteArray("AAAAAAAAAAAEAAAAAAAAAAEAAAADAAEAAAAAAAIAAAADAAEAAAAAAAMAAAADAAEAAAAAAAQAAAADAAEAAAAAAAYAAAADAAEAAAAAAAcAAAADAAEAAAATAAoAAAAGAAIAAAASAAoAAAAFAAMAAAARAAoAAAAFAAMAAAAQAAoAAAAFAAMAAAALAAoAAAAFAAMAAAAKAAoAAAAFAAMAAAAJAAoAAAAFAAMAAAAIAAoAAAAFAAMAAAAHAAoAAAAFAAMAAAAGAAoAAAAFAAMAAAADAAoAAAAFAAMAAAACAAoAAAAFAAMAAAABAAoAAAAFAAMAAAATAAkAAAADAAEAAAATAAgAAAADAAEAAAATAAcAAAADAAEAAAATAAYAAAADAAEAAAATAAUAAAADAAEAAAATAAQAAAADAAEAAAATAAMAAAADAAEAAAATAAIAAAADAAEAAAATAAEAAAADAAEAAAATAAAAAAAGAAAAAAASAAAAAAAFAAMAAAARAAAAAAAFAAMAAAAQAAAAAAAFAAMAAAAPAAAAAAAFAAMAAAAOAAAAAAAFAAMAAAANAAAAAAAFAAMAAAAMAAAAAAAFAAMAAAALAAAAAAAFAAMAAAAKAAAAAAAFAAMAAAAJAAAAAAAFAAMAAAAIAAAAAAAFAAMAAAAHAAAAAAAFAAMAAAAGAAAAAAAFAAMAAAAFAAAAAAAFAAMAAAAEAAAAAAAFAAMAAAADAAAAAAAFAAMAAAACAAAAAAAFAAMAAAABAAAAAAAFAAMAAAAEAAoAAAAFAAMAAAAAAAUAAAADAAEAAAAAAAgAAAADAAEAAAAAAAkAAAADAAEAAAAAAAoAAAAEAAIAAAAFAAoAAAAFAAMAAAAMAAoAAAAFAAMAAAANAAoAAAAFAAMAAAAOAAoAAAAFAAMAAAAPAAoAAAAFAAMAAAA=")
+[sub_resource type="LabelSettings" id="LabelSettings_4kju6"]
+line_spacing = 5.0
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k607s"]
+shader = ExtResource("13_uhqbu")
+shader_parameter/amount = null
+
+[node name="Level" instance=ExtResource("1_ntcnh")]
+
+[node name="CityBackground" type="Sprite2D" parent="." index="0"]
+position = Vector2(96, 88)
+texture = ExtResource("1_im1mg")
+metadata/_edit_lock_ = true
+
+[node name="SnowBackground" type="Sprite2D" parent="." index="1"]
+position = Vector2(240, 88)
+texture = ExtResource("1_f72bv")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="." index="2"]
+tile_map_data = PackedByteArray("AAATAAcAAwAGAAQAAAATAAYAAwAGAAQAAAASAAYAAwAGAAQAAAASAAUAAwAIAAYAAAASAAQAAwAGAAQAAAARAAQAAwAGAAQAAAARAAMAAwAGAAQAAAAQAAMAAwAGAAQAAAAQAAIAAwAGAAQAAAAPAAIAAwAGAAQAAAAPAAEAAwAGAAQAAAAQAAEAAwAGAAQAAAAPAAMAAwAGAAQAAAAPAAQAAwAGAAQAAAAPAAUAAwAHAAUAAAATAAUAAwAGAAQAAAATAAQAAwAIAAQAAAATAAMAAwAHAAYAAAATAAIAAwAGAAQAAAATAAEAAwAGAAQAAAATAAAAAwAGAAQAAAASAAcAAwAHAAQAAAASAAMAAwAGAAQAAAASAAIAAwAGAAQAAAASAAEAAwAGAAQAAAASAAAAAwAGAAQAAAARAAcAAwAGAAQAAAARAAYAAwAHAAYAAAARAAUAAwAGAAQAAAARAAIAAwAGAAQAAAARAAEAAwAGAAQAAAARAAAAAwAGAAQAAAAQAAcAAwAGAAQAAAAQAAYAAwAGAAQAAAAQAAUAAwAGAAQAAAAQAAQAAwAGAAQAAAAQAAAAAwAHAAUAAAAPAAcAAwAGAAQAAAAPAAYAAwAGAAQAAAAPAAAAAwAGAAQAAAAFAAAAAgADAAIAAAAGAAAAAgAFAAQAAAAFAAEAAgAFAAQAAAAGAAEAAgADAAIAAAAFAAIAAgADAAIAAAAGAAIAAgAFAAQAAAAFAAMAAgAFAAQAAAAGAAMAAgADAAIAAAAFAAQAAgADAAIAAAAGAAQAAgAFAAQAAAAFAAUAAgAFAAQAAAAGAAUAAgADAAIAAAAFAAYAAgADAAIAAAAGAAYAAgAFAAQAAAAFAAcAAgAFAAQAAAAGAAcAAgADAAIAAAAHAAEAAgAFAAQAAAAIAAEAAgADAAIAAAAHAAIAAgADAAIAAAAIAAIAAgAFAAQAAAAHAAMAAgAFAAQAAAAIAAMAAgADAAIAAAAHAAQAAgADAAIAAAAIAAQAAgAFAAQAAAAHAAUAAgAFAAQAAAAIAAUAAgADAAIAAAAHAAYAAgADAAIAAAAIAAYAAgAFAAQAAAAHAAcAAgAFAAQAAAAIAAcAAgADAAIAAAAJAAAAAgADAAIAAAAJAAEAAgAFAAQAAAAJAAIAAgADAAIAAAAJAAMAAgAFAAQAAAAJAAQAAgADAAIAAAAJAAUAAgAFAAQAAAAJAAYAAgADAAIAAAAJAAcAAgAFAAQAAAAAAAQAAAAGAAcAAAAHAAAAAgADAAIAAAAIAAAAAgAFAAQAAAA=")
 tile_set = ExtResource("2_1wk4v")
+collision_enabled = false
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="3"]
+visible = false
+position = Vector2(104, -56)
+scale = Vector2(0.0958982, 0.340307)
+energy = 0.2
+shadow_enabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="4"]
+visible = false
+position = Vector2(120, -48)
+scale = Vector2(0.0958982, 0.340307)
+energy = 0.1
+shadow_enabled = true
+texture = ExtResource("5_bcc5y")
+
+[node name="PointLight2D2" type="PointLight2D" parent="." index="5"]
+position = Vector2(256, -40)
+scale = Vector2(0.141093, 0.340307)
+energy = 0.2
+shadow_enabled = true
+texture = ExtResource("5_bcc5y")
+
+[node name="TileMapLayer" parent="." index="6"]
+tile_map_data = PackedByteArray("AAAAAAMAAAAEAAUAAAAAAAgAAAAIAAEAAAAAAAkAAAAIAAIAAAAAAAoAAAAIAAIAAAATAAoAAwAHAAEAAAASAAoAAwAIAAEAAAARAAoAAwAIAAIAAAAQAAoAAwAIAAAAAAAPAAoAAwAJAAAAAAAOAAoAAQAHAAEAAAANAAoAAQAGAAEAAAAMAAoAAQAGAAEAAAALAAoAAQAGAAEAAAAKAAoAAQAFAAEAAAAJAAoAAgAHAAEAAAAIAAoAAgAGAAEAAAAHAAoAAgAGAAEAAAAGAAoAAgAGAAEAAAAFAAoAAgAFAAEAAAAEAAoAAAAKAAIAAAADAAoAAAAJAAIAAAACAAoAAAAJAAIAAAABAAoAAAAHAAUAAAATAAkAAwAHAAEAAAATAAgAAwAHAAAAAAATAAMAAwAEAAIAAAATAAIAAwAHAAEAAAATAAEAAwAHAAAAAAAMAAAAAQAHAAAAAAALAAAAAQAGAAAAAAAKAAAAAQAGAAAAAAAJAAAAAQAFAAAAAAAIAAAAAgAEAAMAAAAGAAAAAgAHAAMAAAAFAAAAAgAFAAMAAAD/////AAAHAAAAAAD//wwAAAAHAAAAAAAAAAsAAAAIAAMAAAABAAMAAAAFAAYAAAABAAQAAAAEAAQAAAABAAUAAAAEAAQAAAABAAYAAAAEAAQAAAABAAcAAAAEAAQAAAABAAgAAAAJAAEAAAABAAkAAAAJAAUAAAABAAsAAAAHAAYAAAACAAMAAAAFAAUAAAACAAUAAAAEAAYAAAACAAgAAAAJAAEAAAACAAsAAAAJAAMAAAADAAQAAAAEAAQAAAADAAUAAAAFAAUAAAADAAYAAAAEAAQAAAADAAcAAAAEAAQAAAADAAgAAAAJAAEAAAADAAkAAAAIAAUAAAADAAsAAAAJAAMAAAAEAAUAAAAFAAYAAAAEAAYAAAAEAAcAAAAEAAgAAAAKAAEAAAAEAAsAAAAKAAMAAAAFAAgAAgAFAAAAAAAFAAkAAgAFAAEAAAAFAAsAAgAFAAIAAAAGAAgAAgAGAAAAAAAGAAkAAgAGAAEAAAAGAAsAAgAGAAIAAAAHAAcAAgABAAAAAAAHAAgAAgAGAAAAAAAHAAkAAgAGAAEAAAAHAAsAAgAGAAIAAAAIAAgAAgAGAAAAAAAIAAkAAgAGAAEAAAAIAAsAAgAGAAIAAAAJAAcAAgADAAEAAAAJAAgAAgAHAAAAAAAJAAkAAgAHAAEAAAAJAAsAAgAHAAIAAAAKAAgAAQAFAAAAAAAKAAkAAQAFAAEAAAAKAAsAAQAFAAIAAAALAAgAAQAGAAAAAAALAAkAAQAIAAAAAAALAAsAAQAGAAIAAAAMAAgAAQAGAAAAAAAMAAkAAQAGAAEAAAAMAAsAAQAGAAIAAAANAAgAAQAGAAAAAAANAAkAAQAIAAIAAAANAAsAAQAGAAIAAAAOAAcAAQAIAAYAAAAOAAgAAQAHAAAAAAAOAAkAAQAHAAEAAAAOAAsAAQAHAAIAAAAPAAgAAwAFAAAAAAAPAAkAAwAJAAAAAAAPAAsAAwAFAAIAAAAQAAgAAwAKAAAAAAAQAAkAAwAIAAAAAAAQAAsAAwAGAAIAAAARAAgAAwAGAAAAAAARAAkAAwAIAAEAAAARAAsAAwAGAAIAAAASAAgAAwAKAAAAAAASAAkAAwAIAAIAAAASAAsAAwAJAAEAAAATAAsAAwAHAAIAAAAUAP//AAAHAAAAAAAUAAwAAAAHAAAAAAAPAAYAAwAEAAQAAAAPAAcAAwAEAAUAAAAKAAIAAQAHAAIAAAAKAAEAAQAGAAEAAAAJAAEAAQAFAAEAAAAJAAIAAQAFAAIAAAAPAAQAAwAHAAIAAAAPAAMAAwAHAAAAAAAOAAQAAwAFAAIAAAAOAAMAAwAFAAAAAAAPAAIAAwADAAcAAAAIAAEAAgAFAAYAAAALAAEAAQAGAAIAAAAMAAEAAQAHAAIAAAASAAEAAwAFAAAAAAAOAAIAAQAEAAcAAAAOAAEAAQAEAAYAAAAGAAYAAgABAAQAAAAEAAkAAAAKAAIAAAACAAkAAAAJAAIAAAAFAAUAAAAGAAYAAAAEAAMAAAAGAAUAAAADAAMAAAAFAAUAAAARAAUAAwAEAAMAAAASAAIAAwAFAAIAAAAEAAEAAgACAAMAAAA=")
+
+[node name="Block2" parent="." index="7" instance=ExtResource("3_1ht6e")]
+position = Vector2(264, 120)
+
+[node name="Block3" parent="." index="8" instance=ExtResource("3_1ht6e")]
+position = Vector2(296, 120)
+is_gravity_enabled = true
+is_main_character = false
+
+[node name="Block10" parent="." index="9" instance=ExtResource("3_1ht6e")]
+position = Vector2(280, 40)
+is_main_character = false
+
+[node name="Block4" parent="." index="10" instance=ExtResource("6_wermb")]
+position = Vector2(104, 120)
+
+[node name="Block5" parent="." index="11" instance=ExtResource("6_wermb")]
+position = Vector2(136, 120)
+
+[node name="Block6" parent="." index="12" instance=ExtResource("8_w2r0h")]
+position = Vector2(200, 120)
+is_main_character = true
+up_extend_value = 24.0
+right_extend_value = 24.0
+
+[node name="Block7" parent="." index="13" instance=ExtResource("8_w2r0h")]
+position = Vector2(184, 120)
+is_main_character = true
+
+[node name="Block8" parent="." index="14" instance=ExtResource("8_w2r0h")]
+position = Vector2(168, 120)
+is_main_character = true
+
+[node name="Block" parent="." index="15" instance=ExtResource("9_pyx41")]
+position = Vector2(184, 40)
+is_main_character = true
+default_gravity_axis = 2
+
+[node name="Block9" parent="." index="16" instance=ExtResource("8_1tfqp")]
+position = Vector2(40, 120)
+is_main_character = true
+
+[node name="Block11" parent="." index="17" instance=ExtResource("8_1tfqp")]
+position = Vector2(72, 40)
+static_block = true
+right_extendable = true
+right_extend_value = 24.0
+
+[node name="Block12" parent="." index="18" instance=ExtResource("8_1tfqp")]
+position = Vector2(24, 40)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="19"]
+libraries = {
+"": SubResource("AnimationLibrary_ygkpm")
+}
+speed_scale = 0.4
+script = SubResource("GDScript_ookyf")
+
+[node name="Label" type="Label" parent="." index="20"]
+z_index = 50
+texture_filter = 1
+offset_left = 48.0
+offset_top = 160.0
+offset_right = 272.0
+offset_bottom = 701.0
+theme_override_fonts/font = ExtResource("11_06exw")
+theme_override_font_sizes/font_size = 32
+text = "Made for the GMTK Game Jam 2024
+
+Theme: Built to Scale
+
+A game by
+
+Arkan Yota
+Notgoyome
+Strochnis
+Theobosse
+Yolwoocle
+
+Special thanks to 
+
+Artichaut
+EXEPixelPerfect
+Floraphonic
+HardPixel
+Kenney
+
+Thank you for playing!"
+label_settings = SubResource("LabelSettings_4kju6")
+horizontal_alignment = 1
+
+[node name="Logo" type="Sprite2D" parent="Label" index="0"]
+position = Vector2(108.89, -40.9492)
+texture = ExtResource("12_rvxq1")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." index="21"]
+visible = false
+z_index = -10
+material = SubResource("ShaderMaterial_k607s")
+color = Color(0.68262, 0.718532, 0.744568, 1)
