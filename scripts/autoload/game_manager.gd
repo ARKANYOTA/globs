@@ -1,7 +1,7 @@
 extends Node
 
-var cursor = load("res://assets/images/ui/cursor_big.png")
-var cursor_click = load("res://assets/images/ui/cursor_click_big.png")
+var cursor = preload("res://assets/images/ui/cursor_big.png")
+var cursor_click = preload("res://assets/images/ui/cursor_click_big.png")
 
 var is_fullscreen := false
 

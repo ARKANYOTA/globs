@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://njqkv5i1atvi"]
+[gd_scene load_steps=5 format=3 uid="uid://njqkv5i1atvi"]
 
 [ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui/ui_button.tscn" id="1_6lprh"]
 [ext_resource type="StyleBox" uid="uid://cjswfj00wx2cy" path="res://assets/textures/option_button_icon_texture.tres" id="2_fkak5"]
 [ext_resource type="StyleBox" uid="uid://casg6sjuadn3s" path="res://assets/textures/option_button_icon_texture_pressed.tres" id="2_lb8qt"]
 [ext_resource type="StyleBox" uid="uid://bvki8bhe11cpm" path="res://assets/textures/option_button_icon_texture_hover.tres" id="3_37m2x"]
-[ext_resource type="Texture2D" uid="uid://cfccdei10ptjn" path="res://assets/images/ui/pause.png" id="3_ei8dv"]
 
 [node name="UiIconButton" instance=ExtResource("1_6lprh")]
 theme_override_styles/disabled = ExtResource("2_lb8qt")
@@ -13,4 +12,3 @@ theme_override_styles/hover = ExtResource("3_37m2x")
 theme_override_styles/pressed = ExtResource("2_lb8qt")
 theme_override_styles/normal = ExtResource("2_fkak5")
 text = ""
-icon = ExtResource("3_ei8dv")
