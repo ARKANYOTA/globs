@@ -142,6 +142,17 @@ text = "A game by Arkanyota, Notgoyome, Strochnis, Theobosse, Yolwoocle"
 label_settings = SubResource("LabelSettings_u3bde")
 horizontal_alignment = 1
 
+[node name="Credits2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = -145.0
+offset_right = 468.0
+offset_bottom = -128.0
+text = "v1.0
+"
+label_settings = SubResource("LabelSettings_u3bde")
+horizontal_alignment = 1
+
 [node name="Click anywhere" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = -2.0
