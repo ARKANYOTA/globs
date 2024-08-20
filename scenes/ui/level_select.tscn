@@ -104,6 +104,8 @@ tile_set = SubResource("TileSet_mg37k")
 [node name="SceneTransition" parent="." instance=ExtResource("3_nsbc3")]
 
 [node name="GridContainer" parent="." instance=ExtResource("4_mi7hb")]
+offset_top = 32.0
+offset_bottom = 100.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -113,9 +115,9 @@ speed_scale = 0.2
 
 [node name="UiButton" parent="." instance=ExtResource("5_7vo62")]
 offset_left = 16.0
-offset_top = 160.0
-offset_right = 93.0
-offset_bottom = 179.0
+offset_top = 152.0
+offset_right = 97.0
+offset_bottom = 171.0
 text = "Reset levels"
 
 [node name="Node2D" type="Node2D" parent="UiButton"]
