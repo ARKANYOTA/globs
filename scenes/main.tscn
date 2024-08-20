@@ -1,15 +1,65 @@
-[gd_scene load_steps=25 format=3 uid="uid://clib81weo65vk"]
+[gd_scene load_steps=32 format=3 uid="uid://clib81weo65vk"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ngeyx"]
-[ext_resource type="Texture2D" uid="uid://b3l0i7o6emx6i" path="res://assets/images/logo.png" id="4_2ix4r"]
 [ext_resource type="PackedScene" uid="uid://bpqekaydn06nf" path="res://scenes/ui/scene_transition.tscn" id="4_mholn"]
 [ext_resource type="PackedScene" uid="uid://d3nt0ouwhyl50" path="res://scenes/block/block_manager.tscn" id="4_orfkg"]
+[ext_resource type="Texture2D" uid="uid://cwaagsgub0jyn" path="res://assets/images/animated_logo.png" id="4_rggb7"]
 [ext_resource type="Script" path="res://scripts/ui/game_logo.gd" id="5_73l6m"]
 [ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="5_v4ddl"]
 [ext_resource type="Script" path="res://scripts/ui/click_anywhere_text.gd" id="7_h54yi"]
 [ext_resource type="FontFile" uid="uid://b3ayaf2x5qddk" path="res://assets/fonts/hardpixel.otf" id="7_rnnxt"]
 [ext_resource type="Texture2D" uid="uid://dlbopyuw333uu" path="res://assets/images/gmtklogo2024_pixel.png" id="8_qbdri"]
 [ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels/visuals/city_visuals.tscn" id="10_m3m4d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knqgm"]
+atlas = ExtResource("4_rggb7")
+region = Rect2(0, 0, 126, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxmi1"]
+atlas = ExtResource("4_rggb7")
+region = Rect2(126, 0, 126, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i51fe"]
+atlas = ExtResource("4_rggb7")
+region = Rect2(252, 0, 126, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4iajh"]
+atlas = ExtResource("4_rggb7")
+region = Rect2(378, 0, 126, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rax1m"]
+atlas = ExtResource("4_rggb7")
+region = Rect2(504, 0, 126, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gonl"]
+atlas = ExtResource("4_rggb7")
+region = Rect2(630, 0, 126, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0emse"]
+animations = [{
+"frames": [{
+"duration": 30.0,
+"texture": SubResource("AtlasTexture_knqgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxmi1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i51fe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4iajh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rax1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gonl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o2d5n"]
 font = ExtResource("5_v4ddl")
@@ -64,9 +114,10 @@ offset_top = 148.0
 offset_right = 41.0
 offset_bottom = 188.0
 
-[node name="GameLogo" type="Sprite2D" parent="Control"]
+[node name="GameLogo" type="AnimatedSprite2D" parent="Control"]
 position = Vector2(156, -84)
-texture = ExtResource("4_2ix4r")
+sprite_frames = SubResource("SpriteFrames_0emse")
+frame_progress = 0.528659
 script = ExtResource("5_73l6m")
 
 [node name="Title2" type="Label" parent="Control"]
