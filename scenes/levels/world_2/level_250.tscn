@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://b11m0r3qore2h"]
 
-[ext_resource type="Texture2D" uid="uid://d30c5qbc2vdl1" path="res://assets/images/light/light2.png" id="1_b1ps5"]
+[ext_resource type="Texture2D" uid="uid://c28n08aegta7w" path="res://assets/images/light/triangle_sharp.png" id="1_ayjb1"]
 [ext_resource type="Texture2D" uid="uid://baupic3tgrmb3" path="res://assets/images/spritesheet/fromage_sprite_sheet.png" id="2_3tr2f"]
 [ext_resource type="PackedScene" uid="uid://mfybqoo28hl2" path="res://scenes/block/bloc_skin/fromage/mouse_block.tscn" id="3_sfb36"]
 [ext_resource type="PackedScene" uid="uid://cmps4e380d2e8" path="res://scenes/block/goal.tscn" id="4_sx8sf"]
@@ -176,17 +176,17 @@ pattern_0 = SubResource("TileMapPattern_5jnm4")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 1
-position = Vector2(32, -56)
-scale = Vector2(-7.92614, 7.06175)
+position = Vector2(16, -48)
+scale = Vector2(-1.45843, 3.2224)
+color = Color(1, 0.87, 0.61, 1)
 energy = 0.4
 shadow_enabled = true
-texture = ExtResource("1_b1ps5")
+texture = ExtResource("1_ayjb1")
 offset = Vector2(0, 20)
 texture_scale = 0.2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0.700314, 0.752182, 0.889905, 1)
+color = Color(0.6966, 0.764683, 0.86, 1)
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 z_index = -2
