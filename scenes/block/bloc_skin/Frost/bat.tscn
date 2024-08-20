@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bolbefhicktwp"]
+[gd_scene load_steps=47 format=3 uid="uid://bolbefhicktwp"]
 
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="1_sve5m"]
 [ext_resource type="Texture2D" uid="uid://drhb51pu67x4p" path="res://assets/images/spritesheet/bat_spritesheet.png" id="2_20pb3"]
@@ -11,7 +11,7 @@
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcjvc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4k3rd"]
 size = Vector2(16, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tt380"]
@@ -41,6 +41,38 @@ region = Rect2(80, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2y3h"]
 atlas = ExtResource("3_6hi5a")
 region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y30mg"]
+atlas = ExtResource("3_ieci0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wb44x"]
+atlas = ExtResource("3_ieci0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pxfw"]
+atlas = ExtResource("3_ieci0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_licbr"]
+atlas = ExtResource("3_ieci0")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hly15"]
+atlas = ExtResource("3_ieci0")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkyy0"]
+atlas = ExtResource("3_ieci0")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjnui"]
+atlas = ExtResource("3_ieci0")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krlnm"]
+atlas = ExtResource("3_ieci0")
+region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_swu51"]
 atlas = ExtResource("3_ieci0")
@@ -158,9 +190,33 @@ animations = [{
 "name": &"fat",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y30mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wb44x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pxfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_licbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hly15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkyy0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjnui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krlnm")
+}],
 "loop": true,
-"name": &"o_face",
+"name": &"happy",
 "speed": 5.0
 }, {
 "frames": [{
@@ -256,10 +312,8 @@ region_rect = Rect2(32, 96, 16, 16)
 patch_margin_bottom = 3
 
 [node name="CollisionShape" parent="." index="2"]
-shape = SubResource("RectangleShape2D_qcjvc")
+shape = SubResource("RectangleShape2D_4k3rd")
 
 [node name="CenterIndicator" parent="." index="5"]
 sprite_frames = SubResource("SpriteFrames_kgm13")
-animation = &"poker"
-frame = 0
-frame_progress = 0.0
+animation = &"sleeping"
