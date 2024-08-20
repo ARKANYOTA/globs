@@ -9,12 +9,12 @@ func _ready():
 func show_level_select():
 	$PauseButton.show()
 	$RetryButton.hide()
-	$FullscreenButton.show()
+	$FullscreenButton.hide()
 
 func hide_gui():
 	$PauseButton.hide()
 	$RetryButton.hide()
-	$FullscreenButton.show()
+	$FullscreenButton.hide()
 
 func show_gui():
 	$PauseButton.show()
