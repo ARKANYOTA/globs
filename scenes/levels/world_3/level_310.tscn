@@ -282,6 +282,7 @@ right_extend_value = 24.0
 
 [node name="Block5" parent="." instance=ExtResource("4_jevqh")]
 position = Vector2(152, 56)
+is_gravity_enabled = true
 max_pushs = 3
 right_extendable = true
 
