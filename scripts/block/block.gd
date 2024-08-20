@@ -644,6 +644,17 @@ func _physics_process(delta):
 				gravity_tween.tween_property(self, "position:x", position.x + 16, move_speed).set_ease(Tween.EASE_OUT)
 
 			gravity_tween.tween_callback(set_is_falling_to_false)
+		
+	if not is_falling and not is_moving:
+		var gpos = get_grid_rect().position
+		var pos = Vector2(gpos.x * 16 + left_extend_value, gpos.y * 16 + up_extend_value)
+
+		if position.x != pos.x or position.y != pos.y:
+			var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+			is_falling = true
+			
+			tween.tween_property(self, "position", pos, move_speed / 2).set_ease(Tween.EASE_OUT)
+			tween.tween_callback(set_is_falling_to_false)
 	
 	_update_scale_handles()
 	_update_sprite()
