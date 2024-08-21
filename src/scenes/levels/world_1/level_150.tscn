@@ -49,5 +49,5 @@ up_extendable = true
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." index="7"]
 z_index = -1
-tile_map_data = PackedByteArray("AAADAAIAAAAEAAcAAAAOAAkAAAAEAAgAAAADAAkAAAAFAAcAAAAOAAIAAAAGAAcAAAA=")
+tile_map_data = PackedByteArray("AAADAAIAAAAEAAcAAAAOAAkAAAAEAAgAAAADAAkAAAAFAAcAAAA=")
 tile_set = ExtResource("5_1hqbr")
