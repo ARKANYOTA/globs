@@ -57,7 +57,7 @@ const dir_map = [
 var gravity_axis = Direction.DOWN
 
 @export_group("Selection")
-@export var click_area_extension := Vector2(4, 4)
+@export var click_area_extension := Vector2(16, 16)
 
 
 @export_group("Up Extandable")
@@ -192,10 +192,10 @@ func update_dimensions():
 	
 	# Update size
 	shape.size = dim
-	click_area_collision_shape.shape.size = dim + Vector2(6, 6)
+	click_area_collision_shape.shape.size = dim + click_area_extension
 	if light_occ != null:
 		light_occ.occluder.polygon = [Vector2(-dim.x/2, -dim.y/2), Vector2(dim.x/2, -dim.y/2), Vector2(dim.x/2, dim.y/2), Vector2(-dim.x/2, dim.y/2)]
-	unclick_area_collision_shape.shape.size = click_area_collision_shape.shape.size + click_area_extension
+	unclick_area_collision_shape.shape.size = click_area_collision_shape.shape.size # TODO
 	
 	# Update position
 	var child_pos: Vector2 = Vector2(-left_extend_value + right_extend_value,
