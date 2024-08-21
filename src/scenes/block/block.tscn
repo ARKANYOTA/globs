@@ -22,7 +22,7 @@
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0ddf"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adocn"]
 size = Vector2(16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
@@ -396,6 +396,7 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_eflyf")
 is_gravity_enabled = false
+click_area_extension = Vector2(8, 8)
 
 [node name="BlockOccluder" parent="." instance=ExtResource("2_doa3v")]
 occluder = SubResource("OccluderPolygon2D_nbgqd")
@@ -422,7 +423,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_f0ddf")
+shape = SubResource("RectangleShape2D_adocn")
 debug_color = Color(0, 0.509804, 0.6, 0.0509804)
 
 [node name="UnClickArea" parent="." instance=ExtResource("3_h0fp2")]
@@ -463,3 +464,6 @@ volume_db = 3.0
 
 [connection signal="clicked_outside_area" from="UnClickArea" to="." method="_on_un_click_area_clicked_outside_area"]
 [connection signal="clicked" from="ClickArea" to="." method="_on_click_area_clicked"]
+[connection signal="dragging" from="ClickArea" to="." method="_on_click_area_dragging"]
+[connection signal="end_drag" from="ClickArea" to="." method="_on_click_area_end_drag"]
+[connection signal="start_drag" from="ClickArea" to="." method="_on_click_area_start_drag"]

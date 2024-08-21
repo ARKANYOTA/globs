@@ -56,6 +56,10 @@ const dir_map = [
 
 var gravity_axis = Direction.DOWN
 
+@export_group("Selection")
+@export var click_area_extension := Vector2(4, 4)
+
+
 @export_group("Up Extandable")
 @export var up_extendable: bool = false
 @export var up_extend_range: Vector2i = Vector2i(8, 24)
@@ -108,6 +112,7 @@ var gravity_axis = Direction.DOWN
 ################################################
 
 @onready var main := get_node("/root/Main")
+@onready var collision_shape: CollisionShape2D = $CollisionShape
 @onready var sleep_particles: CPUParticles2D = $Sleep/SleepParticles
 @onready var click_audio: AudioStreamPlayer2D = $Audio/ClickAudio
 @onready var slide_audio: AudioStreamPlayer2D = $Audio/SlideAudio
@@ -126,12 +131,14 @@ var animation = "o_face"
 var is_asleep := false
 var is_moving := false
 var is_falling := false
+var _testleo_dragged = false
+var _testleo_drag_start_pos: Vector2
+var _testleo_min_mouse_distance = 8
+var _testleo_drag_direction: Direction
 
 var remaining_pushs := -1
 
 ################################################
-
-	
 
 func get_extend_value(direction: Direction):
 	if direction == Direction.LEFT:
@@ -188,7 +195,7 @@ func update_dimensions():
 	click_area_collision_shape.shape.size = dim + Vector2(6, 6)
 	if light_occ != null:
 		light_occ.occluder.polygon = [Vector2(-dim.x/2, -dim.y/2), Vector2(dim.x/2, -dim.y/2), Vector2(dim.x/2, dim.y/2), Vector2(-dim.x/2, dim.y/2)]
-	unclick_area_collision_shape.shape.size = click_area_collision_shape.shape.size + Vector2(4, 4)
+	unclick_area_collision_shape.shape.size = click_area_collision_shape.shape.size + click_area_extension
 	
 	# Update position
 	var child_pos: Vector2 = Vector2(-left_extend_value + right_extend_value,
@@ -422,15 +429,28 @@ func get_variation(dir: Direction) -> float:
 	return -1
 
 
-func can_extend(dir: Direction):
+func can_extend(dir: Direction) -> bool:
 	if dir == Direction.LEFT:
 		return left_extend_value < left_extend_range.y
-	if dir == Direction.RIGHT:
+	elif dir == Direction.RIGHT:
 		return right_extend_value < right_extend_range.y
-	if dir == Direction.UP:
+	elif dir == Direction.UP:
 		return up_extend_value < up_extend_range.y
-	if dir == Direction.DOWN:
+	elif dir == Direction.DOWN:
 		return down_extend_value < down_extend_range.y
+	return false
+
+func get_extendable_directions() -> Array[Direction]:
+	var dirs: Array[Direction] = []
+	if up_extendable:
+		dirs.append(Direction.UP)
+	if down_extendable:
+		dirs.append(Direction.DOWN)
+	if left_extendable:
+		dirs.append(Direction.LEFT)
+	if right_extendable:
+		dirs.append(Direction.RIGHT)
+	return dirs
 
 ################################################
 
@@ -661,11 +681,68 @@ func _physics_process(delta):
 	_update_sprite()
 
 func _on_click_area_clicked():
-	if BlockManagerAutoload.can_select(self):
-		BlockManagerAutoload.new_selection_candidate(self)
+	# if BlockManagerAutoload.can_select(self):
+	# 	BlockManagerAutoload.new_selection_candidate(self)
+	pass
 
 func _on_un_click_area_clicked_outside_area():
-	unselect()
+	# unselect()
+	pass
+
+func _on_click_area_start_drag():
+	if not collision_shape:
+		return
+	var collision_shape_shape: RectangleShape2D = collision_shape.shape
+	if not collision_shape_shape:
+		return
+	var aspect_ratio = collision_shape_shape.size.x / collision_shape_shape.size.y
+	
+	var mouse_offset: Vector2 = (get_local_mouse_position() - get_center()) * Vector2(1/aspect_ratio, 1)
+	var mouse_angle = mouse_offset.angle()
+	var direction = _angle_to_direction(mouse_angle)
+	_testleo_dragged = true
+	_testleo_drag_direction = direction
+
+
+func _on_click_area_end_drag():
+	_testleo_dragged = false
+	retract_direction_indicator()
+
+func _angle_to_direction(ang: float) -> Direction:
+	# https://www.reddit.com/r/godot/comments/t206my/how_to_get_a_direction_from_a_vector2d/
+	var vec = Vector2.RIGHT.rotated(round(ang / TAU * 4) * TAU / 4).snapped(Vector2.ONE).normalized()
+	if vec.is_equal_approx(Vector2.UP):
+		return Direction.UP
+	elif vec.is_equal_approx(Vector2.DOWN):
+		return Direction.DOWN
+	elif vec.is_equal_approx(Vector2.LEFT):
+		return Direction.LEFT
+	elif vec.is_equal_approx(Vector2.RIGHT):
+		return Direction.RIGHT
+	return Direction.UP
+
+func _on_click_area_dragging():
+	if is_moving or not _testleo_dragged:
+		return
+	
+	var mouse_pos = get_global_mouse_position()
+	# var mouse_dist = _testleo_drag_start_pos.distance_to(mouse_pos)
+	# if mouse_dist < _testleo_min_mouse_distance:
+	# 	return
+
+	print(Util.direction_to_string(_testleo_drag_direction))
+
+	var variation = get_variation(_testleo_drag_direction)
+	if abs(variation) < 8:
+		return
+	
+	if variation > 0:
+		variation = 16
+	else:
+		variation = -16
+	
+	extend_block(variation, _testleo_drag_direction, false)
+
 
 func _on_scale_handle_start_drag(handle: ScaleHandle, direction: Direction):
 	BlockManagerAutoload.start_drag()
@@ -684,7 +761,7 @@ func is_same_axis(dir: Direction, odir: Direction):
 
 func extend_block(variation: int, direction: Direction, push: bool):
 	var extend = push or can_extend(direction)
-
+	
 	if get_tree() == null:
 		return
 	
@@ -705,7 +782,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 				return
 		val = left_extend_value - variation
 		tween_property = "left_extend_value"
-
+	
 	elif direction == Direction.RIGHT:
 		if variation > 0:
 			var check = check_movements(direction)
@@ -716,7 +793,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 				return
 		val = right_extend_value + variation
 		tween_property = "right_extend_value"
-
+	
 	elif direction == Direction.UP:
 		if variation < 0:
 			var check = check_movements(direction)
@@ -781,14 +858,14 @@ func extend_block(variation: int, direction: Direction, push: bool):
 func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 	if is_moving or not is_selected:
 		return
-
-	var variation = get_variation(direction)
-	if abs(variation) < 8:
-		return
-
-	if variation > 0:
-		variation = 16
-	else:
-		variation = -16
 	
-	extend_block(variation, direction, false)
+	# var variation = get_variation(direction)
+	# if abs(variation) < 8:
+	# 	return
+	
+	# if variation > 0:
+	# 	variation = 16
+	# else:
+	# 	variation = -16
+	
+	# extend_block(variation, direction, false)
