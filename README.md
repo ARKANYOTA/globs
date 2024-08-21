@@ -15,7 +15,7 @@ This game was made using the [Godot game engine](https://godotengine.org) in 96 
 
 Install [Godot](https://godotengine.org/) (preferably version v4.3, which is the version this was designed for).
 
-Open the `src` folder.
+Open the `src` folder in the Godot project manager.
 
 To export, look at the [Godot documentation page](https://docs.godotengine.org/en/stable/tutorials/export/exporting_projects.html) about exporting projects.
 
