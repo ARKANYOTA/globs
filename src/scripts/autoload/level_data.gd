@@ -1,6 +1,8 @@
 extends Node
 
 var levels = [
+	{ "name": "test1", "music": "snow", "scene": "res://scenes/levels/level_to_remove/level_test_leo.tscn"},
+
 	{ "name": "1-1", "music": "city", "scene": "res://scenes/levels/world_1/level_110_intro.tscn"},
 	{ "name": "1-2", "music": "city", "scene": "res://scenes/levels/world_1/level_120_push.tscn"},
 	{ "name": "1-3", "music": "city", "scene": "res://scenes/levels/world_1/level_130_support.tscn"},
@@ -34,6 +36,7 @@ var levels = [
 	{ "name": "4-5", "music": "snow", "scene": "res://scenes/levels/world_4/level_440.tscn"},
 	{ "name": "4-6", "music": "snow", "scene": "res://scenes/levels/world_4/level_490_guigui.tscn"},
 	{ "name": "4-7", "music": "snow", "scene": "res://scenes/levels/world_4/level_500_guigui.tscn"},
+
 	{ "name": "You Win", "music": "city", "scene": "res://scenes/levels/you_win.tscn"},
 ]
 

@@ -138,20 +138,23 @@ var _testleo_min_mouse_distance = 8
 var _testleo_drag_direction: Direction
 var _testleo_selected_side_x: Direction
 var _testleo_selected_side_y: Direction
+var _testleo_start_left_extents: float
+var _testleo_start_right_extents: float
+var _testleo_start_up_extents: float
+var _testleo_start_down_extents: float
 
 var remaining_pushs := -1
 
 ################################################
 
-func get_extend_value(direction: Direction):
+func get_extend_value(direction: Direction) -> float:
 	if direction == Direction.LEFT:
 		return left_extend_value
 	elif direction == Direction.RIGHT:
 		return right_extend_value
 	elif direction == Direction.UP:
 		return up_extend_value
-	elif direction == Direction.DOWN:
-		return down_extend_value
+	return down_extend_value
 
 func set_extend_value(direction: Direction, value) -> void:
 	if direction == Direction.LEFT:
@@ -163,7 +166,29 @@ func set_extend_value(direction: Direction, value) -> void:
 	elif direction == Direction.DOWN:
 		down_extend_value = value
 
-func expand(direction: Direction, amount: int):
+func is_extendable(direction: Direction) -> bool:
+	if direction == Direction.RIGHT:
+		return right_extendable
+	if direction == Direction.LEFT:
+		return left_extendable
+	if direction == Direction.UP:
+		return up_extendable
+	if direction == Direction.DOWN:
+		return down_extendable
+	return false
+
+func can_extend(dir: Direction) -> bool:
+	if dir == Direction.LEFT:
+		return left_extendable and  left_extend_value < left_extend_range.y
+	elif dir == Direction.RIGHT:
+		return right_extendable and right_extend_value < right_extend_range.y
+	elif dir == Direction.UP:
+		return up_extendable and    up_extend_value < up_extend_range.y
+	elif dir == Direction.DOWN:
+		return down_extendable and  down_extend_value < down_extend_range.y
+	return false
+
+func expand(direction: Direction, amount: int) -> void:
 	if direction == Direction.RIGHT:
 		right_extend_value += amount
 	if direction == Direction.LEFT:
@@ -172,6 +197,18 @@ func expand(direction: Direction, amount: int):
 		up_extend_value += amount
 	if direction == Direction.DOWN:
 		down_extend_value += amount
+
+func get_opposite_direction(direction: Direction) -> Direction:
+	if direction == Direction.LEFT:
+		return Direction.RIGHT
+	if direction == Direction.RIGHT:
+		return Direction.LEFT
+	if direction == Direction.UP:
+		return Direction.DOWN
+	return Direction.UP
+
+#####################################################################################################
+
 
 func update_range_from_block_range():
 	up_extend_range =    Vector2i(up_extend_block_range    * 16 + Vector2i(8, 8))
@@ -183,6 +220,7 @@ func update_dimensions():
 	var dim: Vector2 = Vector2(left_extend_value + right_extend_value, 
 							   up_extend_value + down_extend_value)
 	var click_area: ClickArea = $ClickArea
+	var collision_shape: CollisionShape2D = $CollisionShape
 	var shape = collision_shape.shape
 	var light_occ : LightOccluder2D = $BlockOccluder
 
@@ -365,15 +403,6 @@ func get_pos(direction: Direction) -> Vector2i:
 		return Vector2i(rect.position.x + (rect.size.x - 1), rect.position.y)
 	return Vector2i(rect.position.x, rect.position.y + (rect.size.y - 1))
 
-func get_opposite_direction(direction: Direction) -> Direction:
-	if direction == Direction.LEFT:
-		return Direction.RIGHT
-	if direction == Direction.RIGHT:
-		return Direction.LEFT
-	if direction == Direction.UP:
-		return Direction.DOWN
-	return Direction.UP
-
 func check_move_block(grid: Array, dir: Direction) -> Array:
 	var direction = dir_map[dir]
 	var rect = get_grid_rect()
@@ -417,26 +446,14 @@ func check_movements(dir: Direction) -> Array: # value 0: moved_blocks and value
 func get_variation(dir: Direction, pos_diff: Vector2) -> float:
 	# var pos_diff = get_global_mouse_position() - global_position
 	if dir == Direction.LEFT:
-		return pos_diff.x + left_extend_value
+		return pos_diff.x + left_extend_value - _testleo_start_left_extents
 	if dir == Direction.RIGHT:
-		return pos_diff.x - right_extend_value
+		return pos_diff.x - right_extend_value + _testleo_start_right_extents
 	if dir == Direction.UP:
-		return pos_diff.y + up_extend_value
+		return pos_diff.y + up_extend_value - _testleo_start_up_extents
 	if dir == Direction.DOWN:
-		return pos_diff.y - down_extend_value
+		return pos_diff.y - down_extend_value + _testleo_start_down_extents
 	return -1
-
-
-func can_extend(dir: Direction) -> bool: #pinn
-	if dir == Direction.LEFT:
-		return left_extendable and  left_extend_value < left_extend_range.y
-	elif dir == Direction.RIGHT:
-		return right_extendable and right_extend_value < right_extend_range.y
-	elif dir == Direction.UP:
-		return up_extendable and    up_extend_value < up_extend_range.y
-	elif dir == Direction.DOWN:
-		return down_extendable and  down_extend_value < down_extend_range.y
-	return false
 
 ## Returns a list of angles representing the directions the Block can extend in. 
 ## Ex: if the Block can move in `Direction.UP` and `Direction.RIGHT`, this will return `[Direction.UP, Direction.RIGHT]`
@@ -723,18 +740,43 @@ func _on_click_area_start_drag():
 	var aspect_ratio = collision_shape_shape.size.x / collision_shape_shape.size.y
 	
 	var mouse_pos = get_local_mouse_position()
-	var mouse_offset: Vector2 = (mouse_pos - get_center()) * Vector2(1/aspect_ratio, 1)
+	var mouse_offset: Vector2 = (mouse_pos) * Vector2(1/aspect_ratio, 1)
 	var mouse_angle = mouse_offset.angle()
 	_testleo_drag_start_pos = mouse_pos 
 	_testleo_dragged = true
-	_testleo_selected_side_x = Direction.LEFT if mouse_pos.x < get_center().x else Direction.RIGHT
-	_testleo_selected_side_y = Direction.UP   if mouse_pos.y < get_center().y else Direction.DOWN
+	_testleo_selected_side_x = Direction.LEFT if mouse_pos.x < 0 else Direction.RIGHT
+	_testleo_selected_side_y = Direction.UP   if mouse_pos.y < 0 else Direction.DOWN
+
+	_testleo_start_left_extents = left_extend_value
+	_testleo_start_right_extents = right_extend_value
+	_testleo_start_up_extents = up_extend_value
+	_testleo_start_down_extents = down_extend_value
+
+	print("---")
+	print("start drag")
 
 	extend_direction_indicator()
 
 func _on_click_area_end_drag():
+	print("---")
+	print("end drag")
+
 	_testleo_dragged = false
 	retract_direction_indicator()
+
+## Returns the edge that should be selected, based on the movement of the cursor.
+func _get_selected_edge(movement_direction: Direction) -> Direction:
+	var selected_edge: Direction = Direction.INVALID
+	if (left_extendable or right_extendable) and (movement_direction == Direction.RIGHT or movement_direction == Direction.LEFT):
+		selected_edge = _testleo_selected_side_x
+	
+	elif (up_extendable or down_extendable) and (movement_direction == Direction.UP or movement_direction == Direction.DOWN):
+		selected_edge = _testleo_selected_side_y
+	
+	if not is_extendable(selected_edge):
+		selected_edge = get_opposite_direction(selected_edge)
+	
+	return selected_edge
 
 func _on_click_area_dragging():
 	if is_moving or not _testleo_dragged:
@@ -743,10 +785,7 @@ func _on_click_area_dragging():
 	var mouse_pos = get_local_mouse_position()
 	var mouse_diff = mouse_pos - _testleo_drag_start_pos
 	var mouse_dist = _testleo_drag_start_pos.distance_to(mouse_pos)
-	print("---")
-	print(
-		"- mouse_dist ", mouse_dist
-	)
+	
 	if mouse_dist < _testleo_min_mouse_distance:
 		return
 
@@ -754,26 +793,35 @@ func _on_click_area_dragging():
 	if movement_direction == Direction.INVALID:
 		return
 	
-	var selected_edge: Direction
-	if movement_direction == Direction.RIGHT or movement_direction == Direction.LEFT:
-		selected_edge = _testleo_selected_side_x
-	elif movement_direction == Direction.UP or movement_direction == Direction.DOWN:
-		selected_edge = _testleo_selected_side_y
-
+	var selected_edge: Direction = _get_selected_edge(movement_direction)
+	if selected_edge == Direction.INVALID:
+		return
+	
 	var variation = get_variation(selected_edge, mouse_diff)
+
 	if abs(variation) < 8:
 		return
 	
+	print("---")
+	print("- variation 1 ", variation)	
+
 	if variation > 0:
 		variation = 16
 	else:
 		variation = -16
-	
+	print("- variation 2 ", variation)	
+	print(
+		"- mouse_dist ", mouse_dist,
+		" mouse_diff ", mouse_diff
+	)
+	print("- movement_direction ", Util.direction_to_string(movement_direction))	
 	print(
 		"- movement_direction ", Util.direction_to_string(movement_direction), 
 		" selected_edge ", Util.direction_to_string(selected_edge), 
+		" mouse_diff ", mouse_diff, 
 		" | selected_side_x ", Util.direction_to_string(_testleo_selected_side_x), 
 		" selected_side_y ", Util.direction_to_string(_testleo_selected_side_y))
+
 	extend_block(variation, selected_edge, false)
 
 
