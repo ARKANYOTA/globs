@@ -7,6 +7,7 @@
 [node name="Level" instance=ExtResource("1_k1f2c")]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="0"]
+visible = false
 color = Color(0.94, 0.878743, 0.7238, 1)
 energy = 0.1
 shadow_enabled = true
@@ -26,7 +27,7 @@ tile_map_data = PackedByteArray("AAAAAAgAAAAHAAYAAAABAAgAAAAJAAMAAAACAAgAAAAJAAM
 position = Vector2(152, 56)
 
 [node name="Block2" parent="." index="8" instance=ExtResource("4_q4448")]
-position = Vector2(128, 88)
+position = Vector2(120, 88)
 is_main_character = true
 up_extendable = true
 up_extend_range = Vector2i(8, 40)
