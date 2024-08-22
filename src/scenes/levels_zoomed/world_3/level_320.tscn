@@ -35,11 +35,13 @@ left_extend_block_range = Vector2i(0, 2)
 
 [node name="Block4" parent="." index="9" instance=ExtResource("5_gelqs")]
 position = Vector2(40, 120)
+is_gravity_enabled = true
 max_pushs = 40
 left_extendable = true
 
 [node name="Block7" parent="." index="10" instance=ExtResource("5_gelqs")]
 position = Vector2(152, 136)
+is_gravity_enabled = true
 max_pushs = 40
 push_bounce = true
 up_extendable = true
