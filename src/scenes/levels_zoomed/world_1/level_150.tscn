@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=4 uid="uid://bs74ceo57m7s5"]
+
+[ext_resource type="PackedScene" uid="uid://bt58nkodr7coo" path="res://scenes/levels_zoomed/world_1/level_100_template.tscn" id="1_7q2ig"]
+[ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="2_ctxag"]
+
+[node name="Level" instance=ExtResource("1_7q2ig")]
+
+[node name="Background" parent="." index="3"]
+z_index = 0
+collision_enabled = true
+
+[node name="mesure" parent="." index="4"]
+collision_enabled = true
+
+[node name="BackgroundProps" parent="." index="5"]
+z_index = 0
+collision_enabled = true
+
+[node name="Block" parent="." index="6"]
+tile_map_data = PackedByteArray("AAAAAAgAAAAKAAIAAAABAAgAAAAFAAcAAAAMAAgAAAAGAAcAAAANAAgAAAAIAAIAAAAOAAcAAAAKAAIAAAANAAcAAAAIAAIAAAAMAAcAAAAGAAYAAAALAAcAAAAFAAYAAAAKAAcAAAAFAAYAAAAJAAcAAAAFAAUAAAAIAAcAAAAFAAYAAAAHAAcAAAAEAAUAAAAGAAcAAAAEAAgAAAADAAcAAAAGAAUAAAACAAcAAAAFAAYAAAABAAcAAAAEAAUAAAAAAAcAAAAKAAIAAAD//wcAAAAIAAIAAAD//wgAAAAIAAIAAAAOAAgAAAAKAAIAAAAGAAYAAAAFAAUAAAAHAAYAAAAFAAUAAAAIAAYAAAAGAAYAAAAKAAYAAAAEAAUAAAALAAYAAAAFAAUAAAACAAYAAAAFAAYAAAABAAYAAAAEAAYAAAAAAAYAAAAKAAIAAAADAAYAAAAFAAYAAAAEAAYAAAAFAAUAAAAAAAQAAAAKAAIAAAABAAQAAAAEAAYAAAACAAQAAAAGAAYAAAAAAAUAAAAKAAIAAAAAAAMAAAAKAAIAAAAAAAIAAAAKAAIAAAAAAAEAAAAKAAIAAAAOAAEAAAAKAAIAAAAOAAIAAAAKAAIAAAAOAAMAAAAKAAIAAAAOAAQAAAAKAAIAAAAOAAUAAAAKAAIAAAAOAAYAAAAKAAIAAAANAAYAAAAIAAIAAAANAAUAAAAIAAIAAAANAAQAAAAJAAIAAAANAAMAAAAIAAIAAAANAAIAAAAIAAIAAAANAAEAAAAIAAEAAAD//wEAAAAIAAIAAAD//wIAAAAIAAIAAAD//wMAAAAIAAIAAAD//wQAAAAIAAIAAAD//wUAAAAIAAIAAAD//wYAAAAIAAIAAAABAAEAAAAEAAUAAAACAAEAAAAFAAYAAAADAAEAAAAFAAUAAAAEAAEAAAAFAAUAAAAFAAEAAAAFAAYAAAAGAAEAAAAFAAYAAAAHAAEAAAAFAAUAAAAIAAEAAAAFAAYAAAAJAAEAAAAFAAYAAAAKAAEAAAAFAAUAAAALAAEAAAAFAAUAAAABAAIAAAAEAAcAAAAMAAEAAAAGAAYAAAAFAAYAAAAFAAUAAAAMAAYAAAAGAAUAAAAMAAQAAAAIAAAAAAAAAAkAAAAKAAIAAAD//wkAAAAIAAIAAAAOAAkAAAAKAAIAAAANAAkAAAAIAAIAAAANAAoAAAAIAAMAAAAOAAoAAAAKAAMAAAAAAAoAAAAKAAMAAAD//woAAAAIAAMAAAAAAAAAAAAKAAEAAAD//wAAAAAIAAEAAAAOAAAAAAAHAAEAAAAMAAIAAAAGAAcAAAA=")
+
+[node name="Goal" parent="." index="7"]
+position = Vector2(200, 88)
+
+[node name="Block2" parent="." index="8"]
+position = Vector2(24, 88)
+right_extendable = true
+right_extend_range = Vector2i(8, 200)
+right_extend_block_range = Vector2i(0, 12)
+
+[node name="Block3" parent="." index="9" instance=ExtResource("2_ctxag")]
+position = Vector2(200, 56)
+static_block = true
+left_extendable = true
+left_extend_range = Vector2i(8, 40)
+left_extend_block_range = Vector2i(0, 2)
+
+[node name="Block4" parent="." index="10" instance=ExtResource("2_ctxag")]
+position = Vector2(184, 88)
+up_extendable = true
+up_extend_range = Vector2i(8, 40)
+up_extend_block_range = Vector2i(0, 2)
+up_extend_value = 40.0
+
+[node name="Block5" parent="." index="11" instance=ExtResource("2_ctxag")]
+position = Vector2(152, 104)
+up_extendable = true

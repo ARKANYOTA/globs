@@ -1,22 +1,28 @@
-[gd_scene load_steps=3 format=4 uid="uid://bt58nkodr7coo"]
+[gd_scene load_steps=4 format=4 uid="uid://bt58nkodr7coo"]
 
 [ext_resource type="PackedScene" uid="uid://cq0u27ulxk7yo" path="res://scenes/levels/level_template.tscn" id="1_k74mq"]
-[ext_resource type="Texture2D" uid="uid://cf6y4eeok4xld" path="res://assets/images/backgrounds/city_background.png" id="2_xh53b"]
+[ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="4_5waxu"]
+[ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels/visuals/city_visuals.tscn" id="4_vwhfn"]
 
 [node name="Level" instance=ExtResource("1_k74mq")]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="0"]
-color = Color(0.94, 0.878743, 0.7238, 1)
+visible = false
 energy = 0.2
 shadow_enabled = true
 
-[node name="CityBackground" type="Sprite2D" parent="." index="1"]
-z_index = -2
-position = Vector2(108, 69)
-texture = ExtResource("2_xh53b")
+[node name="CanvasModulate" type="CanvasModulate" parent="DirectionalLight2D" index="0"]
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="CityVisuals" parent="." index="1" instance=ExtResource("4_vwhfn")]
+position = Vector2(-48, -24)
 
 [node name="Camera2D" parent="." index="2"]
 offset = Vector2(0, 0)
 
-[node name="Block" parent="." index="5"]
+[node name="Block" parent="." index="6"]
 tile_map_data = PackedByteArray("AAAAAAgAAAAJAAMAAAABAAgAAAAJAAMAAAACAAgAAAAJAAMAAAADAAgAAAAJAAMAAAAEAAgAAAAJAAMAAAAFAAgAAAAJAAMAAAAGAAgAAAAJAAMAAAAHAAgAAAAJAAMAAAAIAAgAAAAJAAMAAAAJAAgAAAAJAAMAAAAKAAgAAAAJAAMAAAALAAgAAAAJAAMAAAAMAAgAAAAJAAMAAAANAAgAAAAJAAMAAAAOAAcAAAAKAAEAAAANAAcAAAAJAAEAAAAMAAcAAAAJAAEAAAALAAcAAAAJAAEAAAAKAAcAAAAJAAEAAAAJAAcAAAAJAAEAAAAIAAcAAAAJAAEAAAAHAAcAAAAJAAEAAAAGAAcAAAAJAAEAAAAFAAcAAAAJAAEAAAAEAAcAAAAJAAEAAAADAAcAAAAJAAEAAAACAAcAAAAJAAEAAAABAAcAAAAJAAEAAAAAAAcAAAAJAAEAAAD//wcAAAAIAAEAAAD//wgAAAAIAAMAAAAOAAgAAAAKAAMAAAA=")
+
+[node name="Block2" parent="." index="8" instance=ExtResource("4_5waxu")]
+position = Vector2(40, 104)
+is_main_character = true

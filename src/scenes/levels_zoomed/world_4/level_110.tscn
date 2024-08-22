@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://36f8sukqw25y"]
+
+[ext_resource type="PackedScene" uid="uid://dbvmnngir5sjv" path="res://scenes/levels_zoomed/world_2/level.tscn" id="1_5tcfl"]
+
+[node name="Level" instance=ExtResource("1_5tcfl")]
+
+[node name="Background" parent="." index="1"]
+z_index = 0
+collision_enabled = true
+
+[node name="mesure" parent="." index="2"]
+collision_enabled = true
+
+[node name="BackgroundProps" parent="." index="3"]
+z_index = 0
+collision_enabled = true

@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=4 uid="uid://qosffx0katlg"]
+
+[ext_resource type="PackedScene" uid="uid://bt58nkodr7coo" path="res://scenes/levels_zoomed/world_1/level_100_template.tscn" id="1_ycpui"]
+[ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="2_yb24m"]
+
+[node name="Level" instance=ExtResource("1_ycpui")]
+
+[node name="Background" parent="." index="3"]
+z_index = 0
+collision_enabled = true
+
+[node name="mesure" parent="." index="4"]
+collision_enabled = true
+
+[node name="BackgroundProps" parent="." index="5"]
+z_index = 0
+collision_enabled = true
+
+[node name="Block" parent="." index="6"]
+tile_map_data = PackedByteArray("AAAAAAgAAAAIAAMAAAABAAgAAAAJAAMAAAACAAgAAAAJAAMAAAADAAgAAAAJAAMAAAAEAAgAAAAJAAMAAAAFAAgAAAAJAAMAAAAGAAgAAAAJAAMAAAAHAAgAAAAJAAMAAAAIAAgAAAAJAAMAAAAJAAgAAAAJAAMAAAAKAAgAAAAJAAMAAAALAAgAAAAJAAMAAAAMAAgAAAAJAAMAAAANAAgAAAAJAAMAAAAOAAcAAAAKAAEAAAANAAcAAAAJAAEAAAAMAAcAAAAJAAEAAAALAAcAAAAJAAEAAAAKAAcAAAAJAAEAAAAJAAcAAAAJAAEAAAAIAAcAAAAJAAEAAAAHAAcAAAAJAAEAAAAGAAcAAAAJAAEAAAAFAAcAAAAJAAEAAAAEAAcAAAAJAAEAAAADAAcAAAAJAAEAAAACAAcAAAAJAAEAAAABAAcAAAAJAAEAAAAAAAcAAAAIAAEAAAAOAAgAAAAKAAMAAAACAAYAAAAEAAQAAAACAAUAAAAEAAQAAAACAAQAAAAEAAQAAAACAAMAAAAEAAQAAAACAAIAAAAEAAQAAAADAAEAAAAGAAUAAAACAAEAAAAFAAUAAAABAAEAAAAFAAUAAAAAAAEAAAAFAAUAAAAMAAAAAAAEAAUAAAANAAAAAAAFAAUAAAAOAAAAAAAFAAUAAAAPAAAAAAAFAAUAAAANAAEAAAAEAAQAAAANAAIAAAAEAAQAAAAAAAIAAAAEAAQAAAAAAAMAAAAEAAQAAAAAAAQAAAAEAAQAAAAAAAUAAAAEAAQAAAAAAAYAAAAEAAQAAAD//wEAAAAEAAUAAAANAAYAAAAEAAQAAAANAAMAAAAEAAQAAAANAAUAAAAEAAQAAAANAAQAAAAEAAQAAAAQAAAAAAAGAAUAAAAMAAEAAAAGAAcAAAADAAIAAAAEAAcAAAA=")
+
+[node name="Goal" parent="." index="7"]
+position = Vector2(72, 72)
+
+[node name="Block2" parent="." index="8"]
+position = Vector2(152, 72)
+right_extendable = true
+right_extend_range = Vector2i(8, 88)
+right_extend_block_range = Vector2i(0, 5)
+
+[node name="Block3" parent="." index="9" instance=ExtResource("2_yb24m")]
+position = Vector2(168, 40)
+static_block = true
+down_extendable = true
+down_extend_range = Vector2i(8, 40)
+down_extend_block_range = Vector2i(0, 2)
