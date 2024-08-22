@@ -122,6 +122,7 @@ position = Vector2(156, -67)
 sprite_frames = SubResource("SpriteFrames_0emse")
 frame_progress = 0.587083
 script = ExtResource("5_73l6m")
+range = null
 
 [node name="GMTK" type="Label" parent="Control"]
 layout_mode = 0
