@@ -1285,6 +1285,9 @@ texture = ExtResource("4_56keh")
 9:1/0/terrains_peering_bit/right_side = 3
 9:1/0/terrains_peering_bit/left_side = 3
 9:1/0/terrains_peering_bit/top_side = 3
+3:5/0 = 0
+2:5/0 = 0
+2:6/0 = 0
 
 [resource]
 occlusion_layer_0/light_mask = 3
