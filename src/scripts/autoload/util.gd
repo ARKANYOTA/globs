@@ -40,6 +40,17 @@ func direction_to_vector(direction: Block.Direction) -> Vector2:
 		return Vector2(0, 1)
 	return Vector2(0, 0)
 
+func vector_to_direction(vector: Vector2) -> Block.Direction:
+	if vector.is_equal_approx(Vector2(-1, 0)):
+		return Block.Direction.LEFT
+	elif vector.is_equal_approx(Vector2(1, 0)):
+		return Block.Direction.RIGHT
+	elif vector.is_equal_approx(Vector2(0, -1)):
+		return Block.Direction.UP
+	elif vector.is_equal_approx(Vector2(0, 1)):
+		return Block.Direction.DOWN
+	return Block.Direction.INVALID
+
 
 func direction_to_rotation(direction: Block.Direction) -> float:
 	if direction == Block.Direction.LEFT:
@@ -62,7 +73,7 @@ func angle_to_direction(angle: float) -> Block.Direction:
 		return Block.Direction.UP
 	elif is_equal_approx(angle, PI/2):
 		return Block.Direction.DOWN
-	return Block.Direction.RIGHT
+	return Block.Direction.INVALID
 
 func direction_to_string(direction: Block.Direction) -> String:
 	if direction == Block.Direction.LEFT:
@@ -73,4 +84,6 @@ func direction_to_string(direction: Block.Direction) -> String:
 		return "up"
 	elif direction == Block.Direction.DOWN:
 		return "down"
+	elif direction == Block.Direction.INVALID:
+		return "invalid"
 	return ""
