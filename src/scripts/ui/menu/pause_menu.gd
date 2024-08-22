@@ -34,7 +34,7 @@ func _on_skip_pressed():
 func _on_fullscreen_button_pressed():
 	GameManager.toggle_fullscreen()
 
-func _process(delta):
+func _process(_delta):
 	# SCOTCH !!
 	var levels_button = $MarginContainer/Items/Buttons/Levels
 	var current_scene = get_tree().get_current_scene()

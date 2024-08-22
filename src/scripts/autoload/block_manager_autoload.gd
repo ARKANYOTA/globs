@@ -45,7 +45,7 @@ func on_select_block(block: Block):
 		#if block_node != block:
 			#block_node.hide_direction_indicator()
 
-func on_unselect_block(block: Block):
+func on_unselect_block(_block: Block):
 	selected_block_count -= 1
 	
 	#for block_node in blocks:
@@ -61,7 +61,7 @@ func end_drag():
 func new_selection_candidate(block: Block):
 	selection_candidates.append(block)
 
-func can_select(block: Block):
+func can_select(_block: Block):
 	return true
 
 ##################################################

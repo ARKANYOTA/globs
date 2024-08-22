@@ -67,7 +67,7 @@ func _ready():
 	retract_indicator()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	_update_extend_values()
 	_update_base_and_final_offsets()
 	

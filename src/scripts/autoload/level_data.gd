@@ -138,10 +138,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _input(event):
 	if event.is_action_pressed("removeme2_nolan_usge_to_change_scene"):
 		win()

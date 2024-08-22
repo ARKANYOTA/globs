@@ -15,7 +15,7 @@ func end_drag():
 	is_dragging = false
 
 
-func _process(delta):
+func _process(_delta):
 	#_unselect_non_selected_blocks()
 	#_select_selection_candidate()
 	
