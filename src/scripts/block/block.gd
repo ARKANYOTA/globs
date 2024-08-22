@@ -3,7 +3,7 @@ extends Area2D
 class_name Block
 
 enum Direction {
-	LEFT, RIGHT, UP, DOWN
+	LEFT, RIGHT, UP, DOWN, INVALID
 }
 
 const dir_map = [
@@ -132,9 +132,12 @@ var is_asleep := false
 var is_moving := false
 var is_falling := false
 var _testleo_dragged = false
+var _testleo_drag_deadzone = 8
 var _testleo_drag_start_pos: Vector2
 var _testleo_min_mouse_distance = 8
 var _testleo_drag_direction: Direction
+var _testleo_selected_side_x: Direction
+var _testleo_selected_side_y: Direction
 
 var remaining_pushs := -1
 
@@ -411,8 +414,8 @@ func check_movements(dir: Direction) -> Array: # value 0: moved_blocks and value
 	
 	return [moved_blocks, true]
 
-func get_variation(dir: Direction) -> float:
-	var pos_diff = get_global_mouse_position() - global_position
+func get_variation(dir: Direction, pos_diff: Vector2) -> float:
+	# var pos_diff = get_global_mouse_position() - global_position
 	if dir == Direction.LEFT:
 		return pos_diff.x + left_extend_value
 	if dir == Direction.RIGHT:
@@ -683,6 +686,11 @@ func _physics_process(delta):
 	_update_scale_handles()
 	_update_sprite()
 
+
+############################################################################################################################################
+##### CLICK AREA
+############################################################################################################################################
+
 func _on_click_area_clicked():
 	# if BlockManagerAutoload.can_select(self):
 	# 	BlockManagerAutoload.new_selection_candidate(self)
@@ -693,14 +701,20 @@ func _on_un_click_area_clicked_outside_area():
 	pass
 
 
-func _angle_to_direction(ang: float) -> Direction:
+func _snap_vector_to_cardinal(vec: Vector2) -> Vector2:
 	# https://www.reddit.com/r/godot/comments/t206my/how_to_get_a_direction_from_a_vector2d/
-	return Util.closest_direction_to_angle(ang, get_extendable_directions())
+	return Vector2.RIGHT.rotated(round(vec.angle() / TAU * 4) * TAU / 4).snapped(Vector2.ONE)
+
+func _mouse_diff_to_direction(vec: Vector2) -> Direction:
+	var dir_vec = _snap_vector_to_cardinal(vec)
+	return Util.vector_to_direction(dir_vec)
+
+# func _angle_to_direction(ang: float) -> Direction:
+# 	var snapped: Vector2 = _snap_vector_to_direction(ang)
+# 	return vector_to_direction()
 
 
 func _on_click_area_start_drag():
-	extend_direction_indicator()
-
 	if not collision_shape:
 		return
 	var collision_shape_shape: RectangleShape2D = collision_shape.shape
@@ -708,18 +722,17 @@ func _on_click_area_start_drag():
 		return
 	var aspect_ratio = collision_shape_shape.size.x / collision_shape_shape.size.y
 	
-	var mouse_offset: Vector2 = (get_local_mouse_position() - get_center()) * Vector2(1/aspect_ratio, 1)
+	var mouse_pos = get_local_mouse_position()
+	var mouse_offset: Vector2 = (mouse_pos - get_center()) * Vector2(1/aspect_ratio, 1)
 	var mouse_angle = mouse_offset.angle()
-	var direction = _angle_to_direction(mouse_angle)
-	print(Util.direction_to_string(direction))
+	_testleo_drag_start_pos = mouse_pos 
 	_testleo_dragged = true
-	_testleo_drag_direction = direction
+	_testleo_selected_side_x = Direction.LEFT if mouse_pos.x < get_center().x else Direction.RIGHT
+	_testleo_selected_side_y = Direction.UP   if mouse_pos.y < get_center().y else Direction.DOWN
 
-
+	extend_direction_indicator()
 
 func _on_click_area_end_drag():
-	retract_direction_indicator()
-
 	_testleo_dragged = false
 	retract_direction_indicator()
 
@@ -727,14 +740,27 @@ func _on_click_area_dragging():
 	if is_moving or not _testleo_dragged:
 		return
 	
-	var mouse_pos = get_global_mouse_position()
-	# var mouse_dist = _testleo_drag_start_pos.distance_to(mouse_pos)
-	# if mouse_dist < _testleo_min_mouse_distance:
-	# 	return
+	var mouse_pos = get_local_mouse_position()
+	var mouse_diff = mouse_pos - _testleo_drag_start_pos
+	var mouse_dist = _testleo_drag_start_pos.distance_to(mouse_pos)
+	print("---")
+	print(
+		"- mouse_dist ", mouse_dist
+	)
+	if mouse_dist < _testleo_min_mouse_distance:
+		return
 
-	print(Util.direction_to_string(_testleo_drag_direction))
+	var movement_direction = _mouse_diff_to_direction(mouse_diff)
+	if movement_direction == Direction.INVALID:
+		return
+	
+	var selected_edge: Direction
+	if movement_direction == Direction.RIGHT or movement_direction == Direction.LEFT:
+		selected_edge = _testleo_selected_side_x
+	elif movement_direction == Direction.UP or movement_direction == Direction.DOWN:
+		selected_edge = _testleo_selected_side_y
 
-	var variation = get_variation(_testleo_drag_direction)
+	var variation = get_variation(selected_edge, mouse_diff)
 	if abs(variation) < 8:
 		return
 	
@@ -743,7 +769,12 @@ func _on_click_area_dragging():
 	else:
 		variation = -16
 	
-	extend_block(variation, _testleo_drag_direction, false)
+	print(
+		"- movement_direction ", Util.direction_to_string(movement_direction), 
+		" selected_edge ", Util.direction_to_string(selected_edge), 
+		" | selected_side_x ", Util.direction_to_string(_testleo_selected_side_x), 
+		" selected_side_y ", Util.direction_to_string(_testleo_selected_side_y))
+	extend_block(variation, selected_edge, false)
 
 
 func _on_scale_handle_start_drag(handle: ScaleHandle, direction: Direction):

@@ -31,7 +31,7 @@ var is_held := false
 # func _ready():
 # 	$ClickAreaCollisionShape.shape = $ClickAreaCollisionShape.shape.duplicate()
 
-func _input(event):
+func _input(_event):
 	if Engine.is_editor_hint():
 		return
 	
