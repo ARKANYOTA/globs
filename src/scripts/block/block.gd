@@ -57,7 +57,7 @@ const dir_map = [
 var gravity_axis = Direction.DOWN
 
 @export_group("Selection")
-@export var click_area_extension := Vector2(16, 16)
+@export var click_area_extension := Vector2(12, 12)
 
 
 @export_group("Up Extandable")
@@ -150,7 +150,7 @@ func get_extend_value(direction: Direction):
 	elif direction == Direction.DOWN:
 		return down_extend_value
 
-func set_extend_value(direction: Direction, value):
+func set_extend_value(direction: Direction, value) -> void:
 	if direction == Direction.LEFT:
 		left_extend_value = value
 	elif direction == Direction.RIGHT:
@@ -179,10 +179,7 @@ func update_range_from_block_range():
 func update_dimensions():
 	var dim: Vector2 = Vector2(left_extend_value + right_extend_value, 
 							   up_extend_value + down_extend_value)
-	var collision_shape = $CollisionShape
-	var click_area = $ClickArea
-	var click_area_collision_shape = $ClickArea/ClickAreaCollisionShape
-	var unclick_area_collision_shape = $UnClickArea/ClickAreaCollisionShape
+	var click_area: ClickArea = $ClickArea
 	var shape = collision_shape.shape
 	var light_occ : LightOccluder2D = $BlockOccluder
 
@@ -192,10 +189,8 @@ func update_dimensions():
 	
 	# Update size
 	shape.size = dim
-	click_area_collision_shape.shape.size = dim + click_area_extension
 	if light_occ != null:
 		light_occ.occluder.polygon = [Vector2(-dim.x/2, -dim.y/2), Vector2(dim.x/2, -dim.y/2), Vector2(dim.x/2, dim.y/2), Vector2(-dim.x/2, dim.y/2)]
-	unclick_area_collision_shape.shape.size = click_area_collision_shape.shape.size # TODO
 	
 	# Update position
 	var child_pos: Vector2 = Vector2(-left_extend_value + right_extend_value,
@@ -203,9 +198,9 @@ func update_dimensions():
 	if light_occ != null:
 		light_occ.position = child_pos
 	collision_shape.position = child_pos
-	unclick_area_collision_shape.position = child_pos
-	click_area.position = child_pos
 	update_sprite_size(child_pos, dim)
+
+	click_area.set_click_area_size_and_position(dim + click_area_extension, child_pos)
 
 func update_sprite_size(_pos, dimensions):
 	var nine_patch: NinePatchRect = $NinePatch
@@ -429,18 +424,20 @@ func get_variation(dir: Direction) -> float:
 	return -1
 
 
-func can_extend(dir: Direction) -> bool:
+func can_extend(dir: Direction) -> bool: #pinn
 	if dir == Direction.LEFT:
-		return left_extend_value < left_extend_range.y
+		return left_extendable and  left_extend_value < left_extend_range.y
 	elif dir == Direction.RIGHT:
-		return right_extend_value < right_extend_range.y
+		return right_extendable and right_extend_value < right_extend_range.y
 	elif dir == Direction.UP:
-		return up_extend_value < up_extend_range.y
+		return up_extendable and    up_extend_value < up_extend_range.y
 	elif dir == Direction.DOWN:
-		return down_extend_value < down_extend_range.y
+		return down_extendable and  down_extend_value < down_extend_range.y
 	return false
 
-func get_extendable_directions() -> Array[Direction]:
+## Returns a list of angles representing the directions the Block can extend in. 
+## Ex: if the Block can move in `Direction.UP` and `Direction.RIGHT`, this will return `[Direction.UP, Direction.RIGHT]`
+func get_extendable_directions() -> Array[Direction]: # TODO init this in _ready
 	var dirs: Array[Direction] = []
 	if up_extendable:
 		dirs.append(Direction.UP)
@@ -451,6 +448,11 @@ func get_extendable_directions() -> Array[Direction]:
 	if right_extendable:
 		dirs.append(Direction.RIGHT)
 	return dirs
+
+## Returns a list of angles representing the directions the Block can extend in. 
+## Ex: if the Block can move in `Direction.UP` and `Direction.RIGHT`, this will return `[-PI/2, 0]`
+func get_extendable_direction_angles() -> Array[float]: 
+	return get_extendable_directions().map(direction_to_rotation)
 
 ################################################
 
@@ -504,7 +506,7 @@ func _update_animation():
 	var size = dim.x * dim.y
 	var old_animation = animation
 	
-	if not is_selected:
+	if not _testleo_dragged:
 		animation = "sleeping"
 	elif size <= 4*16*16:
 		if is_happy:
@@ -520,23 +522,23 @@ func _update_animation():
 		sleep_particles.emitting = (animation == "sleeping")
 
 func _create_scale_handle(direction: Direction, handle_name: String):
-	var new_scale_handle: ScaleHandle = scale_handle.instantiate()
-	new_scale_handle.block = self
-	new_scale_handle.name = handle_name
-	new_scale_handle.direction = direction
-	new_scale_handle.z_index = 10
+	# var new_scale_handle: ScaleHandle = scale_handle.instantiate()
+	# new_scale_handle.block = self
+	# new_scale_handle.name = handle_name
+	# new_scale_handle.direction = direction
+	# new_scale_handle.z_index = 10
 	
-	new_scale_handle.start_drag.connect(func():
-		_on_scale_handle_start_drag(new_scale_handle, direction)
-	)
-	new_scale_handle.end_drag.connect(func():
-		_on_scale_handle_end_drag(new_scale_handle, direction)
-	)
-	new_scale_handle.dragging.connect(func():
-		_on_scale_handle_dragged(new_scale_handle, direction)
-	)
-	add_child(new_scale_handle)
-	new_scale_handle.initialize()
+	# new_scale_handle.start_drag.connect(func():
+	# 	_on_scale_handle_start_drag(new_scale_handle, direction)
+	# )
+	# new_scale_handle.end_drag.connect(func():
+	# 	_on_scale_handle_end_drag(new_scale_handle, direction)
+	# )
+	# new_scale_handle.dragging.connect(func():
+	# 	_on_scale_handle_dragged(new_scale_handle, direction)
+	# )
+	# add_child(new_scale_handle)
+	# new_scale_handle.initialize()
 	
 	var dimensions = get_dimensions()
 	var handle_position = get_center() + Util.direction_to_vector(direction) * (dimensions/2)
@@ -548,7 +550,7 @@ func _create_scale_handle(direction: Direction, handle_name: String):
 	new_direction_indicator.initialize()
 	
 	handles.append({
-		handle = new_scale_handle,
+		# handle = new_scale_handle,
 		direction_indicator = new_direction_indicator,
 	})
 
@@ -568,22 +570,24 @@ func _update_scale_handles():
 	var center = get_center()
 	var dimensions = get_dimensions()
 	for handle_info in handles:
-		var handle = handle_info["handle"]
-		var direction = handle.direction
-		var handle_position = center + Util.direction_to_vector(direction) * (Vector2(2, 2) + dimensions/2)
-		handle.position = round(handle_position) 
+		# var handle = handle_info["handle"]
+		# var direction = handle.direction
+		# var handle_position = center + Util.direction_to_vector(direction) * (Vector2(2, 2) + dimensions/2)
+		# handle.position = round(handle_position) 
 		
 		var indicator = handle_info["direction_indicator"]
-		indicator.is_held = handle.is_held
-		indicator.base_position = round(handle_position)
+		# indicator.is_held = handle.is_held
+		# indicator.base_position = round(handle_position)
 
 func _hide_scale_handles():
-	for handle in handles:
-		handle["handle"].hide_handle()
+	pass
+	# for handle in handles:
+	# 	handle["handle"].hide_handle()
 
 func _show_scale_handles():
-	for handle in handles:
-		handle["handle"].show_handle()
+	pass
+	# for handle in handles:
+	# 	handle["handle"].show_handle()
 
 func retract_direction_indicator():
 	for handle in handles:
@@ -606,7 +610,6 @@ func show_direction_indicator():
 
 func _ready():
 	$CollisionShape.shape = $CollisionShape.shape.duplicate()
-	$ClickArea/ClickAreaCollisionShape.shape = $ClickArea/ClickAreaCollisionShape.shape.duplicate()
 	
 	if Engine.is_editor_hint():
 		return
@@ -689,7 +692,15 @@ func _on_un_click_area_clicked_outside_area():
 	# unselect()
 	pass
 
+
+func _angle_to_direction(ang: float) -> Direction:
+	# https://www.reddit.com/r/godot/comments/t206my/how_to_get_a_direction_from_a_vector2d/
+	return Util.closest_direction_to_angle(ang, get_extendable_directions())
+
+
 func _on_click_area_start_drag():
+	extend_direction_indicator()
+
 	if not collision_shape:
 		return
 	var collision_shape_shape: RectangleShape2D = collision_shape.shape
@@ -700,26 +711,17 @@ func _on_click_area_start_drag():
 	var mouse_offset: Vector2 = (get_local_mouse_position() - get_center()) * Vector2(1/aspect_ratio, 1)
 	var mouse_angle = mouse_offset.angle()
 	var direction = _angle_to_direction(mouse_angle)
+	print(Util.direction_to_string(direction))
 	_testleo_dragged = true
 	_testleo_drag_direction = direction
 
 
+
 func _on_click_area_end_drag():
-	_testleo_dragged = false
 	retract_direction_indicator()
 
-func _angle_to_direction(ang: float) -> Direction:
-	# https://www.reddit.com/r/godot/comments/t206my/how_to_get_a_direction_from_a_vector2d/
-	var vec = Vector2.RIGHT.rotated(round(ang / TAU * 4) * TAU / 4).snapped(Vector2.ONE).normalized()
-	if vec.is_equal_approx(Vector2.UP):
-		return Direction.UP
-	elif vec.is_equal_approx(Vector2.DOWN):
-		return Direction.DOWN
-	elif vec.is_equal_approx(Vector2.LEFT):
-		return Direction.LEFT
-	elif vec.is_equal_approx(Vector2.RIGHT):
-		return Direction.RIGHT
-	return Direction.UP
+	_testleo_dragged = false
+	retract_direction_indicator()
 
 func _on_click_area_dragging():
 	if is_moving or not _testleo_dragged:

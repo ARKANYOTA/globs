@@ -1,19 +1,52 @@
-[gd_scene load_steps=3 format=3 uid="uid://catrwka02j1g0"]
+[gd_scene load_steps=13 format=3 uid="uid://catrwka02j1g0"]
 
 [ext_resource type="Script" path="res://scripts/handler/click_area.gd" id="1_lsa4i"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eymi1"]
-size = Vector2(24, 72)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s0h0j"]
 
-[node name="ClickArea" type="Area2D"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g51bq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ikcmd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tc5kp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ly4e2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_evxtx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7jrg5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wmxph"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_88wb2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_leeda"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2u6jy"]
+
+[node name="ClickArea" type="Button"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s0h0j")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_g51bq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ikcmd")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_tc5kp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ly4e2")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_evxtx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7jrg5")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_wmxph")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_88wb2")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_leeda")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2u6jy")
+keep_pressed_outside = true
 script = ExtResource("1_lsa4i")
-debug_color = Color(0, 0, 0, 1)
-
-[node name="ClickAreaCollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_eymi1")
-debug_color = Color(0.914239, 8.45176e-05, 0.716974, 0.42)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="clicked" from="." to="." method="_on_clicked"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

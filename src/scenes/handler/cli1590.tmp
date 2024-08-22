@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://catrwka02j1g0"]
+
+[ext_resource type="Script" path="res://scripts/handler/click_area.gd" id="1_lsa4i"]
+
+[node name="ClickArea" type="Button"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+keep_pressed_outside = true
+script = ExtResource("1_lsa4i")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="clicked" from="." to="." method="_on_clicked"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
