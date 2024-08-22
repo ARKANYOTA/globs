@@ -57,7 +57,7 @@ const dir_map = [
 var gravity_axis = Direction.DOWN
 
 @export_group("Selection")
-@export var click_area_extension := Vector2(12, 12)
+@export var click_area_extension := Vector2.ZERO #Vector2(12, 12)
 
 
 @export_group("Up Extandable")
@@ -131,17 +131,15 @@ var animation = "o_face"
 var is_asleep := false
 var is_moving := false
 var is_falling := false
-var _testleo_dragged = false
-var _testleo_drag_deadzone = 8
-var _testleo_drag_start_pos: Vector2
-var _testleo_min_mouse_distance = 8
-var _testleo_drag_direction: Direction
-var _testleo_selected_side_x: Direction
-var _testleo_selected_side_y: Direction
-var _testleo_start_left_extents: float
-var _testleo_start_right_extents: float
-var _testleo_start_up_extents: float
-var _testleo_start_down_extents: float
+
+var drag_start_position: Vector2
+var drag_mouse_dead_zone = 8
+var drag_selected_side_x: Direction
+var drag_selected_side_y: Direction
+var drag_start_left_extend_value: float
+var drag_start_right_extend_value: float
+var drag_start_up_extend_value: float
+var drag_start_down_extend_value: float
 
 var remaining_pushs := -1
 
@@ -207,6 +205,25 @@ func get_opposite_direction(direction: Direction) -> Direction:
 		return Direction.DOWN
 	return Direction.UP
 
+## Returns a list of angles representing the directions the Block can extend in. 
+## Ex: if the Block can move in `Direction.UP` and `Direction.RIGHT`, this will return `[Direction.UP, Direction.RIGHT]`
+func get_extendable_directions() -> Array[Direction]: # TODO init this in _ready
+	var dirs: Array[Direction] = []
+	if up_extendable:
+		dirs.append(Direction.UP)
+	if down_extendable:
+		dirs.append(Direction.DOWN)
+	if left_extendable:
+		dirs.append(Direction.LEFT)
+	if right_extendable:
+		dirs.append(Direction.RIGHT)
+	return dirs
+
+## Returns a list of angles representing the directions the Block can extend in. 
+## Ex: if the Block can move in `Direction.UP` and `Direction.RIGHT`, this will return `[-PI/2, 0]`
+func get_extendable_direction_angles() -> Array[float]: 
+	return get_extendable_directions().map(direction_to_rotation)
+
 #####################################################################################################
 
 
@@ -253,7 +270,6 @@ func select():
 		return
 	
 	is_selected = true
-	_show_scale_handles()
 	extend_direction_indicator()
 	BlockManagerAutoload.on_select_block(self)
 	
@@ -265,7 +281,6 @@ func unselect():
 		return
 	
 	is_selected = false
-	_hide_scale_handles()
 	retract_direction_indicator()
 	BlockManagerAutoload.on_unselect_block(self)
 	
@@ -446,33 +461,15 @@ func check_movements(dir: Direction) -> Array: # value 0: moved_blocks and value
 func get_variation(dir: Direction, pos_diff: Vector2) -> float:
 	# var pos_diff = get_global_mouse_position() - global_position
 	if dir == Direction.LEFT:
-		return pos_diff.x + left_extend_value - _testleo_start_left_extents
+		return pos_diff.x + left_extend_value - drag_start_left_extend_value
 	if dir == Direction.RIGHT:
-		return pos_diff.x - right_extend_value + _testleo_start_right_extents
+		return pos_diff.x - right_extend_value + drag_start_right_extend_value
 	if dir == Direction.UP:
-		return pos_diff.y + up_extend_value - _testleo_start_up_extents
+		return pos_diff.y + up_extend_value - drag_start_up_extend_value
 	if dir == Direction.DOWN:
-		return pos_diff.y - down_extend_value + _testleo_start_down_extents
+		return pos_diff.y - down_extend_value + drag_start_down_extend_value
 	return -1
 
-## Returns a list of angles representing the directions the Block can extend in. 
-## Ex: if the Block can move in `Direction.UP` and `Direction.RIGHT`, this will return `[Direction.UP, Direction.RIGHT]`
-func get_extendable_directions() -> Array[Direction]: # TODO init this in _ready
-	var dirs: Array[Direction] = []
-	if up_extendable:
-		dirs.append(Direction.UP)
-	if down_extendable:
-		dirs.append(Direction.DOWN)
-	if left_extendable:
-		dirs.append(Direction.LEFT)
-	if right_extendable:
-		dirs.append(Direction.RIGHT)
-	return dirs
-
-## Returns a list of angles representing the directions the Block can extend in. 
-## Ex: if the Block can move in `Direction.UP` and `Direction.RIGHT`, this will return `[-PI/2, 0]`
-func get_extendable_direction_angles() -> Array[float]: 
-	return get_extendable_directions().map(direction_to_rotation)
 
 ################################################
 
@@ -526,7 +523,7 @@ func _update_animation():
 	var size = dim.x * dim.y
 	var old_animation = animation
 	
-	if not _testleo_dragged:
+	if not is_selected:
 		animation = "sleeping"
 	elif size <= 4*16*16:
 		if is_happy:
@@ -541,73 +538,35 @@ func _update_animation():
 	if sleep_particles:
 		sleep_particles.emitting = (animation == "sleeping")
 
-func _create_scale_handle(direction: Direction, handle_name: String):
-	# var new_scale_handle: ScaleHandle = scale_handle.instantiate()
-	# new_scale_handle.block = self
-	# new_scale_handle.name = handle_name
-	# new_scale_handle.direction = direction
-	# new_scale_handle.z_index = 10
-	
-	# new_scale_handle.start_drag.connect(func():
-	# 	_on_scale_handle_start_drag(new_scale_handle, direction)
-	# )
-	# new_scale_handle.end_drag.connect(func():
-	# 	_on_scale_handle_end_drag(new_scale_handle, direction)
-	# )
-	# new_scale_handle.dragging.connect(func():
-	# 	_on_scale_handle_dragged(new_scale_handle, direction)
-	# )
-	# add_child(new_scale_handle)
-	# new_scale_handle.initialize()
-	
+func _create_direction_indicator(direction: Direction, handle_name: String):
 	var dimensions = get_dimensions()
 	var handle_position = get_center() + Util.direction_to_vector(direction) * (dimensions/2)
 	var new_direction_indicator = direction_indicator.instantiate()
 	new_direction_indicator.base_position = handle_position
 	new_direction_indicator.block = self
 	new_direction_indicator.direction = direction
+
 	add_child(new_direction_indicator)
 	new_direction_indicator.initialize()
 	
 	handles.append({
-		# handle = new_scale_handle,
 		direction_indicator = new_direction_indicator,
 	})
 
-func _create_scale_handles():
+func _create_direction_indicators():
 	if left_extendable:
-		_create_scale_handle(Direction.LEFT, "LeftHandle")
+		_create_direction_indicator(Direction.LEFT, "LeftHandle")
 	if right_extendable:
-		_create_scale_handle(Direction.RIGHT, "RightHandle")
+		_create_direction_indicator(Direction.RIGHT, "RightHandle")
 	if up_extendable:
-		_create_scale_handle(Direction.UP, "UpHandle")
+		_create_direction_indicator(Direction.UP, "UpHandle")
 	if down_extendable:
-		_create_scale_handle(Direction.DOWN, "DownHandle")
+		_create_direction_indicator(Direction.DOWN, "DownHandle")
 	
 	_update_scale_handles()
 
 func _update_scale_handles():
-	var center = get_center()
-	var dimensions = get_dimensions()
-	for handle_info in handles:
-		# var handle = handle_info["handle"]
-		# var direction = handle.direction
-		# var handle_position = center + Util.direction_to_vector(direction) * (Vector2(2, 2) + dimensions/2)
-		# handle.position = round(handle_position) 
-		
-		var indicator = handle_info["direction_indicator"]
-		# indicator.is_held = handle.is_held
-		# indicator.base_position = round(handle_position)
-
-func _hide_scale_handles():
 	pass
-	# for handle in handles:
-	# 	handle["handle"].hide_handle()
-
-func _show_scale_handles():
-	pass
-	# for handle in handles:
-	# 	handle["handle"].show_handle()
 
 func retract_direction_indicator():
 	for handle in handles:
@@ -642,8 +601,7 @@ func _ready():
 	down_extend_value = down_extend_value
 	left_extend_value = left_extend_value
 	right_extend_value = right_extend_value
-	_create_scale_handles()
-	_hide_scale_handles()
+	_create_direction_indicators()
 	
 	update_dimensions()
 	BlockManagerAutoload.register_block(self)
@@ -709,14 +667,7 @@ func _physics_process(delta):
 ############################################################################################################################################
 
 func _on_click_area_clicked():
-	# if BlockManagerAutoload.can_select(self):
-	# 	BlockManagerAutoload.new_selection_candidate(self)
 	pass
-
-func _on_un_click_area_clicked_outside_area():
-	# unselect()
-	pass
-
 
 func _snap_vector_to_cardinal(vec: Vector2) -> Vector2:
 	# https://www.reddit.com/r/godot/comments/t206my/how_to_get_a_direction_from_a_vector2d/
@@ -725,11 +676,6 @@ func _snap_vector_to_cardinal(vec: Vector2) -> Vector2:
 func _mouse_diff_to_direction(vec: Vector2) -> Direction:
 	var dir_vec = _snap_vector_to_cardinal(vec)
 	return Util.vector_to_direction(dir_vec)
-
-# func _angle_to_direction(ang: float) -> Direction:
-# 	var snapped: Vector2 = _snap_vector_to_direction(ang)
-# 	return vector_to_direction()
-
 
 func _on_click_area_start_drag():
 	if not collision_shape:
@@ -742,51 +688,44 @@ func _on_click_area_start_drag():
 	var mouse_pos = get_local_mouse_position()
 	var mouse_offset: Vector2 = (mouse_pos) * Vector2(1/aspect_ratio, 1)
 	var mouse_angle = mouse_offset.angle()
-	_testleo_drag_start_pos = mouse_pos 
-	_testleo_dragged = true
-	_testleo_selected_side_x = Direction.LEFT if mouse_pos.x < 0 else Direction.RIGHT
-	_testleo_selected_side_y = Direction.UP   if mouse_pos.y < 0 else Direction.DOWN
+	drag_start_position = mouse_pos 
+	drag_selected_side_x = Direction.LEFT if mouse_pos.x < 0 else Direction.RIGHT
+	drag_selected_side_y = Direction.UP   if mouse_pos.y < 0 else Direction.DOWN
 
-	_testleo_start_left_extents = left_extend_value
-	_testleo_start_right_extents = right_extend_value
-	_testleo_start_up_extents = up_extend_value
-	_testleo_start_down_extents = down_extend_value
+	drag_start_left_extend_value = left_extend_value
+	drag_start_right_extend_value = right_extend_value
+	drag_start_up_extend_value = up_extend_value
+	drag_start_down_extend_value = down_extend_value
 
-	print("---")
-	print("start drag")
-
-	extend_direction_indicator()
+	select()
 
 func _on_click_area_end_drag():
-	print("---")
-	print("end drag")
-
-	_testleo_dragged = false
-	retract_direction_indicator()
+	unselect()
 
 ## Returns the edge that should be selected, based on the movement of the cursor.
 func _get_selected_edge(movement_direction: Direction) -> Direction:
 	var selected_edge: Direction = Direction.INVALID
 	if (left_extendable or right_extendable) and (movement_direction == Direction.RIGHT or movement_direction == Direction.LEFT):
-		selected_edge = _testleo_selected_side_x
+		selected_edge = drag_selected_side_x
 	
 	elif (up_extendable or down_extendable) and (movement_direction == Direction.UP or movement_direction == Direction.DOWN):
-		selected_edge = _testleo_selected_side_y
+		selected_edge = drag_selected_side_y
 	
 	if not is_extendable(selected_edge):
 		selected_edge = get_opposite_direction(selected_edge)
 	
 	return selected_edge
 
+
 func _on_click_area_dragging():
-	if is_moving or not _testleo_dragged:
+	if is_moving or not is_selected:
 		return
 	
 	var mouse_pos = get_local_mouse_position()
-	var mouse_diff = mouse_pos - _testleo_drag_start_pos
-	var mouse_dist = _testleo_drag_start_pos.distance_to(mouse_pos)
+	var mouse_diff = mouse_pos - drag_start_position
+	var mouse_dist = drag_start_position.distance_to(mouse_pos)
 	
-	if mouse_dist < _testleo_min_mouse_distance:
+	if mouse_dist < drag_mouse_dead_zone:
 		return
 
 	var movement_direction = _mouse_diff_to_direction(mouse_diff)
@@ -802,34 +741,13 @@ func _on_click_area_dragging():
 	if abs(variation) < 8:
 		return
 	
-	print("---")
-	print("- variation 1 ", variation)	
-
 	if variation > 0:
 		variation = 16
 	else:
 		variation = -16
-	print("- variation 2 ", variation)	
-	print(
-		"- mouse_dist ", mouse_dist,
-		" mouse_diff ", mouse_diff
-	)
-	print("- movement_direction ", Util.direction_to_string(movement_direction))	
-	print(
-		"- movement_direction ", Util.direction_to_string(movement_direction), 
-		" selected_edge ", Util.direction_to_string(selected_edge), 
-		" mouse_diff ", mouse_diff, 
-		" | selected_side_x ", Util.direction_to_string(_testleo_selected_side_x), 
-		" selected_side_y ", Util.direction_to_string(_testleo_selected_side_y))
 
 	extend_block(variation, selected_edge, false)
 
-
-func _on_scale_handle_start_drag(handle: ScaleHandle, direction: Direction):
-	BlockManagerAutoload.start_drag()
-
-func _on_scale_handle_end_drag(handle: ScaleHandle, direction: Direction):
-	BlockManagerAutoload.end_drag()
 
 func set_is_moving_to_false():
 	is_moving = false 
