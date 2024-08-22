@@ -13,9 +13,6 @@ func _ready():
 		PauseMenuAutoload.game_gui.hide_gui()
 	PauseMenuAutoload.can_pause = false
 
-func _input(event):
-	pass
-
 # Quitting 
 func quit():
 	get_tree().quit()

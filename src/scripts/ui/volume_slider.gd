@@ -9,7 +9,7 @@ func _ready() -> void:
 	value = db_to_linear(AudioServer.get_bus_volume_db(_bus))
 	pass
 
-func _on_value_changed(value: float) -> void:
+func _on_value_changed(input_value: float) -> void:
 	var config = ConfigFile.new()
 	config.load("user://volume.cfg")
 	var music_value = config.get_value("Sound", "Music", 1)
@@ -17,9 +17,9 @@ func _on_value_changed(value: float) -> void:
 	config.set_value("Sound", "Music", music_value)
 	config.set_value("Sound", "Master", master_value)
 	if audio_bus_name == "Master":
-		config.set_value("Sound", "Master", value)
+		config.set_value("Sound", "Master", input_value)
 	else:
-		config.set_value("Sound", "Music", value)
+		config.set_value("Sound", "Music", input_value)
 	config.save("user://volume.cfg")
 	
-	AudioServer.set_bus_volume_db(_bus, linear_to_db(value))
+	AudioServer.set_bus_volume_db(_bus, linear_to_db(input_value))

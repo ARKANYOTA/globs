@@ -3,7 +3,7 @@ extends AnimatedSprite2D
 var value = 0.0
 var start_pos = Vector2.ZERO
 
-@export var range = 4
+@export var game_logo_range = 4
 
 func _ready():
 	play()
@@ -12,4 +12,4 @@ func _ready():
 func _process(delta):
 	value += delta
 	
-	position = start_pos + Vector2(0, sin(value) * range)
+	position = start_pos + Vector2(0, sin(value) * game_logo_range)

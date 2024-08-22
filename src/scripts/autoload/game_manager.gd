@@ -14,7 +14,7 @@ func _ready():
 	Input.set_custom_mouse_cursor(cursor)
 	#Input.set_custom_mouse_cursor(cursor_click, Input.CURSOR_IBEAM)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		Input.set_custom_mouse_cursor(cursor_click)
 	else:

@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=4 uid="uid://y3t57u8m6kcp"]
+
+[ext_resource type="PackedScene" uid="uid://dbvmnngir5sjv" path="res://scenes/levels_zoomed/world_2/level.tscn" id="1_fvd2u"]
+[ext_resource type="PackedScene" uid="uid://mfybqoo28hl2" path="res://scenes/block/bloc_skin/fromage/mouse_block.tscn" id="2_befvp"]
+[ext_resource type="PackedScene" uid="uid://b2ov0w3ipkxkr" path="res://scenes/block/bloc_skin/fromage/fromage_block.tscn" id="3_lvre2"]
+[ext_resource type="Texture2D" uid="uid://c28n08aegta7w" path="res://assets/images/light/triangle_sharp.png" id="4_tbqfi"]
+
+[node name="Level" instance=ExtResource("1_fvd2u")]
+
+[node name="mesure" parent="." index="2"]
+visible = false
+
+[node name="BackgroundProps" parent="." index="3"]
+tile_map_data = PackedByteArray("AAABAAQAAgAEAAYAAAAMAAEAAgAFAAYAAAAJAAIAAgADAAMAAAAIAAEAAgADAAMAAAAHAAEAAgADAAMAAAAIAAIAAgABAAAAAAAHAAIAAgABAAAAAAA=")
+
+[node name="Block" parent="." index="4"]
+tile_map_data = PackedByteArray("AAAAAAgAAgANAAMAAAABAAgAAgANAAMAAAACAAgAAgANAAMAAAADAAgAAgANAAMAAAAEAAgAAgANAAMAAAAFAAgAAgANAAMAAAAGAAgAAgANAAMAAAAHAAgAAgANAAMAAAAIAAgAAgANAAMAAAAKAAgAAgANAAMAAAAJAAgAAgANAAMAAAALAAgAAgANAAMAAAAMAAgAAgANAAMAAAANAAgAAgANAAMAAAAOAAgAAgAPAAMAAAAOAAcAAgAPAAIAAAANAAcAAgAJAAEAAAAMAAcAAgAOAAAAAAALAAcAAgAOAAAAAAAKAAcAAgAOAAAAAAAJAAcAAgAOAAAAAAAHAAcAAgAOAAAAAAAIAAcAAgAOAAAAAAAGAAcAAgAOAAAAAAAEAAcAAgAOAAAAAAAFAAcAAgAOAAAAAAADAAcAAgAOAAAAAAACAAcAAgAOAAAAAAABAAcAAgAOAAAAAAAAAAcAAgAKAAEAAAD//wcAAgAMAAEAAAD//wgAAgAMAAMAAAAAAAYAAgAPAAIAAAAAAAUAAgAPAAIAAAAAAAQAAgAPAAIAAAAAAAMAAgAPAAEAAAAAAAIAAgAPAAIAAAAAAAEAAgAPAAIAAAAAAAAAAgAPAAIAAAAAAP//AgAPAAAAAAD//wYAAgAMAAEAAAD//wUAAgAMAAEAAAD//wQAAgAMAAEAAAD//wMAAgAMAAEAAAD//wIAAgAMAAEAAAD//wEAAgAMAAEAAAD//wAAAgAMAAEAAAD/////AgAMAAAAAAAFAAAAAgAMAAEAAAAFAP//AgAMAAAAAAAFAAMAAgAJAAMAAAAFAAIAAgAMAAEAAAAFAAEAAgAMAAEAAAAEAAMAAgAFAAMAAAABAAMAAgAHAAMAAAAGAAMAAgAKAAMAAAAGAAIAAgAPAAIAAAAGAAEAAgAPAAIAAAAGAAAAAgAKAAIAAAAGAP//AgAOAAAAAAAJAAMAAgAHAAMAAAAIAAMAAgAGAAMAAAAHAAMAAgAGAAMAAAANAAAAAgAJAAIAAAAMAAAAAgANAAMAAAALAAAAAgANAAMAAAAKAAAAAgANAAMAAAAJAAAAAgANAAMAAAAIAAAAAgANAAMAAAAHAAAAAgANAAMAAAANAP//AgAOAAAAAAAMAP//AgAOAAAAAAALAP//AgAOAAAAAAAKAP//AgAOAAAAAAAJAP//AgAOAAAAAAAIAP//AgAOAAAAAAAHAP//AgAOAAAAAAAOAAYAAgAPAAIAAAAOAAUAAgAPAAIAAAAOAAQAAgAPAAIAAAAOAAMAAgAPAAIAAAAOAAIAAgAPAAIAAAAOAAEAAgAPAAIAAAAOAAAAAgAPAAIAAAAOAP//AgAPAAAAAAANAAYAAgAMAAEAAAANAAUAAgAMAAEAAAANAAQAAgAMAAEAAAANAAMAAgAMAAIAAAANAAIAAgAMAAEAAAANAAEAAgAMAAEAAAAMAAMAAgAFAAMAAAA=")
+
+[node name="Goal" parent="." index="5"]
+position = Vector2(184, 56)
+
+[node name="Block2" parent="." index="6"]
+position = Vector2(24, 40)
+up_extendable = true
+left_extendable = true
+right_extendable = true
+
+[node name="Block3" parent="." index="7" instance=ExtResource("2_befvp")]
+position = Vector2(72, 40)
+is_main_character = true
+up_extendable = true
+up_extend_range = Vector2i(8, 56)
+up_extend_block_range = Vector2i(0, 3)
+left_extendable = true
+left_extend_range = Vector2i(8, 104)
+left_extend_block_range = Vector2i(0, 6)
+right_extendable = true
+
+[node name="Block4" parent="." index="8" instance=ExtResource("2_befvp")]
+position = Vector2(88, 104)
+is_main_character = true
+up_extend_value = 24.0
+right_extend_range = Vector2i(8, 40)
+right_extend_block_range = Vector2i(0, 2)
+right_extend_value = 40.0
+
+[node name="Block5" parent="." index="9" instance=ExtResource("3_lvre2")]
+position = Vector2(200, 104)
+static_block = true
+left_extendable = true
+left_extend_range = Vector2i(8, 88)
+left_extend_block_range = Vector2i(0, 5)
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="10"]
+texture_filter = 1
+position = Vector2(24, -48)
+rotation = -0.0343589
+scale = Vector2(-1.45843, 3.2224)
+color = Color(1, 0.87, 0.61, 1)
+energy = 0.4
+shadow_enabled = true
+texture = ExtResource("4_tbqfi")
+offset = Vector2(0, 20)
+texture_scale = 0.2

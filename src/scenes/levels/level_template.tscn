@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=4 uid="uid://cq0u27ulxk7yo"]
+
+[ext_resource type="Script" path="res://scripts/level/level.gd" id="1_q5cud"]
+[ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_a5brp"]
+[ext_resource type="PackedScene" uid="uid://cmps4e380d2e8" path="res://scenes/block/goal.tscn" id="3_p85rx"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_q5cud")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(120, 72)
+offset = Vector2(-1, 0)
+zoom = Vector2(1.34, 1.34)
+
+[node name="Background" type="TileMapLayer" parent="."]
+z_index = -4
+tile_set = ExtResource("2_a5brp")
+collision_enabled = false
+
+[node name="mesure" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD+/wAAAAAAAAEAAAD+/wIAAAAAAAIAAAD+/wYAAAAAAAIAAAD+/wgAAAAAAAEAAAD+/wQAAAAAAAEAAAAAAP7/AAAAAAEAAAAEAP7/AAAAAAEAAAAIAP7/AAAAAAEAAAAMAP7/AAAAAAEAAAACAP7/AAAAAAIAAAAGAP7/AAAAAAIAAAAKAP7/AAAAAAIAAAAOAP7/AAAAAAIAAAA=")
+tile_set = ExtResource("2_a5brp")
+collision_enabled = false
+
+[node name="BackgroundProps" type="TileMapLayer" parent="."]
+z_index = -3
+tile_set = ExtResource("2_a5brp")
+collision_enabled = false
+
+[node name="Block" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_a5brp")
+
+[node name="Goal" parent="." instance=ExtResource("3_p85rx")]
+position = Vector2(123, 75)

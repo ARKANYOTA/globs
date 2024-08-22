@@ -33,6 +33,3 @@ func set_music(music_name: String):
 	music_player.stop()
 	music_player.set_stream(stream)
 	music_player.play()
-
-func _process(delta):
-	pass

@@ -17,7 +17,7 @@ func _ready():
 		texture = value
 		$Sprite2D.texture = texture 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		if PauseMenuAutoload.paused:
 			back()

@@ -22,11 +22,6 @@ func show_gui():
 	$FullscreenButton.hide()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_pause_button_pressed():
 	if PauseMenuAutoload.paused:
 		PauseMenuAutoload.pause_menu.back()

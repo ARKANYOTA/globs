@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=4 uid="uid://cvt4hjmvdsx4n"]
+
+[ext_resource type="PackedScene" uid="uid://dbvmnngir5sjv" path="res://scenes/levels_zoomed/world_2/level.tscn" id="1_nkc51"]
+[ext_resource type="PackedScene" uid="uid://mfybqoo28hl2" path="res://scenes/block/bloc_skin/fromage/mouse_block.tscn" id="2_re68o"]
+[ext_resource type="PackedScene" uid="uid://b2ov0w3ipkxkr" path="res://scenes/block/bloc_skin/fromage/fromage_block.tscn" id="3_0fbwx"]
+
+[node name="Level" instance=ExtResource("1_nkc51")]
+
+[node name="mesure" parent="." index="2"]
+visible = false
+
+[node name="BackgroundProps" parent="." index="3"]
+tile_map_data = PackedByteArray("AAALAAEAAgAFAAYAAAAMAAMAAgAFAAYAAAA=")
+
+[node name="Block" parent="." index="4"]
+tile_map_data = PackedByteArray("AAAAAAgAAgANAAMAAAABAAgAAgANAAMAAAACAAgAAgANAAMAAAADAAgAAgANAAMAAAAEAAgAAgANAAMAAAAFAAgAAgANAAMAAAAGAAgAAgANAAMAAAAHAAgAAgANAAMAAAAIAAgAAgANAAMAAAAKAAgAAgANAAMAAAAJAAgAAgANAAMAAAALAAgAAgANAAMAAAAMAAgAAgANAAMAAAANAAgAAgANAAMAAAAOAAgAAgANAAMAAAAOAAcAAgANAAIAAAANAAcAAgANAAIAAAAMAAcAAgANAAIAAAALAAcAAgANAAIAAAAKAAcAAgAJAAEAAAAJAAcAAgAOAAAAAAAHAAcAAgAOAAAAAAAIAAcAAgAOAAAAAAAGAAcAAgAOAAAAAAAEAAcAAgAOAAAAAAAFAAcAAgAOAAAAAAADAAcAAgANAAAAAAACAAcAAgAOAAAAAAABAAcAAgAOAAAAAAAAAAcAAgAKAAEAAAD//wcAAgAMAAEAAAD//wgAAgAMAAMAAAAAAAYAAgAPAAIAAAD//wYAAgAMAAEAAAD//wUAAgAMAAEAAAAAAAUAAgAPAAIAAAAAAAQAAgAPAAIAAAD//wQAAgAMAAEAAAD//wMAAgAMAAEAAAD//wIAAgAMAAEAAAAAAAIAAgAPAAIAAAAAAAMAAgAPAAIAAAAAAAEAAgAPAAIAAAAAAAAAAgAPAAIAAAD//wAAAgAMAAEAAAD//wEAAgAMAAEAAAADAAYAAgAEAAEAAAADAAUAAgAIAAIAAAADAAQAAgAMAAAAAAACAAAAAgAMAAEAAAACAAEAAgAMAAEAAAACAAIAAgAMAAMAAAADAAIAAgANAAMAAAAEAAIAAgAPAAMAAAAEAAEAAgAPAAIAAAAEAAAAAgAPAAIAAAADAAEAAgANAAIAAAADAAAAAgANAAIAAAD/////AgAMAAAAAAAAAP//AgAPAAAAAAACAP//AgAMAAAAAAADAP//AgAOAAAAAAAEAP//AgAPAAAAAAAGAP//AgAMAAAAAAAMAP//AgAOAAAAAAANAP//AgAOAAAAAAANAAAAAgANAAIAAAANAAEAAgANAAIAAAAOAP//AgAOAAAAAAAOAAAAAgANAAIAAAAOAAEAAgANAAIAAAAOAAIAAgANAAIAAAAOAAMAAgANAAIAAAAOAAQAAgANAAIAAAAOAAUAAgANAAIAAAAOAAYAAgANAAIAAAANAAYAAgAJAAEAAAANAAUAAgAMAAEAAAANAAQAAgAMAAEAAAANAAMAAgAMAAEAAAANAAIAAgAJAAIAAAAMAAAAAgAJAAIAAAALAP//AgAMAAAAAAALAAAAAgAMAAMAAAAIAP//AgAPAAAAAAAHAP//AgAOAAAAAAAHAAAAAgANAAIAAAAHAAEAAgANAAIAAAAGAAIAAgAMAAMAAAAGAAEAAgAMAAEAAAAGAAAAAgAMAAEAAAAHAAIAAgANAAMAAAAIAAEAAgAPAAIAAAAIAAAAAgAPAAIAAAAMAAEAAgAMAAEAAAAMAAIAAgAMAAMAAAAIAAIAAgAPAAMAAAAPAAgAAgAPAAMAAAAPAAcAAgAPAAIAAAAPAAMAAgAPAAIAAAAPAAYAAgAPAAIAAAAPAAUAAgAPAAIAAAAPAAQAAgAPAAIAAAAPAAIAAgAPAAIAAAAPAAEAAgAPAAIAAAAPAAAAAgAPAAIAAAAPAP//AgAPAAAAAAAKAAYAAgAMAAAAAAALAAYAAgAOAAAAAAAMAAYAAgAOAAAAAAAEAAQAAgAPAAAAAAAEAAUAAgAPAAMAAAA=")
+
+[node name="Goal" parent="." index="5"]
+position = Vector2(32, 96)
+size = Vector2i(2, 2)
+
+[node name="Block2" parent="." index="6"]
+position = Vector2(152, 88)
+up_extendable = true
+up_extend_range = Vector2i(8, 56)
+up_extend_block_range = Vector2i(0, 3)
+right_extendable = true
+right_extend_range = Vector2i(8, 56)
+right_extend_block_range = Vector2i(0, 3)
+
+[node name="Block3" parent="." index="7" instance=ExtResource("2_re68o")]
+position = Vector2(136, 88)
+is_main_character = true
+down_extend_range = Vector2i(8, 88)
+down_extend_block_range = Vector2i(0, 5)
+left_extendable = true
+left_extend_range = Vector2i(8, 88)
+left_extend_block_range = Vector2i(0, 5)
+right_extendable = true
+right_extend_range = Vector2i(8, 56)
+right_extend_block_range = Vector2i(0, 3)
+
+[node name="Block4" parent="." index="8" instance=ExtResource("3_0fbwx")]
+position = Vector2(72, 104)
+static_block = true
+right_extendable = true
+right_extend_range = Vector2i(8, 88)
+right_extend_block_range = Vector2i(0, 5)
+right_extend_value = 88.0
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="9"]
+rotation = -0.0841467
+color = Color(0.865939, 0.607838, 0.456177, 1)
+energy = 0.4
+shadow_enabled = true

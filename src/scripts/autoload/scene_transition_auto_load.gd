@@ -12,11 +12,6 @@ func _ready() -> void:
 	add_child(scene_transition_instance)
 	youwinlevel_instance = youwinlevel.instantiate()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func change_scene_with_transition(scene: String, put_confetis = false) -> void:
 	var root = get_tree().get_current_scene()
 	if put_confetis:
