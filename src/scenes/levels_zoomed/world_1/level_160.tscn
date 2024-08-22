@@ -29,7 +29,7 @@ left_extend_block_range = Vector2i(0, 6)
 position = Vector2(88, 72)
 up_extendable = true
 down_extendable = true
-right_extend_value = 40.0
+right_extend_value = 24.0
 
 [node name="Block3" parent="." index="11" instance=ExtResource("2_oru87")]
 position = Vector2(72, 56)
