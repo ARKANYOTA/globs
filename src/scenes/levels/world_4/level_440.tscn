@@ -31,6 +31,7 @@ gravity_axis = 2
 position = Vector2(152, 56)
 is_gravity_enabled = true
 max_pushs = 100
+click_area_extension = Vector2(16, 16)
 up_extendable = true
 down_extendable = true
 left_extendable = true

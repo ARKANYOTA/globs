@@ -3,7 +3,7 @@ extends Area2D
 class_name Block
 
 enum Direction {
-	LEFT, RIGHT, UP, DOWN
+	LEFT, RIGHT, UP, DOWN, INVALID
 }
 
 const dir_map = [
@@ -55,6 +55,10 @@ const dir_map = [
 @export var push_bounce := false
 
 var gravity_axis = Direction.DOWN
+
+@export_group("Selection")
+@export var click_area_extension := Vector2.ZERO #Vector2(12, 12)
+
 
 @export_group("Up Extandable")
 @export var up_extendable: bool = false
@@ -108,6 +112,7 @@ var gravity_axis = Direction.DOWN
 ################################################
 
 @onready var main := get_node("/root/Main")
+@onready var collision_shape: CollisionShape2D = $CollisionShape
 @onready var sleep_particles: CPUParticles2D = $Sleep/SleepParticles
 @onready var click_audio: AudioStreamPlayer2D = $Audio/ClickAudio
 @onready var slide_audio: AudioStreamPlayer2D = $Audio/SlideAudio
@@ -127,23 +132,29 @@ var is_asleep := false
 var is_moving := false
 var is_falling := false
 
+var drag_start_position: Vector2
+var drag_mouse_dead_zone = 8
+var drag_selected_side_x: Direction
+var drag_selected_side_y: Direction
+var drag_start_left_extend_value: float
+var drag_start_right_extend_value: float
+var drag_start_up_extend_value: float
+var drag_start_down_extend_value: float
+
 var remaining_pushs := -1
 
 ################################################
 
-	
-
-func get_extend_value(direction: Direction):
+func get_extend_value(direction: Direction) -> float:
 	if direction == Direction.LEFT:
 		return left_extend_value
 	elif direction == Direction.RIGHT:
 		return right_extend_value
 	elif direction == Direction.UP:
 		return up_extend_value
-	elif direction == Direction.DOWN:
-		return down_extend_value
+	return down_extend_value
 
-func set_extend_value(direction: Direction, value):
+func set_extend_value(direction: Direction, value) -> void:
 	if direction == Direction.LEFT:
 		left_extend_value = value
 	elif direction == Direction.RIGHT:
@@ -153,7 +164,29 @@ func set_extend_value(direction: Direction, value):
 	elif direction == Direction.DOWN:
 		down_extend_value = value
 
-func expand(direction: Direction, amount: int):
+func is_extendable(direction: Direction) -> bool:
+	if direction == Direction.RIGHT:
+		return right_extendable
+	if direction == Direction.LEFT:
+		return left_extendable
+	if direction == Direction.UP:
+		return up_extendable
+	if direction == Direction.DOWN:
+		return down_extendable
+	return false
+
+func can_extend(dir: Direction) -> bool:
+	if dir == Direction.LEFT:
+		return left_extendable and  left_extend_value < left_extend_range.y
+	elif dir == Direction.RIGHT:
+		return right_extendable and right_extend_value < right_extend_range.y
+	elif dir == Direction.UP:
+		return up_extendable and    up_extend_value < up_extend_range.y
+	elif dir == Direction.DOWN:
+		return down_extendable and  down_extend_value < down_extend_range.y
+	return false
+
+func expand(direction: Direction, amount: int) -> void:
 	if direction == Direction.RIGHT:
 		right_extend_value += amount
 	if direction == Direction.LEFT:
@@ -162,6 +195,37 @@ func expand(direction: Direction, amount: int):
 		up_extend_value += amount
 	if direction == Direction.DOWN:
 		down_extend_value += amount
+
+func get_opposite_direction(direction: Direction) -> Direction:
+	if direction == Direction.LEFT:
+		return Direction.RIGHT
+	if direction == Direction.RIGHT:
+		return Direction.LEFT
+	if direction == Direction.UP:
+		return Direction.DOWN
+	return Direction.UP
+
+## Returns a list of angles representing the directions the Block can extend in. 
+## Ex: if the Block can move in `Direction.UP` and `Direction.RIGHT`, this will return `[Direction.UP, Direction.RIGHT]`
+func get_extendable_directions() -> Array[Direction]: # TODO init this in _ready
+	var dirs: Array[Direction] = []
+	if up_extendable:
+		dirs.append(Direction.UP)
+	if down_extendable:
+		dirs.append(Direction.DOWN)
+	if left_extendable:
+		dirs.append(Direction.LEFT)
+	if right_extendable:
+		dirs.append(Direction.RIGHT)
+	return dirs
+
+## Returns a list of angles representing the directions the Block can extend in. 
+## Ex: if the Block can move in `Direction.UP` and `Direction.RIGHT`, this will return `[-PI/2, 0]`
+func get_extendable_direction_angles() -> Array[float]: 
+	return get_extendable_directions().map(direction_to_rotation)
+
+#####################################################################################################
+
 
 func update_range_from_block_range():
 	up_extend_range =    Vector2i(up_extend_block_range    * 16 + Vector2i(8, 8))
@@ -172,10 +236,8 @@ func update_range_from_block_range():
 func update_dimensions():
 	var dim: Vector2 = Vector2(left_extend_value + right_extend_value, 
 							   up_extend_value + down_extend_value)
-	var collision_shape = $CollisionShape
-	var click_area = $ClickArea
-	var click_area_collision_shape = $ClickArea/ClickAreaCollisionShape
-	var unclick_area_collision_shape = $UnClickArea/ClickAreaCollisionShape
+	var click_area: ClickArea = $ClickArea
+	var collision_shape: CollisionShape2D = $CollisionShape
 	var shape = collision_shape.shape
 	var light_occ : LightOccluder2D = $BlockOccluder
 
@@ -185,10 +247,8 @@ func update_dimensions():
 	
 	# Update size
 	shape.size = dim
-	click_area_collision_shape.shape.size = dim + Vector2(6, 6)
 	if light_occ != null:
 		light_occ.occluder.polygon = [Vector2(-dim.x/2, -dim.y/2), Vector2(dim.x/2, -dim.y/2), Vector2(dim.x/2, dim.y/2), Vector2(-dim.x/2, dim.y/2)]
-	unclick_area_collision_shape.shape.size = click_area_collision_shape.shape.size + Vector2(4, 4)
 	
 	# Update position
 	var child_pos: Vector2 = Vector2(-left_extend_value + right_extend_value,
@@ -196,9 +256,9 @@ func update_dimensions():
 	if light_occ != null:
 		light_occ.position = child_pos
 	collision_shape.position = child_pos
-	unclick_area_collision_shape.position = child_pos
-	click_area.position = child_pos
 	update_sprite_size(child_pos, dim)
+
+	click_area.set_click_area_size_and_position(dim + click_area_extension, child_pos)
 
 func update_sprite_size(_pos, dimensions):
 	var nine_patch: NinePatchRect = $NinePatch
@@ -210,7 +270,6 @@ func select():
 		return
 	
 	is_selected = true
-	_show_scale_handles()
 	extend_direction_indicator()
 	BlockManagerAutoload.on_select_block(self)
 	
@@ -222,7 +281,6 @@ func unselect():
 		return
 	
 	is_selected = false
-	_hide_scale_handles()
 	retract_direction_indicator()
 	BlockManagerAutoload.on_unselect_block(self)
 	
@@ -360,15 +418,6 @@ func get_pos(direction: Direction) -> Vector2i:
 		return Vector2i(rect.position.x + (rect.size.x - 1), rect.position.y)
 	return Vector2i(rect.position.x, rect.position.y + (rect.size.y - 1))
 
-func get_opposite_direction(direction: Direction) -> Direction:
-	if direction == Direction.LEFT:
-		return Direction.RIGHT
-	if direction == Direction.RIGHT:
-		return Direction.LEFT
-	if direction == Direction.UP:
-		return Direction.DOWN
-	return Direction.UP
-
 func check_move_block(grid: Array, dir: Direction) -> Array:
 	var direction = dir_map[dir]
 	var rect = get_grid_rect()
@@ -409,28 +458,18 @@ func check_movements(dir: Direction) -> Array: # value 0: moved_blocks and value
 	
 	return [moved_blocks, true]
 
-func get_variation(dir: Direction) -> float:
-	var pos_diff = get_global_mouse_position() - global_position
+func get_variation(dir: Direction, pos_diff: Vector2) -> float:
+	# var pos_diff = get_global_mouse_position() - global_position
 	if dir == Direction.LEFT:
-		return pos_diff.x + left_extend_value
+		return pos_diff.x + left_extend_value - drag_start_left_extend_value
 	if dir == Direction.RIGHT:
-		return pos_diff.x - right_extend_value
+		return pos_diff.x - right_extend_value + drag_start_right_extend_value
 	if dir == Direction.UP:
-		return pos_diff.y + up_extend_value
+		return pos_diff.y + up_extend_value - drag_start_up_extend_value
 	if dir == Direction.DOWN:
-		return pos_diff.y - down_extend_value
+		return pos_diff.y - down_extend_value + drag_start_down_extend_value
 	return -1
 
-
-func can_extend(dir: Direction):
-	if dir == Direction.LEFT:
-		return left_extend_value < left_extend_range.y
-	if dir == Direction.RIGHT:
-		return right_extend_value < right_extend_range.y
-	if dir == Direction.UP:
-		return up_extend_value < up_extend_range.y
-	if dir == Direction.DOWN:
-		return down_extend_value < down_extend_range.y
 
 ################################################
 
@@ -499,71 +538,35 @@ func _update_animation():
 	if sleep_particles:
 		sleep_particles.emitting = (animation == "sleeping")
 
-func _create_scale_handle(direction: Direction, handle_name: String):
-	var new_scale_handle: ScaleHandle = scale_handle.instantiate()
-	new_scale_handle.block = self
-	new_scale_handle.name = handle_name
-	new_scale_handle.direction = direction
-	new_scale_handle.z_index = 10
-	
-	new_scale_handle.start_drag.connect(func():
-		_on_scale_handle_start_drag(new_scale_handle, direction)
-	)
-	new_scale_handle.end_drag.connect(func():
-		_on_scale_handle_end_drag(new_scale_handle, direction)
-	)
-	new_scale_handle.dragging.connect(func():
-		_on_scale_handle_dragged(new_scale_handle, direction)
-	)
-	add_child(new_scale_handle)
-	new_scale_handle.initialize()
-	
+func _create_direction_indicator(direction: Direction, handle_name: String):
 	var dimensions = get_dimensions()
 	var handle_position = get_center() + Util.direction_to_vector(direction) * (dimensions/2)
 	var new_direction_indicator = direction_indicator.instantiate()
 	new_direction_indicator.base_position = handle_position
 	new_direction_indicator.block = self
 	new_direction_indicator.direction = direction
+
 	add_child(new_direction_indicator)
 	new_direction_indicator.initialize()
 	
 	handles.append({
-		handle = new_scale_handle,
 		direction_indicator = new_direction_indicator,
 	})
 
-func _create_scale_handles():
+func _create_direction_indicators():
 	if left_extendable:
-		_create_scale_handle(Direction.LEFT, "LeftHandle")
+		_create_direction_indicator(Direction.LEFT, "LeftHandle")
 	if right_extendable:
-		_create_scale_handle(Direction.RIGHT, "RightHandle")
+		_create_direction_indicator(Direction.RIGHT, "RightHandle")
 	if up_extendable:
-		_create_scale_handle(Direction.UP, "UpHandle")
+		_create_direction_indicator(Direction.UP, "UpHandle")
 	if down_extendable:
-		_create_scale_handle(Direction.DOWN, "DownHandle")
+		_create_direction_indicator(Direction.DOWN, "DownHandle")
 	
 	_update_scale_handles()
 
 func _update_scale_handles():
-	var center = get_center()
-	var dimensions = get_dimensions()
-	for handle_info in handles:
-		var handle = handle_info["handle"]
-		var direction = handle.direction
-		var handle_position = center + Util.direction_to_vector(direction) * (Vector2(2, 2) + dimensions/2)
-		handle.position = round(handle_position) 
-		
-		var indicator = handle_info["direction_indicator"]
-		indicator.is_held = handle.is_held
-		indicator.base_position = round(handle_position)
-
-func _hide_scale_handles():
-	for handle in handles:
-		handle["handle"].hide_handle()
-
-func _show_scale_handles():
-	for handle in handles:
-		handle["handle"].show_handle()
+	pass
 
 func retract_direction_indicator():
 	for handle in handles:
@@ -586,7 +589,6 @@ func show_direction_indicator():
 
 func _ready():
 	$CollisionShape.shape = $CollisionShape.shape.duplicate()
-	$ClickArea/ClickAreaCollisionShape.shape = $ClickArea/ClickAreaCollisionShape.shape.duplicate()
 	
 	if Engine.is_editor_hint():
 		return
@@ -599,8 +601,7 @@ func _ready():
 	down_extend_value = down_extend_value
 	left_extend_value = left_extend_value
 	right_extend_value = right_extend_value
-	_create_scale_handles()
-	_hide_scale_handles()
+	_create_direction_indicators()
 	
 	update_dimensions()
 	BlockManagerAutoload.register_block(self)
@@ -660,18 +661,93 @@ func _physics_process(delta):
 	_update_scale_handles()
 	_update_sprite()
 
-func _on_click_area_clicked():
-	if BlockManagerAutoload.can_select(self):
-		BlockManagerAutoload.new_selection_candidate(self)
 
-func _on_un_click_area_clicked_outside_area():
+############################################################################################################################################
+##### CLICK AREA
+############################################################################################################################################
+
+func _on_click_area_clicked():
+	pass
+
+func _snap_vector_to_cardinal(vec: Vector2) -> Vector2:
+	# https://www.reddit.com/r/godot/comments/t206my/how_to_get_a_direction_from_a_vector2d/
+	return Vector2.RIGHT.rotated(round(vec.angle() / TAU * 4) * TAU / 4).snapped(Vector2.ONE)
+
+func _mouse_diff_to_direction(vec: Vector2) -> Direction:
+	var dir_vec = _snap_vector_to_cardinal(vec)
+	return Util.vector_to_direction(dir_vec)
+
+func _on_click_area_start_drag():
+	if not collision_shape:
+		return
+	var collision_shape_shape: RectangleShape2D = collision_shape.shape
+	if not collision_shape_shape:
+		return
+	var aspect_ratio = collision_shape_shape.size.x / collision_shape_shape.size.y
+	
+	var mouse_pos = get_local_mouse_position()
+	var mouse_offset: Vector2 = (mouse_pos) * Vector2(1/aspect_ratio, 1)
+	var mouse_angle = mouse_offset.angle()
+	drag_start_position = mouse_pos 
+	drag_selected_side_x = Direction.LEFT if mouse_pos.x < 0 else Direction.RIGHT
+	drag_selected_side_y = Direction.UP   if mouse_pos.y < 0 else Direction.DOWN
+
+	drag_start_left_extend_value = left_extend_value
+	drag_start_right_extend_value = right_extend_value
+	drag_start_up_extend_value = up_extend_value
+	drag_start_down_extend_value = down_extend_value
+
+	select()
+
+func _on_click_area_end_drag():
 	unselect()
 
-func _on_scale_handle_start_drag(handle: ScaleHandle, direction: Direction):
-	BlockManagerAutoload.start_drag()
+## Returns the edge that should be selected, based on the movement of the cursor.
+func _get_selected_edge(movement_direction: Direction) -> Direction:
+	var selected_edge: Direction = Direction.INVALID
+	if (left_extendable or right_extendable) and (movement_direction == Direction.RIGHT or movement_direction == Direction.LEFT):
+		selected_edge = drag_selected_side_x
+	
+	elif (up_extendable or down_extendable) and (movement_direction == Direction.UP or movement_direction == Direction.DOWN):
+		selected_edge = drag_selected_side_y
+	
+	if not is_extendable(selected_edge):
+		selected_edge = get_opposite_direction(selected_edge)
+	
+	return selected_edge
 
-func _on_scale_handle_end_drag(handle: ScaleHandle, direction: Direction):
-	BlockManagerAutoload.end_drag()
+
+func _on_click_area_dragging():
+	if is_moving or not is_selected:
+		return
+	
+	var mouse_pos = get_local_mouse_position()
+	var mouse_diff = mouse_pos - drag_start_position
+	var mouse_dist = drag_start_position.distance_to(mouse_pos)
+	
+	if mouse_dist < drag_mouse_dead_zone:
+		return
+
+	var movement_direction = _mouse_diff_to_direction(mouse_diff)
+	if movement_direction == Direction.INVALID:
+		return
+	
+	var selected_edge: Direction = _get_selected_edge(movement_direction)
+	if selected_edge == Direction.INVALID:
+		return
+	
+	var variation = get_variation(selected_edge, mouse_diff)
+
+	if abs(variation) < 8:
+		return
+	
+	if variation > 0:
+		variation = 16
+	else:
+		variation = -16
+
+	extend_block(variation, selected_edge, false)
+
 
 func set_is_moving_to_false():
 	is_moving = false 
@@ -684,7 +760,7 @@ func is_same_axis(dir: Direction, odir: Direction):
 
 func extend_block(variation: int, direction: Direction, push: bool):
 	var extend = push or can_extend(direction)
-
+	
 	if get_tree() == null:
 		return
 	
@@ -705,7 +781,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 				return
 		val = left_extend_value - variation
 		tween_property = "left_extend_value"
-
+	
 	elif direction == Direction.RIGHT:
 		if variation > 0:
 			var check = check_movements(direction)
@@ -716,7 +792,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 				return
 		val = right_extend_value + variation
 		tween_property = "right_extend_value"
-
+	
 	elif direction == Direction.UP:
 		if variation < 0:
 			var check = check_movements(direction)
@@ -781,14 +857,14 @@ func extend_block(variation: int, direction: Direction, push: bool):
 func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 	if is_moving or not is_selected:
 		return
-
-	var variation = get_variation(direction)
-	if abs(variation) < 8:
-		return
-
-	if variation > 0:
-		variation = 16
-	else:
-		variation = -16
 	
-	extend_block(variation, direction, false)
+	# var variation = get_variation(direction)
+	# if abs(variation) < 8:
+	# 	return
+	
+	# if variation > 0:
+	# 	variation = 16
+	# else:
+	# 	variation = -16
+	
+	# extend_block(variation, direction, false)
