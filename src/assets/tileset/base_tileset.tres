@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=22 format=3 uid="uid://ba88x5t1rhers"]
+[gd_resource type="TileSet" load_steps=28 format=3 uid="uid://ba88x5t1rhers"]
 
 [ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="1_5ej0x"]
 [ext_resource type="Texture2D" uid="uid://cbb0cie1kixop" path="res://assets/images/spritesheet/black_frost_sprite_sheet2.png" id="2_7f04h"]
@@ -6,6 +6,24 @@
 [ext_resource type="Texture2D" uid="uid://b4q6m7w4j8hli" path="res://assets/images/spritesheet/space_sprite_sheet.png" id="4_56keh"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ssjwq"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_c0rta"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7fixb"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_iee2b"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vc5wr"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0s1uf"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sbscs"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3hjfo"]
@@ -166,38 +184,39 @@ texture = ExtResource("1_5ej0x")
 10:2/0 = 0
 10:2/0/terrain_set = 0
 10:2/0/terrain = 0
-10:2/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+10:2/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_c0rta")
 10:2/0/terrains_peering_bit/bottom_side = 0
 10:2/0/terrains_peering_bit/left_side = 0
 10:2/0/terrains_peering_bit/top_side = 0
 10:3/0 = 0
 10:3/0/terrain_set = 0
 10:3/0/terrain = 0
-10:3/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+10:3/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_c0rta")
 10:3/0/terrains_peering_bit/left_side = 0
 10:3/0/terrains_peering_bit/top_side = 0
 9:3/0 = 0
 9:3/0/terrain_set = 0
 9:3/0/terrain = 0
-9:3/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+9:3/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_c0rta")
 9:3/0/terrains_peering_bit/right_side = 0
 9:3/0/terrains_peering_bit/left_side = 0
 9:3/0/terrains_peering_bit/top_side = 0
 8:3/0 = 0
 8:3/0/terrain_set = 0
 8:3/0/terrain = 0
-8:3/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+8:3/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_c0rta")
 8:3/0/terrains_peering_bit/right_side = 0
 8:3/0/terrains_peering_bit/top_side = 0
 7:3/0 = 0
 7:3/0/terrain_set = 0
 7:3/0/terrain = 0
-7:3/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+7:3/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_c0rta")
 7:3/0/terrains_peering_bit/top_side = 0
 9:5/0 = 0
 9:5/0/terrain_set = 0
 9:5/0/terrain = 0
 9:5/0/probability = 0.05
+9:5/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_0s1uf")
 9:5/0/terrains_peering_bit/right_side = 0
 9:5/0/terrains_peering_bit/bottom_side = 0
 9:5/0/terrains_peering_bit/left_side = 0
@@ -206,7 +225,7 @@ texture = ExtResource("1_5ej0x")
 8:5/0/terrain_set = 0
 8:5/0/terrain = 0
 8:5/0/probability = 0.05
-8:5/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+8:5/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_vc5wr")
 8:5/0/terrains_peering_bit/right_side = 0
 8:5/0/terrains_peering_bit/bottom_side = 0
 8:5/0/terrains_peering_bit/left_side = 0
@@ -215,7 +234,7 @@ texture = ExtResource("1_5ej0x")
 7:5/0/terrain_set = 0
 7:5/0/terrain = 0
 7:5/0/probability = 0.0
-7:5/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+7:5/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_iee2b")
 7:5/0/terrains_peering_bit/right_side = 0
 7:5/0/terrains_peering_bit/bottom_side = 0
 7:5/0/terrains_peering_bit/left_side = 0
@@ -223,7 +242,7 @@ texture = ExtResource("1_5ej0x")
 7:6/0/terrain_set = 0
 7:6/0/terrain = 0
 7:6/0/probability = 0.0
-7:6/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+7:6/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_iee2b")
 7:6/0/terrains_peering_bit/right_side = 0
 7:6/0/terrains_peering_bit/bottom_side = 0
 7:6/0/terrains_peering_bit/left_side = 0
@@ -232,7 +251,7 @@ texture = ExtResource("1_5ej0x")
 7:7/0/terrain_set = 0
 7:7/0/terrain = 0
 7:7/0/probability = 0.0
-7:7/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+7:7/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_iee2b")
 7:7/0/terrains_peering_bit/right_side = 0
 7:7/0/terrains_peering_bit/bottom_side = 0
 7:7/0/terrains_peering_bit/left_side = 0
@@ -241,58 +260,61 @@ texture = ExtResource("1_5ej0x")
 7:8/0/terrain_set = 0
 7:8/0/terrain = 0
 7:8/0/probability = 0.0
-7:8/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+7:8/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_iee2b")
 7:8/0/terrains_peering_bit/right_side = 0
 7:8/0/terrains_peering_bit/bottom_side = 0
 7:8/0/terrains_peering_bit/left_side = 0
 7:8/0/terrains_peering_bit/top_side = 0
 9:7/0 = 0
 9:7/0/terrain_set = 0
-9:7/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+9:7/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_sbscs")
 4:5/0 = 0
 4:5/0/terrain_set = 0
 4:5/0/terrain = 2
+4:5/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_7fixb")
 4:5/0/terrains_peering_bit/right_side = 2
 5:5/0 = 0
 5:5/0/terrain_set = 0
 5:5/0/terrain = 2
+5:5/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_7fixb")
 5:5/0/terrains_peering_bit/right_side = 2
 5:5/0/terrains_peering_bit/left_side = 2
 6:5/0 = 0
 6:5/0/terrain_set = 0
 6:5/0/terrain = 2
+6:5/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_7fixb")
 6:5/0/terrains_peering_bit/left_side = 2
 6:6/0 = 0
 6:6/0/terrain_set = 0
 6:6/0/terrain = 2
 6:6/0/probability = 0.5
-6:6/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+6:6/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_iee2b")
 6:6/0/terrains_peering_bit/left_side = 2
 5:6/0 = 0
 5:6/0/terrain_set = 0
 5:6/0/terrain = 2
 5:6/0/probability = 0.5
-5:6/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+5:6/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_iee2b")
 5:6/0/terrains_peering_bit/right_side = 2
 5:6/0/terrains_peering_bit/left_side = 2
 4:6/0 = 0
 4:6/0/terrain_set = 0
 4:6/0/terrain = 2
 4:6/0/probability = 0.5
-4:6/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+4:6/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_iee2b")
 4:6/0/terrains_peering_bit/right_side = 2
 4:7/0 = 0
-4:7/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+4:7/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_iee2b")
 4:8/0 = 0
-4:8/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+4:8/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_iee2b")
 5:8/0 = 0
-5:8/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+5:8/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_iee2b")
 5:7/0 = 0
-5:7/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+5:7/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_iee2b")
 6:7/0 = 0
-6:7/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+6:7/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_iee2b")
 6:8/0 = 0
-6:8/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ssjwq")
+6:8/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_iee2b")
 4:4/0 = 0
 4:4/0/terrain_set = 0
 4:4/0/terrain = 2
