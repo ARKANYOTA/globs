@@ -122,9 +122,7 @@ const move_speed := 0.1
 var is_happy := false
 var is_hovered := false
 var is_selected := false
-var handles: Array = []
-var direction_indicators: Array[Sprite2D] = []
-var scale_handle: PackedScene = preload("res://scenes/handler/scale_handle.tscn")
+var handles: Dictionary = Dictionary()
 var direction_indicator: PackedScene = preload("res://scenes/handler/direction_indicator.tscn")
 
 var animation = "o_face"
@@ -523,9 +521,9 @@ func _update_animation():
 	var size = dim.x * dim.y
 	var old_animation = animation
 	
-	if not is_selected:
-		animation = "sleeping"
-	elif size <= 4*16*16:
+	# if not is_selected:
+	# 	animation = "sleeping"
+	if size <= 4*16*16:
 		if is_happy:
 			animation = "happy"
 		else:
@@ -542,16 +540,15 @@ func _create_direction_indicator(direction: Direction, handle_name: String):
 	var dimensions = get_dimensions()
 	var handle_position = get_center() + Util.direction_to_vector(direction) * (dimensions/2)
 	var new_direction_indicator = direction_indicator.instantiate()
-	new_direction_indicator.base_position = handle_position
 	new_direction_indicator.block = self
 	new_direction_indicator.direction = direction
 
 	add_child(new_direction_indicator)
 	new_direction_indicator.initialize()
 	
-	handles.append({
+	handles[direction] = {
 		direction_indicator = new_direction_indicator,
-	})
+	}
 
 func _create_direction_indicators():
 	if left_extendable:
@@ -569,19 +566,19 @@ func _update_scale_handles():
 	pass
 
 func retract_direction_indicator():
-	for handle in handles:
+	for handle in handles.values():
 		handle["direction_indicator"].retract_indicator()
 
 func extend_direction_indicator():
-	for handle in handles:
+	for handle in handles.values():
 		handle["direction_indicator"].extend_indicator()
 
 func hide_direction_indicator():
-	for handle in handles:
+	for handle in handles.values():
 		handle["direction_indicator"].hide_indicator()
 
 func show_direction_indicator():
-	for handle in handles:
+	for handle in handles.values():
 		handle["direction_indicator"].show_indicator()
 
 

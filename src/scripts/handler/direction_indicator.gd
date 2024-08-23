@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Node2D
 
 var block: Block
 var direction: Block.Direction
@@ -9,18 +9,17 @@ var extend_range: Vector2i
 var base_indicator_pos: Vector2
 var final_indicator_pos: Vector2
 
-var base_position: Vector2 = position
 var is_extended = false
 
 @export var texture_retracted: Texture2D
 @export var texture_extended: Texture2D
 
+@onready var preview_line: Line2D = $PreviewLine
+@onready var arrow_sprite: Sprite2D = $ArrowSprite
+
 func initialize():
 	_update_extend_values()
 	_update_base_and_final_offsets()
-	
-	var rot = Util.direction_to_rotation(direction)
-	rotation = rot
 	
 	retract_indicator()
 
@@ -51,10 +50,12 @@ func _update_base_and_final_offsets():
 
 func retract_indicator():
 	is_extended = false
+	preview_line.hide()
 	#tween.tween_callback(hide)
 
 func extend_indicator():
 	is_extended = true
+	preview_line.show()
 	show()
 
 func hide_indicator():
@@ -64,6 +65,9 @@ func show_indicator():
 	show()
 
 func _ready():
+	var rot = Util.direction_to_rotation(direction)
+	arrow_sprite.rotation = rot
+
 	retract_indicator()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -73,11 +77,12 @@ func _process(_delta):
 	
 	if is_extended:
 		var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
-		tween.tween_property(self, "position", final_indicator_pos, 0.3).set_ease(Tween.EASE_OUT)
-		texture = texture_extended
+		tween.tween_property(arrow_sprite, "position", final_indicator_pos, 0.3).set_ease(Tween.EASE_OUT)
+		arrow_sprite.texture = texture_extended
 	else:
 		var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
-		tween.tween_property(self, "position", base_indicator_pos, 0.3).set_ease(Tween.EASE_OUT)
-		texture = texture_retracted
+		tween.tween_property(arrow_sprite, "position", base_indicator_pos, 0.3).set_ease(Tween.EASE_OUT)
+		arrow_sprite.texture = texture_retracted
 
-	
+	preview_line.points[0] = floor(base_indicator_pos)
+	preview_line.points[1] = floor(final_indicator_pos)
