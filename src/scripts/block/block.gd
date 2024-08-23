@@ -134,6 +134,7 @@ var drag_start_position: Vector2
 var drag_mouse_dead_zone = 8
 var drag_selected_side_x: Direction
 var drag_selected_side_y: Direction
+var drag_selected_edge: Direction
 var drag_start_left_extend_value: float
 var drag_start_right_extend_value: float
 var drag_start_up_extend_value: float
@@ -546,9 +547,7 @@ func _create_direction_indicator(direction: Direction, handle_name: String):
 	add_child(new_direction_indicator)
 	new_direction_indicator.initialize()
 	
-	handles[direction] = {
-		direction_indicator = new_direction_indicator,
-	}
+	handles[direction] = new_direction_indicator
 
 func _create_direction_indicators():
 	if left_extendable:
@@ -567,19 +566,19 @@ func _update_scale_handles():
 
 func retract_direction_indicator():
 	for handle in handles.values():
-		handle["direction_indicator"].retract_indicator()
+		handle.retract_indicator()
 
 func extend_direction_indicator():
 	for handle in handles.values():
-		handle["direction_indicator"].extend_indicator()
+		handle.extend_indicator()
 
 func hide_direction_indicator():
 	for handle in handles.values():
-		handle["direction_indicator"].hide_indicator()
+		handle.hide_indicator()
 
 func show_direction_indicator():
 	for handle in handles.values():
-		handle["direction_indicator"].show_indicator()
+		handle.show_indicator()
 
 
 ################################################
@@ -686,6 +685,7 @@ func _on_click_area_start_drag():
 	var mouse_offset: Vector2 = (mouse_pos) * Vector2(1/aspect_ratio, 1)
 	var mouse_angle = mouse_offset.angle()
 	drag_start_position = mouse_pos 
+	drag_selected_edge = Direction.INVALID
 	drag_selected_side_x = Direction.LEFT if mouse_pos.x < 0 else Direction.RIGHT
 	drag_selected_side_y = Direction.UP   if mouse_pos.y < 0 else Direction.DOWN
 
@@ -729,9 +729,11 @@ func _on_click_area_dragging():
 	if movement_direction == Direction.INVALID:
 		return
 	
-	var selected_edge: Direction = _get_selected_edge(movement_direction)
-	if selected_edge == Direction.INVALID:
-		return
+	var selected_edge: Direction = drag_selected_edge
+	if drag_selected_edge == Direction.INVALID:
+		selected_edge = _get_selected_edge(movement_direction)
+		if selected_edge == Direction.INVALID:
+			return
 	
 	var variation = get_variation(selected_edge, mouse_diff)
 
@@ -744,6 +746,11 @@ func _on_click_area_dragging():
 		variation = -16
 
 	extend_block(variation, selected_edge, false)
+	if drag_selected_edge == Direction.INVALID:
+		drag_selected_edge = selected_edge
+		var indicator = handles[selected_edge]
+		if indicator:
+			indicator.set_highlighted(true)
 
 
 func set_is_moving_to_false():

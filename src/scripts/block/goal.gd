@@ -19,7 +19,7 @@ func _ready():
 	collision_shape.shape.size = Vector2(size_pixels) - Vector2(2,2)
 	collision_shape.position = Vector2(0,0)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Engine.is_editor_hint():
 		return
 	

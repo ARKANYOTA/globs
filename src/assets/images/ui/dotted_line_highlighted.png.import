@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br7rbtjdickl6"
-path="res://.godot/imported/dotted_line.png-47b0dbda8e798edc3f897a85cf0d6370.ctex"
+uid="uid://bju2xqwwcfhuq"
+path="res://.godot/imported/dotted_line_highlighted.png-96e5c45baba5a16d7a165ed79fd9e5c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/dotted_line.png"
-dest_files=["res://.godot/imported/dotted_line.png-47b0dbda8e798edc3f897a85cf0d6370.ctex"]
+source_file="res://assets/images/ui/dotted_line_highlighted.png"
+dest_files=["res://.godot/imported/dotted_line_highlighted.png-96e5c45baba5a16d7a165ed79fd9e5c0.ctex"]
 
 [params]
 

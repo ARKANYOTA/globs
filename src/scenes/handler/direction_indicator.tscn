@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cysde5kl7s4e0"]
+[gd_scene load_steps=5 format=3 uid="uid://cysde5kl7s4e0"]
 
-[ext_resource type="Texture2D" uid="uid://d28ls2t8m3y00" path="res://assets/images/ui/direction_indicator.png" id="1_pnyxq"]
 [ext_resource type="Script" path="res://scripts/handler/direction_indicator.gd" id="2_qh88b"]
-[ext_resource type="Texture2D" uid="uid://cxwd6aj0mj2ew" path="res://assets/images/ui/extent_indicator.png" id="3_jghn8"]
-[ext_resource type="Texture2D" uid="uid://br7rbtjdickl6" path="res://assets/images/misc/dotted_line.png" id="4_h1al5"]
+[ext_resource type="Texture2D" uid="uid://br7rbtjdickl6" path="res://assets/images/ui/dotted_line.png" id="4_h1al5"]
 [ext_resource type="Shader" path="res://shaders/direction_indicator.gdshader" id="4_uioxl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g0v1w"]
@@ -12,8 +10,6 @@ shader = ExtResource("4_uioxl")
 [node name="DirectionIndicator" type="Node2D"]
 z_index = 9
 script = ExtResource("2_qh88b")
-texture_retracted = ExtResource("1_pnyxq")
-texture_extended = ExtResource("3_jghn8")
 
 [node name="PreviewLine" type="Line2D" parent="."]
 texture_repeat = 2

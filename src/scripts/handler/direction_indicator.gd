@@ -10,9 +10,14 @@ var base_indicator_pos: Vector2
 var final_indicator_pos: Vector2
 
 var is_extended = false
+var is_highlighted = false
 
-@export var texture_retracted: Texture2D
-@export var texture_extended: Texture2D
+var texture_retracted: Texture2D = preload("res://assets/images/ui/direction_indicator.png")
+var texture_extended: Texture2D = preload("res://assets/images/ui/extent_indicator.png")
+var texture_highlighted: Texture2D = preload("res://assets/images/ui/extent_indicator_highlighted.png")
+
+var dotted_line_texture_normal: Texture2D = preload("res://assets/images/ui/dotted_line.png")
+var dotted_line_texture_highlighted: Texture2D = preload("res://assets/images/ui/dotted_line_highlighted.png")
 
 @onready var preview_line: Line2D = $PreviewLine
 @onready var arrow_sprite: Sprite2D = $ArrowSprite
@@ -48,13 +53,28 @@ func _update_base_and_final_offsets():
 	base_indicator_pos = center + (dimensions / 2) * dir_offset
 	final_indicator_pos = base_indicator_pos + dir_offset * (extend_range.y - extend_value)
 
+func set_highlighted(val):
+	is_highlighted = val
+	if is_highlighted:
+		print("hi")
+		# arrow_sprite.texture = texture_highlighted
+		# preview_line.texture = dotted_line_texture_highlighted
+	else:
+		pass
+		# preview_line.texture = dotted_line_texture_normal
+
 func retract_indicator():
 	is_extended = false
+	arrow_sprite.texture = texture_retracted
+
 	preview_line.hide()
+	set_highlighted(false)
+
 	#tween.tween_callback(hide)
 
 func extend_indicator():
 	is_extended = true
+	arrow_sprite.texture = texture_extended
 	preview_line.show()
 	show()
 
@@ -78,11 +98,9 @@ func _process(_delta):
 	if is_extended:
 		var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(arrow_sprite, "position", final_indicator_pos, 0.3).set_ease(Tween.EASE_OUT)
-		arrow_sprite.texture = texture_extended
 	else:
 		var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(arrow_sprite, "position", base_indicator_pos, 0.3).set_ease(Tween.EASE_OUT)
-		arrow_sprite.texture = texture_retracted
 
 	preview_line.points[0] = floor(base_indicator_pos)
 	preview_line.points[1] = floor(final_indicator_pos)
