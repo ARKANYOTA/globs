@@ -20,27 +20,36 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_72ffu")
 
-[node name="PauseButton" parent="." instance=ExtResource("2_jx3wm")]
-layout_mode = 0
+[node name="LevelSelectPauseButton" parent="." instance=ExtResource("2_jx3wm")]
 offset_left = 20.0
 offset_top = 1.0
 offset_right = 37.0
 offset_bottom = 20.0
 icon = ExtResource("3_klxi7")
 
+[node name="PauseButton" parent="." instance=ExtResource("2_jx3wm")]
+layout_mode = 0
+offset_left = -52.0
+offset_top = 1.0
+offset_right = -35.0
+offset_bottom = 20.0
+icon = ExtResource("3_klxi7")
+
 [node name="RetryButton" parent="." instance=ExtResource("2_jx3wm")]
 layout_mode = 0
+offset_left = -72.0
 offset_top = 1.0
-offset_right = 17.0
+offset_right = -55.0
 offset_bottom = 20.0
 icon = ExtResource("3_xf12s")
 
 [node name="FullscreenButton" parent="." instance=ExtResource("4_rid88")]
 layout_mode = 0
-offset_left = 24.0
+offset_left = -48.0
 offset_top = 144.0
-offset_right = 41.0
+offset_right = -31.0
 offset_bottom = 163.0
 
+[connection signal="pressed" from="LevelSelectPauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
