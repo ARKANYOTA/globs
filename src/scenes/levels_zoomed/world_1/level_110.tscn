@@ -42,8 +42,8 @@ frame = 1
 [node name="Bird2" parent="Node2D" index="0" instance=ExtResource("3_qrr7o")]
 position = Vector2(24, 72)
 
-[node name="Bird3" parent="Node2D" index="1" instance=ExtResource("3_qrr7o")]
-position = Vector2(200, 72)
+[node name="Bird4" parent="Node2D" index="1" instance=ExtResource("3_qrr7o")]
+position = Vector2(56, 40)
 
-[node name="Bird4" parent="Node2D" index="2" instance=ExtResource("3_qrr7o")]
-position = Vector2(24, 8)
+[node name="Bird3" parent="Node2D" index="2" instance=ExtResource("3_qrr7o")]
+position = Vector2(200, 72)
