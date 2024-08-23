@@ -2,7 +2,7 @@ extends Node2D
 
 var fly = false
 var vector = Vector2(400,+300)
-var speed = 4
+@export var speed = 7
 var random_time = randf_range(10, 20)
 func _ready() -> void:
 	var stay_timer = Timer.new()
@@ -20,13 +20,13 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_area_2d_mouse_entered() -> void:
-	#get mouse position
+	#get mouse positionqsd
 	fly_bird()
 	pass # Replace with function body.
 
 
 func fly_bird():
-	var mouse_position = get_viewport().get_mouse_position()
+	var mouse_position = get_global_mouse_position()
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR)
 	if fly:
 		return

@@ -73,7 +73,6 @@ animations = [{
 size = Vector2(83.1332, 50.9378)
 
 [node name="Bird" type="Node2D"]
-position = Vector2(56, 40)
 script = ExtResource("1_sh1li")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -93,7 +92,6 @@ sprite_frames = SubResource("SpriteFrames_afrvt")
 animation = &"right"
 
 [node name="Static" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.253647, -0.165565)
 sprite_frames = SubResource("SpriteFrames_hi8i6")
 frame_progress = 0.627948
 
@@ -101,7 +99,7 @@ frame_progress = 0.627948
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 modulate = Color(1, 1, 1, 0.054902)
-position = Vector2(-1, 4.04096)
+position = Vector2(0, 8)
 scale = Vector2(0.601444, 0.78688)
 shape = SubResource("RectangleShape2D_s4f2e")
 debug_color = Color(0, 0.574, 0.82, 1)
