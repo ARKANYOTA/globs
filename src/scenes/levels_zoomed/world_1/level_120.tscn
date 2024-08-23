@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=4 uid="uid://dmfc7jt2s064i"]
+[gd_scene load_steps=5 format=4 uid="uid://dmfc7jt2s064i"]
 
 [ext_resource type="PackedScene" uid="uid://cq0u27ulxk7yo" path="res://scenes/levels/level_template.tscn" id="1_k1f2c"]
 [ext_resource type="Texture2D" uid="uid://cf6y4eeok4xld" path="res://assets/images/backgrounds/city_background.png" id="2_btukr"]
+[ext_resource type="PackedScene" uid="uid://cuhl4onv4df40" path="res://scenes/props/bird.tscn" id="4_dw06g"]
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="4_q4448"]
 
 [node name="Level" instance=ExtResource("1_k1f2c")]
@@ -13,12 +14,15 @@ energy = 0.1
 shadow_enabled = true
 
 [node name="CityBackground" type="Sprite2D" parent="." index="1"]
-z_index = -2
+z_index = -4
 position = Vector2(108, 69)
 texture = ExtResource("2_btukr")
 
 [node name="Camera2D" parent="." index="2"]
 offset = Vector2(0, 0)
+
+[node name="Background" parent="." index="3"]
+scale = Vector2(0.994364, 1)
 
 [node name="Block" parent="." index="6"]
 tile_map_data = PackedByteArray("AAAAAAgAAAAHAAYAAAABAAgAAAAJAAMAAAACAAgAAAAJAAMAAAADAAgAAAAJAAMAAAAEAAgAAAAJAAMAAAAFAAgAAAAJAAMAAAAGAAgAAAAJAAMAAAAHAAgAAAAJAAMAAAAIAAgAAAAIAAUAAAAJAAgAAAAJAAMAAAAKAAgAAAAJAAMAAAALAAgAAAAJAAMAAAAMAAgAAAAJAAMAAAANAAgAAAAJAAMAAAAOAAcAAAAHAAcAAAANAAcAAAAJAAIAAAAMAAcAAAAJAAEAAAALAAcAAAAJAAEAAAAKAAcAAAAJAAEAAAAJAAcAAAAJAAEAAAAIAAcAAAAJAAEAAAAHAAcAAAAJAAEAAAAGAAcAAAAJAAEAAAAFAAcAAAAJAAEAAAAEAAcAAAAJAAEAAAADAAcAAAAJAAEAAAACAAcAAAAJAAEAAAABAAcAAAAJAAIAAAAAAAcAAAAHAAcAAAD//wcAAAAIAAIAAAD//wgAAAAIAAMAAAAOAAgAAAAHAAYAAAAAAAYAAAAHAAYAAAAAAAUAAAAHAAcAAAAAAAQAAAAHAAYAAAAAAAMAAAAHAAUAAAAAAAIAAAAJAAIAAAAAAAEAAAAKAAIAAAAAAAAAAAAKAAEAAAD//wAAAAAIAAEAAAD//wEAAAAIAAIAAAD//wIAAAAIAAIAAAD//wMAAAAIAAIAAAD//wQAAAAIAAIAAAD//wUAAAAIAAIAAAD//wYAAAAIAAIAAAAOAAYAAAAHAAYAAAAOAAUAAAAHAAcAAAAOAAQAAAAHAAUAAAAOAAMAAAAJAAIAAAAOAAIAAAAIAAIAAAAOAAEAAAAIAAIAAAAOAAAAAAAIAAEAAAAPAAAAAAAKAAEAAAAPAAEAAAAKAAIAAAAPAAIAAAAKAAIAAAAPAAMAAAAKAAIAAAAPAAQAAAAKAAIAAAAPAAUAAAAKAAIAAAAPAAYAAAAKAAIAAAAPAAcAAAAKAAIAAAAPAAgAAAAKAAMAAAANAAMAAAAJAAEAAAABAAIAAAAJAAEAAAABAAMAAAAKAAIAAAABAAQAAAAKAAIAAAABAAUAAAAKAAIAAAABAAYAAAAKAAIAAAANAAYAAAAIAAIAAAANAAUAAAAIAAIAAAANAAQAAAAIAAIAAAAMAAMAAAAIAAAAAAACAAIAAAAKAAAAAAA=")
@@ -39,3 +43,12 @@ static_block = true
 right_extendable = true
 right_extend_range = Vector2i(8, 88)
 right_extend_block_range = Vector2i(0, 5)
+
+[node name="Bird2" parent="." index="10" instance=ExtResource("4_dw06g")]
+position = Vector2(200, 40)
+
+[node name="Bird3" parent="." index="11" instance=ExtResource("4_dw06g")]
+position = Vector2(24, 24)
+
+[node name="Bird4" parent="." index="12" instance=ExtResource("4_dw06g")]
+position = Vector2(120, 72)
