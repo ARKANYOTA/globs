@@ -21,6 +21,7 @@ grow_vertical = 2
 script = ExtResource("1_72ffu")
 
 [node name="LevelSelectPauseButton" parent="." instance=ExtResource("2_jx3wm")]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 1.0
 offset_right = 37.0
@@ -36,6 +37,7 @@ offset_bottom = 20.0
 icon = ExtResource("3_klxi7")
 
 [node name="RetryButton" parent="." instance=ExtResource("2_jx3wm")]
+z_index = 3
 layout_mode = 0
 offset_left = -72.0
 offset_top = 1.0
