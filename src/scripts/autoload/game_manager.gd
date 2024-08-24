@@ -7,6 +7,7 @@ var is_fullscreen := false
 
 func win():
 	LevelData.make_level_completed()
+	SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/ui/world_select/world_select.tscn", true)
 
 
 func _ready():

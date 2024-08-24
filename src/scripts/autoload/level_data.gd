@@ -130,8 +130,10 @@ func load_level_data() -> void:
 	level = config.get_value("level_section","level", level)
 
 func make_level_completed() -> void:
-	if current_level not in completed_levels:
-		completed_levels.append(current_level)
+	if selected_level_name not in completed_levels:
+		completed_levels.append(selected_level_name)
+		print("completed_levels ", completed_levels)
+		print("ADD: ", selected_level_name)
 		new_save_level_data()
 
 func new_save_level_data() -> void:
