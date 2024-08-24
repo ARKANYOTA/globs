@@ -67,10 +67,10 @@ func _process(delta: float) -> void:
 	check_unlock()
 	change_icon()
 			
-	if state != LevelState.LOCKED:
-		for path in path_instances:
-			for dot in dots:
-				dot.progress += delta * 20
+	# if state != LevelState.LOCKED:
+	for path in path_instances:
+		for dot in dots:
+			dot.progress += delta * 20
 	pass
 
 
@@ -88,6 +88,8 @@ func add_dot(number: int, path: Path2D, vector: Vector2):
 		dots.append(path_follow_instance)
 
 func start_level():
+	if state == LevelState.LOCKED:
+		return
 	LevelData.selected_level_name = levelScene
 	SceneTransitionAutoLoad.change_scene_with_transition(levelScene)
 

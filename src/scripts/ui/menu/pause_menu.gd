@@ -5,7 +5,7 @@ class_name PauseMenu
 @onready var click_audio = $ClickAudio
 @onready var skip_button = $MarginContainer/Items/Buttons/Skip
 
-var levels_scene_path = "res://scenes/ui/level_select.tscn"
+var levels_scene_path = "res://scenes/ui/world_select/world_select.tscn"
 
 func exit_menu():
 	main.exit_menu()
@@ -48,6 +48,6 @@ func _process(_delta):
 		levels_scene_path = "res://scenes/main.tscn"
 		levels_button.text = "Title screen"
 	else:
-		levels_scene_path = "res://scenes/ui/level_select.tscn"
+		levels_scene_path = "res://scenes/ui/world_select/world_select.tscn"
 		levels_button.text = "Levels"
 		
