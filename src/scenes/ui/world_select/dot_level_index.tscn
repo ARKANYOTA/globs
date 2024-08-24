@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b46xje0fhose4"]
+[gd_scene load_steps=3 format=3 uid="uid://b46xje0fhose4"]
 
+[ext_resource type="StyleBox" uid="uid://c0w4udwjnqc3k" path="res://assets/textures/empty_texture_with_4_margin.tres" id="1_7et6s"]
 [ext_resource type="Texture2D" uid="uid://cdobcanxgd3ov" path="res://assets/images/ui/world_index_dot.png" id="1_ch11f"]
 
 [node name="Button" type="Button"]
+theme_override_styles/focus = ExtResource("1_7et6s")
+theme_override_styles/disabled = ExtResource("1_7et6s")
+theme_override_styles/hover_pressed = ExtResource("1_7et6s")
+theme_override_styles/hover = ExtResource("1_7et6s")
+theme_override_styles/pressed = ExtResource("1_7et6s")
 icon = ExtResource("1_ch11f")
 flat = true
