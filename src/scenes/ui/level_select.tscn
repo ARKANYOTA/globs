@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bftjrd7plswxb"]
+[gd_scene load_steps=14 format=4 uid="uid://bftjrd7plswxb"]
 
 [ext_resource type="Script" path="res://scripts/ui/level_select.gd" id="1_o5v0p"]
 [ext_resource type="Texture2D" uid="uid://baupic3tgrmb3" path="res://assets/images/spritesheet/fromage_sprite_sheet.png" id="2_f8p86"]
@@ -6,7 +6,6 @@
 [ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="4_eiet6"]
 [ext_resource type="PackedScene" uid="uid://l2wle6odhayq" path="res://scenes/ui/level_grid_container.tscn" id="4_mi7hb"]
 [ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui/ui_button.tscn" id="5_7vo62"]
-[ext_resource type="PackedScene" uid="uid://divqor4b0wvhn" path="res://scenes/ui/level_button.tscn" id="6_jm670"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_as84n"]
 tile_data = PackedInt32Array(0, 262144, 4, 65536, 196608, 2, 1, 196608, 2, 65537, 262144, 4)
@@ -148,52 +147,4 @@ size_flags_vertical = 3
 
 [node name="GridContainer" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer" instance=ExtResource("4_mi7hb")]
 layout_mode = 2
-
-[node name="LevelButton" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_jm670")]
-layout_mode = 2
-level = 2
-
-[node name="LevelButton2" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_jm670")]
-layout_mode = 2
-
-[node name="LevelButton3" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_jm670")]
-layout_mode = 2
-
-[node name="LevelButton4" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_jm670")]
-layout_mode = 2
-
-[node name="LevelButton5" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_jm670")]
-layout_mode = 2
-
-[node name="LevelButton6" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_jm670")]
-layout_mode = 2
-
-[node name="LevelButton7" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_jm670")]
-layout_mode = 2
-
-[node name="LevelButton8" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_jm670")]
-layout_mode = 2
-
-[node name="LevelButton9" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_jm670")]
-layout_mode = 2
-
-[node name="LevelButton10" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_jm670")]
-layout_mode = 2
-
-[node name="LevelButton11" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_jm670")]
-layout_mode = 2
-
-[node name="LevelButton12" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_jm670")]
-layout_mode = 2
-
-[node name="LevelButton13" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_jm670")]
-layout_mode = 2
-
-[node name="LevelButton14" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_jm670")]
-layout_mode = 2
-
-[node name="LevelButton15" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_jm670")]
-layout_mode = 2
-
-[node name="LevelButton16" parent="CanvasLayer/SelectionUI/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_jm670")]
-layout_mode = 2
+size_flags_vertical = 6

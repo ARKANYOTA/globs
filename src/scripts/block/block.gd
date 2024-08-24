@@ -144,23 +144,37 @@ var remaining_pushs := -1
 
 ################################################
 
+func get_extend_range(direction: Direction) -> Vector2i:
+	assert(direction != Direction.INVALID, "Invalid direction")
+	if direction == Direction.LEFT:
+		return left_extend_range
+	elif direction == Direction.RIGHT:
+		return right_extend_range
+	elif direction == Direction.UP:
+		return up_extend_range
+	else:
+		return down_extend_range
+
 func get_extend_value(direction: Direction) -> float:
+	assert(direction != Direction.INVALID, "Invalid direction")
 	if direction == Direction.LEFT:
 		return left_extend_value
 	elif direction == Direction.RIGHT:
 		return right_extend_value
 	elif direction == Direction.UP:
 		return up_extend_value
-	return down_extend_value
+	else:
+		return down_extend_value
 
 func set_extend_value(direction: Direction, value) -> void:
+	assert(direction != Direction.INVALID, "Invalid direction")
 	if direction == Direction.LEFT:
 		left_extend_value = value
 	elif direction == Direction.RIGHT:
 		right_extend_value = value
 	elif direction == Direction.UP:
 		up_extend_value = value
-	elif direction == Direction.DOWN:
+	else:
 		down_extend_value = value
 
 func is_extendable(direction: Direction) -> bool:
@@ -175,16 +189,21 @@ func is_extendable(direction: Direction) -> bool:
 	return false
 
 # SCOTCH!
-func can_extend_or_retract(dir: Direction) -> bool:
-	if dir == Direction.LEFT:
-		return left_extendable and  left_extend_range.x < left_extend_value and left_extend_value < left_extend_range.y
-	elif dir == Direction.RIGHT:
-		return right_extendable and right_extend_range.x < right_extend_value and right_extend_value < right_extend_range.y
-	elif dir == Direction.UP:
-		return up_extendable and    up_extend_range.x < up_extend_value and up_extend_value < up_extend_range.y
-	elif dir == Direction.DOWN:
-		return down_extendable and  down_extend_range.x < down_extend_value and down_extend_value < down_extend_range.y
-	return false
+func can_extend_or_retract(side: Direction, movement_dir: Direction) -> bool:
+	var extendable = is_extendable(side)
+	if not extendable:
+		return false
+	
+	var extent_value = get_extend_value(side)
+	var extent_range = get_extend_range(side)
+	var side_sign = (1 if side == Direction.RIGHT or side == Direction.DOWN else -1)
+	var movement_sign = (1 if side == Direction.RIGHT or side == Direction.DOWN else -1)
+	var val = extent_value + side_sign * movement_sign * 16
+	var output = extent_range.x < val and val < extent_range.y
+	print("can_extend_or_retract val = ", val, " side = ", Util.direction_to_string(side), " movdir = ", Util.direction_to_string(movement_dir), " output = ", output)
+
+	return output
+	
 
 # SCOTCH!
 func can_extend(dir: Direction) -> bool:
@@ -199,6 +218,7 @@ func can_extend(dir: Direction) -> bool:
 	return false
 
 func expand(direction: Direction, amount: int) -> void:
+	assert(direction != Direction.INVALID, "Invalid direction")
 	if direction == Direction.RIGHT:
 		right_extend_value += amount
 	if direction == Direction.LEFT:
@@ -209,13 +229,15 @@ func expand(direction: Direction, amount: int) -> void:
 		down_extend_value += amount
 
 func get_opposite_direction(direction: Direction) -> Direction:
+	assert(direction != Direction.INVALID, "Invalid direction")
 	if direction == Direction.LEFT:
 		return Direction.RIGHT
-	if direction == Direction.RIGHT:
+	elif direction == Direction.RIGHT:
 		return Direction.LEFT
-	if direction == Direction.UP:
+	elif direction == Direction.UP:
 		return Direction.DOWN
-	return Direction.UP
+	else:
+		return Direction.UP
 
 ## Returns a list of angles representing the directions the Block can extend in. 
 ## Ex: if the Block can move in `Direction.UP` and `Direction.RIGHT`, this will return `[Direction.UP, Direction.RIGHT]`
@@ -721,10 +743,14 @@ func _get_selected_edge(movement_direction: Direction) -> Direction:
 	elif (up_extendable or down_extendable) and (movement_direction == Direction.UP or movement_direction == Direction.DOWN):
 		selected_edge = drag_selected_side_y
 	
-	if not can_extend_or_retract(selected_edge):
-		selected_edge = get_opposite_direction(selected_edge)
-	
+	var can_extend_normal = can_extend_or_retract(selected_edge, movement_direction)
+	var can_extend_opposite = can_extend_or_retract(get_opposite_direction(selected_edge), movement_direction)
+	if can_extend_normal:
+		return selected_edge
+	elif can_extend_opposite:
+		return get_opposite_direction(selected_edge)
 	return selected_edge
+
 
 
 func _on_click_area_dragging():
@@ -761,9 +787,8 @@ func _on_click_area_dragging():
 	extend_block(variation, selected_edge, false)
 	if drag_selected_edge == Direction.INVALID:
 		drag_selected_edge = selected_edge
-		var indicator = handles[selected_edge]
-		if indicator:
-			indicator.set_highlighted(true)
+		if handles.has(selected_edge):
+			handles[selected_edge].set_highlighted(true)
 
 
 func set_is_moving_to_false():
