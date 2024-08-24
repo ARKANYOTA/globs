@@ -9,7 +9,6 @@ var node_worlds : Array[Node2D]
 var world_index = 0
 
 func _ready():
-	world_index = 0
 	if world.size() == 0:
 		return
 	for i in range(0, world.size()):
@@ -19,7 +18,13 @@ func _ready():
 		scroll.add_child(node_world)
 	add_dot()
 	update_dot()
+	world_index = LevelData.selected_world_index
+	change_world(world_index)
 pass
+
+func _process(delta: float) -> void:
+	$AnimationPlayer.play("background")
+	pass
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_right"):
@@ -45,6 +50,7 @@ func decrement_world_index(in_out = true) -> void:
 #
 
 func change_world(index: int, in_out = true) -> void:
+	LevelData.selected_world_index = index
 	update_dot()
 	for i in range(0, world.size()):
 		var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
