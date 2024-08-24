@@ -57,7 +57,8 @@ const dir_map = [
 var gravity_axis = Direction.DOWN
 
 @export_group("Selection")
-@export var click_area_extension := Vector2.ZERO #Vector2(12, 12)
+@export var click_area_extension := Vector2.ZERO
+@export var drag_extend_only_area_size: int = 8
 
 
 @export_group("Up Extandable")
@@ -735,20 +736,23 @@ func _on_click_area_end_drag():
 	unselect()
 
 ## Returns the edge that should be selected, based on the movement of the cursor.
-func _get_selected_edge(movement_direction: Direction) -> Direction:
+func _get_selected_edge(movement_direction: Direction, mouse_pos: Vector2) -> Direction:
 	var selected_edge: Direction = Direction.INVALID
+
+	# Select the edge that is the closest in the respective chosen axis
 	if (left_extendable or right_extendable) and (movement_direction == Direction.RIGHT or movement_direction == Direction.LEFT):
 		selected_edge = drag_selected_side_x
+		if abs(mouse_pos.x) <= drag_extend_only_area_size:
+			selected_edge = movement_direction
 	
 	elif (up_extendable or down_extendable) and (movement_direction == Direction.UP or movement_direction == Direction.DOWN):
 		selected_edge = drag_selected_side_y
+		if abs(mouse_pos.y) <= drag_extend_only_area_size:
+			selected_edge = movement_direction
 	
-	var can_extend_normal = can_extend_or_retract(selected_edge, movement_direction)
-	var can_extend_opposite = can_extend_or_retract(get_opposite_direction(selected_edge), movement_direction)
-	if can_extend_normal:
-		return selected_edge
-	elif can_extend_opposite:
-		return get_opposite_direction(selected_edge)
+	# if not is_extendable(selected_edge):
+	# 	return get_opposite_direction(selected_edge)
+
 	return selected_edge
 
 
@@ -770,7 +774,7 @@ func _on_click_area_dragging():
 	
 	var selected_edge: Direction = drag_selected_edge
 	if drag_selected_edge == Direction.INVALID:
-		selected_edge = _get_selected_edge(movement_direction)
+		selected_edge = _get_selected_edge(movement_direction, mouse_pos)
 		if selected_edge == Direction.INVALID:
 			return
 	
