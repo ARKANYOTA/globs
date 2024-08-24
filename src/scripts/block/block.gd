@@ -742,16 +742,16 @@ func _get_selected_edge(movement_direction: Direction, mouse_pos: Vector2) -> Di
 	# Select the edge that is the closest in the respective chosen axis
 	if (left_extendable or right_extendable) and (movement_direction == Direction.RIGHT or movement_direction == Direction.LEFT):
 		selected_edge = drag_selected_side_x
-		if abs(mouse_pos.x) <= drag_extend_only_area_size:
+		if abs(drag_start_position.x) <= drag_extend_only_area_size:
 			selected_edge = movement_direction
 	
 	elif (up_extendable or down_extendable) and (movement_direction == Direction.UP or movement_direction == Direction.DOWN):
 		selected_edge = drag_selected_side_y
-		if abs(mouse_pos.y) <= drag_extend_only_area_size:
+		if abs(drag_start_position.y) <= drag_extend_only_area_size:
 			selected_edge = movement_direction
 	
-	# if not is_extendable(selected_edge):
-	# 	return get_opposite_direction(selected_edge)
+	if not is_extendable(selected_edge):
+		return get_opposite_direction(selected_edge)
 
 	return selected_edge
 
