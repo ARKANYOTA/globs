@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://brsha6qauan46"]
 
-[ext_resource type="PackedScene" uid="uid://cq0u27ulxk7yo" path="res://scenes/levels/level_template.tscn" id="1_3mx4c"]
+[ext_resource type="PackedScene" uid="uid://dajgqkks6gfke" path="res://scenes/levels/level_template.tscn" id="1_3mx4c"]
 [ext_resource type="Texture2D" uid="uid://bsuxxmkm78ho5" path="res://assets/images/backgrounds/planet.png" id="2_gljx0"]
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_yk5bi"]
 [ext_resource type="PackedScene" uid="uid://cyuc4qkh71ogh" path="res://scenes/block/bloc_skin/space/alien.tscn" id="3_lpsvi"]
@@ -24,3 +24,4 @@ texture = ExtResource("2_gljx0")
 
 [node name="Block2" parent="." index="8" instance=ExtResource("3_lpsvi")]
 position = Vector2(123, 104)
+drag_extend_only_area_size = null
