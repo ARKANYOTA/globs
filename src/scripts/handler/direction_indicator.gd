@@ -56,7 +56,6 @@ func _update_base_and_final_offsets():
 func set_highlighted(val):
 	is_highlighted = val
 	if is_highlighted:
-		print("hi")
 		arrow_sprite.texture = texture_highlighted
 		preview_line.texture = dotted_line_texture_highlighted
 	else:

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ui/menu/pause_menu.gd" id="1_xt0kk"]
 [ext_resource type="Shader" path="res://shaders/pause_menu_background.gdshader" id="2_hs6ai"]
-[ext_resource type="FontFile" uid="uid://b3ayaf2x5qddk" path="res://assets/fonts/hardpixel.otf" id="3_jsnso"]
+[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="3_xn1q7"]
 [ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui/ui_button.tscn" id="4_35rns"]
 [ext_resource type="LabelSettings" uid="uid://cl1yg37xye2ku" path="res://assets/resources/label_settings.tres" id="5_657dq"]
 [ext_resource type="PackedScene" uid="uid://dv7orepl8b082" path="res://scenes/ui/volume_slider.tscn" id="6_8i4tu"]
@@ -13,8 +13,8 @@ shader = ExtResource("2_hs6ai")
 shader_parameter/amount = 3.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_ahekt"]
-font = ExtResource("3_jsnso")
-font_size = 20
+font = ExtResource("3_xn1q7")
+font_size = 8
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3

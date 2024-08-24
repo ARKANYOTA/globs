@@ -22,11 +22,10 @@ Button/styles/normal = SubResource("StyleBoxEmpty_g6ncf")
 Button/styles/pressed = SubResource("StyleBoxEmpty_jdagr")
 
 [node name="LevelButton" type="Control"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(20, 24)
 layout_mode = 3
-anchor_right = 0.075
-anchor_bottom = 0.133
-offset_bottom = 0.0599995
+offset_right = 22.0
+offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_op3qd")
@@ -36,6 +35,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 8.0
 theme = SubResource("Theme_flmwo")
 icon = ExtResource("1_3nrti")
 flat = true
@@ -43,12 +43,11 @@ icon_alignment = 1
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = -3.0
-offset_top = -7.0
-offset_right = 37.0
-offset_bottom = 16.0
+offset_right = 22.0
+offset_bottom = 11.0
 theme_override_fonts/font = ExtResource("3_fvd24")
-text = "[insert]"
+theme_override_font_sizes/font_size = 8
+text = "1-1"
 horizontal_alignment = 1
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]

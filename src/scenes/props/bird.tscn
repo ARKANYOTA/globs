@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cuhl4onv4df40"]
+[gd_scene load_steps=15 format=3 uid="uid://cuhl4onv4df40"]
 
 [ext_resource type="Script" path="res://scripts/props/bird.gd" id="1_sh1li"]
 [ext_resource type="Texture2D" uid="uid://cxonbiyobii1" path="res://assets/images/particle/bird_fly_left.png" id="2_u4ily"]
 [ext_resource type="Texture2D" uid="uid://b8sbhw87orqsu" path="res://assets/images/particle/bird_fly.png" id="3_0ljcw"]
 [ext_resource type="Texture2D" uid="uid://5enjsrrvtv4k" path="res://assets/images/spritesheet/world_1_decoration2.png" id="4_asfbb"]
+[ext_resource type="AudioStream" uid="uid://bil5qqk774aha" path="res://assets/sounds/props/bird_flying.mp3" id="5_py3l6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjn1"]
 atlas = ExtResource("2_u4ily")
@@ -68,8 +69,8 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4f2e"]
-size = Vector2(83.1332, 50.9378)
+[sub_resource type="CircleShape2D" id="CircleShape2D_wjjs2"]
+radius = 26.8744
 
 [node name="Bird" type="Node2D"]
 script = ExtResource("1_sh1li")
@@ -88,13 +89,18 @@ animation = &"right"
 sprite_frames = SubResource("SpriteFrames_hi8i6")
 frame_progress = 0.627948
 
+[node name="BirdFlying" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_py3l6")
+volume_db = -13.0
+pitch_scale = 1.1
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 modulate = Color(1, 1, 1, 0.054902)
-position = Vector2(0, 8)
-scale = Vector2(0.601444, 0.78688)
-shape = SubResource("RectangleShape2D_s4f2e")
+position = Vector2(0, 5)
+scale = Vector2(0.641443, 0.71123)
+shape = SubResource("CircleShape2D_wjjs2")
 debug_color = Color(0, 0.574, 0.82, 1)
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

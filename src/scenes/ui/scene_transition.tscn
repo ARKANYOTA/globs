@@ -130,6 +130,7 @@ _data = {
 }
 
 [node name="SceneTransition" type="CanvasLayer"]
+layer = 128
 
 [node name="WorldTitle" type="Label" parent="."]
 offset_left = 110.0

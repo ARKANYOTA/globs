@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpkdhbpl47ctm"]
+
+[ext_resource type="PackedScene" uid="uid://bt58nkodr7coo" path="res://scenes/levels_zoomed/world_1/level_100_template.tscn" id="1_fqnvk"]
+[ext_resource type="PackedScene" uid="uid://cuhl4onv4df40" path="res://scenes/props/bird.tscn" id="2_l06ju"]
+
+[node name="Level" instance=ExtResource("1_fqnvk")]
+
+[node name="Bird" parent="." index="9" instance=ExtResource("2_l06ju")]
+position = Vector2(64, 104)
+
+[node name="Bird2" parent="." index="10" instance=ExtResource("2_l06ju")]
+position = Vector2(72, 104)
+
+[node name="Bird3" parent="." index="11" instance=ExtResource("2_l06ju")]
+position = Vector2(80, 104)
+
+[node name="Bird4" parent="." index="12" instance=ExtResource("2_l06ju")]
+position = Vector2(88, 104)
+
+[node name="Bird5" parent="." index="13" instance=ExtResource("2_l06ju")]
+position = Vector2(96, 104)
+
+[node name="Bird6" parent="." index="14" instance=ExtResource("2_l06ju")]
+position = Vector2(104, 104)
+
+[node name="Bird7" parent="." index="15" instance=ExtResource("2_l06ju")]
+position = Vector2(112, 104)
+
+[node name="Bird8" parent="." index="16" instance=ExtResource("2_l06ju")]
+position = Vector2(120, 104)
+
+[node name="Bird9" parent="." index="17" instance=ExtResource("2_l06ju")]
+position = Vector2(128, 104)
+
+[node name="Bird10" parent="." index="18" instance=ExtResource("2_l06ju")]
+position = Vector2(136, 104)
+
+[node name="Bird11" parent="." index="19" instance=ExtResource("2_l06ju")]
+position = Vector2(144, 104)
+
+[node name="Bird12" parent="." index="20" instance=ExtResource("2_l06ju")]
+position = Vector2(152, 104)
+
+[node name="Bird13" parent="." index="21" instance=ExtResource("2_l06ju")]
+position = Vector2(160, 104)
+
+[node name="Bird14" parent="." index="22" instance=ExtResource("2_l06ju")]
+position = Vector2(168, 104)
+
+[node name="Bird15" parent="." index="23" instance=ExtResource("2_l06ju")]
+position = Vector2(176, 104)
+
+[node name="Bird16" parent="." index="24" instance=ExtResource("2_l06ju")]
+position = Vector2(184, 104)
+
+[node name="Bird17" parent="." index="25" instance=ExtResource("2_l06ju")]
+position = Vector2(192, 104)
+
+[node name="Bird18" parent="." index="26" instance=ExtResource("2_l06ju")]
+position = Vector2(200, 104)
+
+[node name="Bird19" parent="." index="27" instance=ExtResource("2_l06ju")]
+position = Vector2(208, 104)
+
+[node name="Bird20" parent="." index="28" instance=ExtResource("2_l06ju")]
+position = Vector2(216, 104)
+
+[node name="Bird21" parent="." index="29" instance=ExtResource("2_l06ju")]
+position = Vector2(40, 88)

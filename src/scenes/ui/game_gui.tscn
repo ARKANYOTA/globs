@@ -6,50 +6,50 @@
 [ext_resource type="Texture2D" uid="uid://2na74y5ctym2" path="res://assets/images/ui/retry.png" id="3_xf12s"]
 [ext_resource type="PackedScene" uid="uid://ciguail0coyfn" path="res://scenes/ui/ui_fullscreen_button.tscn" id="4_rid88"]
 
-[node name="GameGUI" type="Control"]
-z_index = 20
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 272.0
-offset_top = 8.0
-offset_right = -8.0
-offset_bottom = -172.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GameGUI" type="CanvasLayer"]
 script = ExtResource("1_72ffu")
 
-[node name="LevelSelectPauseButton" parent="." instance=ExtResource("2_jx3wm")]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="LevelSelectPauseButton" parent="Control" instance=ExtResource("2_jx3wm")]
+visible = false
+layout_mode = 0
 offset_left = 20.0
 offset_top = 1.0
 offset_right = 37.0
 offset_bottom = 20.0
 icon = ExtResource("3_klxi7")
 
-[node name="PauseButton" parent="." instance=ExtResource("2_jx3wm")]
-layout_mode = 0
-offset_left = -52.0
-offset_top = 1.0
-offset_right = -35.0
-offset_bottom = 20.0
-icon = ExtResource("3_klxi7")
-
-[node name="RetryButton" parent="." instance=ExtResource("2_jx3wm")]
-layout_mode = 0
-offset_left = -72.0
-offset_top = 1.0
-offset_right = -55.0
-offset_bottom = 20.0
-icon = ExtResource("3_xf12s")
-
-[node name="FullscreenButton" parent="." instance=ExtResource("4_rid88")]
+[node name="FullscreenButton" parent="Control" instance=ExtResource("4_rid88")]
+visible = false
 layout_mode = 0
 offset_left = -48.0
 offset_top = 144.0
 offset_right = -31.0
 offset_bottom = 163.0
 
-[connection signal="pressed" from="LevelSelectPauseButton" to="." method="_on_pause_button_pressed"]
-[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
-[connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
+[node name="LevelActions" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -41.0
+offset_bottom = 26.0
+grow_horizontal = 0
+
+[node name="RetryButton" parent="Control/LevelActions" instance=ExtResource("2_jx3wm")]
+layout_mode = 2
+icon = ExtResource("3_xf12s")
+
+[node name="PauseButton" parent="Control/LevelActions" instance=ExtResource("2_jx3wm")]
+layout_mode = 2
+icon = ExtResource("3_klxi7")
+
+[connection signal="pressed" from="Control/LevelSelectPauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Control/LevelActions/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Control/LevelActions/PauseButton" to="." method="_on_pause_button_pressed"]
