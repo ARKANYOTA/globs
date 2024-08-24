@@ -57,11 +57,10 @@ func set_highlighted(val):
 	is_highlighted = val
 	if is_highlighted:
 		print("hi")
-		# arrow_sprite.texture = texture_highlighted
-		# preview_line.texture = dotted_line_texture_highlighted
+		arrow_sprite.texture = texture_highlighted
+		preview_line.texture = dotted_line_texture_highlighted
 	else:
-		pass
-		# preview_line.texture = dotted_line_texture_normal
+		preview_line.texture = dotted_line_texture_normal
 
 func retract_indicator():
 	is_extended = false
