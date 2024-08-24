@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b46xje0fhose4"]
+
+[ext_resource type="Texture2D" uid="uid://cdobcanxgd3ov" path="res://assets/images/ui/world_index_dot.png" id="1_ch11f"]
+
+[node name="Button" type="Button"]
+icon = ExtResource("1_ch11f")
+flat = true

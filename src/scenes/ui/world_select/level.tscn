@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu78mo56i6fso"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/Level/level.gd" id="1_8y7i4"]
+[ext_resource type="Texture2D" uid="uid://dkb2bbrghjuis" path="res://assets/images/ui/locked_button.png" id="2_hk4cj"]
+
+[node name="level" type="Node2D"]
+position = Vector2(40, 16)
+script = ExtResource("1_8y7i4")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 14.0
+icon = ExtResource("2_hk4cj")
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
