@@ -18,6 +18,8 @@ func _input(event: InputEvent) -> void:
 			is_dragging = true
 			mouse_click_position = event.position
 		else:
+			if is_dragging == false:
+				return
 			is_dragging = false
 			mouse_unclick_position = event.position
 			if (mouse_click_position.x - mouse_unclick_position.x) > delta_max:
