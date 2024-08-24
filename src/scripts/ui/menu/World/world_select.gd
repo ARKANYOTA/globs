@@ -9,6 +9,7 @@ var node_worlds : Array[Node2D]
 var world_index = 0
 
 func _ready():
+	world_index = 0
 	if world.size() == 0:
 		return
 	for i in range(0, world.size()):
@@ -87,3 +88,10 @@ func update_dot() -> void:
 		else:
 			dot.icon = texture_off
 		pass
+
+
+func _on_ui_button_pressed() -> void:
+	LevelData.completed_levels = []
+	LevelData.new_save_level_data()
+	SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/ui/world_select/world_select.tscn")
+	pass # Replace with function body.

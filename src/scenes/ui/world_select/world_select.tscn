@@ -43,11 +43,12 @@ alignment = 1
 world_select = NodePath("..")
 
 [node name="UiButton" parent="." instance=ExtResource("8_souvd")]
-offset_left = 24.0
-offset_top = 88.0
-offset_right = 102.0
-offset_bottom = 106.0
+offset_left = 8.0
+offset_top = 112.0
+offset_right = 86.0
+offset_bottom = 130.0
 text = "Reset levels"
 
 [connection signal="pressed" from="right" to="." method="_on_right_pressed"]
 [connection signal="pressed" from="left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="UiButton" to="." method="_on_ui_button_pressed"]
