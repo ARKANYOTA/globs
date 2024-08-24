@@ -41,7 +41,7 @@ func _process(_delta):
 	if not current_scene:
 		return
 	
-	var is_on_level_select = (current_scene.name == "SceneSelect")
+	var is_on_level_select = (current_scene.name == "SceneSelect" or current_scene.name == "WorldSelect")
 	
 	$MarginContainer/Items/Buttons/Skip.disabled = is_on_level_select
 	if is_on_level_select:

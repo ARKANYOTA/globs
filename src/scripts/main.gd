@@ -22,4 +22,4 @@ func _on_activation_button_pressed():
 	if not clicked:
 		clicked = true
 		PauseMenuAutoload.can_pause = true
-		SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/ui/level_select.tscn", false)
+		SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/ui/world_select/world_select.tscn", false)

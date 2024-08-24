@@ -41,7 +41,7 @@ func change_scene_with_transition(scene: String, put_confetis = false) -> void:
 	# Music 
 	# SCOTCH!!
 	var level_data = LevelData.get_current_level_data()
-	if scene == "res://scenes/ui/level_select.tscn": # <--- PAS BEAU!!!
+	if scene == "res://scenes/ui/world_select/world_select.tscn" or scene == "res://scenes/ui/level_select.tscn": # <--- PAS BEAU et supprimer la deuxiemme parite!!!
 		PauseMenuAutoload.game_gui.show_level_select()
 	elif level_data: 
 		PauseMenuAutoload.game_gui.show_gui()
