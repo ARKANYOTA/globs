@@ -174,6 +174,19 @@ func is_extendable(direction: Direction) -> bool:
 		return down_extendable
 	return false
 
+# SCOTCH!
+func can_extend_or_retract(dir: Direction) -> bool:
+	if dir == Direction.LEFT:
+		return left_extendable and  left_extend_range.x < left_extend_value and left_extend_value < left_extend_range.y
+	elif dir == Direction.RIGHT:
+		return right_extendable and right_extend_range.x < right_extend_value and right_extend_value < right_extend_range.y
+	elif dir == Direction.UP:
+		return up_extendable and    up_extend_range.x < up_extend_value and up_extend_value < up_extend_range.y
+	elif dir == Direction.DOWN:
+		return down_extendable and  down_extend_range.x < down_extend_value and down_extend_value < down_extend_range.y
+	return false
+
+# SCOTCH!
 func can_extend(dir: Direction) -> bool:
 	if dir == Direction.LEFT:
 		return left_extendable and  left_extend_value < left_extend_range.y
@@ -708,7 +721,7 @@ func _get_selected_edge(movement_direction: Direction) -> Direction:
 	elif (up_extendable or down_extendable) and (movement_direction == Direction.UP or movement_direction == Direction.DOWN):
 		selected_edge = drag_selected_side_y
 	
-	if not is_extendable(selected_edge):
+	if not can_extend_or_retract(selected_edge):
 		selected_edge = get_opposite_direction(selected_edge)
 	
 	return selected_edge

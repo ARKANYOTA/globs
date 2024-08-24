@@ -29,6 +29,7 @@ stream_0/stream = ExtResource("7_5ca5j")
 [node name="UiButton" type="Button"]
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_tjc5n")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dge07")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_mrjtd")
 theme_override_styles/disabled = ExtResource("2_frkiv")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://cq0u27ulxk7yo"]
+[gd_scene load_steps=4 format=4 uid="uid://dajgqkks6gfke"]
 
 [ext_resource type="Script" path="res://scripts/level/level.gd" id="1_q5cud"]
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_a5brp"]
@@ -10,7 +10,6 @@ script = ExtResource("1_q5cud")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(120, 72)
 offset = Vector2(-1, 0)
-zoom = Vector2(1.34, 1.34)
 
 [node name="Background" type="TileMapLayer" parent="."]
 z_index = -4

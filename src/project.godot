@@ -41,8 +41,8 @@ gdscript/warnings/unused_signal=0
 
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=180
+window/size/viewport_width=240
+window/size/viewport_height=135
 window/size/mode=2
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://assets/images/ui/cursor.png"

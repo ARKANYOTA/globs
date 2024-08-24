@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://clib81weo65vk"]
+[gd_scene load_steps=32 format=3 uid="uid://clib81weo65vk"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ngeyx"]
 [ext_resource type="PackedScene" uid="uid://bpqekaydn06nf" path="res://scenes/ui/scene_transition.tscn" id="4_mholn"]
@@ -7,10 +7,31 @@
 [ext_resource type="Script" path="res://scripts/ui/game_logo.gd" id="5_73l6m"]
 [ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="5_v4ddl"]
 [ext_resource type="Script" path="res://scripts/ui/click_anywhere_text.gd" id="7_h54yi"]
-[ext_resource type="FontFile" uid="uid://b3ayaf2x5qddk" path="res://assets/fonts/hardpixel.otf" id="7_rnnxt"]
 [ext_resource type="Texture2D" uid="uid://dlbopyuw333uu" path="res://assets/images/gmtklogo2024_pixel.png" id="8_qbdri"]
 [ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels/visuals/city_visuals.tscn" id="10_m3m4d"]
 [ext_resource type="Texture2D" uid="uid://c8srf7vwt813x" path="res://assets/images/backgrounds/title_blocks_bg.png" id="11_fps7l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4il2s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nyrp0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ituix"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vi2sc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8wvwm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lws15"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_678m0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xxikv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_37qlw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n7jyf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mcj60"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_knqgm"]
 atlas = ExtResource("4_rggb7")
@@ -62,43 +83,23 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_o2d5n"]
-font = ExtResource("5_v4ddl")
-font_size = 12
-font_color = Color(0.13023, 0.13023, 0.13023, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_u3bde"]
 font = ExtResource("5_v4ddl")
-font_size = 12
+font_size = 8
 font_color = Color(0.878098, 0.878098, 0.878098, 1)
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_txos7"]
-font = ExtResource("7_rnnxt")
-font_size = 10
+font = ExtResource("5_v4ddl")
+font_size = 8
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4il2s"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nyrp0"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ituix"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vi2sc"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8wvwm"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lws15"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_678m0"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xxikv"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_37qlw"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n7jyf"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mcj60"]
+[sub_resource type="LabelSettings" id="LabelSettings_o2d5n"]
+font = ExtResource("5_v4ddl")
+font_size = 8
+font_color = Color(0.13023, 0.13023, 0.13023, 1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ngeyx")
@@ -109,70 +110,11 @@ script = ExtResource("1_ngeyx")
 
 [node name="SceneTransition" parent="." instance=ExtResource("4_mholn")]
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1.0
-offset_top = 148.0
-offset_right = 41.0
-offset_bottom = 188.0
-
-[node name="GameLogo" type="AnimatedSprite2D" parent="Control"]
-position = Vector2(156, -67)
-sprite_frames = SubResource("SpriteFrames_0emse")
-frame_progress = 0.587083
-script = ExtResource("5_73l6m")
-
-[node name="GMTK" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 43.0
-offset_top = -142.0
-offset_right = 364.0
-offset_bottom = -129.0
-text = "Created for the GMTK Game Jam 2024"
-label_settings = SubResource("LabelSettings_o2d5n")
-
-[node name="Credits" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = -2.0
-offset_top = 18.0
-offset_right = 318.0
-offset_bottom = 35.0
-text = "A game by Arkanyota, Notgoyome, Strochnis, Theobosse, Yolwoocle"
-label_settings = SubResource("LabelSettings_u3bde")
-horizontal_alignment = 1
-
-[node name="Credits2" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 147.0
-offset_top = -145.0
-offset_right = 467.0
-offset_bottom = -128.0
-text = "v1.0
-"
-label_settings = SubResource("LabelSettings_u3bde")
-horizontal_alignment = 1
-
-[node name="Click anywhere" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = -2.0
-offset_top = -15.0
-offset_right = 319.0
-offset_bottom = 2.0
-text = "Click anywhere"
-label_settings = SubResource("LabelSettings_txos7")
-horizontal_alignment = 1
-script = ExtResource("7_h54yi")
-
-[node name="Gmtklogo2024" type="Sprite2D" parent="Control"]
-position = Vector2(20, -127)
-texture = ExtResource("8_qbdri")
-
-[node name="CityVisuals" parent="." instance=ExtResource("10_m3m4d")]
-
 [node name="ActivationButton" type="Button" parent="."]
-offset_right = 322.0
-offset_bottom = 180.0
+offset_left = -48.0
+offset_top = -16.0
+offset_right = 274.0
+offset_bottom = 164.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4il2s")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_nyrp0")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_ituix")
@@ -185,9 +127,73 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_37qlw")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_n7jyf")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mcj60")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 148.0
+offset_right = 41.0
+offset_bottom = 188.0
+
+[node name="GameLogo" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(119, -94)
+sprite_frames = SubResource("SpriteFrames_0emse")
+frame_progress = 0.587083
+script = ExtResource("5_73l6m")
+
+[node name="Credits" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -44.0
+offset_right = 239.0
+offset_bottom = -13.0
+text = "A game by Arkanyota, Notgoyome, Strochnis, 
+Theobosse, Yolwoocle"
+label_settings = SubResource("LabelSettings_u3bde")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Version" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 213.0
+offset_top = -145.0
+offset_right = 240.0
+offset_bottom = -128.0
+text = "v1.1"
+label_settings = SubResource("LabelSettings_u3bde")
+horizontal_alignment = 1
+
+[node name="Click anywhere" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = -57.0
+offset_right = 239.0
+offset_bottom = -40.0
+text = "Click anywhere"
+label_settings = SubResource("LabelSettings_txos7")
+horizontal_alignment = 1
+script = ExtResource("7_h54yi")
+
+[node name="GMTK" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 43.0
+offset_top = -142.0
+offset_right = 143.0
+offset_bottom = -129.0
+text = "Created for the GMTK Game Jam 2024"
+label_settings = SubResource("LabelSettings_o2d5n")
+
+[node name="Gmtklogo2024" type="Sprite2D" parent="Control"]
+visible = false
+position = Vector2(20, -127)
+texture = ExtResource("8_qbdri")
+
+[node name="CityVisuals" parent="." instance=ExtResource("10_m3m4d")]
+
+[node name="BackGlobs" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(160, 112)
+position = Vector2(149, 66)
 texture = ExtResource("11_fps7l")
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="ActivationButton" to="." method="_on_activation_button_pressed"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://cihuxl0od3y8d"]
 
-[ext_resource type="PackedScene" uid="uid://cq0u27ulxk7yo" path="res://scenes/levels/level_template.tscn" id="1_wwxyn"]
+[ext_resource type="PackedScene" uid="uid://dajgqkks6gfke" path="res://scenes/levels/level_template.tscn" id="1_wwxyn"]
 [ext_resource type="Texture2D" uid="uid://bbtfnnfhieyks" path="res://assets/images/backgrounds/snow_background.png" id="2_i2q6b"]
 [ext_resource type="PackedScene" uid="uid://y3nsqm2pc0s7" path="res://scenes/ui/particle/snow_particle.tscn" id="3_kknnb"]
 [ext_resource type="PackedScene" uid="uid://bdttvr6awstj3" path="res://scenes/block/bloc_skin/fromage/bear_block.tscn" id="4_vvbfm"]

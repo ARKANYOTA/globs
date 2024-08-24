@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @onready var main = get_node("/root/Main")
 
@@ -9,22 +9,22 @@ func _ready():
 	hide_gui()
 
 func show_level_select():
-	$LevelSelectPauseButton.show()
-	$PauseButton.hide()
-	$RetryButton.hide()
-	$FullscreenButton.hide()
+	$Control/LevelSelectPauseButton.show()
+	$Control/LevelActions/PauseButton.hide()
+	$Control/LevelActions/RetryButton.hide()
+	$Control/FullscreenButton.hide()
 
 func hide_gui():
-	$LevelSelectPauseButton.hide()
-	$PauseButton.hide()
-	$RetryButton.hide()
-	$FullscreenButton.hide()
+	$Control/LevelSelectPauseButton.hide()
+	$Control/LevelActions/PauseButton.hide()
+	$Control/LevelActions/RetryButton.hide()
+	$Control/FullscreenButton.hide()
 
 func show_gui():
-	$LevelSelectPauseButton.hide()
-	$PauseButton.show()
-	$RetryButton.show()
-	$FullscreenButton.hide()
+	$Control/LevelSelectPauseButton.hide()
+	$Control/LevelActions/PauseButton.show()
+	$Control/LevelActions/RetryButton.show()
+	$Control/FullscreenButton.hide()
 
 
 func _on_pause_button_pressed():
