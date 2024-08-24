@@ -39,6 +39,7 @@ extends Node
 
 var completed_levels: Array[String] = []
 var selected_level_name: String = "None"
+var selected_world_index: int = 0
 
 var levels = [
 	{ "name": "1-1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_110.tscn"},

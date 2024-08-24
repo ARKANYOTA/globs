@@ -10,7 +10,7 @@
 [sub_resource type="TileMapPattern" id="TileMapPattern_as84n"]
 tile_data = PackedInt32Array(0, 262144, 4, 65536, 196608, 2, 1, 196608, 2, 65537, 262144, 4)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jkjx8"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m3ftp"]
 texture = ExtResource("2_f8p86")
 1:0/0 = 0
 4:0/0 = 0
@@ -52,7 +52,7 @@ texture = ExtResource("2_f8p86")
 5:4/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_mg37k"]
-sources/0 = SubResource("TileSetAtlasSource_jkjx8")
+sources/0 = SubResource("TileSetAtlasSource_m3ftp")
 pattern_0 = SubResource("TileMapPattern_as84n")
 
 [sub_resource type="Animation" id="Animation_hidgp"]
