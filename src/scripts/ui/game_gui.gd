@@ -9,8 +9,8 @@ func _ready():
 	hide_gui()
 
 func show_level_select():
-	$Control/LevelSelectPauseButton.show()
-	$Control/LevelActions/PauseButton.hide()
+	$Control/LevelSelectPauseButton.hide()
+	$Control/LevelActions/PauseButton.show()
 	$Control/LevelActions/RetryButton.hide()
 	$Control/FullscreenButton.hide()
 

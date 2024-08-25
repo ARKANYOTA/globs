@@ -19,10 +19,10 @@ grow_horizontal = 0
 [node name="LevelSelectPauseButton" parent="Control" instance=ExtResource("2_jx3wm")]
 visible = false
 layout_mode = 0
-offset_left = 20.0
-offset_top = 1.0
-offset_right = 37.0
-offset_bottom = 20.0
+offset_left = -20.0
+offset_top = 22.0
+offset_right = -3.0
+offset_bottom = 41.0
 icon = ExtResource("3_klxi7")
 
 [node name="FullscreenButton" parent="Control" instance=ExtResource("4_rid88")]
@@ -39,8 +39,10 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -41.0
+offset_right = -3.0
 offset_bottom = 26.0
 grow_horizontal = 0
+alignment = 2
 
 [node name="RetryButton" parent="Control/LevelActions" instance=ExtResource("2_jx3wm")]
 layout_mode = 2
