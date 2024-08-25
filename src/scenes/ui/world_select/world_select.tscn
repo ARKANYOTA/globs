@@ -102,7 +102,6 @@ scroll = NodePath("ScrollComponent")
 dot_container = NodePath("CenterContainer/DotContainer")
 
 [node name="Node2D" type="Node2D" parent="."]
-visible = false
 z_index = -4
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="Node2D"]
