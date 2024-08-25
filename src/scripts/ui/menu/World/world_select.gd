@@ -7,7 +7,7 @@ class_name WorldSelect
 @export var dot_container : HBoxContainer 
 var node_worlds : Array[Node2D]
 var world_index = 0
-
+var is_timing = false
 func _ready():
 	if world.size() == 0:
 		return
@@ -48,6 +48,9 @@ func decrement_world_index(in_out = true) -> void:
 	change_world(world_index, in_out)
 
 func enable_button() -> void:
+	if !is_timing:
+		return
+	is_timing = false
 	print("enable button")
 	LevelData.disable_level_button = false
 
@@ -55,11 +58,17 @@ func change_world(index: int, in_out = true, disable=true) -> void:
 	#print("change world", disable, LevelData.disable_level_button)
 	if disable:
 		LevelData.disable_level_button = true
+	#erase previous timer
+	for child in get_children():
+		if child is Timer:
+			child.stop()
+			child.queue_free()
 	var enable_button_timer = Timer.new()
-	enable_button_timer.set_wait_time(0.1)
+	enable_button_timer.set_wait_time(0.5)
 	enable_button_timer.one_shot = true
 	add_child(enable_button_timer)
 	enable_button_timer.start()
+	is_timing = true
 	enable_button_timer.timeout.connect(enable_button)
 	
 	LevelData.selected_world_index = index

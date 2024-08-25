@@ -136,7 +136,6 @@ offset_bottom = 136.0
 
 [node name="DotContainer" type="HBoxContainer" parent="CenterContainer"]
 layout_mode = 2
-theme_override_constants/separation = -5
 alignment = 1
 
 [node name="ScrollComponent" parent="." node_paths=PackedStringArray("world_select") instance=ExtResource("3_iof5u")]
