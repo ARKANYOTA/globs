@@ -26,18 +26,21 @@ func _ready():
 func show_level_select():
 	$Control/LevelSelectPauseButton.hide()
 	$Control/LevelActions/PauseButton.show()
+	$Control/LevelActions/UndoButton.hide()
 	$Control/LevelActions/RetryButton.hide()
 	$Control/FullscreenButton.hide()
 
 func hide_gui():
 	$Control/LevelSelectPauseButton.hide()
 	$Control/LevelActions/PauseButton.hide()
+	$Control/LevelActions/UndoButton.hide()
 	$Control/LevelActions/RetryButton.hide()
 	$Control/FullscreenButton.hide()
 
 func show_gui():
 	$Control/LevelSelectPauseButton.hide()
 	$Control/LevelActions/PauseButton.show()
+	$Control/LevelActions/UndoButton.show()
 	$Control/LevelActions/RetryButton.show()
 	$Control/FullscreenButton.hide()
 

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cfccdei10ptjn" path="res://assets/images/ui/pause.png" id="3_klxi7"]
 [ext_resource type="Texture2D" uid="uid://2na74y5ctym2" path="res://assets/images/ui/retry.png" id="3_xf12s"]
 [ext_resource type="PackedScene" uid="uid://ciguail0coyfn" path="res://scenes/ui/ui_fullscreen_button.tscn" id="4_rid88"]
-[ext_resource type="Texture2D" uid="uid://b4em7ylud6jbu" path="res://assets/images/buttons/controller/generic/btn_c_generic_a.png" id="5_81mfu"]
+[ext_resource type="Texture2D" uid="uid://dr3uo4murx75h" path="res://assets/images/ui/undo.png" id="5_bj348"]
 
 [node name="GameGUI" type="CanvasLayer"]
 script = ExtResource("1_72ffu")
@@ -33,6 +33,7 @@ offset_left = -48.0
 offset_top = 144.0
 offset_right = -31.0
 offset_bottom = 163.0
+icon = null
 
 [node name="LevelActions" type="HBoxContainer" parent="Control"]
 layout_mode = 1
@@ -45,9 +46,9 @@ offset_bottom = 26.0
 grow_horizontal = 0
 alignment = 2
 
-[node name="UiIconButton" parent="Control/LevelActions" instance=ExtResource("2_jx3wm")]
+[node name="UndoButton" parent="Control/LevelActions" instance=ExtResource("2_jx3wm")]
 layout_mode = 2
-icon = ExtResource("5_81mfu")
+icon = ExtResource("5_bj348")
 
 [node name="RetryButton" parent="Control/LevelActions" instance=ExtResource("2_jx3wm")]
 layout_mode = 2
@@ -58,6 +59,6 @@ layout_mode = 2
 icon = ExtResource("3_klxi7")
 
 [connection signal="pressed" from="Control/LevelSelectPauseButton" to="." method="_on_pause_button_pressed"]
-[connection signal="pressed" from="Control/LevelActions/UiIconButton" to="." method="_on_ui_icon_button_pressed"]
+[connection signal="pressed" from="Control/LevelActions/UndoButton" to="." method="_on_ui_icon_button_pressed"]
 [connection signal="pressed" from="Control/LevelActions/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="Control/LevelActions/PauseButton" to="." method="_on_pause_button_pressed"]
