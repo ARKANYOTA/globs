@@ -13,6 +13,7 @@ func _ready() -> void:
 	youwinlevel_instance = youwinlevel.instantiate()
 
 func change_scene_with_transition(scene: String, put_confetis = false) -> void:
+	PauseMenuAutoload.can_pause = false
 	var root = get_tree().get_current_scene()
 	if put_confetis:
 		for i in root.get_children():
@@ -38,23 +39,31 @@ func change_scene_with_transition(scene: String, put_confetis = false) -> void:
 				if i.is_main_character:
 					i.remove_child(youwinlevel_instance)
 	
-	# Music 
-	# SCOTCH!!
-	var level_data = LevelData.get_current_level_data()
-	if scene == "res://scenes/ui/world_select/world_select.tscn" or scene == "res://scenes/ui/level_select.tscn": # <--- PAS BEAU et supprimer la deuxiemme parite!!!
-		PauseMenuAutoload.game_gui.show_level_select()
-	elif level_data: 
-		PauseMenuAutoload.game_gui.show_gui()
-		MusicManager.set_music(level_data["music"])
-	else:
-		PauseMenuAutoload.game_gui.hide_gui()
-	
+	animation_player.play(slides[random_slide_transition], -1, -0.7, true)
+
 	GameManager.before_scene_change()
 	get_tree().change_scene_to_file(scene)
-
-	animation_player.play(slides[random_slide_transition], -1, -0.7, true)
+	await get_tree().process_frame
+	
+	# Music 	
 	#title_player.play("WorldLevel")
+	if get_tree().get_current_scene():
+		var current_scene_name = get_tree().get_current_scene().get_name()
+		 # var level_data = LevelData.get_current_level_data()
+		if current_scene_name == "WorldSelect":
+			PauseMenuAutoload.game_gui.show_level_select()
+		elif current_scene_name == "Main":
+			PauseMenuAutoload.game_gui.hide_gui()
+		else: 
+			PauseMenuAutoload.game_gui.show_gui()
+			# MusicManager.set_music(level_data["music"])  # TODO; remettre la music
+	else:
+		PauseMenuAutoload.game_gui.hide_gui()
+	await animation_player.animation_finished
 
+	if get_tree().get_current_scene().get_name() != "Main": # menu d'acceuil
+		PauseMenuAutoload.can_pause = true
+	
 func set_random_sprite_transition():
 	var up : NinePatchRect = scene_transition_instance.get_node("up")
 	var down : NinePatchRect = scene_transition_instance.get_node("down")
