@@ -35,7 +35,7 @@ func _input(event: InputEvent) -> void:
 # FUNCTIONS FOR WORLD SELECTION
 
 func restore_position() -> void:
-	change_world(world_index)
+	change_world(world_index,true,false)
 
 func increment_world_index(in_out = true) -> void:
 	world_index = (world_index + 1) % world.size()
@@ -47,22 +47,37 @@ func decrement_world_index(in_out = true) -> void:
 		world_index = world.size() - 1
 	change_world(world_index, in_out)
 
-#
+func enable_button() -> void:
+	print("enable button")
+	LevelData.disable_level_button = false
 
-func change_world(index: int, in_out = true) -> void:
+func change_world(index: int, in_out = true, disable=true) -> void:
+	#print("change world", disable, LevelData.disable_level_button)
+	if disable:
+		LevelData.disable_level_button = true
+	var enable_button_timer = Timer.new()
+	enable_button_timer.set_wait_time(0.1)
+	enable_button_timer.one_shot = true
+	add_child(enable_button_timer)
+	enable_button_timer.start()
+	enable_button_timer.timeout.connect(enable_button)
+	
 	LevelData.selected_world_index = index
 	update_dot()
+	var tween = null
+	if world.size() == 0:
+		LevelData.disable_level_button = false
+		return
 	for i in range(0, world.size()):
-		var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+		tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 		if in_out:
 			tween.tween_property(node_worlds[i], "position:x", (i-world_index) * 16*15, 0.40).set_ease(Tween.EASE_IN_OUT)
 		else:
 			tween.tween_property(node_worlds[i], "position:x", (i-world_index) * 16*15, 0.70).set_ease(Tween.EASE_OUT)
-		pass
+	pass
 
 
 # BUTTON HANDLE
-
 func _on_left_pressed() -> void:
 	decrement_world_index()
 	pass # Replace with function body.

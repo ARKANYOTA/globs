@@ -10,6 +10,7 @@ var unlocked_paths : Array[Path2D]
 var is_unlocked : bool = false
 @export var state : LevelState = LevelState.LOCKED
 var dots : Array[PathFollow2D] = []
+var disable_button = false
 
 var can_add = false
 var added_required = false
@@ -120,5 +121,7 @@ func start_level():
 
 
 func _on_button_pressed() -> void:
+	if LevelData.disable_level_button:
+		return
 	start_level()
 	pass # Replace with function body.
