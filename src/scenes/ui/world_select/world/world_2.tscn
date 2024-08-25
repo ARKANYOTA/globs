@@ -14,33 +14,46 @@ tile_map_data = PackedByteArray("AAANAAEAAgAPAAAAAAAMAAEAAgAOAAAAAAALAAEAAgAOAAA
 position = Vector2(40, 64)
 levels_unlock = [NodePath("../level2")]
 levelScene = "res://scenes/levels_zoomed/world_2/level_210.tscn"
+state = null
+world_unlock_id = null
 
 [node name="level2" parent="." index="3" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
 position = Vector2(67, 64)
 levels_unlock = [NodePath("../level3")]
 levelScene = "res://scenes/levels_zoomed/world_2/level_220.tscn"
+state = null
+world_unlock_id = null
 
 [node name="level3" parent="." index="4" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
 position = Vector2(94, 64)
 levels_unlock = [NodePath("../level4")]
 levelScene = "res://scenes/levels_zoomed/world_2/level_230.tscn"
+state = null
+world_unlock_id = null
 
 [node name="level4" parent="." index="5" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
 position = Vector2(120, 64)
 levels_unlock = [NodePath("../level5")]
 levelScene = "res://scenes/levels_zoomed/world_2/level_240.tscn"
+state = null
+world_unlock_id = null
 
 [node name="level5" parent="." index="6" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
 position = Vector2(147, 64)
 levels_unlock = [NodePath("../level6")]
 levelScene = "res://scenes/levels_zoomed/world_2/level_250.tscn"
+state = null
+world_unlock_id = null
 
 [node name="level6" parent="." index="7" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
 position = Vector2(174, 64)
 levels_unlock = [NodePath("../level7")]
 levelScene = "res://scenes/levels_zoomed/world_2/level_260.tscn"
+state = null
+world_unlock_id = null
 
 [node name="level7" parent="." index="8" instance=ExtResource("2_x3ay8")]
 position = Vector2(200, 64)
 levelScene = "res://scenes/levels_zoomed/world_2/level_270.tscn"
+state = null
 world_unlock_id = 2
