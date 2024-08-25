@@ -11,7 +11,7 @@ var is_unlocked : bool = false
 @export var state : LevelState = LevelState.LOCKED
 var dots : Array[PathFollow2D] = []
 var disable_button = false
-
+@export var world_unlock_id : int = 0
 var can_add = false
 var added_required = false
 
@@ -22,9 +22,11 @@ enum LevelState {
 }
 var changed = false
 var dot_done = false
-
+var world : World
 func _ready():
-	#check if the level is unlocked
+	#get parent
+	world = get_parent()
+
 	for level_unlock in levels_unlock:
 		if level_unlock == null:
 			continue
@@ -44,6 +46,8 @@ func _ready():
 				level.levels_required.append(self)
 	if levelScene in LevelData.completed_levels:
 		state = LevelState.COMPLETED
+		if world_unlock_id != 0:
+			LevelData.worlds_finished.append(world_unlock_id)
 	pass
 
 func check_unlock():
@@ -51,7 +55,9 @@ func check_unlock():
 	for level in levels_required:
 		if level.state != LevelState.COMPLETED:
 			all_unlocked = false
-	if all_unlocked and state == LevelState.LOCKED:
+			#SKOTCH SCOTCH
+	if all_unlocked and state == LevelState.LOCKED and (world.world_index == 0 or world.world_index in LevelData.worlds_finished):
+		print(LevelData.worlds_finished)	
 		state = LevelState.UNLOCKED
 	
 
@@ -89,9 +95,10 @@ func add_dot(number: int, path: Path2D, vector: Vector2):
 		dots.append(path_follow_instance)
 
 func start_level():
+	
 	if state == LevelState.LOCKED:
 		return
-	MusicManager.set_music(musics[LevelData.selected_world_index])
+	MusicManager.set_music(world.world_music)
 	LevelData.selected_level_name = levelScene
 	SceneTransitionAutoLoad.change_scene_with_transition(levelScene)
 

@@ -7,8 +7,6 @@
 [node name="level" type="Node2D"]
 position = Vector2(40, 16)
 script = ExtResource("1_8y7i4")
-levelScene = null
-state = null
 
 [node name="Button" type="Button" parent="."]
 offset_left = -12.0
