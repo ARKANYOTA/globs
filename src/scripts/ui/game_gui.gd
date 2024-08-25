@@ -53,3 +53,12 @@ func _on_retry_button_pressed():
 	PauseMenuAutoload.pause_menu.exit_menu()
 	LevelData.reload_scene()
 	GameManager.on_restart()
+
+
+func _on_ui_icon_button_pressed():
+	var scene = get_tree().get_current_scene()
+	if scene == null: 
+		return
+	
+	if scene is Level:
+		scene.undo_action()
