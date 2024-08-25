@@ -2,7 +2,6 @@ extends Control
 class_name PauseMenu
 
 @onready var main = get_parent()
-@onready var click_audio = $ClickAudio
 @onready var skip_button = $MarginContainer/Items/Buttons/Skip
 
 var levels_scene_path = "res://scenes/ui/level_select.tscn"

@@ -112,7 +112,6 @@ var gravity_axis = Direction.DOWN
 
 ################################################
 
-@onready var main := get_node("/root/Main")
 @onready var collision_shape: CollisionShape2D = $CollisionShape
 @onready var sleep_particles: CPUParticles2D = $Sleep/SleepParticles
 @onready var click_audio: AudioStreamPlayer2D = $Audio/ClickAudio
@@ -525,9 +524,10 @@ func _update_sprite():
 	_update_animation()
 	
 	# Change 9-patch sprite
-	var ninepatch: NinePatchRect = $NinePatch
+	var ninepatch: NinePatchRect = get_node_or_null("NinePatch")
 	if not ninepatch:
 		return
+	
 	if is_main_character: # Normal
 		ninepatch.region_rect.position = Vector2(0, 96)
 	elif static_block: # Normal
