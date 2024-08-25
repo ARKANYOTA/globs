@@ -38,13 +38,15 @@ func restore_position() -> void:
 	change_world(world_index,true,false)
 
 func increment_world_index(in_out = true) -> void:
-	world_index = (world_index + 1) % world.size()
+	# world_index = (world_index + 1) % world.size()
+	world_index = min(world.size()-1, world_index + 1)
 	change_world(world_index, in_out)
 
 func decrement_world_index(in_out = true) -> void:
 	world_index = (world_index - 1)
-	if world_index < 0:
-		world_index = world.size() - 1
+	world_index = max(0, min(world.size()-1, world_index))
+	# if world_index < 0:
+	# 	world_index = world.size() - 1
 	change_world(world_index, in_out)
 
 func enable_button() -> void:

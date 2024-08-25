@@ -24,10 +24,6 @@ position = Vector2(24, 104)
 [node name="Planet" parent="." index="7"]
 position = Vector2(104, 8)
 
-[node name="Block2" parent="." index="8"]
-visible = false
-position = Vector2(123, -24)
-
 [node name="Block3" parent="." index="9" instance=ExtResource("2_uugc2")]
 position = Vector2(120, 40)
 is_main_character = false
@@ -58,3 +54,7 @@ right_extend_block_range = Vector2i(0, 2)
 position = Vector2(192, 72)
 size = Vector2i(2, 5)
 gravity_axis = 2
+
+[node name="Block2" parent="." index="12"]
+visible = false
+position = Vector2(123, -24)
