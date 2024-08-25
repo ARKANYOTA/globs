@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="4_5waxu"]
 [ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels/visuals/city_visuals.tscn" id="4_vwhfn"]
 
-[node name="Level" instance=ExtResource("1_k74mq")]
+[node name="Level2" instance=ExtResource("1_k74mq")]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="0"]
 visible = false

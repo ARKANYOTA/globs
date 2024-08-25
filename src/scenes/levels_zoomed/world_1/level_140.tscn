@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bt58nkodr7coo" path="res://scenes/levels_zoomed/world_1/level_100_template.tscn" id="1_ogr37"]
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="2_1g03i"]
 
-[node name="Level" instance=ExtResource("1_ogr37")]
+[node name="Level2" instance=ExtResource("1_ogr37")]
 
 [node name="Background" parent="." index="3"]
 z_index = 0

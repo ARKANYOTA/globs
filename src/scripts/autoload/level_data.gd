@@ -50,6 +50,7 @@ var levels = [
 	{ "name": "1-4", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_140.tscn"},
 	{ "name": "1-5", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_150.tscn"},
 	{ "name": "1-6", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_160.tscn"},
+	{ "name": "world selector", "music": "city", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "2-1", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_210.tscn"},
 	{ "name": "2-2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_220.tscn"},
@@ -58,17 +59,19 @@ var levels = [
 	{ "name": "2-5", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_250.tscn"},
 	{ "name": "2-6", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_260.tscn"},
 	{ "name": "2-7", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_270.tscn"},
+	{ "name": "world selector", "music": "city", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "3-1", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_310.tscn"},
 	{ "name": "3-2", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_320.tscn"},
 	{ "name": "3-3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_330.tscn"},
 	{ "name": "3-5", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_350.tscn"},
 	{ "name": "3-6", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_370.tscn"},
+	{ "name": "world selector", "music": "city", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "4-1", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_410.tscn"},
 	{ "name": "4-2", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_420.tscn"},
 	{ "name": "4-3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_430.tscn"},
-	{ "name": "4-4", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_440.tscn"},
+	{ "name": "4-4", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_450.tscn"},
 	{ "name": "4-5", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_490.tscn"},
 	{ "name": "4-6", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_500.tscn"},
 
@@ -137,8 +140,6 @@ func load_level_data() -> void:
 func make_level_completed() -> void:
 	if selected_level_name not in completed_levels:
 		completed_levels.append(selected_level_name)
-		print("completed_levels ", completed_levels)
-		print("ADD: ", selected_level_name)
 		new_save_level_data()
 
 func new_save_level_data() -> void:
@@ -166,7 +167,8 @@ func _ready() -> void:
 
 func _input(event):
 	if event.is_action_pressed("removeme2_nolan_usge_to_change_scene"):
-		win()
+		print("removeme2_nolan_usge_to_change_scene")
+		GameManager.win()
 	
 	if event.is_action_pressed("reload_button"):
 		reload_scene()
