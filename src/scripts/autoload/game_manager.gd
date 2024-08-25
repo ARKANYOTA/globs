@@ -6,8 +6,21 @@ var cursor_click = preload("res://assets/images/ui/cursor_click_big.png")
 var is_fullscreen := false
 
 func win():
+	#check if level in level data
+	var level_in_data = false
+	var next_level_name = "res://scenes/ui/world_select/world_select.tscn"
+	var next_sound = "city"
+	for i in range(LevelData.levels.size()):
+		if LevelData.levels[i]["scene"] == get_tree().current_scene.scene_file_path:
+			#check if level is not the last level
+			level_in_data = true
+			if i + 1 < LevelData.levels.size():
+				next_level_name = LevelData.levels[i + 1]["scene"]
+				next_sound = LevelData.levels[i + 1]["music"]
 	LevelData.make_level_completed()
-	SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/ui/world_select/world_select.tscn", true)
+	LevelData.selected_level_name = next_level_name
+	MusicManager.set_music(next_sound)
+	SceneTransitionAutoLoad.change_scene_with_transition(next_level_name, true)
 
 
 func _ready():

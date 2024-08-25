@@ -14,7 +14,7 @@ point_count = 6
 offsets = PackedFloat32Array(0, 0.531746, 1)
 colors = PackedColorArray(1, 1, 1, 0.0862745, 1, 1, 1, 0.611765, 1, 1, 1, 0.541176)
 
-[node name="Level" instance=ExtResource("1_3mx4c")]
+[node name="Level2" instance=ExtResource("1_3mx4c")]
 
 [node name="Background" parent="." index="1"]
 modulate = Color(0.5712, 0.5984, 0.68, 1)
