@@ -91,7 +91,7 @@ frame_progress = 0.627948
 
 [node name="BirdFlying" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_py3l6")
-volume_db = -13.0
+volume_db = -5.0
 pitch_scale = 1.1
 
 [node name="Area2D" type="Area2D" parent="."]
