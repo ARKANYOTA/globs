@@ -6,7 +6,9 @@ var cursor_click = preload("res://assets/images/ui/cursor_click_big.png")
 var is_fullscreen := false
 
 func win():
-	LevelData.increment_level_and_change_scene()
+	LevelData.make_level_completed()
+	SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/ui/world_select/world_select.tscn", true)
+
 
 func _ready():
 	process_mode = ProcessMode.PROCESS_MODE_ALWAYS

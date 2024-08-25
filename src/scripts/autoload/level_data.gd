@@ -37,6 +37,11 @@ extends Node
 # 	{ "name": "You Win", "music": "city", "scene": "res://scenes/levels/you_win.tscn"},
 # ]
 
+var completed_levels: Array[String] = []
+var selected_level_name: String = "None"
+var selected_world_index: int = 0
+var disable_level_button: bool = false
+
 var levels = [
 	{ "name": "1-1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_110.tscn"},
 	{ "name": "1-2", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_120.tscn"},
@@ -126,9 +131,27 @@ func load_level_data() -> void:
 	config.load("user://level_data.cfg")
 	level = config.get_value("level_section","level", level)
 
+func make_level_completed() -> void:
+	if selected_level_name not in completed_levels:
+		completed_levels.append(selected_level_name)
+		print("completed_levels ", completed_levels)
+		print("ADD: ", selected_level_name)
+		new_save_level_data()
+
+func new_save_level_data() -> void:
+	var config = ConfigFile.new()
+	config.set_value("levels", "completed_levels", completed_levels)
+	config.save("user://level_data.cfg")
+
+func new_load_level_data() -> void:
+	var config = ConfigFile.new()
+	config.load("user://level_data.cfg")
+	completed_levels = config.get_value("levels", "completed_levels", completed_levels)
+
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	load_level_data()
+	new_load_level_data()
 	var volume_config = ConfigFile.new()
 	volume_config.load("user://volume.cfg")
 	var master_value = volume_config.get_value("Sound", "Master", 1)

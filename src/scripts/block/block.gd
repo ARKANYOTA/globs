@@ -750,7 +750,7 @@ func _get_selected_edge(movement_direction: Direction, mouse_pos: Vector2) -> Di
 		if abs(drag_start_position.y) <= drag_extend_only_area_size:
 			selected_edge = movement_direction
 	
-	if not is_extendable(selected_edge):
+	if not is_extendable(selected_edge) and selected_edge != Direction.INVALID:
 		return get_opposite_direction(selected_edge)
 
 	return selected_edge

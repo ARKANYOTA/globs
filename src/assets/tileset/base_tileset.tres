@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=28 format=3 uid="uid://ba88x5t1rhers"]
+[gd_resource type="TileSet" load_steps=29 format=3 uid="uid://ba88x5t1rhers"]
 
 [ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="1_5ej0x"]
 [ext_resource type="Texture2D" uid="uid://cbb0cie1kixop" path="res://assets/images/spritesheet/black_frost_sprite_sheet2.png" id="2_7f04h"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_dv50m"]
 tile_data = PackedInt32Array(0, 196610, 2, 65536, 327682, 4, 1, 327682, 4, 65537, 196610, 2)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_ufcim"]
+tile_data = PackedInt32Array(0, 262144, 5, 327680, 524288, 1, 393216, 524288, 3, 1, 327680, 5, 65537, 262144, 4, 131073, 262144, 4, 196609, 262144, 4, 262145, 262144, 4, 327681, 655360, 1, 393217, 589824, 3, 2, 327680, 6, 393218, 589824, 0, 3, 327680, 5, 196611, 262144, 5, 393219, 589824, 0, 4, 327680, 5, 65540, 262144, 4, 131076, 262144, 4, 196612, 327680, 5, 262148, 262144, 4, 327684, 262144, 4, 393220, 589824, 0, 5, 393216, 6, 196613, 327680, 5, 262149, 524288, 1, 327685, 524288, 2, 393221, 589824, 3, 196614, 393216, 5, 262150, 655360, 1, 327686, 655360, 2, 393222, 655360, 3)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ssjwq"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -1416,3 +1419,4 @@ sources/1 = SubResource("TileSetAtlasSource_51rts")
 sources/2 = SubResource("TileSetAtlasSource_yd7ak")
 sources/3 = SubResource("TileSetAtlasSource_3am65")
 pattern_0 = SubResource("TileMapPattern_dv50m")
+pattern_1 = SubResource("TileMapPattern_ufcim")

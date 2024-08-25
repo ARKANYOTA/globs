@@ -22,6 +22,7 @@ func _ready():
 	set_music("main_menu")
 
 func set_music(music_name: String):
+	print("set_music", music_name)
 	if music_name == current_music_name:
 		return
 	

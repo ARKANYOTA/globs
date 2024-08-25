@@ -29,7 +29,8 @@ func pause():
 		return
 	
 	AudioServer.set_bus_effect_enabled(_music_bus_index, 0, true)
-	
+	PauseMenuAutoload.game_gui.hide_gui()
+
 	PauseMenuAutoload.paused = true
 	set_menu_by_name("PauseMenu")
 
@@ -69,6 +70,7 @@ func back():
 	menu_stack.pop_back()
 	if menu_stack.is_empty():
 		exit_menu()
+		PauseMenuAutoload.game_gui.show_correct_game_gui()
 		return
 	else:
 		set_menu_by_name(menu_stack[-1], false)

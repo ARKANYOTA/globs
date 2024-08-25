@@ -4,13 +4,14 @@ class_name PauseMenu
 @onready var main = get_parent()
 @onready var skip_button = $MarginContainer/Items/Buttons/Skip
 
-var levels_scene_path = "res://scenes/ui/level_select.tscn"
+var levels_scene_path = "res://scenes/ui/world_select/world_select.tscn"
 
 func exit_menu():
 	main.exit_menu()
 
 func _on_resume_pressed():
 	main.exit_menu()
+	PauseMenuAutoload.game_gui.show_correct_game_gui()
 
 func _on_restart_pressed():
 	main.exit_menu()
@@ -40,13 +41,13 @@ func _process(_delta):
 	if not current_scene:
 		return
 	
-	var is_on_level_select = (current_scene.name == "SceneSelect")
+	var is_on_level_select = (current_scene.name == "YouWinLevel" or current_scene.name == "WorldSelect")
 	
 	$MarginContainer/Items/Buttons/Skip.disabled = is_on_level_select
 	if is_on_level_select:
 		levels_scene_path = "res://scenes/main.tscn"
 		levels_button.text = "Title screen"
 	else:
-		levels_scene_path = "res://scenes/ui/level_select.tscn"
+		levels_scene_path = "res://scenes/ui/world_select/world_select.tscn"
 		levels_button.text = "Levels"
 		

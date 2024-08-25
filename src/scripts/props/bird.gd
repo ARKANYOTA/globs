@@ -3,7 +3,7 @@ extends Node2D
 var fly = false
 #
 var vector = Vector2(600 + randf_range(-100, 100), 400 + randf_range(-100, 100))
-var speed = randf_range(5, 7)
+var speed = randf_range(7, 10)
 var random_time = randf_range(10, 20)
 func _ready() -> void:
 	var stay_timer = Timer.new()

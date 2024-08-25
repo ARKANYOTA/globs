@@ -16,16 +16,15 @@ var is_locked = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	change_label(LevelData.levels[level].name)
-	if max(level, 0) > LevelData.level:
-		is_locked = true
-		button.icon = texture_locked
-	else:
-		is_locked = false
-		button.icon = texture_normal
+	is_locked = true
+	button.icon = texture_locked
+	pass # Replace with function body.
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func unlock() -> void:
+	is_locked = false
+	button.icon = texture_normal
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
