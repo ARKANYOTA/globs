@@ -4,26 +4,32 @@ class_name Level
 var BlockData = preload("res://scripts/block/block_data.gd")
 
 var actions: Array = []
-var current_action = 0
 
 func _ready():
 	actions = []
-	current_action = -1
 
+func is_multiple_os_8_plus_16n(i: int):
+	return (i+8)%16 == 0
 
-func go_to_next_actions():
-	current_action += 1
-	if len(actions) <= current_action:
-		actions.append({})
+func is_on_good_position(block: Block):
+	for i in [block.position.x, block.position.y, block.up_extend_value, block.down_extend_value, block.right_extend_value, block.left_extend_value]:
+		if not is_multiple_os_8_plus_16n(i):
+			return false
+	return true
 	
+	
+func go_to_next_actions():
+	var dico = {}
 	for child in $".".get_children():
 		if child is Block:
-			actions[current_action][child] = BlockData.new(child)
+			if not is_on_good_position(child):
+				return
+			dico[child] = BlockData.new(child)
+	actions.append(dico)
 
 	
 func undo_action():
-	if current_action <= -1:
-		current_action = -1
+	if len(actions) == 0:
 		return
 	else:
 		var toundo_actions = actions.pop_back()
@@ -34,6 +40,7 @@ func undo_action():
 			block.down_extend_value = toundo_action_on_this_block.down_extend_value
 			block.right_extend_value = toundo_action_on_this_block.right_extend_value
 			block.left_extend_value = toundo_action_on_this_block.left_extend_value
-		current_action -= 1
+			block.gravity_axis = toundo_action_on_this_block.gravity_axis
+			block.default_gravity_axis = toundo_action_on_this_block.default_gravity_axis
 
 	
