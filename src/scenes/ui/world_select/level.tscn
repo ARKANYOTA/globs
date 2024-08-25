@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bu78mo56i6fso"]
 
-[ext_resource type="Script" path="res://scripts/ui/menu/Level/level.gd" id="1_8y7i4"]
+[ext_resource type="Script" path="res://scripts/ui/menu/level/level.gd" id="1_8y7i4"]
 [ext_resource type="Texture2D" uid="uid://dkb2bbrghjuis" path="res://assets/images/ui/locked_button.png" id="2_hk4cj"]
 [ext_resource type="StyleBox" path="res://assets/textures/empty_texture_with_4_margin.tres" id="2_l7cq3"]
 

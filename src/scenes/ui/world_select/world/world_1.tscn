@@ -16,24 +16,19 @@ state = 1
 [node name="level2" parent="." index="3" instance=ExtResource("2_xpl06")]
 position = Vector2(72, 64)
 levelScene = "res://scenes/levels_zoomed/world_1/level_120.tscn"
-state = null
 
 [node name="level3" parent="." index="4" instance=ExtResource("2_xpl06")]
 position = Vector2(104, 64)
 levelScene = "res://scenes/levels_zoomed/world_1/level_130.tscn"
-state = null
 
 [node name="level4" parent="." index="5" instance=ExtResource("2_xpl06")]
 position = Vector2(136, 64)
 levelScene = "res://scenes/levels_zoomed/world_1/level_140.tscn"
-state = null
 
 [node name="level5" parent="." index="6" instance=ExtResource("2_xpl06")]
 position = Vector2(168, 64)
 levelScene = "res://scenes/levels_zoomed/world_1/level_150.tscn"
-state = null
 
 [node name="level6" parent="." index="7" instance=ExtResource("2_xpl06")]
 position = Vector2(200, 64)
 levelScene = "res://scenes/levels_zoomed/world_1/level_160.tscn"
-state = null

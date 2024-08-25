@@ -2,7 +2,7 @@
 
 [ext_resource type="StyleBox" path="res://assets/textures/empty_texture_with_4_margin.tres" id="1_7et6s"]
 [ext_resource type="Texture2D" uid="uid://cdobcanxgd3ov" path="res://assets/images/ui/world_index_dot.png" id="1_ch11f"]
-[ext_resource type="Script" path="res://scripts/ui/menu/World/button_index.gd" id="3_75wuc"]
+[ext_resource type="Script" path="res://scripts/ui/menu/world/button_index.gd" id="3_75wuc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q8gu6"]
 
