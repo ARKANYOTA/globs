@@ -47,21 +47,10 @@ func change_scene_with_transition(scene: String, put_confetis = false) -> void:
 	
 	# Music 	
 	#title_player.play("WorldLevel")
-	if get_tree().get_current_scene():
-		var current_scene_name = get_tree().get_current_scene().get_name()
-		 # var level_data = LevelData.get_current_level_data()
-		if current_scene_name == "WorldSelect":
-			PauseMenuAutoload.game_gui.show_level_select()
-		elif current_scene_name == "Main":
-			PauseMenuAutoload.game_gui.hide_gui()
-		else: 
-			PauseMenuAutoload.game_gui.show_gui()
-			# MusicManager.set_music(level_data["music"])  # TODO; remettre la music
-	else:
-		PauseMenuAutoload.game_gui.hide_gui()
+	PauseMenuAutoload.game_gui.show_correct_game_gui()
 	await animation_player.animation_finished
 
-	if get_tree().get_current_scene().get_name() != "Main": # menu d'acceuil
+	if get_tree().get_current_scene() and get_tree().get_current_scene().get_name() != "Main": # menu d'acceuil
 		PauseMenuAutoload.can_pause = true
 	
 func set_random_sprite_transition():

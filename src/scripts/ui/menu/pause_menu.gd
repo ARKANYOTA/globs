@@ -12,6 +12,7 @@ func exit_menu():
 
 func _on_resume_pressed():
 	main.exit_menu()
+	PauseMenuAutoload.game_gui.show_correct_game_gui()
 
 func _on_restart_pressed():
 	main.exit_menu()
@@ -41,7 +42,7 @@ func _process(_delta):
 	if not current_scene:
 		return
 	
-	var is_on_level_select = (current_scene.name == "SceneSelect" or current_scene.name == "WorldSelect")
+	var is_on_level_select = (current_scene.name == "YouWinLevel" or current_scene.name == "WorldSelect")
 	
 	$MarginContainer/Items/Buttons/Skip.disabled = is_on_level_select
 	if is_on_level_select:
