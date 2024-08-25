@@ -83,6 +83,7 @@ layout_mode = 2
 text = "Retry"
 
 [node name="Skip" parent="MarginContainer/Items/Buttons" instance=ExtResource("4_35rns")]
+visible = false
 layout_mode = 2
 text = "Skip level"
 
@@ -126,6 +127,7 @@ audio_bus_name = "Music"
 
 [node name="FullscreenButton" parent="MarginContainer/Items/HBoxContainer" instance=ExtResource("7_q7xqu")]
 layout_mode = 2
+icon = null
 
 [connection signal="pressed" from="MarginContainer/Items/Buttons/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MarginContainer/Items/Buttons/Restart" to="." method="_on_restart_pressed"]
