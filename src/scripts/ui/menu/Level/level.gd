@@ -9,11 +9,16 @@ var path_instances : Array[Path2D]
 var unlocked_paths : Array[Path2D]
 var is_unlocked : bool = false
 @export var state : LevelState = LevelState.LOCKED
-var dots : Array[PathFollow2D] = []
 var disable_button = false
-
+@export var world_unlock_id : int = 0
 var can_add = false
 var added_required = false
+
+
+###################### DOT ######################
+var dots : Array[PathFollow2D] = []
+var dot_gap = 5
+var dot_speed = 13
 
 enum LevelState {
 	LOCKED,
@@ -22,9 +27,11 @@ enum LevelState {
 }
 var changed = false
 var dot_done = false
-
+var world : World
 func _ready():
-	#check if the level is unlocked
+	#get parent
+	world = get_parent()
+
 	for level_unlock in levels_unlock:
 		if level_unlock == null:
 			continue
@@ -37,13 +44,17 @@ func _ready():
 		path.z_index = -1
 		path.curve.add_point(level_unlock.position - position)
 		add_child(path)
-		add_dot(5, path, level_unlock.position - position)
+		var distance = level_unlock.position.distance_to(position)
+		var number_dot = distance / dot_gap
+		add_dot(number_dot, path, level_unlock.position - position)
 	if levels_unlock != null:
 		for level in levels_unlock:
 			if level != null and level not in level.levels_required:
 				level.levels_required.append(self)
 	if levelScene in LevelData.completed_levels:
 		state = LevelState.COMPLETED
+		if world_unlock_id != 0:
+			LevelData.worlds_finished.append(world_unlock_id)
 	pass
 
 func check_unlock():
@@ -51,7 +62,9 @@ func check_unlock():
 	for level in levels_required:
 		if level.state != LevelState.COMPLETED:
 			all_unlocked = false
-	if all_unlocked and state == LevelState.LOCKED:
+			#SKOTCH SCOTCH
+	if all_unlocked and state == LevelState.LOCKED and (world.world_index == 0 or world.world_index in LevelData.worlds_finished):
+		print(LevelData.worlds_finished)	
 		state = LevelState.UNLOCKED
 	
 
@@ -71,7 +84,7 @@ func _process(delta: float) -> void:
 	# if state != LevelState.LOCKED:
 	for path in path_instances:
 		for dot in dots:
-			dot.progress += delta * 20
+			dot.progress += delta * dot_speed
 	pass
 var musics : Array[String] = ["city", "cheese", "snow", "snow"]
 
@@ -89,11 +102,21 @@ func add_dot(number: int, path: Path2D, vector: Vector2):
 		dots.append(path_follow_instance)
 
 func start_level():
+	
 	if state == LevelState.LOCKED:
 		return
-	MusicManager.set_music(musics[LevelData.selected_world_index])
+	MusicManager.set_music(world.world_music)
 	LevelData.selected_level_name = levelScene
 	SceneTransitionAutoLoad.change_scene_with_transition(levelScene)
+
+func _input(event):
+	#if s is pressed make it completed
+	if event.is_action_pressed("removeme2_nolan_usge_to_change_scene"):
+		state = LevelState.COMPLETED
+		LevelData.completed_levels.append(levelScene)
+		LevelData.new_save_level_data()
+		SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/ui/world_select/world_select.tscn")
+
 
 # func add_dot_timer(number: int, path: Path2D, vector: Vector2):
 # 	for i in range(number):

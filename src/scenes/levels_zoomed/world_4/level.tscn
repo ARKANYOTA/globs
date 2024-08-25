@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://brsha6qauan46"]
+[gd_scene load_steps=8 format=3 uid="uid://brsha6qauan46"]
 
 [ext_resource type="PackedScene" uid="uid://dajgqkks6gfke" path="res://scenes/levels/level_template.tscn" id="1_3mx4c"]
 [ext_resource type="Texture2D" uid="uid://bsuxxmkm78ho5" path="res://assets/images/backgrounds/planet.png" id="2_gljx0"]
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_yk5bi"]
 [ext_resource type="PackedScene" uid="uid://cyuc4qkh71ogh" path="res://scenes/block/bloc_skin/space/alien.tscn" id="3_lpsvi"]
+[ext_resource type="Script" path="res://scripts/props/falling_star.gd" id="4_w300t"]
+
+[sub_resource type="Curve" id="Curve_4qb8h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.292208, 0.648352), 0.0, 0.0, 0, 0, Vector2(0.428571, 0.769231), 0.0, 0.0, 0, 0, Vector2(0.603896, 0.373626), 0.0, 0.0, 0, 0, Vector2(0.779221, 0.450549), 0.0, 0.0, 0, 0, Vector2(0.941558, 0.230769), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="Gradient" id="Gradient_gqkb2"]
+offsets = PackedFloat32Array(0, 0.531746, 1)
+colors = PackedColorArray(1, 1, 1, 0.0862745, 1, 1, 1, 0.611765, 1, 1, 1, 0.541176)
 
 [node name="Level" instance=ExtResource("1_3mx4c")]
 
@@ -22,6 +31,26 @@ z_index = -5
 position = Vector2(186, 115)
 texture = ExtResource("2_gljx0")
 
-[node name="Block2" parent="." index="8" instance=ExtResource("3_lpsvi")]
+[node name="DustParticle" type="CPUParticles2D" parent="." index="8"]
+z_index = -5
+position = Vector2(112, 64)
+amount = 50
+lifetime = 5.0
+preprocess = 5.0
+speed_scale = 0.4
+emission_shape = 3
+emission_rect_extents = Vector2(160, 45)
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.7
+initial_velocity_max = 3.7
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_4qb8h")
+color = Color(0.352941, 0.411765, 0.533333, 1)
+color_ramp = SubResource("Gradient_gqkb2")
+script = ExtResource("4_w300t")
+
+[node name="Block2" parent="." index="9" instance=ExtResource("3_lpsvi")]
 position = Vector2(123, 104)
-drag_extend_only_area_size = null

@@ -794,7 +794,6 @@ func _on_click_area_dragging():
 		if handles.has(selected_edge):
 			handles[selected_edge].set_highlighted(true)
 
-
 func set_is_moving_to_false():
 	is_moving = false 
 
@@ -869,7 +868,9 @@ func extend_block(variation: int, direction: Direction, push: bool):
 	is_moving = true
 	var mul = -1 if reverse else 1
 	var off = mul * 16 if direction == Direction.RIGHT or direction == Direction.DOWN else mul * -16
-
+	assert(get_parent() != null, "Le level est null")
+	if not push:
+		get_parent().go_to_next_actions()
 	for i in range(int(not reverse and not push), len(movements)):
 		var move_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 		var block: Block = movements[i]

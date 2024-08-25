@@ -38,4 +38,5 @@ default_gravity_axis = 0
 position = Vector2(136, 72)
 is_gravity_enabled = true
 default_gravity_axis = 2
+drag_extend_only_area_size = 8
 left_extendable = true

@@ -1,32 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://b46xje0fhose4"]
+[gd_scene load_steps=14 format=3 uid="uid://b46xje0fhose4"]
 
-[ext_resource type="StyleBox" path="res://assets/textures/empty_texture_with_4_margin.tres" id="1_7et6s"]
 [ext_resource type="Texture2D" uid="uid://cdobcanxgd3ov" path="res://assets/images/ui/world_index_dot.png" id="1_ch11f"]
 [ext_resource type="Script" path="res://scripts/ui/menu/world/button_index.gd" id="3_75wuc"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q8gu6"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2k4yr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2w2ae"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_grecw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hiu6l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_st3mx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h45kf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_227id"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7c6bw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6j25p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ltnv6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nqvu1"]
 
 [node name="Button" type="Button"]
 offset_right = 24.0
 offset_bottom = 24.0
-theme_override_styles/focus = ExtResource("1_7et6s")
-theme_override_styles/disabled = ExtResource("1_7et6s")
-theme_override_styles/hover_pressed = ExtResource("1_7et6s")
-theme_override_styles/hover = ExtResource("1_7et6s")
-theme_override_styles/pressed = ExtResource("1_7et6s")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2k4yr")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_2w2ae")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_grecw")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_hiu6l")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_st3mx")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_h45kf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_227id")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_7c6bw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6j25p")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ltnv6")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nqvu1")
 icon = ExtResource("1_ch11f")
 flat = true
 clip_text = true
 icon_alignment = 1
 script = ExtResource("3_75wuc")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(6, 6)
-scale = Vector2(0.256374, 0.256374)
-shape = SubResource("CircleShape2D_q8gu6")
-
 [connection signal="pressed" from="." to="." method="_on_pressed"]
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

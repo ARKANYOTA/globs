@@ -18,14 +18,14 @@ point_count = 3
 [node name="BlackFrostSpriteSheet2" type="Sprite2D" parent="."]
 texture = ExtResource("1_w5tpu")
 hframes = 10
-vframes = 10
-frame = 42
+vframes = 20
+frame = 43
 
 [node name="BlackFrostSpriteSheet3" type="Sprite2D" parent="."]
 texture = ExtResource("1_w5tpu")
 hframes = 10
-vframes = 10
-frame = 43
+vframes = 20
+frame = 41
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(-0.504062, -0.504062)

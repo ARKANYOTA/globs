@@ -40,6 +40,7 @@ extends Node
 var completed_levels: Array[String] = []
 var selected_level_name: String = "None"
 var selected_world_index: int = 0
+var worlds_finished: Array[int] = []
 var disable_level_button: bool = false
 
 var levels = [
@@ -104,7 +105,9 @@ func increment_level() -> void:
 	save_level_data()
 
 func win() -> void:
-	increment_level_and_change_scene()
+	pass
+
+	#increment_level_and_change_scene()
 	
 func reload_scene() -> void:
 	BlockManagerAutoload.block_manager_instance.end_drag()
@@ -167,3 +170,8 @@ func _input(event):
 	
 	if event.is_action_pressed("reload_button"):
 		reload_scene()
+
+func _process(delta: float) -> void:
+	#print fps
+	#print(Engine.get_frames_per_second())
+	pass # Replace with function body.

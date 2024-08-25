@@ -39,6 +39,7 @@ position = Vector2(120, 40)
 position = Vector2(72, 40)
 is_gravity_enabled = true
 max_pushs = 100
+drag_extend_only_area_size = 8
 up_extendable = true
 down_extendable = true
 left_extendable = true

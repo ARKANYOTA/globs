@@ -23,6 +23,7 @@ position = Vector2(128, 40)
 [node name="Block2" parent="." index="8"]
 visible = false
 position = Vector2(120, -24)
+drag_extend_only_area_size = 8
 
 [node name="Block3" parent="." index="9" instance=ExtResource("2_cqxr5")]
 position = Vector2(168, 104)
