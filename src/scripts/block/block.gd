@@ -203,7 +203,17 @@ func can_extend_or_retract(side: Direction, movement_dir: Direction) -> bool:
 	print("can_extend_or_retract val = ", val, " side = ", Util.direction_to_string(side), " movdir = ", Util.direction_to_string(movement_dir), " output = ", output)
 
 	return output
-	
+
+func can_retract(dir: Direction, val) -> bool:
+	if dir == Direction.LEFT:
+		return left_extend_range.x < val
+	elif dir == Direction.RIGHT:
+		return right_extend_range.x < val
+	elif dir == Direction.UP:
+		return up_extend_range.x < val
+	elif dir == Direction.DOWN:
+		return down_extend_range.x < val
+	return false
 
 # SCOTCH!
 func can_extend(dir: Direction) -> bool:
@@ -869,7 +879,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 	var mul = -1 if reverse else 1
 	var off = mul * 16 if direction == Direction.RIGHT or direction == Direction.DOWN else mul * -16
 	assert(get_parent() != null, "Le level est null")
-	if not push:
+	if not push and val != -8:
 		get_parent().go_to_next_actions()
 	for i in range(int(not reverse and not push), len(movements)):
 		var move_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
@@ -894,7 +904,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 					return
 				move_tween.tween_callback(func(): block.extend_block(off, direction if not reverse else get_opposite_direction(direction), true))
 
-	if tween_property != "" and not push:
+	if tween_property != "" and not push and val != -8:
 		tween.tween_property(self, tween_property, val, move_speed).set_ease(Tween.EASE_OUT)
 		slide_audio.play()
 
