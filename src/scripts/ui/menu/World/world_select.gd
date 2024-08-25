@@ -58,7 +58,6 @@ func change_world(index: int, in_out = true) -> void:
 			tween.tween_property(node_worlds[i], "position:x", (i-world_index) * 16*15, 0.40).set_ease(Tween.EASE_IN_OUT)
 		else:
 			tween.tween_property(node_worlds[i], "position:x", (i-world_index) * 16*15, 0.70).set_ease(Tween.EASE_OUT)
-		print(i-world_index * 16*15," ", world_index)
 		pass
 
 
@@ -79,6 +78,7 @@ func add_dot() -> void:
 	var dot_scene = load("res://scenes/ui/world_select/dot_level_index.tscn")
 	for i in range(0, world.size()):
 		var dot : Button = dot_scene.instantiate()
+		dot.index = i
 		dots.append(dot)
 		dot_container.add_child(dot)
 		pass
@@ -94,7 +94,6 @@ func update_dot() -> void:
 		else:
 			dot.icon = texture_off
 		pass
-
 
 func _on_ui_button_pressed() -> void:
 	LevelData.completed_levels = []

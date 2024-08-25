@@ -72,7 +72,7 @@ func _process(delta: float) -> void:
 		for dot in dots:
 			dot.progress += delta * 20
 	pass
-
+var musics : Array[String] = ["city", "cheese", "snow", "snow"]
 
 func add_dot(number: int, path: Path2D, vector: Vector2):
 	#dupolicate pathfopllow2d and add it to the path
@@ -90,6 +90,7 @@ func add_dot(number: int, path: Path2D, vector: Vector2):
 func start_level():
 	if state == LevelState.LOCKED:
 		return
+	MusicManager.set_music(musics[LevelData.selected_world_index])
 	LevelData.selected_level_name = levelScene
 	SceneTransitionAutoLoad.change_scene_with_transition(levelScene)
 
