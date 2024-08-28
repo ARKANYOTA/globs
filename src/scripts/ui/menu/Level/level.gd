@@ -111,7 +111,7 @@ func start_level():
 
 func _input(event):
 	#if s is pressed make it completed
-	if event.is_action_pressed("removeme2_nolan_usge_to_change_scene"):
+	if event.is_action_pressed("skip_level"):
 		state = LevelState.COMPLETED
 		LevelData.completed_levels.append(levelScene)
 		LevelData.new_save_level_data()

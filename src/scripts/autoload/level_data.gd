@@ -166,8 +166,7 @@ func _ready() -> void:
 
 
 func _input(event):
-	if event.is_action_pressed("removeme2_nolan_usge_to_change_scene"):
-		print("removeme2_nolan_usge_to_change_scene")
+	if event.is_action_pressed("skip_level"):
 		GameManager.win()
 	
 	if event.is_action_pressed("reload_button"):
