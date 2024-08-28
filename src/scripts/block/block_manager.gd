@@ -1,8 +1,6 @@
 extends Node2D
 class_name BlockManager
 
-@onready var main = get_node("/root/Main")
-
 var selected_block_count: int = 0
 var current_selected_block: Block = null
 var is_dragging: bool = false
