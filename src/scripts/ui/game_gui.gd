@@ -29,9 +29,9 @@ func _process(_delta):
 		return
 	
 	if (not scene is Level) or (scene is Level and len(scene.actions) == 0):
-		$Control/LevelActions/UndoButton.hide()
+		$Control/LevelActions/UndoButton.disabled = true
 	else: 
-		$Control/LevelActions/UndoButton.show()
+		$Control/LevelActions/UndoButton.disabled = false
 
 func show_level_select():
 	$Control/LevelSelectPauseButton.hide()
