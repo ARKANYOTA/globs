@@ -15,9 +15,8 @@ func _ready():
 func quit():
 	get_tree().quit()
 
-
-func _on_activation_button_pressed():
-	if not clicked:
+func _input(event):
+	if event.is_action_pressed("left_click") and not clicked:
 		clicked = true
 		PauseMenuAutoload.can_pause = true
 		SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/ui/world_select/world_select.tscn", false)

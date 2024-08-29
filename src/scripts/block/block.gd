@@ -281,8 +281,8 @@ func update_dimensions():
 	var dim: Vector2 = Vector2(left_extend_value + right_extend_value, 
 							   up_extend_value + down_extend_value)
 	var click_area: ClickArea = $ClickArea
-	var collision_shape: CollisionShape2D = $CollisionShape
-	var shape = collision_shape.shape
+	var block_collision_shape: CollisionShape2D = $CollisionShape
+	var shape = block_collision_shape.shape
 	var light_occ : LightOccluder2D = $BlockOccluder
 
 	if shape is not RectangleShape2D:
@@ -299,7 +299,7 @@ func update_dimensions():
 									 -up_extend_value   + down_extend_value) / 2
 	if light_occ != null:
 		light_occ.position = child_pos
-	collision_shape.position = child_pos
+	block_collision_shape.position = child_pos
 	update_sprite_size(child_pos, dim)
 
 	click_area.set_click_area_size_and_position(dim + click_area_extension, child_pos)

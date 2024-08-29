@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://clib81weo65vk"]
+[gd_scene load_steps=11 format=3 uid="uid://clib81weo65vk"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ngeyx"]
 [ext_resource type="PackedScene" uid="uid://bpqekaydn06nf" path="res://scenes/ui/scene_transition.tscn" id="4_mholn"]
@@ -11,9 +11,9 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_u3bde"]
 font = ExtResource("5_v4ddl")
-font_size = 8
+font_size = 4
 font_color = Color(0.878098, 0.878098, 0.878098, 1)
-outline_size = 1
+outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_txos7"]
@@ -21,28 +21,6 @@ font = ExtResource("5_v4ddl")
 font_size = 8
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4il2s"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nyrp0"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ituix"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vi2sc"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8wvwm"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lws15"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_678m0"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xxikv"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_37qlw"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n7jyf"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mcj60"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ngeyx")
@@ -67,18 +45,25 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Credits" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = -2.0
-offset_top = -44.0
-offset_right = 239.0
-offset_bottom = -13.0
-text = "A game by Arkanyota, Notgoyome, Strochnis, 
-Theobosse, Yolwoocle"
+z_index = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -10.0
+offset_right = 121.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "A game by Arkanyota, Notgoyome, Strochnis, Theobosse, Yolwoocle"
 label_settings = SubResource("LabelSettings_u3bde")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Version" type="Label" parent="CanvasLayer/Control"]
+z_index = 4
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -88,7 +73,7 @@ offset_bottom = 12.0
 grow_horizontal = 0
 text = "v1.1"
 label_settings = SubResource("LabelSettings_u3bde")
-horizontal_alignment = 1
+horizontal_alignment = 2
 
 [node name="ClickAnywhere" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -98,31 +83,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -39.0
-offset_top = -39.5
+offset_top = 30.5
 offset_right = 39.0
 offset_bottom = 39.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Click anywhere"
+text = "Press anywhere"
 label_settings = SubResource("LabelSettings_txos7")
 horizontal_alignment = 1
 vertical_alignment = 2
 script = ExtResource("7_h54yi")
-
-[node name="Logo" type="TextureRect" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -63.0
-offset_top = -21.0
-offset_right = 63.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_53ti5")
 
 [node name="BackgroundGlobs" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -138,24 +108,19 @@ offset_bottom = 70.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_fps7l")
+metadata/_edit_lock_ = true
 
-[node name="ActivationButton" type="Button" parent="CanvasLayer/Control"]
+[node name="Logo" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -41.5
+offset_right = 65.0
+offset_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_4il2s")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_nyrp0")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ituix")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vi2sc")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8wvwm")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_lws15")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_678m0")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_xxikv")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_37qlw")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_n7jyf")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_mcj60")
-
-[connection signal="pressed" from="CanvasLayer/Control/ActivationButton" to="." method="_on_activation_button_pressed"]
+texture = ExtResource("8_53ti5")

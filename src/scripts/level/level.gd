@@ -1,7 +1,7 @@
 extends Node2D
 class_name Level
 
-var BlockData = preload("res://scripts/block/block_data.gd")
+var block_data = preload("res://scripts/block/block_data.gd")
 
 var actions: Array = []
 
@@ -24,7 +24,7 @@ func go_to_next_actions():
 		if child is Block:
 			if not is_on_good_position(child):
 				return
-			dico[child] = BlockData.new(child)
+			dico[child] = block_data.new(child)
 	actions.append(dico)
 
 	
