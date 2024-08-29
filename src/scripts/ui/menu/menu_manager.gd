@@ -1,8 +1,6 @@
 extends CanvasLayer
 class_name MenuManager
 
-@onready var main = get_node("/root/Main")
-
 var menu_stack: Array = []
 var current_menu: Control = null
 

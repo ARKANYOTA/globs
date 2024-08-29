@@ -38,6 +38,14 @@ func _input(event):
 	
 	if event.is_action_released("left_click"):
 		Input.set_custom_mouse_cursor(cursor)
+	
+	if event.is_action_pressed("undo_action"):
+		var scene = get_tree().get_current_scene()
+		if scene == null:
+			return
+		
+		if scene is Level:
+			scene.undo_action()
 
 func on_restart():
 	pass

@@ -22,6 +22,16 @@ func show_correct_game_gui():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide_gui()
+	
+func _process(_delta):
+	var scene = get_tree().get_current_scene()
+	if scene == null:
+		return
+	
+	if (not scene is Level) or (scene is Level and len(scene.actions) == 0):
+		$Control/LevelActions/UndoButton.disabled = true
+	else: 
+		$Control/LevelActions/UndoButton.disabled = false
 
 func show_level_select():
 	$Control/LevelSelectPauseButton.hide()

@@ -87,7 +87,7 @@ animations = [{
 font = ExtResource("5_v4ddl")
 font_size = 8
 font_color = Color(0.878098, 0.878098, 0.878098, 1)
-outline_size = 3
+outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_txos7"]
