@@ -9,7 +9,7 @@
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pff8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_muo4o"]
 size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kmoxm"]
@@ -317,8 +317,8 @@ texture = ExtResource("2_ltf1r")
 region_rect = Rect2(0, 96, 16, 16)
 
 [node name="CollisionShape" parent="." index="2"]
-shape = SubResource("RectangleShape2D_5pff8")
+shape = SubResource("RectangleShape2D_muo4o")
 
-[node name="CenterIndicator" parent="." index="5"]
+[node name="CenterIndicator" parent="." index="4"]
 sprite_frames = SubResource("SpriteFrames_5157j")
 animation = &"sleeping"

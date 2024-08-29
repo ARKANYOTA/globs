@@ -54,8 +54,8 @@ func change_scene_with_transition(scene: String, put_confetis = false) -> void:
 		PauseMenuAutoload.can_pause = true
 	
 func set_random_sprite_transition():
-	var up : NinePatchRect = scene_transition_instance.get_node("up")
-	var down : NinePatchRect = scene_transition_instance.get_node("down")
+	var up : NinePatchRect = scene_transition_instance.get_node("PanelContainer/PanelUp")
+	var down : NinePatchRect = scene_transition_instance.get_node("PanelContainer/PanelDown")
 
 	var random_len = randi_range(0, pos_list.size() - 1)
 	var random_len_2 = randi_range(0, pos_list.size() - 1)

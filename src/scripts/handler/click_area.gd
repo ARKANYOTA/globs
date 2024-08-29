@@ -23,7 +23,7 @@ signal end_drag
 # 			$ClickAreaCollisionShape.debug_color = value
 
 var is_enabled := true
-var is_hovered := false
+var is_mouse_hovered := false
 var is_held := false
 
 ##################################################
@@ -53,13 +53,13 @@ func _on_mouse_entered():
 	if Engine.is_editor_hint():
 		return
 	
-	is_hovered = true
+	is_mouse_hovered = true
 
 func _on_mouse_exited():
 	if Engine.is_editor_hint():
 		return
 	
-	is_hovered = false
+	is_mouse_hovered = false
 
 
 func set_click_area_size_and_position(new_size: Vector2, new_position: Vector2):

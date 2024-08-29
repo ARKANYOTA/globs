@@ -13,15 +13,9 @@ const dir_map = [
 	Vector2i(0, 1)
 ]
 
-@export var click_to_update_sprite = false:
+@export var is_main_character := false:
 	set(value):
-		_update_sprite()
-
-@export var is_gravity_enabled := true:
-	set(value):
-		is_gravity_enabled = value
-		if value:
-			static_block = false
+		is_main_character = value 
 		_update_sprite()
 
 @export var static_block := false:
@@ -31,24 +25,26 @@ const dir_map = [
 			is_gravity_enabled = false
 		_update_sprite()
 
-@export var is_main_character := false:
+
+# @export var rotatable: bool = false
+# @export_range(-360, 360) var angle: float = 0:
+# 	set(value):
+# 		angle = value
+# 		#$CollisionShape.rotation_degrees = value
+# 		#$Sprite.rotation_degrees = value
+
+@export var is_gravity_enabled := true:
 	set(value):
-		is_main_character = value
+		is_gravity_enabled = value
+		if value:
+			static_block = false
 		_update_sprite()
-
-@export var happy_probability := 0.333
-
-@export var rotatable: bool = false
-@export_range(-360, 360) var angle: float = 0:
-	set(value):
-		angle = value
-		#$CollisionShape.rotation_degrees = value
-		#$Sprite.rotation_degrees = value
 
 @export var default_gravity_axis := Direction.DOWN :
 	set(value):
 		default_gravity_axis = value
 		gravity_axis = value
+		_update_sprite()
 
 
 @export var max_pushs := 1
@@ -56,12 +52,25 @@ const dir_map = [
 
 var gravity_axis = Direction.DOWN
 
+@export_group("Visuals")
+@export var click_to_update_sprite = false:
+	set(value):
+		_update_sprite()
+
+@export var show_eyes: bool = true:
+	set(value):
+		show_eyes = value
+		_update_sprite()
+@export var happy_probability := 0.333
+
+
 @export_group("Selection")
 @export var click_area_extension := Vector2.ZERO
 @export var drag_extend_only_area_size: int = 8
 
 
-@export_group("Up Extandable")
+@export_group("Extendable Directions")
+@export_subgroup("Up Extendable")
 @export var up_extendable: bool = false
 @export var up_extend_range: Vector2i = Vector2i(8, 24)
 @export var up_extend_block_range: Vector2i = Vector2i(0, 1):
@@ -74,10 +83,10 @@ var gravity_axis = Direction.DOWN
 		up_extend_value = clamp(value, up_extend_range.x, up_extend_range.y)
 		update_dimensions()
 
-@export_group("Down Extandable")
+@export_subgroup("Down Extendable")
 @export var down_extendable: bool = false
 @export var down_extend_range: Vector2i = Vector2i(8, 24)
-@export var down_extend_block_range: Vector2i = Vector2i(0, 1):
+@export var down_extend_block_range: Vector2i = Vector2i(0, 1): 
 	set(value):
 		down_extend_block_range = value
 		update_range_from_block_range()
@@ -86,7 +95,7 @@ var gravity_axis = Direction.DOWN
 		down_extend_value = clamp(value, down_extend_range.x, down_extend_range.y)
 		update_dimensions()
 
-@export_group("Left Extandable")
+@export_subgroup("Left Extendable")
 @export var left_extendable: bool = false
 @export var left_extend_range: Vector2i = Vector2i(8, 24)
 @export var left_extend_block_range: Vector2i = Vector2i(0, 1):
@@ -98,7 +107,7 @@ var gravity_axis = Direction.DOWN
 		left_extend_value = clamp(value, left_extend_range.x, left_extend_range.y)
 		update_dimensions()
 
-@export_group("Right Extandable")
+@export_subgroup("Right Extendable")
 @export var right_extendable: bool = false
 @export var right_extend_range: Vector2i = Vector2i(8, 24)
 @export var right_extend_block_range: Vector2i = Vector2i(0, 1):
@@ -285,8 +294,8 @@ func update_dimensions():
 	var dim: Vector2 = Vector2(left_extend_value + right_extend_value, 
 							   up_extend_value + down_extend_value)
 	var click_area: ClickArea = $ClickArea
-	var collision_shape: CollisionShape2D = $CollisionShape
-	var shape = collision_shape.shape
+	var block_collision_shape: CollisionShape2D = $CollisionShape
+	var shape = block_collision_shape.shape
 	var light_occ : LightOccluder2D = $BlockOccluder
 
 	if shape is not RectangleShape2D:
@@ -303,7 +312,7 @@ func update_dimensions():
 									 -up_extend_value   + down_extend_value) / 2
 	if light_occ != null:
 		light_occ.position = child_pos
-	collision_shape.position = child_pos
+	block_collision_shape.position = child_pos
 	update_sprite_size(child_pos, dim)
 
 	click_area.set_click_area_size_and_position(dim + click_area_extension, child_pos)
@@ -534,6 +543,9 @@ func direction_to_rotation(direction: Block.Direction) -> float:
 	return 0
 
 func _update_sprite():
+	if get_node_or_null("CenterIndicator"):
+		$CenterIndicator.visible = show_eyes
+
 	# Update animation
 	_update_animation()
 	
@@ -894,6 +906,8 @@ func extend_block(variation: int, direction: Direction, push: bool):
 	for i in range(int(not reverse and not push), len(movements)):
 		var move_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 		var block: Block = movements[i]
+		if not block: # FIXME SCOTCH, remove if causes issues
+			continue
 
 		if direction == Direction.RIGHT or direction == Direction.LEFT:
 			move_tween.tween_property(block, "position:x", block.position.x + off, move_speed).set_ease(Tween.EASE_OUT)
