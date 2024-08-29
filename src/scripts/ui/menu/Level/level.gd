@@ -1,16 +1,17 @@
 extends Node2D
 class_name LevelNew
 
-var levels_required : Array[LevelNew] = []
 @export var levels_unlock : Array[LevelNew]
+@export_file("*.tscn") var levelScene : String = ""
+@export var state : LevelState = LevelState.LOCKED
+@export var world_unlock_id : int = 0
+
+var levels_required : Array[LevelNew] = []
 var pathScene : PackedScene = preload("res://scenes/ui/world_select/path_2d.tscn")
-@export var levelScene : String = ""
 var path_instances : Array[Path2D]
 var unlocked_paths : Array[Path2D]
 var is_unlocked : bool = false
-@export var state : LevelState = LevelState.LOCKED
 var disable_button = false
-@export var world_unlock_id : int = 0
 var can_add = false
 var added_required = false
 

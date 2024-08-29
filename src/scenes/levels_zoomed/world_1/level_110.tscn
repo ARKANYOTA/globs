@@ -84,30 +84,25 @@ _data = {
 
 [node name="Level" instance=ExtResource("1_4ge2e")]
 
-[node name="Background" parent="." index="3"]
+[node name="Background" parent="." index="2"]
 z_index = 0
 collision_enabled = true
 
-[node name="mesure" parent="." index="4"]
+[node name="mesure" parent="." index="3"]
+visible = false
 collision_enabled = true
 
-[node name="BackgroundProps" parent="." index="5"]
+[node name="BackgroundProps" parent="." index="4"]
 z_index = 0
 collision_enabled = true
 
-[node name="Block" parent="." index="6"]
-tile_map_data = PackedByteArray("AAAAAAgAAAAJAAEAAAABAAgAAAAJAAEAAAACAAgAAAAJAAEAAAADAAgAAAAJAAEAAAAEAAgAAAAJAAEAAAAFAAgAAAAJAAEAAAAGAAgAAAAJAAEAAAAHAAgAAAAJAAEAAAAIAAgAAAAJAAEAAAAJAAgAAAAJAAEAAAAKAAgAAAAJAAEAAAALAAgAAAAJAAEAAAAMAAgAAAAJAAEAAAANAAgAAAAJAAEAAAAMAAcAAAAEAAQAAAACAAcAAAAEAAQAAAAAAAcAAAAEAAQAAAD//wgAAAAIAAEAAAAOAAgAAAAKAAEAAAAAAAEAAAAEAAQAAAAAAAIAAAAFAAYAAAAAAAMAAAAEAAQAAAAAAAQAAAAEAAQAAAAAAAUAAAAEAAQAAAAAAAYAAAAFAAUAAAABAAIAAAAGAAUAAAACAAYAAAAFAAUAAAAMAAEAAAAFAAUAAAAMAAYAAAAFAAYAAAANAAEAAAAFAAYAAAANAAIAAAAEAAQAAAANAAMAAAAEAAQAAAANAAQAAAAEAAQAAAANAAUAAAAEAAQAAAD//wIAAAAEAAYAAAD//wYAAAAEAAUAAAD//wkAAAAIAAMAAAAAAAkAAAAJAAMAAAABAAMAAAAFAAcAAAABAAYAAAAFAAUAAAABAAkAAAAJAAMAAAACAAkAAAAJAAMAAAADAAYAAAAGAAUAAAADAAkAAAAJAAMAAAAEAAkAAAAJAAUAAAAFAAkAAAAJAAMAAAAGAAkAAAAJAAMAAAAHAAkAAAAJAAMAAAAIAAkAAAAIAAUAAAAJAAkAAAAJAAMAAAAKAAkAAAAJAAMAAAALAAEAAAAEAAYAAAALAAYAAAAEAAUAAAALAAkAAAAJAAMAAAAMAAIAAAAEAAgAAAAMAAkAAAAJAAMAAAANAAYAAAAFAAUAAAANAAkAAAAJAAMAAAAOAAEAAAAFAAUAAAAOAAYAAAAGAAUAAAAOAAkAAAAKAAMAAAAAAAAAAAAEAAQAAAAAAP//AAAEAAQAAAAPAAEAAAAGAAYAAAANAAAAAAAEAAQAAAANAP//AAAEAAQAAAA=")
+[node name="Block" parent="." index="5"]
+tile_map_data = PackedByteArray("AAAAAAgAAAAJAAEAAAABAAgAAAAJAAEAAAACAAgAAAAJAAEAAAADAAgAAAAJAAEAAAAEAAgAAAAJAAEAAAAFAAgAAAAJAAEAAAAGAAgAAAAJAAEAAAAHAAgAAAAJAAEAAAAIAAgAAAAJAAEAAAAJAAgAAAAJAAEAAAAKAAgAAAAJAAEAAAALAAgAAAAJAAEAAAAMAAgAAAAJAAEAAAANAAgAAAAJAAEAAAAMAAcAAAAEAAQAAAACAAcAAAAEAAQAAAAAAAcAAAAEAAQAAAD//wgAAAAIAAEAAAAOAAgAAAAJAAEAAAAAAAEAAAAEAAQAAAAAAAIAAAAFAAYAAAAAAAMAAAAEAAQAAAAAAAQAAAAEAAQAAAAAAAUAAAAEAAQAAAAAAAYAAAAFAAUAAAABAAIAAAAGAAUAAAACAAYAAAAFAAUAAAAMAAEAAAAFAAUAAAAMAAYAAAAFAAYAAAANAAEAAAAFAAYAAAANAAIAAAAEAAQAAAANAAMAAAAEAAQAAAANAAQAAAAEAAQAAAANAAUAAAAEAAQAAAD//wIAAAAEAAYAAAD//wYAAAAEAAUAAAD//wkAAAAIAAMAAAAAAAkAAAAJAAMAAAABAAMAAAAFAAcAAAABAAYAAAAFAAUAAAABAAkAAAAJAAMAAAACAAkAAAAJAAMAAAADAAYAAAAGAAUAAAADAAkAAAAJAAMAAAAEAAkAAAAJAAUAAAAFAAkAAAAJAAMAAAAGAAkAAAAJAAMAAAAHAAkAAAAJAAMAAAAIAAkAAAAIAAUAAAAJAAkAAAAJAAMAAAAKAAkAAAAJAAMAAAALAAEAAAAEAAYAAAALAAYAAAAEAAUAAAALAAkAAAAJAAMAAAAMAAIAAAAEAAgAAAAMAAkAAAAJAAMAAAANAAYAAAAFAAUAAAANAAkAAAAJAAMAAAAOAAEAAAAFAAUAAAAOAAYAAAAGAAUAAAAOAAkAAAAJAAMAAAAAAAAAAAAEAAQAAAAAAP//AAAEAAQAAAAPAAEAAAAGAAYAAAANAAAAAAAEAAQAAAANAP//AAAEAAQAAAAPAAkAAAAKAAMAAAAPAAgAAAAKAAEAAAA=")
 
-[node name="Goal" parent="." index="7"]
+[node name="Goal" parent="." index="6"]
 position = Vector2(168, 72)
 
-[node name="Block2" parent="." index="8"]
-position = Vector2(72, 72)
-right_extendable = true
-right_extend_range = Vector2i(8, 104)
-right_extend_block_range = Vector2i(0, 6)
-
-[node name="World1Decoration2" type="Sprite2D" parent="." index="9"]
+[node name="World1Decoration2" type="Sprite2D" parent="." index="7"]
 visible = false
 z_index = -1
 position = Vector2(88, 152)
@@ -115,18 +110,18 @@ texture = ExtResource("2_f7chm")
 hframes = 2
 frame = 1
 
-[node name="Birds" type="Node2D" parent="." index="10"]
+[node name="Birds" type="Node2D" parent="." index="8"]
 
-[node name="Bird2" parent="Birds" index="0" instance=ExtResource("3_qrr7o")]
-position = Vector2(24, 88)
-
-[node name="Bird4" parent="Birds" index="1" instance=ExtResource("3_qrr7o")]
+[node name="Bird" parent="Birds" index="0" instance=ExtResource("3_qrr7o")]
 position = Vector2(72, 56)
 
-[node name="Bird3" parent="Birds" index="2" instance=ExtResource("3_qrr7o")]
-position = Vector2(200, 88)
+[node name="Bird2" parent="Birds" index="1" instance=ExtResource("3_qrr7o")]
+position = Vector2(32, 88)
 
-[node name="DragTutorial" type="Node2D" parent="." index="11"]
+[node name="Bird3" parent="Birds" index="2" instance=ExtResource("3_qrr7o")]
+position = Vector2(192, 88)
+
+[node name="DragTutorial" type="Node2D" parent="." index="9"]
 script = ExtResource("4_lkncf")
 
 [node name="DragTutorialFinger" type="Sprite2D" parent="DragTutorial" index="0"]
@@ -139,3 +134,9 @@ centered = false
 libraries = {
 "": SubResource("AnimationLibrary_ntijy")
 }
+
+[node name="Block2" parent="." index="10"]
+position = Vector2(72, 72)
+right_extendable = true
+right_extend_range = Vector2i(8, 104)
+right_extend_block_range = Vector2i(0, 6)

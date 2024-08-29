@@ -18,6 +18,7 @@ offsets = PackedFloat32Array(0.0243902, 0.844291, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 
 [node name="CityVisuals" type="Node2D"]
+z_index = -400
 metadata/_edit_lock_ = true
 
 [node name="BirdParticles" parent="." instance=ExtResource("3_4v42j")]
@@ -73,6 +74,7 @@ autoscroll = Vector2(8, 0)
 repeat_times = 5
 
 [node name="ColorRect" type="ColorRect" parent="CityBackground/BackClouds"]
+process_mode = 4
 z_index = -210
 offset_left = -744.0
 offset_top = -545.0

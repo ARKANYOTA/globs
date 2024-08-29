@@ -4,9 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="4_5waxu"]
 [ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels/visuals/city_visuals.tscn" id="4_vwhfn"]
 
-[node name="Level2" instance=ExtResource("1_k74mq")]
+[node name="LevelCity" instance=ExtResource("1_k74mq")]
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="0"]
+[node name="CityVisuals" parent="." index="0" instance=ExtResource("4_vwhfn")]
+process_priority = 2849
+process_physics_priority = 3014
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="1"]
 visible = false
 energy = 0.2
 shadow_enabled = true
@@ -14,19 +18,12 @@ shadow_enabled = true
 [node name="CanvasModulate" type="CanvasModulate" parent="DirectionalLight2D" index="0"]
 color = Color(0.8, 0.8, 0.8, 1)
 
-[node name="CityVisuals" parent="." index="1" instance=ExtResource("4_vwhfn")]
-z_index = -4
-position = Vector2(-48, -24)
-
-[node name="Camera2D" parent="." index="2"]
-offset = Vector2(0, 0)
-
-[node name="Background" parent="." index="3"]
+[node name="Background" parent="." index="2"]
 modulate = Color(0.631143, 0.674079, 0.78275, 1)
 
-[node name="Block" parent="." index="6"]
+[node name="Block" parent="." index="5"]
 tile_map_data = PackedByteArray("AAAAAAgAAAAJAAMAAAABAAgAAAAJAAMAAAACAAgAAAAJAAMAAAADAAgAAAAJAAMAAAAEAAgAAAAJAAMAAAAFAAgAAAAJAAMAAAAGAAgAAAAJAAMAAAAHAAgAAAAJAAMAAAAIAAgAAAAJAAMAAAAJAAgAAAAJAAMAAAAKAAgAAAAJAAMAAAALAAgAAAAJAAMAAAAMAAgAAAAJAAMAAAANAAgAAAAJAAMAAAAOAAcAAAAKAAEAAAANAAcAAAAJAAEAAAAMAAcAAAAJAAEAAAALAAcAAAAJAAEAAAAKAAcAAAAJAAEAAAAJAAcAAAAJAAEAAAAIAAcAAAAJAAEAAAAHAAcAAAAJAAEAAAAGAAcAAAAJAAEAAAAFAAcAAAAJAAEAAAAEAAcAAAAJAAEAAAADAAcAAAAJAAEAAAACAAcAAAAJAAEAAAABAAcAAAAJAAEAAAAAAAcAAAAJAAEAAAD//wcAAAAIAAEAAAD//wgAAAAIAAMAAAAOAAgAAAAKAAMAAAA=")
 
-[node name="Block2" parent="." index="8" instance=ExtResource("4_5waxu")]
+[node name="Block2" parent="." index="7" instance=ExtResource("4_5waxu")]
 position = Vector2(40, 104)
 is_main_character = true
