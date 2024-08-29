@@ -839,10 +839,8 @@ func extend_block(variation: int, direction: Direction, push: bool):
 		return
 	if not is_visible():
 		return
-
-	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
-	var tween_transition = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	
+
 	var val: float
 	var tween_property = ""
 	var movements: Array = []
@@ -902,6 +900,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 	assert(get_parent() != null, "Le level est null")
 	if not push and val != -8:
 		get_parent().go_to_next_actions()
+	var tween_transition = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 
 	for i in range(int(not reverse and not push), len(movements)):
 		var move_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
@@ -929,8 +928,9 @@ func extend_block(variation: int, direction: Direction, push: bool):
 				if block == null:
 					return
 				move_tween.tween_callback(func(): block.extend_block(off, direction if not reverse else get_opposite_direction(direction), true))
-
+	
 	if tween_property != "" and not push and val != -8:
+		var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(self, tween_property, val, move_speed).set_ease(Tween.EASE_OUT)
 		slide_audio.play()
 	if not push and val != -8:
