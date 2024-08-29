@@ -824,8 +824,7 @@ func _on_click_area_dragging():
 			handles[selected_edge].set_highlighted(true)
 
 func set_is_moving_to_false():
-	
-	is_moving = false 
+	is_moving = false
 
 func set_is_falling_to_false():
 	is_falling = false
@@ -895,7 +894,8 @@ func extend_block(variation: int, direction: Direction, push: bool):
 	if reverse and push and not push_bounce:
 		remaining_pushs = -1
 		return
-	
+	if is_moving:
+		return
 	is_moving = true
 	var mul = -1 if reverse else 1
 	var off = mul * 16 if direction == Direction.RIGHT or direction == Direction.DOWN else mul * -16
@@ -935,8 +935,12 @@ func extend_block(variation: int, direction: Direction, push: bool):
 		slide_audio.play()
 	if not push and val != -8:
 		tween_transition.tween_callback(update_positions).set_delay(move_speed)
+	if reverse:
+		tween_transition.tween_callback(set_is_moving_to_false)
+	else:
+		tween_transition.tween_callback(set_is_moving_to_false).set_delay(move_speed)
+
 	_update_scale_handles()
-	tween_transition.tween_callback(set_is_moving_to_false).set_delay(move_speed)
 
 func update_positions():
 	assert(get_parent() != null, "Le level est null")
