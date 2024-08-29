@@ -27,14 +27,31 @@ func go_to_next_actions():
 			dico[child] = BlockData.new(child)
 	actions.append(dico)
 
+func upgrade_time_to_everyone(block: Block):
+	for child in $".".get_children():
+		if child is Block and child.is_visible():
+			if child.time_left != 0:
+				if child.is_time_global or ((not child.is_time_global) and child==block):
+					child.time_left -= 1
+					if child.time_left == 0:
+						child.hide()
+
 	
 func undo_action():
 	if len(actions) == 0:
 		return
 	else:
+		print("before",len(actions))
+
 		var toundo_actions = actions.pop_back()
+		print("after", len(actions))
 		for block in toundo_actions.keys():
 			var toundo_action_on_this_block = toundo_actions[block]
+			if toundo_action_on_this_block.is_visible:
+				block.show()
+			else:
+				block.hide()
+
 			block.position = toundo_action_on_this_block.position
 			block.up_extend_value = toundo_action_on_this_block.up_extend_value
 			block.down_extend_value = toundo_action_on_this_block.down_extend_value
@@ -42,5 +59,9 @@ func undo_action():
 			block.left_extend_value = toundo_action_on_this_block.left_extend_value
 			block.gravity_axis = toundo_action_on_this_block.gravity_axis
 			block.default_gravity_axis = toundo_action_on_this_block.default_gravity_axis
+			block.time_left = toundo_action_on_this_block.time_left
+			print("undo")
+		print("after after", len(actions))
+
 
 	

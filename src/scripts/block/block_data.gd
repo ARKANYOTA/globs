@@ -8,7 +8,8 @@ var right_extend_value
 var left_extend_value
 var default_gravity_axis
 var gravity_axis
-
+var time_left
+var is_visible
 
 func _init(child: Block):
 	position = child.position
@@ -18,6 +19,8 @@ func _init(child: Block):
 	left_extend_value = child.left_extend_value
 	default_gravity_axis = child.default_gravity_axis
 	gravity_axis = child.gravity_axis
+	time_left = child.time_left
+	is_visible = child.is_visible()
 	
 func _to_string():
-	return "["+str(position)+",("+str(up_extend_value)+", "+str(down_extend_value)+","+str(right_extend_value)+","+str(left_extend_value)+")]"
+	return "["+str(position)+",("+str(up_extend_value)+", "+str(down_extend_value)+","+str(right_extend_value)+","+str(left_extend_value)+","+str(is_visible)+")]"

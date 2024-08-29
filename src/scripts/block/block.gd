@@ -109,6 +109,10 @@ var gravity_axis = Direction.DOWN
 	set(value):
 		right_extend_value = clamp(value, right_extend_range.x, right_extend_range.y)
 		update_dimensions()
+		
+@export_group("Time Left")
+@export var time_left: int = 0
+@export var is_time_global: bool = true
 
 ################################################
 
@@ -399,7 +403,7 @@ func get_map_data() -> Array:
 				if cell.x < 0 or cell.y < 0:
 					continue
 				grid[cell.y][cell.x] = -1 # static
-		if node is Block:
+		if node is Block and node.is_visible():
 			var id = -1
 			if not node.static_block and not node.is_falling:
 				id = blocks.size()
@@ -658,12 +662,15 @@ func _physics_process(delta):
 	if Engine.is_editor_hint():
 		return
 	
+	if not is_visible():
+		return
+	
 	if is_gravity_enabled and not is_falling:
 		var map_data = get_map_data()
 		var grid = map_data[0]
 		var rect = get_grid_rect()
 		var can_fall = true
-
+		
 		var spos = get_pos(gravity_axis)
 		var dir = dir_map[gravity_axis]
 		var line_size = rect.size.x if gravity_axis == Direction.DOWN or gravity_axis == Direction.UP else rect.size.y
@@ -805,6 +812,7 @@ func _on_click_area_dragging():
 			handles[selected_edge].set_highlighted(true)
 
 func set_is_moving_to_false():
+	
 	is_moving = false 
 
 func set_is_falling_to_false():
@@ -818,7 +826,9 @@ func extend_block(variation: int, direction: Direction, push: bool):
 	
 	if get_tree() == null:
 		return
-	
+	if not is_visible():
+		return
+
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	var tween_transition = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	
@@ -870,7 +880,6 @@ func extend_block(variation: int, direction: Direction, push: bool):
 		
 		val = down_extend_value + variation
 		tween_property = "down_extend_value"
-
 	if reverse and push and not push_bounce:
 		remaining_pushs = -1
 		return
@@ -881,6 +890,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 	assert(get_parent() != null, "Le level est null")
 	if not push and val != -8:
 		get_parent().go_to_next_actions()
+
 	for i in range(int(not reverse and not push), len(movements)):
 		var move_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 		var block: Block = movements[i]
@@ -909,9 +919,15 @@ func extend_block(variation: int, direction: Direction, push: bool):
 	if tween_property != "" and not push and val != -8:
 		tween.tween_property(self, tween_property, val, move_speed).set_ease(Tween.EASE_OUT)
 		slide_audio.play()
-
-	tween_transition.tween_callback(set_is_moving_to_false).set_delay(move_speed)
+	if not push and val != -8:
+		tween_transition.tween_callback(update_positions).set_delay(move_speed)
 	_update_scale_handles()
+	tween_transition.tween_callback(set_is_moving_to_false).set_delay(move_speed)
+
+func update_positions():
+	assert(get_parent() != null, "Le level est null")
+	get_parent().upgrade_time_to_everyone(self)
+
 
 func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 	if is_moving or not is_selected:

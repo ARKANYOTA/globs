@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://3mnnhncipyxp"]
+
+[ext_resource type="PackedScene" uid="uid://bt58nkodr7coo" path="res://scenes/levels_zoomed/world_1/level_100_template.tscn" id="1_rhhxs"]
+[ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="2_enslh"]
+
+[node name="LevelCity" instance=ExtResource("1_rhhxs")]
+
+[node name="Block2" parent="." index="7"]
+up_extendable = true
+
+[node name="Block3" parent="." index="8" instance=ExtResource("2_enslh")]
+position = Vector2(104, 104)
+up_extendable = true
+time_left = 3
+
+[node name="Block4" parent="." index="9" instance=ExtResource("2_enslh")]
+position = Vector2(104, 88)
+
+[node name="Block5" parent="." index="10" instance=ExtResource("2_enslh")]
+position = Vector2(104, 72)
+up_extendable = true
+time_left = 2
+is_time_global = false
