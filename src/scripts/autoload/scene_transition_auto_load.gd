@@ -10,23 +10,23 @@ func _ready() -> void:
 	#load the scene transition scene
 	scene_transition_instance = scene_transition.instantiate()
 	add_child(scene_transition_instance)
-	youwinlevel_instance = youwinlevel.instantiate()
 
 func change_scene_with_transition(scene: String, put_confetis = false) -> void:
 	PauseMenuAutoload.can_pause = false
 	var root = get_tree().get_current_scene()
 	if put_confetis:
 		for i in root.get_children():
-			if i is Block:
+			if i is Block and i.is_visible():
 				if i.is_main_character:
+					youwinlevel_instance = youwinlevel.instantiate()
 					i.add_child(youwinlevel_instance)
 					
 	var animation_player : AnimationPlayer = scene_transition_instance.get_node("AnimationPlayer")
 	var transition_audio: AudioStreamPlayer2D = scene_transition_instance.get_node("TransitionAudio")
 	var title_player : AnimationPlayer = scene_transition_instance.get_node("TitlePlayer")
 	var title : Label = scene_transition_instance.get_node("WorldTitle")
-	var slides = ["bloc_in","block_in_vertical"]
-	var random_slide_transition = randi_range(0, 0) # NOT USED
+	var slides = ["bloc_in"] # ,"block_in_vertical"]
+	var random_slide_transition =  0 # randi_range(0, 0) # NOT USED
 	# title.text = LevelData.names[LevelData.level - 1]
 	set_random_sprite_transition()
 	
@@ -35,9 +35,12 @@ func change_scene_with_transition(scene: String, put_confetis = false) -> void:
 	await animation_player.animation_finished
 	if put_confetis:
 		for i in root.get_children():
-			if i is Block:
+			if i is Block and i.is_visible():
 				if i.is_main_character:
-					i.remove_child(youwinlevel_instance)
+					var child_list = i.get_children()
+					for particle in child_list:
+						if particle.get_name() == "YouWinLevel":
+							particle.queue_free()
 	
 	animation_player.play(slides[random_slide_transition], -1, -0.7, true)
 
