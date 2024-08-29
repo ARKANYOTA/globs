@@ -16,9 +16,12 @@ colors = PackedColorArray(1, 1, 1, 0.0862745, 1, 1, 1, 0.611765, 1, 1, 1, 0.5411
 
 [node name="Level2" instance=ExtResource("1_3mx4c")]
 
-[node name="Background" parent="." index="1"]
+[node name="Background" parent="." index="0"]
 modulate = Color(0.5712, 0.5984, 0.68, 1)
 z_index = -6
+
+[node name="mesure" parent="." index="1"]
+visible = false
 
 [node name="Background2" type="TileMapLayer" parent="." index="2"]
 modulate = Color(0.5712, 0.5984, 0.68, 1)
@@ -26,12 +29,12 @@ z_index = -4
 tile_set = ExtResource("2_yk5bi")
 collision_enabled = false
 
-[node name="Planet" type="Sprite2D" parent="." index="7"]
+[node name="Planet" type="Sprite2D" parent="." index="6"]
 z_index = -5
 position = Vector2(186, 115)
 texture = ExtResource("2_gljx0")
 
-[node name="DustParticle" type="CPUParticles2D" parent="." index="8"]
+[node name="DustParticle" type="CPUParticles2D" parent="." index="7"]
 z_index = -5
 position = Vector2(112, 64)
 amount = 50
@@ -52,5 +55,5 @@ color = Color(0.352941, 0.411765, 0.533333, 1)
 color_ramp = SubResource("Gradient_gqkb2")
 script = ExtResource("4_w300t")
 
-[node name="Block2" parent="." index="9" instance=ExtResource("3_lpsvi")]
+[node name="Block2" parent="." index="8" instance=ExtResource("3_lpsvi")]
 position = Vector2(123, 104)

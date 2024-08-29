@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=4 uid="uid://bt58nkodr7coo"]
+[gd_scene load_steps=5 format=4 uid="uid://bt58nkodr7coo"]
 
 [ext_resource type="PackedScene" uid="uid://dajgqkks6gfke" path="res://scenes/levels/level_template.tscn" id="1_k74mq"]
+[ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="3_fm378"]
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="4_5waxu"]
 [ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels/visuals/city_visuals.tscn" id="4_vwhfn"]
 
@@ -21,9 +22,18 @@ color = Color(0.8, 0.8, 0.8, 1)
 [node name="Background" parent="." index="2"]
 modulate = Color(0.631143, 0.674079, 0.78275, 1)
 
-[node name="Block" parent="." index="5"]
+[node name="mesure" parent="." index="3"]
+visible = false
+
+[node name="BackgroundTilesDark" type="TileMapLayer" parent="." index="4"]
+modulate = Color(0.533333, 0.580392, 0.701961, 1)
+z_index = -3
+tile_set = ExtResource("3_fm378")
+collision_enabled = false
+
+[node name="Block" parent="." index="6"]
 tile_map_data = PackedByteArray("AAAAAAgAAAAJAAMAAAABAAgAAAAJAAMAAAACAAgAAAAJAAMAAAADAAgAAAAJAAMAAAAEAAgAAAAJAAMAAAAFAAgAAAAJAAMAAAAGAAgAAAAJAAMAAAAHAAgAAAAJAAMAAAAIAAgAAAAJAAMAAAAJAAgAAAAJAAMAAAAKAAgAAAAJAAMAAAALAAgAAAAJAAMAAAAMAAgAAAAJAAMAAAANAAgAAAAJAAMAAAAOAAcAAAAKAAEAAAANAAcAAAAJAAEAAAAMAAcAAAAJAAEAAAALAAcAAAAJAAEAAAAKAAcAAAAJAAEAAAAJAAcAAAAJAAEAAAAIAAcAAAAJAAEAAAAHAAcAAAAJAAEAAAAGAAcAAAAJAAEAAAAFAAcAAAAJAAEAAAAEAAcAAAAJAAEAAAADAAcAAAAJAAEAAAACAAcAAAAJAAEAAAABAAcAAAAJAAEAAAAAAAcAAAAJAAEAAAD//wcAAAAIAAEAAAD//wgAAAAIAAMAAAAOAAgAAAAKAAMAAAA=")
 
-[node name="Block2" parent="." index="7" instance=ExtResource("4_5waxu")]
+[node name="Block2" parent="." index="8" instance=ExtResource("4_5waxu")]
 position = Vector2(40, 104)
 is_main_character = true

@@ -7,10 +7,13 @@
 
 [node name="Level" instance=ExtResource("1_wwxyn")]
 
-[node name="Background" parent="." index="1"]
+[node name="Background" parent="." index="0"]
 modulate = Color(0.689906, 0.722983, 0.819723, 1)
 
-[node name="Block" parent="." index="4"]
+[node name="mesure" parent="." index="1"]
+visible = false
+
+[node name="Block" parent="." index="3"]
 tile_map_data = PackedByteArray("AAAAAAgAAQAFAAAAAAABAAgAAQAGAAAAAAACAAgAAQAGAAAAAAADAAgAAQAGAAAAAAAEAAgAAQAGAAAAAAAFAAgAAQAGAAAAAAAGAAgAAQAGAAAAAAAHAAgAAQAGAAAAAAAIAAgAAQAGAAAAAAAJAAgAAQAGAAAAAAAKAAgAAQAGAAAAAAALAAgAAQAGAAAAAAAMAAgAAQAGAAAAAAANAAgAAQAGAAAAAAAOAAgAAQAHAAAAAAAAAAkAAQAFAAIAAAABAAkAAQAGAAIAAAACAAkAAQAGAAIAAAADAAkAAQAGAAIAAAAEAAkAAQAGAAIAAAAGAAkAAQAGAAIAAAAFAAkAAQAGAAIAAAAHAAkAAQAGAAIAAAAJAAkAAQAGAAIAAAAIAAkAAQAGAAIAAAAKAAkAAQAGAAIAAAALAAkAAQAGAAIAAAAMAAkAAQAGAAIAAAANAAkAAQAGAAIAAAAOAAkAAQAHAAIAAAA=")
 
 [node name="SnowBackground" type="Sprite2D" parent="." index="5"]
@@ -18,11 +21,12 @@ z_index = -5
 position = Vector2(128, 88)
 texture = ExtResource("2_i2q6b")
 
-[node name="SnowParticle" parent="." index="7" instance=ExtResource("3_kknnb")]
-position = Vector2(-32, 64)
+[node name="SnowParticle" parent="." index="6" instance=ExtResource("3_kknnb")]
+position = Vector2(-215, 64)
 amount = 160
+lifetime = 6.0
 preprocess = 3.0
 
-[node name="Block5" parent="." index="8" instance=ExtResource("4_vvbfm")]
+[node name="Block5" parent="." index="7" instance=ExtResource("4_vvbfm")]
 position = Vector2(40, 120)
 is_main_character = true
