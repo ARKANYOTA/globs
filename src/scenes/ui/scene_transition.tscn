@@ -159,12 +159,15 @@ stream = ExtResource("3_e4mfm")
 volume_db = 12.0
 
 [node name="PanelContainer" type="Control" parent="."]
+process_priority = 6455
+process_physics_priority = 2935
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="PanelUp" type="NinePatchRect" parent="PanelContainer"]
 layout_mode = 1
@@ -192,7 +195,7 @@ offset_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_eb5k4")
-region_rect = Rect2(0, 33, 16, 15)
+region_rect = Rect2(0, 32, 16, 16)
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
