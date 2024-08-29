@@ -2,7 +2,9 @@ extends Node
 
 var cursor = preload("res://assets/images/ui/cursor_big.png")
 var cursor_click = preload("res://assets/images/ui/cursor_click_big.png")
+var global_camera_scene: PackedScene = preload("res://scenes/camera/global_camera.tscn")
 
+var camera: Camera2D
 var is_fullscreen := false
 
 func win():
@@ -24,6 +26,9 @@ func win():
 
 
 func _ready():
+	camera = global_camera_scene.instantiate()
+	add_child(camera)
+
 	process_mode = ProcessMode.PROCESS_MODE_ALWAYS
 	
 	Input.set_custom_mouse_cursor(cursor)

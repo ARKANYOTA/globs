@@ -7,10 +7,6 @@
 [node name="Level" type="Node2D"]
 script = ExtResource("1_q5cud")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(120, 72)
-offset = Vector2(-1, 0)
-
 [node name="Background" type="TileMapLayer" parent="."]
 z_index = -4
 tile_set = ExtResource("2_a5brp")
