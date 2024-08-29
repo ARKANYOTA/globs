@@ -7,13 +7,14 @@
 [node name="Level" type="Node2D"]
 script = ExtResource("1_q5cud")
 
-[node name="Background" type="TileMapLayer" parent="."]
-z_index = -4
+[node name="Measure" type="TileMapLayer" parent="."]
+visible = false
+tile_map_data = PackedByteArray("AAD+/wAAAAAAAAEAAAD+/wIAAAAAAAIAAAD+/wYAAAAAAAIAAAD+/wgAAAAAAAEAAAD+/wQAAAAAAAEAAAAAAP7/AAAAAAEAAAAEAP7/AAAAAAEAAAAIAP7/AAAAAAEAAAAMAP7/AAAAAAEAAAACAP7/AAAAAAIAAAAGAP7/AAAAAAIAAAAKAP7/AAAAAAIAAAAOAP7/AAAAAAIAAAA=")
 tile_set = ExtResource("2_a5brp")
 collision_enabled = false
 
-[node name="mesure" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD+/wAAAAAAAAEAAAD+/wIAAAAAAAIAAAD+/wYAAAAAAAIAAAD+/wgAAAAAAAEAAAD+/wQAAAAAAAEAAAAAAP7/AAAAAAEAAAAEAP7/AAAAAAEAAAAIAP7/AAAAAAEAAAAMAP7/AAAAAAEAAAACAP7/AAAAAAIAAAAGAP7/AAAAAAIAAAAKAP7/AAAAAAIAAAAOAP7/AAAAAAIAAAA=")
+[node name="Background" type="TileMapLayer" parent="."]
+z_index = -4
 tile_set = ExtResource("2_a5brp")
 collision_enabled = false
 
