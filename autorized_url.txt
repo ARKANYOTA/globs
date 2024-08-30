@@ -1,4 +1,5 @@
-arkanyota.github.io
-yolwoocle.itch.io
-nine-sliced.github.io
-localhost
+["arkanyota.github.io",
+"yolwoocle.itch.io",
+"nine-sliced.github.io",
+"localhost",
+""]
