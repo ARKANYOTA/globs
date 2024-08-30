@@ -10,7 +10,7 @@ func show_correct_game_gui():
 		 # var level_data = LevelData.get_current_level_data()
 		if current_scene_name == "WorldSelect" or current_scene_name == "YouWinLevel":
 			PauseMenuAutoload.game_gui.show_level_select()
-		elif current_scene_name == "Main":
+		elif current_scene_name == "Main" or current_scene_name == "RedirectPageToOurGames":
 			PauseMenuAutoload.game_gui.hide_gui()
 		else: 
 			PauseMenuAutoload.game_gui.show_gui()

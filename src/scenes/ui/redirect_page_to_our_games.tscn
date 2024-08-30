@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://do8khq28rqe3n"]
+
+[ext_resource type="LabelSettings" uid="uid://cl1yg37xye2ku" path="res://assets/resources/label_settings.tres" id="1_voncg"]
+
+[node name="RedirectPageToOurGames" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 26.0
+offset_right = 229.0
+offset_bottom = 63.0
+text = "Hey Bro you are on a unknown url.
+If you think this is an error, report to us.
+Else: Please go on our url:"
+label_settings = ExtResource("1_voncg")
+
+[node name="Yolwoocle" type="LinkButton" parent="Control"]
+offset_left = 72.0
+offset_top = 66.0
+offset_right = 150.0
+offset_bottom = 89.0
+text = "Yolwoocle"
+uri = "https://yolwoocle.itch.io/globs"
+
+[node name="Arkanyota" type="LinkButton" parent="Control"]
+offset_left = 71.0
+offset_top = 84.0
+offset_right = 152.0
+offset_bottom = 107.0
+text = "ArkanYota"
+uri = "https://arkanyota.github.io/gmtk2024"
