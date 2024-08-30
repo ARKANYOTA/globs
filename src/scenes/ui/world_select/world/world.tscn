@@ -10,4 +10,8 @@ script = ExtResource("1_suump")
 z_index = -1
 tile_set = ExtResource("1_imaqt")
 
+[node name="TopLayer" type="TileMapLayer" parent="."]
+z_index = -1
+tile_set = ExtResource("1_imaqt")
+
 [node name="Levels" type="Node2D" parent="."]
