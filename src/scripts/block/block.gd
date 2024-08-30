@@ -293,6 +293,7 @@ func update_range_from_block_range():
 func update_dimensions():
 	var dim: Vector2 = Vector2(left_extend_value + right_extend_value, 
 							   up_extend_value + down_extend_value)
+	var grid_dim: Vector2i = (get_grid_rect().size - Vector2i(1, 1)) * 16 + Vector2i(8, 8)
 	var click_area: ClickArea = $ClickArea
 	var block_collision_shape: CollisionShape2D = $CollisionShape
 	var shape = block_collision_shape.shape
@@ -303,7 +304,7 @@ func update_dimensions():
 		return
 	
 	# Update size
-	shape.size = dim
+	shape.size = grid_dim
 	if light_occ != null:
 		light_occ.occluder.polygon = [Vector2(-dim.x/2, -dim.y/2), Vector2(dim.x/2, -dim.y/2), Vector2(dim.x/2, dim.y/2), Vector2(-dim.x/2, dim.y/2)]
 	
