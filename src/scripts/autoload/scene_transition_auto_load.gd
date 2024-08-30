@@ -7,7 +7,6 @@ static var is_autorized_url_loaded = false
 func get_urls():
 	var http_request = HTTPRequest.new()
 	add_child(http_request)
-	# print(http_request.request_raw("https://raw.githubusercontent.com/ARKANYOTA/gmtk2024/main/autorized_url.txt"))
 	http_request.request("https://raw.githubusercontent.com/ARKANYOTA/gmtk2024/main/autorized_url.txt")
 	var response = await http_request.request_completed
 	var result = response[0]
@@ -22,12 +21,10 @@ func get_urls():
 	# result, status code, response headers, and body are now in indices 0, 1, 2, and 3 of response	
 func is_url_valid() -> bool:
 	if not OS.has_feature('web'):
-		print("has not JS")
 		return true
 	var location = JavaScriptBridge.get_interface("location")
 	if not location:
 		return true
-	print(autorized_url)
 	var hostname = location.hostname
 	return hostname in autorized_url
 
@@ -41,15 +38,12 @@ func _ready() -> void:
 	scene_transition_instance = scene_transition.instantiate()
 	add_child(scene_transition_instance)
 	if not OS.has_feature('web'):
-		print("has not JS")
 		return
 
 	if not is_autorized_url_loaded:
-		print("is now loaded")
 		is_autorized_url_loaded = true
 		var urls = await get_urls()
 		if urls == []:
-			print("urls cannot be loaded")
 			return
 		autorized_url = urls
 
@@ -90,7 +84,6 @@ func change_scene_with_transition(scene: String, put_confetis = false) -> void:
 	animation_player.play(slides[random_slide_transition], -1, -0.7, true)
 
 	GameManager.before_scene_change()
-	print(scene)
 	if is_url_valid() or scene in ["res://scenes/main.tscn", "res://scenes/ui/world_select/world_select.tscn", "res://scenes/levels_zoomed/world_1/level_110.tscn",  "res://scenes/levels_zoomed/world_1/level_120.tscn","res://scenes/levels_zoomed/world_1/level_130.tscn", "res://scenes/levels_zoomed/world_1/level_140.tscn"]:
 		get_tree().change_scene_to_file(scene)
 		await get_tree().process_frame

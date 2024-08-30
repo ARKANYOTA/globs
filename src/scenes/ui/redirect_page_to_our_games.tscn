@@ -12,27 +12,29 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 26.0
-offset_right = 229.0
-offset_bottom = 63.0
-text = "Hey Bro you are on a unknown url.
-If you think this is an error, report to us.
-Else: Please go on our url:"
+offset_left = 19.0
+offset_top = 23.0
+offset_right = 220.0
+offset_bottom = 80.0
+text = "Hey man, you are on an unknown URL.
+And end the demo for an unknown URL.
+If you think this is a mistake, 
+please report it to us.
+Otherwise: Please go to our URL:"
 label_settings = ExtResource("1_voncg")
 
 [node name="Yolwoocle" type="LinkButton" parent="Control"]
-offset_left = 72.0
-offset_top = 66.0
-offset_right = 150.0
-offset_bottom = 89.0
+offset_left = 77.0
+offset_top = 80.0
+offset_right = 155.0
+offset_bottom = 103.0
 text = "Yolwoocle"
 uri = "https://yolwoocle.itch.io/globs"
 
 [node name="Arkanyota" type="LinkButton" parent="Control"]
-offset_left = 71.0
-offset_top = 84.0
-offset_right = 152.0
-offset_bottom = 107.0
+offset_left = 77.0
+offset_top = 99.0
+offset_right = 158.0
+offset_bottom = 122.0
 text = "ArkanYota"
 uri = "https://arkanyota.github.io/gmtk2024"
