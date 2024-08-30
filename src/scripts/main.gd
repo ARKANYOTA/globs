@@ -10,6 +10,8 @@ func _ready():
 	if PauseMenuAutoload.game_gui:
 		PauseMenuAutoload.game_gui.hide_gui()
 	PauseMenuAutoload.can_pause = false
+	if OS.has_feature("web_ios") or OS.has_feature("web_macos"):
+		$CanvasLayer/AppleWarn.show()
 
 # Quitting 
 func quit():
