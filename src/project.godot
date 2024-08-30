@@ -49,6 +49,15 @@ window/stretch/aspect="keep_height"
 mouse_cursor/custom_image="res://assets/images/ui/cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2(1, 1)
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "green",
+"res://scenes/": "blue",
+"res://scripts/": "yellow",
+"res://shaders/": "pink"
+}
+
 [input]
 
 pause={

@@ -76,7 +76,7 @@ func direction_to_rotation(direction: Block.Direction) -> float:
 
 func _ready():
 	collision_shape.shape = collision_shape.shape.duplicate()
-	collision_shape.shape.size = Vector2(size_pixels) - Vector2(2,2)
+	collision_shape.shape.size = Vector2(size_pixels) - Vector2(14,14)
 	collision_shape.position = Vector2(0,0)
 
 func _on_area_entered(area):
