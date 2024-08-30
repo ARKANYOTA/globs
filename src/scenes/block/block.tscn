@@ -22,8 +22,8 @@
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nttap"]
-size = Vector2(32, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qgt2"]
+size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
 atlas = ExtResource("4_3fhqr")
@@ -396,7 +396,8 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_eflyf")
 is_gravity_enabled = false
-drag_extend_only_area_size = 8
+time_left = 0
+is_time_global = true
 
 [node name="BlockOccluder" parent="." instance=ExtResource("2_doa3v")]
 occluder = SubResource("OccluderPolygon2D_nbgqd")
@@ -423,10 +424,14 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_nttap")
+shape = SubResource("RectangleShape2D_7qgt2")
 debug_color = Color(0, 0.509804, 0.6, 0.0509804)
 
 [node name="ClickArea" parent="." instance=ExtResource("3_h0fp2")]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
 
 [node name="CenterIndicator" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ucdvl")

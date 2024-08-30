@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-@onready var main = get_node_or_null("/root/Main")
-
 # Le fullscreenbutton n'a l'air de servir a rien, mais bon jsp qui l'a mis la dc je le laisse.
 
 func show_correct_game_gui():
