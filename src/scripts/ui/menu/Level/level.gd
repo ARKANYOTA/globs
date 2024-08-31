@@ -55,7 +55,11 @@ func _ready():
 	if levelScene in LevelData.completed_levels:
 		state = LevelState.COMPLETED
 		if world_unlock_id != 0:
-			LevelData.worlds_finished.append(world_unlock_id)
+			if world_unlock_id not in LevelData.worlds_finished:
+				LevelData.worlds_finished.append(world_unlock_id)
+				var next_world = LevelData.selected_world_index + 1
+				if next_world >= world_unlock_id:
+					LevelData.selected_world_index = next_world
 	pass
 
 func check_unlock():
