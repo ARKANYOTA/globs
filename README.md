@@ -58,4 +58,4 @@ If it does not fit that description please contact us at `ninesliced@gmail.com` 
 
 <hr>
 
-&copy; 2024 Guillaume Tran, Nolan Carlisi, Léo Bernard, Théodore Billote. All rights reserved.
+&copy; 2024 Guillaume Tran, Léo Bernard, Nolan Carlisi, Théodore Billotte. All rights reserved.
