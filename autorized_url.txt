@@ -2,4 +2,5 @@
 "yolwoocle.itch.io",
 "nine-sliced.github.io",
 "localhost",
+"html.itch.zone",
 ""]
