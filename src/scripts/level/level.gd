@@ -41,10 +41,7 @@ func undo_action():
 	if len(actions) == 0:
 		return
 	else:
-		print("before",len(actions))
-
 		var toundo_actions = actions.pop_back()
-		print("after", len(actions))
 		for block in toundo_actions.keys():
 			var toundo_action_on_this_block = toundo_actions[block]
 			if toundo_action_on_this_block.is_visible:
@@ -57,11 +54,9 @@ func undo_action():
 			block.down_extend_value = toundo_action_on_this_block.down_extend_value
 			block.right_extend_value = toundo_action_on_this_block.right_extend_value
 			block.left_extend_value = toundo_action_on_this_block.left_extend_value
-			block.gravity_axis = toundo_action_on_this_block.gravity_axis
 			block.default_gravity_axis = toundo_action_on_this_block.default_gravity_axis
+			block.gravity_axis = toundo_action_on_this_block.gravity_axis
 			block.time_left = toundo_action_on_this_block.time_left
-			print("undo")
-		print("after after", len(actions))
 
 
 	
