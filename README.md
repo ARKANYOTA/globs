@@ -19,6 +19,30 @@ Open the `src` folder in the Godot project manager.
 
 To export, look at the [Godot documentation page](https://docs.godotengine.org/en/stable/tutorials/export/exporting_projects.html) about exporting projects.
 
+
+<h2>
+    <span>
+        <img src="readme/alien_small.png">
+    </span> Is this game open source?
+</h2>
+
+**No.** In contrast to [open source software](https://en.wikipedia.org/wiki/Open-source_software), this game is only [source available](https://en.wikipedia.org/wiki/Source-available_software). **Not having a licence means that by default we reserve all original rights for the game, even if the code is public.**  
+
+However, we want to be very lax with what you can do with the source code. This is just to cover our asses from people that reupload games without consent to other places. Please feel free to reuse and modify the source code or assets, for any non-commercial or personal project, as long as you're not directly distributing the code, assets, or any executables.  
+*(This does not mean that we are giving up any rights, by the way; this is purely indicative.)*
+
+If it does not fit that description please contact us at `ninesliced@gmail.com` (contact `leo@yolwoocle.com` if you do not get an answer). I don't bite! :)
+
+### Examples of things that are okay:
+- Reusing some sprites or small bits of code (functions, classes, Godot nodes...) in your personal games, even commercial.
+- Forking this repo and making your own mods, as long as you are not profiting from it.
+- Writing reviews, or sharing screenshots and videos online.
+- Linking to the page of this repo or its official links.
+
+### Examples of things that are NOT okay:
+- Taking any pre-existing or self-built executables, with no or minor modifications, or a major part of the source code, and reuploading it to other places, whether you are directly or indirectly profiting from it or not.
+- We just don't like what you are doing. (e.g., AI-powered NFT cryptocurrency trading cards)
+
 <h2>
     <span>
         <img src="readme/icon_small.png">
@@ -31,3 +55,7 @@ To export, look at the [Godot documentation page](https://docs.godotengine.org/e
 - [`Strochnis`](https://on.soundcloud.com/wk1kdJsHbH2m8tLZ8) · music
 - [`Theobosse`](https://github.com/TheodoreBillotte) · code
 - [`Yolwoocle`](https://github.com/Yolwoocle) · code, art
+
+<hr>
+
+&copy; 2024 Guillaume Tran, Nolan Carlisi, Léo Bernard, Théodore Billote. All rights reserved.
