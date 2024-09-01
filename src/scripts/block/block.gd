@@ -918,7 +918,6 @@ func extend_block(variation: int, direction: Direction, push: bool):
 	var off = mul * 16 if direction == Direction.RIGHT or direction == Direction.DOWN else mul * -16
 	assert(get_parent() != null, "Le level est null")
 	if not push and val != -8:
-		print("eh ho")
 		get_parent().go_to_next_actions()
 	var tween_transition = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	tween_list.append(tween_transition)
