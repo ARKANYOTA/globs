@@ -428,6 +428,7 @@ is_gravity_enabled = false
 occluder = SubResource("OccluderPolygon2D_nbgqd")
 
 [node name="Props" type="AnimatedSprite2D" parent="."]
+z_index = -8
 sprite_frames = SubResource("SpriteFrames_v17uh")
 animation = &"new_animation"
 script = ExtResource("4_0laty")
