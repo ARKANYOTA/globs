@@ -28,7 +28,8 @@ var levels = [
 	{ "name": "3-1", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_310.tscn"},
 	{ "name": "3-2", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_320.tscn"},
 	{ "name": "3-3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_330.tscn"},
-	{ "name": "3-5", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_350.tscn"},
+	{ "name": "3-4", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_350.tscn"},
+	{ "name": "3-5", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_360.tscn"},
 	{ "name": "3-6", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_370.tscn"},
 	{ "name": "3-7", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_380.tscn"},
 	{ "name": "world selector", "music": "city", "scene": "res://scenes/ui/world_select/world_select.tscn"},
@@ -36,13 +37,13 @@ var levels = [
 
 	{ "name": "4-1", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_410.tscn"},
 	{ "name": "4-2", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_420.tscn"},
-	{ "name": "4-4", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_421.tscn"},
+	{ "name": "4-3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_421.tscn"},
 	{ "name": "4-4", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_440.tscn"}, # easy
 
-	{ "name": "4-4", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_415.tscn"},
-	{ "name": "4-3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_430.tscn"},
-	{ "name": "4-6", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_500.tscn"},
-	{ "name": "4-7", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_510.tscn"},
+	{ "name": "4-5", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_415.tscn"},
+	{ "name": "4-6", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_430.tscn"},
+	{ "name": "4-7", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_500.tscn"},
+	{ "name": "4-8", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_510.tscn"},
 
 	{ "name": "You Win", "music": "city", "scene": "res://scenes/levels/you_win.tscn"},
 ]
