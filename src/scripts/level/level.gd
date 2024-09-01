@@ -21,7 +21,7 @@ func is_on_good_position(block: Block):
 func go_to_next_actions():
 	var dico = {}
 	for child in $".".get_children():
-		if child is Block:
+		if child is Block and child.is_visible():
 			if not is_on_good_position(child):
 				return
 			dico[child] = block_data.new(child)
@@ -43,6 +43,13 @@ func undo_action():
 	else:
 		var toundo_actions = actions.pop_back()
 		for block in toundo_actions.keys():
+			if block == null:
+				continue
+			for tween in block.tween_list:
+				if tween != null:
+					tween.kill()
+			block.is_moving = false
+			block.is_falling = false
 			var toundo_action_on_this_block = toundo_actions[block]
 			if toundo_action_on_this_block.is_visible:
 				block.show()

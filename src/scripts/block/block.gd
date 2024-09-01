@@ -154,6 +154,7 @@ var drag_start_up_extend_value: float
 var drag_start_down_extend_value: float
 
 var remaining_pushs := -1
+var tween_list = []
 
 ###### SLEEP animation #######
 @onready var sleep_timer : Timer = $Sleep/SleepTimer
@@ -708,6 +709,7 @@ func _physics_process(delta):
 		
 		if can_fall:
 			var gravity_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+			tween_list.append(gravity_tween)
 			is_falling = true
 			if gravity_axis == Direction.DOWN:
 				gravity_tween.tween_property(self, "position:y", position.y + 16, move_speed).set_ease(Tween.EASE_OUT)
@@ -719,6 +721,7 @@ func _physics_process(delta):
 				gravity_tween.tween_property(self, "position:x", position.x + 16, move_speed).set_ease(Tween.EASE_OUT)
 
 			gravity_tween.tween_callback(set_is_falling_to_false)
+			gravity_tween.tween_callback(func (): tween_list.erase(gravity_tween))
 		
 	#if not is_falling and not is_moving:
 	#	var gpos = get_grid_rect().position
@@ -915,11 +918,14 @@ func extend_block(variation: int, direction: Direction, push: bool):
 	var off = mul * 16 if direction == Direction.RIGHT or direction == Direction.DOWN else mul * -16
 	assert(get_parent() != null, "Le level est null")
 	if not push and val != -8:
+		print("eh ho")
 		get_parent().go_to_next_actions()
 	var tween_transition = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
-
+	tween_list.append(tween_transition)
 	for i in range(int(not reverse and not push), len(movements)):
 		var move_tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+		tween_list.append(move_tween)
+
 		var block: Block = movements[i]
 		if not block: # FIXME SCOTCH, remove if causes issues
 			continue
@@ -944,10 +950,14 @@ func extend_block(variation: int, direction: Direction, push: bool):
 				if block == null:
 					return
 				move_tween.tween_callback(func(): block.extend_block(off, direction if not reverse else get_opposite_direction(direction), true))
-	
+		move_tween.tween_callback(func (): tween_list.erase(move_tween))
+
 	if tween_property != "" and not push and val != -8:
 		var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+		tween_list.append(tween)
 		tween.tween_property(self, tween_property, val, move_speed).set_ease(Tween.EASE_OUT)
+		tween.tween_callback(func (): tween_list.erase(tween))
+
 		slide_audio.play()
 	if not push and val != -8:
 		tween_transition.tween_callback(update_positions).set_delay(move_speed)
@@ -955,6 +965,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 		tween_transition.tween_callback(set_is_moving_to_false)
 	else:
 		tween_transition.tween_callback(set_is_moving_to_false).set_delay(move_speed)
+	tween_transition.tween_callback(func (): tween_list.erase(tween_transition))
 
 	_update_scale_handles()
 
