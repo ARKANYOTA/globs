@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6vbmub4h2gtp"]
+
+[ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="1_i2u8o"]
+[ext_resource type="AudioStream" uid="uid://b05iapya65vo5" path="res://scenes/block/bloc_skin/test/bloop-1.mp3" id="2_r6pxa"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nbgqd"]
+resource_local_to_scene = true
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0by6x"]
+size = Vector2(16, 16)
+
+[node name="Block5" instance=ExtResource("1_i2u8o")]
+
+[node name="BlockOccluder" parent="." index="0"]
+occluder = SubResource("OccluderPolygon2D_nbgqd")
+
+[node name="CollisionShape" parent="." index="2"]
+shape = SubResource("RectangleShape2D_0by6x")
+
+[node name="SlideAudio" parent="Audio" index="1"]
+stream = ExtResource("2_r6pxa")

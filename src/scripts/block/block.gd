@@ -929,7 +929,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 		var block: Block = movements[i]
 		if not block: # FIXME SCOTCH, remove if causes issues
 			continue
-
+		#position qui bouge
 		if direction == Direction.RIGHT or direction == Direction.LEFT:
 			move_tween.tween_property(block, "position:x", block.position.x + off, move_speed).set_ease(Tween.EASE_OUT)
 		if direction == Direction.DOWN or direction == Direction.UP:
