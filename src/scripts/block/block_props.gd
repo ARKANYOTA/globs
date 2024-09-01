@@ -46,8 +46,8 @@ func change_props_gravity():
 	var axis = block.gravity_axis
 	var index_of_axis = list_direction.find(axis)
 	var axis_change_list = [2,3,0,1]
-	var offset_change_list = [Vector2(-y_offset, -x_offset),
-							  Vector2(-y_offset, x_offset),
+	var offset_change_list = [Vector2(-x_offset, y_offset),
+							  Vector2(y_offset, x_offset),
 							  Vector2(x_offset, y_offset),
 							  Vector2(y_offset, -x_offset), 
 							]
