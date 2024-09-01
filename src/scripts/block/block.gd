@@ -139,7 +139,7 @@ var handles: Dictionary = Dictionary()
 var direction_indicator: PackedScene = preload("res://scenes/handler/direction_indicator.tscn")
 
 var animation = "o_face"
-var is_asleep := false
+var is_asleep := true
 var is_moving := false
 var is_falling := false
 
@@ -154,6 +154,12 @@ var drag_start_up_extend_value: float
 var drag_start_down_extend_value: float
 
 var remaining_pushs := -1
+
+###### SLEEP animation #######
+@onready var sleep_timer : Timer = $Sleep/SleepTimer
+var time_before_sleeping_min := 5
+var time_before_sleeping_max := 5
+var time_before_sleeping := 7 #don't change it 
 
 ################################################
 
@@ -587,6 +593,10 @@ func _update_animation():
 	
 	# if not is_selected:
 	# 	animation = "sleeping"
+	if is_asleep:
+		animation = "sleeping"
+		return
+
 	if size <= 4*16*16:
 		if is_happy:
 			animation = "happy"
@@ -663,6 +673,7 @@ func _ready():
 	_create_direction_indicators()
 	
 	update_dimensions()
+	init_sleep_timer()
 	BlockManagerAutoload.register_block(self)
 
 func _process(delta):
@@ -729,6 +740,7 @@ func _physics_process(delta):
 ############################################################################################################################################
 
 func _on_click_area_clicked():
+	is_asleep = false
 	pass
 
 func _snap_vector_to_cardinal(vec: Vector2) -> Vector2:
@@ -739,7 +751,7 @@ func _mouse_diff_to_direction(vec: Vector2) -> Direction:
 	var dir_vec = _snap_vector_to_cardinal(vec)
 	return Util.vector_to_direction(dir_vec)
 
-func _on_click_area_start_drag():
+func _on_click_area_start_drag():	
 	if not collision_shape:
 		return
 	var collision_shape_shape: RectangleShape2D = collision_shape.shape
@@ -750,6 +762,7 @@ func _on_click_area_start_drag():
 	var mouse_pos = get_local_mouse_position()
 	var mouse_offset: Vector2 = (mouse_pos) * Vector2(1/aspect_ratio, 1)
 	var mouse_angle = mouse_offset.angle()
+
 	drag_start_position = mouse_pos 
 	drag_selected_edge = Direction.INVALID
 	drag_selected_side_x = Direction.LEFT if mouse_pos.x < 0 else Direction.RIGHT
@@ -760,9 +773,11 @@ func _on_click_area_start_drag():
 	drag_start_up_extend_value = up_extend_value
 	drag_start_down_extend_value = down_extend_value
 
+	is_asleep = false
 	select()
 
 func _on_click_area_end_drag():
+	sleep_timer.start()
 	unselect()
 
 ## Returns the edge that should be selected, based on the movement of the cursor.
@@ -962,3 +977,21 @@ func _on_scale_handle_dragged(handle: ScaleHandle, direction: Direction):
 	# 	variation = -16
 	
 	# extend_block(variation, direction, false)
+
+
+
+## SLEEP FUNCTION
+
+func init_sleep_timer():
+	sleep_timer.timeout.connect(_on_sleep_timer_timeout)
+	sleep_timer.set_wait_time(time_before_sleeping)
+	sleep_timer.one_shot = true
+
+func _on_sleep_timer_timeout():
+	if is_asleep:
+		return
+	is_asleep = true
+	_update_animation()
+
+func get_random_sleeping_time():
+	return time_before_sleeping_min + randi() % (time_before_sleeping_max - time_before_sleeping_min)
