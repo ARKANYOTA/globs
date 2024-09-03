@@ -49,7 +49,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugtkw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yeq8i"]
 size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
@@ -428,10 +428,12 @@ is_gravity_enabled = false
 occluder = SubResource("OccluderPolygon2D_nbgqd")
 
 [node name="Props" type="AnimatedSprite2D" parent="."]
-z_index = -8
+visible = false
 sprite_frames = SubResource("SpriteFrames_v17uh")
 animation = &"new_animation"
 script = ExtResource("4_0laty")
+x_offset = 0
+y_offset = 0
 
 [node name="NinePatch" type="NinePatchRect" parent="."]
 anchors_preset = 8
@@ -455,7 +457,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ugtkw")
+shape = SubResource("RectangleShape2D_yeq8i")
 debug_color = Color(0, 0.509804, 0.6, 0.0509804)
 
 [node name="ClickArea" parent="." instance=ExtResource("3_h0fp2")]

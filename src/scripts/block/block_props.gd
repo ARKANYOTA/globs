@@ -1,7 +1,7 @@
 extends AnimatedSprite2D
 
-@export var x_offset: int = 10
-@export var y_offset: int = 10
+@export var x_offset: int = 0
+@export var y_offset: int = 0
 @onready var block : Block = get_parent()
 var extend_list : Array = []
 @export var props_initial_direction : Block.Direction = Block.Direction.UP
