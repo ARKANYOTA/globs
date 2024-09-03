@@ -24,7 +24,6 @@ func _process(delta: float) -> void:
 	if props_initial_direction == Block.Direction.INVALID:
 		visible = false
 		return
-	visible = true
 	change_props_gravity()
 	position = new_offset
 	position = add_extend_value(props_direction, position)
