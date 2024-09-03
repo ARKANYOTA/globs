@@ -432,8 +432,7 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_v17uh")
 animation = &"new_animation"
 script = ExtResource("4_0laty")
-x_offset = 0
-y_offset = 0
+props_initial_direction = 4
 
 [node name="NinePatch" type="NinePatchRect" parent="."]
 anchors_preset = 8
