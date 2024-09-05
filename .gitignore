@@ -1,6 +1,9 @@
 # Godot 4+ specific ignores
 /src/.godot
 /output
+/export
 **/.DS_Store
 **/.vscode
 .vscode
+*.keystore
+/src/android

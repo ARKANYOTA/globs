@@ -19,11 +19,8 @@ shadow_enabled = true
 [node name="CanvasModulate" type="CanvasModulate" parent="DirectionalLight2D" index="0"]
 color = Color(0.8, 0.8, 0.8, 1)
 
-[node name="Background" parent="." index="2"]
+[node name="Background" parent="." index="3"]
 modulate = Color(0.631143, 0.674079, 0.78275, 1)
-
-[node name="mesure" parent="." index="3"]
-visible = false
 
 [node name="BackgroundTilesDark" type="TileMapLayer" parent="." index="4"]
 modulate = Color(0.533333, 0.580392, 0.701961, 1)

@@ -1,5 +1,7 @@
 extends Node
 
+const GAME_VERSION = "1.1"
+
 var cursor = preload("res://assets/images/ui/cursor_big.png")
 var cursor_click = preload("res://assets/images/ui/cursor_click_big.png")
 var global_camera_scene: PackedScene = preload("res://scenes/camera/global_camera.tscn")

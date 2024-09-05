@@ -18,7 +18,7 @@ z_index = -4
 position = Vector2(108, 69)
 texture = ExtResource("2_a15nu")
 
-[node name="Background" parent="." index="2"]
+[node name="Background" parent="." index="3"]
 scale = Vector2(0.994364, 1)
 
 [node name="Goal" parent="." index="6"]
