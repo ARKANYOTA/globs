@@ -23,7 +23,7 @@ color = Color(0.8, 0.8, 0.8, 1)
 modulate = Color(0.631143, 0.674079, 0.78275, 1)
 
 [node name="BackgroundTilesDark" type="TileMapLayer" parent="." index="4"]
-modulate = Color(0.533333, 0.580392, 0.701961, 1)
+modulate = Color(0.352941, 0.411765, 0.533333, 1)
 z_index = -3
 tile_set = ExtResource("3_fm378")
 collision_enabled = false

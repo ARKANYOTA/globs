@@ -6,9 +6,6 @@
 
 [node name="Level" instance=ExtResource("1_nkc51")]
 
-[node name="mesure" parent="." index="1"]
-visible = false
-
 [node name="BackgroundProps" parent="." index="2"]
 tile_map_data = PackedByteArray("AAALAAEAAgAFAAYAAAAMAAMAAgAFAAYAAAA=")
 

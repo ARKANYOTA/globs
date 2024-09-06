@@ -7,9 +7,6 @@
 
 [node name="Level" instance=ExtResource("1_fvd2u")]
 
-[node name="mesure" parent="." index="1"]
-visible = false
-
 [node name="BackgroundProps" parent="." index="2"]
 tile_map_data = PackedByteArray("AAABAAQAAgAEAAYAAAAMAAEAAgAFAAYAAAAJAAIAAgADAAMAAAAIAAEAAgADAAMAAAAHAAEAAgADAAMAAAAIAAIAAgABAAAAAAAHAAIAAgABAAAAAAA=")
 

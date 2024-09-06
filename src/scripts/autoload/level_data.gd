@@ -11,6 +11,7 @@ var levels = [
 	{ "name": "1-1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_110.tscn"},
 	{ "name": "1-2", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_120.tscn"},
 	{ "name": "1-3", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_130.tscn"},
+	{ "name": "1-3changeme", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_135.tscn"},
 	{ "name": "1-4", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_140.tscn"},
 	{ "name": "1-5", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_150.tscn"},
 	{ "name": "1-6", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_160.tscn"},
