@@ -133,5 +133,5 @@ func _input(event):
 
 func _process(delta: float) -> void:
 	#print fps
-	#print(Engine.get_frames_per_second())
+	#prin t(Engine.get_frames_per_second())
 	pass # Replace with function body.

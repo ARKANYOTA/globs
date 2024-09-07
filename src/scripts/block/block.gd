@@ -220,7 +220,6 @@ func can_extend_or_retract(side: Direction, movement_dir: Direction) -> bool:
 	var movement_sign = (1 if side == Direction.RIGHT or side == Direction.DOWN else -1)
 	var val = extent_value + side_sign * movement_sign * 16
 	var output = extent_range.x < val and val < extent_range.y
-	print("can_extend_or_retract val = ", val, " side = ", Util.direction_to_string(side), " movdir = ", Util.direction_to_string(movement_dir), " output = ", output)
 
 	return output
 

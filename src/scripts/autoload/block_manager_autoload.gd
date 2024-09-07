@@ -21,11 +21,12 @@ func _ready() -> void:
 		if child.name == "BlockManagerAutoload":
 			var root2 = child
 			for child2 in root2.get_children():
-				print("is in the blockmanagerautoload")
-				print(child2.name)
-		print(child.name)
+				pass
+				# prin t("is in the blockmanagerautoload")
+				# prin t(child2.name)
+		# prin t(child.name)
 	
-	print("Block manager autoloaded.")
+	# prin t("Block manager autoloaded.")
 
 func reset():
 	selected_block_count = 0
@@ -69,7 +70,7 @@ func can_select(_block: Block):
 func _unselect_non_selected_blocks():
 	var root: Node = get_tree().get_root()
 	# if not current_level:
-	# 	print("No current level")
+	# 	prin t("No current level")
 	# 	return
 	for child in blocks:
 		if child != current_selected_block:

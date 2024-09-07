@@ -2,6 +2,29 @@ extends Node
 
 const GAME_VERSION = "1.1"
 
+enum GamePlatform {
+	WEB,
+	MOBILE,
+	PC,
+	UNKNOWN,
+
+	UNDEFINED,
+}
+var game_platform: GamePlatform = GamePlatform.UNDEFINED:
+	get:
+		if game_platform == GamePlatform.UNDEFINED:
+			match OS.get_name():
+				"Windows", "macOS", "Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
+					game_platform = GamePlatform.PC
+				"Android", "iOS":
+					game_platform = GamePlatform.MOBILE
+				"Web":
+					game_platform = GamePlatform.WEB
+				_:
+					game_platform = GamePlatform.UNKNOWN
+	
+		return game_platform
+
 var cursor = preload("res://assets/images/ui/cursor_big.png")
 var cursor_click = preload("res://assets/images/ui/cursor_click_big.png")
 var global_camera_scene: PackedScene = preload("res://scenes/camera/global_camera.tscn")

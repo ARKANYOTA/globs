@@ -6,7 +6,7 @@ var selected_level = 1
 @onready var animation: AnimationPlayer = $AnimationPlayer
 
 func _ready():
-	print(LevelData.level)
+	pass
 
 func _process(delta):
 	#transition_audio.play()
@@ -22,5 +22,4 @@ func _input(event):
 		selected_level = min(1, selected_level - 1)
 	elif event.is_action_pressed("ui_select"):
 		LevelData.level = selected_level
-		print("change scene to ", LevelData.levels[selected_level].scene)
 		#get_tree().change_scene(LevelData.levels[selected_level].scene)

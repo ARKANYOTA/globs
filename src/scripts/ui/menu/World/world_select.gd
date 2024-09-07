@@ -53,13 +53,12 @@ func enable_button() -> void:
 	if !is_timing:
 		return
 	is_timing = false
-	print("enable button")
 	LevelData.disable_level_button = false
 
 func change_world(index: int, in_out = true, disable=true) -> void:
-	#print("change world", disable, LevelData.disable_level_button)
 	if disable:
 		LevelData.disable_level_button = true
+	
 	#erase previous timer
 	for child in get_children():
 		if child is Timer:

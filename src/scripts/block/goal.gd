@@ -23,19 +23,6 @@ func _ready():
 func _physics_process(_delta):
 	if Engine.is_editor_hint():
 		return
-	
-	#for body in overlapping_bodies.keys():
-		#if body is Block and body.is_main_character:
-			#var body_extents = body.get_node("CollisionShape").shape.extents
-			#var goal_extents = collision_shape.shape.extents
-			#var body_rect = Rect2(body.global_position - body_extents, body_extents * 2)
-			#var goal_rect = Rect2(     global_position - goal_extents, goal_extents * 2)
-			#var expanded_goal_rect = Rect2(goal_rect.position - Vector2(8, 8), goal_rect.size + Vector2(8, 8))
-			#
-			#print("expanded_goal_rect ", expanded_goal_rect)
-			#print("body_rect ", body_rect)
-			#if goal_rect.encloses(body_rect):
-				#print("You win!")
 
 
 func _on_body_entered(body):

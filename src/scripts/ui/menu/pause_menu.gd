@@ -2,9 +2,13 @@ extends Control
 class_name PauseMenu
 
 @onready var main = get_parent()
-@onready var skip_button = $MarginContainer/Items/Buttons/Skip
+@onready var skip_button = %SkipButton
 
 var levels_scene_path = "res://scenes/ui/world_select/world_select.tscn"
+
+func _ready():
+	if GameManager.game_platform != GameManager.GamePlatform.PC:
+		%FullscreenButton.hide()
 
 func exit_menu():
 	main.exit_menu()
@@ -36,18 +40,27 @@ func _on_fullscreen_button_pressed():
 
 func _process(_delta):
 	# SCOTCH !!
-	var levels_button = $MarginContainer/Items/Buttons/Levels
+	var levels_button = %LevelsButton
 	var current_scene = get_tree().get_current_scene()
 	if not current_scene:
 		return
 	
+	# Change level name
+	var level_name_label = %LevelName
+	var level_data = LevelData.get_current_level_data()
+	if level_name_label:
+		if level_data:
+			level_name_label.text = level_data["name"]
+		else:
+			level_name_label.text = ""
+
+	# Change buttons if on title screen	
 	var is_on_level_select = (current_scene.name == "YouWinLevel" or current_scene.name == "WorldSelect")
-	
-	$MarginContainer/Items/Buttons/Skip.disabled = is_on_level_select
+	%SkipButton.disabled = is_on_level_select
 	if is_on_level_select:
 		levels_scene_path = "res://scenes/main.tscn"
 		levels_button.text = "Title screen"
 	else:
 		levels_scene_path = "res://scenes/ui/world_select/world_select.tscn"
 		levels_button.text = "Levels"
-		
+	
