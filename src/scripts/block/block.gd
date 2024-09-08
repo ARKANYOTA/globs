@@ -129,6 +129,7 @@ var gravity_axis = Direction.DOWN
 @onready var sleep_particles: CPUParticles2D = $Sleep/SleepParticles
 @onready var click_audio: AudioStreamPlayer2D = $Audio/ClickAudio
 @onready var slide_audio: AudioStreamPlayer2D = $Audio/SlideAudio
+@onready var wake_up_audio: AudioStreamPlayer2D = $Audio/WakeUpAudio
 
 const move_speed := 0.1
 
@@ -1003,3 +1004,10 @@ func _on_sleep_timer_timeout():
 
 func get_random_sleeping_time():
 	return time_before_sleeping_min + randi() % (time_before_sleeping_max - time_before_sleeping_min)
+
+func wake_up():
+	if not is_asleep:
+		return
+	is_asleep = false
+	wake_up_audio.play()
+	
