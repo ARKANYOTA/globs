@@ -52,9 +52,10 @@ var current_level = -1
 var level = 0
 
 func get_current_level_data():
-	if current_level < 0 or current_level >= levels.size():
-		return null 
-	return levels[current_level]
+	#get levels index by name
+	for i in range(levels.size()):
+		if levels[i]["scene"] == selected_level_name:
+			return levels[i]
 
 func increment_level() -> void:
 	if level == current_level:
