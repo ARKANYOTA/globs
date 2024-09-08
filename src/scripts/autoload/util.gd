@@ -5,6 +5,16 @@ func angle_difference(x: float, y: float) -> float:
 	y = fmod(y, TAU)
 	return fmod(y - x + PI, TAU) - PI
 
+
+func _snap_vector_to_cardinal(vec: Vector2) -> Vector2:
+	# https://www.reddit.com/r/godot/comments/t206my/how_to_get_a_direction_from_a_vector2d/
+	return Vector2.RIGHT.rotated(round(vec.angle() / TAU * 4) * TAU / 4).snapped(Vector2.ONE)
+
+func snap_vector_to_direction(vec: Vector2) -> Block.Direction:
+	var dir_vec = _snap_vector_to_cardinal(vec)
+	return Util.vector_to_direction(dir_vec)
+
+
 func closest_direction_to_angle(source_angle: float, array_directions: Array[Block.Direction]) -> Block.Direction:
 	var array_angles: Array[float]
 	array_angles.assign(array_directions.map(direction_to_rotation))

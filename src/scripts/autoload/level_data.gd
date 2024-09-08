@@ -35,7 +35,6 @@ var levels = [
 	{ "name": "3-7", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_380.tscn"},
 	{ "name": "world selector", "music": "city", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
-
 	{ "name": "4-1", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_410.tscn"},
 	{ "name": "4-2", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_420.tscn"},
 	{ "name": "4-3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_421.tscn"},
@@ -126,9 +125,6 @@ func _ready() -> void:
 
 
 func _input(event):
-	if event.is_action_pressed("skip_level"):
-		GameManager.win()
-	
 	if event.is_action_pressed("reload_button"):
 		reload_scene()
 

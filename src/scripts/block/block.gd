@@ -654,6 +654,35 @@ func show_direction_indicator():
 	for handle in handles.values():
 		handle.show_indicator()
 
+func start_grow():
+	
+	if not collision_shape:
+		return
+	var collision_shape_shape: RectangleShape2D = collision_shape.shape
+	if not collision_shape_shape:
+		return
+	var aspect_ratio = collision_shape_shape.size.x / collision_shape_shape.size.y
+	
+	var mouse_pos = get_local_mouse_position()
+	var mouse_offset: Vector2 = (mouse_pos) * Vector2(1/aspect_ratio, 1)
+	var mouse_angle = mouse_offset.angle()
+
+	drag_start_position = mouse_pos 
+	drag_selected_edge = Direction.INVALID
+	drag_selected_side_x = Direction.LEFT if mouse_pos.x < 0 else Direction.RIGHT
+	drag_selected_side_y = Direction.UP   if mouse_pos.y < 0 else Direction.DOWN
+
+	drag_start_left_extend_value = left_extend_value
+	drag_start_right_extend_value = right_extend_value
+	drag_start_up_extend_value = up_extend_value
+	drag_start_down_extend_value = down_extend_value
+
+	is_asleep = false
+	select()
+
+func stop_grow():
+	sleep_timer.start()
+	unselect()
 
 ################################################
 
@@ -742,45 +771,11 @@ func _physics_process(delta):
 ##### CLICK AREA
 ############################################################################################################################################
 
-func _on_click_area_clicked():
-	pass
-
-func _snap_vector_to_cardinal(vec: Vector2) -> Vector2:
-	# https://www.reddit.com/r/godot/comments/t206my/how_to_get_a_direction_from_a_vector2d/
-	return Vector2.RIGHT.rotated(round(vec.angle() / TAU * 4) * TAU / 4).snapped(Vector2.ONE)
-
-func _mouse_diff_to_direction(vec: Vector2) -> Direction:
-	var dir_vec = _snap_vector_to_cardinal(vec)
-	return Util.vector_to_direction(dir_vec)
-
 func _on_click_area_start_drag():	
-	if not collision_shape:
-		return
-	var collision_shape_shape: RectangleShape2D = collision_shape.shape
-	if not collision_shape_shape:
-		return
-	var aspect_ratio = collision_shape_shape.size.x / collision_shape_shape.size.y
-	
-	var mouse_pos = get_local_mouse_position()
-	var mouse_offset: Vector2 = (mouse_pos) * Vector2(1/aspect_ratio, 1)
-	var mouse_angle = mouse_offset.angle()
-
-	drag_start_position = mouse_pos 
-	drag_selected_edge = Direction.INVALID
-	drag_selected_side_x = Direction.LEFT if mouse_pos.x < 0 else Direction.RIGHT
-	drag_selected_side_y = Direction.UP   if mouse_pos.y < 0 else Direction.DOWN
-
-	drag_start_left_extend_value = left_extend_value
-	drag_start_right_extend_value = right_extend_value
-	drag_start_up_extend_value = up_extend_value
-	drag_start_down_extend_value = down_extend_value
-
-	wake_up()
-	select()
+	start_grow()
 
 func _on_click_area_end_drag():
-	sleep_timer.start()
-	unselect()
+	stop_grow()
 
 ## Returns the edge that should be selected, based on the movement of the cursor.
 func _get_selected_edge(movement_direction: Direction, mouse_pos: Vector2) -> Direction:
@@ -815,7 +810,7 @@ func _on_click_area_dragging():
 	if mouse_dist < drag_mouse_dead_zone:
 		return
 
-	var movement_direction = _mouse_diff_to_direction(mouse_diff)
+	var movement_direction = Util.snap_vector_to_direction(mouse_diff)
 	if movement_direction == Direction.INVALID:
 		return
 	
@@ -838,9 +833,15 @@ func _on_click_area_dragging():
 	extend_block(variation, selected_edge, false)
 	if drag_selected_edge == Direction.INVALID:
 		drag_selected_edge = selected_edge
-		if handles.has(selected_edge):
-			handles[selected_edge].set_highlighted(true)
+		set_highlighted_edge(drag_selected_edge)
 
+func set_highlighted_edge(edge: Direction = drag_selected_edge):
+	for handle_edge in handles:
+		handles[handle_edge].set_highlighted(false)
+
+	if handles.has(edge):
+		handles[edge].set_highlighted(true)
+	
 func set_is_moving_to_false():
 	is_moving = false
 

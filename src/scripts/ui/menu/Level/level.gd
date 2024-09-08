@@ -60,7 +60,6 @@ func _ready():
 				var next_world = LevelData.selected_world_index + 1
 				if next_world >= world_unlock_id:
 					LevelData.selected_world_index = next_world
-	pass
 
 func check_unlock():
 	var all_unlocked = true
@@ -113,14 +112,6 @@ func start_level():
 	MusicManager.set_music(world.world_music)
 	LevelData.selected_level_name = levelScene
 	SceneTransitionAutoLoad.change_scene_with_transition(levelScene)
-
-func _input(event):
-	#if s is pressed make it completed
-	if event.is_action_pressed("skip_level"):
-		state = LevelState.COMPLETED
-		LevelData.completed_levels.append(levelScene)
-		LevelData.new_save_level_data()
-		SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/ui/world_select/world_select.tscn")
 
 
 # func add_dot_timer(number: int, path: Path2D, vector: Vector2):

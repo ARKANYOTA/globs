@@ -49,7 +49,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtnff"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6d2k1"]
 size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
@@ -419,7 +419,7 @@ stream_2/stream = ExtResource("14_3ir7h")
 stream_3/stream = ExtResource("17_aqiwb")
 
 [node name="Block" type="Area2D"]
-collision_layer = 2
+collision_layer = 6
 collision_mask = 2
 script = ExtResource("1_eflyf")
 is_gravity_enabled = false
@@ -456,7 +456,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_mtnff")
+shape = SubResource("RectangleShape2D_6d2k1")
 debug_color = Color(0, 0.509804, 0.6, 0.0509804)
 
 [node name="ClickArea" parent="." instance=ExtResource("3_h0fp2")]

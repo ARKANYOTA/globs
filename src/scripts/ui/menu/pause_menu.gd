@@ -48,6 +48,7 @@ func _process(_delta):
 	# Change level name
 	var level_name_label = %LevelName
 	var level_data = LevelData.get_current_level_data()
+	print(level_data, " ", LevelData.current_level)
 	if level_name_label:
 		if level_data:
 			level_name_label.text = level_data["name"]
