@@ -12,6 +12,11 @@ func _ready():
 	PauseMenuAutoload.can_pause = false
 	if OS.has_feature("web_ios") or OS.has_feature("web_macos"):
 		$CanvasLayer/AppleWarn.show()
+	
+	if ProjectSettings.has_setting("application/config/version"):
+		%VersionText.text = "v" + ProjectSettings.get_setting("application/config/version")
+	else:
+		%VersionText.text = ""
 
 # Quitting 
 func quit():

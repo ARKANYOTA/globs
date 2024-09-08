@@ -114,14 +114,6 @@ func start_level():
 	LevelData.selected_level_name = levelScene
 	SceneTransitionAutoLoad.change_scene_with_transition(levelScene)
 
-func _input(event):
-	#if s is pressed make it completed
-	if event.is_action_pressed("skip_level"):
-		state = LevelState.COMPLETED
-		LevelData.completed_levels.append(levelScene)
-		LevelData.new_save_level_data()
-		SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/ui/world_select/world_select.tscn")
-
 
 # func add_dot_timer(number: int, path: Path2D, vector: Vector2):
 # 	for i in range(number):

@@ -76,7 +76,8 @@ label_settings = SubResource("LabelSettings_u3bde")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Version" type="Label" parent="CanvasLayer/Control"]
+[node name="VersionText" type="Label" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
 z_index = 4
 layout_mode = 1
 anchors_preset = 1
@@ -87,7 +88,7 @@ offset_top = 9.0
 offset_right = -7.0
 offset_bottom = 21.0
 grow_horizontal = 0
-text = "v1.1"
+text = "v-.-"
 label_settings = SubResource("LabelSettings_u3bde")
 horizontal_alignment = 2
 

@@ -9,25 +9,24 @@
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbkin"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwjn6"]
 size = Vector2(32, 32)
 
 [node name="Block5" instance=ExtResource("1_iuvq1")]
 is_gravity_enabled = true
-drag_extend_only_area_size = 8
 
 [node name="BlockOccluder" parent="." index="0"]
 occluder = SubResource("OccluderPolygon2D_nbgqd")
 
-[node name="NinePatch" parent="." index="1"]
+[node name="NinePatch" parent="." index="2"]
 texture = ExtResource("2_lp0vd")
 region_rect = Rect2(0, 96, 16, 16)
 patch_margin_bottom = 10
 axis_stretch_horizontal = 0
 axis_stretch_vertical = 2
 
-[node name="CollisionShape" parent="." index="2"]
-shape = SubResource("RectangleShape2D_nbkin")
+[node name="CollisionShape" parent="." index="3"]
+shape = SubResource("RectangleShape2D_uwjn6")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7"]
 stream = ExtResource("3_nor20")

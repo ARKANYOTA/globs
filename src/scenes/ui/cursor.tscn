@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cti6pdvoug714"]
+
+[ext_resource type="Texture2D" uid="uid://v5jnql0u0b23" path="res://assets/images/ui/cursor.png" id="1_hfybr"]
+[ext_resource type="Script" path="res://scripts/ui/cursor.gd" id="2_obgfy"]
+
+[node name="Cursor" type="Node2D"]
+script = ExtResource("2_obgfy")
+tween_speed = null
+select_offset = null
+joystick_deadzone = null
+raycast_range = null
+max_angle_range = null
+raycast_collision_mask = 4
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_hfybr")
