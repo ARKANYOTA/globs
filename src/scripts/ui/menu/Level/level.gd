@@ -68,7 +68,6 @@ func check_unlock():
 			all_unlocked = false
 			#SKOTCH SCOTCH
 	if all_unlocked and state == LevelState.LOCKED and (world.world_index == 0 or world.world_index in LevelData.worlds_finished):
-		print(LevelData.worlds_finished)	
 		state = LevelState.UNLOCKED
 	
 

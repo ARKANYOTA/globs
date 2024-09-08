@@ -6,7 +6,7 @@
 
 [node name="Level" instance=ExtResource("1_wjn7m")]
 
-[node name="Background" parent="." index="0"]
+[node name="Background" parent="." index="1"]
 modulate = Color(0.532, 0.5796, 0.7, 1)
 tile_map_data = PackedByteArray("AAAHAAcAAQAFAAoAAAAGAAcAAQAEAAkAAAAIAAYAAQAHAAoAAAAMAAUAAQAEAAgAAAANAAYAAQAFAAoAAAAMAAYAAQAEAAkAAAANAAcAAQAFAAoAAAANAAgAAQAFAAsAAAAMAAgAAQABAAsAAAALAAgAAQAGAAMAAAAKAAgAAQAGAAMAAAAJAAgAAQAGAAMAAAAIAAgAAQACAAsAAAAHAAgAAQAFAAsAAAAOAAcAAQAHAAoAAAAOAAYAAQAHAAoAAAANAAUAAQAGAAgAAAAOAAgAAQAHAAsAAAAOAAUAAQAHAAgAAAAHAAYAAQAFAAoAAAAHAAUAAQAGAAgAAAAGAAUAAQAEAAgAAAAGAAYAAQAEAAoAAAAFAAYAAQAFAAMAAAAMAAcAAQAEAAkAAAAGAAgAAQAEAAsAAAAIAAcAAQAHAAoAAAAIAAUAAQAHAAgAAAA=")
 
@@ -17,7 +17,7 @@ tile_map_data = PackedByteArray("AAAAAAgAAQAEAAgAAAABAAgAAQAHAAgAAAAHAAgAAQAEAAg
 position = Vector2(64, 152)
 size = Vector2i(4, 1)
 
-[node name="Block5" parent="." index="7"]
+[node name="Block5" parent="." index="6"]
 position = Vector2(88, 56)
 
 [node name="Block6" parent="." index="8" instance=ExtResource("2_xn8bw")]

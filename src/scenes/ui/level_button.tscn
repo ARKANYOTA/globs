@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cagg1qydmiusw" path="res://assets/images/ui/button.png" id="1_3nrti"]
 [ext_resource type="Script" path="res://scripts/ui/level_button.gd" id="1_op3qd"]
-[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/EXEPixelPerfect.ttf" id="3_fvd24"]
+[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/font_normal.ttf" id="3_fvd24"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_836hb"]
 

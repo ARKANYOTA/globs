@@ -15,7 +15,8 @@ warnings/check_invalid_track_paths=false
 [application]
 
 config/name="Globs"
-config/version="1.1"
+config/description="Meet the size-changing Globs in this colorful puzzle game."
+config/version="1.1dev24-09-03"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.14902, 0.168627, 0.266667, 1)

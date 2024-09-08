@@ -10,6 +10,7 @@ var streams = {
 	"city" = preload("res://assets/sounds/music/music_city.ogg"),
 	"cheese" = preload("res://assets/sounds/music/music_cheese.ogg"),
 	"snow" = preload("res://assets/sounds/music/music_snow.ogg"),
+	"space" = preload("res://assets/sounds/music/music_space.ogg"),
 }
 var current_music_name: String = "main_menu"
 

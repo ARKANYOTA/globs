@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b3ayaf2x5qddk"
-path="res://.godot/imported/hardpixel.otf-d1464379e9b080e98d5aaf1b2834c63f.fontdata"
+uid="uid://cjyup1ooil314"
+path="res://.godot/imported/font_normal.ttf-c5ade2f67266738475ae1fb7514a25a0.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/hardpixel.otf"
-dest_files=["res://.godot/imported/hardpixel.otf-d1464379e9b080e98d5aaf1b2834c63f.fontdata"]
+source_file="res://assets/fonts/font_normal.ttf"
+dest_files=["res://.godot/imported/font_normal.ttf-c5ade2f67266738475ae1fb7514a25a0.fontdata"]
 
 [params]
 
