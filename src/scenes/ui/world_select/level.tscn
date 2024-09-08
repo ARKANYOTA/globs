@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ui/menu/Level/level.gd" id="1_8y7i4"]
 [ext_resource type="Texture2D" uid="uid://dkb2bbrghjuis" path="res://assets/images/ui/locked_button.png" id="2_hk4cj"]
-[ext_resource type="StyleBox" path="res://assets/textures/empty_texture_with_4_margin.tres" id="2_l7cq3"]
+[ext_resource type="StyleBox" uid="uid://c0w4udwjnqc3k" path="res://assets/textures/empty_texture_with_4_margin.tres" id="2_l7cq3"]
 
 [node name="level" type="Node2D"]
 position = Vector2(40, 16)

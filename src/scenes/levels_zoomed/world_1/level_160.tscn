@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://dcn66ijlvxo8p"]
+[gd_scene load_steps=4 format=4 uid="uid://b1tlfh3grvid3"]
 
 [ext_resource type="PackedScene" uid="uid://bt58nkodr7coo" path="res://scenes/levels_zoomed/world_1/level_100_template.tscn" id="1_4q3fl"]
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="2_oru87"]
@@ -7,50 +7,39 @@
 [node name="Level" instance=ExtResource("1_4q3fl")]
 
 [node name="Block" parent="." index="6"]
-tile_map_data = PackedByteArray("AAACAAgAAAAEAAQAAAAEAAgAAAAEAAQAAAAKAAgAAAAEAAQAAAAMAAgAAAAEAAQAAAAMAAcAAAAEAAQAAAAKAAcAAAAEAAQAAAAEAAcAAAAEAAQAAAACAAcAAAAEAAQAAAABAAIAAAAEAAYAAAACAAEAAAAEAAUAAAACAAUAAAAEAAQAAAADAAEAAAAFAAUAAAADAAYAAAAEAAUAAAAEAAEAAAAFAAUAAAAFAAEAAAAGAAUAAAAJAAEAAAAEAAQAAAAJAAIAAAAFAAUAAAAJAAYAAAAGAAYAAAAKAAQAAAAEAAQAAAALAAIAAAAFAAUAAAALAAUAAAAEAAUAAAAMAAQAAAAEAAQAAAANAAEAAAAEAAQAAAACAAIAAAAFAAUAAAACAAMAAAAEAAQAAAACAAQAAAAEAAQAAAACAAYAAAAEAAQAAAACAAkAAAAEAAQAAAACAAoAAAAEAAQAAAADAAIAAAAFAAYAAAAEAAIAAAAFAAUAAAAEAAYAAAAFAAUAAAAEAAkAAAAEAAQAAAAEAAoAAAAEAAQAAAAFAAIAAAAFAAYAAAAFAAYAAAAFAAUAAAAGAAIAAAAFAAUAAAAGAAYAAAAFAAUAAAAHAAIAAAAFAAYAAAAHAAYAAAAFAAUAAAAIAAIAAAAFAAYAAAAIAAYAAAAFAAYAAAAJAAAAAAAEAAQAAAAKAAIAAAAFAAUAAAAKAAMAAAAEAAQAAAAKAAUAAAAEAAQAAAAKAAYAAAAEAAQAAAAKAAkAAAAEAAQAAAAKAAoAAAAEAAQAAAAMAAIAAAAFAAUAAAAMAAMAAAAEAAQAAAAMAAUAAAAFAAUAAAAMAAYAAAAEAAQAAAAMAAkAAAAEAAQAAAAMAAoAAAAEAAQAAAANAAAAAAAEAAQAAAANAAIAAAAFAAUAAAANAAUAAAAGAAUAAAAOAAIAAAAGAAYAAAA=")
+tile_map_data = PackedByteArray("AAACAAIAAAAFAAUAAAADAAEAAAAEAAUAAAADAAIAAAAFAAUAAAADAAYAAAAEAAQAAAAEAAEAAAAFAAUAAAAEAAIAAAAFAAYAAAAEAAYAAAAEAAUAAAAFAAEAAAAFAAUAAAAFAAIAAAAFAAUAAAAFAAYAAAAFAAUAAAAGAAIAAAAFAAYAAAAGAAYAAAAFAAUAAAAHAAIAAAAFAAUAAAAHAAYAAAAFAAUAAAAIAAIAAAAFAAYAAAAIAAYAAAAFAAUAAAAJAAIAAAAFAAYAAAAJAAYAAAAFAAYAAAAKAAIAAAAFAAYAAAAKAAMAAAAEAAUAAAAKAAYAAAAGAAYAAAALAAIAAAAFAAUAAAALAAUAAAAEAAQAAAAMAAIAAAAFAAYAAAAMAAUAAAAEAAUAAAANAAIAAAAFAAUAAAANAAUAAAAFAAUAAAAOAAIAAAAFAAUAAAADAAMAAAAEAAQAAAADAAQAAAAEAAQAAAADAAUAAAAEAAQAAAADAAcAAAAEAAQAAAADAAgAAAAEAAQAAAADAAkAAAAEAAQAAAADAAoAAAAEAAQAAAAFAAcAAAAEAAQAAAAFAAgAAAAEAAQAAAAFAAkAAAAEAAQAAAAFAAoAAAAEAAQAAAAGAAEAAAAGAAUAAAAKAAAAAAAEAAQAAAAKAAEAAAAEAAQAAAALAAMAAAAGAAYAAAALAAQAAAAEAAQAAAALAAYAAAAEAAQAAAALAAcAAAAEAAQAAAALAAgAAAAEAAQAAAALAAkAAAAEAAQAAAALAAoAAAAEAAQAAAANAAMAAAAEAAQAAAANAAQAAAAEAAQAAAANAAYAAAAEAAQAAAANAAcAAAAEAAQAAAANAAgAAAAEAAQAAAANAAkAAAAEAAQAAAANAAoAAAAEAAQAAAAOAAAAAAAEAAQAAAAOAAEAAAAEAAQAAAAOAAUAAAAGAAUAAAAPAAIAAAAGAAYAAAABAAIAAAAFAAUAAAAAAAIAAAAEAAYAAAABAAEAAAAEAAQAAAABAAAAAAAEAAQAAAABAP//AAAEAAQAAAABAP7/AAAEAAQAAAA=")
 
 [node name="Goal" parent="." index="7"]
-position = Vector2(136, 56)
+position = Vector2(152, 56)
 
 [node name="Block2" parent="." index="8"]
-position = Vector2(56, 88)
-up_extendable = true
-up_extend_value = 24.0
-down_extendable = true
-left_extendable = true
-
-[node name="Block5" parent="." index="9" instance=ExtResource("2_oru87")]
-position = Vector2(152, 56)
-static_block = true
-left_extendable = true
-left_extend_range = Vector2i(8, 104)
-left_extend_block_range = Vector2i(0, 6)
-
-[node name="Block4" parent="." index="10" instance=ExtResource("2_oru87")]
 position = Vector2(88, 72)
+up_extend_value = 24.0
+right_extendable = true
+
+[node name="Block4" parent="." index="9" instance=ExtResource("2_oru87")]
+position = Vector2(104, 72)
 up_extendable = true
 down_extendable = true
 left_extend_range = Vector2i(8, 392)
 left_extend_block_range = Vector2i(0, 24)
 right_extend_value = 24.0
 
-[node name="Block3" parent="." index="11" instance=ExtResource("2_oru87")]
-position = Vector2(72, 56)
-down_extendable = true
-left_extendable = true
-left_extend_value = 24.0
+[node name="Block3" parent="." index="10" instance=ExtResource("2_oru87")]
+position = Vector2(72, 88)
+up_extendable = true
 right_extendable = true
 right_extend_range = Vector2i(8, 56)
 right_extend_block_range = Vector2i(0, 3)
 
-[node name="Bird2" parent="." index="12" instance=ExtResource("3_j11b1")]
+[node name="Bird2" parent="." index="11" instance=ExtResource("3_j11b1")]
 position = Vector2(112, 24)
 
-[node name="Bird3" parent="." index="13" instance=ExtResource("3_j11b1")]
+[node name="Bird3" parent="." index="12" instance=ExtResource("3_j11b1")]
 position = Vector2(64, 8)
 
-[node name="Bird5" parent="." index="14" instance=ExtResource("3_j11b1")]
+[node name="Bird5" parent="." index="13" instance=ExtResource("3_j11b1")]
 position = Vector2(216, 72)
 
-[node name="Bird" parent="." index="15" instance=ExtResource("3_j11b1")]
+[node name="Bird" parent="." index="14" instance=ExtResource("3_j11b1")]
 position = Vector2(128, 24)
