@@ -11,10 +11,10 @@ var levels = [
 	{ "name": "1-1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_110.tscn"},
 	{ "name": "1-2", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_120.tscn"},
 	{ "name": "1-3", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_130.tscn"},
-	{ "name": "1-3changeme", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_135.tscn"},
-	{ "name": "1-4", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_140.tscn"},
-	{ "name": "1-5", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_150.tscn"},
-	{ "name": "1-6", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_160.tscn"},
+	{ "name": "1-4", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_135.tscn"},
+	{ "name": "1-5", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_140.tscn"},
+	{ "name": "1-6", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_150.tscn"},
+	{ "name": "1-7", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_160.tscn"},
 	{ "name": "world selector", "music": "city", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "2-1", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_210.tscn"},
@@ -39,7 +39,6 @@ var levels = [
 	{ "name": "4-2", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_420.tscn"},
 	{ "name": "4-3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_421.tscn"},
 	{ "name": "4-4", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_440.tscn"}, # easy
-
 	{ "name": "4-5", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_415.tscn"},
 	{ "name": "4-6", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_430.tscn"},
 	{ "name": "4-7", "music": "snow", "scene": "res://scenes/levels_zoomed/world_4/level_500.tscn"},
