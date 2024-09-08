@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/ui/cursor.gd" id="2_obgfy"]
 
 [node name="Cursor" type="Node2D"]
+z_index = 1405
 script = ExtResource("2_obgfy")
 tween_speed = null
 select_offset = null

@@ -28,14 +28,14 @@ To export, look at the [Godot documentation page](https://docs.godotengine.org/e
 
 **No.** In contrast to [open source software](https://en.wikipedia.org/wiki/Open-source_software), this game is only [source available](https://en.wikipedia.org/wiki/Source-available_software). **Not having a licence means that by default we reserve all original rights for the game, even if the code is public.**  
 
-However, we want to be very lax with what you can do with the source code. This is just to cover our asses from people that reupload games without consent to other places. Please feel free to reuse and modify the source code or assets, for any non-commercial or personal project, as long as you're not directly distributing the code, assets, or any executables.  
-*(This does not mean that we are giving up any rights, by the way; this is purely indicative.)*
+However, we want to be very lax with what you can do with the source code. This is just to cover our asses from people that reupload games without consent to other places. Please feel free to reuse bits of code or assets, or modify the source code for any non-commercial project, as long as you're not directly distributing the code, assets, or any executables. (More details below)  
+<sub>*(This does not mean that we are giving up any rights, by the way; this is purely indicative.)*</sub>
 
-If it does not fit that description please contact us at `ninesliced@gmail.com` (contact `leo@yolwoocle.com` if you do not get an answer). I don't bite! :)
+If it does not fit that description please contact us at `ninesliced@gmail.com`. I don't bite! :)
 
-### Examples of things that are okay:
-- Reusing some sprites or small bits of code (functions, classes, Godot nodes...) in your personal games, even commercial.
-- Forking this repo and making your own mods, as long as you are not profiting from it.
+### Examples of things that ARE okay:
+- Reusing some sprites or small bits of code (functions, classes, Godot nodes...) in your games, even commercial, and crediting us.
+- Forking this repo and making your own mods, as long as you are not profiting from them.
 - Writing reviews, or sharing screenshots and videos online.
 - Linking to the page of this repo or its official links.
 

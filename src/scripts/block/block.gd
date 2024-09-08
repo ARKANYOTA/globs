@@ -680,6 +680,10 @@ func start_grow():
 	is_asleep = false
 	select()
 
+func stop_grow():
+	sleep_timer.start()
+	unselect()
+
 ################################################
 
 func _ready():
@@ -767,20 +771,11 @@ func _physics_process(delta):
 ##### CLICK AREA
 ############################################################################################################################################
 
-func _snap_vector_to_cardinal(vec: Vector2) -> Vector2:
-	# https://www.reddit.com/r/godot/comments/t206my/how_to_get_a_direction_from_a_vector2d/
-	return Vector2.RIGHT.rotated(round(vec.angle() / TAU * 4) * TAU / 4).snapped(Vector2.ONE)
-
-func _mouse_diff_to_direction(vec: Vector2) -> Direction:
-	var dir_vec = _snap_vector_to_cardinal(vec)
-	return Util.vector_to_direction(dir_vec)
-
 func _on_click_area_start_drag():	
 	start_grow()
 
 func _on_click_area_end_drag():
-	sleep_timer.start()
-	unselect()
+	stop_grow()
 
 ## Returns the edge that should be selected, based on the movement of the cursor.
 func _get_selected_edge(movement_direction: Direction, mouse_pos: Vector2) -> Direction:
@@ -815,7 +810,7 @@ func _on_click_area_dragging():
 	if mouse_dist < drag_mouse_dead_zone:
 		return
 
-	var movement_direction = _mouse_diff_to_direction(mouse_diff)
+	var movement_direction = Util.snap_vector_to_direction(mouse_diff)
 	if movement_direction == Direction.INVALID:
 		return
 	
@@ -838,9 +833,15 @@ func _on_click_area_dragging():
 	extend_block(variation, selected_edge, false)
 	if drag_selected_edge == Direction.INVALID:
 		drag_selected_edge = selected_edge
-		if handles.has(selected_edge):
-			handles[selected_edge].set_highlighted(true)
+		set_highlighted_edge(drag_selected_edge)
 
+func set_highlighted_edge(edge: Direction = drag_selected_edge):
+	for handle_edge in handles:
+		handles[handle_edge].set_highlighted(false)
+
+	if handles.has(edge):
+		handles[edge].set_highlighted(true)
+	
 func set_is_moving_to_false():
 	is_moving = false
 

@@ -60,7 +60,6 @@ func _ready():
 				var next_world = LevelData.selected_world_index + 1
 				if next_world >= world_unlock_id:
 					LevelData.selected_world_index = next_world
-	pass
 
 func check_unlock():
 	var all_unlocked = true

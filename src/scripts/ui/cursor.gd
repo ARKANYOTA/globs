@@ -12,9 +12,10 @@ enum CursorMode {
 	DIRECTION_SELECT, 
 }
 
-var cursor_mode: CursorMode = BLOCK_SELECT
+var cursor_mode: CursorMode = CursorMode.BLOCK_SELECT
 var selection: Block = null
 var has_cursor_moved = false
+var selected_direction: Block.Direction = Block.Direction.INVALID
 
 func _ready():
 	pass 
@@ -35,6 +36,7 @@ func select(block: Block):
 	tween.tween_property(self, "scale", Vector2.ONE, tween_speed).set_ease(Tween.EASE_OUT)
 	
 func find_next_block(direction_vector: Vector2) -> Block:
+	# TODO: make it based on the closest Glob rather than the closest in direction
 	var origin_angle = direction_vector.angle()
 	var space_state = get_world_2d().direct_space_state
 
@@ -61,15 +63,47 @@ func find_next_block(direction_vector: Vector2) -> Block:
 
 
 func _physics_process(delta):
-	var movement_vector := Input.get_vector("game_left", "game_right", "game_up", "game_down", joystick_deadzone)
+	var joystick_vector := Input.get_vector("game_left", "game_right", "game_up", "game_down", joystick_deadzone)
+	if joystick_vector.length_squared() >= joystick_deadzone*joystick_deadzone:
+		joystick_vector = Vector2.ZERO
 
-	if movement_vector.length_squared() >= joystick_deadzone*joystick_deadzone:
-		if not has_cursor_moved:
-			var block := find_next_block(movement_vector)
-			print("block ", block)
-			if block:
-				has_cursor_moved = true
-				select(block)
-	else:
-		if has_cursor_moved:
-			has_cursor_moved = false
+	match cursor_mode:
+		CursorMode.BLOCK_SELECT:
+			if not joystick_vector.is_zero_approx():
+				if not has_cursor_moved:
+					var block := find_next_block(joystick_vector)
+					if block:
+						has_cursor_moved = true
+						select(block)
+			else:
+				if has_cursor_moved:
+					has_cursor_moved = false
+		
+		CursorMode.DIRECTION_SELECT:
+			if not selection:
+				return
+
+			if not joystick_vector.is_zero_approx():
+				var joystick_angle = joystick_vector.angle()
+				var directions = selection.get_extendable_directions()
+				var closest_direction = Util.closest_direction_to_angle(joystick_angle, directions)
+				if closest_direction != Block.Direction.INVALID:
+					selected_direction = closest_direction
+
+		_:
+			pass
+
+func _input(event):
+	match cursor_mode:
+		CursorMode.BLOCK_SELECT:
+			if event.is_action_pressed("select"):
+				cursor_mode = CursorMode.DIRECTION_SELECT
+				selected_direction = Block.Direction.INVALID
+		
+		CursorMode.DIRECTION_SELECT:
+			if selection and selected_direction != Block.Direction.INVALID: 
+				if event.is_action_pressed("grow"):
+					selection.extend_block(16, selected_direction, false)
+				if event.is_action_pressed("shrink"):
+					selection.extend_block(-16, selected_direction, false)
+			
