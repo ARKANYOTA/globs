@@ -129,6 +129,7 @@ var gravity_axis = Direction.DOWN
 @onready var sleep_particles: CPUParticles2D = $Sleep/SleepParticles
 @onready var click_audio: AudioStreamPlayer2D = $Audio/ClickAudio
 @onready var slide_audio: AudioStreamPlayer2D = $Audio/SlideAudio
+@onready var wake_up_audio: AudioStreamPlayer2D = $Audio/WakeUpAudio
 
 const move_speed := 0.1
 
@@ -742,7 +743,6 @@ func _physics_process(delta):
 ############################################################################################################################################
 
 func _on_click_area_clicked():
-	is_asleep = false
 	pass
 
 func _snap_vector_to_cardinal(vec: Vector2) -> Vector2:
@@ -775,7 +775,7 @@ func _on_click_area_start_drag():
 	drag_start_up_extend_value = up_extend_value
 	drag_start_down_extend_value = down_extend_value
 
-	is_asleep = false
+	wake_up()
 	select()
 
 func _on_click_area_end_drag():
@@ -1004,3 +1004,10 @@ func _on_sleep_timer_timeout():
 
 func get_random_sleeping_time():
 	return time_before_sleeping_min + randi() % (time_before_sleeping_max - time_before_sleeping_min)
+
+func wake_up():
+	if not is_asleep:
+		return
+	is_asleep = false
+	wake_up_audio.play()
+	
