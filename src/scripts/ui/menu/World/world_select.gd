@@ -19,6 +19,8 @@ func _ready():
 	add_dot()
 	update_dot()
 	world_index = LevelData.selected_world_index
+	LevelData.selected_level_name = ""
+	MusicManager.set_music("main_menu")
 	change_world(world_index)
 pass
 
