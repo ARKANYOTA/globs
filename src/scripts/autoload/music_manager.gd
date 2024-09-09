@@ -25,6 +25,8 @@ func _ready():
 func set_music(music_name: String):
 	if music_name == current_music_name:
 		return
+	if streams[music_name] == streams[current_music_name]:
+		return
 	
 	var stream: AudioStream = streams[music_name]
 	if not stream:
