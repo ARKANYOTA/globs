@@ -29,11 +29,11 @@ right_extend_range = Vector2i(8, 40)
 right_extend_block_range = Vector2i(0, 2)
 
 [node name="Block6" parent="." index="8" instance=ExtResource("2_gqkt8")]
-position = Vector2(55, 56)
+position = Vector2(56, 56)
 is_main_character = true
 
 [node name="Block7" parent="." index="9" instance=ExtResource("2_gqkt8")]
-position = Vector2(39, 56)
+position = Vector2(40, 56)
 is_main_character = true
 up_extend_value = 24.0
 left_extend_value = 24.0

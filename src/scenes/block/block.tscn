@@ -49,8 +49,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6d2k1"]
-size = Vector2(8, 40)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r1tuy"]
+size = Vector2(8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8rpv"]
 atlas = ExtResource("4_3fhqr")
@@ -456,7 +456,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_6d2k1")
+shape = SubResource("RectangleShape2D_r1tuy")
 debug_color = Color(0, 0.509804, 0.6, 0.0509804)
 
 [node name="ClickArea" parent="." instance=ExtResource("3_h0fp2")]
