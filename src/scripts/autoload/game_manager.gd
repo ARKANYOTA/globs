@@ -8,6 +8,27 @@ enum GamePlatform {
 
 	UNDEFINED,
 }
+
+const discord_rpc_world_keys: Dictionary = {
+	"1": {"name": "Globs City",    "large_image": "large_city"},
+	"2": {"name": "Cheese Den",    "large_image": "large_cheese"},
+	"3": {"name": "Chilly Tundra", "large_image": "large_snow"},
+	"4": {"name": "Space Colony",  "large_image": "large_space"},
+}
+var update_discord_rpc_timer = 0.0
+
+func _ready():
+	camera = global_camera_scene.instantiate()
+	add_child(camera)
+
+	process_mode = ProcessMode.PROCESS_MODE_ALWAYS
+	
+	Input.set_custom_mouse_cursor(cursor)
+	#Input.set_custom_mouse_cursor(cursor_click, Input.CURSOR_IBEAM)
+
+	_init_discord_rpc()
+
+
 var game_platform: GamePlatform = GamePlatform.UNDEFINED:
 	get:
 		if game_platform == GamePlatform.UNDEFINED:
@@ -47,18 +68,11 @@ func win():
 	MusicManager.set_music(next_sound)
 	SceneTransitionAutoLoad.change_scene_with_transition(next_level_name, true)
 
-
-func _ready():
-	camera = global_camera_scene.instantiate()
-	add_child(camera)
-
-	process_mode = ProcessMode.PROCESS_MODE_ALWAYS
-	
-	Input.set_custom_mouse_cursor(cursor)
-	#Input.set_custom_mouse_cursor(cursor_click, Input.CURSOR_IBEAM)
-
-func _process(_delta):
-	pass
+func _process(delta):
+	update_discord_rpc_timer -= delta
+	if update_discord_rpc_timer < 0:
+		_update_discord_rpc()
+		update_discord_rpc_timer = 3.0
 
 func _input(event):
 	if event.is_action_pressed("left_click"):
@@ -88,3 +102,42 @@ func toggle_fullscreen():
 		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED)
+
+
+func _init_discord_rpc():
+	DiscordRPC.app_id = 1282760428954325032 # Application ID
+	DiscordRPC.start_timestamp = int(Time.get_unix_time_from_system()) # "02:46 elapsed"
+
+	_update_discord_rpc()
+
+func _update_discord_rpc():
+	var level_data = LevelData.get_current_level_data()
+
+	if level_data:
+		print(level_data)
+		
+		DiscordRPC.details = "In level %s" % level_data["name"]
+
+		if level_data.has("world"):
+			var world = level_data["world"]
+			if discord_rpc_world_keys.has(world):
+				var key = discord_rpc_world_keys[world]
+				DiscordRPC.large_image = key["large_image"]
+				DiscordRPC.large_image_text = key["name"]
+
+			else:
+				# No world key was found, add it in discord_rpc_world_keys
+				DiscordRPC.large_image = "icon_detailed"
+				DiscordRPC.large_image_text = "In a level"
+		
+		else:
+			# No world info defined in level data, add it in the corresponding level in LevelData
+			DiscordRPC.large_image = "icon_detailed"
+			DiscordRPC.large_image_text = "In a level"
+
+
+	else:
+		DiscordRPC.large_image = "icon_detailed"
+		DiscordRPC.details = "In a menu"
+
+	DiscordRPC.refresh()
