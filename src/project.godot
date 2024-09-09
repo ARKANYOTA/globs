@@ -33,6 +33,7 @@ BlockManagerAutoload="*res://scripts/autoload/block_manager_autoload.gd"
 GameManager="*res://scripts/autoload/game_manager.gd"
 Util="*res://scripts/autoload/util.gd"
 MusicManager="*res://scripts/autoload/music_manager.gd"
+DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
 
 [debug]
 
@@ -54,6 +55,10 @@ mouse_cursor/custom_image_hotspot=Vector2(1, 1)
 [editor]
 
 movie_writer/movie_file="D:/docs/dev/gamedev/godot/gmtk2024/gmtk2024/output/movie_maker/recording.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg")
 
 [file_customization]
 
