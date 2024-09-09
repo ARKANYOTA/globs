@@ -594,9 +594,10 @@ func _update_animation():
 	
 	# if not is_selected:
 	# 	animation = "sleeping"
+	if sleep_particles:
+		sleep_particles.emitting = is_asleep #pinnn
 	if is_asleep:
 		animation = "sleeping"
-		sleep_particles.emitting = true
 		return
 
 	if size <= 4*16*16:
@@ -608,9 +609,6 @@ func _update_animation():
 		animation = "fat"
 	else:
 		animation = "scared"
-	
-	if sleep_particles:
-		sleep_particles.emitting = (animation == "sleeping")
 
 func _create_direction_indicator(direction: Direction, handle_name: String):
 	var dimensions = get_dimensions()

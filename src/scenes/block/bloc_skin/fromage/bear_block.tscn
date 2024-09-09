@@ -9,7 +9,7 @@
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwjn6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxcsk"]
 size = Vector2(32, 32)
 
 [node name="Block5" instance=ExtResource("1_iuvq1")]
@@ -26,7 +26,7 @@ axis_stretch_horizontal = 0
 axis_stretch_vertical = 2
 
 [node name="CollisionShape" parent="." index="3"]
-shape = SubResource("RectangleShape2D_uwjn6")
+shape = SubResource("RectangleShape2D_rxcsk")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7"]
 stream = ExtResource("3_nor20")
