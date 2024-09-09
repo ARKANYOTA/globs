@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by67joaxcae5y"
-path="res://.godot/imported/gmtklogo2024.png-a4f7517323f5b2cfd68a2f13d42c78df.ctex"
+uid="uid://csugmpn7yevg4"
+path="res://.godot/imported/splashold.png-887db33d1cd50e05ab0b7329fb68a5a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gmtklogo2024.png"
-dest_files=["res://.godot/imported/gmtklogo2024.png-a4f7517323f5b2cfd68a2f13d42c78df.ctex"]
+source_file="res://assets/images/splashold.png"
+dest_files=["res://.godot/imported/splashold.png-887db33d1cd50e05ab0b7329fb68a5a8.ctex"]
 
 [params]
 
