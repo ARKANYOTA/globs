@@ -596,7 +596,8 @@ func _update_animation():
 	# 	animation = "sleeping"
 	if is_asleep:
 		animation = "sleeping"
-		sleep_particles.emitting = true
+		if sleep_particles:
+			sleep_particles.emitting = true
 		return
 
 	if size <= 4*16*16:
