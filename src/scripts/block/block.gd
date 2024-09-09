@@ -592,14 +592,10 @@ func _update_animation():
 	var size = dim.x * dim.y
 	var old_animation = animation
 	
-	# if not is_selected:
-	# 	animation = "sleeping"
 	if sleep_particles:
-		sleep_particles.emitting = is_asleep #pinnn
+		sleep_particles.emitting = is_asleep
 	if is_asleep:
 		animation = "sleeping"
-		if sleep_particles:
-			sleep_particles.emitting = true
 		return
 
 	if size <= 4*16*16:
