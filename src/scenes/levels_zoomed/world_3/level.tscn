@@ -26,8 +26,10 @@ is_main_character = true
 [node name="Parallax2D" type="Parallax2D" parent="." index="7"]
 repeat_size = Vector2(320, 0)
 repeat_times = 5
+metadata/_edit_lock_ = true
 
 [node name="SnowBackground" type="Sprite2D" parent="Parallax2D" index="0"]
 z_index = -5
 position = Vector2(128, 88)
 texture = ExtResource("2_i2q6b")
+metadata/_edit_lock_ = true
