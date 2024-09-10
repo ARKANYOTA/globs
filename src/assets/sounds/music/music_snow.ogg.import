@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://bydqnyahw8da6"
+uid="uid://biv8k7klhvm4"
 path="res://.godot/imported/music_snow.ogg-98b1c853915c83e436a8a4e45220f368.oggvorbisstr"
 
 [deps]
@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/music_snow.ogg-98b1c853915c83e436a8a4e45220f3
 
 [params]
 
-loop=true
-loop_offset=0.0
-bpm=0.0
+loop=false
+loop_offset=0
+bpm=0
 beat_count=0
 bar_beats=4
