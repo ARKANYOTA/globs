@@ -128,7 +128,6 @@ func _input(event):
 		reload_scene()
 
 func _process(delta: float) -> void:
-	print(current_level, selected_level_name)
 	#print fps
 	#prin t(Engine.get_frames_per_second())
 	pass # Replace with function body.

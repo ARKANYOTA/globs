@@ -2,6 +2,8 @@ extends CanvasLayer
 
 # Le fullscreenbutton n'a l'air de servir a rien, mais bon jsp qui l'a mis la dc je le laisse.
 
+var is_shown = true
+
 func show_correct_game_gui():
 	if get_tree().get_current_scene():
 		var current_scene_name = get_tree().get_current_scene().get_name()
@@ -30,6 +32,18 @@ func _process(_delta):
 		$Control/LevelActions/UndoButton.disabled = true
 	else: 
 		$Control/LevelActions/UndoButton.disabled = false
+
+func _input(event):
+	if event.is_action_pressed("toggle_gui"):
+		set_shown(not is_shown)
+
+func set_shown(shown: bool):
+	is_shown = shown
+	if is_shown:
+		show()
+	else:
+		hide()
+
 
 func show_level_select():
 	$Control/LevelSelectPauseButton.hide()
