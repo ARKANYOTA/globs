@@ -58,6 +58,7 @@ up_extend_block_range = Vector2i(0, 3)
 position = Vector2(216, 72)
 
 [node name="SnowParticle2" parent="." index="11" instance=ExtResource("3_p4rxx")]
+z_index = -1
 position = Vector2(80, -32)
 rotation = 0.0
 lifetime = 3.5
