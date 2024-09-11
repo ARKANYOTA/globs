@@ -188,4 +188,3 @@ func _init_achievement_manager():
 			pass
 
 	add_child(achievement_manager)
-

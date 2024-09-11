@@ -130,6 +130,7 @@ grow_vertical = 2
 texture = ExtResource("8_53ti5")
 
 [node name="AppleWarn" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
