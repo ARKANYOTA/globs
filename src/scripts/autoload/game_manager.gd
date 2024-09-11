@@ -17,7 +17,7 @@ var game_platform: GamePlatform = GamePlatform.UNDEFINED:
 	get:
 		if game_platform == GamePlatform.UNDEFINED:
 			match OS.get_name():
-				"Windows", "macOS", "Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
+				"Windows", "macOS", "Linux":#, "FreeBSD", "NetBSD", "OpenBSD", "BSD":
 					game_platform = GamePlatform.PC
 				"Android", "iOS":
 					game_platform = GamePlatform.MOBILE
@@ -104,11 +104,7 @@ func toggle_fullscreen():
 
 
 func is_discord_rpc_supported() -> bool:
-	match OS.get_name():
-		"Windows", "macOS", "Linux":
-			return GDExtensionManager.is_extension_loaded("res://addons/discord-rpc-gd/bin/discord-rpc-gd.gdextension")
-		_:
-			return false
+	return game_platform == GamePlatform.PC and GDExtensionManager.is_extension_loaded("res://addons/discord-rpc-gd/bin/discord-rpc-gd.gdextension")
 
 func _init_discord_rpc():
 	if not is_discord_rpc_supported():
