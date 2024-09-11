@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://faky8wdeat6a"]
+
+[ext_resource type="PackedScene" uid="uid://clch7rqviicn6" path="res://scenes/achievements/achievement_manager.tscn" id="1_cw8f3"]
+[ext_resource type="Script" path="res://scripts/achievements/achievement_manager_steam.gd" id="2_ifq44"]
+
+[node name="AchievementManagerSteam" instance=ExtResource("1_cw8f3")]
+script = ExtResource("2_ifq44")

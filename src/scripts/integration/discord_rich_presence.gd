@@ -10,9 +10,15 @@ const discord_rpc_world_keys: Dictionary = {
 
 var initialized = false
 
+# TODO: add lauch command
+# https://docs.vaporvee.com/discord-rpc-godot/utillity_or_other/
+# Code is: DiscordRPC.register_command("my-awesome-game://run --full-screen")
+
 func initialize():
 	DiscordRPC.app_id = DISCORD_RPC_APP_ID 
 	DiscordRPC.start_timestamp = int(Time.get_unix_time_from_system())
+
+	DiscordRPC.register_steam(GameManager.STEAM_APP_ID)
 	
 	update()
 

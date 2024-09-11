@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://scripts/integration/discord_rich_presence.gd" id="1_ybopi"]
 
 [node name="DiscordRichPresence" type="Node"]
+process_mode = 3
 script = ExtResource("1_ybopi")
