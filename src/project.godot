@@ -26,17 +26,18 @@ config/icon="res://assets/images/icon_big.png"
 
 [autoload]
 
+GameManager="*res://scripts/autoload/game_manager.gd"
 SceneTransitionAutoLoad="*res://scripts/autoload/scene_transition_auto_load.gd"
 LevelData="*res://scripts/autoload/level_data.gd"
 PauseMenuAutoload="*res://scripts/autoload/pause_menu_autoload.gd"
 BlockManagerAutoload="*res://scripts/autoload/block_manager_autoload.gd"
-GameManager="*res://scripts/autoload/game_manager.gd"
 Util="*res://scripts/autoload/util.gd"
 MusicManager="*res://scripts/autoload/music_manager.gd"
 DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
 
 [debug]
 
+file_logging/enable_file_logging=true
 gdscript/warnings/unused_variable=0
 gdscript/warnings/unused_private_class_variable=0
 gdscript/warnings/unused_parameter=0
@@ -63,6 +64,7 @@ enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://addons/": "gray",
 "res://assets/": "green",
 "res://scenes/": "blue",
 "res://scripts/": "yellow",
@@ -149,6 +151,16 @@ shrink={
 toggle_gui={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194332,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+removeme_achievement_test={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":49,"key_label":0,"unicode":38,"location":0,"echo":false,"script":null)
+]
+}
+removeme_achievement_revokeall={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":50,"key_label":0,"unicode":233,"location":0,"echo":false,"script":null)
 ]
 }
 
