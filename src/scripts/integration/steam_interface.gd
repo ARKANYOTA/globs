@@ -34,9 +34,7 @@ func _process(_delta):
 
 func _on_steam_stats_ready(game_id: int, result: int, user_id: int):
 	print("Steam stats ready with code %s for: game_id = %s, user_id = %s" % [result, game_id, user_id])
-	print("Steam stats recieved")
 	if GameManager.achievement_manager:
-		print("Steam stats recieved, about to load achievements")
 		load_achievements(GameManager.achievement_manager.achievements)
 
 
