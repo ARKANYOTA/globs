@@ -102,6 +102,7 @@ func toggle_fullscreen():
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED)
 
+#################################################################
 
 func is_discord_rpc_supported() -> bool:
 	return game_platform == GamePlatform.PC and GDExtensionManager.is_extension_loaded("res://addons/discord-rpc-gd/bin/discord-rpc-gd.gdextension")
