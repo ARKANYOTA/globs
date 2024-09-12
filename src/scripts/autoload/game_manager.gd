@@ -115,7 +115,6 @@ func win():
 				next_sound = LevelData.levels[i + 1]["music"]
 	LevelData.make_level_completed()
 	LevelData.selected_level_name = next_level_name
-	# MusicManager.set_music(next_sound)
 	SceneTransitionAutoLoad.change_scene_with_transition(next_level_name, true)
 
 func on_restart():
