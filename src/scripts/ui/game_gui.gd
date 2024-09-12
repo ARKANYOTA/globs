@@ -14,7 +14,8 @@ func show_correct_game_gui():
 			PauseMenuAutoload.game_gui.hide_gui()
 		else: 
 			PauseMenuAutoload.game_gui.show_gui()
-			MusicManager.set_music(level_data["music"])  # TODO; remettre la music
+			if level_data and level_data.has("music"):
+				MusicManager.set_music(level_data["music"])  # TODO; remettre la music
 	else:
 		PauseMenuAutoload.game_gui.hide_gui()
 
