@@ -35,24 +35,6 @@ var global_camera_scene: PackedScene = preload("res://scenes/camera/global_camer
 var camera: Camera2D
 var is_fullscreen := false
 
-func win():
-	#check if level in level data
-	var level_in_data = false
-	var next_level_name = "res://scenes/ui/world_select/world_select.tscn"
-	var next_sound = "city"
-	for i in range(LevelData.levels.size()):
-		if LevelData.levels[i]["scene"] == get_tree().current_scene.scene_file_path:
-			#check if level is not the last level
-			level_in_data = true
-			if i + 1 < LevelData.levels.size():
-				next_level_name = LevelData.levels[i + 1]["scene"]
-				next_sound = LevelData.levels[i + 1]["music"]
-	LevelData.make_level_completed()
-	LevelData.selected_level_name = next_level_name
-	MusicManager.set_music(next_sound)
-	SceneTransitionAutoLoad.change_scene_with_transition(next_level_name, true)
-
-
 func _ready():
 	print("launched game")
 	camera = global_camera_scene.instantiate()
@@ -87,6 +69,32 @@ func _input(event):
 		
 		if scene is Level:
 			scene.undo_action()
+	
+	if event.is_action_pressed("removeme_achievement_test"):
+		print("about to grant ACH_TEST_01")
+		achievement_manager.grant("ACH_TEST_01")
+	
+	if event.is_action_pressed("removeme_achievement_revokeall"):
+		print("about to revoke all achievements")
+		achievement_manager.revoke_all()
+
+
+func win():
+	#check if level in level data
+	var level_in_data = false
+	var next_level_name = "res://scenes/ui/world_select/world_select.tscn"
+	var next_sound = "city"
+	for i in range(LevelData.levels.size()):
+		if LevelData.levels[i]["scene"] == get_tree().current_scene.scene_file_path:
+			#check if level is not the last level
+			level_in_data = true
+			if i + 1 < LevelData.levels.size():
+				next_level_name = LevelData.levels[i + 1]["scene"]
+				next_sound = LevelData.levels[i + 1]["music"]
+	LevelData.make_level_completed()
+	LevelData.selected_level_name = next_level_name
+	# MusicManager.set_music(next_sound)
+	SceneTransitionAutoLoad.change_scene_with_transition(next_level_name, true)
 
 func on_restart():
 	pass
@@ -125,5 +133,3 @@ func _update_discord_rpc():
 	discord_rich_presence.update()
 
 
-
-#caca proute de la par de corentin

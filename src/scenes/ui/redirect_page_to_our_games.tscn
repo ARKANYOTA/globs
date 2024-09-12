@@ -24,6 +24,7 @@ Otherwise: Please go to our URL:"
 label_settings = ExtResource("1_voncg")
 
 [node name="Yolwoocle" type="LinkButton" parent="Control"]
+layout_mode = 0
 offset_left = 77.0
 offset_top = 80.0
 offset_right = 155.0
@@ -32,6 +33,7 @@ text = "Yolwoocle"
 uri = "https://yolwoocle.itch.io/globs"
 
 [node name="Arkanyota" type="LinkButton" parent="Control"]
+layout_mode = 0
 offset_left = 77.0
 offset_top = 99.0
 offset_right = 158.0

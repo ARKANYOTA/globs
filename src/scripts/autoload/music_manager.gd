@@ -20,7 +20,6 @@ func _ready():
 	
 	set_music("main_menu")
 	music_player.play()
-	set_music("main_menu")
 
 func set_music(music_name: String):
 	if music_name == current_music_name:

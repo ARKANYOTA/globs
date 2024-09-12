@@ -108,7 +108,7 @@ func start_level():
 	
 	if state == LevelState.LOCKED:
 		return
-	MusicManager.set_music(world.world_music)
+	# MusicManager.set_music(world.world_music)
 	LevelData.selected_level_name = levelScene
 	SceneTransitionAutoLoad.change_scene_with_transition(levelScene)
 
