@@ -154,3 +154,39 @@ func _update_discord_rpc():
 	
 	discord_rich_presence.update()
 
+
+
+#caca proute de la par de corentin
+
+#################################################################
+
+func is_steam_api_supported() -> bool:
+	return game_platform == GamePlatform.PC and GDExtensionManager.is_extension_loaded("res://addons/godotsteam/godotsteam.gdextension")
+
+func _init_steam():
+	if distribution_platform != DistributionPlatform.STEAM:
+		return
+	
+	var steam_interface_scene: PackedScene = load("res://scenes/integration/steam_interface.tscn")
+	steam_interface = steam_interface_scene.instantiate()
+	add_child(steam_interface)
+	
+	var success = steam_interface.initialize()
+	if not success:
+		# TODO
+		pass
+
+#################################################################
+
+func _init_achievement_manager():
+	match distribution_platform:
+		DistributionPlatform.STEAM:
+			print("Creating Steam achievement manager")
+			var scene: PackedScene = load("res://scenes/achievements/achievement_manager_steam.tscn")
+			achievement_manager = scene.instantiate()
+		_:
+			#TODO
+			print("Creating generic achievement manager")
+			pass
+
+	add_child(achievement_manager)
