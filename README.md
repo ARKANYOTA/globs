@@ -30,7 +30,7 @@ Please feel free to reuse bits of code or assets, or modify the source code for 
 - Taking any pre-existing or self-built executables, with no or minor modifications, or a major part of the source code, and reuploading it to other places, whether you are directly or indirectly profiting from it or not.
 - We just don't like what you are doing. (e.g., AI-powered NFT cryptocurrency trading cards)
 
-If you have any doubts please contact us at `ninesliced@gmail.com`. I don't bite! :)
+If you have any doubts please contact us at `ninesliced@gmail.com`. (I don't bite! :) -Léo)
 
 
 <h2>
