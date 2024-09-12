@@ -1,18 +1,30 @@
 extends Node
 
 enum GamePlatform {
+	UNDEFINED,
+
 	WEB,
 	MOBILE,
 	PC,
 	UNKNOWN,
-	
-	UNDEFINED,
 }
 
-const DISCORD_RPC_UPDATE_INTERVAL = 3.0
-var discord_rich_presence: Node = null
-var _discord_rpc_update_timer = 0.0
+enum DistributionPlatform {
+	UNDEFINED,
 
+	NATIVE,
+	STEAM,
+	PLAY_STORE,
+}
+
+var distribution_platform: DistributionPlatform = DistributionPlatform.UNDEFINED:
+	get:
+		if distribution_platform == DistributionPlatform.UNDEFINED:
+			if is_steam_api_supported():
+				distribution_platform = DistributionPlatform.STEAM
+			else:
+				distribution_platform = DistributionPlatform.NATIVE
+		return distribution_platform
 var game_platform: GamePlatform = GamePlatform.UNDEFINED:
 	get:
 		if game_platform == GamePlatform.UNDEFINED:
@@ -25,8 +37,16 @@ var game_platform: GamePlatform = GamePlatform.UNDEFINED:
 					game_platform = GamePlatform.WEB
 				_:
 					game_platform = GamePlatform.UNKNOWN
-	
 		return game_platform
+
+const DISCORD_RPC_UPDATE_INTERVAL = 3.0
+var discord_rich_presence: Node = null
+var _discord_rpc_update_timer = 0.0
+
+const STEAM_APP_ID = 3219110
+var steam_interface: Node = null
+
+var achievement_manager: AchievementManager
 
 var cursor = preload("res://assets/images/ui/cursor_big.png")
 var cursor_click = preload("res://assets/images/ui/cursor_click_big.png")
@@ -46,6 +66,8 @@ func _ready():
 	#Input.set_custom_mouse_cursor(cursor_click, Input.CURSOR_IBEAM)
 
 	_init_discord_rpc()
+	_init_steam()
+	_init_achievement_manager()
 
 func _process(delta):
 	if discord_rich_presence:
@@ -131,5 +153,4 @@ func _update_discord_rpc():
 		return
 	
 	discord_rich_presence.update()
-
 

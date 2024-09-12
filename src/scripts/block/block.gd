@@ -142,6 +142,7 @@ var direction_indicator: PackedScene = preload("res://scenes/handler/direction_i
 var animation = "o_face"
 var is_asleep := true
 var is_moving := false
+var moving_direction := Direction.INVALID
 var is_falling := false
 
 var drag_start_position: Vector2
@@ -709,6 +710,13 @@ func _process(delta):
 	
 	$CenterIndicator.play(animation)
 
+func same_axis(dir1, dir2):
+	if dir1 == Direction.LEFT or dir1 == Direction.RIGHT:
+		return dir2 == Direction.LEFT or dir2 == Direction.RIGHT
+	if dir1 == Direction.UP or dir1 == Direction.DOWN:
+		return dir2 == Direction.UP or dir2 == Direction.DOWN
+	return false
+
 func _physics_process(delta):
 	if Engine.is_editor_hint():
 		return
@@ -716,7 +724,7 @@ func _physics_process(delta):
 	if not is_visible():
 		return
 	
-	if is_gravity_enabled and not is_falling:
+	if is_gravity_enabled and not is_falling and not (is_moving and same_axis(gravity_axis, moving_direction)):
 		var map_data = get_map_data()
 		var grid = map_data[0]
 		var rect = get_grid_rect()
@@ -841,6 +849,7 @@ func set_highlighted_edge(edge: Direction = drag_selected_edge):
 	
 func set_is_moving_to_false():
 	is_moving = false
+	moving_direction = Direction.INVALID
 
 func set_is_falling_to_false():
 	is_falling = false
@@ -926,11 +935,13 @@ func extend_block(variation: int, direction: Direction, push: bool):
 		if not block: # FIXME SCOTCH, remove if causes issues
 			continue
 		#position qui bouge
+		block.moving_direction = direction
 		if direction == Direction.RIGHT or direction == Direction.LEFT:
 			move_tween.tween_property(block, "position:x", block.position.x + off, move_speed).set_ease(Tween.EASE_OUT)
 		if direction == Direction.DOWN or direction == Direction.UP:
 			move_tween.tween_property(block, "position:y", block.position.y + off, move_speed).set_ease(Tween.EASE_OUT)
 		move_tween.tween_callback(func(): block.is_moving = false)
+		move_tween.tween_callback(func(): block.moving_direction = Direction.INVALID)
 		block.is_moving = true
 
 		if block.is_gravity_enabled and is_same_axis(block.gravity_axis, direction):

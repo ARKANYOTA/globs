@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://clib81weo65vk"]
+[gd_scene load_steps=12 format=3 uid="uid://clib81weo65vk"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ngeyx"]
 [ext_resource type="PackedScene" uid="uid://bpqekaydn06nf" path="res://scenes/ui/scene_transition.tscn" id="4_mholn"]
@@ -12,7 +12,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_u3bde"]
 font = ExtResource("5_v4ddl")
-font_size = 4
+font_size = 5
 font_color = Color(0.878098, 0.878098, 0.878098, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
@@ -22,19 +22,6 @@ font = ExtResource("5_v4ddl")
 font_size = 8
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Gradient" id="Gradient_bgniq"]
-colors = PackedColorArray(0.966052, 0.966052, 5.39064e-06, 1, 0.869317, 0.869318, 3.85046e-07, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fjena"]
-gradient = SubResource("Gradient_bgniq")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bdjxa"]
-texture = SubResource("GradientTexture2D_fjena")
-texture_margin_left = 8.0
-texture_margin_top = 8.0
-texture_margin_right = 8.0
-texture_margin_bottom = 8.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ngeyx")
@@ -151,14 +138,13 @@ offset_bottom = 40.0
 
 [node name="WarningApple" type="Label" parent="CanvasLayer/AppleWarn"]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 39.0
-offset_right = 225.0
-offset_bottom = 97.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_bdjxa")
-text = "Warning IOS and MacOS web
-version is not always 
-supported"
+offset_left = 17.0
+offset_top = 3.0
+offset_right = 220.0
+offset_bottom = 26.0
+text = "Warning : iOS and macOS web version is not always supported"
 label_settings = ExtResource("9_nsas2")
 horizontal_alignment = 1
-uppercase = true
+script = ExtResource("7_h54yi")
+color_1 = Color(1, 0.8275, 0.31, 1)
+color_2 = Color(1, 0.433333, 0, 1)
