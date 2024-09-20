@@ -8,12 +8,12 @@ var actions: Array = []
 func _ready():
 	actions = []
 
-func is_multiple_os_8_plus_16n(i: int):
-	return (i+8)%16 == 0
+func is_multiple_of_8_plus_16n(i: int):
+	return (i + 8) % 16 == 0
 
 func is_on_good_position(block: Block):
 	for i in [block.position.x, block.position.y, block.up_extend_value, block.down_extend_value, block.right_extend_value, block.left_extend_value]:
-		if not is_multiple_os_8_plus_16n(i):
+		if not is_multiple_of_8_plus_16n(i):
 			return false
 	return true
 	
