@@ -675,8 +675,6 @@ func start_grow():
 	drag_start_up_extend_value = up_extend_value
 	drag_start_down_extend_value = down_extend_value
 
-	if is_asleep and is_main_character:
-		wake_up_audio.play()
 	is_asleep = false
 	select()
 
@@ -1015,3 +1013,10 @@ func _on_sleep_timer_timeout():
 
 func get_random_sleeping_time():
 	return time_before_sleeping_min + randi() % (time_before_sleeping_max - time_before_sleeping_min)
+
+func wake_up():
+	if not is_asleep:
+		return
+	is_asleep = false
+	wake_up_audio.play()
+	
