@@ -30,7 +30,7 @@ func pause():
 	PauseMenuAutoload.game_gui.hide_gui()
 
 	PauseMenuAutoload.paused = true
-	set_menu_by_name("PauseMenu")
+	set_menu("PauseMenu")
 
 func exit_menu():
 	menu_stack = []
@@ -41,14 +41,14 @@ func exit_menu():
 	hide()
 	get_tree().set_pause(false)
 
-func set_menu_by_name(menu_name: String, add_to_stack: bool = true):
-	var menu: Control = get_node(str(menu_name))
+func set_menu(menu_name: String, add_to_stack: bool = true):
+	var menu: Control = get_node_or_null(str(menu_name))
 	if not menu:
 		return
 	
-	set_menu(menu, add_to_stack)
+	set_menu_by_node(menu, add_to_stack)
 
-func set_menu(menu: Control, add_to_stack: bool = true):
+func set_menu_by_node(menu: Control, add_to_stack: bool = true):
 	if not menu:
 		return
 	
@@ -71,4 +71,4 @@ func back():
 		PauseMenuAutoload.game_gui.show_correct_game_gui()
 		return
 	else:
-		set_menu_by_name(menu_stack[-1], false)
+		set_menu(menu_stack[-1], false)

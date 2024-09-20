@@ -121,9 +121,3 @@ func update_dot() -> void:
 		else:
 			dot.icon = texture_off
 		pass
-
-func _on_ui_button_pressed() -> void:
-	LevelData.completed_levels = []
-	LevelData.new_save_level_data()
-	SceneTransitionAutoLoad.change_scene_with_transition("res://scenes/ui/world_select/world_select.tscn")
-	pass # Replace with function body.

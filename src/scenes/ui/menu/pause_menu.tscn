@@ -1,68 +1,44 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmdbgomhamteh"]
+[gd_scene load_steps=5 format=3 uid="uid://bmdbgomhamteh"]
 
+[ext_resource type="PackedScene" uid="uid://dt7ylcp3vogvt" path="res://scenes/ui/menu/menu.tscn" id="1_lhvab"]
 [ext_resource type="Script" path="res://scripts/ui/menu/pause_menu.gd" id="1_xt0kk"]
-[ext_resource type="Shader" path="res://shaders/pause_menu_background.gdshader" id="2_hs6ai"]
-[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/font_normal.ttf" id="3_xn1q7"]
 [ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui/ui_button.tscn" id="4_35rns"]
 [ext_resource type="LabelSettings" uid="uid://cl1yg37xye2ku" path="res://assets/resources/label_settings.tres" id="5_657dq"]
-[ext_resource type="PackedScene" uid="uid://dv7orepl8b082" path="res://scenes/ui/volume_slider.tscn" id="6_8i4tu"]
-[ext_resource type="PackedScene" uid="uid://ciguail0coyfn" path="res://scenes/ui/ui_fullscreen_button.tscn" id="7_q7xqu"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnp6j"]
-shader = ExtResource("2_hs6ai")
-shader_parameter/amount = 3.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_ahekt"]
-font = ExtResource("3_xn1q7")
-font_size = 8
-
-[node name="PauseMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PauseMenu" instance=ExtResource("1_lhvab")]
 script = ExtResource("1_xt0kk")
 
-[node name="DarkBlackground" type="ColorRect" parent="."]
-z_index = -200
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.568627)
+[node name="Title" parent="MarginContainer/AspectRatioContainer/Items" index="0"]
+text = "Paused"
 
-[node name="BlurBackground" type="ColorRect" parent="."]
-z_index = -200
-material = SubResource("ShaderMaterial_hnp6j")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.364706)
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer"]
+[node name="ResumeButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="0" instance=ExtResource("4_35rns")]
 layout_mode = 2
-ratio = 1.7778
 
-[node name="LevelName" type="Label" parent="MarginContainer/AspectRatioContainer"]
+[node name="RestartButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="1" instance=ExtResource("4_35rns")]
+layout_mode = 2
+text = "Retry"
+
+[node name="SkipButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="2" instance=ExtResource("4_35rns")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Skip level"
+
+[node name="OptionsButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="3" instance=ExtResource("4_35rns")]
+layout_mode = 2
+text = "Options"
+
+[node name="LevelsButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="4" instance=ExtResource("4_35rns")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Levels"
+
+[node name="QuitButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="5" instance=ExtResource("4_35rns")]
+visible = false
+layout_mode = 2
+text = "Quit"
+
+[node name="LevelName" type="Label" parent="MarginContainer/AspectRatioContainer" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -70,82 +46,10 @@ size_flags_vertical = 0
 text = "1-1"
 label_settings = ExtResource("5_657dq")
 
-[node name="Items" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Title" type="Label" parent="MarginContainer/AspectRatioContainer/Items"]
-layout_mode = 2
-size_flags_vertical = 0
-text = "Paused"
-label_settings = SubResource("LabelSettings_ahekt")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Buttons" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer/Items"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="ResumeButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" instance=ExtResource("4_35rns")]
-layout_mode = 2
-
-[node name="RestartButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" instance=ExtResource("4_35rns")]
-layout_mode = 2
-text = "Retry"
-
-[node name="SkipButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" instance=ExtResource("4_35rns")]
-unique_name_in_owner = true
+[node name="BackButton" parent="MarginContainer" index="1"]
 visible = false
-layout_mode = 2
-text = "Skip level"
 
-[node name="LevelsButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" instance=ExtResource("4_35rns")]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Levels"
-
-[node name="QuitButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" instance=ExtResource("4_35rns")]
-visible = false
-layout_mode = 2
-text = "Quit"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/Items"]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="MasterVolume" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer/Items/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="MarginContainer/AspectRatioContainer/Items/HBoxContainer/MasterVolume"]
-layout_mode = 2
-text = "Master volume"
-label_settings = ExtResource("5_657dq")
-
-[node name="MasterVolumeSlider" parent="MarginContainer/AspectRatioContainer/Items/HBoxContainer/MasterVolume" instance=ExtResource("6_8i4tu")]
-layout_mode = 2
-
-[node name="MusicVolume" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer/Items/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="MarginContainer/AspectRatioContainer/Items/HBoxContainer/MusicVolume"]
-layout_mode = 2
-text = "Music volume"
-label_settings = ExtResource("5_657dq")
-
-[node name="MasterVolumeSlider" parent="MarginContainer/AspectRatioContainer/Items/HBoxContainer/MusicVolume" instance=ExtResource("6_8i4tu")]
-layout_mode = 2
-audio_bus_name = "Music"
-
-[node name="FullscreenButton" parent="MarginContainer/AspectRatioContainer/Items/HBoxContainer" instance=ExtResource("7_q7xqu")]
-unique_name_in_owner = true
-layout_mode = 2
-icon = null
-
-[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/ResumeButton" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/RestartButton" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/SkipButton" to="." method="_on_skip_pressed"]
-[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/LevelsButton" to="." method="_on_levels_pressed"]
-[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/QuitButton" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/LevelsButton" to="." method="_on_levels_button_pressed"]

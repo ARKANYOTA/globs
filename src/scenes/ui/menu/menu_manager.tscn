@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://8lw7bps1tiip"]
+[gd_scene load_steps=5 format=3 uid="uid://8lw7bps1tiip"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu/menu_manager.gd" id="1_mddol"]
 [ext_resource type="PackedScene" uid="uid://bmdbgomhamteh" path="res://scenes/ui/menu/pause_menu.tscn" id="3_751oy"]
+[ext_resource type="PackedScene" uid="uid://c0vf1vyo26r55" path="res://scenes/ui/menu/options_menu.tscn" id="3_i6nef"]
+[ext_resource type="PackedScene" uid="uid://c7majswqbd6mf" path="res://scenes/ui/menu/reset_progress_confirm_menu.tscn" id="4_g7col"]
 
 [node name="MenuManager" type="CanvasLayer"]
 process_mode = 3
@@ -9,3 +11,7 @@ visible = false
 script = ExtResource("1_mddol")
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_751oy")]
+
+[node name="OptionsMenu" parent="." instance=ExtResource("3_i6nef")]
+
+[node name="ResetProgressConfirmMenu" parent="." instance=ExtResource("4_g7col")]

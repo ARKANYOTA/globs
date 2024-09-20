@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://dt7ylcp3vogvt"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/menu.gd" id="1_pa05o"]
+[ext_resource type="Shader" path="res://shaders/pause_menu_background.gdshader" id="2_f2oh8"]
+[ext_resource type="FontFile" uid="uid://cjyup1ooil314" path="res://assets/fonts/font_normal.ttf" id="3_v1b0j"]
+[ext_resource type="PackedScene" uid="uid://njqkv5i1atvi" path="res://scenes/ui/ui_icon_button.tscn" id="8_7fibo"]
+[ext_resource type="Texture2D" uid="uid://dr3uo4murx75h" path="res://assets/images/ui/undo.png" id="9_daqll"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnp6j"]
+shader = ExtResource("2_f2oh8")
+shader_parameter/amount = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ahekt"]
+font = ExtResource("3_v1b0j")
+font_size = 8
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pa05o")
+
+[node name="DarkBlackground" type="ColorRect" parent="."]
+z_index = -200
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.568627)
+
+[node name="BlurBackground" type="ColorRect" parent="."]
+z_index = -200
+material = SubResource("ShaderMaterial_hnp6j")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.364706)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer"]
+layout_mode = 2
+ratio = 1.7778
+
+[node name="Items" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/AspectRatioContainer/Items"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "menu"
+label_settings = SubResource("LabelSettings_ahekt")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer/Items"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 3
+
+[node name="BackButton" parent="MarginContainer" instance=ExtResource("8_7fibo")]
+process_priority = -2
+process_physics_priority = -2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+icon = ExtResource("9_daqll")
+
+[connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_back_button_pressed"]

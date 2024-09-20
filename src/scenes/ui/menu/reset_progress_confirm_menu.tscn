@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7majswqbd6mf"]
+
+[ext_resource type="PackedScene" uid="uid://dt7ylcp3vogvt" path="res://scenes/ui/menu/menu.tscn" id="1_p3n4o"]
+[ext_resource type="Script" path="res://scripts/ui/menu/reset_progress_confirm_menu.gd" id="2_7fdx7"]
+[ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui/ui_button.tscn" id="7_mgrve"]
+
+[node name="ResetProgressConfirmMenu" instance=ExtResource("1_p3n4o")]
+script = ExtResource("2_7fdx7")
+
+[node name="Title" parent="MarginContainer/AspectRatioContainer/Items" index="0"]
+text = "Are you sure you want to 
+reset your progress? 
+This cannot be undone."
+uppercase = false
+
+[node name="VolumeOptions" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="0"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="Yes" parent="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions" index="0" instance=ExtResource("7_mgrve")]
+layout_mode = 2
+text = "Yes
+"
+
+[node name="No" parent="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions" index="1" instance=ExtResource("7_mgrve")]
+layout_mode = 2
+text = "No"
+
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions/No" to="." method="_on_no_pressed"]

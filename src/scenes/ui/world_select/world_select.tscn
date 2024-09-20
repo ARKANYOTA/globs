@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bkctk521mrl0q"]
+[gd_scene load_steps=17 format=4 uid="uid://bkctk521mrl0q"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu/World/world_select.gd" id="1_j1qpb"]
 [ext_resource type="PackedScene" uid="uid://dvxxdm807x881" path="res://scenes/ui/world_select/world/world_1.tscn" id="2_53s81"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://cicawq5hwbh6v" path="res://scenes/ui/world_select/world/world_4.tscn" id="5_3jtnu"]
 [ext_resource type="Texture2D" uid="uid://baupic3tgrmb3" path="res://assets/images/spritesheet/fromage_sprite_sheet.png" id="6_27byr"]
 [ext_resource type="Texture2D" uid="uid://dtb7kvu5i3h0i" path="res://assets/images/ui/menu_right.png" id="8_l2stl"]
-[ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui/ui_button.tscn" id="8_souvd"]
 [ext_resource type="Texture2D" uid="uid://cscjdb5vo0gxa" path="res://assets/images/ui/menu_left.png" id="9_iqcs7"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_as84n"]
@@ -144,14 +143,5 @@ alignment = 1
 [node name="ScrollComponent" parent="." node_paths=PackedStringArray("world_select") instance=ExtResource("3_iof5u")]
 world_select = NodePath("..")
 
-[node name="UiButton" parent="." instance=ExtResource("8_souvd")]
-visible = false
-offset_left = 8.0
-offset_top = 112.0
-offset_right = 86.0
-offset_bottom = 130.0
-text = "Reset levels"
-
 [connection signal="pressed" from="right" to="." method="_on_right_pressed"]
 [connection signal="pressed" from="left" to="." method="_on_left_pressed"]
-[connection signal="pressed" from="UiButton" to="." method="_on_ui_button_pressed"]

@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0vf1vyo26r55"]
+
+[ext_resource type="PackedScene" uid="uid://dt7ylcp3vogvt" path="res://scenes/ui/menu/menu.tscn" id="1_w3j1j"]
+[ext_resource type="Script" path="res://scripts/ui/menu/options_menu.gd" id="1_wjxn1"]
+[ext_resource type="LabelSettings" uid="uid://cl1yg37xye2ku" path="res://assets/resources/label_settings.tres" id="3_t0dhi"]
+[ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui/ui_button.tscn" id="5_jwcs2"]
+[ext_resource type="PackedScene" uid="uid://dv7orepl8b082" path="res://scenes/ui/volume_slider.tscn" id="6_gllis"]
+[ext_resource type="PackedScene" uid="uid://ciguail0coyfn" path="res://scenes/ui/ui_fullscreen_button.tscn" id="7_t2eu6"]
+
+[node name="OptionsMenu" instance=ExtResource("1_w3j1j")]
+script = ExtResource("1_wjxn1")
+
+[node name="Title" parent="MarginContainer/AspectRatioContainer/Items" index="0"]
+text = "Options"
+
+[node name="VolumeOptions" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="0"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="MasterVolume" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions/MasterVolume" index="0"]
+layout_mode = 2
+text = "Master volume"
+label_settings = ExtResource("3_t0dhi")
+
+[node name="MasterVolumeSlider" parent="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions/MasterVolume" index="1" instance=ExtResource("6_gllis")]
+layout_mode = 2
+
+[node name="MusicVolume" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions/MusicVolume" index="0"]
+layout_mode = 2
+text = "Music volume"
+label_settings = ExtResource("3_t0dhi")
+
+[node name="MasterVolumeSlider" parent="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions/MusicVolume" index="1" instance=ExtResource("6_gllis")]
+layout_mode = 2
+audio_bus_name = "Music"
+
+[node name="FullscreenButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="1" instance=ExtResource("7_t2eu6")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Toggle fullscreen"
+icon = null
+
+[node name="ResetProgress" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="2" instance=ExtResource("5_jwcs2")]
+layout_mode = 2
+text = "Reset level progress"
+
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/ResetProgress" to="." method="_on_reset_progress_pressed"]

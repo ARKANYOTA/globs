@@ -13,11 +13,11 @@ func _ready():
 func exit_menu():
 	main.exit_menu()
 
-func _on_resume_pressed():
+func _on_resume_button_pressed():
 	main.exit_menu()
 	PauseMenuAutoload.game_gui.show_correct_game_gui()
 
-func _on_restart_pressed():
+func _on_restart_button_pressed(): 
 	main.exit_menu()
 	LevelData.reload_scene()
 	GameManager.on_restart()
@@ -25,10 +25,13 @@ func _on_restart_pressed():
 func _on_quit_pressed():
 	get_tree().quit()
 
-func _on_levels_pressed():
+func _on_levels_button_pressed():
 	SceneTransitionAutoLoad.change_scene_with_transition(levels_scene_path, false)
 	main.exit_menu()
 
+
+func _on_options_button_pressed():
+	main.set_menu("OptionsMenu")
 
 func _on_skip_pressed():
 	main.exit_menu()
