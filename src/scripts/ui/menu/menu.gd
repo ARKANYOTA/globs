@@ -5,5 +5,3 @@ class_name Menu
 
 func _on_back_button_pressed():
 	menu_manager.back()
-
-

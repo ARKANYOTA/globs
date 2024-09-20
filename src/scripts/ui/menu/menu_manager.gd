@@ -7,6 +7,10 @@ var current_menu: Control = null
 var music_bus_name := "Music"
 @onready var _music_bus_index := AudioServer.get_bus_index(music_bus_name)
 
+# This is necessary because the "Back" notification is called twice on Android... for some reason...
+var back_cooldown = 0.1
+var back_cooldown_timer = 0.0
+
 func _ready():
 	pass
 
@@ -15,12 +19,8 @@ func _ready():
 		texture = value
 		$Sprite2D.texture = texture 
 
-func _process(_delta):
-	if Input.is_action_just_pressed("pause"):
-		if PauseMenuAutoload.paused:
-			back()
-		else:
-			pause()
+func _process(delta):
+	back_cooldown_timer = max(0.0, back_cooldown_timer - delta)
 
 func pause():
 	if not PauseMenuAutoload.can_pause:
@@ -65,6 +65,10 @@ func set_menu_by_node(menu: Control, add_to_stack: bool = true):
 		menu_stack.append(menu.name) 
 
 func back():
+	if back_cooldown_timer > 0:
+		return
+	back_cooldown_timer = back_cooldown
+
 	menu_stack.pop_back()
 	if menu_stack.is_empty():
 		exit_menu()
@@ -72,3 +76,18 @@ func back():
 		return
 	else:
 		set_menu(menu_stack[-1], false)
+
+
+# TODO on PC, key "escape" = back
+func _input(event):	
+	if event.is_action_pressed("pause"):
+		if PauseMenuAutoload.paused:
+			back()
+		else:
+			pause()
+
+
+func _notification(what):
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		back()
+

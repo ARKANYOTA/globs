@@ -1,4 +1,4 @@
-extends Control
+extends Menu
 class_name PauseMenu
 
 @onready var main = get_parent()
@@ -7,8 +7,9 @@ class_name PauseMenu
 var levels_scene_path = "res://scenes/ui/world_select/world_select.tscn"
 
 func _ready():
-	if GameManager.game_platform != GameManager.GamePlatform.PC:
-		%FullscreenButton.hide()
+	pass
+	# if GameManager.game_platform != GameManager.GamePlatform.PC:
+	# 	%FullscreenButton.hide()
 
 func exit_menu():
 	main.exit_menu()
@@ -41,7 +42,7 @@ func _on_skip_pressed():
 func _on_fullscreen_button_pressed():
 	GameManager.toggle_fullscreen()
 
-func _process(_delta):
+func _process(delta):
 	# SCOTCH !!
 	var levels_button = %LevelsButton
 	var current_scene = get_tree().get_current_scene()

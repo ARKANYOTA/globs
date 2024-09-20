@@ -18,6 +18,7 @@ config/name="Globs"
 config/description="Meet the size-changing Globs in this colorful puzzle game."
 config/version="1.1.00.240910"
 run/main_scene="res://scenes/main.tscn"
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.913725, 0.992157, 0.870588, 1)
 boot_splash/image="res://assets/images/splash.png"
