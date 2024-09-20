@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/ui/click_anywhere_text.gd" id="7_h54yi"]
 [ext_resource type="Texture2D" uid="uid://b3l0i7o6emx6i" path="res://assets/images/logo.png" id="8_53ti5"]
 [ext_resource type="LabelSettings" uid="uid://b5nxegdlm352f" path="res://assets/resources/label_warning.tres" id="9_nsas2"]
-[ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels/visuals/city_visuals.tscn" id="10_m3m4d"]
+[ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels_zoomed/visuals/city_visuals.tscn" id="10_m3m4d"]
 [ext_resource type="Texture2D" uid="uid://c8srf7vwt813x" path="res://assets/images/backgrounds/title_blocks_bg.png" id="11_fps7l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u3bde"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://do8khq28rqe3n"]
 
-[ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels/visuals/city_visuals.tscn" id="1_uhilt"]
+[ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels_zoomed/visuals/city_visuals.tscn" id="1_uhilt"]
 [ext_resource type="Texture2D" uid="uid://b3l0i7o6emx6i" path="res://assets/images/logo.png" id="2_5nfmw"]
 [ext_resource type="FontFile" uid="uid://cjyup1ooil314" path="res://assets/fonts/font_normal.ttf" id="3_mfx0u"]
 

@@ -17,18 +17,17 @@ This game was made using the [Godot game engine](https://godotengine.org), origi
 
 However, we are very lax with what you can do with the source code. This is just to legally cover our asses from people that reupload games without our consent. 
 
-Please feel free to reuse bits of code or assets, or modify the source code for any non-commercial project, as long as you're not directly distributing the code, assets, or any executables. (More details below.)  
-<sub>*This does not mean that we are giving up any rights, by the way; this is purely indicative.*</sub>
-
 ### Examples of things that ARE okay:
 - Reusing some sprites or small bits of code (functions, classes, Godot nodes...) in your games, even commercial, and crediting us.
 - Forking this repo and making your own mods, as long as you are not profiting from them.
 - Writing reviews, or sharing screenshots and videos online.
 - Linking to the page of this repo or its official links.
 
+<sub>*This does not mean that we are giving up any rights, by the way; this is purely indicative.*</sub>
+
 ### Examples of things that are NOT okay:
 - Taking any pre-existing or self-built executables, with no or minor modifications, or a major part of the source code, and reuploading it to other places, whether you are directly or indirectly profiting from it or not.
-- We just don't like what you are doing. (e.g., AI-powered NFT cryptocurrency trading cards)
+- We just don't like what you are doing. (e.g., AI-powered NFT crypto trading cards)
 
 If you have any doubts please contact us at `ninesliced@gmail.com`. (I don't bite! :) -Léo)
 

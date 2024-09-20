@@ -48,6 +48,7 @@ right_extend_block_range = Vector2i(0, 2)
 
 [node name="Block4" parent="." index="7" instance=ExtResource("3_pes5l")]
 position = Vector2(120, 104)
+static_block = true
 up_extendable = true
 
 [node name="PointLight2D" type="PointLight2D" parent="." index="8"]
