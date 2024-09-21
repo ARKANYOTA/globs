@@ -15,7 +15,7 @@ var levels = [
 	{ "name": "1-5", "world": "1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_150.tscn"},
 	{ "name": "1-6", "world": "1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_160.tscn"},
 	{ "name": "1-7", "world": "1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_170.tscn"},
-	{ "name": "1-8", "world": "1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_180.tscn"},
+	{ "name": "1-8", "world": "1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_180.tscn", "achievement": "ACH_COMPLETE_WORLD_1"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "2-1", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_210.tscn"},
@@ -25,7 +25,7 @@ var levels = [
 	{ "name": "2-5", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_240.tscn"},
 	{ "name": "2-6", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_250.tscn"},
 	{ "name": "2-7", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_260.tscn"},
-	{ "name": "2-8", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_270.tscn"},
+	{ "name": "2-8", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_270.tscn", "achievement": "ACH_COMPLETE_WORLD_2"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "3-1", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_310.tscn"},
@@ -34,7 +34,7 @@ var levels = [
 	{ "name": "3-4", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_330.tscn"},
 	{ "name": "3-5", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_350.tscn"},
 	{ "name": "3-6", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_360.tscn"},
-	{ "name": "3-7", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_380.tscn"},
+	{ "name": "3-7", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_380.tscn", "achievement": "ACH_COMPLETE_WORLD_3"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "4-1", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_410.tscn"},
@@ -43,7 +43,7 @@ var levels = [
 	{ "name": "4-4", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_440.tscn"}, # easy
 	{ "name": "4-5", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_430.tscn"},
 	{ "name": "4-6", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_500.tscn"},
-	{ "name": "4-7", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_510.tscn"},
+	{ "name": "4-7", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_510.tscn", "achievement": "ACH_COMPLETE_WORLD_4"},
 
 	{ "name": "You Win", "music": "main_menu", "scene": "res://scenes/levels/you_win.tscn"},
 ]
@@ -128,6 +128,4 @@ func _input(event):
 		reload_scene()
 
 func _process(delta: float) -> void:
-	#print fps
-	#prin t(Engine.get_frames_per_second())
-	pass # Replace with function body.
+	pass 

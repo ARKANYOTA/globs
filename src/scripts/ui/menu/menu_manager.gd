@@ -35,11 +35,7 @@ func _process(delta):
 func pause():
 	if not PauseMenuAutoload.can_pause:
 		return
-	
-	AudioServer.set_bus_effect_enabled(_music_bus_index, 0, true)
-	PauseMenuAutoload.game_gui.hide_gui()
 
-	PauseMenuAutoload.paused = true
 	set_menu("PauseMenu")
 
 
@@ -70,6 +66,10 @@ func set_menu(menu_name: String, add_to_stack: bool = true, animation_direction_
 func set_menu_by_node(menu: Control, add_to_stack = true, animation_direction_right = true):
 	if not menu:
 		return
+
+	AudioServer.set_bus_effect_enabled(_music_bus_index, 0, true)
+	PauseMenuAutoload.game_gui.hide_gui()
+	PauseMenuAutoload.paused = true
 	
 	_animate_background(Color.WHITE, 3)
 

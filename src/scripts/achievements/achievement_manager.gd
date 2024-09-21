@@ -2,7 +2,10 @@ extends Node
 class_name AchievementManager
 
 var achievements: Dictionary = {
-	"ACH_TEST_01": {achieved = false, hidden = false},
+	"ACH_COMPLETE_WORLD_1": {achieved = false, hidden = false},
+	"ACH_COMPLETE_WORLD_2": {achieved = false, hidden = false},
+	"ACH_COMPLETE_WORLD_3": {achieved = false, hidden = false},
+	"ACH_COMPLETE_WORLD_4": {achieved = false, hidden = false},
 }
 
 func _init():

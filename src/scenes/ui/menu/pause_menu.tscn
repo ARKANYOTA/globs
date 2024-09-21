@@ -33,11 +33,6 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Levels"
 
-[node name="QuitButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="5" instance=ExtResource("4_35rns")]
-visible = false
-layout_mode = 2
-text = "Quit"
-
 [node name="LevelName" type="Label" parent="MarginContainer/AspectRatioContainer" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -49,7 +44,15 @@ label_settings = ExtResource("5_657dq")
 [node name="BackButton" parent="MarginContainer" index="1"]
 visible = false
 
+[node name="QuitButton" parent="MarginContainer" index="2" instance=ExtResource("4_35rns")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Quit"
+
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/LevelsButton" to="." method="_on_levels_button_pressed"]
+[connection signal="pressed" from="MarginContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -29,9 +29,9 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_right"):
+	if event.is_action_pressed("game_right"):
 		increment_world_index()
-	if event.is_action_pressed("ui_left"):
+	if event.is_action_pressed("game_left"):
 		decrement_world_index()
 
 # FUNCTIONS FOR WORLD SELECTION
@@ -121,3 +121,7 @@ func update_dot() -> void:
 		else:
 			dot.icon = texture_off
 		pass
+
+
+func _on_ui_icon_button_pressed():
+	PauseMenuAutoload.pause_menu.set_menu("SupportUsMenu")
