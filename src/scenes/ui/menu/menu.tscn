@@ -1,14 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dt7ylcp3vogvt"]
+[gd_scene load_steps=6 format=3 uid="uid://dt7ylcp3vogvt"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu/menu.gd" id="1_pa05o"]
-[ext_resource type="Shader" path="res://shaders/pause_menu_background.gdshader" id="2_f2oh8"]
 [ext_resource type="FontFile" uid="uid://cjyup1ooil314" path="res://assets/fonts/font_normal.ttf" id="3_v1b0j"]
 [ext_resource type="PackedScene" uid="uid://njqkv5i1atvi" path="res://scenes/ui/ui_icon_button.tscn" id="8_7fibo"]
 [ext_resource type="Texture2D" uid="uid://dr3uo4murx75h" path="res://assets/images/ui/undo.png" id="9_daqll"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnp6j"]
-shader = ExtResource("2_f2oh8")
-shader_parameter/amount = 3.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_ahekt"]
 font = ExtResource("3_v1b0j")
@@ -22,27 +17,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pa05o")
-
-[node name="DarkBlackground" type="ColorRect" parent="."]
-z_index = -200
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.568627)
-
-[node name="BlurBackground" type="ColorRect" parent="."]
-z_index = -200
-material = SubResource("ShaderMaterial_hnp6j")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.364706)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

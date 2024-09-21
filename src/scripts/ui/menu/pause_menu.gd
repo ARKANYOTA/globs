@@ -1,7 +1,6 @@
 extends Menu
 class_name PauseMenu
 
-@onready var main = get_parent()
 @onready var skip_button = %SkipButton
 
 var levels_scene_path = "res://scenes/ui/world_select/world_select.tscn"
@@ -12,14 +11,14 @@ func _ready():
 	# 	%FullscreenButton.hide()
 
 func exit_menu():
-	main.exit_menu()
+	menu_manager.exit_menu()
 
 func _on_resume_button_pressed():
-	main.exit_menu()
+	menu_manager.exit_menu()
 	PauseMenuAutoload.game_gui.show_correct_game_gui()
 
 func _on_restart_button_pressed(): 
-	main.exit_menu()
+	menu_manager.exit_menu()
 	LevelData.reload_scene()
 	GameManager.on_restart()
 
@@ -28,14 +27,14 @@ func _on_quit_pressed():
 
 func _on_levels_button_pressed():
 	SceneTransitionAutoLoad.change_scene_with_transition(levels_scene_path, false)
-	main.exit_menu()
+	menu_manager.exit_menu()
 
 
 func _on_options_button_pressed():
-	main.set_menu("OptionsMenu")
+	menu_manager.set_menu("OptionsMenu")
 
 func _on_skip_pressed():
-	main.exit_menu()
+	menu_manager.exit_menu()
 	LevelData.win()
 
 
@@ -62,7 +61,7 @@ func _process(delta):
 	var is_on_level_select = (current_scene.name == "YouWinLevel" or current_scene.name == "WorldSelect")
 	%SkipButton.disabled = is_on_level_select
 	if is_on_level_select:
-		levels_scene_path = "res://scenes/main.tscn"
+		levels_scene_path = "res://scenes/menu_manager.tscn"
 		levels_button.text = "Title screen"
 	else:
 		levels_scene_path = "res://scenes/ui/world_select/world_select.tscn"
