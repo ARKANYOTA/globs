@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://bi852gymn20kf"]
+[gd_scene load_steps=6 format=4 uid="uid://bnwviubxx0r2p"]
 
 [ext_resource type="PackedScene" uid="uid://cihuxl0od3y8d" path="res://scenes/levels_zoomed/world_3/level.tscn" id="1_ddyc6"]
 [ext_resource type="PackedScene" uid="uid://duqpgsulnccc7" path="res://scenes/block/bloc_skin/fromage/ice_block.tscn" id="2_32y43"]

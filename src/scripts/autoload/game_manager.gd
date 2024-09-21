@@ -99,13 +99,23 @@ func _input(event):
 	if event.is_action_pressed("removeme_achievement_revokeall"):
 		print("about to revoke all achievements")
 		achievement_manager.revoke_all()
+	
+	if event.is_action_pressed("removeme_winlevel"):
+		print("about to win level")
+		win()
 
 
 func win():
+	var current_level_data = LevelData.get_current_level_data()
+	if current_level_data:
+		if current_level_data.has("achievement") and achievement_manager:
+			achievement_manager.grant(current_level_data["achievement"])
+
 	#check if level in level data
 	var level_in_data = false
 	var next_level_name = "res://scenes/ui/world_select/world_select.tscn"
 	var next_sound = "city"
+	var next_level_data: Dictionary = {}
 	for i in range(LevelData.levels.size()):
 		if LevelData.levels[i]["scene"] == get_tree().current_scene.scene_file_path:
 			#check if level is not the last level

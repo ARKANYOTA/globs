@@ -22,13 +22,13 @@ func _on_restart_button_pressed():
 	LevelData.reload_scene()
 	GameManager.on_restart()
 
-func _on_quit_pressed():
-	get_tree().quit()
-
 func _on_levels_button_pressed():
 	SceneTransitionAutoLoad.change_scene_with_transition(levels_scene_path, false)
 	menu_manager.exit_menu()
 
+
+func _on_quit_button_pressed():
+	menu_manager.set_menu("QuitConfirmMenu")
 
 func _on_options_button_pressed():
 	menu_manager.set_menu("OptionsMenu")

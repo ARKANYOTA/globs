@@ -12,6 +12,7 @@ func _ready() -> void:
 func _on_value_changed(input_value: float) -> void:
 	var config = ConfigFile.new()
 	config.load("user://volume.cfg")
+
 	var music_value = config.get_value("Sound", "Music", 1)
 	var master_value = config.get_value("Sound", "Master", 1)
 	config.set_value("Sound", "Music", music_value)

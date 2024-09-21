@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://bw75q0mw8jp8b"]
+
+[ext_resource type="PackedScene" uid="uid://dt7ylcp3vogvt" path="res://scenes/ui/menu/menu.tscn" id="1_fhnxu"]
+[ext_resource type="Script" path="res://scripts/ui/menu/reset_progress_confirm_menu.gd" id="2_pmgrh"]
+[ext_resource type="FontFile" uid="uid://cjyup1ooil314" path="res://assets/fonts/font_normal.ttf" id="3_14lab"]
+[ext_resource type="PackedScene" uid="uid://njqkv5i1atvi" path="res://scenes/ui/ui_icon_button.tscn" id="4_0xb4a"]
+[ext_resource type="Texture2D" uid="uid://d1dga283oskd8" path="res://assets/images/ui/heart.png" id="5_0g5nc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jomln"]
+line_spacing = 2.0
+font = ExtResource("3_14lab")
+font_size = 6
+
+[node name="SupportUsMenu" instance=ExtResource("1_fhnxu")]
+script = ExtResource("2_pmgrh")
+
+[node name="Items" parent="MarginContainer/AspectRatioContainer" index="0"]
+theme_override_constants/separation = 8
+
+[node name="Title" parent="MarginContainer/AspectRatioContainer/Items" index="0"]
+text = "We are a small team wishing to create 
+games that put smiles on people's faces.
+This is why we decided to not put any
+ads or microtransactions.
+Unfortunately, games take money to make. 
+If you want to see more games like this 
+one, please consider supporting us!"
+label_settings = SubResource("LabelSettings_jomln")
+uppercase = false
+
+[node name="UiIconButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="0" instance=ExtResource("4_0xb4a")]
+layout_mode = 2
+text = "Support us"
+icon = ExtResource("5_0g5nc")

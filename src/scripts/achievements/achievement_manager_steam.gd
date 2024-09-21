@@ -9,8 +9,9 @@ func grant(achievement_name: String) -> bool:
 		return false
 	if not achievement_exists(achievement_name):
 		return false
+	print("Granting ", achievement_name, "...")
 
-	return GameManager.steam_interface.grant_achievement("ACH_TEST_01")
+	return GameManager.steam_interface.grant_achievement(achievement_name)
 	
 func revoke(achievement_name:	String) -> bool:
 	if not GameManager.steam_interface:
