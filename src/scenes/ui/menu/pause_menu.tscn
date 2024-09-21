@@ -45,6 +45,7 @@ label_settings = ExtResource("5_657dq")
 visible = false
 
 [node name="QuitButton" parent="MarginContainer" index="2" instance=ExtResource("4_35rns")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
