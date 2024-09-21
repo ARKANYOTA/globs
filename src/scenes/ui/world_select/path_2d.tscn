@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbmw82eov8vt5"]
 
-[ext_resource type="Texture2D" uid="uid://cdobcanxgd3ov" path="res://assets/images/ui/world_index_dot.png" id="1_3n8m4"]
+[ext_resource type="Texture2D" uid="uid://dvh3xmbnamd73" path="res://assets/images/ui/world_index_dot_small.png" id="1_jyg7b"]
 
 [sub_resource type="Curve2D" id="Curve2D_qsruw"]
 
@@ -12,4 +12,4 @@ visible = false
 rotates = false
 
 [node name="Sprite2D" type="Sprite2D" parent="PathFollow2D"]
-texture = ExtResource("1_3n8m4")
+texture = ExtResource("1_jyg7b")

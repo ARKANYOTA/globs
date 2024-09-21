@@ -25,6 +25,7 @@ var distribution_platform: DistributionPlatform = DistributionPlatform.UNDEFINED
 			else:
 				distribution_platform = DistributionPlatform.NATIVE
 		return distribution_platform
+
 var game_platform: GamePlatform = GamePlatform.UNDEFINED:
 	get:
 		if game_platform == GamePlatform.UNDEFINED:

@@ -18,7 +18,7 @@ var added_required = false
 
 ###################### DOT ######################
 var dots : Array[PathFollow2D] = []
-var dot_gap = 5
+var dot_gap = 8#5
 var dot_speed = 13
 
 enum LevelState {

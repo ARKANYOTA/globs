@@ -29,7 +29,7 @@ var levels = [
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "3-1", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_310.tscn"},
-	{ "name": "3-2", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_320.tscn"},
+	{ "name": "3-2", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_325.tscn"},
 	{ "name": "3-3", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_326_other.tscn"},
 	{ "name": "3-4", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_330.tscn"},
 	{ "name": "3-5", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_350.tscn"},
