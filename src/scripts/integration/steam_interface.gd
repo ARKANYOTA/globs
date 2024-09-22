@@ -1,11 +1,10 @@
-extends Node
+extends API
 
-var is_enabled: bool = false
 var steam_initialized_correctly: bool = false
 
 func initialize() -> bool:
 	var initialize_response: Dictionary = Steam.steamInitEx(true, GameManager.STEAM_APP_ID)
-	print("SteamInterface: GodotSteam returned code %d: \"%s\"" % [initialize_response["status"], initialize_response["verbal"]])
+	print("[SteamInterface] GodotSteam returned code %d: \"%s\"" % [initialize_response["status"], initialize_response["verbal"]])
 	# Return codes:
     # 0 - Successfully initialized
     # 1 - Some other failure
@@ -33,7 +32,7 @@ func _process(_delta):
 	Steam.run_callbacks()
 
 func _on_steam_stats_ready(game_id: int, result: int, user_id: int):
-	print("Steam stats ready with code %s for: game_id = %s, user_id = %s" % [result, game_id, user_id])
+	print("[SteamInterface] Steam stats ready with code %s for: game_id = %s, user_id = %s" % [result, game_id, user_id])
 	if GameManager.achievement_manager:
 		load_achievements(GameManager.achievement_manager.achievements)
 
@@ -74,4 +73,4 @@ func load_achievements(achievements: Dictionary) -> void:
 			achievements[ach] = false
 			count_invalid += 1
 	
-	print("Finished loading %s achievements (%s invalid)" % [count, count_invalid])
+	print("[SteamInterface] Finished loading %s achievements (%s invalid)" % [count, count_invalid])

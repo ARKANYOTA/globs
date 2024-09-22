@@ -47,6 +47,8 @@ var _discord_rpc_update_timer = 0.0
 const STEAM_APP_ID = 3219110
 var steam_interface: Node = null
 
+var google_play_payments: Node = null
+
 var achievement_manager: AchievementManager
 
 var cursor = preload("res://assets/images/ui/cursor_big.png")
@@ -68,6 +70,7 @@ func _ready():
 
 	_init_discord_rpc()
 	_init_steam()
+	_init_google_play_payments()
 	_init_achievement_manager()
 
 func _process(delta):
@@ -170,6 +173,8 @@ func _update_discord_rpc():
 
 #################################################################
 
+# Steam
+
 func is_steam_api_supported() -> bool:
 	return game_platform == GamePlatform.PC and GDExtensionManager.is_extension_loaded("res://addons/godotsteam/godotsteam.gdextension")
 
@@ -188,12 +193,37 @@ func _init_steam():
 
 #################################################################
 
+# Google Play payments
+
+func is_google_play_payments_supported() -> bool:
+	return game_platform == GamePlatform.MOBILE and Engine.has_singleton("GodotGooglePlayBilling")
+
+func _init_google_play_payments():
+	if distribution_platform != DistributionPlatform.PLAY_STORE:
+		return
+	
+	var google_play_payments_scene: PackedScene = load("res://scenes/integration/google_play_payments.tscn")
+	google_play_payments = google_play_payments_scene.instantiate()
+	add_child(google_play_payments)
+	
+	var success = google_play_payments.initialize()
+	if not success:
+		# TODO
+		pass
+
+#################################################################
+
 func _init_achievement_manager():
 	match distribution_platform:
 		DistributionPlatform.STEAM:
 			print("Creating Steam achievement manager")
 			var scene: PackedScene = load("res://scenes/achievements/achievement_manager_steam.tscn")
 			achievement_manager = scene.instantiate()
+
+		DistributionPlatform.PLAY_STORE:
+			print("Creating Play Store achievement manager")
+			pass
+			
 		_:
 			#TODO
 			print("Creating generic achievement manager")

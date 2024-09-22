@@ -1,4 +1,4 @@
-extends Node
+extends API
 
 const DISCORD_RPC_APP_ID = 1282760428954325032
 const discord_rpc_world_keys: Dictionary = {
