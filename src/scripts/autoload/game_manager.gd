@@ -17,6 +17,8 @@ enum DistributionPlatform {
 	PLAY_STORE,
 }
 
+var rng = RandomNumberGenerator.new()
+
 var distribution_platform: DistributionPlatform = DistributionPlatform.UNDEFINED:
 	get:
 		if distribution_platform == DistributionPlatform.UNDEFINED:
@@ -160,7 +162,6 @@ func update_fullscreen():
 		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED)
-
 
 ## Saves an option and returns whether it was saved successfully.  
 ## NOTE: this could become quite slow if the options file are updated very frequently or is very big 
