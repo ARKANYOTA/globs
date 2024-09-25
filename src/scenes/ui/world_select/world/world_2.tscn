@@ -20,39 +20,44 @@ levelScene = "res://scenes/levels_zoomed/world_2/level_210.tscn"
 
 [node name="level15" parent="." index="3" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
 position = Vector2(40, 80)
+levels_unlock = [NodePath("../level16")]
+levelScene = "res://scenes/levels_zoomed/world_2/level_213.tscn"
+
+[node name="level16" parent="." index="4" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
+position = Vector2(64, 80)
 levels_unlock = [NodePath("../level2")]
 levelScene = "res://scenes/levels_zoomed/world_2/level_215.tscn"
 
-[node name="level2" parent="." index="4" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
-position = Vector2(72, 80)
+[node name="level2" parent="." index="5" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
+position = Vector2(88, 80)
 levels_unlock = [NodePath("../level3")]
 levelScene = "res://scenes/levels_zoomed/world_2/level_220.tscn"
 
-[node name="level3" parent="." index="5" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
-position = Vector2(104, 80)
+[node name="level3" parent="." index="6" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
+position = Vector2(120, 80)
 levels_unlock = [NodePath("../level4")]
 levelScene = "res://scenes/levels_zoomed/world_2/level_230.tscn"
 
-[node name="level4" parent="." index="6" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
-position = Vector2(136, 80)
+[node name="level4" parent="." index="7" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
+position = Vector2(152, 80)
 levels_unlock = [NodePath("../level5"), NodePath("../level8")]
 levelScene = "res://scenes/levels_zoomed/world_2/level_240.tscn"
 
-[node name="level8" parent="." index="7" instance=ExtResource("2_x3ay8")]
+[node name="level8" parent="." index="8" instance=ExtResource("2_x3ay8")]
 position = Vector2(136, 48)
 levelScene = "res://scenes/levels_zoomed/world_2/level_280.tscn"
 
-[node name="level5" parent="." index="8" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
-position = Vector2(168, 80)
+[node name="level5" parent="." index="9" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
+position = Vector2(176, 80)
 levels_unlock = [NodePath("../level6")]
 levelScene = "res://scenes/levels_zoomed/world_2/level_250.tscn"
 
-[node name="level6" parent="." index="9" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
+[node name="level6" parent="." index="10" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
 position = Vector2(200, 80)
 levels_unlock = [NodePath("../level7")]
 levelScene = "res://scenes/levels_zoomed/world_2/level_260.tscn"
 
-[node name="level7" parent="." index="10" instance=ExtResource("2_x3ay8")]
+[node name="level7" parent="." index="11" instance=ExtResource("2_x3ay8")]
 position = Vector2(200, 48)
 levelScene = "res://scenes/levels_zoomed/world_2/level_270.tscn"
 world_unlock_id = 2
