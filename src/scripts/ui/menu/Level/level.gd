@@ -97,12 +97,11 @@ func _process(delta: float) -> void:
 	# if state != LevelState.LOCKED:
 	for path in path_instances:
 		for dot in dots:
-			dot.progress += delta * dot_speed
+			dot.progress += (delta * dot_speed) / levels_unlock.size()
 	pass
 var musics : Array[String] = ["city", "cheese", "snow", "snow"]
 
 func add_dot(number: int, path: Path2D, vector: Vector2):
-	#dupolicate pathfopllow2d and add it to the path
 	var path_follow = path.get_node("PathFollow2D")
 	for i in range(number):
 		var float_i = float(i)
