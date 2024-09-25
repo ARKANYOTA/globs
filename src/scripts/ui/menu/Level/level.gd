@@ -73,11 +73,11 @@ func check_unlock():
 
 func change_icon():
 	if state == LevelState.LOCKED:
-		$Button.icon = preload("res://assets/images/ui/locked_button.png")
+		$Button.icon = preload("res://assets/images/ui/level_button_locked.png")
 	elif state == LevelState.UNLOCKED:
-		$Button.icon = preload("res://assets/images/ui/button_clicked.png")
+		$Button.icon = preload("res://assets/images/ui/level_button_unlocked.png")
 	elif state == LevelState.COMPLETED:
-		$Button.icon = preload("res://assets/images/ui/button.png")
+		$Button.icon = preload("res://assets/images/ui/level_button_completed.png")
 		
 
 func _process(delta: float) -> void:

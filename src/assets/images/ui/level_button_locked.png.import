@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkb2bbrghjuis"
-path="res://.godot/imported/locked_button.png-9218e42d446d0510ba8bffaba92984da.ctex"
+path="res://.godot/imported/level_button_locked.png-1a45e50e175a0e44b4e2e5109d9b40bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ui/locked_button.png"
-dest_files=["res://.godot/imported/locked_button.png-9218e42d446d0510ba8bffaba92984da.ctex"]
+source_file="res://assets/images/ui/level_button_locked.png"
+dest_files=["res://.godot/imported/level_button_locked.png-1a45e50e175a0e44b4e2e5109d9b40bc.ctex"]
 
 [params]
 

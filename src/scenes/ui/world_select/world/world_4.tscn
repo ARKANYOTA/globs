@@ -55,7 +55,7 @@ visible = false
 [node name="level" parent="." index="4" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
 position = Vector2(36, 78)
 levels_unlock = [NodePath("../level2")]
-levelScene = "res://scenes/levels_zoomed/world_4/level_410.tscn"
+levelScene = "res://scenes/levels_zoomed/world_4/level_410_testintro.tscn"
 
 [node name="level2" parent="." index="5" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
 position = Vector2(48, 56)
