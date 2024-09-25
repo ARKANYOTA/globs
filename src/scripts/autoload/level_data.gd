@@ -114,9 +114,10 @@ func new_load_level_data() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	new_load_level_data()
-
-	var master_value = GameManager.load_option("volume", "Master", 1)
-	var music_value =  GameManager.load_option("volume", "Music", 1)
+	var volume_config = ConfigFile.new()
+	volume_config.load("user://volume.cfg")
+	var master_value = volume_config.get_value("Sound", "Master", 1)
+	var music_value = volume_config.get_value("Sound", "Music", 1)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(master_value))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(music_value))
 	pass # Replace with function body.
