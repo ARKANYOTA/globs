@@ -675,7 +675,7 @@ func start_grow():
 	drag_start_up_extend_value = up_extend_value
 	drag_start_down_extend_value = down_extend_value
 
-	is_asleep = false
+	wake_up()
 	select()
 
 func stop_grow():
