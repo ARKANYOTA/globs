@@ -26,7 +26,7 @@ position = Vector2(200, 40)
 position = Vector2(40, 24)
 
 [node name="Bird4" parent="." index="11" instance=ExtResource("4_dw06g")]
-position = Vector2(120, 72)
+position = Vector2(72, 72)
 
 [node name="Block2" parent="." index="12"]
 position = Vector2(120, 88)
