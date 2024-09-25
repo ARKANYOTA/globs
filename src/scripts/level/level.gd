@@ -8,8 +8,9 @@ var actions: Array = []
 func _ready():
 	actions = []
 
-func is_multiple_of_8_plus_16n(i: int):
-	return (i + 8) % 16 == 0
+func is_multiple_of_8_plus_16n(i: float):
+	var value = fmod((i + 8.0), 16.0)
+	return value + 1.0 < 1.1 and value + 1.0 > 0.9
 
 func is_on_good_position(block: Block):
 	for i in [block.position.x, block.position.y, block.up_extend_value, block.down_extend_value, block.right_extend_value, block.left_extend_value]:
