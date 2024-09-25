@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="8_1tfqp"]
 [ext_resource type="PackedScene" uid="uid://bdttvr6awstj3" path="res://scenes/block/bloc_skin/fromage/bear_block.tscn" id="8_w2r0h"]
 [ext_resource type="PackedScene" uid="uid://bolbefhicktwp" path="res://scenes/block/bloc_skin/Frost/bat.tscn" id="9_pyx41"]
-[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/font_normal.ttf" id="11_06exw"]
+[ext_resource type="FontFile" uid="uid://cjyup1ooil314" path="res://assets/fonts/font_normal.ttf" id="11_06exw"]
 [ext_resource type="Texture2D" uid="uid://b3l0i7o6emx6i" path="res://assets/images/logo.png" id="12_rvxq1"]
 [ext_resource type="Shader" path="res://shaders/pause_menu_background.gdshader" id="13_uhqbu"]
 [ext_resource type="Texture2D" uid="uid://bsuxxmkm78ho5" path="res://assets/images/backgrounds/planet.png" id="14_k7ilc"]
@@ -149,8 +149,8 @@ position = Vector2(264, 120)
 
 [node name="Block3" parent="." index="9" instance=ExtResource("3_1ht6e")]
 position = Vector2(296, 120)
-is_gravity_enabled = true
 is_main_character = false
+is_gravity_enabled = true
 down_extendable = true
 down_extend_range = Vector2i(8, 56)
 down_extend_block_range = Vector2i(0, 3)
