@@ -4,6 +4,7 @@ var list_globs = []
 var tween: Tween
 var selected_glob: Block
 func _ready() -> void:
+	make_current()
 	for child in get_tree().get_nodes_in_group("Blocks"):
 		if child is Block:
 			list_globs.append(child)
