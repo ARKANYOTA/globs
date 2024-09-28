@@ -7,19 +7,19 @@
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sep1a"]
-size = Vector2(64, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyh4t"]
+size = Vector2(56, 8)
 
 [node name="Block4" instance=ExtResource("1_2h8e0")]
 
 [node name="BlockOccluder" parent="." index="0"]
 occluder = SubResource("OccluderPolygon2D_nbgqd")
 
-[node name="NinePatch" parent="." index="1"]
+[node name="NinePatch" parent="." index="2"]
 texture = ExtResource("2_l8ckw")
 region_rect = Rect2(16, 80, 16, 16)
 axis_stretch_horizontal = 0
 axis_stretch_vertical = 2
 
-[node name="CollisionShape" parent="." index="2"]
-shape = SubResource("RectangleShape2D_sep1a")
+[node name="CollisionShape" parent="." index="3"]
+shape = SubResource("RectangleShape2D_iyh4t")

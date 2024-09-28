@@ -17,6 +17,8 @@ enum DistributionPlatform {
 	PLAY_STORE,
 }
 
+var rng = RandomNumberGenerator.new()
+
 var distribution_platform: DistributionPlatform = DistributionPlatform.UNDEFINED:
 	get:
 		if distribution_platform == DistributionPlatform.UNDEFINED:
@@ -49,6 +51,7 @@ var steam_interface: Node = null
 
 var google_play_payments: Node = null
 
+var options_manager: OptionsManager
 var achievement_manager: AchievementManager
 
 var cursor = preload("res://assets/images/ui/cursor_big.png")
@@ -56,24 +59,37 @@ var cursor_click = preload("res://assets/images/ui/cursor_click_big.png")
 var global_camera_scene: PackedScene = preload("res://scenes/camera/global_camera.tscn")
 
 var camera: Camera2D
-var is_fullscreen := false
+var _loaded_fullscreen_option = false
+var is_fullscreen: bool = true:
+	set(value):
+		is_fullscreen = value
+		update_fullscreen()
+		save_option("graphics", "is_fullscreen", is_fullscreen)
 
 func _ready():
 	print("launched game")
+	options_manager = OptionsManager.new()
+
 	camera = global_camera_scene.instantiate()
 	add_child(camera)
 	
 	process_mode = ProcessMode.PROCESS_MODE_ALWAYS
 	
-	Input.set_custom_mouse_cursor(cursor)
 	#Input.set_custom_mouse_cursor(cursor_click, Input.CURSOR_IBEAM)
+	Input.set_custom_mouse_cursor(cursor)
 
 	_init_discord_rpc()
 	_init_steam()
 	_init_google_play_payments()
 	_init_achievement_manager()
 
+
 func _process(delta):
+	# It is necessary to wait one frame after the scene has been instanciated to avoid an ugly gray frame
+	if not _loaded_fullscreen_option:
+		is_fullscreen = load_option("graphics", "is_fullscreen", true)
+		_loaded_fullscreen_option = true
+
 	if discord_rich_presence:
 		_discord_rpc_update_timer -= delta
 		if _discord_rpc_update_timer < 0:
@@ -96,6 +112,9 @@ func _input(event):
 		if scene is Level:
 			scene.undo_action()
 	
+	if event.is_action_pressed("toggle_fullscreen"):
+		toggle_fullscreen()
+
 	if event.is_action_pressed("removeme_achievement_test"):
 		print("about to grant ACH_TEST_01")
 		achievement_manager.grant("ACH_TEST_01")
@@ -140,10 +159,22 @@ func before_scene_change():
 
 func toggle_fullscreen():
 	is_fullscreen = not is_fullscreen
+
+func update_fullscreen():
 	if is_fullscreen:
 		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED)
+
+## Saves an option and returns whether it was saved successfully.  
+## NOTE: this could become quite slow if the options file are updated very frequently or is very big 
+func save_option(section: String, key: String, value: Variant) -> bool:
+	return options_manager.save(section, key, value)
+
+## Return an option or a default value if impossible to load the options file.  
+## NOTE: this could become quite slow if the options file are read very frequently or is very big 
+func load_option(section: String, key: String, default_value: Variant):
+	return options_manager.load(section, key, default_value)
 
 #################################################################
 

@@ -1,45 +1,92 @@
-[gd_scene load_steps=3 format=4 uid="uid://cicawq5hwbh6v"]
+[gd_scene load_steps=7 format=4 uid="uid://cicawq5hwbh6v"]
 
 [ext_resource type="PackedScene" uid="uid://c713awkloisp6" path="res://scenes/ui/world_select/world/world.tscn" id="1_addor"]
 [ext_resource type="PackedScene" uid="uid://bu78mo56i6fso" path="res://scenes/ui/world_select/level.tscn" id="2_ib75g"]
+[ext_resource type="Texture2D" uid="uid://c158dcm052fbf" path="res://assets/images/map/spacemap.png" id="2_wm5pa"]
+[ext_resource type="Script" path="res://scripts/props/falling_star.gd" id="4_y0ytb"]
+
+[sub_resource type="Curve" id="Curve_yifwk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.292208, 0.648352), 0.0, 0.0, 0, 0, Vector2(0.428571, 0.769231), 0.0, 0.0, 0, 0, Vector2(0.603896, 0.373626), 0.0, 0.0, 0, 0, Vector2(0.779221, 0.450549), 0.0, 0.0, 0, 0, Vector2(0.941558, 0.230769), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="Gradient" id="Gradient_q24v4"]
+offsets = PackedFloat32Array(0, 0.531746, 1)
+colors = PackedColorArray(1, 1, 1, 0.0862745, 1, 1, 1, 0.611765, 1, 1, 1, 0.541176)
 
 [node name="World2" instance=ExtResource("1_addor")]
 world_music = "snow"
 world_index = 3
 
-[node name="TileMapLayer" parent="." index="0"]
+[node name="DustParticle" type="CPUParticles2D" parent="." index="0"]
+z_index = 1
+position = Vector2(128, 64)
+amount = 50
+lifetime = 5.0
+preprocess = 5.0
+speed_scale = 0.4
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(160, 45)
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.7
+initial_velocity_max = 3.7
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_yifwk")
+color = Color(0.352941, 0.411765, 0.533333, 1)
+color_ramp = SubResource("Gradient_q24v4")
+script = ExtResource("4_y0ytb")
+
+[node name="Untitled45" type="Sprite2D" parent="." index="1"]
+z_index = -1
+position = Vector2(121, 67)
+texture = ExtResource("2_wm5pa")
+metadata/_edit_lock_ = true
+
+[node name="TileMapLayer" parent="." index="2"]
+visible = false
 tile_map_data = PackedByteArray("AAANAAEAAwAHAAAAAAAMAAEAAwAGAAAAAAALAAEAAwAKAAAAAAAKAAEAAwAGAAAAAAAJAAEAAwAKAAAAAAAIAAEAAwAKAAAAAAAHAAEAAwAGAAAAAAAGAAEAAwAGAAAAAAAFAAEAAwAGAAAAAAAEAAEAAwAGAAAAAAADAAEAAwAGAAAAAAACAAEAAwAGAAAAAAABAAEAAwAFAAAAAAANAAYAAwAHAAIAAAANAAUAAwAHAAEAAAANAAQAAwAKAAEAAAANAAMAAwAKAAEAAAANAAIAAwAHAAEAAAAMAAYAAwAGAAIAAAAMAAUAAwAIAAEAAAAMAAQAAwAGAAEAAAAMAAMAAwAIAAIAAAAMAAIAAwAIAAEAAAALAAYAAwAJAAEAAAALAAUAAwAIAAAAAAALAAQAAwAIAAIAAAALAAMAAwAIAAIAAAALAAIAAwAGAAEAAAAKAAYAAwAGAAIAAAAKAAUAAwAIAAIAAAAKAAQAAwAIAAEAAAAKAAMAAwAIAAIAAAAKAAIAAwAIAAEAAAAJAAYAAwAGAAIAAAAJAAUAAwAGAAEAAAAJAAQAAwAIAAIAAAAJAAMAAwAIAAEAAAAJAAIAAwAIAAAAAAAIAAYAAwAGAAIAAAAIAAUAAwAGAAEAAAAIAAQAAwAIAAIAAAAIAAMAAwAGAAEAAAAIAAIAAwAGAAEAAAAHAAYAAwAGAAIAAAAHAAUAAwAGAAEAAAAHAAQAAwAIAAEAAAAHAAMAAwAIAAIAAAAHAAIAAwAIAAAAAAAGAAYAAwAJAAEAAAAGAAUAAwAGAAEAAAAGAAQAAwAIAAAAAAAGAAMAAwAIAAIAAAAGAAIAAwAIAAAAAAAFAAYAAwAJAAEAAAAFAAUAAwAIAAIAAAAFAAQAAwAIAAEAAAAFAAMAAwAIAAEAAAAFAAIAAwAGAAEAAAAEAAYAAwAGAAIAAAAEAAUAAwAIAAEAAAAEAAQAAwAIAAEAAAAEAAMAAwAGAAEAAAAEAAIAAwAIAAAAAAADAAYAAwAJAAEAAAADAAUAAwAIAAIAAAADAAQAAwAIAAEAAAADAAMAAwAIAAAAAAADAAIAAwAGAAEAAAACAAYAAwAJAAEAAAACAAUAAwAGAAEAAAACAAQAAwAGAAEAAAACAAMAAwAIAAAAAAACAAIAAwAIAAEAAAABAAYAAwAFAAIAAAABAAUAAwAFAAEAAAABAAQAAwAFAAEAAAABAAMAAwAFAAEAAAABAAIAAwAJAAAAAAA=")
 
-[node name="level" parent="." index="2" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
-position = Vector2(40, 45)
-levels_unlock = [NodePath("../level2")]
+[node name="TopLayer" parent="." index="3"]
+visible = false
+
+[node name="level" parent="." index="4" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+position = Vector2(36, 78)
+levels_unlock = [NodePath("../level11")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_410.tscn"
 
-[node name="level2" parent="." index="3" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
-position = Vector2(56, 77)
+[node name="level11" parent="." index="5" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+position = Vector2(44, 55)
+levels_unlock = [NodePath("../level2")]
+levelScene = "res://scenes/levels_zoomed/world_4/level_411.tscn"
+
+[node name="level2" parent="." index="6" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+position = Vector2(65, 66)
 levels_unlock = [NodePath("../level3")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_420.tscn"
 
-[node name="level3" parent="." index="4" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
-position = Vector2(88, 77)
+[node name="level3" parent="." index="7" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+position = Vector2(103, 49)
 levels_unlock = [NodePath("../level4")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_421.tscn"
 
-[node name="level4" parent="." index="5" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
-position = Vector2(120, 77)
+[node name="level4" parent="." index="8" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+position = Vector2(104, 28)
 levels_unlock = [NodePath("../level6")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_440.tscn"
 
-[node name="level6" parent="." index="6" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
-position = Vector2(152, 77)
+[node name="level6" parent="." index="9" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+position = Vector2(126, 39)
 levels_unlock = [NodePath("../level7")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_430.tscn"
 
-[node name="level7" parent="." index="7" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
-position = Vector2(184, 77)
+[node name="level7" parent="." index="10" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+position = Vector2(156, 77)
 levels_unlock = [NodePath("../level8")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_500.tscn"
 
-[node name="level8" parent="." index="8" instance=ExtResource("2_ib75g")]
-position = Vector2(200, 45)
+[node name="level8" parent="." index="11" instance=ExtResource("2_ib75g")]
+position = Vector2(194, 48)
 levelScene = "res://scenes/levels_zoomed/world_4/level_510.tscn"

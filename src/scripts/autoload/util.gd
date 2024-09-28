@@ -97,3 +97,7 @@ func direction_to_string(direction: Block.Direction) -> String:
 	elif direction == Block.Direction.INVALID:
 		return "invalid"
 	return ""
+
+
+func new_tween(node: Node, transition_type = Tween.TRANS_CUBIC, ease_type = Tween.EASE_IN_OUT) -> Tween:
+	return get_tree().create_tween().bind_node(node).set_trans(transition_type).set_ease(ease_type)

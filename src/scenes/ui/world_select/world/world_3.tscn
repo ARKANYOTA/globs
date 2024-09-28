@@ -1,8 +1,85 @@
-[gd_scene load_steps=4 format=4 uid="uid://b4nepjhqhaa6"]
+[gd_scene load_steps=18 format=4 uid="uid://b4nepjhqhaa6"]
 
 [ext_resource type="PackedScene" uid="uid://c713awkloisp6" path="res://scenes/ui/world_select/world/world.tscn" id="1_8t5qd"]
 [ext_resource type="PackedScene" uid="uid://bu78mo56i6fso" path="res://scenes/ui/world_select/level.tscn" id="2_d7p2c"]
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_lx340"]
+[ext_resource type="Texture2D" uid="uid://bwe6mjfyq10gg" path="res://assets/images/map/sleeping_bear.png" id="3_hfo64"]
+[ext_resource type="Texture2D" uid="uid://cje1nri02bvrd" path="res://assets/images/map/sleeping_bear_small.png" id="4_ji7is"]
+[ext_resource type="Script" path="res://scripts/sprite/autoplay_animated_sprite.gd" id="5_a80f5"]
+[ext_resource type="Texture2D" uid="uid://d1sgc6ft8ejni" path="res://assets/images/particle/z.png" id="6_4y3ar"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etwqc"]
+atlas = ExtResource("3_hfo64")
+region = Rect2(0, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnfmk"]
+atlas = ExtResource("3_hfo64")
+region = Rect2(16, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbrnf"]
+atlas = ExtResource("3_hfo64")
+region = Rect2(32, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sjo5"]
+atlas = ExtResource("3_hfo64")
+region = Rect2(48, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xa1e"]
+atlas = ExtResource("4_ji7is")
+region = Rect2(0, 0, 9, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjp2x"]
+atlas = ExtResource("4_ji7is")
+region = Rect2(9, 0, 9, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_taovo"]
+atlas = ExtResource("4_ji7is")
+region = Rect2(18, 0, 9, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6541"]
+atlas = ExtResource("4_ji7is")
+region = Rect2(27, 0, 9, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dd6yq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etwqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnfmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbrnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sjo5")
+}],
+"loop": true,
+"name": &"big",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xa1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjp2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_taovo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6541")
+}],
+"loop": true,
+"name": &"small",
+"speed": 3.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_wl3s5"]
+offsets = PackedFloat32Array(0, 0.420732, 0.957317)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0)
 
 [node name="World2" instance=ExtResource("1_8t5qd")]
 world_music = "snow"
@@ -10,7 +87,7 @@ world_index = 2
 
 [node name="Water" type="TileMapLayer" parent="." index="0"]
 z_index = -1
-tile_map_data = PackedByteArray("AAACAAMABgACAAMAAAACAAQABgACAAMAAAACAAUABgACAAMAAAACAAYABgACAAMAAAADAAMABgACAAMAAAADAAQABgACAAMAAAADAAUABgACAAMAAAADAAYABgACAAMAAAADAAcABgACAAMAAAAEAAMABgACAAMAAAAEAAQABgACAAMAAAAEAAUABgACAAMAAAAEAAYABgACAAMAAAAEAAcABgACAAMAAAAFAAMABgACAAMAAAAFAAQABgACAAMAAAAFAAUABgACAAMAAAAFAAYABgACAAMAAAAFAAcABgACAAMAAAAGAAMABgACAAMAAAAGAAQABgACAAMAAAAGAAUABgACAAMAAAAGAAYABgACAAMAAAAGAAcABgACAAMAAAAHAAIABgACAAMAAAAHAAMABgACAAMAAAAHAAQABgACAAMAAAAHAAUABgACAAMAAAAHAAYABgACAAMAAAAHAAcABgACAAMAAAAIAAIABgACAAMAAAAIAAMABgACAAMAAAAIAAQABgACAAMAAAAIAAUABgACAAMAAAAJAAEABgACAAMAAAAJAAIABgACAAMAAAAJAAMABgACAAMAAAAJAAQABgACAAMAAAAKAAEABgACAAMAAAAKAAIABgACAAMAAAAKAAMABgACAAMAAAAKAAQABgACAAMAAAAKAAYABgACAAMAAAAKAAcABgACAAMAAAALAAEABgACAAMAAAALAAIABgACAAMAAAALAAMABgACAAMAAAALAAQABgACAAMAAAALAAUABgACAAMAAAALAAYABgACAAMAAAALAAcABgACAAMAAAAMAAIABgACAAMAAAAMAAMABgACAAMAAAAMAAQABgACAAMAAAAMAAUABgACAAMAAAAMAAYABgACAAMAAAANAAQABgACAAMAAAANAAUABgACAAMAAAAIAAYABgACAAMAAAAIAAcABgACAAMAAAAJAAUABgACAAMAAAAMAAEABgACAAMAAAAMAAcABgACAAMAAAANAAIABgACAAMAAAANAAMABgACAAMAAAANAAYABgACAAMAAAAOAAQABgACAAMAAAAOAAUABgACAAMAAAAAAAAABgACAAMAAAAAAAEABgACAAMAAAAAAAIABgACAAMAAAAAAAMABgACAAMAAAAAAAQABgACAAMAAAAAAAUABgACAAMAAAAAAAYABgACAAMAAAAAAAcABgACAAMAAAAAAAgABgACAAMAAAAAAAkABgACAAMAAAABAAAABgACAAMAAAABAAEABgACAAMAAAABAAIABgACAAMAAAABAAMABgACAAMAAAABAAQABgACAAMAAAABAAUABgACAAMAAAABAAYABgACAAMAAAABAAcABgACAAMAAAABAAgABgACAAMAAAABAAkABgACAAMAAAACAAAABgACAAMAAAACAAEABgACAAMAAAACAAIABgACAAMAAAACAAcABgACAAMAAAACAAgABgACAAMAAAACAAkABgACAAMAAAADAAAABgACAAMAAAADAAEABgACAAMAAAADAAIABgACAAMAAAADAAgABgACAAMAAAADAAkABgACAAMAAAAEAAAABgACAAMAAAAEAAEABgACAAMAAAAEAAIABgACAAMAAAAEAAgABgACAAMAAAAEAAkABgACAAMAAAAFAAAABgACAAMAAAAFAAEABgACAAMAAAAFAAIABgACAAMAAAAFAAgABgACAAMAAAAFAAkABgACAAMAAAAGAAAABgACAAMAAAAGAAEABgACAAMAAAAGAAIABgACAAMAAAAGAAgABgACAAMAAAAGAAkABgACAAMAAAAHAAAABgACAAMAAAAHAAEABgACAAMAAAAHAAgABgACAAMAAAAHAAkABgACAAMAAAAIAAAABgACAAMAAAAIAAEABgACAAMAAAAIAAgABgACAAMAAAAIAAkABgACAAMAAAAJAAAABgACAAMAAAAJAAYABgACAAMAAAAJAAcABgACAAMAAAAJAAgABgACAAMAAAAJAAkABgACAAMAAAAKAAAABgACAAMAAAAKAAUABgACAAMAAAAKAAgABgACAAMAAAAKAAkABgACAAMAAAALAAAABgACAAMAAAALAAgABgACAAMAAAALAAkABgACAAMAAAAMAAAABgACAAMAAAAMAAgABgACAAMAAAAMAAkABgACAAMAAAANAAAABgACAAMAAAANAAEABgACAAMAAAANAAcABgACAAMAAAANAAgABgACAAMAAAANAAkABgACAAMAAAAOAAAABgACAAMAAAAOAAEABgACAAMAAAAOAAIABgACAAMAAAAOAAMABgACAAMAAAAOAAYABgACAAMAAAAOAAcABgACAAMAAAAOAAgABgACAAMAAAAOAAkABgACAAMAAAA=")
+tile_map_data = PackedByteArray("AAACAAMABgACAAMAAAACAAQABgACAAMAAAACAAUABgACAAMAAAACAAYABgACAAMAAAADAAMABgACAAMAAAADAAQABgACAAMAAAADAAUABgACAAMAAAADAAYABgACAAMAAAADAAcABgACAAMAAAAEAAMABgACAAMAAAAEAAQABgACAAMAAAAEAAUABgACAAMAAAAEAAYABgACAAMAAAAEAAcABgACAAMAAAAFAAMABgACAAMAAAAFAAQABgACAAMAAAAFAAUABgACAAMAAAAFAAYABgACAAMAAAAFAAcABgACAAMAAAAGAAMABgACAAMAAAAGAAQABgACAAMAAAAGAAUABgACAAMAAAAGAAYABgACAAMAAAAGAAcABgACAAMAAAAHAAIABgACAAMAAAAHAAMABgACAAMAAAAHAAQABgACAAMAAAAHAAUABgACAAMAAAAHAAYABgACAAMAAAAHAAcABgACAAMAAAAIAAIABgACAAMAAAAIAAMABgACAAMAAAAIAAQABgACAAMAAAAIAAUABgACAAMAAAAJAAEABgACAAMAAAAJAAIABgACAAMAAAAJAAMABgACAAMAAAAJAAQABgACAAMAAAAKAAEABgACAAMAAAAKAAIABgACAAMAAAAKAAMABgACAAMAAAAKAAQABgACAAMAAAAKAAYABgACAAMAAAAKAAcABgACAAMAAAALAAEABgACAAMAAAALAAIABgACAAMAAAALAAMABgACAAMAAAALAAQABgACAAMAAAALAAUABgACAAMAAAALAAYABgACAAMAAAALAAcABgACAAMAAAAMAAIABgACAAMAAAAMAAMABgACAAMAAAAMAAQABgACAAMAAAAMAAUABgACAAMAAAAMAAYABgACAAMAAAANAAQABgACAAMAAAANAAUABgACAAMAAAAIAAYABgACAAMAAAAIAAcABgACAAMAAAAJAAUABgACAAMAAAAMAAEABgACAAMAAAAMAAcABgACAAMAAAANAAIABgACAAMAAAANAAMABgACAAMAAAANAAYABgACAAMAAAAOAAQABgACAAMAAAAOAAUABgACAAMAAAAAAAAABgACAAMAAAAAAAEABgACAAMAAAAAAAIABgACAAMAAAAAAAMABgACAAMAAAAAAAQABgACAAMAAAAAAAUABgACAAMAAAAAAAYABgACAAMAAAAAAAcABgACAAMAAAAAAAgABgACAAMAAAABAAAABgACAAMAAAABAAEABgACAAMAAAABAAIABgACAAMAAAABAAMABgACAAMAAAABAAQABgACAAMAAAABAAUABgACAAMAAAABAAYABgACAAMAAAABAAcABgACAAMAAAABAAgABgACAAMAAAACAAAABgACAAMAAAACAAEABgACAAMAAAACAAIABgACAAMAAAACAAcABgACAAMAAAACAAgABgACAAMAAAADAAAABgACAAMAAAADAAEABgACAAMAAAADAAIABgACAAMAAAADAAgABgACAAMAAAAEAAAABgACAAMAAAAEAAEABgACAAMAAAAEAAIABgACAAMAAAAEAAgABgACAAMAAAAFAAAABgACAAMAAAAFAAEABgACAAMAAAAFAAIABgACAAMAAAAFAAgABgACAAMAAAAGAAAABgACAAMAAAAGAAEABgACAAMAAAAGAAIABgACAAMAAAAGAAgABgACAAMAAAAHAAAABgACAAMAAAAHAAEABgACAAMAAAAHAAgABgACAAMAAAAIAAAABgACAAMAAAAIAAEABgACAAMAAAAIAAgABgACAAMAAAAJAAAABgACAAMAAAAJAAYABgACAAMAAAAJAAcABgACAAMAAAAJAAgABgACAAMAAAAKAAAABgACAAMAAAAKAAUABgACAAMAAAAKAAgABgACAAMAAAALAAAABgACAAMAAAALAAgABgACAAMAAAAMAAAABgACAAMAAAAMAAgABgACAAMAAAANAAAABgACAAMAAAANAAEABgACAAMAAAANAAcABgACAAMAAAANAAgABgACAAMAAAAOAAAABgACAAMAAAAOAAEABgACAAMAAAAOAAIABgACAAMAAAAOAAMABgACAAMAAAAOAAYABgACAAMAAAAOAAcABgACAAMAAAAOAAgABgACAAMAAAA=")
 tile_set = ExtResource("2_lx340")
 
 [node name="TileMapLayer" parent="." index="1"]
@@ -20,43 +97,88 @@ tile_map_data = PackedByteArray("AAACAAMABgAAAAAAAAACAAQABgAAAAEAAAACAAUABgAAAAE
 position = Vector2(0, -3)
 tile_map_data = PackedByteArray("AAABAP//BgAAAAAAAAABAAAABgAAAAEAAAABAAEABgAAAAEAAAABAAIABgAAAAIAAAACAAEABgAEAAIAAAACAAIABgADAAAAAAACAAMABgAAAAEAAAACAAQABgAAAAIAAAADAAIABgACAAEAAAADAAMABgABAAEAAAADAAQABgAAAAMAAAAEAP//BgAAAAAAAAAEAAAABgAAAAIAAAAEAAMABgACAAAAAAAFAP//BgABAAAAAAAFAAAABgADAAAAAAAFAAEABgAAAAEAAAAFAAIABgAAAAEAAAAFAAMABgAAAAIAAAACAP//BgACAAAAAAACAAAABgACAAEAAAADAAEABgACAAAAAAAEAAQABgACAAIAAAAGAP//BgACAAAAAAAGAAAABgAEAAIAAAAGAAEABgABAAEAAAAGAAIABgAEAAAAAAAGAAMABgACAAIAAAAIAAEABgABAAAAAAAIAAIABgADAAAAAAAIAAMABgAAAAEAAAAIAAQABgAAAAIAAAAJAAQABgADAAAAAAAKAAQABgAEAAIAAAAJAAMABgABAAEAAAAJAAIABgACAAEAAAAJAAEABgAEAAAAAAAKAAMABgACAAAAAAALAAQABgACAAAAAAAKAAcABgADAAAAAAALAAcABgABAAAAAAALAAEABgABAAIAAAAJAAAABgAAAAAAAAAKAAAABgABAAAAAAALAAAABgABAAAAAAAMAAAABgABAAAAAAAMAAEABgADAAAAAAANAAEABgADAAIAAAANAAIABgADAAAAAAANAAMABgAAAAEAAAANAAQABgAAAAEAAAANAAUABgAAAAEAAAANAAYABgAAAAEAAAAMAAcABgABAAAAAAANAAcABgABAAEAAAAOAAYABgABAAEAAAAOAAUABgAEAAIAAAAOAAQABgABAAEAAAAOAAMABgADAAIAAAAOAAIABgADAAIAAAANAAAABgACAAAAAAAKAAEABgABAAIAAAAOAAEABgABAAAAAAAKAAUABgAEAAAAAAALAAUABgACAAIAAAAKAAYABgACAAEAAAAKAAgABgAAAAIAAAALAAgABgABAAIAAAAMAAgABgABAAIAAAANAAgABgABAAIAAAAOAAcABgABAAEAAAAJAAUABgAAAAEAAAAJAAYABgAAAAEAAAAJAAcABgAAAAIAAAAEAAEABgABAAMAAAAHAAEABgABAAEAAAAHAAAABgACAAAAAAAHAAIABgABAAIAAAAOAAgABgABAAIAAAAMAAIABgAAAAIAAAA=")
 
-[node name="level" parent="." index="3" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
+[node name="DecoElements" type="Node2D" parent="." index="3"]
+
+[node name="SleepingBearBig" type="AnimatedSprite2D" parent="DecoElements" index="0"]
+position = Vector2(101, 34)
+sprite_frames = SubResource("SpriteFrames_dd6yq")
+animation = &"small"
+frame_progress = 0.964469
+script = ExtResource("5_a80f5")
+
+[node name="SleepParticles" type="CPUParticles2D" parent="DecoElements/SleepingBearBig" index="0"]
+position = Vector2(0, 1)
+amount = 2
+lifetime = 1.2
+preprocess = 45.28
+speed_scale = 0.7
+local_coords = true
+texture = ExtResource("6_4y3ar")
+spread = 180.0
+gravity = Vector2(0, -20)
+initial_velocity_min = 3.5
+initial_velocity_max = 3.5
+scale_amount_min = 0.5
+color_ramp = SubResource("Gradient_wl3s5")
+
+[node name="SleepingBearSmall" type="AnimatedSprite2D" parent="DecoElements" index="1"]
+position = Vector2(89, 31)
+sprite_frames = SubResource("SpriteFrames_dd6yq")
+animation = &"big"
+frame_progress = 0.313835
+script = ExtResource("5_a80f5")
+
+[node name="SleepParticles" type="CPUParticles2D" parent="DecoElements/SleepingBearSmall" index="0"]
+amount = 2
+lifetime = 1.2
+preprocess = 45.28
+speed_scale = 0.7
+local_coords = true
+texture = ExtResource("6_4y3ar")
+spread = 180.0
+gravity = Vector2(0, -20)
+initial_velocity_min = 3.5
+initial_velocity_max = 3.5
+scale_amount_min = 0.5
+color_ramp = SubResource("Gradient_wl3s5")
+
+[node name="level" parent="." index="4" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
 position = Vector2(56, 48)
 levels_unlock = [NodePath("../level2")]
 levelScene = "res://scenes/levels_zoomed/world_3/level_310.tscn"
 
-[node name="level2" parent="." index="4" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
+[node name="level2" parent="." index="5" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
 position = Vector2(56, 88)
 levels_unlock = [NodePath("../level2_5")]
 levelScene = "res://scenes/levels_zoomed/world_3/level_325.tscn"
 
-[node name="level2_5" parent="." index="5" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
+[node name="level2_5" parent="." index="6" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
 position = Vector2(88, 96)
 levels_unlock = [NodePath("../level3")]
 levelScene = "res://scenes/levels_zoomed/world_3/level_326_other.tscn"
 
-[node name="level3" parent="." index="6" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
+[node name="level3" parent="." index="7" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
 position = Vector2(120, 80)
 levels_unlock = [NodePath("../level4")]
 levelScene = "res://scenes/levels_zoomed/world_3/level_330.tscn"
 
-[node name="level4" parent="." index="7" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
+[node name="level4" parent="." index="8" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
 position = Vector2(144, 48)
 levels_unlock = [NodePath("../level5")]
 levelScene = "res://scenes/levels_zoomed/world_3/level_350.tscn"
 
-[node name="level5" parent="." index="8" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
+[node name="level5" parent="." index="9" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
 position = Vector2(176, 32)
 levels_unlock = [NodePath("../level7")]
 levelScene = "res://scenes/levels_zoomed/world_3/level_360.tscn"
 
-[node name="level7" parent="." index="9" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
+[node name="level7" parent="." index="10" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
 position = Vector2(200, 64)
 levels_unlock = [NodePath("../level8")]
 levelScene = "res://scenes/levels_zoomed/world_3/level_380.tscn"
 world_unlock_id = 3
 
-[node name="level8" parent="." index="10" instance=ExtResource("2_d7p2c")]
+[node name="level8" parent="." index="11" instance=ExtResource("2_d7p2c")]
 position = Vector2(192, 96)
 levelScene = "res://scenes/levels_zoomed/world_3/level_380_b.tscn"
 world_unlock_id = 3

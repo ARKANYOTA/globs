@@ -121,12 +121,8 @@ func _notification(what):
 		back()
 
 
-func _new_tween(node: Node) -> Tween:
-	return get_tree().create_tween().bind_node(node).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-
-
 func _animate_menu(menu: Node, initial_pos: Vector2, final_pos: Vector2, hide_afterwards = false) -> Tween:
-	var tween = _new_tween(menu)
+	var tween = Util.new_tween(menu)
 	tween.tween_method(menu.set_position, initial_pos, final_pos, MENU_TRANSITION_DURATION)
 	if hide_afterwards:
 		tween.tween_callback(menu.hide)
@@ -136,7 +132,7 @@ func _animate_menu(menu: Node, initial_pos: Vector2, final_pos: Vector2, hide_af
 
 func _animate_background(color: Color, final_blur: float):
 	transition_audio.play()
-	var background_tween = _new_tween(background).set_parallel(true)
+	var background_tween = Util.new_tween(background).set_parallel(true)
 
 	background_tween.tween_property(background, "modulate", color, MENU_TRANSITION_DURATION)
 
