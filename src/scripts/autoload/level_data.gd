@@ -48,6 +48,7 @@ var levels = [
 	{ "name": "4-8", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_510.tscn", "achievement": "ACH_COMPLETE_WORLD_4"},
 
 	{ "name": "You Win", "music": "main_menu", "scene": "res://scenes/levels/you_win.tscn"},
+	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 ]
 var current_level = -1
 var level = 0
