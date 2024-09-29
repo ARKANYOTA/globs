@@ -19,6 +19,9 @@ var texture_highlighted: Texture2D = preload("res://assets/images/ui/extent_indi
 var dotted_line_texture_normal: Texture2D = preload("res://assets/images/ui/dotted_line.png")
 var dotted_line_texture_highlighted: Texture2D = preload("res://assets/images/ui/dotted_line_highlighted.png")
 
+@export var default_z_index = 9
+@export var extended_z_index = 100
+
 @onready var preview_line: Line2D = $PreviewLine
 @onready var arrow_sprite: Sprite2D = $ArrowSprite
 
@@ -68,12 +71,15 @@ func retract_indicator():
 	preview_line.hide()
 	set_highlighted(false)
 
+	z_index = default_z_index
 	#tween.tween_callback(hide)
 
 func extend_indicator():
 	is_extended = true
 	arrow_sprite.texture = texture_extended
 	preview_line.show()
+
+	z_index = extended_z_index
 	show()
 
 func hide_indicator():
