@@ -12,12 +12,12 @@ var music_bus_name := "Music"
 @onready var menus: Control = $Menus
 @onready var transition_audio: AudioStreamPlayer2D = $TransitionAudio
 
-const MENU_TRANSITION_DURATION = 0.3
+@export var MENU_TRANSITION_DURATION = 0.3
+@export var default_blur_value = 4
 
 # This is necessary because the "Back" notification is called twice on Android... for some reason...
 var back_cooldown = 0.1
 var back_cooldown_timer = 0.0
-
 
 func _ready():
 	pass
@@ -71,7 +71,7 @@ func set_menu_by_node(menu: Control, add_to_stack = true, animation_direction_ri
 	PauseMenuAutoload.game_gui.hide_gui()
 	PauseMenuAutoload.paused = true
 	
-	_animate_background(Color.WHITE, 3)
+	_animate_background(Color.WHITE, default_blur_value)
 
 	show()
 	get_tree().set_pause(true)

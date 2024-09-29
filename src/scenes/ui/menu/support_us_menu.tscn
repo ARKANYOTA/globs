@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://bw75q0mw8jp8b"]
 
 [ext_resource type="PackedScene" uid="uid://dt7ylcp3vogvt" path="res://scenes/ui/menu/menu.tscn" id="1_fhnxu"]
-[ext_resource type="Script" path="res://scripts/ui/menu/reset_progress_confirm_menu.gd" id="2_pmgrh"]
+[ext_resource type="Script" path="res://scripts/ui/menu/support_us_menu.gd" id="2_bou50"]
 [ext_resource type="FontFile" uid="uid://cjyup1ooil314" path="res://assets/fonts/font_normal.ttf" id="3_14lab"]
 [ext_resource type="PackedScene" uid="uid://njqkv5i1atvi" path="res://scenes/ui/ui_icon_button.tscn" id="4_0xb4a"]
-[ext_resource type="Texture2D" uid="uid://d1dga283oskd8" path="res://assets/images/ui/heart.png" id="5_0g5nc"]
+[ext_resource type="PackedScene" uid="uid://c8ylgbwk7nihj" path="res://scenes/ui/purchase_button.tscn" id="4_b5wsw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jomln"]
 line_spacing = 2.0
@@ -12,23 +12,37 @@ font = ExtResource("3_14lab")
 font_size = 6
 
 [node name="SupportUsMenu" instance=ExtResource("1_fhnxu")]
-script = ExtResource("2_pmgrh")
+script = ExtResource("2_bou50")
 
 [node name="Items" parent="MarginContainer/AspectRatioContainer" index="0"]
 theme_override_constants/separation = 8
 
 [node name="Title" parent="MarginContainer/AspectRatioContainer/Items" index="0"]
 text = "We are a small team wishing to create 
-games that put smiles on people's faces.
-This is why we decided to not put any
-ads or microtransactions.
+fun games. We decided to not put any
+microtransactions or forced ads because
+we hate them as much as you do.
+
 Unfortunately, games take money to make. 
 If you want to see more games like this 
 one, please consider supporting us!"
 label_settings = SubResource("LabelSettings_jomln")
 uppercase = false
 
-[node name="UiIconButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="0" instance=ExtResource("4_0xb4a")]
+[node name="WatchAd" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="0" instance=ExtResource("4_0xb4a")]
 layout_mode = 2
-text = "Support us"
-icon = ExtResource("5_0g5nc")
+text = "Watch an ad"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="1"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Donate1" parent="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer" index="0" instance=ExtResource("4_b5wsw")]
+layout_mode = 2
+text = "1$"
+purchased_item = "iap_support_1_dollar"
+
+[node name="Donate2" parent="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer" index="1" instance=ExtResource("4_b5wsw")]
+layout_mode = 2
+text = "2$"

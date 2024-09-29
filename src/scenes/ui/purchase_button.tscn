@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8ylgbwk7nihj"]
+
+[ext_resource type="PackedScene" uid="uid://njqkv5i1atvi" path="res://scenes/ui/ui_icon_button.tscn" id="1_kx22p"]
+[ext_resource type="Script" path="res://scripts/ui/purchase_button.gd" id="2_i0fm5"]
+
+[node name="PurchaseButton" instance=ExtResource("1_kx22p")]
+offset_left = 1.0
+offset_right = 9.0
+offset_bottom = 10.0
+script = ExtResource("2_i0fm5")
+purchased_item = ""

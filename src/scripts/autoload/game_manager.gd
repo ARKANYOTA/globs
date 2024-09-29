@@ -24,6 +24,8 @@ var distribution_platform: DistributionPlatform = DistributionPlatform.UNDEFINED
 		if distribution_platform == DistributionPlatform.UNDEFINED:
 			if is_steam_api_supported():
 				distribution_platform = DistributionPlatform.STEAM
+			elif is_google_play_payments_supported():
+				distribution_platform = DistributionPlatform.PLAY_STORE
 			else:
 				distribution_platform = DistributionPlatform.NATIVE
 		return distribution_platform
@@ -49,7 +51,7 @@ var _discord_rpc_update_timer = 0.0
 const STEAM_APP_ID = 3219110
 var steam_interface: Node = null
 
-var google_play_payments: Node = null
+var payments_api: PaymentsAPI = null
 
 var options_manager: OptionsManager
 var achievement_manager: AchievementManager
@@ -67,7 +69,7 @@ var is_fullscreen: bool = true:
 		save_option("graphics", "is_fullscreen", is_fullscreen)
 
 func _ready():
-	print("launched game")
+	print("Launched game Globs [._.] version ", ProjectSettings.get_setting("application/config/version"))
 	options_manager = OptionsManager.new()
 
 	camera = global_camera_scene.instantiate()
@@ -83,6 +85,7 @@ func _ready():
 	_init_google_play_payments()
 	_init_achievement_manager()
 
+	print("Finished initializing game. GamePlatform = ", game_platform, " DistributionPlatform = ", distribution_platform)
 
 func _process(delta):
 	# It is necessary to wait one frame after the scene has been instanciated to avoid an ugly gray frame
@@ -234,10 +237,10 @@ func _init_google_play_payments():
 		return
 	
 	var google_play_payments_scene: PackedScene = load("res://scenes/integration/google_play_payments.tscn")
-	google_play_payments = google_play_payments_scene.instantiate()
-	add_child(google_play_payments)
+	payments_api = google_play_payments_scene.instantiate()
+	add_child(payments_api)
 	
-	var success = google_play_payments.initialize()
+	var success = payments_api.initialize()
 	if not success:
 		# TODO
 		pass
@@ -260,4 +263,5 @@ func _init_achievement_manager():
 			print("Creating generic achievement manager")
 			pass
 
-	add_child(achievement_manager)
+	if achievement_manager:
+		add_child(achievement_manager)

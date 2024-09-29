@@ -149,7 +149,6 @@ layout_mode = 2
 alignment = 1
 
 [node name="SupportUs" parent="." instance=ExtResource("3_65no8")]
-visible = false
 offset_left = 4.0
 offset_top = 111.0
 offset_right = 79.0
