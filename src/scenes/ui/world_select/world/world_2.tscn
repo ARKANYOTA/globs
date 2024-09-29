@@ -46,6 +46,7 @@ levelScene = "res://scenes/levels_zoomed/world_2/level_240.tscn"
 [node name="level8" parent="." index="8" instance=ExtResource("2_x3ay8")]
 position = Vector2(136, 48)
 levelScene = "res://scenes/levels_zoomed/world_2/level_280.tscn"
+button_style = 1
 
 [node name="level5" parent="." index="9" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_x3ay8")]
 position = Vector2(176, 80)

@@ -1,10 +1,37 @@
+@tool
 extends Node2D
 class_name LevelNew
+
+enum LevelButtonStyle {
+	NORMAL, STAR
+}
+enum LevelState {
+	LOCKED,
+	UNLOCKED,
+	COMPLETED
+}
+
+const themes = {
+	LevelButtonStyle.NORMAL: {
+		LevelState.LOCKED: preload("res://assets/images/ui/level_button_locked.png"),
+		LevelState.UNLOCKED: preload("res://assets/images/ui/level_button_unlocked.png"),
+		LevelState.COMPLETED: preload("res://assets/images/ui/level_button_completed.png"),
+	}, 
+	LevelButtonStyle.STAR: {
+		LevelState.LOCKED: preload("res://assets/images/ui/level_button_locked_star.png"),
+		LevelState.UNLOCKED: preload("res://assets/images/ui/level_button_unlocked_star.png"),
+		LevelState.COMPLETED: preload("res://assets/images/ui/level_button_completed_star.png"),
+	},
+}
 
 @export var levels_unlock : Array[LevelNew]
 @export_file("*.tscn") var levelScene : String = ""
 @export var state : LevelState = LevelState.LOCKED
 @export var world_unlock_id : int = 0
+@export var button_style: LevelButtonStyle = LevelButtonStyle.NORMAL:
+	set(value):
+		button_style = value
+		change_icon()
 
 var levels_required : Array[LevelNew] = []
 var pathScene : PackedScene = preload("res://scenes/ui/world_select/path_2d.tscn")
@@ -21,15 +48,13 @@ var dots : Array[PathFollow2D] = []
 var dot_gap = 8#5
 var dot_speed = 13
 
-enum LevelState {
-	LOCKED,
-	UNLOCKED,
-	COMPLETED
-}
 var changed = false
 var dot_done = false
 var world : World
 func _ready():
+	if Engine.is_editor_hint():
+		return
+	
 	world = get_parent()
 
 	create_path_to_level_unlock()
@@ -44,6 +69,8 @@ func _ready():
 	if levelScene in LevelData.completed_levels:
 		state = LevelState.COMPLETED
 		handle_world_unlock()
+	
+	change_icon()
 
 func create_path_to_level_unlock():
 	for level_unlock in levels_unlock:
@@ -80,17 +107,18 @@ func check_unlock():
 	if all_unlocked and state == LevelState.LOCKED and (world.world_index == 0 or world.world_index in LevelData.worlds_finished):
 		state = LevelState.UNLOCKED
 	
+func get_theme():
+	if themes.has(button_style):
+		return themes[button_style]
+	return themes[LevelButtonStyle.NORMAL]
 
 func change_icon():
-	if state == LevelState.LOCKED:
-		$Button.icon = preload("res://assets/images/ui/level_button_locked.png")
-	elif state == LevelState.UNLOCKED:
-		$Button.icon = preload("res://assets/images/ui/level_button_unlocked.png")
-	elif state == LevelState.COMPLETED:
-		$Button.icon = preload("res://assets/images/ui/level_button_completed.png")
-		
+	var theme = get_theme()
+	$Button.icon = theme[state]
 
 func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	check_unlock()
 	change_icon()
 			
@@ -122,6 +150,8 @@ func start_level():
 	SceneTransitionAutoLoad.change_scene_with_transition(levelScene)
 
 func _on_button_pressed() -> void:
+	if Engine.is_editor_hint():
+		return
 	if LevelData.disable_level_button:
 		return
 	start_level()

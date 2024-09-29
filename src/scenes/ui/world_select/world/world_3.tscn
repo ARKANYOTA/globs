@@ -182,3 +182,4 @@ world_unlock_id = 3
 position = Vector2(192, 96)
 levelScene = "res://scenes/levels_zoomed/world_3/level_380_b.tscn"
 world_unlock_id = 3
+button_style = 1
