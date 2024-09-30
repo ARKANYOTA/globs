@@ -1,12 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu78mo56i6fso"]
+[gd_scene load_steps=6 format=3 uid="uid://bu78mo56i6fso"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu/Level/level.gd" id="1_8y7i4"]
 [ext_resource type="Texture2D" uid="uid://dkb2bbrghjuis" path="res://assets/images/ui/level_button_locked.png" id="2_hk4cj"]
 [ext_resource type="StyleBox" uid="uid://c0w4udwjnqc3k" path="res://assets/textures/empty_texture_with_4_margin.tres" id="2_l7cq3"]
+[ext_resource type="FontFile" uid="uid://cjyup1ooil314" path="res://assets/fonts/font_normal.ttf" id="4_bgltw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j6n67"]
+font = ExtResource("4_bgltw")
+font_size = 8
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [node name="level" type="Node2D"]
 position = Vector2(40, 16)
 script = ExtResource("1_8y7i4")
+levelScene = null
 
 [node name="Button" type="Button" parent="."]
 offset_left = -12.0
@@ -21,5 +29,15 @@ theme_override_styles/pressed = ExtResource("2_l7cq3")
 icon = ExtResource("2_hk4cj")
 flat = true
 metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+z_index = 3360
+offset_left = -27.0
+offset_top = -19.0
+offset_right = 27.0
+offset_bottom = -9.0
+text = "ezrrze"
+label_settings = SubResource("LabelSettings_j6n67")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

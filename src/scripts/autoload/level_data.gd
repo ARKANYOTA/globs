@@ -53,6 +53,10 @@ var levels = [
 var current_level = -1
 var level = 0
 
+var test: Dictionary = {
+	ConfigFile.new(): 2
+}
+
 func get_current_level_data():
 	for i in range(levels.size()):
 		if levels[i]["scene"] == selected_level_name:

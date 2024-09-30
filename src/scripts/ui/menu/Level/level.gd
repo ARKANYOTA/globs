@@ -117,8 +117,26 @@ func change_icon():
 	$Button.icon = theme[state]
 
 func _process(delta: float) -> void:
+	var label: Label
 	if Engine.is_editor_hint():
+		label = get_node_or_null("Label")
+		if not label:
+			return
+		
+		label.show()
+		if levelScene:
+			var re = RegEx.new()
+			re.compile("(?<=level_)\\w+(?=.tscn)")
+			var res = re.search(levelScene)
+			if res.strings.size() > 0:
+				label.text = res.strings[0]
+
 		return
+	
+	label = get_node_or_null("Label")
+	if label:
+		label.hide()
+
 	check_unlock()
 	change_icon()
 			
