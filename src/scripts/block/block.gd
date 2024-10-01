@@ -966,8 +966,10 @@ func extend_block(variation: int, direction: Direction, push: bool):
 		tween.tween_callback(func (): tween_list.erase(tween))
 
 		slide_audio.play()
+		
 	if not push and val != -8:
 		tween_transition.tween_callback(update_positions).set_delay(move_speed)
+
 	if reverse:
 		tween_transition.tween_callback(set_is_moving_to_false)
 	else:

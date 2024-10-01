@@ -90,9 +90,10 @@ levelScene = "res://scenes/levels_zoomed/world_1/level_170.tscn"
 position = Vector2(184, 40)
 levels_unlock = [NodePath("../level6_hard")]
 levelScene = "res://scenes/levels_zoomed/world_1/level_180.tscn"
+world_unlock_id = 1
 
 [node name="level6_hard" parent="." index="16" instance=ExtResource("2_xpl06")]
-position = Vector2(218, 29)
+position = Vector2(212, 30)
 levelScene = "res://scenes/levels_zoomed/world_1/level_160_hard.tscn"
 button_style = 1
 

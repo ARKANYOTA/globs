@@ -28,22 +28,15 @@ is_gravity_enabled = true
 max_pushs = 1781
 left_extendable = true
 
-[node name="Block3" parent="." index="9" instance=ExtResource("2_0alr4")]
+[node name="Block4" parent="." index="9" instance=ExtResource("2_0alr4")]
 position = Vector2(184, 40)
-is_main_character = false
-max_pushs = 100
-down_extendable = true
-right_extendable = true
-
-[node name="Block4" parent="." index="10" instance=ExtResource("2_0alr4")]
-position = Vector2(168, 56)
 is_main_character = false
 max_pushs = 100
 up_extendable = true
 left_extendable = true
 right_extendable = true
 
-[node name="ChangeGravityZone" parent="." index="11" instance=ExtResource("3_4ej23")]
+[node name="ChangeGravityZone" parent="." index="10" instance=ExtResource("3_4ej23")]
 position = Vector2(120, 72)
 size = Vector2i(3, 5)
 gravity_axis = 2
