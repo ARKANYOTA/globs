@@ -45,13 +45,14 @@ var levels = [
 	{ "name": "4-2", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_411.tscn"},
 	{ "name": "4-3", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_420.tscn"},
 	{ "name": "4-4", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_422.tscn"},
-	{ "name": "4-5", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_440.tscn"}, # easy
-	{ "name": "4-6", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_430.tscn"},
-	{ "name": "4-7", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_500.tscn"},
-	{ "name": "4-8", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_510.tscn", "achievement": "ACH_COMPLETE_WORLD_4"},
+	{ "name": "4-5", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_425.tscn"},
+	{ "name": "4-6", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_500.tscn"},
+	{ "name": "4-7", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_510.tscn", "achievement": "ACH_COMPLETE_WORLD_4"},
 
 	{ "name": "You Win", "music": "main_menu", "scene": "res://scenes/levels/you_win.tscn"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
+
+	{ "name": "______TODO______", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_430.tscn"},
 ]
 var current_level = -1
 var level = 0

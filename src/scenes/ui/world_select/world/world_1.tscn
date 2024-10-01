@@ -86,14 +86,20 @@ position = Vector2(184, 72)
 levels_unlock = [NodePath("../level8")]
 levelScene = "res://scenes/levels_zoomed/world_1/level_170.tscn"
 
-[node name="level8" parent="." index="15" instance=ExtResource("2_xpl06")]
+[node name="level8" parent="." index="15" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_xpl06")]
 position = Vector2(184, 40)
+levels_unlock = [NodePath("../level6_hard")]
 levelScene = "res://scenes/levels_zoomed/world_1/level_180.tscn"
 
-[node name="Levels" parent="." index="16"]
+[node name="level6_hard" parent="." index="16" instance=ExtResource("2_xpl06")]
+position = Vector2(218, 29)
+levelScene = "res://scenes/levels_zoomed/world_1/level_160_hard.tscn"
+button_style = 1
+
+[node name="Levels" parent="." index="17"]
 position = Vector2(0, -4)
 
-[node name="ChimneySmoke" type="CPUParticles2D" parent="." index="17"]
+[node name="ChimneySmoke" type="CPUParticles2D" parent="." index="18"]
 position = Vector2(166, 17)
 lifetime = 3.0
 randomness = 0.25
@@ -107,7 +113,7 @@ scale_amount_min = 2.0
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_m18ir")
 
-[node name="ChimneySmoke3" type="CPUParticles2D" parent="." index="18"]
+[node name="ChimneySmoke3" type="CPUParticles2D" parent="." index="19"]
 position = Vector2(214, 64)
 lifetime = 3.0
 randomness = 0.25
@@ -121,7 +127,7 @@ scale_amount_min = 2.0
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_m18ir")
 
-[node name="ChimneySmoke4" type="CPUParticles2D" parent="." index="19"]
+[node name="ChimneySmoke4" type="CPUParticles2D" parent="." index="20"]
 position = Vector2(230, 17)
 lifetime = 3.0
 randomness = 0.25

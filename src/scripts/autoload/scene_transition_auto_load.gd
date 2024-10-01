@@ -53,12 +53,12 @@ func _ready() -> void:
 func change_scene_with_transition(scene: String, put_confetis = false) -> void:
 	PauseMenuAutoload.can_pause = false
 	var root = get_tree().get_current_scene()
-	if put_confetis:
-		for i in root.get_children():
-			if i is Block and i.is_visible():
-				if i.is_main_character:
-					youwinlevel_instance = youwinlevel.instantiate()
-					i.add_child(youwinlevel_instance)
+	# if put_confetis:
+	# 	for i in root.get_children():
+	# 		if i is Block and i.is_visible():
+	# 			if i.is_main_character:
+	# 				youwinlevel_instance = youwinlevel.instantiate()
+	# 				i.add_child(youwinlevel_instance)
 					
 	var animation_player : AnimationPlayer = scene_transition_instance.get_node("AnimationPlayer")
 	var transition_audio: AudioStreamPlayer2D = scene_transition_instance.get_node("TransitionAudio")

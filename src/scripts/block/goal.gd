@@ -2,6 +2,12 @@
 extends Area2D
 class_name Goal
 
+@export var WIN_TIME_DELAY = 1.4
+
+var is_collected = false
+
+@export var do_animation = true
+
 @onready var nine_patch = $NinePatch
 @onready var collision_shape = $CollisionShape
 
@@ -30,13 +36,18 @@ func _on_body_entered(body):
 		win()
 
 func win():
-	$AnimationPlayer.play("collected")
-	$SparkleBurst.emitting = true
+	if is_collected:
+		return
+	is_collected = true
 
-	var timer: Timer = $WinDelayTimer
-	timer.set_wait_time(1.6)
-	timer.start()
-	await timer.timeout
+	if do_animation:
+		$AnimationPlayer.play("collected")
+		$SparkleBurst.emitting = true
+
+		var timer: Timer = $WinDelayTimer
+		timer.set_wait_time(WIN_TIME_DELAY)
+		timer.start()
+		await timer.timeout
 	GameManager.win()
 
 func _on_body_exited(body):

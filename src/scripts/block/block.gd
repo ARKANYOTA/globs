@@ -977,7 +977,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 	_update_scale_handles()
 
 func update_positions():
-	assert(get_parent() != null, "Le level est null")
+	assert(get_parent() != null, "Block.update_positions: The level is null")
 	get_parent().upgrade_time_to_everyone(self)
 
 
