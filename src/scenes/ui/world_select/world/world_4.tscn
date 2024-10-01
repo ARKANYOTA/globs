@@ -58,12 +58,12 @@ levels_unlock = [NodePath("../level411")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_410.tscn"
 
 [node name="level411" parent="." index="5" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
-position = Vector2(59, 59)
+position = Vector2(47, 56)
 levels_unlock = [NodePath("../level420")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_411.tscn"
 
 [node name="level420" parent="." index="6" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
-position = Vector2(102, 44)
+position = Vector2(67, 67)
 levels_unlock = [NodePath("../level422")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_420.tscn"
 
@@ -73,15 +73,20 @@ levelScene = "res://scenes/levels_zoomed/world_4/level_430.tscn"
 button_style = 1
 
 [node name="level422" parent="." index="8" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
-position = Vector2(124, 34)
-levels_unlock = [NodePath("../level500")]
+position = Vector2(103, 47)
+levels_unlock = [NodePath("../level425")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_422.tscn"
 
-[node name="level500" parent="." index="9" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+[node name="level425" parent="." index="9" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+position = Vector2(120, 30)
+levels_unlock = [NodePath("../level500")]
+levelScene = "res://scenes/levels_zoomed/world_4/level_425.tscn"
+
+[node name="level500" parent="." index="10" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
 position = Vector2(156, 77)
 levels_unlock = [NodePath("../level510")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_500.tscn"
 
-[node name="level510" parent="." index="10" instance=ExtResource("2_ib75g")]
+[node name="level510" parent="." index="11" instance=ExtResource("2_ib75g")]
 position = Vector2(194, 48)
 levelScene = "res://scenes/levels_zoomed/world_4/level_510.tscn"
