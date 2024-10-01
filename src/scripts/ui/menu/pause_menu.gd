@@ -69,5 +69,5 @@ func _process(delta):
 
 
 func _on_skip_button_removeme_pressed():
-	GameManager.win()
+	menu_manager.exit_menu()
 	LevelData.win()

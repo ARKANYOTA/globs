@@ -11,8 +11,6 @@ var overlapping_bodies = Dictionary()
 	set(value):
 		size = value
 		size_pixels = Vector2(value) * 16
-		$NinePatch.position = -size_pixels/2
-		$NinePatch.size = size_pixels
 
 func _ready():
 	collision_shape.shape = collision_shape.shape.duplicate()
@@ -32,6 +30,13 @@ func _on_body_entered(body):
 		win()
 
 func win():
+	$AnimationPlayer.play("collected")
+	$SparkleBurst.emitting = true
+
+	var timer: Timer = $WinDelayTimer
+	timer.set_wait_time(1.6)
+	timer.start()
+	await timer.timeout
 	GameManager.win()
 
 func _on_body_exited(body):
