@@ -51,8 +51,17 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Quit"
 
+[node name="SkipButtonREMOVEME" parent="MarginContainer" index="3" instance=ExtResource("4_35rns")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "REMOVEME
+skip"
+
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/LevelsButton" to="." method="_on_levels_button_pressed"]
 [connection signal="pressed" from="MarginContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/SkipButtonREMOVEME" to="." method="_on_skip_button_removeme_pressed"]

@@ -66,3 +66,8 @@ func _process(delta):
 		levels_scene_path = "res://scenes/ui/world_select/world_select.tscn"
 		levels_button.text = "Levels"
 	
+
+
+func _on_skip_button_removeme_pressed():
+	GameManager.win()
+	LevelData.win()

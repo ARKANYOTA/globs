@@ -14,7 +14,6 @@ outline_color = Color(0, 0, 0, 1)
 [node name="level" type="Node2D"]
 position = Vector2(40, 16)
 script = ExtResource("1_8y7i4")
-levelScene = null
 
 [node name="Button" type="Button" parent="."]
 offset_left = -12.0
