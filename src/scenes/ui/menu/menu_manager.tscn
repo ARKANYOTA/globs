@@ -26,6 +26,7 @@ shader_parameter/amount = 3.0
 
 [node name="MenuManager" type="CanvasLayer"]
 process_mode = 3
+layer = 2
 visible = false
 script = ExtResource("1_mddol")
 

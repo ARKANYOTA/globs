@@ -1,16 +1,12 @@
-[gd_scene load_steps=18 format=4 uid="uid://bkctk521mrl0q"]
+[gd_scene load_steps=14 format=4 uid="uid://bkctk521mrl0q"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu/World/world_select.gd" id="1_j1qpb"]
 [ext_resource type="PackedScene" uid="uid://dvxxdm807x881" path="res://scenes/ui/world_select/world/world_1.tscn" id="2_53s81"]
-[ext_resource type="PackedScene" uid="uid://njqkv5i1atvi" path="res://scenes/ui/ui_icon_button.tscn" id="3_65no8"]
 [ext_resource type="PackedScene" uid="uid://clhx601gx5jh6" path="res://scenes/ui/world_select/scroll_component.tscn" id="3_iof5u"]
 [ext_resource type="PackedScene" uid="uid://cra3del8x3boe" path="res://scenes/ui/world_select/world/world_2.tscn" id="3_k3qxk"]
 [ext_resource type="PackedScene" uid="uid://b4nepjhqhaa6" path="res://scenes/ui/world_select/world/world_3.tscn" id="4_8d1x4"]
 [ext_resource type="PackedScene" uid="uid://cicawq5hwbh6v" path="res://scenes/ui/world_select/world/world_4.tscn" id="5_3jtnu"]
 [ext_resource type="Texture2D" uid="uid://baupic3tgrmb3" path="res://assets/images/spritesheet/fromage_sprite_sheet.png" id="6_27byr"]
-[ext_resource type="Texture2D" uid="uid://dtb7kvu5i3h0i" path="res://assets/images/ui/menu_right.png" id="8_l2stl"]
-[ext_resource type="Texture2D" uid="uid://cscjdb5vo0gxa" path="res://assets/images/ui/menu_left.png" id="9_iqcs7"]
-[ext_resource type="Texture2D" uid="uid://d1dga283oskd8" path="res://assets/images/ui/heart.png" id="11_76dng"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_as84n"]
 tile_data = PackedInt32Array(0, 262144, 4, 65536, 196608, 2, 1, 196608, 2, 65537, 262144, 4)
@@ -97,11 +93,10 @@ _data = {
 "background": SubResource("Animation_ioqt5")
 }
 
-[node name="WorldSelect" type="Node2D" node_paths=PackedStringArray("scroll", "dot_container")]
+[node name="WorldSelect" type="Node2D" node_paths=PackedStringArray("scroll")]
 script = ExtResource("1_j1qpb")
 world = Array[PackedScene]([ExtResource("2_53s81"), ExtResource("3_k3qxk"), ExtResource("4_8d1x4"), ExtResource("5_3jtnu")])
 scroll = NodePath("ScrollComponent")
-dot_container = NodePath("CenterContainer/DotContainer")
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -4
@@ -119,45 +114,4 @@ speed_scale = 0.2
 [node name="ScrollComponent" parent="." node_paths=PackedStringArray("world_select") instance=ExtResource("3_iof5u")]
 world_select = NodePath("..")
 
-[node name="right" parent="." instance=ExtResource("3_65no8")]
-process_priority = -3
-z_index = 2
-offset_left = 216.0
-offset_top = 55.0
-offset_right = 233.0
-offset_bottom = 74.0
-icon = ExtResource("8_l2stl")
-
-[node name="left" parent="." instance=ExtResource("3_65no8")]
-process_priority = -3
-z_index = 2
-offset_left = 8.0
-offset_top = 55.0
-offset_right = 25.0
-offset_bottom = 74.0
-icon = ExtResource("9_iqcs7")
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-process_priority = -3
-offset_top = 104.0
-offset_right = 240.0
-offset_bottom = 136.0
-
-[node name="DotContainer" type="HBoxContainer" parent="CenterContainer"]
-process_priority = -3
-layout_mode = 2
-alignment = 1
-
-[node name="SupportUs" parent="." instance=ExtResource("3_65no8")]
-offset_left = 4.0
-offset_top = 111.0
-offset_right = 79.0
-offset_bottom = 131.0
-size_flags_horizontal = 0
-size_flags_vertical = 8
-text = "Support us"
-icon = ExtResource("11_76dng")
-
-[connection signal="pressed" from="right" to="." method="_on_right_pressed"]
-[connection signal="pressed" from="left" to="." method="_on_left_pressed"]
-[connection signal="pressed" from="SupportUs" to="." method="_on_ui_icon_button_pressed"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

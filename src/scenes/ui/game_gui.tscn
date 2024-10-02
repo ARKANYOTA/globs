@@ -1,21 +1,82 @@
-[gd_scene load_steps=7 format=3 uid="uid://cni25hsbinkfw"]
+[gd_scene load_steps=11 format=3 uid="uid://cni25hsbinkfw"]
 
 [ext_resource type="Script" path="res://scripts/ui/game_gui.gd" id="1_72ffu"]
+[ext_resource type="Script" path="res://scripts/ui/world_select_gui.gd" id="2_63f6o"]
 [ext_resource type="PackedScene" uid="uid://njqkv5i1atvi" path="res://scenes/ui/ui_icon_button.tscn" id="2_jx3wm"]
 [ext_resource type="Texture2D" uid="uid://cfccdei10ptjn" path="res://assets/images/ui/pause.png" id="3_klxi7"]
 [ext_resource type="Texture2D" uid="uid://2na74y5ctym2" path="res://assets/images/ui/retry.png" id="3_xf12s"]
 [ext_resource type="PackedScene" uid="uid://ciguail0coyfn" path="res://scenes/ui/ui_fullscreen_button.tscn" id="4_rid88"]
 [ext_resource type="Texture2D" uid="uid://dr3uo4murx75h" path="res://assets/images/ui/undo.png" id="5_bj348"]
+[ext_resource type="Texture2D" uid="uid://dtb7kvu5i3h0i" path="res://assets/images/ui/menu_right.png" id="7_dy5u5"]
+[ext_resource type="Texture2D" uid="uid://cscjdb5vo0gxa" path="res://assets/images/ui/menu_left.png" id="8_f5tgb"]
+[ext_resource type="Texture2D" uid="uid://d1dga283oskd8" path="res://assets/images/ui/heart.png" id="9_yd4cv"]
 
 [node name="GameGUI" type="CanvasLayer"]
 script = ExtResource("1_72ffu")
 
+[node name="WorldSelect" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+script = ExtResource("2_63f6o")
+
+[node name="Right" parent="WorldSelect" instance=ExtResource("2_jx3wm")]
+process_priority = -3
+z_index = 2
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 1
+icon = ExtResource("7_dy5u5")
+
+[node name="Left" parent="WorldSelect" instance=ExtResource("2_jx3wm")]
+process_priority = -3
+z_index = 2
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+icon = ExtResource("8_f5tgb")
+
+[node name="MarginContainer" type="MarginContainer" parent="WorldSelect"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="CenterContainer" type="CenterContainer" parent="WorldSelect/MarginContainer"]
+process_priority = -3
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="DotContainer" type="HBoxContainer" parent="WorldSelect/MarginContainer/CenterContainer"]
+unique_name_in_owner = true
+process_priority = -3
+layout_mode = 2
+alignment = 1
+
+[node name="SupportUs" parent="WorldSelect" instance=ExtResource("2_jx3wm")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+mouse_filter = 1
+text = "Support us"
+icon = ExtResource("9_yd4cv")
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="LevelSelectPauseButton" parent="Control" instance=ExtResource("2_jx3wm")]
 visible = false
@@ -45,20 +106,25 @@ offset_top = 2.0
 offset_right = -5.0
 offset_bottom = 28.0
 grow_horizontal = 0
+mouse_filter = 0
 alignment = 2
 
 [node name="UndoButton" parent="Control/LevelActions" instance=ExtResource("2_jx3wm")]
 layout_mode = 2
+mouse_filter = 1
 icon = ExtResource("5_bj348")
 
 [node name="RetryButton" parent="Control/LevelActions" instance=ExtResource("2_jx3wm")]
 layout_mode = 2
+mouse_filter = 1
 icon = ExtResource("3_xf12s")
 
 [node name="PauseButton" parent="Control/LevelActions" instance=ExtResource("2_jx3wm")]
 layout_mode = 2
+mouse_filter = 1
 icon = ExtResource("3_klxi7")
 
+[connection signal="pressed" from="WorldSelect/SupportUs" to="WorldSelect" method="_on_support_us_pressed"]
 [connection signal="pressed" from="Control/LevelSelectPauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="Control/LevelActions/UndoButton" to="." method="_on_ui_icon_button_pressed"]
 [connection signal="pressed" from="Control/LevelActions/RetryButton" to="." method="_on_retry_button_pressed"]

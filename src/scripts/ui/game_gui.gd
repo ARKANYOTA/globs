@@ -53,6 +53,8 @@ func show_level_select():
 	$Control/LevelActions/RetryButton.hide()
 	$Control/FullscreenButton.hide()
 
+	$WorldSelect.show()
+
 func hide_gui():
 	$Control/LevelSelectPauseButton.hide()
 	$Control/LevelActions/PauseButton.hide()
@@ -60,12 +62,16 @@ func hide_gui():
 	$Control/LevelActions/RetryButton.hide()
 	$Control/FullscreenButton.hide()
 
+	$WorldSelect.hide()
+
 func show_gui():
 	$Control/LevelSelectPauseButton.hide()
 	$Control/LevelActions/PauseButton.show()
 	$Control/LevelActions/UndoButton.show()
 	$Control/LevelActions/RetryButton.show()
 	$Control/FullscreenButton.hide()
+	
+	$WorldSelect.hide()
 
 
 func _on_pause_button_pressed():

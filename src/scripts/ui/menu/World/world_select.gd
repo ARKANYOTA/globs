@@ -2,12 +2,16 @@
 extends Node2D
 class_name WorldSelect
 
+@onready var world_select_gui = PauseMenuAutoload.game_gui.get_node("WorldSelect")
+
 @export var world: Array[ PackedScene]
 @export var scroll: ScrollComponent
-@export var dot_container : HBoxContainer 
 var node_worlds : Array[Node2D]
 var world_index = 0
 var is_timing = false
+var left_button: Button
+var right_button: Button
+
 func _ready():
 	if world.size() == 0:
 		return
@@ -22,11 +26,20 @@ func _ready():
 	LevelData.selected_level_name = ""
 	MusicManager.set_music("main_menu")
 	change_world(world_index)
-pass
+
+	left_button = world_select_gui.get_node("Left")
+	right_button = world_select_gui.get_node("Right")
+	left_button.pressed.connect(_on_left_pressed)
+	right_button.pressed.connect(_on_right_pressed)
 
 func _process(delta: float) -> void:
 	$AnimationPlayer.play("background")
-	pass
+
+	# Lock left/right buttons
+	if left_button:
+		left_button.disabled = (world_index == 0)
+	if right_button:
+		right_button.disabled = (world_index == world.size()-1)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("game_right"):
@@ -86,7 +99,7 @@ func change_world(index: int, in_out = true, disable=true) -> void:
 			tween.tween_property(node_worlds[i], "position:x", (i-world_index) * 16*15, 0.40).set_ease(Tween.EASE_IN_OUT)
 		else:
 			tween.tween_property(node_worlds[i], "position:x", (i-world_index) * 16*15, 0.70).set_ease(Tween.EASE_OUT)
-	pass
+	
 
 
 # BUTTON HANDLE
@@ -107,8 +120,11 @@ func add_dot() -> void:
 		var dot : Button = dot_scene.instantiate()
 		dot.index = i
 		dots.append(dot)
+
+		var dot_container = world_select_gui.get_node("MarginContainer/CenterContainer/DotContainer")
 		dot_container.add_child(dot)
 		pass
+
 func update_dot() -> void:
 	var icon_on = "res://assets/images/ui/world_index_dot_on.png"
 	var icon_off = "res://assets/images/ui/world_index_dot.png"
@@ -122,6 +138,3 @@ func update_dot() -> void:
 			dot.icon = texture_off
 		pass
 
-
-func _on_ui_icon_button_pressed():
-	PauseMenuAutoload.pause_menu.set_menu("SupportUsMenu")

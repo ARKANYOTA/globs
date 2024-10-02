@@ -84,6 +84,7 @@ colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0)
 [node name="World2" instance=ExtResource("1_8t5qd")]
 world_music = "snow"
 world_index = 2
+metadata/_edit_lock_ = true
 
 [node name="Water" type="TileMapLayer" parent="." index="0"]
 z_index = -1
