@@ -1,11 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://cmps4e380d2e8"]
+[gd_scene load_steps=21 format=3 uid="uid://cmps4e380d2e8"]
 
 [ext_resource type="Script" path="res://scripts/block/goal.gd" id="1_0dqw8"]
+[ext_resource type="Shader" path="res://scripts/block/goal.gdshader" id="2_c8q4o"]
 [ext_resource type="Texture2D" uid="uid://ddwklmi06l5gk" path="res://assets/images/spritesheet/goal.png" id="2_yjacg"]
 [ext_resource type="Script" path="res://scripts/ui/goal_animation.gd" id="3_0g71m"]
 [ext_resource type="Texture2D" uid="uid://c3va0eyxx6mg8" path="res://assets/images/spritesheet/goal_dotted.png" id="4_64rkq"]
 [ext_resource type="Script" path="res://scripts/autoplay_animation_player.gd" id="5_3tuuk"]
 [ext_resource type="Texture2D" uid="uid://v0rkxal3vlub" path="res://assets/images/particle/particle_sparkle.png" id="5_21xut"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kugom"]
+shader = ExtResource("2_c8q4o")
+shader_parameter/flash_color = Color(1, 1, 1, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8pl8"]
 atlas = ExtResource("2_yjacg")
@@ -62,7 +67,7 @@ particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e6d7d"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxpkm"]
 size = Vector2(0, 0)
 
 [sub_resource type="Animation" id="Animation_aa8jn"]
@@ -70,14 +75,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("Sprite/Sparkles:amount")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [3]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -94,14 +99,38 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/Sparkles:amount")
+tracks/2/path = NodePath("Sprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:material:shader_parameter/flash_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_sc7av"]
@@ -110,14 +139,14 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:speed_scale")
+tracks/0/path = NodePath("Sprite/Sparkles:amount")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [5.0]
+"values": [3, 30]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -134,14 +163,38 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite/Sparkles:amount")
+tracks/2/path = NodePath("Sprite:speed_scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [3, 30]
+"times": PackedFloat32Array(0, 0.0999, 0.4995),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 2.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:material:shader_parameter/flash_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333, 0.1332, 0.333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1332, 0.2331, 0.4329, 0.666667),
+"transitions": PackedFloat32Array(1.23114, 1.7411, 1, 1, 1.6245),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1, 1), Vector2(0.8, 1.1)]
 }
 
 [sub_resource type="Animation" id="Animation_tkwvv"]
@@ -151,26 +204,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = false
+tracks/0/path = NodePath("Sprite:speed_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -1), Vector2(0, 1), Vector2(0, -1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:speed_scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -1), Vector2(0, 1), Vector2(0, -1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6h61u"]
@@ -188,8 +241,10 @@ script = ExtResource("1_0dqw8")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 z_index = 3
+material = SubResource("ShaderMaterial_kugom")
 sprite_frames = SubResource("SpriteFrames_ui1ja")
-frame_progress = 0.399187
+autoplay = "default"
+frame_progress = 0.546395
 script = ExtResource("3_0g71m")
 
 [node name="Sparkles" type="CPUParticles2D" parent="Sprite"]
@@ -228,7 +283,7 @@ anim_speed_min = 0.5
 anim_speed_max = 1.5
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_e6d7d")
+shape = SubResource("RectangleShape2D_qxpkm")
 debug_color = Color(0.493207, 0.429172, 1, 0.376471)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
