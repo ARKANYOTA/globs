@@ -131,7 +131,7 @@ var gravity_axis = Direction.DOWN
 @onready var slide_audio: AudioStreamPlayer2D = $Audio/SlideAudio
 @onready var wake_up_audio: AudioStreamPlayer2D = $Audio/WakeUpAudio
 
-const move_speed := 0.2
+const move_speed := 0.15
 
 var is_happy := false
 var is_hovered := false
