@@ -1361,6 +1361,23 @@ texture = ExtResource("3_foqdn")
 11:7/0/terrains_peering_bit/top_side = 6
 7:4/0 = 0
 14:5/0 = 0
+3:6/0 = 0
+2:6/0 = 0
+1:6/0 = 0
+9:7/0 = 0
+8:7/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+7:6/0 = 0
+7:5/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ajab5"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)

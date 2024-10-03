@@ -13,6 +13,11 @@ var left_button: Button
 var right_button: Button
 
 func _ready():
+	var dot_container = world_select_gui.get_node("MarginContainer/CenterContainer/DotContainer")
+	if dot_container != null:
+		for child in dot_container.get_children():
+			child.queue_free()
+
 	if world.size() == 0:
 		return
 	for i in range(0, world.size()):
