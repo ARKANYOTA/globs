@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=4 uid="uid://cvt4hjmvdsx4n"]
+[gd_scene load_steps=4 format=4 uid="uid://dpr1ygqhaucbq"]
 
-[ext_resource type="PackedScene" uid="uid://dbvmnngir5sjv" path="res://scenes/levels_zoomed/world_2/level.tscn" id="1_nkc51"]
-[ext_resource type="PackedScene" uid="uid://mfybqoo28hl2" path="res://scenes/block/bloc_skin/fromage/mouse_block.tscn" id="2_re68o"]
-[ext_resource type="PackedScene" uid="uid://b2ov0w3ipkxkr" path="res://scenes/block/bloc_skin/fromage/fromage_block.tscn" id="3_0fbwx"]
+[ext_resource type="PackedScene" uid="uid://dbvmnngir5sjv" path="res://scenes/levels_zoomed/world_2/level.tscn" id="1_ilb4l"]
+[ext_resource type="PackedScene" uid="uid://mfybqoo28hl2" path="res://scenes/block/bloc_skin/fromage/mouse_block.tscn" id="2_pkwwy"]
+[ext_resource type="PackedScene" uid="uid://b2ov0w3ipkxkr" path="res://scenes/block/bloc_skin/fromage/fromage_block.tscn" id="3_el2u3"]
 
-[node name="Level" instance=ExtResource("1_nkc51")]
+[node name="Level" instance=ExtResource("1_ilb4l")]
 
 [node name="BackgroundProps" parent="." index="2"]
 tile_map_data = PackedByteArray("AAALAAEAAgAFAAYAAAAMAAMAAgAFAAYAAAA=")
@@ -19,7 +19,7 @@ tile_map_data = PackedByteArray("AAAAAAgAAgANAAMAAAABAAgAAgANAAMAAAACAAgAAgANAAM
 position = Vector2(32, 96)
 size = Vector2i(2, 2)
 
-[node name="Block3" parent="." index="6" instance=ExtResource("2_re68o")]
+[node name="Block3" parent="." index="6" instance=ExtResource("2_pkwwy")]
 position = Vector2(136, 88)
 is_main_character = true
 down_extend_range = Vector2i(8, 88)
@@ -31,7 +31,7 @@ right_extendable = true
 right_extend_range = Vector2i(8, 56)
 right_extend_block_range = Vector2i(0, 3)
 
-[node name="Block4" parent="." index="7" instance=ExtResource("3_0fbwx")]
+[node name="Block4" parent="." index="7" instance=ExtResource("3_el2u3")]
 position = Vector2(72, 104)
 static_block = true
 right_extendable = true

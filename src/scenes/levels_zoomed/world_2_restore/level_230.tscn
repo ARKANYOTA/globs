@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=4 uid="uid://d24gu4a2uc83t"]
+[gd_scene load_steps=5 format=4 uid="uid://cgnntyxe2p70n"]
 
-[ext_resource type="PackedScene" uid="uid://dbvmnngir5sjv" path="res://scenes/levels_zoomed/world_2/level.tscn" id="1_7tsq3"]
-[ext_resource type="Texture2D" uid="uid://c28n08aegta7w" path="res://assets/images/light/triangle_sharp.png" id="2_0xf0d"]
-[ext_resource type="PackedScene" uid="uid://mfybqoo28hl2" path="res://scenes/block/bloc_skin/fromage/mouse_block.tscn" id="2_n6inf"]
-[ext_resource type="PackedScene" uid="uid://b2ov0w3ipkxkr" path="res://scenes/block/bloc_skin/fromage/fromage_block.tscn" id="3_83ujf"]
+[ext_resource type="PackedScene" uid="uid://dbvmnngir5sjv" path="res://scenes/levels_zoomed/world_2/level.tscn" id="1_3kejj"]
+[ext_resource type="PackedScene" uid="uid://mfybqoo28hl2" path="res://scenes/block/bloc_skin/fromage/mouse_block.tscn" id="2_4d04e"]
+[ext_resource type="PackedScene" uid="uid://b2ov0w3ipkxkr" path="res://scenes/block/bloc_skin/fromage/fromage_block.tscn" id="3_bfyig"]
+[ext_resource type="Texture2D" uid="uid://c28n08aegta7w" path="res://assets/images/light/triangle_sharp.png" id="4_weyv1"]
 
-[node name="Level" instance=ExtResource("1_7tsq3")]
+[node name="Level" instance=ExtResource("1_3kejj")]
 
 [node name="BackgroundProps" parent="." index="2"]
 tile_map_data = PackedByteArray("AAAGAAEAAgAHAAQAAAABAAMAAgAEAAYAAAA=")
@@ -19,13 +19,13 @@ tile_map_data = PackedByteArray("AAAAAAgAAgANAAMAAAABAAgAAgANAAMAAAACAAgAAgANAAM
 [node name="Goal" parent="." index="5"]
 position = Vector2(56, 72)
 
-[node name="Block3" parent="." index="6" instance=ExtResource("2_n6inf")]
+[node name="Block3" parent="." index="6" instance=ExtResource("2_4d04e")]
 position = Vector2(152, 72)
 is_main_character = true
 left_extendable = true
 right_extendable = true
 
-[node name="Block4" parent="." index="7" instance=ExtResource("3_83ujf")]
+[node name="Block4" parent="." index="7" instance=ExtResource("3_bfyig")]
 position = Vector2(200, 40)
 static_block = true
 left_extendable = true
@@ -45,7 +45,7 @@ scale = Vector2(1.22057, -1.21489)
 color = Color(1, 0.87, 0.61, 1)
 energy = 0.4
 shadow_enabled = true
-texture = ExtResource("2_0xf0d")
+texture = ExtResource("4_weyv1")
 offset = Vector2(0, 100)
 texture_scale = 0.2
 

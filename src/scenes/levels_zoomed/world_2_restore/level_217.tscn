@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=4 uid="uid://blv26hmhmnrlp"]
+[gd_scene load_steps=3 format=4 uid="uid://db11ccof6dx6u"]
 
-[ext_resource type="PackedScene" uid="uid://dbvmnngir5sjv" path="res://scenes/levels_zoomed/world_2/level.tscn" id="1_3tniy"]
-[ext_resource type="PackedScene" uid="uid://mfybqoo28hl2" path="res://scenes/block/bloc_skin/fromage/mouse_block.tscn" id="2_j4nvd"]
+[ext_resource type="PackedScene" uid="uid://dbvmnngir5sjv" path="res://scenes/levels_zoomed/world_2/level.tscn" id="1_1jw48"]
+[ext_resource type="PackedScene" uid="uid://mfybqoo28hl2" path="res://scenes/block/bloc_skin/fromage/mouse_block.tscn" id="2_4tk8y"]
 
-[node name="Level" instance=ExtResource("1_3tniy")]
+[node name="Level" instance=ExtResource("1_1jw48")]
 
 [node name="Background" parent="." index="1"]
 metadata/_edit_lock_ = true
@@ -18,7 +18,7 @@ tile_map_data = PackedByteArray("AAD//wcAAgANAAIAAAD//wgAAgANAAIAAAD//wUAAgANAAI
 [node name="Goal" parent="." index="5"]
 position = Vector2(88, 88)
 
-[node name="Block3" parent="." index="6" instance=ExtResource("2_j4nvd")]
+[node name="Block3" parent="." index="6" instance=ExtResource("2_4tk8y")]
 position = Vector2(152, 40)
 is_main_character = true
 left_extend_range = Vector2i(8, 40)
