@@ -131,7 +131,7 @@ var gravity_axis = Direction.DOWN
 @onready var slide_audio: AudioStreamPlayer2D = $Audio/SlideAudio
 @onready var wake_up_audio: AudioStreamPlayer2D = $Audio/WakeUpAudio
 
-const move_speed := 0.15
+const move_speed := 0.2
 
 var is_happy := false
 var is_hovered := false
@@ -959,7 +959,8 @@ func extend_block(variation: int, direction: Direction, push: bool):
 				move_tween.tween_callback(func(): block.extend_block(off, direction if not reverse else get_opposite_direction(direction), true))
 
 		move_tween.tween_callback(func (): tween_list.erase(move_tween))
-
+	
+		
 	if tween_property != "" and not push and val != -8:
 		var tween = get_tree().create_tween().set_trans(Tween.TRANS_CIRC)
 		tween_list.append(tween)
@@ -972,8 +973,9 @@ func extend_block(variation: int, direction: Direction, push: bool):
 
 	if not push and val != -8:
 		tween_transition.tween_callback(update_positions).set_delay(move_speed)
-
-	tween_transition.tween_callback(set_is_moving_to_false)
+		
+	if remaining_pushs == -1:
+		tween_transition.tween_callback(set_is_moving_to_false)
 	tween_transition.tween_callback(func (): tween_list.erase(tween_transition))
 
 	_update_scale_handles()
