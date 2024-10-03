@@ -7,7 +7,7 @@ static var is_autorized_url_loaded = false
 func get_urls():
 	var http_request = HTTPRequest.new()
 	add_child(http_request)
-	http_request.request("https://raw.githubusercontent.com/ARKANYOTA/gmtk2024/main/autorized_url.txt")
+	http_request.request("https://raw.githubusercontent.com/ARKANYOTA/globs/main/autorized_url.txt")
 	var response = await http_request.request_completed
 	var result = response[0]
 	var status_code = response[1]
