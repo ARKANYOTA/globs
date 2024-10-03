@@ -957,6 +957,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 				if block == null:
 					return
 				move_tween.tween_callback(func(): block.extend_block(off, direction if not reverse else get_opposite_direction(direction), true))
+
 		move_tween.tween_callback(func (): tween_list.erase(move_tween))
 
 	if tween_property != "" and not push and val != -8:
@@ -966,14 +967,13 @@ func extend_block(variation: int, direction: Direction, push: bool):
 		tween.tween_callback(func (): tween_list.erase(tween))
 
 		slide_audio.play()
-		
+
+
+
 	if not push and val != -8:
 		tween_transition.tween_callback(update_positions).set_delay(move_speed)
 
-	if reverse:
-		tween_transition.tween_callback(set_is_moving_to_false)
-	else:
-		tween_transition.tween_callback(set_is_moving_to_false)
+	tween_transition.tween_callback(set_is_moving_to_false)
 	tween_transition.tween_callback(func (): tween_list.erase(tween_transition))
 
 	_update_scale_handles()
