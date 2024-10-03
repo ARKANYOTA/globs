@@ -17,6 +17,7 @@ tile_map_data = PackedByteArray("AAD//wcAAgANAAIAAAD//wgAAgANAAIAAAD//wUAAgANAAI
 
 [node name="Goal" parent="." index="5"]
 position = Vector2(88, 88)
+WIN_TIME_DELAY = 1.4
 
 [node name="Block3" parent="." index="6" instance=ExtResource("2_j4nvd")]
 position = Vector2(152, 40)

@@ -15,8 +15,7 @@ tile_map_data = PackedByteArray("AAALAAUAAgADAAIAAAALAAYAAgAFAAQAAAAMAAUAAgAFAAQ
 tile_map_data = PackedByteArray("AAAMAAEAAgAFAAYAAAACAAUAAgAEAAYAAAA=")
 
 [node name="CrateBackground" type="TileMapLayer" parent="." index="3"]
-modulate = Color(0.501547, 0.4992, 0.64, 1)
-tile_map_data = PackedByteArray("AAAEAAYAAgAHAAUAAAADAAUAAgAJAAQAAAACAAUAAgAIAAQAAAACAAYAAgAIAAUAAAADAAYAAgAJAAUAAAA=")
+tile_map_data = PackedByteArray("AAAEAAYAAgADAAkAAAADAAUAAgABAAkAAAACAAUAAgAAAAkAAAACAAYAAgAAAAoAAAADAAYAAgABAAoAAAAHAAUAAgADAAoAAAAIAAUAAgAEAAoAAAAIAAQAAgADAAkAAAA=")
 tile_set = ExtResource("2_1wlbu")
 collision_enabled = false
 
@@ -25,6 +24,7 @@ tile_map_data = PackedByteArray("AAAAAAgAAgANAAMAAAABAAgAAgANAAMAAAACAAgAAgANAAM
 
 [node name="Goal" parent="." index="5"]
 position = Vector2(200, 40)
+WIN_TIME_DELAY = 1.4
 
 [node name="Block2" parent="." index="6" instance=ExtResource("2_duhb3")]
 position = Vector2(120, 88)
