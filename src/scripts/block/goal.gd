@@ -8,7 +8,6 @@ var is_collected = false
 
 @export var do_animation = true
 
-@onready var nine_patch = $NinePatch
 @onready var collision_shape = $CollisionShape
 
 var size_pixels: Vector2
