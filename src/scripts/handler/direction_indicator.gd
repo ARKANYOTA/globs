@@ -24,6 +24,8 @@ var dotted_line_texture_highlighted: Texture2D = preload("res://assets/images/ui
 
 @onready var preview_line: Line2D = $PreviewLine
 @onready var arrow_sprite: Sprite2D = $ArrowSprite
+@onready var animated_arrow_sprite: Sprite2D = $ArrowSprite/AnimatedArrowSprite
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func initialize():
 	_update_extend_values()
@@ -87,6 +89,13 @@ func hide_indicator():
 
 func show_indicator():
 	show()
+
+func play_max_extent_animation():
+	if animation_player.current_animation == "max_reached":
+		return
+	
+	animated_arrow_sprite.texture = arrow_sprite.texture
+	animation_player.play("max_reached")
 
 func _ready():
 	var rot = Util.direction_to_rotation(direction)

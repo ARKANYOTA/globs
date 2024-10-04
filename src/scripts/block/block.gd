@@ -857,6 +857,9 @@ func set_is_falling_to_false():
 func is_same_axis(dir: Direction, odir: Direction):
 	return dir == odir or dir == get_opposite_direction(odir)
 
+func _on_cannot_extend(direction: Direction):
+	handles[direction].play_max_extent_animation()
+
 func extend_block(variation: int, direction: Direction, push: bool):
 	var extend = push or can_extend(direction)
 	
@@ -876,8 +879,10 @@ func extend_block(variation: int, direction: Direction, push: bool):
 			movements = check[0]
 			reverse = check[1]
 			if not extend or movements.is_empty():
+				_on_cannot_extend(direction)
 				remaining_pushs = -1
 				return
+
 		val = left_extend_value - variation
 		tween_property = "left_extend_value"
 	
@@ -887,6 +892,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 			movements = check[0]
 			reverse = check[1]
 			if not extend or movements.is_empty():
+				_on_cannot_extend(direction)
 				remaining_pushs = -1
 				return
 		val = right_extend_value + variation
@@ -898,6 +904,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 			movements = check[0]
 			reverse = check[1]
 			if not extend or movements.is_empty():
+				_on_cannot_extend(direction)
 				remaining_pushs = -1
 				return
 		val = up_extend_value - variation
@@ -909,24 +916,32 @@ func extend_block(variation: int, direction: Direction, push: bool):
 			movements = check[0]
 			reverse = check[1]
 			if not extend or movements.is_empty():
+				_on_cannot_extend(direction)
 				remaining_pushs = -1
 				return
 		
 		val = down_extend_value + variation
 		tween_property = "down_extend_value"
+
 	if reverse and push and not push_bounce:
 		remaining_pushs = -1
 		return
+	
 	if is_moving:
 		return
+
 	is_moving = true
 	var mul = -1 if reverse else 1
 	var off = mul * 16 if direction == Direction.RIGHT or direction == Direction.DOWN else mul * -16
-	assert(get_parent() != null, "Le level est null")
+
+	assert(get_parent() != null, "The level is null")
+
 	if not push and val != -8:
 		get_parent().go_to_next_actions()
+
 	var tween_transition = get_tree().create_tween().set_trans(Tween.TRANS_CIRC)
 	tween_list.append(tween_transition)
+
 	for i in range(int(not reverse and not push), len(movements)):
 		var move_tween = get_tree().create_tween().set_trans(Tween.TRANS_CIRC)
 		tween_list.append(move_tween)
@@ -934,12 +949,15 @@ func extend_block(variation: int, direction: Direction, push: bool):
 		var block: Block = movements[i]
 		if not block: # FIXME SCOTCH, remove if causes issues
 			continue
+		
 		#position qui bouge
 		block.moving_direction = direction
 		if direction == Direction.RIGHT or direction == Direction.LEFT:
 			move_tween.tween_property(block, "position:x", block.position.x + off, move_speed).set_ease(Tween.EASE_OUT)
+
 		if direction == Direction.DOWN or direction == Direction.UP:
 			move_tween.tween_property(block, "position:y", block.position.y + off, move_speed).set_ease(Tween.EASE_OUT)
+
 		move_tween.tween_callback(func(): block.is_moving = false)
 		move_tween.tween_callback(func(): block.moving_direction = Direction.INVALID)
 		block.is_moving = true
