@@ -94,7 +94,6 @@ func play_max_extent_animation():
 	if animation_player.current_animation == "max_reached":
 		return
 	
-	animated_arrow_sprite.texture = arrow_sprite.texture
 	animation_player.play("max_reached")
 
 func _ready():
@@ -117,3 +116,6 @@ func _process(_delta):
 
 	preview_line.points[0] = floor(base_indicator_pos)
 	preview_line.points[1] = floor(final_indicator_pos)
+
+	animated_arrow_sprite.texture = arrow_sprite.texture
+
