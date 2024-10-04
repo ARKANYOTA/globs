@@ -68,7 +68,7 @@ levels_unlock = [NodePath("../level422")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_420.tscn"
 
 [node name="level_secret1" parent="." index="7" instance=ExtResource("2_ib75g")]
-position = Vector2(117, 95)
+position = Vector2(200, 88)
 levelScene = "res://scenes/levels_zoomed/world_4/level_430.tscn"
 button_style = 1
 
@@ -78,20 +78,25 @@ levels_unlock = [NodePath("../level425")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_422.tscn"
 
 [node name="level425" parent="." index="9" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
-position = Vector2(110, 28)
-levels_unlock = [NodePath("../level427")]
+position = Vector2(104, 24)
+levels_unlock = [NodePath("../level426")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_425.tscn"
 
-[node name="level427" parent="." index="10" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
-position = Vector2(123, 45)
+[node name="level426" parent="." index="10" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+position = Vector2(120, 40)
+levels_unlock = [NodePath("../level427")]
+levelScene = "res://scenes/levels_zoomed/world_4/level_426.tscn"
+
+[node name="level427" parent="." index="11" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+position = Vector2(144, 80)
 levels_unlock = [NodePath("../level500")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_427.tscn"
 
-[node name="level500" parent="." index="11" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
-position = Vector2(155, 76)
+[node name="level500" parent="." index="12" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+position = Vector2(168, 72)
 levels_unlock = [NodePath("../level510")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_500.tscn"
 
-[node name="level510" parent="." index="12" instance=ExtResource("2_ib75g")]
+[node name="level510" parent="." index="13" instance=ExtResource("2_ib75g")]
 position = Vector2(194, 48)
 levelScene = "res://scenes/levels_zoomed/world_4/level_510.tscn"

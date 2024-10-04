@@ -2,6 +2,10 @@
 extends Area2D
 class_name Goal
 
+var is_collected = false
+var size_pixels: Vector2
+var overlapping_bodies = Dictionary()
+
 @export_enum("yellow", "blue", "red", "green") var style: String = "yellow":
 	set(value):
 		style = value 
@@ -12,10 +16,6 @@ class_name Goal
 	set(value):
 		size = value
 		size_pixels = Vector2(value) * 16
-
-var is_collected = false
-var size_pixels: Vector2
-var overlapping_bodies = Dictionary()
 
 @onready var collision_shape = $CollisionShape
 

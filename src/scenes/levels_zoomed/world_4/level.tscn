@@ -29,7 +29,6 @@ collision_enabled = false
 
 [node name="Goal" parent="." index="5"]
 style = "green"
-do_collect_animation = null
 
 [node name="Planet" type="Sprite2D" parent="." index="6"]
 z_index = -5
