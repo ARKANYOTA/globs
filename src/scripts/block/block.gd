@@ -960,8 +960,8 @@ func extend_block(variation: int, direction: Direction, push: bool):
 		if direction == Direction.DOWN or direction == Direction.UP:
 			move_tween.tween_property(block, "position:y", block.position.y + off, move_speed).set_ease(Tween.EASE_OUT)
 
-		move_tween.tween_callback(func(): block.is_moving = false)
-		move_tween.tween_callback(func(): block.moving_direction = Direction.INVALID)
+		move_tween.tween_callback(func(): if block: block.is_moving = false)
+		move_tween.tween_callback(func(): if block: block.moving_direction = Direction.INVALID)
 		block.is_moving = true
 
 		if block.is_gravity_enabled and is_same_axis(block.gravity_axis, direction):
