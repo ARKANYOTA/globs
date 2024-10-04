@@ -1,13 +1,13 @@
 extends Node
 
-static var autorized_url = ["arkanyota.github.io", "yolwoocle.itch.io", "localhost", "html.itch.zone", "nine-sliced.github.io", "", "base_urls"]
-static var is_autorized_url_loaded = false
+static var authorized_url = ["arkanyota.github.io", "yolwoocle.itch.io", "localhost", "html.itch.zone", "nine-sliced.github.io", "", "base_urls"]
+static var is_authorized_url_loaded = false
 		
 
 func get_urls():
 	var http_request = HTTPRequest.new()
 	add_child(http_request)
-	http_request.request("https://raw.githubusercontent.com/ARKANYOTA/globs/main/autorized_url.txt")
+	http_request.request("https://raw.githubusercontent.com/ARKANYOTA/globs/main/authorized_url.txt")
 	var response = await http_request.request_completed
 	var result = response[0]
 	var status_code = response[1]
@@ -26,7 +26,7 @@ func is_url_valid() -> bool:
 	if not location:
 		return true
 	var hostname = location.hostname
-	return hostname in autorized_url
+	return hostname in authorized_url
 
 var scene_transition: PackedScene = preload("res://scenes/ui/scene_transition.tscn")
 var scene_transition_instance: Node
@@ -40,12 +40,12 @@ func _ready() -> void:
 	if not OS.has_feature('web'):
 		return
 
-	if not is_autorized_url_loaded:
-		is_autorized_url_loaded = true
+	if not is_authorized_url_loaded:
+		is_authorized_url_loaded = true
 		var urls = await get_urls()
 		if urls == []:
 			return
-		autorized_url = urls
+		authorized_url = urls
 
 	#load the scene transition scene
 
