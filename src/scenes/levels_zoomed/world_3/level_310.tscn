@@ -16,7 +16,9 @@ tile_map_data = PackedByteArray("AAAOAAgAAQAEAAkAAAAOAAkAAQAEAAsAAAACAAoAAQAFAAM
 
 [node name="Goal" parent="." index="4"]
 position = Vector2(64, 152)
-do_animation = false
+style = null
+do_collect_animation = null
+win_time_delay = null
 size = Vector2i(4, 1)
 
 [node name="SnowParticle" parent="." index="5"]

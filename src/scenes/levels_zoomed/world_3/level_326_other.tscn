@@ -18,6 +18,9 @@ tile_map_data = PackedByteArray("AAAAAAgAAQAIAAIAAAABAAgAAQAFAAoAAAACAAgAAQAFAAo
 
 [node name="Goal" parent="." index="4"]
 position = Vector2(200, 40)
+style = null
+do_collect_animation = null
+win_time_delay = null
 
 [node name="SnowParticle2" parent="." index="6" instance=ExtResource("4_67h2q")]
 z_index = -30

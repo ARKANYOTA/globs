@@ -14,6 +14,9 @@ modulate = Color(0.47656, 0.4692, 0.69, 1)
 tile_set = ExtResource("2_06agl")
 collision_enabled = false
 
+[node name="Goal" parent="." index="5"]
+do_collect_animation = null
+
 [node name="Block2" parent="." index="6" instance=ExtResource("3_by1ud")]
 position = Vector2(8, 104)
 is_main_character = true

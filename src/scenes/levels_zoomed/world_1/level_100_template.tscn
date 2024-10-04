@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dajgqkks6gfke" path="res://scenes/levels/level_template.tscn" id="1_k74mq"]
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="3_fm378"]
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="4_5waxu"]
-[ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels/visuals/city_visuals.tscn" id="4_vwhfn"]
+[ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels_zoomed/visuals/city_visuals.tscn" id="4_vwhfn"]
 
 [node name="LevelCity" instance=ExtResource("1_k74mq")]
 
@@ -30,6 +30,9 @@ collision_enabled = false
 
 [node name="Block" parent="." index="6"]
 tile_map_data = PackedByteArray("AAAAAAgAAAAJAAMAAAABAAgAAAAJAAMAAAACAAgAAAAJAAMAAAADAAgAAAAJAAMAAAAEAAgAAAAJAAMAAAAFAAgAAAAJAAMAAAAGAAgAAAAJAAMAAAAHAAgAAAAJAAMAAAAIAAgAAAAJAAMAAAAJAAgAAAAJAAMAAAAKAAgAAAAJAAMAAAALAAgAAAAJAAMAAAAMAAgAAAAJAAMAAAANAAgAAAAJAAMAAAAOAAcAAAAKAAEAAAANAAcAAAAJAAEAAAAMAAcAAAAJAAEAAAALAAcAAAAJAAEAAAAKAAcAAAAJAAEAAAAJAAcAAAAJAAEAAAAIAAcAAAAJAAEAAAAHAAcAAAAJAAEAAAAGAAcAAAAJAAEAAAAFAAcAAAAJAAEAAAAEAAcAAAAJAAEAAAADAAcAAAAJAAEAAAACAAcAAAAJAAEAAAABAAcAAAAJAAEAAAAAAAcAAAAJAAEAAAD//wcAAAAIAAEAAAD//wgAAAAIAAMAAAAOAAgAAAAKAAMAAAA=")
+
+[node name="Goal" parent="." index="7"]
+do_collect_animation = null
 
 [node name="Block2" parent="." index="8" instance=ExtResource("4_5waxu")]
 position = Vector2(40, 104)

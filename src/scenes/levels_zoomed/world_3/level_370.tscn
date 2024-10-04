@@ -31,6 +31,7 @@ color_ramp = SubResource("Gradient_mmg3h")
 
 [node name="Goal" parent="." index="4"]
 position = Vector2(136, 104)
+do_collect_animation = null
 
 [node name="SnowParticle" parent="." index="5"]
 visible = false
