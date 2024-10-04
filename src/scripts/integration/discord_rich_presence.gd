@@ -22,6 +22,8 @@ func initialize():
 	
 	update()
 
+func _process(_delta):
+	DiscordRPC.run_callbacks()
 
 func update():
 	var level_data = LevelData.get_current_level_data()
@@ -49,5 +51,5 @@ func update():
 	else:
 		DiscordRPC.large_image = "icon_detailed"
 		DiscordRPC.details = "In a menu"
-
+	
 	DiscordRPC.refresh()
