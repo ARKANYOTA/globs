@@ -15,7 +15,6 @@ collision_enabled = false
 
 [node name="Goal" parent="." index="5"]
 style = "red"
-do_collect_animation = null
 
 [node name="Block2" parent="." index="6" instance=ExtResource("2_7yten")]
 position = Vector2(8, 104)

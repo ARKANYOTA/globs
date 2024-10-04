@@ -37,7 +37,7 @@ right_extend_block_range = Vector2i(0, 2)
 
 [node name="Goal" parent="." index="9"]
 position = Vector2(168, 88)
-do_collect_animation = null
+do_collect_animation = true
 
 [node name="Block2" parent="." index="10"]
 position = Vector2(72, 88)

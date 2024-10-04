@@ -28,7 +28,7 @@ tile_map_data = PackedByteArray("AAAAAAgAAAAJAAMAAAABAAgAAAAJAAMAAAACAAgAAAAJAAM
 
 [node name="Goal" parent="." index="7"]
 position = Vector2(168, 104)
-do_collect_animation = null
+do_collect_animation = true
 
 [node name="Block3" parent="." index="8" instance=ExtResource("2_q2qny")]
 position = Vector2(40, 104)

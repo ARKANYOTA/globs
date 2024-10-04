@@ -15,7 +15,6 @@ tile_map_data = PackedByteArray("AAAAAAgAAQAFAAAAAAABAAgAAQAGAAAAAAACAAgAAQAGAAA
 
 [node name="Goal" parent="." index="4"]
 style = "blue"
-do_collect_animation = null
 
 [node name="SnowParticle" parent="." index="5" instance=ExtResource("3_kknnb")]
 z_index = 20

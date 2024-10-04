@@ -28,4 +28,3 @@ tile_set = ExtResource("2_a5brp")
 
 [node name="Goal" parent="." instance=ExtResource("3_p85rx")]
 position = Vector2(123, 75)
-do_collect_animation = true

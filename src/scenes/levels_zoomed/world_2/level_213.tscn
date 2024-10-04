@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dbvmnngir5sjv" path="res://scenes/levels_zoomed/world_2/level.tscn" id="1_0gqsi"]
 [ext_resource type="PackedScene" uid="uid://mfybqoo28hl2" path="res://scenes/block/bloc_skin/fromage/mouse_block.tscn" id="2_i3esn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sx027"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hr46g"]
 size = Vector2(0, 0)
 
 [node name="Level" instance=ExtResource("1_0gqsi")]
@@ -23,10 +23,12 @@ tile_map_data = PackedByteArray("AAD//wcAAgANAAIAAAD//wgAAgANAAIAAAD//wUAAgANAAI
 
 [node name="Goal" parent="." index="5"]
 position = Vector2(88, 88)
-WIN_TIME_DELAY = 1.4
+
+[node name="Sprite" parent="Goal" index="0"]
+animation = &"red"
 
 [node name="CollisionShape" parent="Goal" index="2"]
-shape = SubResource("RectangleShape2D_sx027")
+shape = SubResource("RectangleShape2D_hr46g")
 
 [node name="Block3" parent="." index="6" instance=ExtResource("2_i3esn")]
 position = Vector2(152, 40)
