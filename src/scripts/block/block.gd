@@ -858,7 +858,8 @@ func is_same_axis(dir: Direction, odir: Direction):
 	return dir == odir or dir == get_opposite_direction(odir)
 
 func _on_cannot_extend(direction: Direction):
-	handles[direction].play_max_extent_animation()
+	if handles.has(direction):
+		handles[direction].play_max_extent_animation()
 
 func extend_block(variation: int, direction: Direction, push: bool):
 	var extend = push or can_extend(direction)

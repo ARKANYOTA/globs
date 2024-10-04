@@ -51,5 +51,4 @@ func update():
 	else:
 		DiscordRPC.large_image = "icon_detailed"
 		DiscordRPC.details = "In a menu"
-	
-	DiscordRPC.refresh()
+
