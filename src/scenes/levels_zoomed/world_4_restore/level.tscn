@@ -1,13 +1,12 @@
-[gd_scene load_steps=11 format=4 uid="uid://brsha6qauan46"]
+[gd_scene load_steps=10 format=4 uid="uid://5unest5kxgs0"]
 
-[ext_resource type="PackedScene" uid="uid://dajgqkks6gfke" path="res://scenes/levels/level_template.tscn" id="1_3mx4c"]
-[ext_resource type="Texture2D" uid="uid://bsuxxmkm78ho5" path="res://assets/images/backgrounds/planet.png" id="2_gljx0"]
-[ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_yk5bi"]
-[ext_resource type="PackedScene" uid="uid://cyuc4qkh71ogh" path="res://scenes/block/bloc_skin/space/alien.tscn" id="3_lpsvi"]
-[ext_resource type="Texture2D" uid="uid://b7ff4xlcvrlcx" path="res://assets/images/particle/stars/star3.png" id="4_j41v4"]
-[ext_resource type="Script" path="res://scripts/props/falling_star.gd" id="4_w300t"]
-[ext_resource type="Texture2D" uid="uid://3pdk6888x74k" path="res://assets/images/particle/stars/star_common.png" id="5_7yuri"]
-[ext_resource type="PackedScene" uid="uid://ctbttdu24rkm1" path="res://scenes/ui/particle/star.tscn" id="6_dp76n"]
+[ext_resource type="PackedScene" uid="uid://dajgqkks6gfke" path="res://scenes/levels/level_template.tscn" id="1_6csov"]
+[ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_cwnnw"]
+[ext_resource type="PackedScene" uid="uid://ctbttdu24rkm1" path="res://scenes/ui/particle/star.tscn" id="3_exdqq"]
+[ext_resource type="Texture2D" uid="uid://b7ff4xlcvrlcx" path="res://assets/images/particle/stars/star3.png" id="4_2qacv"]
+[ext_resource type="Texture2D" uid="uid://bsuxxmkm78ho5" path="res://assets/images/backgrounds/planet.png" id="5_3ee71"]
+[ext_resource type="Script" path="res://scripts/props/falling_star.gd" id="6_yubpu"]
+[ext_resource type="PackedScene" uid="uid://cyuc4qkh71ogh" path="res://scenes/block/bloc_skin/space/alien.tscn" id="7_1b4hp"]
 
 [sub_resource type="Curve" id="Curve_4qb8h"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.292208, 0.648352), 0.0, 0.0, 0, 0, Vector2(0.428571, 0.769231), 0.0, 0.0, 0, 0, Vector2(0.603896, 0.373626), 0.0, 0.0, 0, 0, Vector2(0.779221, 0.450549), 0.0, 0.0, 0, 0, Vector2(0.941558, 0.230769), 0.0, 0.0, 0, 0]
@@ -17,7 +16,7 @@ point_count = 6
 offsets = PackedFloat32Array(0, 0.531746, 1)
 colors = PackedColorArray(1, 1, 1, 0.0862745, 1, 1, 1, 0.611765, 1, 1, 1, 0.541176)
 
-[node name="Level2" instance=ExtResource("1_3mx4c")]
+[node name="Level2" instance=ExtResource("1_6csov")]
 
 [node name="Background" parent="." index="1"]
 modulate = Color(0.5712, 0.5984, 0.68, 1)
@@ -27,32 +26,28 @@ tile_map_data = PackedByteArray("AAAXABAAAwAGAAQAAAAXAA8AAwAIAAYAAAAXAA4AAwAGAAQ
 [node name="Background2" type="TileMapLayer" parent="." index="2"]
 modulate = Color(0.5712, 0.5984, 0.68, 1)
 z_index = -4
-tile_set = ExtResource("2_yk5bi")
+tile_set = ExtResource("2_cwnnw")
 collision_enabled = false
 
 [node name="Goal" parent="." index="5"]
 style = "green"
 
-[node name="star" parent="." index="6" instance=ExtResource("6_dp76n")]
+[node name="star" parent="." index="6" instance=ExtResource("3_exdqq")]
 
-[node name="star1" parent="." index="7" instance=ExtResource("6_dp76n")]
-texture = ExtResource("4_j41v4")
+[node name="star1" parent="." index="7" instance=ExtResource("3_exdqq")]
+texture = ExtResource("4_2qacv")
 
-[node name="star2" parent="." index="8" instance=ExtResource("6_dp76n")]
-amount = 80
-texture = ExtResource("5_7yuri")
-
-[node name="Planet" type="Sprite2D" parent="." index="9"]
+[node name="Planet" type="Sprite2D" parent="." index="8"]
 z_index = -5
 position = Vector2(186, 115)
-texture = ExtResource("2_gljx0")
+texture = ExtResource("5_3ee71")
 
-[node name="DustParticle" type="CPUParticles2D" parent="." index="10"]
+[node name="DustParticle" type="CPUParticles2D" parent="." index="9"]
 z_index = -5
 position = Vector2(112, 64)
 amount = 50
 preprocess = 5.0
-speed_scale = 0.2
+speed_scale = 0.4
 emission_shape = 3
 emission_rect_extents = Vector2(160, 45)
 direction = Vector2(1, 1)
@@ -65,7 +60,7 @@ scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_4qb8h")
 color = Color(0.352941, 0.411765, 0.533333, 1)
 color_ramp = SubResource("Gradient_gqkb2")
-script = ExtResource("4_w300t")
+script = ExtResource("6_yubpu")
 
-[node name="Block2" parent="." index="11" instance=ExtResource("3_lpsvi")]
+[node name="Block2" parent="." index="10" instance=ExtResource("7_1b4hp")]
 position = Vector2(123, 104)
