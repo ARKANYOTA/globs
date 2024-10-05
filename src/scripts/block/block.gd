@@ -132,6 +132,8 @@ var gravity_axis = Direction.DOWN
 @onready var wake_up_audio: AudioStreamPlayer2D = $Audio/WakeUpAudio
 
 const move_speed := 0.2
+const ease_type := Tween.EASE_OUT
+const transition_type := Tween.TRANS_QUINT
 
 var is_happy := false
 var is_hovered := false
@@ -746,13 +748,13 @@ func _physics_process(delta):
 			tween_list.append(gravity_tween)
 			is_falling = true
 			if gravity_axis == Direction.DOWN:
-				gravity_tween.tween_property(self, "position:y", position.y + 16, move_speed).set_ease(Tween.EASE_IN_OUT)
+				gravity_tween.tween_property(self, "position:y", position.y + 16, move_speed).set_ease(ease_type).set_trans(transition_type)
 			if gravity_axis == Direction.UP:
-				gravity_tween.tween_property(self, "position:y", position.y - 16, move_speed).set_ease(Tween.EASE_IN_OUT)
+				gravity_tween.tween_property(self, "position:y", position.y - 16, move_speed).set_ease(ease_type).set_trans(transition_type)
 			if gravity_axis == Direction.LEFT:
-				gravity_tween.tween_property(self, "position:x", position.x - 16, move_speed).set_ease(Tween.EASE_IN_OUT)
+				gravity_tween.tween_property(self, "position:x", position.x - 16, move_speed).set_ease(ease_type).set_trans(transition_type)
 			if gravity_axis == Direction.RIGHT:
-				gravity_tween.tween_property(self, "position:x", position.x + 16, move_speed).set_ease(Tween.EASE_IN_OUT)
+				gravity_tween.tween_property(self, "position:x", position.x + 16, move_speed).set_ease(ease_type).set_trans(transition_type)
 
 			gravity_tween.tween_callback(set_is_falling_to_false)
 			gravity_tween.tween_callback(func (): tween_list.erase(gravity_tween))
@@ -955,10 +957,11 @@ func extend_block(variation: int, direction: Direction, push: bool):
 		#position qui bouge
 		block.moving_direction = direction
 		if direction == Direction.RIGHT or direction == Direction.LEFT:
-			move_tween.tween_property(block, "position:x", block.position.x + off, move_speed).set_ease(Tween.EASE_IN_OUT)
+			move_tween.tween_property(block, "position:x", block.position.x + off, move_speed).set_ease(ease_type).set_trans(transition_type)
 
 		if direction == Direction.DOWN or direction == Direction.UP:
-			move_tween.tween_property(block, "position:y", block.position.y + off, move_speed).set_ease(Tween.EASE_IN_OUT)
+			move_tween.tween_property(block, "position:y", block.position.y + off, move_speed).set_ease(ease_type).set_trans(transition_type)
+
 
 		move_tween.tween_callback(func(): if block: block.is_moving = false)
 		move_tween.tween_callback(func(): if block: block.moving_direction = Direction.INVALID)
@@ -984,7 +987,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 	if tween_property != "" and not push and val != -8:
 		var tween = get_tree().create_tween().set_trans(Tween.TRANS_CIRC)
 		tween_list.append(tween)
-		tween.tween_property(self, tween_property, val, move_speed).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, tween_property, val, move_speed).set_ease(ease_type).set_trans(transition_type)
 		tween.tween_callback(func (): tween_list.erase(tween))
 
 		slide_audio.play()
