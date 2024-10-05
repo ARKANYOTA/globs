@@ -63,10 +63,16 @@ var test: Dictionary = {
 	ConfigFile.new(): 2
 }
 
-func get_current_level_data():
+func get_level_data(scene_path):
+	# FIXME TODO SCOTCH: we should NOT be using a for loop for that, this is HORRIBLE
 	for i in range(levels.size()):
-		if levels[i]["scene"] == selected_level_name:
+		if levels[i]["scene"] == scene_path:
 			return levels[i]
+
+
+func get_current_level_data():
+	return get_level_data(selected_level_name)
+
 
 func increment_level() -> void:
 	if level == current_level:

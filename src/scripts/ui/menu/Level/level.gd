@@ -71,6 +71,18 @@ func _ready():
 		handle_world_unlock()
 	
 	change_icon()
+	_init_label()
+
+
+func _init_label():
+	var label = get_node_or_null("Label")
+	label.hide()
+
+	# if label:
+	# 	var level_data = LevelData.get_level_data(levelScene)
+	# 	if level_data:
+	# 		label.text = level_data["name"]
+
 
 func create_path_to_level_unlock():
 	for level_unlock in levels_unlock:
@@ -118,6 +130,7 @@ func change_icon():
 
 func _process(delta: float) -> void:
 	var label: Label
+
 	if Engine.is_editor_hint():
 		label = get_node_or_null("Label")
 		if not label:
@@ -132,10 +145,6 @@ func _process(delta: float) -> void:
 				label.text = res.strings[0]
 
 		return
-	
-	label = get_node_or_null("Label")
-	if label:
-		label.hide()
 
 	check_unlock()
 	change_icon()

@@ -35,7 +35,6 @@ offset_left = -27.0
 offset_top = -19.0
 offset_right = 27.0
 offset_bottom = -9.0
-text = "ezrrze"
 label_settings = SubResource("LabelSettings_j6n67")
 horizontal_alignment = 1
 
