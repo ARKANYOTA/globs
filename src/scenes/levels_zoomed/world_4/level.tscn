@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b7ff4xlcvrlcx" path="res://assets/images/particle/stars/star3.png" id="4_j41v4"]
 [ext_resource type="Script" path="res://scripts/props/falling_star.gd" id="4_w300t"]
 [ext_resource type="Texture2D" uid="uid://3pdk6888x74k" path="res://assets/images/particle/stars/star_common.png" id="5_7yuri"]
-[ext_resource type="PackedScene" uid="uid://ctbttdu24rkm1" path="res://scenes/ui/particle/star.tscn" id="6_dp76n"]
+[ext_resource type="PackedScene" uid="uid://dkrrlyxmespqf" path="res://scenes/ui/particle/star.tscn" id="6_dp76n"]
 
 [sub_resource type="Curve" id="Curve_4qb8h"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.292208, 0.648352), 0.0, 0.0, 0, 0, Vector2(0.428571, 0.769231), 0.0, 0.0, 0, 0, Vector2(0.603896, 0.373626), 0.0, 0.0, 0, 0, Vector2(0.779221, 0.450549), 0.0, 0.0, 0, 0, Vector2(0.941558, 0.230769), 0.0, 0.0, 0, 0]
