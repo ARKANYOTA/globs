@@ -33,19 +33,31 @@ collision_enabled = false
 [node name="Goal" parent="." index="5"]
 style = "green"
 
-[node name="star" parent="." index="6" instance=ExtResource("6_dp76n")]
-
-[node name="star1" parent="." index="7" instance=ExtResource("6_dp76n")]
-texture = ExtResource("4_j41v4")
-
-[node name="star2" parent="." index="8" instance=ExtResource("6_dp76n")]
-amount = 80
-texture = ExtResource("5_7yuri")
-
-[node name="Planet" type="Sprite2D" parent="." index="9"]
+[node name="Planet" type="Sprite2D" parent="." index="6"]
 z_index = -5
 position = Vector2(186, 115)
 texture = ExtResource("2_gljx0")
+
+[node name="star" parent="." index="7" instance=ExtResource("6_dp76n")]
+z_index = -6
+position = Vector2(120, 72)
+lifetime = 20.0
+preprocess = 20.0
+
+[node name="star1" parent="." index="8" instance=ExtResource("6_dp76n")]
+z_index = -6
+position = Vector2(120, 72)
+lifetime = 20.0
+preprocess = 20.0
+texture = ExtResource("4_j41v4")
+
+[node name="star2" parent="." index="9" instance=ExtResource("6_dp76n")]
+z_index = -6
+position = Vector2(120, 72)
+amount = 20
+lifetime = 20.0
+preprocess = 20.0
+texture = ExtResource("5_7yuri")
 
 [node name="DustParticle" type="CPUParticles2D" parent="." index="10"]
 z_index = -5
