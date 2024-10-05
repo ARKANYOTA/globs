@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://biolau0l821nq"]
+
+[ext_resource type="Script" path="res://scripts/sprite/floating_sprite.gd" id="1_50808"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2gn0r"]
+radius = 24.0
+
+[node name="FloatingSprite" type="Area2D"]
+script = ExtResource("1_50808")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2gn0r")
+debug_color = Color(0, 0.595, 0.7, 0.0509804)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

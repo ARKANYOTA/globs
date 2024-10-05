@@ -859,7 +859,8 @@ func is_same_axis(dir: Direction, odir: Direction):
 
 func _on_cannot_extend(direction: Direction):
 	if handles.has(direction):
-		handles[direction].play_max_extent_animation()
+		if handles[direction].is_highlighted:
+			handles[direction].play_max_extent_animation()
 
 func extend_block(variation: int, direction: Direction, push: bool):
 	var extend = push or can_extend(direction)

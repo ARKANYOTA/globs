@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=4 uid="uid://cicawq5hwbh6v"]
+[gd_scene load_steps=11 format=4 uid="uid://cicawq5hwbh6v"]
 
 [ext_resource type="PackedScene" uid="uid://c713awkloisp6" path="res://scenes/ui/world_select/world/world.tscn" id="1_addor"]
 [ext_resource type="PackedScene" uid="uid://bu78mo56i6fso" path="res://scenes/ui/world_select/level.tscn" id="2_ib75g"]
 [ext_resource type="Texture2D" uid="uid://c158dcm052fbf" path="res://assets/images/map/spacemap.png" id="2_wm5pa"]
 [ext_resource type="Script" path="res://scripts/props/falling_star.gd" id="4_y0ytb"]
+[ext_resource type="PackedScene" uid="uid://biolau0l821nq" path="res://scenes/sprite/floating_sprite.tscn" id="5_pe7qv"]
+[ext_resource type="Texture2D" uid="uid://b5agcmyi1curm" path="res://assets/images/map/space_fragment_1.png" id="6_csvgj"]
+[ext_resource type="Texture2D" uid="uid://dknp2g7asujia" path="res://assets/images/map/space_fragment_2.png" id="6_su302"]
+[ext_resource type="Texture2D" uid="uid://d2gs8ba5smes6" path="res://assets/images/map/space_fragment_3.png" id="7_0lgyy"]
 
 [sub_resource type="Curve" id="Curve_yifwk"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.292208, 0.648352), 0.0, 0.0, 0, 0, Vector2(0.428571, 0.769231), 0.0, 0.0, 0, 0, Vector2(0.603896, 0.373626), 0.0, 0.0, 0, 0, Vector2(0.779221, 0.450549), 0.0, 0.0, 0, 0, Vector2(0.941558, 0.230769), 0.0, 0.0, 0, 0]
@@ -39,8 +43,8 @@ color = Color(0.352941, 0.411765, 0.533333, 1)
 color_ramp = SubResource("Gradient_q24v4")
 script = ExtResource("4_y0ytb")
 
-[node name="Untitled45" type="Sprite2D" parent="." index="1"]
-z_index = -1
+[node name="Background" type="Sprite2D" parent="." index="1"]
+z_index = -8
 position = Vector2(121, 67)
 texture = ExtResource("2_wm5pa")
 metadata/_edit_lock_ = true
@@ -52,51 +56,73 @@ tile_map_data = PackedByteArray("AAANAAEAAwAHAAAAAAAMAAEAAwAGAAAAAAALAAEAAwAKAAA
 [node name="TopLayer" parent="." index="3"]
 visible = false
 
-[node name="level410" parent="." index="4" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+[node name="FloatingSprite" parent="." index="4" instance=ExtResource("5_pe7qv")]
+z_index = -1
+position = Vector2(48, 97)
+amplitude = Vector2(0, 2)
+texture = ExtResource("6_csvgj")
+
+[node name="FloatingSprite2" parent="." index="5" instance=ExtResource("5_pe7qv")]
+z_index = -1
+position = Vector2(91, 60)
+amplitude = Vector2(1, 2)
+frequency = Vector2(1, 0.234)
+float_offset = Vector2(0.3, 0.2)
+texture = ExtResource("6_su302")
+
+[node name="FloatingSprite3" parent="." index="6" instance=ExtResource("5_pe7qv")]
+z_index = -1
+position = Vector2(149, 54)
+amplitude = Vector2(1, 3)
+frequency = Vector2(1.62, 0.7)
+float_offset = Vector2(0.245, 0.7)
+texture = ExtResource("7_0lgyy")
+
+[node name="level410" parent="." index="7" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
 position = Vector2(36, 78)
 levels_unlock = [NodePath("../level411")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_410.tscn"
 
-[node name="level411" parent="." index="5" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+[node name="level411" parent="." index="8" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
 position = Vector2(47, 56)
 levels_unlock = [NodePath("../level420")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_411.tscn"
 
-[node name="level420" parent="." index="6" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+[node name="level420" parent="." index="9" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
 position = Vector2(67, 67)
 levels_unlock = [NodePath("../level422")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_420.tscn"
 
-[node name="level_secret1" parent="." index="7" instance=ExtResource("2_ib75g")]
+[node name="level_secret1" parent="." index="10" instance=ExtResource("2_ib75g")]
 position = Vector2(200, 88)
 levelScene = "res://scenes/levels_zoomed/world_4/level_430.tscn"
 button_style = 1
 
-[node name="level422" parent="." index="8" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+[node name="level422" parent="." index="11" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
 position = Vector2(97, 48)
 levels_unlock = [NodePath("../level425")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_422.tscn"
 
-[node name="level425" parent="." index="9" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+[node name="level425" parent="." index="12" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
 position = Vector2(104, 24)
 levels_unlock = [NodePath("../level426")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_425.tscn"
 
-[node name="level426" parent="." index="10" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+[node name="level426" parent="." index="13" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
 position = Vector2(120, 40)
 levels_unlock = [NodePath("../level427")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_426.tscn"
 
-[node name="level427" parent="." index="11" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+[node name="level427" parent="." index="14" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
 position = Vector2(144, 80)
 levels_unlock = [NodePath("../level500")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_427.tscn"
 
-[node name="level500" parent="." index="12" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+[node name="level500" parent="." index="15" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
 position = Vector2(168, 72)
 levels_unlock = [NodePath("../level510")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_500.tscn"
 
-[node name="level510" parent="." index="13" instance=ExtResource("2_ib75g")]
+[node name="level510" parent="." index="16" instance=ExtResource("2_ib75g")]
 position = Vector2(194, 48)
 levelScene = "res://scenes/levels_zoomed/world_4/level_510.tscn"
