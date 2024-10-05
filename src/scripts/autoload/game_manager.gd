@@ -42,9 +42,7 @@ var game_platform: GamePlatform = GamePlatform.UNDEFINED:
 					game_platform = GamePlatform.UNKNOWN
 		return game_platform
 
-const DISCORD_RPC_UPDATE_INTERVAL = 3.0
 var discord_rich_presence: Node = null
-var _discord_rpc_update_timer = 0.0
 
 const STEAM_APP_ID = 3219110
 var steam_interface: Node = null
@@ -86,12 +84,6 @@ func _process(delta):
 	if not _loaded_fullscreen_option:
 		is_fullscreen = load_option("graphics", "is_fullscreen", true)
 		_loaded_fullscreen_option = true
-
-	if discord_rich_presence:
-		_discord_rpc_update_timer -= delta
-		if _discord_rpc_update_timer < 0:
-			discord_rich_presence.update()
-			_discord_rpc_update_timer = DISCORD_RPC_UPDATE_INTERVAL
 
 
 func _input(event):
@@ -189,7 +181,6 @@ func _init_discord_rpc():
 	discord_rich_presence.initialize()
 
 func _update_discord_rpc():
-	pass
 	if not discord_rich_presence:
 		return
 	
