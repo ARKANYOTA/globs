@@ -3,6 +3,7 @@ extends Node
 static var authorized_url = ["arkanyota.github.io", "yolwoocle.itch.io", "localhost", "html.itch.zone", "nine-sliced.github.io", "", "base_urls"]
 static var is_authorized_url_loaded = false
 		
+signal on_scene_changed(scene_path: String)
 
 func get_urls():
 	var http_request = HTTPRequest.new()
@@ -84,13 +85,16 @@ func change_scene_with_transition(scene: String, put_confetis = false) -> void:
 	animation_player.play(slides[random_slide_transition], -1, -0.7, true)
 
 	GameManager.before_scene_change()
-	if is_url_valid() or scene in ["res://scenes/main.tscn", "res://scenes/ui/world_select/world_select.tscn", "res://scenes/levels_zoomed/world_1/level_110.tscn",  "res://scenes/levels_zoomed/world_1/level_120.tscn","res://scenes/levels_zoomed/world_1/level_130.tscn", "res://scenes/levels_zoomed/world_1/level_140.tscn"]:
-		get_tree().change_scene_to_file(scene)
-		await get_tree().process_frame
-	else:
-		get_tree().change_scene_to_file("res://scenes/ui/redirect_page_to_our_games.tscn")
-		await get_tree().process_frame
+	var scene_to_set = scene
+	# FIXME SCOTCH: this should NOT be in there, it breaks the single-responsability principle
+	if not (is_url_valid() or scene in ["res://scenes/main.tscn", "res://scenes/ui/world_select/world_select.tscn", "res://scenes/levels_zoomed/world_1/level_110.tscn",  "res://scenes/levels_zoomed/world_1/level_120.tscn","res://scenes/levels_zoomed/world_1/level_130.tscn", "res://scenes/levels_zoomed/world_1/level_140.tscn"]):
+		scene_to_set = "res://scenes/ui/redirect_page_to_our_games.tscn"
 	
+	get_tree().change_scene_to_file(scene_to_set)
+	await get_tree().process_frame
+	
+	on_scene_changed.emit(scene_to_set)
+
 	# Music 	
 	#title_player.play("WorldLevel")
 	PauseMenuAutoload.game_gui.show_correct_game_gui()

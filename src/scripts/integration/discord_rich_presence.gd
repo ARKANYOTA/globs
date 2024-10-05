@@ -1,6 +1,7 @@
 extends Node
 
 const DISCORD_RPC_APP_ID = 1282760428954325032
+
 const discord_rpc_world_keys: Dictionary = {
 	"1": {"name": "Globs City",    "large_image": "large_city"},
 	"2": {"name": "Cheese Den",    "large_image": "large_cheese"},
@@ -10,7 +11,7 @@ const discord_rpc_world_keys: Dictionary = {
 
 var initialized = false
 
-# TODO: add lauch command
+# TODO add lauch command:
 # https://docs.vaporvee.com/discord-rpc-godot/utillity_or_other/
 # Code is: DiscordRPC.register_command("my-awesome-game://run --full-screen")
 
@@ -19,11 +20,18 @@ func initialize():
 	DiscordRPC.start_timestamp = int(Time.get_unix_time_from_system())
 
 	DiscordRPC.register_steam(GameManager.STEAM_APP_ID)
-	
+	SceneTransitionAutoLoad.on_scene_changed.connect(_on_scene_changed)
+
 	update()
 
-func _process(_delta):
+func _process(delta):
 	DiscordRPC.run_callbacks()
+
+
+func _on_scene_changed(scene_path: String):
+	print("removeme SCENE CHANGED TO ", scene_path)
+	update()
+
 
 func update():
 	var level_data = LevelData.get_current_level_data()

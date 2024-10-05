@@ -59,7 +59,6 @@ visible = false
 [node name="FloatingSprite" parent="." index="4" instance=ExtResource("5_pe7qv")]
 z_index = -1
 position = Vector2(48, 97)
-amplitude = Vector2(0, 2)
 texture = ExtResource("6_csvgj")
 
 [node name="FloatingSprite2" parent="." index="5" instance=ExtResource("5_pe7qv")]
