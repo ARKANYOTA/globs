@@ -29,11 +29,13 @@ func _process(delta):
 
 
 func _on_scene_changed(scene_path: String):
-	print("removeme SCENE CHANGED TO ", scene_path)
 	update()
 
 
 func update():
+	if not DiscordRPC.get_is_discord_working():
+		return
+	
 	var level_data = LevelData.get_current_level_data()
 	
 	if level_data:
