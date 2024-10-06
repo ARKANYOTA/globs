@@ -95,6 +95,7 @@ levelScene = "res://scenes/levels_zoomed/world_4/level_420.tscn"
 position = Vector2(200, 88)
 levelScene = "res://scenes/levels_zoomed/world_4/level_430.tscn"
 button_style = 1
+is_linkable = false
 
 [node name="level422" parent="." index="11" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
 position = Vector2(97, 48)

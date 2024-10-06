@@ -1,8 +1,8 @@
 extends Node2D
-class_name LevelNew
+class_name WorldLevelButton
 
-var levels_required : Array[LevelNew] = []
-@export var levels_unlock : Array[LevelNew]
+var levels_required : Array[WorldLevelButton] = []
+@export var levels_unlock : Array[WorldLevelButton]
 var pathScene : PackedScene = preload("res://scenes/ui/world_select/path_2d.tscn")
 @export var levelScene : PackedScene = null
 var path_instances : Array[Path2D]
@@ -80,7 +80,7 @@ func _process(delta: float) -> void:
 # 	for level in levels_unlock:
 # 		level.unlock(self)
 
-# func unlock(level: LevelNew):
+# func unlock(level: WorldLevelButton):
 # 	levels_required.erase(level)
 # 	if levels_required.size() == 0:
 # 		state = LevelState.UNLOCKED
