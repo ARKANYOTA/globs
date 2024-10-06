@@ -946,8 +946,6 @@ func extend_block(variation: int, direction: Direction, push: bool, need_to_push
 	var tween_transition = get_tree().create_tween().set_trans(Tween.TRANS_CIRC)
 	tween_list.append(tween_transition)
 
-	print("Movement ", get_name(), " ", movements, " first element ", int(not reverse and not push))
-	print("Infos ", get_name(), " rev: ", reverse, " push: ", push, " ext: ", extend, " needtp: ", need_to_push)
 	if need_to_push:
 		for i in range(int(not reverse and not push), len(movements)):
 			var move_tween = get_tree().create_tween().set_trans(Tween.TRANS_CIRC)
@@ -1007,10 +1005,6 @@ func extend_block(variation: int, direction: Direction, push: bool, need_to_push
 	if remaining_pushs == -1:
 		tween_transition.tween_callback(set_is_moving_to_false)
 	tween_transition.tween_callback(func (): tween_list.erase(tween_transition))
-
-	if get_name() == "Block4":
-		print("\n\n")
-	print("Block ", get_name(), " ", Time.get_ticks_usec())
 	
 	_update_scale_handles()
 
