@@ -20,6 +20,9 @@ var levels = [
 	{ "name": "1-10", "world": "1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_180.tscn", "achievement": "ACH_COMPLETE_WORLD_1"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
+	{ "name": "1-⭐1", "world": "1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_160_hard.tscn"},
+	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
+
 	{ "name": "2-1", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_210.tscn"},
 	{ "name": "2-2", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_213.tscn"},
 	{ "name": "2-3", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_215.tscn"},
@@ -31,6 +34,9 @@ var levels = [
 	{ "name": "2-9", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_270.tscn", "achievement": "ACH_COMPLETE_WORLD_2"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
+	{ "name": "2-⭐1", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_280.tscn"},
+	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
+
 	{ "name": "3-1", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_310.tscn"},
 	{ "name": "3-2", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_325.tscn"},
 	{ "name": "3-3", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_325_5.tscn"},
@@ -39,6 +45,9 @@ var levels = [
 	{ "name": "3-6", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_350.tscn"},
 	{ "name": "3-7", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_360.tscn"},
 	{ "name": "3-8", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_380.tscn", "achievement": "ACH_COMPLETE_WORLD_3"},
+	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
+
+	{ "name": "3-⭐1", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_380_b.tscn"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "4-1", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_410.tscn"},
@@ -54,7 +63,8 @@ var levels = [
 	{ "name": "You Win", "music": "main_menu", "scene": "res://scenes/levels/you_win.tscn"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
-	{ "name": "______TODO______", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_430.tscn"},
+	{ "name": "4-⭐1", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_430.tscn"},
+	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 ]
 var current_level = -1
 var level = 0

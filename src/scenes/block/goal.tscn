@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cmps4e380d2e8"]
+[gd_scene load_steps=35 format=3 uid="uid://cmps4e380d2e8"]
 
 [ext_resource type="Script" path="res://scripts/block/goal.gd" id="1_0dqw8"]
 [ext_resource type="Shader" path="res://scripts/block/goal.gdshader" id="2_c8q4o"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://scripts/autoplay_animation_player.gd" id="5_3tuuk"]
 [ext_resource type="Texture2D" uid="uid://v0rkxal3vlub" path="res://assets/images/particle/particle_sparkle.png" id="5_21xut"]
 [ext_resource type="Texture2D" uid="uid://bl35ujvbyaqo8" path="res://assets/images/spritesheet/goal_red.png" id="5_gyw0k"]
+[ext_resource type="AudioStream" uid="uid://bmjyb0neb266e" path="res://assets/sounds/block/goal_fly.ogg" id="11_y11qb"]
+[ext_resource type="AudioStream" uid="uid://csbeh7qla0l8o" path="res://assets/sounds/block/goal_collect.wav" id="12_u056c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kugom"]
 shader = ExtResource("2_c8q4o")
@@ -157,7 +159,7 @@ particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3jgw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv35s"]
 size = Vector2(0, 0)
 
 [sub_resource type="Animation" id="Animation_aa8jn"]
@@ -222,6 +224,30 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FlyingSFX:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CollectSFX:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_sc7av"]
 resource_name = "collected"
@@ -285,6 +311,30 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1.23114, 1.7411, 1, 1, 1.6245),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1, 1), Vector2(0.8, 1.1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FlyingSFX:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.233333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CollectSFX:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_tkwvv"]
@@ -373,7 +423,7 @@ anim_speed_min = 0.5
 anim_speed_max = 1.5
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_e3jgw")
+shape = SubResource("RectangleShape2D_bv35s")
 debug_color = Color(0.493207, 0.429172, 1, 0.376471)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -385,6 +435,13 @@ default_animation = "float"
 
 [node name="WinDelayTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="FlyingSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_y11qb")
+volume_db = -3.0
+
+[node name="CollectSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_u056c")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

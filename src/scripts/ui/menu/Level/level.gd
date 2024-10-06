@@ -1,6 +1,6 @@
 @tool
 extends Node2D
-class_name LevelNew
+class_name WorldLevelButton
 
 enum LevelButtonStyle {
 	NORMAL, STAR
@@ -24,7 +24,7 @@ const themes = {
 	},
 }
 
-@export var levels_unlock : Array[LevelNew]
+@export var levels_unlock : Array[WorldLevelButton]
 @export_file("*.tscn") var levelScene : String = ""
 @export var state : LevelState = LevelState.LOCKED
 @export var world_unlock_id : int = 0
@@ -32,8 +32,9 @@ const themes = {
 	set(value):
 		button_style = value
 		change_icon()
+@export var is_linkable = true
 
-var levels_required : Array[LevelNew] = []
+var levels_required : Array[WorldLevelButton] = []
 var pathScene : PackedScene = preload("res://scenes/ui/world_select/path_2d.tscn")
 var path_instances : Array[Path2D]
 var unlocked_paths : Array[Path2D]
@@ -86,11 +87,12 @@ func _init_label():
 
 func create_path_to_level_unlock():
 	for level_unlock in levels_unlock:
-		if level_unlock == null:
+		if (level_unlock == null) or (level_unlock is not WorldLevelButton) or (not level_unlock.is_linkable):
 			continue
+	
 		create_path(level_unlock)
 
-func create_path(level_unlock: LevelNew):
+func create_path(level_unlock: WorldLevelButton):
 	var path = pathScene.instantiate()
 	path_instances.append(path)
 	path.curve = Curve2D.new()

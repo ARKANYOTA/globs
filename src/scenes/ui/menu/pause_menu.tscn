@@ -13,6 +13,7 @@ text = "Paused"
 
 [node name="ResumeButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="0" instance=ExtResource("4_35rns")]
 layout_mode = 2
+text = "Continue"
 
 [node name="RestartButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="1" instance=ExtResource("4_35rns")]
 layout_mode = 2
@@ -53,6 +54,7 @@ text = "Quit"
 
 [node name="SkipButtonREMOVEME" parent="MarginContainer" index="3" instance=ExtResource("4_35rns")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0

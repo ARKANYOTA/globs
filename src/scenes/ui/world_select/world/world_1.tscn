@@ -83,19 +83,19 @@ levelScene = "res://scenes/levels_zoomed/world_1/level_150.tscn"
 
 [node name="level7" parent="." index="14" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_xpl06")]
 position = Vector2(184, 72)
-levels_unlock = [NodePath("../level8")]
+levels_unlock = [NodePath("../level8"), NodePath("../level6_hard")]
 levelScene = "res://scenes/levels_zoomed/world_1/level_170.tscn"
 
-[node name="level8" parent="." index="15" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_xpl06")]
+[node name="level8" parent="." index="15" instance=ExtResource("2_xpl06")]
 position = Vector2(184, 40)
-levels_unlock = [NodePath("../level6_hard")]
 levelScene = "res://scenes/levels_zoomed/world_1/level_180.tscn"
 world_unlock_id = 1
 
 [node name="level6_hard" parent="." index="16" instance=ExtResource("2_xpl06")]
-position = Vector2(212, 30)
+position = Vector2(203, 85)
 levelScene = "res://scenes/levels_zoomed/world_1/level_160_hard.tscn"
 button_style = 1
+is_linkable = false
 
 [node name="Levels" parent="." index="17"]
 position = Vector2(0, -4)
