@@ -65,6 +65,7 @@ var is_fullscreen: bool = true:
 func _ready():
 	print("launched game")
 	options_manager = OptionsManager.new()
+	_init_window()
 
 	camera = global_camera_scene.instantiate()
 	add_child(camera)
@@ -88,6 +89,18 @@ func _process(delta):
 		for bus in ["Master", "Music"]:
 			set_bus_volume(bus, load_option("volume", bus, 1.0))
 
+
+func _init_window():
+	var aspect: Window.ContentScaleAspect
+	match game_platform:
+		GamePlatform.PC, GamePlatform.WEB:
+			aspect = Window.ContentScaleAspect.CONTENT_SCALE_ASPECT_KEEP
+		GamePlatform.MOBILE:
+			aspect = Window.ContentScaleAspect.CONTENT_SCALE_ASPECT_KEEP_HEIGHT
+		_:
+			aspect = Window.ContentScaleAspect.CONTENT_SCALE_ASPECT_KEEP
+
+	get_tree().root.set_content_scale_aspect(aspect)
 
 func set_bus_volume(bus: String, value: float):
 	var bus_index = AudioServer.get_bus_index(bus)
