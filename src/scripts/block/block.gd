@@ -864,7 +864,7 @@ func _on_cannot_extend(direction: Direction):
 		if handles[direction].is_highlighted:
 			handles[direction].play_max_extent_animation()
 
-func extend_block(variation: int, direction: Direction, push: bool, need_to_push=true):
+func extend_block(variation: int, direction: Direction, push: bool):
 	var extend = push or can_extend(direction)
 	
 	if get_tree() == null:
@@ -946,47 +946,42 @@ func extend_block(variation: int, direction: Direction, push: bool, need_to_push
 	var tween_transition = get_tree().create_tween().set_trans(Tween.TRANS_CIRC)
 	tween_list.append(tween_transition)
 
-	if need_to_push:
-		for i in range(int(not reverse and not push), len(movements)):
-			var move_tween = get_tree().create_tween().set_trans(Tween.TRANS_CIRC)
-			tween_list.append(move_tween)
+	for i in range(int(not reverse and not push), len(movements)):
+		var move_tween = get_tree().create_tween().set_trans(Tween.TRANS_CIRC)
+		tween_list.append(move_tween)
 
-			var block: Block = movements[i]
-			if not block: # FIXME SCOTCH, remove if causes issues
-				continue
+		var block: Block = movements[i]
+		if not block: # FIXME SCOTCH, remove if causes issues
+			continue
+		
+		#position qui bouge
+		block.moving_direction = direction
+		if direction == Direction.RIGHT or direction == Direction.LEFT:
+			move_tween.tween_property(block, "position:x", block.position.x + off, move_speed).set_ease(ease_type).set_trans(transition_type)
+
+		if direction == Direction.DOWN or direction == Direction.UP:
+			move_tween.tween_property(block, "position:y", block.position.y + off, move_speed).set_ease(ease_type).set_trans(transition_type)
+
+
+		move_tween.tween_callback(func(): if block: block.is_moving = false)
+		move_tween.tween_callback(func(): if block: block.moving_direction = Direction.INVALID)
+		block.is_moving = true
+
+		if block.is_gravity_enabled and is_same_axis(block.gravity_axis, direction):
+			block.remaining_pushs = -1
+		else:
+			if block.remaining_pushs < 0:
+				block.remaining_pushs = block.max_pushs - 1
 			
-			#position qui bouge
-			block.moving_direction = direction
-			if direction == Direction.RIGHT or direction == Direction.LEFT:
-				move_tween.tween_property(block, "position:x", block.position.x + off, move_speed).set_ease(ease_type).set_trans(transition_type)
-
-			if direction == Direction.DOWN or direction == Direction.UP:
-				move_tween.tween_property(block, "position:y", block.position.y + off, move_speed).set_ease(ease_type).set_trans(transition_type)
-
-
-			move_tween.tween_callback(func(): if block: block.is_moving = false)
-			move_tween.tween_callback(func(): if block: block.moving_direction = Direction.INVALID)
-			block.is_moving = true
-
-			if block.is_gravity_enabled and is_same_axis(block.gravity_axis, direction):
+			if block.remaining_pushs == 0:
 				block.remaining_pushs = -1
 			else:
-				if block.remaining_pushs < 0:
-					block.remaining_pushs = block.max_pushs - 1
-				
-				if block.remaining_pushs == 0:
-					block.remaining_pushs = -1
-				else:
-					block.remaining_pushs -= 1
-					if block == null:
-						return
-					
-					
-					var next_need_to_push = i==0 if push or reverse else i==1
-					
-					move_tween.tween_callback(func(): block.extend_block(off, direction if not reverse else get_opposite_direction(direction), true, next_need_to_push))
+				block.remaining_pushs -= 1
+				if block == null:
+					return
+				move_tween.tween_callback(func(): block.extend_block(off, direction if not reverse else get_opposite_direction(direction), true))
 
-			move_tween.tween_callback(func (): tween_list.erase(move_tween))
+		move_tween.tween_callback(func (): tween_list.erase(move_tween))
 	
 		
 	if tween_property != "" and not push and val != -8:
@@ -1002,10 +997,10 @@ func extend_block(variation: int, direction: Direction, push: bool, need_to_push
 	if not push and val != -8:
 		tween_transition.tween_callback(update_positions).set_delay(move_speed)
 		
-	# if remaining_pushs == -1:
-	tween_transition.tween_callback(set_is_moving_to_false)
+	if remaining_pushs == -1:
+		tween_transition.tween_callback(set_is_moving_to_false)
 	tween_transition.tween_callback(func (): tween_list.erase(tween_transition))
-	
+
 	_update_scale_handles()
 
 func update_positions():
