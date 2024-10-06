@@ -63,10 +63,16 @@ var test: Dictionary = {
 	ConfigFile.new(): 2
 }
 
-func get_current_level_data():
+func get_level_data(scene_path):
+	# FIXME TODO SCOTCH: we should NOT be using a for loop for that, this is HORRIBLE
 	for i in range(levels.size()):
-		if levels[i]["scene"] == selected_level_name:
+		if levels[i]["scene"] == scene_path:
 			return levels[i]
+
+
+func get_current_level_data():
+	return get_level_data(selected_level_name)
+
 
 func increment_level() -> void:
 	if level == current_level:
@@ -126,14 +132,7 @@ func new_load_level_data() -> void:
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	new_load_level_data()
-	var volume_config = ConfigFile.new()
-	volume_config.load("user://volume.cfg")
-	var master_value = volume_config.get_value("Sound", "Master", 1)
-	var music_value = volume_config.get_value("Sound", "Music", 1)
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(master_value))
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(music_value))
-	pass # Replace with function body.
+	new_load_level_data()	
 
 
 func _input(event):

@@ -85,6 +85,14 @@ func _process(delta):
 		is_fullscreen = load_option("graphics", "is_fullscreen", true)
 		_loaded_fullscreen_option = true
 
+		for bus in ["Master", "Music"]:
+			set_bus_volume(bus, load_option("volume", bus, 1.0))
+
+
+func set_bus_volume(bus: String, value: float):
+	var bus_index = AudioServer.get_bus_index(bus)
+	AudioServer.set_bus_volume_db(bus_index, linear_to_db(value))
+
 
 func _input(event):
 	if event.is_action_pressed("left_click"):

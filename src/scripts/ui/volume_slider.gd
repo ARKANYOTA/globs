@@ -3,15 +3,12 @@ extends HSlider
 
 @export var audio_bus_name := "Master"
 
-@onready var _bus := AudioServer.get_bus_index(audio_bus_name)
-
 func _ready() -> void:
-	value = db_to_linear(AudioServer.get_bus_volume_db(_bus))
-	pass
+	value = GameManager.load_option("volume", audio_bus_name, 1.0)
 
 func _on_value_changed(input_value: float) -> void:
+	GameManager.set_bus_volume(audio_bus_name, input_value)
 	GameManager.save_option("volume", audio_bus_name, value)
-	AudioServer.set_bus_volume_db(_bus, linear_to_db(input_value))
 
 
 # func _old_on_value_changed(input_value: float) -> void:
