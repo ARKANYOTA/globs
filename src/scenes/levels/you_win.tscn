@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dicq5mh3tjll6"]
+[gd_scene load_steps=23 format=4 uid="uid://dicq5mh3tjll6"]
 
 [ext_resource type="Texture2D" uid="uid://bbtfnnfhieyks" path="res://assets/images/backgrounds/snow_background.png" id="1_f72bv"]
 [ext_resource type="Texture2D" uid="uid://cf6y4eeok4xld" path="res://assets/images/backgrounds/city_background.png" id="1_im1mg"]
@@ -14,6 +14,21 @@
 [ext_resource type="Texture2D" uid="uid://b3l0i7o6emx6i" path="res://assets/images/logo.png" id="12_rvxq1"]
 [ext_resource type="Shader" path="res://shaders/pause_menu_background.gdshader" id="13_uhqbu"]
 [ext_resource type="Texture2D" uid="uid://bsuxxmkm78ho5" path="res://assets/images/backgrounds/planet.png" id="14_k7ilc"]
+
+[sub_resource type="GDScript" id="GDScript_lq71j"]
+script/source = "extends Camera2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	make_current()
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="Animation" id="Animation_gkfhx"]
 length = 0.001
@@ -42,7 +57,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(13, 202), Vector2(13, -444)]
+"values": [Vector2(13, 268), Vector2(13, -444)]
 }
 
 [sub_resource type="Animation" id="Animation_2pqpi"]
@@ -101,6 +116,7 @@ shader_parameter/amount = null
 [node name="Camera2D" type="Camera2D" parent="." index="0"]
 position = Vector2(160, 95)
 zoom = Vector2(0.76, 0.76)
+script = SubResource("GDScript_lq71j")
 
 [node name="CityBackground" type="Sprite2D" parent="." index="1"]
 z_index = -2
@@ -226,9 +242,9 @@ script = SubResource("GDScript_ookyf")
 z_index = 50
 texture_filter = 1
 offset_left = 13.0
-offset_top = 202.0
+offset_top = 268.0
 offset_right = 304.0
-offset_bottom = 743.0
+offset_bottom = 809.0
 theme_override_fonts/font = ExtResource("11_06exw")
 theme_override_font_sizes/font_size = 32
 text = "Made for the GMTK Game Jam 2024
