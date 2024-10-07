@@ -142,4 +142,3 @@ func update_dot() -> void:
 		else:
 			dot.icon = texture_off
 		pass
-
