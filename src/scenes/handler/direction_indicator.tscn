@@ -1,96 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cysde5kl7s4e0"]
+[gd_scene load_steps=6 format=3 uid="uid://cysde5kl7s4e0"]
 
 [ext_resource type="Script" path="res://scripts/handler/direction_indicator.gd" id="2_qh88b"]
+[ext_resource type="PackedScene" uid="uid://cf3id752iqcto" path="res://scenes/ui/extent_arrow_sprite.tscn" id="4_ai0ts"]
 [ext_resource type="Texture2D" uid="uid://br7rbtjdickl6" path="res://assets/images/ui/dotted_line.png" id="4_h1al5"]
-[ext_resource type="Texture2D" uid="uid://cxwd6aj0mj2ew" path="res://assets/images/ui/extent_indicator.png" id="4_i1bwb"]
 [ext_resource type="Shader" path="res://shaders/direction_indicator.gdshader" id="4_uioxl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g0v1w"]
 shader = ExtResource("4_uioxl")
-
-[sub_resource type="Animation" id="Animation_fqknl"]
-resource_name = "max_reached"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.925567, 0.25441, 0.280476, 1), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ArrowSprite/AnimatedArrowSprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 2), Vector2(0, -2), Vector2(0, 1), Vector2(0, -1), Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ArrowSprite:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ArrowSprite/AnimatedArrowSprite:self_modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_q6311"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ArrowSprite/AnimatedArrowSprite:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_chdh4"]
-_data = {
-"RESET": SubResource("Animation_q6311"),
-"max_reached": SubResource("Animation_fqknl")
-}
 
 [node name="DirectionIndicator" type="Node2D"]
 z_index = 9
@@ -107,14 +23,7 @@ width = 4.0
 texture = ExtResource("4_h1al5")
 texture_mode = 1
 
-[node name="ArrowSprite" type="Sprite2D" parent="."]
-texture = ExtResource("4_i1bwb")
+[node name="ArrowSpriteMax" parent="." instance=ExtResource("4_ai0ts")]
 
-[node name="AnimatedArrowSprite" type="Sprite2D" parent="ArrowSprite"]
-self_modulate = Color(1, 1, 1, 0)
-texture = ExtResource("4_i1bwb")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_chdh4")
-}
+[node name="ArrowSpriteMin" parent="." instance=ExtResource("4_ai0ts")]
+rotation = -3.14159

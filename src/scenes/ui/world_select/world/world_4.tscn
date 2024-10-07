@@ -119,7 +119,7 @@ levelScene = "res://scenes/levels_zoomed/world_4/level_427.tscn"
 
 [node name="level500" parent="." index="15" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
 position = Vector2(168, 72)
-levels_unlock = [NodePath("../level510")]
+levels_unlock = [NodePath("../level510"), NodePath("../level_secret1")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_500.tscn"
 
 [node name="level510" parent="." index="16" instance=ExtResource("2_ib75g")]

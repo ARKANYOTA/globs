@@ -42,7 +42,8 @@ func win():
 	if is_collected:
 		return
 	is_collected = true
-
+	GameManager.start_win_animation()
+	
 	if do_collect_animation:
 		$AnimationPlayer.play("collected")
 		$SparkleBurst.emitting = true

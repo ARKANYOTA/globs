@@ -33,7 +33,7 @@ func _process(delta):
 
 
 func pause():
-	if not PauseMenuAutoload.can_pause:
+	if not PauseMenuAutoload.can_pause or GameManager.is_on_win_animation:
 		return
 
 	set_menu("PauseMenu")

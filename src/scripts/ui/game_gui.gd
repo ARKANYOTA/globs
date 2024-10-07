@@ -1,6 +1,10 @@
 extends CanvasLayer
 
 # Le fullscreenbutton n'a l'air de servir a rien, mais bon jsp qui l'a mis la dc je le laisse.
+@onready var pause_button = $Control/LevelActions/PauseButton
+@onready var undo_button = $Control/LevelActions/UndoButton
+@onready var retry_button = $Control/LevelActions/RetryButton
+@onready var fullscreen_button = $Control/FullscreenButton
 
 var is_shown = true
 
@@ -25,16 +29,18 @@ func show_correct_game_gui():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide_gui()
+
+	GameManager.on_win_animation.connect(_on_win_animation)
 	
 func _process(_delta):
 	var scene = get_tree().get_current_scene()
 	if scene == null:
 		return
 	
-	if (not scene is Level) or (scene is Level and len(scene.actions) == 0):
-		$Control/LevelActions/UndoButton.disabled = true
+	if (GameManager.is_on_win_animation) or (not scene is Level) or (scene is Level and len(scene.actions) == 0):
+		undo_button.disabled = true
 	else: 
-		$Control/LevelActions/UndoButton.disabled = false
+		undo_button.disabled = false
 
 func _input(event):
 	if event.is_action_pressed("toggle_gui"):
@@ -50,31 +56,39 @@ func set_shown(shown: bool):
 
 func show_level_select():
 	$Control/LevelSelectPauseButton.hide()
-	$Control/LevelActions/PauseButton.show()
-	$Control/LevelActions/UndoButton.hide()
-	$Control/LevelActions/RetryButton.hide()
-	$Control/FullscreenButton.hide()
+	pause_button.show()
+	undo_button.hide()
+	retry_button.hide()
+	fullscreen_button.hide()
 
 	$WorldSelect.show()
 
 func hide_gui():
 	$Control/LevelSelectPauseButton.hide()
-	$Control/LevelActions/PauseButton.hide()
-	$Control/LevelActions/UndoButton.hide()
-	$Control/LevelActions/RetryButton.hide()
-	$Control/FullscreenButton.hide()
+	pause_button.hide()
+	undo_button.hide()
+	retry_button.hide()
+	fullscreen_button.hide()
 
 	$WorldSelect.hide()
 
 func show_gui():
+	undo_button.disabled = false
+	retry_button.disabled = false
+	pause_button.disabled = false
+
 	$Control/LevelSelectPauseButton.hide()
-	$Control/LevelActions/PauseButton.show()
-	$Control/LevelActions/UndoButton.show()
-	$Control/LevelActions/RetryButton.show()
-	$Control/FullscreenButton.hide()
+	pause_button.show()
+	undo_button.show()
+	retry_button.show()
+	fullscreen_button.hide()
 	
 	$WorldSelect.hide()
 
+func _on_win_animation():
+	undo_button.disabled = true
+	retry_button.disabled = true
+	pause_button.disabled = true
 
 func _on_pause_button_pressed():
 	if PauseMenuAutoload.paused:

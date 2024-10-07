@@ -147,7 +147,10 @@ func _ready() -> void:
 
 func _input(event):
 	if event.is_action_pressed("reload_button"):
+		if GameManager.is_on_win_animation or get_current_level_data() == null:
+			return
 		reload_scene()
+		
 
 func _process(delta: float) -> void:
 	pass 

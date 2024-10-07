@@ -1,5 +1,7 @@
 extends Node
 
+signal on_win_animation
+
 enum GamePlatform {
 	UNDEFINED,
 
@@ -61,6 +63,7 @@ var is_fullscreen: bool = true:
 		is_fullscreen = value
 		update_fullscreen()
 		save_option("graphics", "is_fullscreen", is_fullscreen)
+var is_on_win_animation = false
 
 func _ready():
 	print("launched game")
@@ -115,6 +118,8 @@ func _input(event):
 		Input.set_custom_mouse_cursor(cursor)
 	
 	if event.is_action_pressed("undo_action"):
+		if is_on_win_animation:
+			return
 		var scene = get_tree().get_current_scene()
 		if scene == null:
 			return
@@ -159,6 +164,7 @@ func win():
 	LevelData.make_level_completed()
 	LevelData.selected_level_name = next_level_name
 	SceneTransitionAutoLoad.change_scene_with_transition(next_level_name, true)
+	GameManager.end_win_animation()
 
 func on_restart():
 	pass
@@ -175,6 +181,15 @@ func update_fullscreen():
 		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED)
+
+# These should not be in GameManager and we should use state machines instead. Too bad
+func start_win_animation():
+	is_on_win_animation = true
+	on_win_animation.emit()
+
+func end_win_animation():
+	is_on_win_animation = false
+
 
 ## Saves an option and returns whether it was saved successfully.  
 ## NOTE: this could become quite slow if the options file are updated very frequently or is very big 
