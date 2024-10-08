@@ -1,4 +1,5 @@
 @tool
+
 extends Area2D
 
 
@@ -6,16 +7,16 @@ var size_pixels: Vector2
 var is_collected = false
 signal on_glob_touched
 signal on_main_character_touched
+
 @export var size: Vector2i = Vector2i(1, 1):
 	set(value):
 		size = value
 		size_pixels = Vector2(value) * 16
-@onready var collision_shape = $CollisionShape
+		$CollisionShape.shape = $CollisionShape.shape.duplicate()
+		$CollisionShape.shape.size = size_pixels
+		$CollisionShape.position = Vector2(0,0)
 
 func _ready() -> void:
-	collision_shape.shape = collision_shape.shape.duplicate()
-	collision_shape.shape.size = size_pixels
-	collision_shape.position = Vector2(0,0)
 	pass
 
 
