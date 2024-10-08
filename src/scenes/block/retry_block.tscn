@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cxhetbc47owgx" path="res://scenes/block/area_block.tscn" id="1_gmcpu"]
 [ext_resource type="PackedScene" uid="uid://ce5mm6q67h08x" path="res://scenes/block/area_component/retry_component.tscn" id="2_lg6a2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_axraq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ba54p"]
 size = Vector2(0, 0)
 
 [node name="RetryBlock" instance=ExtResource("1_gmcpu")]
@@ -11,6 +11,6 @@ size = Vector2(0, 0)
 [node name="RetryComponent" parent="." index="0" instance=ExtResource("2_lg6a2")]
 
 [node name="CollisionShape" parent="." index="1"]
-shape = SubResource("RectangleShape2D_axraq")
+shape = SubResource("RectangleShape2D_ba54p")
 
-[connection signal="on_main_character_touched" from="." to="RetryComponent" method="_on_retry_block_on_main_character_touched"]
+[connection signal="on_main_character_touched" from="." to="RetryComponent" method="reload"]
