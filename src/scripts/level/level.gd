@@ -26,7 +26,7 @@ func go_to_next_actions():
 	var dico = {}
 	for child in $".".get_children():
 		if child is Block and child.is_visible():
-			if not is_on_good_position(child) and not child.is_moving:
+			if not is_on_good_position(child):
 				return
 			dico[child] = block_data.new(child)
 	actions.append(dico)
@@ -83,7 +83,6 @@ func add_awake_block(block: Block):
 		awake_count = 0
 	awake_count += 1
 	if awake_count == 3:
-		print("ACHIVEMENT GRANT")
 		if GameManager == null:
 			return
 		if GameManager.achievement_manager == null:
