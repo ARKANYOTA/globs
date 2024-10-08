@@ -170,22 +170,32 @@ levelScene = "res://scenes/levels_zoomed/world_3/level_330.tscn"
 
 [node name="level4" parent="." index="9" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
 position = Vector2(144, 48)
-levels_unlock = [NodePath("../level5")]
+levels_unlock = [NodePath("../level_bat_1")]
 levelScene = "res://scenes/levels_zoomed/world_3/level_350.tscn"
 
-[node name="level5" parent="." index="10" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
-position = Vector2(176, 32)
-levels_unlock = [NodePath("../level7")]
+[node name="level_bat_1" parent="." index="10" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
+position = Vector2(166, 34)
+levels_unlock = [NodePath("../level_bat_2")]
+levelScene = "res://scenes/levels_zoomed/world_3/level_352.tscn"
+
+[node name="level_bat_2" parent="." index="11" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
+position = Vector2(189, 38)
+levels_unlock = [NodePath("../level_bat_3")]
+levelScene = "res://scenes/levels_zoomed/world_3/level_355.tscn"
+
+[node name="level_bat_3" parent="." index="12" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
+position = Vector2(201, 58)
+levels_unlock = [NodePath("../level_bat_4")]
 levelScene = "res://scenes/levels_zoomed/world_3/level_360.tscn"
 
-[node name="level7" parent="." index="11" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
-position = Vector2(200, 64)
+[node name="level_bat_4" parent="." index="13" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_d7p2c")]
+position = Vector2(201, 80)
 levels_unlock = [NodePath("../level8")]
 levelScene = "res://scenes/levels_zoomed/world_3/level_380.tscn"
 world_unlock_id = 3
 
-[node name="level8" parent="." index="12" instance=ExtResource("2_d7p2c")]
-position = Vector2(192, 96)
+[node name="level8" parent="." index="14" instance=ExtResource("2_d7p2c")]
+position = Vector2(185, 96)
 levelScene = "res://scenes/levels_zoomed/world_3/level_380_b.tscn"
 world_unlock_id = 3
 button_style = 1

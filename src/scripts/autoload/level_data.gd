@@ -42,9 +42,12 @@ var levels = [
 	{ "name": "3-3", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_325_5.tscn"},
 	{ "name": "3-4", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_326_other.tscn"},
 	{ "name": "3-5", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_330.tscn"},
+	
 	{ "name": "3-6", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_350.tscn"},
-	{ "name": "3-7", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_360.tscn"},
-	{ "name": "3-8", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_380.tscn", "achievement": "ACH_COMPLETE_WORLD_3"},
+	{ "name": "3-7", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_352.tscn"},
+	{ "name": "3-8", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_355.tscn"},
+	{ "name": "3-9", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_360.tscn"},
+	{ "name": "3-10", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_380.tscn", "achievement": "ACH_COMPLETE_WORLD_3"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "3-⭐1", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_380_b.tscn"},
@@ -57,6 +60,7 @@ var levels = [
 	{ "name": "4-5", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_425.tscn"},
 	{ "name": "4-6", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_426.tscn"},
 	{ "name": "4-7", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_427.tscn"},
+	
 	{ "name": "4-8", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_500.tscn"},
 	{ "name": "4-9", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_510.tscn", "achievement": "ACH_COMPLETE_WORLD_4"},
 
