@@ -19,10 +19,11 @@ position = Vector2(136, 38)
 visible = false
 
 [node name="Block5" parent="." index="6"]
+visible = false
 position = Vector2(-8, -8)
 
 [node name="Block2" parent="." index="8" instance=ExtResource("2_8v5v8")]
-position = Vector2(88, 39)
+position = Vector2(88, 40)
 is_main_character = true
 max_pushs = 100
 up_extendable = true
