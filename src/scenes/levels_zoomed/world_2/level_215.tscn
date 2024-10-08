@@ -21,7 +21,6 @@ tile_map_data = PackedByteArray("AAAAAAgAAgANAAMAAAABAAgAAgANAAMAAAACAAgAAgANAAM
 
 [node name="Goal" parent="." index="5"]
 position = Vector2(200, 88)
-win_time_delay = 1.4
 
 [node name="Block4" parent="." index="6" instance=ExtResource("2_tpkrv")]
 position = Vector2(72, 88)

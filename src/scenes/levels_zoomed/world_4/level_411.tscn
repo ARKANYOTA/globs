@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=4 uid="uid://dnl6t4ye2qd0r"]
+[gd_scene load_steps=3 format=4 uid="uid://yo5dvda8pah8"]
 
 [ext_resource type="PackedScene" uid="uid://brsha6qauan46" path="res://scenes/levels_zoomed/world_4/level.tscn" id="1_ilx26"]
 [ext_resource type="PackedScene" uid="uid://cyuc4qkh71ogh" path="res://scenes/block/bloc_skin/space/alien.tscn" id="2_j57oq"]

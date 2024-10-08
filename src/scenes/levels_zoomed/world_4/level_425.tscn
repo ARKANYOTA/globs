@@ -23,7 +23,6 @@ position = Vector2(184, 104)
 position = Vector2(184, 40)
 is_main_character = false
 max_pushs = 100
-
 up_extendable = true
 left_extendable = true
 right_extendable = true

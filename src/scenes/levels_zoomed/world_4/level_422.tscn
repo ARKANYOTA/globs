@@ -22,7 +22,6 @@ position = Vector2(120, 104)
 position = Vector2(136, 56)
 is_main_character = false
 max_pushs = 100
-
 up_extendable = true
 left_extendable = true
 right_extendable = true
@@ -43,7 +42,6 @@ is_main_character = false
 is_gravity_enabled = true
 default_gravity_axis = 2
 max_pushs = 12
-
 up_extend_range = Vector2i(8, 8)
 up_extend_block_range = Vector2i(0, 0)
 left_extendable = true
@@ -64,4 +62,3 @@ position = Vector2(112, -64)
 [node name="Block2" parent="." index="16"]
 visible = false
 position = Vector2(123, -24)
-

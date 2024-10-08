@@ -30,15 +30,4 @@ func _on_area_entered(area:Area2D) -> void:
 		return
 	if area.is_main_character:
 		emit_signal("on_main_character_touched")
-		return
 	emit_signal("on_glob_touched")
-
-
-
-
-# func _on_body_entered(body:Node2D) -> void:
-# 	if is_collected:
-# 		return
-	
-# 	is_collected = true
-# 	LevelData.reload_scene()
