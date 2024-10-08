@@ -14,7 +14,7 @@ var main_contributors = [
 var credits = [
 		_get_credit_text("A game by", "Ninesliced"),
 	] + _get_main_contributors() + [
-		_get_credit_text("Special Thanks", "LeSeulArtichaut", "Léo Lanteri Thauvin"),
+		_get_credit_text("Special Thanks", "Artichaut", "Léo Lanteri Thauvin"),
 		_get_credit_text("Special Thanks", "Alexis"),
 		_get_credit_text("Special Thanks", "Kenney"),
 		_get_credit_text("Special Thanks", "Deep-fold"),
@@ -23,7 +23,6 @@ var credits = [
 		_get_credit_text("Made using", "Godot Engine"),
 
 		_get_credit_text("", "Thank you for playing!", ""),
-
 		_get_credit_text("", "", "(c) 2024 All rights reseved."),
 	]
 

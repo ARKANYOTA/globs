@@ -143,7 +143,7 @@ func _process(delta: float) -> void:
 			var re = RegEx.new()
 			re.compile("(?<=level_)\\w+(?=.tscn)")
 			var res = re.search(levelScene)
-			if res.strings.size() > 0:
+			if res and res.strings.size() > 0:
 				label.text = res.strings[0]
 
 		return

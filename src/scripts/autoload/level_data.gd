@@ -1,5 +1,7 @@
 extends Node
 
+signal world_completed(world_id: String)
+
 # for world select
 var completed_levels: Array[String] = []
 var selected_level_name: String = ""
@@ -17,7 +19,7 @@ var levels = [
 	{ "name": "1-7", "world": "1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_140.tscn"},
 	{ "name": "1-8", "world": "1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_150.tscn"},
 	{ "name": "1-9", "world": "1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_170.tscn"},
-	{ "name": "1-10", "world": "1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_180.tscn", "achievement": "ACH_COMPLETE_WORLD_1"},
+	{ "name": "1-10", "world": "1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_180.tscn"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "1-⭐1", "world": "1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_160_hard.tscn"},
@@ -31,7 +33,7 @@ var levels = [
 	{ "name": "2-6", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_240.tscn"},
 	{ "name": "2-7", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_250.tscn"},
 	{ "name": "2-8", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_260.tscn"},
-	{ "name": "2-9", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_270.tscn", "achievement": "ACH_COMPLETE_WORLD_2"},
+	{ "name": "2-9", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_270.tscn"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "2-⭐1", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_280.tscn"},
@@ -42,12 +44,11 @@ var levels = [
 	{ "name": "3-3", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_325_5.tscn"},
 	{ "name": "3-4", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_326_other.tscn"},
 	{ "name": "3-5", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_330.tscn"},
-	
 	{ "name": "3-6", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_350.tscn"},
 	{ "name": "3-7", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_352.tscn"},
 	{ "name": "3-8", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_355.tscn"},
 	{ "name": "3-9", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_360.tscn"},
-	{ "name": "3-10", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_380.tscn", "achievement": "ACH_COMPLETE_WORLD_3"},
+	{ "name": "3-10", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_380.tscn"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "3-⭐1", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_380_b.tscn"},
@@ -60,9 +61,8 @@ var levels = [
 	{ "name": "4-5", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_425.tscn"},
 	{ "name": "4-6", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_426.tscn"},
 	{ "name": "4-7", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_427.tscn"},
-	
 	{ "name": "4-8", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_500.tscn"},
-	{ "name": "4-9", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_510.tscn", "achievement": "ACH_COMPLETE_WORLD_4"},
+	{ "name": "4-9", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_510.tscn"},
 
 	{ "name": "Congrats!", "music": "main_menu", "scene": "res://scenes/levels_zoomed/you_win.tscn", "achievement": "ACH_COMPLETE_MAIN_GAME"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
@@ -70,6 +70,9 @@ var levels = [
 	{ "name": "4-⭐1", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_430.tscn"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 ]
+var scene_to_level_data: Dictionary = _create_scene_to_level_data(levels)
+var completion: Dictionary = _create_default_completion()
+
 var current_level = -1
 var level = 0
 
@@ -78,11 +81,9 @@ var test: Dictionary = {
 }
 
 func get_level_data(scene_path):
-	# FIXME TODO SCOTCH: we should NOT be using a for loop for that, this is HORRIBLE
-	for i in range(levels.size()):
-		if levels[i]["scene"] == scene_path:
-			return levels[i]
-
+	if scene_to_level_data.has(scene_path):
+		return scene_to_level_data[scene_path]
+	return null
 
 func get_current_level_data():
 	return get_level_data(selected_level_name)
@@ -143,7 +144,7 @@ func new_load_level_data() -> void:
 	config.load("user://level_data.cfg")
 	completed_levels = config.get_value("levels", "completed_levels", completed_levels)
 
-	
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	new_load_level_data()	
@@ -158,7 +159,49 @@ func _input(event):
 		if GameManager.is_on_win_animation:
 			return
 		reload_scene()
-		
+	
+	
+	if event.is_action_pressed("removeme_debugtest_leo"):
+		_load_level_completion()
 
 func _process(delta: float) -> void:
 	pass 
+
+func _create_scene_to_level_data(levels_array: Array):
+	var dict = {}
+	for level_data in levels_array:
+		var scene = level_data["scene"]
+		if not dict.has(scene):
+			dict[scene] = level_data
+	
+	return dict
+
+
+func _create_default_completion():
+	var dict = {}
+	for level_data in levels:
+		if level_data.has("world"):
+			var world = level_data["world"]
+			if dict.has(world):
+				dict[world][1] += 1
+			else:
+				dict[world] = [0, 1]
+
+	return dict
+
+
+func _load_level_completion():
+	for world in completion:
+		var completion_item = completion[world]
+		completion_item[0] = 0
+
+	for level_path in completed_levels:
+		var level_data: Variant = get_level_data(level_path)
+		if level_data and level_data.has("world"):
+			var world = level_data["world"]
+			completion[world][0] += 1
+		
+	for world in completion:
+		var completion_item = completion[world]
+		if completion_item[0] == completion_item[1]:
+			world_completed.emit(completion)
