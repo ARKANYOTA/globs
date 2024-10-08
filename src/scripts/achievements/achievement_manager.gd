@@ -7,6 +7,7 @@ var achievements: Dictionary = {
 	"ACH_COMPLETE_WORLD_3": {achieved = false, hidden = false},
 	"ACH_COMPLETE_WORLD_4": {achieved = false, hidden = false},
 	"ACH_COMPLETE_MAIN_GAME": {achieved = false, hidden = false},
+	"ACH_GLOBS_IN_VOID_10_TIMES": {achieved = false, hidden = false},
 }
 
 func _init():
