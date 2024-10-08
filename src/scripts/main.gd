@@ -3,6 +3,8 @@ class_name Main
 
 @onready var game = $Game
 
+var credit_names = ["ArkanYota", "Notgoyome", "Strochnis", "Theobosse", "Yolwoocle"]
+
 var paused = false
 var clicked = false
 
@@ -13,10 +15,22 @@ func _ready():
 	if OS.has_feature("web_ios") or OS.has_feature("web_macos"):
 		$CanvasLayer/AppleWarn.show()
 	
+	_set_version_text()
+	_randomize_credits()
+
+func _set_version_text():
 	if ProjectSettings.has_setting("application/config/version"):
 		%VersionText.text = "v" + ProjectSettings.get_setting("application/config/version")
 	else:
 		%VersionText.text = ""
+
+func _randomize_credits():
+	var credits: Label = %CreditsText
+	if not credits:
+		return
+
+	credit_names.shuffle()
+	credits.text = credits.text.format(credit_names)
 
 # Quitting 
 func quit():

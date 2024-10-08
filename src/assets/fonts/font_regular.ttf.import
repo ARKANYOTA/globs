@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://btwjphxav6aet"
-path="res://.godot/imported/font_normal.ttf-c5ade2f67266738475ae1fb7514a25a0.fontdata"
+uid="uid://c3p4oss5ft07l"
+path="res://.godot/imported/font_regular.ttf-cf542198a71a120b0badd00d039fcb2a.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/font_normal.ttf"
-dest_files=["res://.godot/imported/font_normal.ttf-c5ade2f67266738475ae1fb7514a25a0.fontdata"]
+source_file="res://assets/fonts/font_regular.ttf"
+dest_files=["res://.godot/imported/font_regular.ttf-cf542198a71a120b0badd00d039fcb2a.fontdata"]
 
 [params]
 

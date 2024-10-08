@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ngeyx"]
 [ext_resource type="PackedScene" uid="uid://bpqekaydn06nf" path="res://scenes/ui/scene_transition.tscn" id="4_mholn"]
 [ext_resource type="PackedScene" uid="uid://d3nt0ouwhyl50" path="res://scenes/block/block_manager.tscn" id="4_orfkg"]
-[ext_resource type="FontFile" uid="uid://cjyup1ooil314" path="res://assets/fonts/font_normal.ttf" id="5_v4ddl"]
+[ext_resource type="FontFile" uid="uid://btwjphxav6aet" path="res://assets/fonts/font_normal.ttf" id="5_v4ddl"]
 [ext_resource type="Script" path="res://scripts/ui/click_anywhere_text.gd" id="7_h54yi"]
 [ext_resource type="Texture2D" uid="uid://b3l0i7o6emx6i" path="res://assets/images/logo.png" id="8_53ti5"]
 [ext_resource type="LabelSettings" uid="uid://b5nxegdlm352f" path="res://assets/resources/label_warning.tres" id="9_nsas2"]
@@ -45,7 +45,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Credits" type="Label" parent="CanvasLayer/Control"]
+[node name="CreditsText" type="Label" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
 z_index = 3
 layout_mode = 1
 anchors_preset = 7
@@ -58,7 +59,7 @@ offset_top = -10.0
 offset_right = 121.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "A game by ArkanYota, Notgoyome, Strochnis, Theobosse, Yolwoocle"
+text = "A game by {0}, {1}, {2}, {3}, and {4}"
 label_settings = SubResource("LabelSettings_u3bde")
 horizontal_alignment = 1
 vertical_alignment = 1

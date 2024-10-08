@@ -1,7 +1,7 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cl1yg37xye2ku"]
 
-[ext_resource type="FontFile" uid="uid://cjyup1ooil314" path="res://assets/fonts/font_normal.ttf" id="1_kvt47"]
+[ext_resource type="FontFile" uid="uid://btwjphxav6aet" path="res://assets/fonts/font_normal.ttf" id="1_qn0eh"]
 
 [resource]
-font = ExtResource("1_kvt47")
+font = ExtResource("1_qn0eh")
 font_size = 8
