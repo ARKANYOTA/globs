@@ -147,7 +147,11 @@ func _ready() -> void:
 
 func _input(event):
 	if event.is_action_pressed("reload_button"):
-		if GameManager.is_on_win_animation or get_current_level_data() == null:
+		# SCOTCH
+		var current_scene = get_tree().get_current_scene()
+		if current_scene == null or current_scene.name in ["WorldSelect", "Main"]:
+			return
+		if GameManager.is_on_win_animation:
 			return
 		reload_scene()
 		
