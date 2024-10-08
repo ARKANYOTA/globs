@@ -4,7 +4,7 @@ extends Area2D
 
 var size_pixels: Vector2
 var is_collected = false
-signal on_globs_touched
+signal on_glob_touched
 signal on_main_character_touched
 @export var size: Vector2i = Vector2i(1, 1):
 	set(value):
@@ -31,7 +31,7 @@ func _on_area_entered(area:Area2D) -> void:
 	if area.is_main_character:
 		emit_signal("on_main_character_touched")
 		return
-	emit_signal("on_globs_touched")
+	emit_signal("on_glob_touched")
 
 
 
