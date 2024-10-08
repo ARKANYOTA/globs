@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cihuxl0od3y8d" path="res://scenes/levels_zoomed/world_3/level.tscn" id="1_4fa3l"]
 [ext_resource type="PackedScene" uid="uid://bolbefhicktwp" path="res://scenes/block/bloc_skin/Frost/bat.tscn" id="2_qapbd"]
-[ext_resource type="PackedScene" uid="uid://cxhetbc47owgx" path="res://scenes/block/retry_block.tscn" id="3_0y2k1"]
+[ext_resource type="PackedScene" uid="uid://cxhetbc47owgx" path="res://scenes/block/area_block.tscn" id="3_0y2k1"]
 
 [node name="Level" instance=ExtResource("1_4fa3l")]
 

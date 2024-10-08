@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxhetbc47owgx"]
+
+[ext_resource type="Script" path="res://scripts/block/area_block.gd" id="1_f0ihj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xk03t"]
+size = Vector2(0, 0)
+
+[node name="AreaBlock" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_f0ihj")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xk03t")
+debug_color = Color(0.493207, 0.429172, 1, 0.376471)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

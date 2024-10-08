@@ -1,19 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxhetbc47owgx"]
+[gd_scene load_steps=4 format=3 uid="uid://3wsygloksbdv"]
 
-[ext_resource type="Script" path="res://scripts/block/retry_block.gd" id="1_f0ihj"]
+[ext_resource type="PackedScene" uid="uid://cxhetbc47owgx" path="res://scenes/block/area_block.tscn" id="1_gmcpu"]
+[ext_resource type="PackedScene" uid="uid://ce5mm6q67h08x" path="res://scenes/block/area_component/retry_component.tscn" id="2_lg6a2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkcql"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbb6u"]
 size = Vector2(0, 0)
 
-[node name="RetryBlock" type="Area2D"]
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("1_f0ihj")
-size = null
+[node name="RetryBlock" instance=ExtResource("1_gmcpu")]
 
-[node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_tkcql")
-debug_color = Color(0.493207, 0.429172, 1, 0.376471)
+[node name="RetryComponent" parent="." index="0" instance=ExtResource("2_lg6a2")]
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="CollisionShape" parent="." index="1"]
+shape = SubResource("RectangleShape2D_gbb6u")
+
+[connection signal="on_main_character_touched" from="." to="RetryComponent" method="_on_retry_block_on_main_character_touched"]

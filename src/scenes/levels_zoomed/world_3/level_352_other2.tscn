@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cihuxl0od3y8d" path="res://scenes/levels_zoomed/world_3/level.tscn" id="1_5o8tn"]
 [ext_resource type="PackedScene" uid="uid://bolbefhicktwp" path="res://scenes/block/bloc_skin/Frost/bat.tscn" id="2_q6kkv"]
-[ext_resource type="PackedScene" uid="uid://cxhetbc47owgx" path="res://scenes/block/retry_block.tscn" id="3_4ynoi"]
+[ext_resource type="PackedScene" uid="uid://3wsygloksbdv" path="res://scenes/block/retry_block.tscn" id="3_4ynoi"]
 
 [node name="Level" instance=ExtResource("1_5o8tn")]
 
@@ -35,5 +35,5 @@ left_extendable = true
 right_extendable = true
 
 [node name="RetryBlock" parent="." index="9" instance=ExtResource("3_4ynoi")]
-position = Vector2(160, -8)
+position = Vector2(160, -24)
 size = Vector2i(2, 2)
