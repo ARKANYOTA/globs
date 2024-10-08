@@ -15,4 +15,5 @@ func _process(delta: float) -> void:
 func increment_retry_area_count() -> void:
 	retry_area_count += 1
 	if retry_area_count == achivement_area_retry:
-		GameManager.achievement_manager.grant("ACH_GLOBS_IN_VOID_5_TIMES")
+		if GameManager.achievement_manager:
+			GameManager.achievement_manager.grant("ACH_GLOBS_IN_VOID_5_TIMES")
