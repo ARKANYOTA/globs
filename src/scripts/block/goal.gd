@@ -2,6 +2,8 @@
 extends Area2D
 class_name Goal
 
+signal on_collect
+
 var is_collected = false
 var size_pixels: Vector2
 var overlapping_bodies = Dictionary()
@@ -42,6 +44,7 @@ func win():
 	if is_collected:
 		return
 	is_collected = true
+	on_collect.emit()
 	GameManager.start_win_animation()
 	
 	if do_collect_animation:

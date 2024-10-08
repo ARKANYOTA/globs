@@ -63,6 +63,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="SupportUs" parent="WorldSelect" instance=ExtResource("2_jx3wm")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
