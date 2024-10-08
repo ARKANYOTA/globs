@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cxonbiyobii1" path="res://assets/images/particle/bird_fly_left.png" id="2_u4ily"]
 [ext_resource type="Texture2D" uid="uid://b8sbhw87orqsu" path="res://assets/images/particle/bird_fly.png" id="3_0ljcw"]
 [ext_resource type="Texture2D" uid="uid://5enjsrrvtv4k" path="res://assets/images/spritesheet/world_1_decoration2.png" id="4_asfbb"]
-[ext_resource type="AudioStream" uid="uid://bil5qqk774aha" path="res://assets/sounds/props/bird_flying.mp3" id="5_py3l6"]
+[ext_resource type="AudioStream" uid="uid://hq2umgy51qij" path="res://assets/sounds/props/bird_flying_CC0_2.mp3" id="5_1t1su"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjn1"]
 atlas = ExtResource("2_u4ily")
@@ -90,9 +90,9 @@ sprite_frames = SubResource("SpriteFrames_hi8i6")
 frame_progress = 0.627948
 
 [node name="BirdFlying" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_py3l6")
-volume_db = -5.0
-pitch_scale = 1.1
+stream = ExtResource("5_1t1su")
+volume_db = -15.0
+pitch_scale = 1.2
 
 [node name="Area2D" type="Area2D" parent="."]
 
