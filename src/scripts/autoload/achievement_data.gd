@@ -1,7 +1,7 @@
 extends Node
 
 var retry_area_count: int = 0
-var achivement_area_retry = 1
+var achivement_area_retry = 5
 var game_manager : GameManager
 
 # Called when the node enters the scene tree for the first time.
