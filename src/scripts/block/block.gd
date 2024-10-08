@@ -1046,4 +1046,9 @@ func wake_up():
 		return
 	is_asleep = false
 	wake_up_audio.play()
+	if get_parent() == null:
+		return
+	if get_parent() is not Level:
+		return
+	get_parent().add_awake_block(self)
 	

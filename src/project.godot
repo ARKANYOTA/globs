@@ -35,6 +35,7 @@ BlockManagerAutoload="*res://scripts/autoload/block_manager_autoload.gd"
 Util="*res://scripts/autoload/util.gd"
 MusicManager="*res://scripts/autoload/music_manager.gd"
 DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
+AchievementData="*res://scripts/autoload/achievement_data.gd"
 
 [debug]
 

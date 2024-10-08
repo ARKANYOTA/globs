@@ -3,6 +3,9 @@ class_name Level
 
 var block_data = preload("res://scripts/block/block_data.gd")
 
+var last_awake_block: Block
+var awake_count: int
+
 var actions: Array = []
 
 func _ready():
@@ -23,7 +26,7 @@ func go_to_next_actions():
 	var dico = {}
 	for child in $".".get_children():
 		if child is Block and child.is_visible():
-			if not is_on_good_position(child):
+			if not is_on_good_position(child) and not child.is_moving:
 				return
 			dico[child] = block_data.new(child)
 	actions.append(dico)
@@ -66,5 +69,25 @@ func undo_action():
 			block.gravity_axis = toundo_action_on_this_block.gravity_axis
 			block.time_left = toundo_action_on_this_block.time_left
 
-
+# Awake
+func add_awake_block(block: Block):
+	if last_awake_block == null:
+		last_awake_block = block
+		awake_count = 1
+		return
+	if not (last_awake_block == block):
+		last_awake_block = block
+		awake_count = 1
+		return 
+	if awake_count == null:
+		awake_count = 0
+	awake_count += 1
+	if awake_count == 3:
+		print("ACHIVEMENT GRANT")
+		if GameManager == null:
+			return
+		if GameManager.achievement_manager == null:
+			return
+		GameManager.achievement_manager.grant("ACH_WAKEY_WAKEY")
+		
 	

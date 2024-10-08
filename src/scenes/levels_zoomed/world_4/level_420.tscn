@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=4 uid="uid://cuvibhxgvy37q"]
+[gd_scene load_steps=7 format=4 uid="uid://cuvibhxgvy37q"]
 
 [ext_resource type="PackedScene" uid="uid://brsha6qauan46" path="res://scenes/levels_zoomed/world_4/level.tscn" id="1_n7r76"]
 [ext_resource type="PackedScene" uid="uid://id7bhi4xpwux" path="res://scenes/block/change_gravity_zone.tscn" id="2_de64s"]
 [ext_resource type="PackedScene" uid="uid://cyuc4qkh71ogh" path="res://scenes/block/bloc_skin/space/alien.tscn" id="2_wl66l"]
 [ext_resource type="PackedScene" uid="uid://3wsygloksbdv" path="res://scenes/block/retry_block.tscn" id="4_je6va"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsrix"]
+size = Vector2(80, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk11f"]
+size = Vector2(16, 80)
 
 [node name="Level" instance=ExtResource("1_n7r76")]
 
@@ -49,6 +55,21 @@ right_extend_block_range = Vector2i(0, 2)
 position = Vector2(232, 136)
 size = Vector2i(5, 1)
 
+[node name="RetryComponent" parent="RetryBlock2" index="0"]
+achievement = true
+
+[node name="CollisionShape" parent="RetryBlock2" index="1"]
+shape = SubResource("RectangleShape2D_vsrix")
+
 [node name="RetryBlock4" parent="." index="15" instance=ExtResource("4_je6va")]
 position = Vector2(280, 104)
 size = Vector2i(1, 5)
+
+[node name="RetryComponent" parent="RetryBlock4" index="0"]
+achievement = true
+
+[node name="CollisionShape" parent="RetryBlock4" index="1"]
+shape = SubResource("RectangleShape2D_nk11f")
+
+[editable path="RetryBlock2"]
+[editable path="RetryBlock4"]

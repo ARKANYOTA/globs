@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=4 uid="uid://8aui7yd1rp55"]
+[gd_scene load_steps=8 format=4 uid="uid://8aui7yd1rp55"]
 
 [ext_resource type="PackedScene" uid="uid://brsha6qauan46" path="res://scenes/levels_zoomed/world_4/level.tscn" id="1_x6am8"]
 [ext_resource type="PackedScene" uid="uid://cyuc4qkh71ogh" path="res://scenes/block/bloc_skin/space/alien.tscn" id="2_st7qi"]
 [ext_resource type="PackedScene" uid="uid://id7bhi4xpwux" path="res://scenes/block/change_gravity_zone.tscn" id="3_byq4m"]
 [ext_resource type="PackedScene" uid="uid://3wsygloksbdv" path="res://scenes/block/retry_block.tscn" id="4_6bfjc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vyay7"]
+size = Vector2(96, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3a8yr"]
+size = Vector2(192, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v27ij"]
+size = Vector2(16, 96)
 
 [node name="Level" instance=ExtResource("1_x6am8")]
 
@@ -50,14 +59,32 @@ left_extend_block_range = Vector2i(0, 3)
 position = Vector2(176, 144)
 size = Vector2i(6, 1)
 
+[node name="RetryComponent" parent="RetryBlock" index="0"]
+achievement = true
+
+[node name="CollisionShape" parent="RetryBlock" index="1"]
+shape = SubResource("RectangleShape2D_vyay7")
+
 [node name="RetryBlock2" parent="." index="15" instance=ExtResource("4_6bfjc")]
-position = Vector2(80, 8)
-size = Vector2i(6, 1)
+position = Vector2(16, 8)
+size = Vector2i(12, 1)
 
-[node name="RetryBlock4" parent="." index="16" instance=ExtResource("4_6bfjc")]
-position = Vector2(-16, 8)
-size = Vector2i(6, 1)
+[node name="RetryComponent" parent="RetryBlock2" index="0"]
+achievement = true
 
-[node name="RetryBlock3" parent="." index="17" instance=ExtResource("4_6bfjc")]
+[node name="CollisionShape" parent="RetryBlock2" index="1"]
+shape = SubResource("RectangleShape2D_3a8yr")
+
+[node name="RetryBlock3" parent="." index="16" instance=ExtResource("4_6bfjc")]
 position = Vector2(-24, 64)
 size = Vector2i(1, 6)
+
+[node name="RetryComponent" parent="RetryBlock3" index="0"]
+achievement = true
+
+[node name="CollisionShape" parent="RetryBlock3" index="1"]
+shape = SubResource("RectangleShape2D_v27ij")
+
+[editable path="RetryBlock"]
+[editable path="RetryBlock2"]
+[editable path="RetryBlock3"]
