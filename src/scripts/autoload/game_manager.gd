@@ -161,6 +161,7 @@ func win():
 			if i + 1 < LevelData.levels.size():
 				next_level_name = LevelData.levels[i + 1]["scene"]
 				next_sound = LevelData.levels[i + 1]["music"]
+	
 	LevelData.make_level_completed()
 	LevelData.selected_level_name = next_level_name
 	SceneTransitionAutoLoad.change_scene_with_transition(next_level_name, true)

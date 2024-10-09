@@ -71,14 +71,37 @@ var levels = [
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 ]
 var scene_to_level_data: Dictionary = _create_scene_to_level_data(levels)
-var completion: Dictionary = _create_default_completion()
+var world_completion: Dictionary = _create_default_world_completion()
 
 var current_level = -1
 var level = 0
 
-var test: Dictionary = {
-	ConfigFile.new(): 2
-}
+var save_file = ConfigFile.new()
+const LEVEL_DATA_FILE_PATH = "user://level_data.cfg"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	new_load_level_data()
+	_load_world_completion()
+
+func _input(event):
+	if event.is_action_pressed("reload_button"):
+		# SCOTCH
+		var current_scene = get_tree().get_current_scene()
+		if current_scene == null or current_scene.name in ["WorldSelect", "Main"]:
+			return
+		if GameManager.is_on_win_animation:
+			return
+		reload_scene()
+	
+	
+	if event.is_action_pressed("removeme_debugtest_leo"):
+		_load_world_completion()
+
+func _process(delta: float) -> void:
+	pass 
+
+
 
 func get_level_data(scene_path):
 	if scene_to_level_data.has(scene_path):
@@ -120,52 +143,40 @@ func increment_level_and_change_scene() -> void:
 
 
 func save_level_data() -> void: # deprecated
-	var config = ConfigFile.new()
-	config.set_value("level_section","level", level)
-	config.save("user://level_data.cfg")
+	save_file.set_value("level_section","level", level)
+	save_file.save(LEVEL_DATA_FILE_PATH)
 
 func load_level_data() -> void:
-	var config = ConfigFile.new()
-	config.load("user://level_data.cfg")
-	level = config.get_value("level_section","level", level)
+	save_file.load(LEVEL_DATA_FILE_PATH)
+	level = save_file.get_value("level_section","level", level)
 
 func make_level_completed() -> void:
 	if selected_level_name not in completed_levels:
 		completed_levels.append(selected_level_name)
 		new_save_level_data()
+		_load_world_completion() # <- This is a slow operation, don't call it too often
+		_grant_world_completion_achievements()
+
+
+func reset_level_data() -> void:
+	completed_levels = []
+	worlds_finished = []
+	
+	world_completion = _create_default_world_completion()
+	_load_world_completion()
+
+	new_save_level_data()
+
 
 func new_save_level_data() -> void:
-	var config = ConfigFile.new()
-	config.set_value("levels", "completed_levels", completed_levels)
-	config.save("user://level_data.cfg")
+	save_file.set_value("levels", "completed_levels", completed_levels)
+	save_file.save(LEVEL_DATA_FILE_PATH)
+
 
 func new_load_level_data() -> void:
-	var config = ConfigFile.new()
-	config.load("user://level_data.cfg")
-	completed_levels = config.get_value("levels", "completed_levels", completed_levels)
+	save_file.load(LEVEL_DATA_FILE_PATH)
+	completed_levels = save_file.get_value("levels", "completed_levels", completed_levels)
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	new_load_level_data()	
-
-
-func _input(event):
-	if event.is_action_pressed("reload_button"):
-		# SCOTCH
-		var current_scene = get_tree().get_current_scene()
-		if current_scene == null or current_scene.name in ["WorldSelect", "Main"]:
-			return
-		if GameManager.is_on_win_animation:
-			return
-		reload_scene()
-	
-	
-	if event.is_action_pressed("removeme_debugtest_leo"):
-		_load_level_completion()
-
-func _process(delta: float) -> void:
-	pass 
 
 func _create_scene_to_level_data(levels_array: Array):
 	var dict = {}
@@ -177,31 +188,58 @@ func _create_scene_to_level_data(levels_array: Array):
 	return dict
 
 
-func _create_default_completion():
+func _create_default_world_completion():
 	var dict = {}
 	for level_data in levels:
 		if level_data.has("world"):
 			var world = level_data["world"]
 			if dict.has(world):
-				dict[world][1] += 1
+				dict[world]["total"] += 1
 			else:
-				dict[world] = [0, 1]
+				dict[world] = {
+					"completed": 0, 
+					"total": 1,
+					"is_complete": false, 
+					"achievement_granted": false, 
+				}
 
 	return dict
 
 
-func _load_level_completion():
-	for world in completion:
-		var completion_item = completion[world]
-		completion_item[0] = 0
+func _load_world_completion():
+	print("Loading world world_completion...")
+	# This could be quite slow if we have a lot of levels, although this is good enough for now. 
+	# Just don't call it to often.
+
+	var completed_worlds = []
+	for world in world_completion:
+		var completion_item = world_completion[world]
+		completion_item["completed"] = 0
 
 	for level_path in completed_levels:
 		var level_data: Variant = get_level_data(level_path)
 		if level_data and level_data.has("world"):
 			var world = level_data["world"]
-			completion[world][0] += 1
-		
-	for world in completion:
-		var completion_item = completion[world]
-		if completion_item[0] == completion_item[1]:
-			world_completed.emit(completion)
+			var completion_item = world_completion[world]
+
+			completion_item["completed"] += 1
+
+			if completion_item["completed"] == completion_item["total"]:
+				completion_item["is_complete"] = true
+				completed_worlds.append(world)
+	
+	print("Finished loading world world_completion.")
+	return completed_worlds
+
+func _grant_world_completion_achievements():
+	for world in world_completion:
+		var progress = world_completion[world]
+		if progress["is_complete"] and not progress["achievement_granted"] and GameManager.achievement_manager:
+			progress["achievement_granted"] = true
+
+			var ach_name = "ACH_COMPLETE_WORLD_{0}".format([world])
+			if GameManager.achievement_manager.achievement_exists(ach_name):
+				GameManager.achievement_manager.grant(ach_name)
+
+
+
