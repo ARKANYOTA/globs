@@ -161,7 +161,7 @@ func make_level_completed() -> void:
 func reset_level_data() -> void:
 	completed_levels = []
 	worlds_finished = []
-	
+
 	world_completion = _create_default_world_completion()
 	_load_world_completion()
 
@@ -232,8 +232,14 @@ func _load_world_completion():
 	return completed_worlds
 
 func _grant_world_completion_achievements():
+	var completed_count = 0
+	var completed_total = 0
+
 	for world in world_completion:
 		var progress = world_completion[world]
+		completed_count += progress["completed"]
+		completed_total += progress["total"]
+
 		if progress["is_complete"] and not progress["achievement_granted"] and GameManager.achievement_manager:
 			progress["achievement_granted"] = true
 
@@ -241,5 +247,7 @@ func _grant_world_completion_achievements():
 			if GameManager.achievement_manager.achievement_exists(ach_name):
 				GameManager.achievement_manager.grant(ach_name)
 
-
+	if completed_count == completed_total:
+		if GameManager.achievement_manager:
+			GameManager.achievement_manager.grant("ACH_COMPLETE_100_PERCENT")
 

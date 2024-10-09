@@ -61,5 +61,8 @@ func _ready():
 	super()
 	_start_credits()
 
+	if GameManager.achievement_manager:
+		GameManager.achievement_manager.grant("ACH_COMPLETE_MAIN_GAME")
+
 func _process(delta):
 	pass
