@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://8aui7yd1rp55"]
+[gd_scene load_steps=8 format=4 uid="uid://barr0ghmmvd0k"]
 
 [ext_resource type="PackedScene" uid="uid://brsha6qauan46" path="res://scenes/levels_zoomed/world_4/level.tscn" id="1_x6am8"]
 [ext_resource type="PackedScene" uid="uid://cyuc4qkh71ogh" path="res://scenes/block/bloc_skin/space/alien.tscn" id="2_st7qi"]
 [ext_resource type="PackedScene" uid="uid://id7bhi4xpwux" path="res://scenes/block/change_gravity_zone.tscn" id="3_byq4m"]
-[ext_resource type="PackedScene" uid="uid://3wsygloksbdv" path="res://scenes/block/retry_block.tscn" id="4_6bfjc"]
+[ext_resource type="PackedScene" path="res://scenes/block/retry_block.tscn" id="4_6bfjc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vyay7"]
 size = Vector2(96, 16)
@@ -83,6 +83,7 @@ size = Vector2i(1, 6)
 achievement = true
 
 [node name="CollisionShape" parent="RetryBlock3" index="1"]
+position = Vector2(32, 0)
 shape = SubResource("RectangleShape2D_v27ij")
 
 [editable path="RetryBlock"]
