@@ -250,4 +250,3 @@ func _grant_world_completion_achievements():
 	if completed_count == completed_total:
 		if GameManager.achievement_manager:
 			GameManager.achievement_manager.grant("ACH_COMPLETE_100_PERCENT")
-

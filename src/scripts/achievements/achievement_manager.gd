@@ -11,6 +11,7 @@ var achievements: Dictionary = {
 	"ACH_SECRET_WORLD_SELECT": {achieved = false, hidden = false},
 	"ACH_WAKEY_WAKEY": {achieved = false, hidden = false},
 	"ACH_GLOBS_IN_VOID_5_TIMES": {achieved = false, hidden = false},
+	"ACH_ECOLOGIST": {achieved = false, hidden = false},
 }
 
 func _init():

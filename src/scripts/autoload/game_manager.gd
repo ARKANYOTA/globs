@@ -167,6 +167,9 @@ func win():
 	SceneTransitionAutoLoad.change_scene_with_transition(next_level_name, true)
 	GameManager.end_win_animation()
 
+
+		
+
 func on_restart():
 	pass
 

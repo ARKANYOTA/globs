@@ -103,18 +103,16 @@ texture = ExtResource("2_f7chm")
 hframes = 2
 frame = 1
 
-[node name="Birds" type="Node2D" parent="." index="8"]
-
-[node name="Bird" parent="Birds" index="0" instance=ExtResource("3_qrr7o")]
+[node name="Bird" parent="." index="8" groups=["birds"] instance=ExtResource("3_qrr7o")]
 position = Vector2(72, 40)
 
-[node name="Bird2" parent="Birds" index="1" instance=ExtResource("3_qrr7o")]
+[node name="Bird2" parent="." index="9" groups=["birds"] instance=ExtResource("3_qrr7o")]
 position = Vector2(32, 72)
 
-[node name="Bird3" parent="Birds" index="2" instance=ExtResource("3_qrr7o")]
+[node name="Bird3" parent="." index="10" groups=["birds"] instance=ExtResource("3_qrr7o")]
 position = Vector2(192, 72)
 
-[node name="DragTutorial" type="Node2D" parent="." index="9"]
+[node name="DragTutorial" type="Node2D" parent="." index="11"]
 z_index = 30
 position = Vector2(0, -16)
 script = ExtResource("4_lkncf")
@@ -130,10 +128,10 @@ libraries = {
 "": SubResource("AnimationLibrary_ntijy")
 }
 
-[node name="Goal" parent="." index="10"]
+[node name="Goal" parent="." index="12"]
 position = Vector2(168, 56)
 
-[node name="Block2" parent="." index="11"]
+[node name="Block2" parent="." index="13"]
 position = Vector2(72, 56)
 right_extendable = true
 right_extend_range = Vector2i(8, 104)
