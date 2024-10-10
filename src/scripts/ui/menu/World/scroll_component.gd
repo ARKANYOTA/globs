@@ -10,6 +10,8 @@ var mouse_unclick_position = Vector2()
 var delta_max = 32
 var world_screen_size = Vector2(0,0)
 
+# make a const
+const sus_globs_achievements_gap = 0.60
 @export var world_select : WorldSelect
 
 func _ready():
@@ -45,15 +47,14 @@ func _input(event: InputEvent) -> void:
 			handle_sus_globs_achievements()
 
 func handle_sus_globs_achievements() -> void:
-	var screen_gap = world_screen_size * 0.60
-	var sign = 0
+	var screen_gap = world_screen_size * sus_globs_achievements_gap
+	var my_sign = 0
 
 	if world_select.world_index == 0:
-		sign = 1
+		my_sign = 1
 	if world_select.world_index == world_select.world.size() - 1:
-		sign = -1
+		my_sign = -1
 
-	print(sign * delta_mouse_position.x, " ", screen_gap)
-	if (sign != 0 && sign * delta_mouse_position.x > screen_gap):
+	if (my_sign != 0 && my_sign * delta_mouse_position.x > screen_gap):
 		if GameManager.achievement_manager:
 			GameManager.achievement_manager.grant("ACH_SECRET_WORLD_SELECT")
