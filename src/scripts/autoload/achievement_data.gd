@@ -15,7 +15,6 @@ var config = ConfigFile.new()
 
 func _ready():
 	config.load("user://achivement_data.cfg")
-	print("Hello", config.encode_to_text())
 
 	var moved_bird_level_config = config.get_value("bird", "moved_bird_level", moved_bird_level)
 	if not moved_bird_level_config == null:
