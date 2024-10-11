@@ -61,4 +61,4 @@ func no_bird_moved(current_tree: SceneTree) -> void:
 		
 	if GameManager.achievement_manager == null:
 		return
-	GameManager.achievement_manager.grant("ACH_ECOLOGIST")
+	GameManager.achievement_manager.grant("ACH_SCARECROW")
