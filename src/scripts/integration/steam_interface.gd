@@ -38,7 +38,8 @@ func _process(_delta):
 func _on_steam_stats_ready(game_id: int, result: int, user_id: int):
 	_print("Steam stats ready with code %s for: game_id = %s, user_id = %s" % [result, game_id, user_id])
 	if GameManager.achievement_manager:
-		load_achievements(GameManager.achievement_manager.achievements)
+		var remote_achievements = generate_achievement_dict(GameManager.achievement_manager.achievements)
+		GameManager.achievement_manager.load_achievements(remote_achievements)
 
 
 func achievement_exists(value: String) -> bool:
@@ -64,17 +65,15 @@ func revoke_achievement(value: String) -> bool:
 		Steam.storeStats()
 	return success
 
-func load_achievements(achievements: Dictionary) -> void:
-	var count = 0
-	var count_invalid = 0
+func generate_achievement_dict(achievements: Dictionary) -> Dictionary:
+	var loaded_achievements := {}
+
 	for ach in achievements:
 		var exists := achievement_exists(ach)
 		var achieved := false
 		if exists:
-			achievements[ach]["achieved"] = is_achievement_achieved(ach) 
-			count += 1
-		else:
-			achievements[ach] = false
-			count_invalid += 1
+			loaded_achievements[ach] = {
+				achieved = is_achievement_achieved(ach)
+			} 
 	
-	_print("Finished loading %s achievements (%s invalid)" % [count, count_invalid])
+	return loaded_achievements

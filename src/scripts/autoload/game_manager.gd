@@ -213,13 +213,9 @@ func end_win_animation():
 
 
 func open_achievements_menu() -> bool:
-	print("open_achievements_menu")
-	print("open_achievements_menu test")
 	match distribution_platform:
 		DistributionPlatform.PLAY_STORE:
-			print("open_achievements_menu 2")
 			if google_play_interface:
-				print("open_achievements_menu 3")
 				google_play_interface.open_achievements_menu()
 				return true
 		
@@ -305,14 +301,21 @@ func _init_google_play():
 #################################################################
 
 func _init_achievement_manager():
+	var scene: PackedScene
 	match distribution_platform:
 		DistributionPlatform.STEAM:
 			print("Creating Steam achievement manager")
-			var scene: PackedScene = load("res://scenes/achievements/achievement_manager_steam.tscn")
-			achievement_manager = scene.instantiate()
+			scene = load("res://scenes/achievements/achievement_manager_steam.tscn")
+
+		DistributionPlatform.PLAY_STORE:
+			print("Creating Play Store achievement manager")
+			scene = load("res://scenes/achievements/achievement_manager_google_play.tscn")
+
 		_:
 			#TODO
-			print("Creating generic achievement manager")
+			print("Creating generic achievement manager (TODO)")
 			pass
 
-	add_child(achievement_manager)
+	if scene:
+		achievement_manager = scene.instantiate()
+		add_child(achievement_manager)

@@ -3,7 +3,7 @@ extends Node
 var is_enabled: bool = false
 var steam_initialized_correctly: bool = false
 
-var _sign_in_retries := 5
+var _sign_in_retries := 1
 
 func initialize() -> bool:
 	_print("Entered initialize")
@@ -12,8 +12,11 @@ func initialize() -> bool:
 	if not GodotPlayGameServices.android_plugin:
 		_print("Android plugin Not Found! Features may not work properly.")
 
-	
 	SignInClient.user_authenticated.connect(_on_user_autheticated)
+
+	if GameManager.achievement_manager and GameManager.achievement_manager is AchievementManagerGooglePlay:
+		AchievementsClient.achievements_loaded.connect(_on_achievements_loaded)
+		AchievementsClient.load_achievements(true)
 
 	_print("Finished initialization")
 	is_enabled = true
@@ -65,23 +68,32 @@ func open_achievements_menu():
 # func is_achievement_achieved(value: String) -> bool:
 # 	return false
 
-# func grant_achievement(value: String) -> bool:
-# 	return false
+func grant_achievement(achievement_id: String) -> bool:
+	AchievementsClient.unlock_achievement(achievement_id)
+	return true
 
-# func revoke_achievement(value: String) -> bool:
-# 	return false
+func revoke_achievement(value: String) -> bool:
+	return false
 
-# func load_achievements(achievements: Dictionary) -> void:
-# 	var count = 0
-# 	var count_invalid = 0
-# 	for ach in achievements:
-# 		var exists := achievement_exists(ach)
-# 		var achieved := false
-# 		if exists:
-# 			achievements[ach]["achieved"] = is_achievement_achieved(ach) 
-# 			count += 1
-# 		else:
-# 			achievements[ach] = false
-# 			count_invalid += 1
+func _on_achievements_loaded(remote_achievements: Array[AchievementsClient.Achievement]):
+	if not GameManager.achievement_manager or GameManager.achievement_manager is not AchievementManagerGooglePlay:
+		return 
+
+	var loaded_achievements = {}
 	
-# 	print("Finished loading %s achievements (%s invalid)" % [count, count_invalid])
+	var google_play_id_to_achievement = GameManager.achievement_manager.google_play_id_to_achievement
+
+	for remote_achievement in remote_achievements:
+		if google_play_id_to_achievement.has(remote_achievement.achievement_id):
+			var achievement = google_play_id_to_achievement[remote_achievement.achievement_id] 
+			loaded_achievements[achievement["id"]] = {
+				achieved = (remote_achievement.state == AchievementsClient.State.STATE_UNLOCKED)
+			}
+		
+	GameManager.achievement_manager.load_achievements(loaded_achievements)
+
+
+# func _on_steam_stats_ready(game_id: int, result: int, user_id: int):
+# 	_print("Steam stats ready with code %s for: game_id = %s, user_id = %s" % [result, game_id, user_id])
+# 	if GameManager.achievement_manager:
+# 		load_achievements(GameManager.achievement_manager.achievements)
