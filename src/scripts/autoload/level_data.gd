@@ -69,6 +69,9 @@ var levels = [
 
 	{ "name": "4-⭐1", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_430.tscn"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
+
+	{ "name": "4-⭐2", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_505_harder_harder.tscn"},
+	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 ]
 var scene_to_level_data: Dictionary = _create_scene_to_level_data(levels)
 var world_completion: Dictionary = _create_default_world_completion()
