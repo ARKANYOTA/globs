@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://do8khq28rqe3n"]
+[gd_scene load_steps=6 format=3 uid="uid://do8khq28rqe3n"]
 
 [ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels_zoomed/visuals/city_visuals.tscn" id="1_uhilt"]
 [ext_resource type="Texture2D" uid="uid://b3l0i7o6emx6i" path="res://assets/images/logo.png" id="2_5nfmw"]
@@ -7,6 +7,12 @@
 [sub_resource type="LabelSettings" id="LabelSettings_7ciee"]
 font = ExtResource("3_mfx0u")
 font_size = 8
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nd26v"]
+font = ExtResource("3_mfx0u")
+font_size = 6
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
@@ -29,10 +35,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -63.0
-offset_top = 11.0
-offset_right = 63.0
-offset_bottom = 53.0
+offset_left = -59.0
+offset_top = 7.0
+offset_right = 67.0
+offset_bottom = 49.0
 grow_horizontal = 2
 texture = ExtResource("2_5nfmw")
 
@@ -43,17 +49,33 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -121.0
-offset_top = -4.5
-offset_right = 123.0
-offset_bottom = 31.5
+offset_left = -112.0
+offset_top = -10.5
+offset_right = 132.0
+offset_bottom = 25.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "This is the end of the demo 
-on this website.
+text = "This is the end of the demo on this website.
 You can continue playing by clicking here:"
 label_settings = SubResource("LabelSettings_7ciee")
-horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = 30.5
+offset_right = 137.0
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Please consider buying the game 
+on Steam or Mobile, too!
+(If you can't, share the game with others! It really helps!)"
+label_settings = SubResource("LabelSettings_nd26v")
 
 [node name="Yolwoocle" type="LinkButton" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -62,15 +84,58 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = 38.5
-offset_right = 33.0
-offset_bottom = 58.5
+offset_left = 74.0
+offset_top = -4.5
+offset_right = 142.0
+offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.75, 0.75)
 theme_override_constants/outline_size = 3
 theme_override_constants/underline_spacing = 5
 theme_override_fonts/font = ExtResource("3_mfx0u")
 theme_override_font_sizes/font_size = 0
 text = "itch.io"
 uri = "https://yolwoocle.itch.io/globs"
+
+[node name="Steam" type="LinkButton" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = 31.5
+offset_right = 84.0
+offset_bottom = 51.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+theme_override_constants/outline_size = 3
+theme_override_constants/underline_spacing = 5
+theme_override_fonts/font = ExtResource("3_mfx0u")
+theme_override_font_sizes/font_size = 0
+text = "Steam"
+uri = "https://s.team/a/3219110"
+
+[node name="Steam2" type="LinkButton" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 67.0
+offset_top = 31.5
+offset_right = 151.0
+offset_bottom = 51.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+theme_override_constants/outline_size = 3
+theme_override_constants/underline_spacing = 5
+theme_override_fonts/font = ExtResource("3_mfx0u")
+theme_override_font_sizes/font_size = 0
+text = "Mobile"
+uri = "https://ninesliced.com/games/globs"
