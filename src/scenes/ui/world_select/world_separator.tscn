@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://blq40em8dng1c"]
+
+[ext_resource type="Texture2D" uid="uid://1gyyj3fej5bl" path="res://assets/images/map/map_separator.png" id="1_nssnv"]
+
+[node name="WorldSeparator" type="Sprite2D"]
+z_index = 285
+position = Vector2(0, 75)
+texture = ExtResource("1_nssnv")

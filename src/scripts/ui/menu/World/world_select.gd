@@ -4,6 +4,8 @@ class_name WorldSelect
 
 @onready var world_select_gui = PauseMenuAutoload.game_gui.get_node("WorldSelect")
 
+var world_separator_scene = preload("res://scenes/ui/world_select/world_separator.tscn")
+
 @export var world: Array[ PackedScene]
 @export var scroll: ScrollComponent
 var node_worlds : Array[Node2D]
@@ -23,8 +25,18 @@ func _ready():
 	for i in range(0, world.size()):
 		var node_world = world[i].instantiate()
 		node_world.set_position(Vector2(i * 16*15, 0))
+
+
+		var w = ProjectSettings.get_setting("display/window/size/viewport_width")
+		var h = ProjectSettings.get_setting("display/window/size/viewport_height")
+		_add_world_separator(node_world, Vector2(0, h/2))
+		if i == world.size() - 1:
+			_add_world_separator(node_world, Vector2(w, h/2))
+			
 		node_worlds.append(node_world)
 		scroll.add_child(node_world)
+
+		
 	add_dot()
 	update_dot()
 	world_index = LevelData.selected_world_index
@@ -36,6 +48,12 @@ func _ready():
 	right_button = world_select_gui.get_node("Right")
 	left_button.pressed.connect(_on_left_pressed)
 	right_button.pressed.connect(_on_right_pressed)
+
+func _add_world_separator(node_world: Node, rel_position: Vector2):
+	var world_separator = world_separator_scene.instantiate()
+	node_world.add_child(world_separator)
+	world_separator.position = rel_position
+
 
 func _process(delta: float) -> void:
 	$AnimationPlayer.play("background")
