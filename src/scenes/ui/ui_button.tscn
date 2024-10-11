@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://l4uy665qgi6n"]
 
-[ext_resource type="FontFile" uid="uid://cjyup1ooil314" path="res://assets/fonts/font_normal.ttf" id="1_tjc5n"]
+[ext_resource type="FontFile" uid="uid://btwjphxav6aet" path="res://assets/fonts/font_normal.ttf" id="1_tjc5n"]
 [ext_resource type="StyleBox" uid="uid://dv3miaelc86gy" path="res://assets/textures/option_button_texture_pressed.tres" id="2_frkiv"]
 [ext_resource type="StyleBox" uid="uid://dbwx70quhf42b" path="res://assets/textures/option_button_texture_hover.tres" id="3_q5fg8"]
 [ext_resource type="StyleBox" uid="uid://d1obvum2g2cax" path="res://assets/textures/option_button_texture.tres" id="4_0mqmd"]
@@ -18,7 +18,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4q584"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lhtys"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxs6d"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jod3y"]
 random_pitch = 1.08
@@ -39,7 +39,7 @@ theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8mypg")
 theme_override_styles/hover = ExtResource("3_q5fg8")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_4q584")
 theme_override_styles/pressed = ExtResource("2_frkiv")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_lhtys")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_gxs6d")
 theme_override_styles/normal = ExtResource("4_0mqmd")
 text = "Resume"
 script = ExtResource("5_bt5wv")

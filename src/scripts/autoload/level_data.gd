@@ -64,7 +64,7 @@ var levels = [
 	{ "name": "4-8", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_500.tscn"},
 	{ "name": "4-9", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_510.tscn"},
 
-	{ "name": "Congrats!", "music": "main_menu", "scene": "res://scenes/levels_zoomed/you_win.tscn", "achievement": "ACH_COMPLETE_MAIN_GAME"},
+	{ "name": "⭐", "music": "main_menu", "scene": "res://scenes/levels_zoomed/you_win.tscn", "achievement": "ACH_COMPLETE_MAIN_GAME"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "4-⭐1", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_430.tscn"},
@@ -157,13 +157,16 @@ func make_level_completed() -> void:
 	if selected_level_name not in completed_levels:
 		completed_levels.append(selected_level_name)
 		new_save_level_data()
-		_load_world_completion() # <- This is a slow operation, don't call it too often
-		_grant_world_completion_achievements()
+	
+	_load_world_completion() # <- This is a slow operation, don't call it too often
+	_grant_world_completion_achievements()
 
 
 func reset_level_data() -> void:
 	completed_levels = []
 	worlds_finished = []
+
+	GameManager.save_option("misc", "is_logo_golden", false)
 
 	world_completion = _create_default_world_completion()
 	_load_world_completion()
@@ -249,5 +252,6 @@ func _grant_world_completion_achievements():
 				GameManager.achievement_manager.grant(ach_name)
 
 	if completed_count == completed_total:
+		GameManager.save_option("misc", "is_logo_golden", true)
 		if GameManager.achievement_manager:
 			GameManager.achievement_manager.grant("ACH_COMPLETE_100_PERCENT")

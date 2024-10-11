@@ -58,12 +58,13 @@ func load_achievements(achievements_to_load: Dictionary):
 	var count = 0
 	var count_invalid = 0
 
-	for new_ach in achievements_to_load:
-		if achievement_exists(new_ach):
-			achievements[new_ach]["achieved"] = new_ach["achieved"]
+	for new_ach_id in achievements_to_load:
+		var new_ach = achievements_to_load[new_ach_id]
+		if achievement_exists(new_ach_id):
+			achievements[new_ach_id]["achieved"] = new_ach["achieved"]
 			count += 1
 		else:
-			achievements[new_ach]["achieved"] = false
+			achievements[new_ach_id]["achieved"] = false
 			count_invalid += 1
 
 	print("Finished loading %s achievements (%s invalid)" % [count, count_invalid])

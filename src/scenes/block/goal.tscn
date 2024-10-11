@@ -159,7 +159,7 @@ particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r7jq1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgxb8"]
 size = Vector2(0, 0)
 
 [sub_resource type="Animation" id="Animation_aa8jn"]
@@ -423,7 +423,7 @@ anim_speed_min = 0.5
 anim_speed_max = 1.5
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_r7jq1")
+shape = SubResource("RectangleShape2D_qgxb8")
 debug_color = Color(0.493207, 0.429172, 1, 0.376471)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

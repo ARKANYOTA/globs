@@ -26,7 +26,7 @@ var distribution_platform: DistributionPlatform = DistributionPlatform.UNDEFINED
 		if distribution_platform == DistributionPlatform.UNDEFINED:
 			if is_steam_api_supported():
 				distribution_platform = DistributionPlatform.STEAM
-			if is_google_play_supported():
+			elif is_google_play_supported():
 				distribution_platform = DistributionPlatform.PLAY_STORE
 			else:
 				distribution_platform = DistributionPlatform.NATIVE
@@ -79,9 +79,7 @@ func _ready():
 		distr_plat = Util.enum_to_string(DistributionPlatform.keys(), distribution_platform),
 	}))
 	print("---------------------------")
-
 	print("Currently loaded extensions:", GDExtensionManager.get_loaded_extensions())
-
 
 	options_manager = OptionsManager.new()
 	_init_window()

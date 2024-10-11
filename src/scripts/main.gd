@@ -18,6 +18,13 @@ func _ready():
 	_set_version_text()
 	_randomize_credits()
 
+	if GameManager.load_option("misc", "is_logo_golden", false):
+		%MainScreenLogo.play("logo_golden")
+		%MainScreenSparkles.show()
+	else:
+		%MainScreenLogo.play("logo_default")
+		%MainScreenSparkles.hide()
+
 func _set_version_text():
 	if ProjectSettings.has_setting("application/config/version"):
 		%VersionText.text = "v" + ProjectSettings.get_setting("application/config/version")
