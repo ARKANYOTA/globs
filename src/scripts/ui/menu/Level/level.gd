@@ -52,6 +52,9 @@ var dot_speed = 13
 var changed = false
 var dot_done = false
 var world : World
+
+var linked_levels_nb = 0
+
 func _ready():
 	if Engine.is_editor_hint():
 		return
@@ -89,7 +92,7 @@ func create_path_to_level_unlock():
 	for level_unlock in levels_unlock:
 		if (level_unlock == null) or (level_unlock is not WorldLevelButton) or (not level_unlock.is_linkable):
 			continue
-	
+		linked_levels_nb += 1
 		create_path(level_unlock)
 
 func create_path(level_unlock: WorldLevelButton):
@@ -154,7 +157,7 @@ func _process(delta: float) -> void:
 	# if state != LevelState.LOCKED:
 	for path in path_instances:
 		for dot in dots:
-			dot.progress += (delta * dot_speed) / levels_unlock.size()
+			dot.progress += (delta * dot_speed) / linked_levels_nb
 	pass
 var musics : Array[String] = ["city", "cheese", "snow", "snow"]
 
