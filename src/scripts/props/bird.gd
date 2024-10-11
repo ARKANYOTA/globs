@@ -31,6 +31,7 @@ func fly_bird():
 	var tween : Tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR)
 	if fly:
 		return
+
 	flying_sound.play()
 	$Static.visible = false
 	if mouse_position.x < position.x:
@@ -43,6 +44,9 @@ func fly_bird():
 		$AnimatedBirdLeft.play("left")
 		tween.tween_property(self, "position", Vector2(position.x - vector.x, position.y - vector.y), speed).set_ease(Tween.EASE_IN_OUT)
 	fly = true
+	if not GameManager.achievement_manager == null:
+		AchievementData.no_bird_moved(get_tree())
+
 	await tween.finished
 	queue_free()
 	pass # Replace with function body.

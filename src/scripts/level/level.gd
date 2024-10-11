@@ -82,7 +82,7 @@ func add_awake_block(block: Block):
 	if awake_count == null:
 		awake_count = 0
 	awake_count += 1
-	if awake_count == 3:
+	if awake_count == 5:
 		if GameManager == null:
 			return
 		if GameManager.achievement_manager == null:

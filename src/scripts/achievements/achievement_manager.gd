@@ -11,6 +11,7 @@ var achievements: Dictionary = {
 	"ACH_SECRET_WORLD_SELECT":   _new_achievement("CgkIqufXsuUZEAIQBw"),
 	"ACH_GLOBS_IN_VOID_5_TIMES": _new_achievement("CgkIqufXsuUZEAIQCA"),
 	"ACH_WAKEY_WAKEY":           _new_achievement("CgkIqufXsuUZEAIQCQ"),
+	"ACH_ECOLOGIST":             _new_achievement(""),
 }
 
 func _new_achievement(google_play_id: String = "", hidden: bool = false):

@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=4 uid="uid://bfkp6rfibwcw"]
+[gd_scene load_steps=4 format=4 uid="uid://4vqq1t1s2bpe"]
 
 [ext_resource type="PackedScene" uid="uid://cihuxl0od3y8d" path="res://scenes/levels_zoomed/world_3/level.tscn" id="1_lgus3"]
 [ext_resource type="PackedScene" uid="uid://bolbefhicktwp" path="res://scenes/block/bloc_skin/Frost/bat.tscn" id="2_8v5v8"]
-[ext_resource type="PackedScene" path="res://scenes/block/retry_block.tscn" id="3_4xsls"]
+[ext_resource type="PackedScene" uid="uid://3wsygloksbdv" path="res://scenes/block/retry_block.tscn" id="3_4xsls"]
 
 [node name="Level7" instance=ExtResource("1_lgus3")]
 
