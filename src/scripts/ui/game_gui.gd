@@ -4,7 +4,11 @@ extends CanvasLayer
 @onready var pause_button = $Control/LevelActions/PauseButton
 @onready var undo_button = $Control/LevelActions/UndoButton
 @onready var retry_button = $Control/LevelActions/RetryButton
-@onready var fullscreen_button = $Control/FullscreenButton
+@onready var achievements_button = %AchievementsButton
+
+@onready var level_actions = %LevelActions
+@onready var level_select_side_actions = %LevelSelectSideActions
+@onready var level_select_actions = %LevelSelectActions
 
 var is_shown = true
 
@@ -17,20 +21,22 @@ func show_correct_game_gui():
 		if current_scene_name == "WorldSelect" or current_scene_name == "RedirectPageToOurGames":
 			PauseMenuAutoload.game_gui.show_level_select()
 		elif current_scene_name == "Main":
-			PauseMenuAutoload.game_gui.hide_gui()
+			PauseMenuAutoload.game_gui.show_title_gui()
 		else: 
-			PauseMenuAutoload.game_gui.show_gui()
+			PauseMenuAutoload.game_gui.show_level_gui()
 			if level_data and level_data.has("music"):
 				MusicManager.set_music(level_data["music"])  # TODO; remettre la music
 	else:
-		PauseMenuAutoload.game_gui.hide_gui()
+		PauseMenuAutoload.game_gui.show_title_gui()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hide_gui()
+	show_title_gui()
 
 	GameManager.on_win_animation.connect(_on_win_animation)
+
+	achievements_button.visible = (GameManager.distribution_platform == GameManager.DistributionPlatform.PLAY_STORE)
 	
 func _process(_delta):
 	var scene = get_tree().get_current_scene()
@@ -54,34 +60,35 @@ func set_shown(shown: bool):
 		hide()
 
 
-func show_level_select():
-	$Control/LevelSelectPauseButton.hide()
-	pause_button.show()
-	undo_button.hide()
-	retry_button.hide()
-	fullscreen_button.hide()
+func hide_gui():
+	level_actions.hide()
+	level_select_actions.hide()
+	level_select_side_actions.hide()
+	
+	$WorldSelect.hide()
 
+func show_level_select():
+	level_actions.hide()
+	level_select_actions.show()
+	level_select_side_actions.show()
+	
 	$WorldSelect.show()
 
-func hide_gui():
-	$Control/LevelSelectPauseButton.hide()
-	pause_button.hide()
-	undo_button.hide()
-	retry_button.hide()
-	fullscreen_button.hide()
+func show_title_gui():
+	level_actions.hide()
+	level_select_actions.hide()
+	level_select_side_actions.hide()
 
 	$WorldSelect.hide()
 
-func show_gui():
+func show_level_gui():
 	undo_button.disabled = false
 	retry_button.disabled = false
 	pause_button.disabled = false
 
-	$Control/LevelSelectPauseButton.hide()
-	pause_button.show()
-	undo_button.show()
-	retry_button.show()
-	fullscreen_button.hide()
+	level_actions.show()
+	level_select_actions.hide()
+	level_select_side_actions.hide()
 	
 	$WorldSelect.hide()
 
@@ -102,11 +109,17 @@ func _on_retry_button_pressed():
 	LevelData.reload_scene()
 	GameManager.on_restart()
 
+func _on_achievements_button_pressed():
+	GameManager.open_achievements_menu()
 
-func _on_ui_icon_button_pressed():
+
+func _on_level_select_options_button_pressed():
+	PauseMenuAutoload.pause_menu.set_menu("OptionsMenu")
+
+
+func _on_undo_button_pressed():
 	var scene = get_tree().get_current_scene()
 	if scene == null: 
 		return
-	
 	if scene is Level:
 		scene.undo_action()

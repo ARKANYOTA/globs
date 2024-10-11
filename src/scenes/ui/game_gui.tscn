@@ -1,15 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://cni25hsbinkfw"]
+[gd_scene load_steps=14 format=3 uid="uid://cni25hsbinkfw"]
 
 [ext_resource type="Script" path="res://scripts/ui/game_gui.gd" id="1_72ffu"]
 [ext_resource type="Script" path="res://scripts/ui/world_select_gui.gd" id="2_63f6o"]
 [ext_resource type="PackedScene" uid="uid://njqkv5i1atvi" path="res://scenes/ui/ui_icon_button.tscn" id="2_jx3wm"]
 [ext_resource type="Texture2D" uid="uid://cfccdei10ptjn" path="res://assets/images/ui/pause.png" id="3_klxi7"]
 [ext_resource type="Texture2D" uid="uid://2na74y5ctym2" path="res://assets/images/ui/retry.png" id="3_xf12s"]
-[ext_resource type="PackedScene" uid="uid://ciguail0coyfn" path="res://scenes/ui/ui_fullscreen_button.tscn" id="4_rid88"]
 [ext_resource type="Texture2D" uid="uid://dr3uo4murx75h" path="res://assets/images/ui/undo.png" id="5_bj348"]
 [ext_resource type="Texture2D" uid="uid://dtb7kvu5i3h0i" path="res://assets/images/ui/menu_right.png" id="7_dy5u5"]
 [ext_resource type="Texture2D" uid="uid://cscjdb5vo0gxa" path="res://assets/images/ui/menu_left.png" id="8_f5tgb"]
+[ext_resource type="Texture2D" uid="uid://uod7a1l1s38g" path="res://assets/images/ui/options.png" id="8_lgh71"]
 [ext_resource type="Texture2D" uid="uid://d1dga283oskd8" path="res://assets/images/ui/heart.png" id="9_yd4cv"]
+[ext_resource type="FontFile" uid="uid://btwjphxav6aet" path="res://assets/fonts/font_normal.ttf" id="11_g2c0e"]
+[ext_resource type="Texture2D" uid="uid://dxexxc42td5t" path="res://assets/images/ui/achievements.png" id="12_drn6e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wd06l"]
+font = ExtResource("11_g2c0e")
+font_size = 4
 
 [node name="GameGUI" type="CanvasLayer"]
 script = ExtResource("1_72ffu")
@@ -71,43 +77,44 @@ mouse_filter = 1
 text = "Support us"
 icon = ExtResource("9_yd4cv")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
+[node name="Control" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
 
-[node name="LevelSelectPauseButton" parent="Control" instance=ExtResource("2_jx3wm")]
-visible = false
-layout_mode = 0
-offset_left = -20.0
-offset_top = 22.0
-offset_right = -3.0
-offset_bottom = 41.0
+[node name="LevelSelectActions" type="HBoxContainer" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 0
+alignment = 2
+
+[node name="LevelSelectOptionsButton" parent="Control/LevelSelectActions" instance=ExtResource("2_jx3wm")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+icon = ExtResource("8_lgh71")
+
+[node name="LevelSelectPauseButton" parent="Control/LevelSelectActions" instance=ExtResource("2_jx3wm")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 icon = ExtResource("3_klxi7")
 
-[node name="FullscreenButton" parent="Control" instance=ExtResource("4_rid88")]
-visible = false
-layout_mode = 0
-offset_left = -48.0
-offset_top = 144.0
-offset_right = -31.0
-offset_bottom = 163.0
-icon = null
-
 [node name="LevelActions" type="HBoxContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -64.0
-offset_top = 2.0
-offset_right = -5.0
-offset_bottom = 28.0
-grow_horizontal = 0
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 mouse_filter = 0
 alignment = 2
 
@@ -126,8 +133,33 @@ layout_mode = 2
 mouse_filter = 1
 icon = ExtResource("3_klxi7")
 
+[node name="LevelSelectSideActions" type="HBoxContainer" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 0
+alignment = 2
+
+[node name="AchievementsButton" parent="Control/LevelSelectSideActions" instance=ExtResource("2_jx3wm")]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+icon = ExtResource("12_drn6e")
+
+[node name="DebugText" type="Label" parent="Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "debug_text"
+label_settings = SubResource("LabelSettings_wd06l")
+
 [connection signal="pressed" from="WorldSelect/SupportUs" to="WorldSelect" method="_on_support_us_pressed"]
-[connection signal="pressed" from="Control/LevelSelectPauseButton" to="." method="_on_pause_button_pressed"]
-[connection signal="pressed" from="Control/LevelActions/UndoButton" to="." method="_on_ui_icon_button_pressed"]
+[connection signal="pressed" from="Control/LevelSelectActions/LevelSelectOptionsButton" to="." method="_on_level_select_options_button_pressed"]
+[connection signal="pressed" from="Control/LevelSelectActions/LevelSelectPauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Control/LevelActions/UndoButton" to="." method="_on_undo_button_pressed"]
 [connection signal="pressed" from="Control/LevelActions/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="Control/LevelActions/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Control/LevelSelectSideActions/AchievementsButton" to="." method="_on_achievements_button_pressed"]

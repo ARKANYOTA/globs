@@ -49,7 +49,7 @@ func _process(delta):
 	
 	# Change level name
 	var level_name_label = %LevelName
-	var level_data = LevelData.get_current_level_data()
+	var level_data: Variant = LevelData.get_current_level_data()
 	if level_name_label:
 		if level_data:
 			level_name_label.text = level_data["name"]
@@ -62,12 +62,27 @@ func _process(delta):
 	if is_on_level_select:
 		levels_scene_path = "res://scenes/main.tscn"
 		levels_button.text = "Title screen"
+		%RestartButton.hide()
 	else:
 		levels_scene_path = "res://scenes/ui/world_select/world_select.tscn"
 		levels_button.text = "Levels"
+		%RestartButton.show()
 	
 
 
 func _on_skip_button_removeme_pressed():
 	menu_manager.exit_menu()
 	LevelData.win()
+
+
+
+func _on_debug_is_auth_pressed():
+	if GameManager.google_play_interface:
+		GameManager.google_play_interface.popup_is_authenticated()
+
+func _update_debug_text():
+	var debug_text = %DebugText
+	debug_text.text = """
+	""".format({
+
+	})

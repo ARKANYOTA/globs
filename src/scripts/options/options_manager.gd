@@ -8,7 +8,7 @@ var config = ConfigFile.new()
 func _init():
 	var err = config.load(OPTIONS_FILE_PATH)
 	if err != OK:
-		print("Error loading options file. Defaults will be used. Error code: ", err)
+		print("Error loading options file. Defaults will be used. Error code: {0} ({1})".format([err, Util.error_to_string(err)]))
 	else:
 		print("Loaded options file successfully.")
 

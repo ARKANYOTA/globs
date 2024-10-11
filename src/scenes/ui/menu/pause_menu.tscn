@@ -16,6 +16,7 @@ layout_mode = 2
 text = "Continue"
 
 [node name="RestartButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="1" instance=ExtResource("4_35rns")]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Retry"
 
@@ -42,6 +43,23 @@ size_flags_vertical = 0
 text = "1-1"
 label_settings = ExtResource("5_657dq")
 
+[node name="DebugButtons" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer" index="2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 3
+
+[node name="DebugIsAuth" parent="MarginContainer/AspectRatioContainer/DebugButtons" index="0" instance=ExtResource("4_35rns")]
+layout_mode = 2
+text = "db_isAuth
+"
+
+[node name="DebugSignIn" parent="MarginContainer/AspectRatioContainer/DebugButtons" index="1" instance=ExtResource("4_35rns")]
+layout_mode = 2
+text = "db_signIn
+"
+
 [node name="BackButton" parent="MarginContainer" index="1"]
 visible = false
 
@@ -65,5 +83,7 @@ skip"
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/LevelsButton" to="." method="_on_levels_button_pressed"]
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/DebugButtons/DebugIsAuth" to="." method="_on_debug_is_auth_pressed"]
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/DebugButtons/DebugSignIn" to="." method="_on_debug_is_auth_pressed"]
 [connection signal="pressed" from="MarginContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/SkipButtonREMOVEME" to="." method="_on_skip_button_removeme_pressed"]

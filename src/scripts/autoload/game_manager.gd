@@ -26,6 +26,8 @@ var distribution_platform: DistributionPlatform = DistributionPlatform.UNDEFINED
 		if distribution_platform == DistributionPlatform.UNDEFINED:
 			if is_steam_api_supported():
 				distribution_platform = DistributionPlatform.STEAM
+			if is_google_play_supported():
+				distribution_platform = DistributionPlatform.PLAY_STORE
 			else:
 				distribution_platform = DistributionPlatform.NATIVE
 		return distribution_platform
@@ -44,10 +46,12 @@ var game_platform: GamePlatform = GamePlatform.UNDEFINED:
 					game_platform = GamePlatform.UNKNOWN
 		return game_platform
 
-var discord_rich_presence: Node = null
-
 const STEAM_APP_ID = 3219110
 var steam_interface: Node = null
+
+var discord_rich_presence: Node = null
+
+var google_play_interface: Node = null
 
 var options_manager: OptionsManager
 var achievement_manager: AchievementManager
@@ -65,8 +69,20 @@ var is_fullscreen: bool = true:
 		save_option("graphics", "is_fullscreen", is_fullscreen)
 var is_on_win_animation = false
 
+func _init():
+	print("GameManager INITIALIZED")
+
 func _ready():
-	print("launched game")
+	print("Launched Globs [._.] - v{version} - Game platform: {game_plat}, Distribution platform: {distr_plat}".format({
+		version = ProjectSettings.get_setting("application/config/version", "[unknown version]"),
+		game_plat = Util.enum_to_string(GamePlatform.keys(), game_platform),
+		distr_plat = Util.enum_to_string(DistributionPlatform.keys(), distribution_platform),
+	}))
+	print("---------------------------")
+
+	print("Currently loaded extensions:", GDExtensionManager.get_loaded_extensions())
+
+
 	options_manager = OptionsManager.new()
 	_init_window()
 
@@ -80,6 +96,7 @@ func _ready():
 
 	_init_discord_rpc()
 	_init_steam()
+	_init_google_play()
 	_init_achievement_manager()
 
 
@@ -195,6 +212,21 @@ func end_win_animation():
 	is_on_win_animation = false
 
 
+func open_achievements_menu() -> bool:
+	print("open_achievements_menu")
+	print("open_achievements_menu test")
+	match distribution_platform:
+		DistributionPlatform.PLAY_STORE:
+			print("open_achievements_menu 2")
+			if google_play_interface:
+				print("open_achievements_menu 3")
+				google_play_interface.open_achievements_menu()
+				return true
+		
+			return false
+		_:
+			return false
+
 ## Saves an option and returns whether it was saved successfully.  
 ## NOTE: this could become quite slow if the options file are updated very frequently or is very big 
 func save_option(section: String, key: String, value: Variant) -> bool:
@@ -212,6 +244,7 @@ func is_discord_rpc_supported() -> bool:
 
 func _init_discord_rpc():
 	if not is_discord_rpc_supported():
+		print("DiscordRPC: not initialized.")
 		return
 	
 	var discord_rich_presence_scene: PackedScene = load("res://scenes/integration/discord_rich_presence.tscn")
@@ -237,6 +270,7 @@ func is_steam_api_supported() -> bool:
 
 func _init_steam():
 	if distribution_platform != DistributionPlatform.STEAM:
+		print("Steam: not initialized.")
 		return
 	
 	var steam_interface_scene: PackedScene = load("res://scenes/integration/steam_interface.tscn")
@@ -244,6 +278,26 @@ func _init_steam():
 	add_child(steam_interface)
 	
 	var success = steam_interface.initialize()
+	if not success:
+		# TODO
+		pass
+
+#################################################################
+
+func is_google_play_supported() -> bool:
+	return game_platform == GamePlatform.MOBILE #and \
+		# GDExtensionManager.is_extension_loaded("res://addons/addons/GodotPlayGameServices/plugin.cfg")
+
+func _init_google_play():
+	if distribution_platform != DistributionPlatform.PLAY_STORE:
+		print("Google Play: not initialized.")
+		return
+	
+	var google_play_interface_scene: PackedScene = load("res://scenes/integration/google_play_interface.tscn")
+	google_play_interface = google_play_interface_scene.instantiate()
+	add_child(google_play_interface)
+	
+	var success = google_play_interface.initialize()
 	if not success:
 		# TODO
 		pass
