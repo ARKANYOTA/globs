@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=37 format=3 uid="uid://ba88x5t1rhers"]
+[gd_resource type="TileSet" load_steps=39 format=3 uid="uid://ba88x5t1rhers"]
 
 [ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="1_5ej0x"]
 [ext_resource type="Texture2D" uid="uid://cbb0cie1kixop" path="res://assets/images/spritesheet/black_frost_sprite_sheet2.png" id="2_7f04h"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dnowle2coej3" path="res://assets/images/map/spritesheet_map_city.png" id="5_3bvtu"]
 [ext_resource type="Texture2D" uid="uid://duvn6e71bfhly" path="res://assets/images/map/spritesheet_cheese_map.png" id="6_j81a8"]
 [ext_resource type="Texture2D" uid="uid://c8dgkwtim6xqr" path="res://assets/images/map/spritesheet_map_snow.png" id="7_1ec3o"]
+[ext_resource type="Texture2D" uid="uid://2cxkjs101gxa" path="res://assets/images/map/water_world1.png" id="8_blweo"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_dv50m"]
 tile_data = PackedInt32Array(0, 196610, 2, 65536, 327682, 4, 1, 327682, 4, 65537, 196610, 2)
@@ -2831,6 +2832,15 @@ texture = ExtResource("7_1ec3o")
 3:5/0 = 0
 3:4/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dv2sk"]
+texture = ExtResource("8_blweo")
+0:0/animation_columns = 4
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/0 = 0
+
 [resource]
 occlusion_layer_0/light_mask = 3
 physics_layer_0/collision_layer = 3
@@ -2880,6 +2890,7 @@ sources/3 = SubResource("TileSetAtlasSource_3am65")
 sources/4 = SubResource("TileSetAtlasSource_1bi6c")
 sources/5 = SubResource("TileSetAtlasSource_hd3j8")
 sources/6 = SubResource("TileSetAtlasSource_wsubf")
+sources/9 = SubResource("TileSetAtlasSource_dv2sk")
 pattern_0 = SubResource("TileMapPattern_dv50m")
 pattern_1 = SubResource("TileMapPattern_ufcim")
 pattern_2 = SubResource("TileMapPattern_bllat")
