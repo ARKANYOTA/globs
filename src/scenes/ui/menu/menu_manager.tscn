@@ -73,16 +73,21 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PauseMenu" parent="Menus" instance=ExtResource("3_751oy")]
+visible = false
 layout_mode = 1
 
 [node name="OptionsMenu" parent="Menus" instance=ExtResource("3_i6nef")]
+visible = false
 layout_mode = 1
 
 [node name="ResetProgressConfirmMenu" parent="Menus" instance=ExtResource("4_g7col")]
+visible = false
 layout_mode = 1
 
 [node name="SupportUsMenu" parent="Menus" instance=ExtResource("10_3njbm")]
+visible = false
 layout_mode = 1
 
 [node name="QuitConfirmMenu" parent="Menus" instance=ExtResource("11_p0u3w")]
+visible = false
 layout_mode = 1

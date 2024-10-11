@@ -16,7 +16,7 @@ warnings/check_invalid_track_paths=false
 
 config/name="Globs"
 config/description="Meet the size-changing Globs in this colorful puzzle game."
-config/version="1.1.00.241002"
+config/version="1.1.00.241011"
 run/main_scene="res://scenes/main.tscn"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.3", "GL Compatibility")
@@ -34,8 +34,14 @@ PauseMenuAutoload="*res://scripts/autoload/pause_menu_autoload.gd"
 BlockManagerAutoload="*res://scripts/autoload/block_manager_autoload.gd"
 Util="*res://scripts/autoload/util.gd"
 MusicManager="*res://scripts/autoload/music_manager.gd"
-DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
 AchievementData="*res://scripts/autoload/achievement_data.gd"
+GodotPlayGameServices="*res://addons/GodotPlayGameServices/autoloads/godot_play_game_services.gd"
+SignInClient="*res://addons/GodotPlayGameServices/autoloads/sign_in_client.gd"
+PlayersClient="*res://addons/GodotPlayGameServices/autoloads/players_client.gd"
+AchievementsClient="*res://addons/GodotPlayGameServices/autoloads/achievements_client.gd"
+LeaderboardsClient="*res://addons/GodotPlayGameServices/autoloads/leaderboards_client.gd"
+SnapshotsClient="*res://addons/GodotPlayGameServices/autoloads/snapshots_client.gd"
+EventsClient="*res://addons/GodotPlayGameServices/autoloads/events_client.gd"
 
 [debug]
 
@@ -61,7 +67,7 @@ movie_writer/movie_file="D:/docs/dev/gamedev/godot/gmtk2024/gmtk2024/output/movi
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg")
+enabled=PackedStringArray("res://addons/GodotPlayGameServices/plugin.cfg", "res://addons/discord-rpc-gd/plugin.cfg")
 
 [file_customization]
 

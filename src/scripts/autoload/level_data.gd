@@ -207,7 +207,6 @@ func _create_default_world_completion():
 
 
 func _load_world_completion():
-	print("Loading world world_completion...")
 	# This could be quite slow if we have a lot of levels, although this is good enough for now. 
 	# Just don't call it to often.
 
@@ -228,7 +227,6 @@ func _load_world_completion():
 				completion_item["is_complete"] = true
 				completed_worlds.append(world)
 	
-	print("Finished loading world world_completion.")
 	return completed_worlds
 
 func _grant_world_completion_achievements():
