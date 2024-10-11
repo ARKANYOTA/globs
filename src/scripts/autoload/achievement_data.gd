@@ -9,6 +9,7 @@ var moved_bird_level = {
 	"res://scenes/levels_zoomed/world_1/level_120.tscn": false,
 	"res://scenes/levels_zoomed/world_1/level_130.tscn": false,
 	"res://scenes/levels_zoomed/world_1/level_180.tscn": false,
+	"res://scenes/levels_zoomed/world_1/level_160_hard.tscn": false,
 }
 
 var config = ConfigFile.new()
