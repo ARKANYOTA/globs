@@ -104,35 +104,30 @@ button_style = 1
 is_linkable = false
 
 [node name="level422" parent="." index="12" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
-position = Vector2(97, 48)
+position = Vector2(102, 43)
 levels_unlock = [NodePath("../level425")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_422.tscn"
 
 [node name="level425" parent="." index="13" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
-position = Vector2(104, 24)
-levels_unlock = [NodePath("../level426")]
+position = Vector2(122, 30)
+levels_unlock = [NodePath("../level427")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_425.tscn"
 
-[node name="level426" parent="." index="14" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
-position = Vector2(120, 40)
-levels_unlock = [NodePath("../level427")]
-levelScene = "res://scenes/levels_zoomed/world_4/level_426.tscn"
-
-[node name="level427" parent="." index="15" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
-position = Vector2(144, 80)
+[node name="level427" parent="." index="14" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+position = Vector2(149, 80)
 levels_unlock = [NodePath("../level500")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_427.tscn"
 
-[node name="level500" parent="." index="16" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+[node name="level500" parent="." index="15" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
 position = Vector2(168, 72)
 levels_unlock = [NodePath("../level510"), NodePath("../level_secret1")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_500.tscn"
 
-[node name="level510" parent="." index="17" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
+[node name="level510" parent="." index="16" node_paths=PackedStringArray("levels_unlock") instance=ExtResource("2_ib75g")]
 position = Vector2(194, 48)
 levels_unlock = [NodePath("../level_win"), NodePath("../level_secret2")]
 levelScene = "res://scenes/levels_zoomed/world_4/level_510.tscn"
 
-[node name="level_win" parent="." index="18" instance=ExtResource("2_ib75g")]
+[node name="level_win" parent="." index="17" instance=ExtResource("2_ib75g")]
 position = Vector2(206, 94)
 levelScene = "res://scenes/levels_zoomed/you_win.tscn"
