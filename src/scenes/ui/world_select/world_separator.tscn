@@ -4,5 +4,4 @@
 
 [node name="WorldSeparator" type="Sprite2D"]
 z_index = 285
-position = Vector2(0, 75)
 texture = ExtResource("1_nssnv")

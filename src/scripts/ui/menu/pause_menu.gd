@@ -25,7 +25,6 @@ func _on_levels_button_pressed():
 	SceneTransitionAutoLoad.change_scene_with_transition(levels_scene_path, false)
 	menu_manager.exit_menu()
 
-
 func _on_quit_button_pressed():
 	menu_manager.set_menu("QuitConfirmMenu")
 

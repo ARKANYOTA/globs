@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://6eknulech0k1"
-path="res://.godot/imported/test_normal.ttf-b4318a1b180fbbd502c3a3bcc31c6bda.fontdata"
+uid="uid://bn4mu0ejnpbce"
+path="res://.godot/imported/noto_emoji.ttf-ee7b204f91929e6719c24fd8744f2cf8.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/test_normal.ttf"
-dest_files=["res://.godot/imported/test_normal.ttf-b4318a1b180fbbd502c3a3bcc31c6bda.fontdata"]
+source_file="res://assets/fonts/noto_emoji.ttf"
+dest_files=["res://.godot/imported/noto_emoji.ttf-ee7b204f91929e6719c24fd8744f2cf8.fontdata"]
 
 [params]
 
