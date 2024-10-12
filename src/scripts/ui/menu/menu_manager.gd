@@ -3,6 +3,7 @@ class_name MenuManager
 
 var menu_stack: Array = []
 var current_menu: Control = null
+var can_back := true
 
 var music_bus_name := "Music"
 @onready var _music_bus_index := AudioServer.get_bus_index(music_bus_name)
@@ -94,6 +95,8 @@ func set_menu_by_node(menu: Control, add_to_stack = true, animation_direction_ri
 
 
 func back():
+	if not can_back:
+		return
 	if back_cooldown_timer > 0:
 		return
 	back_cooldown_timer = back_cooldown

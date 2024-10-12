@@ -22,7 +22,7 @@ var levels = [
 	{ "name": "1-10", "world": "1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_180.tscn"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
-	{ "name": "1-⭐1", "world": "1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_160_hard.tscn"},
+	{ "name": "1-★1", "world": "1", "music": "city", "scene": "res://scenes/levels_zoomed/world_1/level_160_hard.tscn"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "2-1", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_210.tscn"},
@@ -36,7 +36,7 @@ var levels = [
 	{ "name": "2-9", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_270.tscn"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
-	{ "name": "2-⭐1", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_280.tscn"},
+	{ "name": "2-★1", "world": "2", "music": "cheese", "scene": "res://scenes/levels_zoomed/world_2/level_280.tscn"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "3-1", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_310.tscn"},
@@ -51,7 +51,7 @@ var levels = [
 	{ "name": "3-10", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_380.tscn"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
-	{ "name": "3-⭐1", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_380_b.tscn"},
+	{ "name": "3-★1", "world": "3", "music": "snow", "scene": "res://scenes/levels_zoomed/world_3/level_380_b.tscn"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
 	{ "name": "4-1", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_410.tscn"},
@@ -64,13 +64,13 @@ var levels = [
 	{ "name": "4-8", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_500.tscn"},
 	{ "name": "4-9", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_510.tscn"},
 
-	{ "name": "⭐", "world": "You Win", "music": "main_menu", "scene": "res://scenes/levels_zoomed/you_win.tscn", "achievement": "ACH_COMPLETE_MAIN_GAME"},
+	{ "name": "★", "world": "You Win", "music": "main_menu", "scene": "res://scenes/levels_zoomed/you_win.tscn", "achievement": "ACH_COMPLETE_MAIN_GAME"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
-	{ "name": "4-⭐1", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_430.tscn"},
+	{ "name": "4-★1", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_430.tscn"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 
-	{ "name": "4-⭐2", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_505_harder_harder.tscn"},
+	{ "name": "4-★2", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_505_harder_harder.tscn"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
 ]
 var scene_to_level_data: Dictionary = _create_scene_to_level_data(levels)
@@ -251,7 +251,9 @@ func _grant_world_completion_achievements():
 			if GameManager.achievement_manager.achievement_exists(ach_name):
 				GameManager.achievement_manager.grant(ach_name)
 
-	if completed_count == completed_total:
+	print(completed_count, " ", completed_total, " ", world_completion)
+	if completed_count == completed_total and (not GameManager.load_option("misc", "is_logo_golden", true)):
 		GameManager.save_option("misc", "is_logo_golden", true)
-		if GameManager.achievement_manager:
-			GameManager.achievement_manager.grant("ACH_COMPLETE_100_PERCENT")
+		PauseMenuAutoload.pause_menu.can_back = false
+		PauseMenuAutoload.pause_menu.set_menu("100PercentMenu")
+		

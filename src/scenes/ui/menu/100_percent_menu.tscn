@@ -1,43 +1,42 @@
 [gd_scene load_steps=6 format=3 uid="uid://bev82uclbm1pn"]
 
 [ext_resource type="PackedScene" uid="uid://dt7ylcp3vogvt" path="res://scenes/ui/menu/menu.tscn" id="1_vn6i5"]
-[ext_resource type="Script" path="res://scripts/ui/menu/reset_progress_confirm_menu.gd" id="2_3u2cy"]
+[ext_resource type="Script" path="res://scripts/ui/menu/100_percent_menu.gd" id="2_ndb60"]
 [ext_resource type="FontFile" uid="uid://btwjphxav6aet" path="res://assets/fonts/font_normal.ttf" id="3_p7ra4"]
-[ext_resource type="Texture2D" uid="uid://cfkp1d0d8bke1" path="res://assets/images/buff_glob.png" id="4_olo8c"]
+[ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui/ui_button.tscn" id="4_da2ct"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jomln"]
 line_spacing = 2.0
 font = ExtResource("3_p7ra4")
 font_size = 8
 
-[node name="SupportUsMenu" instance=ExtResource("1_vn6i5")]
-script = ExtResource("2_3u2cy")
+[node name="100PercentMenu" instance=ExtResource("1_vn6i5")]
+script = ExtResource("2_ndb60")
 
-[node name="Title2" type="Label" parent="." index="0"]
+[node name="Title2" type="Label" parent="MarginContainer/AspectRatioContainer" index="0"]
 layout_mode = 2
-offset_left = 23.0
-offset_top = 34.0
-offset_right = 220.0
-offset_bottom = 44.0
 size_flags_vertical = 0
 text = "Congratulations on finishing 100% of Globs!"
 label_settings = SubResource("LabelSettings_jomln")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="." index="1"]
+[node name="ContinueButton" parent="MarginContainer/AspectRatioContainer" index="1" instance=ExtResource("4_da2ct")]
 layout_mode = 2
-offset_left = 67.0
-offset_top = 48.0
-offset_right = 579.0
-offset_bottom = 427.0
-scale = Vector2(0.213489, 0.213489)
-texture = ExtResource("4_olo8c")
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Continue"
 
-[node name="Items" parent="MarginContainer/AspectRatioContainer" index="0"]
+[node name="Items" parent="MarginContainer/AspectRatioContainer" index="2"]
+visible = false
 theme_override_constants/separation = 8
 
 [node name="Title" parent="MarginContainer/AspectRatioContainer/Items" index="0"]
-text = ""
+text = "Congratulations on finishing 100% of Globs!"
 label_settings = SubResource("LabelSettings_jomln")
 uppercase = false
+
+[node name="BackButton" parent="MarginContainer" index="1"]
+visible = false
+
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
