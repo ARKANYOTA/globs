@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=39 format=3 uid="uid://ba88x5t1rhers"]
+[gd_resource type="TileSet" load_steps=41 format=3 uid="uid://ba88x5t1rhers"]
 
 [ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="1_5ej0x"]
 [ext_resource type="Texture2D" uid="uid://cbb0cie1kixop" path="res://assets/images/spritesheet/black_frost_sprite_sheet2.png" id="2_7f04h"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://duvn6e71bfhly" path="res://assets/images/map/spritesheet_cheese_map.png" id="6_j81a8"]
 [ext_resource type="Texture2D" uid="uid://c8dgkwtim6xqr" path="res://assets/images/map/spritesheet_map_snow.png" id="7_1ec3o"]
 [ext_resource type="Texture2D" uid="uid://2cxkjs101gxa" path="res://assets/images/map/water_world1.png" id="8_df5py"]
+[ext_resource type="Texture2D" uid="uid://bdf11rhdk6ssp" path="res://assets/images/map/water_world3.png" id="8_jyrvn"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_dv50m"]
 tile_data = PackedInt32Array(0, 196610, 2, 65536, 327682, 4, 1, 327682, 4, 65537, 196610, 2)
@@ -2832,6 +2833,15 @@ texture = ExtResource("7_1ec3o")
 3:5/0 = 0
 3:4/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v47ha"]
+texture = ExtResource("8_jyrvn")
+0:0/animation_columns = 4
+0:0/animation_frame_0/duration = 0.4
+0:0/animation_frame_1/duration = 0.4
+0:0/animation_frame_2/duration = 0.4
+0:0/animation_frame_3/duration = 0.4
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dv2sk"]
 texture = ExtResource("8_df5py")
 0:0/animation_columns = 4
@@ -2891,6 +2901,7 @@ sources/4 = SubResource("TileSetAtlasSource_1bi6c")
 sources/5 = SubResource("TileSetAtlasSource_hd3j8")
 sources/6 = SubResource("TileSetAtlasSource_wsubf")
 sources/9 = SubResource("TileSetAtlasSource_dv2sk")
+sources/7 = SubResource("TileSetAtlasSource_v47ha")
 pattern_0 = SubResource("TileMapPattern_dv50m")
 pattern_1 = SubResource("TileMapPattern_ufcim")
 pattern_2 = SubResource("TileMapPattern_bllat")
