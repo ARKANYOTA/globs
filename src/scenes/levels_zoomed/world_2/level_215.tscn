@@ -39,7 +39,7 @@ shadow_enabled = true
 position = Vector2(104, 40)
 
 [node name="Block6" parent="." index="9" instance=ExtResource("3_5di3m")]
-position = Vector2(72, 87)
+position = Vector2(72, 88)
 static_block = true
 right_extendable = true
 right_extend_range = Vector2i(8, 120)
