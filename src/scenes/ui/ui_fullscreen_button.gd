@@ -4,13 +4,11 @@ var icon_on = preload("res://assets/images/ui/fullscreen_on.png")
 var icon_off = preload("res://assets/images/ui/fullscreen_off.png")
 
 func _ready():
-	match OS.get_name():
-		"Android", "iOS":
-			$".".hide()
-		# "Web", "Windows", "macOS", "Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
-		_:
-			$".".show()
+	super()
+	visible = (GameManager.game_platform != GameManager.GamePlatform.MOBILE)
 
+
+func _process(_delta):
 	update_icon()
 
 func _on_pressed():
