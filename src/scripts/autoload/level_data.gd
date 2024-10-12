@@ -59,10 +59,9 @@ var levels = [
 	{ "name": "4-3", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_420.tscn"},
 	{ "name": "4-4", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_422.tscn"},
 	{ "name": "4-5", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_425.tscn"},
-	{ "name": "4-6", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_426.tscn"},
-	{ "name": "4-7", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_427.tscn"},
-	{ "name": "4-8", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_500.tscn"},
-	{ "name": "4-9", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_510.tscn"},
+	{ "name": "4-6", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_427.tscn"},
+	{ "name": "4-7", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_500.tscn"},
+	{ "name": "4-8", "world": "4", "music": "space", "scene": "res://scenes/levels_zoomed/world_4/level_510.tscn"},
 
 	{ "name": "★", "world": "You Win", "music": "main_menu", "scene": "res://scenes/levels_zoomed/you_win.tscn", "achievement": "ACH_COMPLETE_MAIN_GAME"},
 	{ "name": "world selector", "music": "main_menu", "scene": "res://scenes/ui/world_select/world_select.tscn"},
@@ -251,7 +250,6 @@ func _grant_world_completion_achievements():
 			if GameManager.achievement_manager.achievement_exists(ach_name):
 				GameManager.achievement_manager.grant(ach_name)
 
-	print(completed_count, " ", completed_total, " ", world_completion)
 	if completed_count == completed_total and (not GameManager.load_option("misc", "is_logo_golden", true)):
 		GameManager.save_option("misc", "is_logo_golden", true)
 		PauseMenuAutoload.pause_menu.can_back = false

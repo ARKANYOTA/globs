@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=4 uid="uid://b5oxxyuasijor"]
+[gd_scene load_steps=3 format=4 uid="uid://bvwdambt3176d"]
 
 [ext_resource type="PackedScene" uid="uid://brsha6qauan46" path="res://scenes/levels_zoomed/world_4/level.tscn" id="1_eunsg"]
 [ext_resource type="PackedScene" uid="uid://cyuc4qkh71ogh" path="res://scenes/block/bloc_skin/space/alien.tscn" id="2_qiu7h"]
@@ -14,9 +14,6 @@ tile_map_data = PackedByteArray("AADO//7/AwAFAAAAAADO////AwAFAAEAAADO/wAAAwAJAAA
 
 [node name="Goal" parent="." index="5"]
 position = Vector2(184, 88)
-
-[node name="Planet" parent="." index="6"]
-position = Vector2(80, 280)
 
 [node name="Block7" parent="." index="8" instance=ExtResource("2_qiu7h")]
 position = Vector2(56, 88)
@@ -36,7 +33,10 @@ up_extendable = true
 up_extend_range = Vector2i(8, 72)
 up_extend_block_range = Vector2i(0, 4)
 
-[node name="Block2" parent="." index="10"]
+[node name="Planet" parent="." index="11"]
+position = Vector2(80, 280)
+
+[node name="Block2" parent="." index="13"]
 position = Vector2(72, 88)
 is_gravity_enabled = true
 right_extendable = true

@@ -279,7 +279,7 @@ func _init_steam():
 #################################################################
 
 func is_google_play_supported() -> bool:
-	return game_platform == GamePlatform.MOBILE #and \
+	return game_platform == GamePlatform.MOBILE and OS.get_name() == "Android" #and \
 		# GDExtensionManager.is_extension_loaded("res://addons/addons/GodotPlayGameServices/plugin.cfg")
 
 func _init_google_play():
