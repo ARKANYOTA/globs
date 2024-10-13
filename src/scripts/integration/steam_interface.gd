@@ -1,5 +1,7 @@
 extends Node
 
+const STEAM_GRANT_OFFLINE_ACHIEVEMENT_DELAY = 5.0
+
 var is_enabled: bool = false
 var steam_initialized_correctly: bool = false
 
@@ -40,6 +42,8 @@ func _on_steam_stats_ready(game_id: int, result: int, user_id: int):
 	if GameManager.achievement_manager:
 		var remote_achievements = generate_achievement_dict(GameManager.achievement_manager.achievements)
 		GameManager.achievement_manager.load_achievements(remote_achievements)
+		await get_tree().create_timer(STEAM_GRANT_OFFLINE_ACHIEVEMENT_DELAY).timeout
+		GameManager.achievement_manager.grant_offline_achievements()
 
 
 func achievement_exists(value: String) -> bool:

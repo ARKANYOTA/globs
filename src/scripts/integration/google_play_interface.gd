@@ -91,6 +91,7 @@ func _on_achievements_loaded(remote_achievements: Array[AchievementsClient.Achie
 			}
 		
 	GameManager.achievement_manager.load_achievements(loaded_achievements)
+	GameManager.achievement_manager.grant_offline_achievements()
 
 
 # func _on_steam_stats_ready(game_id: int, result: int, user_id: int):

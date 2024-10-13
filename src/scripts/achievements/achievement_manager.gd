@@ -1,6 +1,8 @@
 extends Node
 class_name AchievementManager
 
+const ACHIEVEMENT_FILE_PATH = "user://achievements.cfg"
+var achievement_file = ConfigFile.new()
 var achievements: Dictionary = _parse_achievements({
 	"ACH_COMPLETE_WORLD_1":      _new_achievement("CgkIqufXsuUZEAIQAQ"),
 	"ACH_COMPLETE_WORLD_2":      _new_achievement("CgkIqufXsuUZEAIQAg"),
@@ -13,6 +15,7 @@ var achievements: Dictionary = _parse_achievements({
 	"ACH_WAKEY_WAKEY":           _new_achievement("CgkIqufXsuUZEAIQCQ"),
 	"ACH_SCARECROW":             _new_achievement("CgkIqufXsuUZEAIQCg"),
 })
+var granted_achievements = {}
 
 func _new_achievement(google_play_id: String = "", hidden: bool = false):
 	return {
@@ -32,6 +35,18 @@ func _parse_achievements(achievements_input: Dictionary):
 func _init():
 	pass
 
+func grant_offline_achievements():
+	print("Loading and granting offline achievements...")
+	
+	var err = achievement_file.load(ACHIEVEMENT_FILE_PATH)
+	if err != OK:
+		print("Error loading achievements file with error", Util.error_to_string(err), ".")
+	else:
+		var achievement_data = achievement_file.get_value("achievements", "achievements", [])
+		granted_achievements = achievement_data
+		for ach in achievement_data:
+			grant(ach)
+
 func achievement_exists(achievement_name: String) -> bool:
 	return achievements.has(achievement_name)
 
@@ -41,6 +56,7 @@ func get_achievement(achievement_name: String) -> Dictionary:
 	return achievements[achievement_name]
 
 func grant(achievement_name: String) -> bool:
+	_save_achievement(achievement_name)
 	return false
 
 func revoke(achievement_name: String) -> bool:
@@ -50,10 +66,9 @@ func revoke_all() -> void:
 	for ach in achievements:
 		revoke(ach)
 
-
 ## Loads the given dict into the `achievements` attribute. [br]
-## Format: [br]
-##   [code]achieved: bool[/code]
+## Format for every item in this Dictionary: [br]
+## - [code]achieved: bool[/code]
 func load_achievements(achievements_to_load: Dictionary):
 	var count = 0
 	var count_invalid = 0
@@ -69,3 +84,8 @@ func load_achievements(achievements_to_load: Dictionary):
 
 	print("Finished loading %s achievements (%s invalid)" % [count, count_invalid])
 	
+
+func _save_achievement(achievement_name: String):
+	granted_achievements[achievement_name] = true
+	achievement_file.set_value("achievements", "achievements", granted_achievements)
+	achievement_file.save(ACHIEVEMENT_FILE_PATH)

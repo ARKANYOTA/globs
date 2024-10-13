@@ -8,6 +8,9 @@ var moved_bird_level = {
 	"res://scenes/levels_zoomed/world_1/level_110.tscn": false, 
 	"res://scenes/levels_zoomed/world_1/level_120.tscn": false,
 	"res://scenes/levels_zoomed/world_1/level_130.tscn": false,
+	"res://scenes/levels_zoomed/world_1/level_135.tscn": false,
+	"res://scenes/levels_zoomed/world_1/level_150.tscn": false,
+	"res://scenes/levels_zoomed/world_1/level_170.tscn": false,
 	"res://scenes/levels_zoomed/world_1/level_180.tscn": false,
 	"res://scenes/levels_zoomed/world_1/level_160_hard.tscn": false,
 }

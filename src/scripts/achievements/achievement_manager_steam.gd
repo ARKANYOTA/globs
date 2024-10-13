@@ -1,10 +1,13 @@
 extends AchievementManager
+class_name AchievementManagerSteam
 
 func _ready():
 	pass
 
 
 func grant(achievement_name: String) -> bool:
+	super(achievement_name)
+
 	if not GameManager.steam_interface:
 		return false
 	if not achievement_exists(achievement_name):

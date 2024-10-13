@@ -18,6 +18,8 @@ func _generate_google_play_id_to_achievement():
 
 
 func grant(achievement_name: String) -> bool:
+	super(achievement_name)
+	
 	print("Granting ", achievement_name, "... (pre-conditions)")
 	if not GameManager.google_play_interface:
 		return false

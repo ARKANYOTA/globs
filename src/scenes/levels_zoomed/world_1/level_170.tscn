@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://bs74ceo57m7s5"]
+[gd_scene load_steps=5 format=4 uid="uid://bs74ceo57m7s5"]
 
 [ext_resource type="PackedScene" uid="uid://bt58nkodr7coo" path="res://scenes/levels_zoomed/world_1/level_100_template.tscn" id="1_jjwfo"]
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_s0cy7"]
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="3_m26lj"]
+[ext_resource type="PackedScene" uid="uid://cuhl4onv4df40" path="res://scenes/props/bird.tscn" id="4_0cr1j"]
 
 [node name="Level" instance=ExtResource("1_jjwfo")]
 
@@ -49,3 +50,9 @@ position = Vector2(72, 88)
 right_extendable = true
 right_extend_range = Vector2i(8, 104)
 right_extend_block_range = Vector2i(0, 6)
+
+[node name="Bird" parent="." index="13" instance=ExtResource("4_0cr1j")]
+position = Vector2(155, 8)
+
+[node name="Bird2" parent="." index="14" instance=ExtResource("4_0cr1j")]
+position = Vector2(73, 56)

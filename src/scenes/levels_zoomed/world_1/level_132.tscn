@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://c6jxbq7aal4o8"]
+[gd_scene load_steps=6 format=4 uid="uid://wgltth0ovyo3"]
 
 [ext_resource type="PackedScene" uid="uid://bt58nkodr7coo" path="res://scenes/levels_zoomed/world_1/level_100_template.tscn" id="1_1mmwq"]
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_0x2ew"]
@@ -20,7 +20,7 @@ offset_top = 104.0
 offset_right = 240.0
 offset_bottom = 128.0
 text = "💡 The length of the arrow represents 
-how far the Glob can extend"
+how far the Glob can extend in this direction"
 label_settings = SubResource("LabelSettings_qh1rj")
 horizontal_alignment = 1
 

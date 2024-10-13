@@ -7,7 +7,7 @@ const discord_rpc_world_keys: Dictionary = {
 	"2": {"name": "Cheese Den",    "large_image": "large_cheese"},
 	"3": {"name": "Chilly Tundra", "large_image": "large_snow"},
 	"4": {"name": "Space Colony",  "large_image": "large_space"},
-	"You Win": {"name": "You Win",  "large_image": "large_you_win"},
+	"you_win": {"name": "Final Credits", "large_image": "large_you_win"},
 }
 
 var initialized = false
