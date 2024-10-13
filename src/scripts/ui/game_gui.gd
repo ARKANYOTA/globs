@@ -59,9 +59,9 @@ func _process(delta):
 			disable_time_undo -= delta
 
 func _input(event):
+	if event.is_action_pressed("toggle_gui"):
+		set_shown(not is_shown)
 	pass
-	# if event.is_action_pressed("toggle_gui"):
-	# 	set_shown(not is_shown)
 
 func set_shown(shown: bool):
 	is_shown = shown

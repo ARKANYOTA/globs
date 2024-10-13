@@ -148,13 +148,13 @@ func _input(event):
 	if event.is_action_pressed("toggle_fullscreen"):
 		toggle_fullscreen()
 
-	if event.is_action_pressed("removeme_achievement_test") and achievement_manager:
-		print("about to grant ACH_TEST_01")
-		achievement_manager.grant("ACH_TEST_01")
+	# if event.is_action_pressed("removeme_achievement_test") and achievement_manager:
+	# 	print("about to grant ACH_TEST_01")
+	# 	achievement_manager.grant("ACH_TEST_01")
 	
-	if event.is_action_pressed("removeme_achievement_revokeall") and achievement_manager:
-		print("about to revoke all achievements")
-		achievement_manager.revoke_all()
+	# if event.is_action_pressed("removeme_achievement_revokeall") and achievement_manager:
+	# 	print("about to revoke all achievements")
+	# 	achievement_manager.revoke_all()
 	
 	if event.is_action_pressed("removeme_winlevel"):
 		print("about to win level")
