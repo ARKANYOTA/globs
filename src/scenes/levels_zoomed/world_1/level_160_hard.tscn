@@ -43,14 +43,14 @@ right_extendable = true
 right_extend_range = Vector2i(8, 56)
 right_extend_block_range = Vector2i(0, 3)
 
-[node name="Bird2" parent="." index="12" instance=ExtResource("3_kwype")]
+[node name="Bird2" parent="." index="12" groups=["birds"] instance=ExtResource("3_kwype")]
 position = Vector2(112, 24)
 
-[node name="Bird3" parent="." index="13" instance=ExtResource("3_kwype")]
+[node name="Bird3" parent="." index="13" groups=["birds"] instance=ExtResource("3_kwype")]
 position = Vector2(64, 8)
 
-[node name="Bird5" parent="." index="14" instance=ExtResource("3_kwype")]
+[node name="Bird5" parent="." index="14" groups=["birds"] instance=ExtResource("3_kwype")]
 position = Vector2(216, 72)
 
-[node name="Bird" parent="." index="15" instance=ExtResource("3_kwype")]
+[node name="Bird" parent="." index="15" groups=["birds"] instance=ExtResource("3_kwype")]
 position = Vector2(128, 24)
