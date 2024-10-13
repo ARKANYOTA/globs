@@ -14,6 +14,11 @@ var is_timing = false
 var left_button: Button
 var right_button: Button
 
+var icon_on = "res://assets/images/ui/world_index_dot_on.png"
+var icon_off = "res://assets/images/ui/world_index_dot.png"
+var texture_on : Texture2D = load(icon_on)
+var texture_off : Texture2D = load(icon_off)
+
 func _ready():
 	var dot_container = world_select_gui.get_node("MarginContainer/CenterContainer/DotContainer")
 	if dot_container != null:
@@ -149,14 +154,11 @@ func add_dot() -> void:
 		pass
 
 func update_dot() -> void:
-	var icon_on = "res://assets/images/ui/world_index_dot_on.png"
-	var icon_off = "res://assets/images/ui/world_index_dot.png"
-	var texture_on : Texture2D = load(icon_on)
-	var texture_off : Texture2D = load(icon_off)
 	for i in range(0, world.size()):
 		var dot : Button = dots[i]
-		if i == world_index:
-			dot.icon = texture_on
-		else:
-			dot.icon = texture_off
-		pass
+		if dot and is_instance_valid(dot):
+			if i == world_index:
+				dot.icon = texture_on
+			else:
+				dot.icon = texture_off
+			pass
