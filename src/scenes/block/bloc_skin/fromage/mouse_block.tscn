@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="1_xdr48"]
 [ext_resource type="Texture2D" uid="uid://baupic3tgrmb3" path="res://assets/images/spritesheet/fromage_sprite_sheet.png" id="2_t4ipm"]
-[ext_resource type="AudioStream" uid="uid://ciqxtt8okcwv2" path="res://assets/sounds/player/baby_squeek.mp3" id="3_wd5an"]
+[ext_resource type="AudioStream" uid="uid://dpi2086mah5hx" path="res://assets/sounds/block/mouse_squeak.wav" id="3_55h48"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nbgqd"]
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tux8p"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jch77"]
 size = Vector2(40, 24)
 
 [node name="Block2" instance=ExtResource("1_xdr48")]
@@ -28,12 +28,13 @@ axis_stretch_horizontal = 0
 axis_stretch_vertical = 2
 
 [node name="CollisionShape" parent="." index="3"]
-shape = SubResource("RectangleShape2D_tux8p")
+shape = SubResource("RectangleShape2D_jch77")
 
 [node name="ClickAudio" parent="Audio" index="0"]
 volume_db = -15.0
 pitch_scale = 0.7
 
 [node name="WakeUpAudio" parent="Audio" index="2"]
-stream = ExtResource("3_wd5an")
-volume_db = -10.35
+stream = ExtResource("3_55h48")
+volume_db = 5.0
+pitch_scale = 1.1
