@@ -37,8 +37,9 @@ func _ready():
 	GameManager.on_win_animation.connect(_on_win_animation)
 
 	achievements_button.visible = (GameManager.distribution_platform == GameManager.DistributionPlatform.PLAY_STORE)
-	
-func _process(_delta):
+
+var disable_time_undo := 0.05
+func _process(delta):
 	var scene = get_tree().get_current_scene()
 	if scene == null:
 		return
@@ -46,7 +47,16 @@ func _process(_delta):
 	if (GameManager.is_on_win_animation) or (not scene is Level) or (scene is Level and len(scene.actions) == 0):
 		undo_button.disabled = true
 	else: 
-		undo_button.disabled = false
+		for elt in scene.get_children():
+			if elt is Block:
+				if elt.is_moving:
+					undo_button.disabled = true
+					disable_time_undo = 0.05
+					return 
+		if disable_time_undo < 0.0:
+			undo_button.disabled = false
+		else:
+			disable_time_undo -= delta
 
 func _input(event):
 	if event.is_action_pressed("toggle_gui"):
@@ -122,6 +132,10 @@ func _on_undo_button_pressed():
 	if scene == null: 
 		return
 	if scene is Level:
+		for elt in scene.get_children():
+			if elt is Block:
+				if elt.is_moving:
+					return 
 		scene.undo_action()
 
 
