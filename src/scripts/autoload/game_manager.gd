@@ -95,6 +95,9 @@ func _ready():
 	#Input.set_custom_mouse_cursor(cursor_click, Input.CURSOR_IBEAM)
 	Input.set_custom_mouse_cursor(cursor)
 
+	if not load_option("misc", "is_logo_golden", false):
+		save_option("misc", "is_logo_golden", false)
+
 	_init_discord_rpc()
 	_init_steam()
 	_init_google_play()
@@ -152,13 +155,13 @@ func _input(event):
 	# 	print("about to grant ACH_TEST_01")
 	# 	achievement_manager.grant("ACH_TEST_01")
 	
-	# if event.is_action_pressed("removeme_achievement_revokeall") and achievement_manager:
-	# 	print("about to revoke all achievements")
-	# 	achievement_manager.revoke_all()
+	if event.is_action_pressed("removeme_achievement_revokeall") and achievement_manager:
+		print("about to revoke all achievements")
+		achievement_manager.revoke_all()
 	
-	# if event.is_action_pressed("removeme_winlevel"):
-	# 	print("about to win level")
-	# 	win()
+	if event.is_action_pressed("removeme_winlevel"):
+		print("about to win level")
+		win()
 
 
 func win():
