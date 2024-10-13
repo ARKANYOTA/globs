@@ -159,7 +159,7 @@ particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5w1om"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5kos"]
 size = Vector2(0, 0)
 
 [sub_resource type="Animation" id="Animation_aa8jn"]
@@ -314,7 +314,7 @@ tracks/4/keys = {
 }
 tracks/5/type = "value"
 tracks/5/imported = false
-tracks/5/enabled = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("FlyingSFX:playing")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
@@ -423,7 +423,7 @@ anim_speed_min = 0.5
 anim_speed_max = 1.5
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_5w1om")
+shape = SubResource("RectangleShape2D_f5kos")
 debug_color = Color(0.493207, 0.429172, 1, 0.376471)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -439,6 +439,7 @@ wait_time = 2.0
 [node name="FlyingSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_y11qb")
 volume_db = -3.0
+pitch_scale = 1.5
 
 [node name="CollectSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_u056c")

@@ -2,6 +2,9 @@ extends Node
 
 signal on_win_animation
 
+var credit_names = ["ArkanYota", "Notgoyome", "Strochnis", "Theobosse", "Yolwoocle"]
+const credits_template = "A game by {0}, {1}, {2}, {3}, and {4}"
+
 enum GamePlatform {
 	UNDEFINED,
 
@@ -221,6 +224,12 @@ func open_achievements_menu() -> bool:
 		_:
 			return false
 
+
+func get_randomized_credits() -> String:
+	credit_names.shuffle()
+	return credits_template.format(credit_names)
+
+
 ## Saves an option and returns whether it was saved successfully.  
 ## NOTE: this could become quite slow if the options file are updated very frequently or is very big 
 func save_option(section: String, key: String, value: Variant) -> bool:
@@ -279,7 +288,8 @@ func _init_steam():
 #################################################################
 
 func is_google_play_supported() -> bool:
-	return game_platform == GamePlatform.MOBILE and OS.get_name() == "Android" #and \
+	return game_platform == GamePlatform.MOBILE and OS.get_name() == "Android" 
+		#and \ # << TODO
 		# GDExtensionManager.is_extension_loaded("res://addons/addons/GodotPlayGameServices/plugin.cfg")
 
 func _init_google_play():

@@ -17,7 +17,6 @@ var credits = [
 		_get_credit_text("Special Thanks", "Artichaut", "Léo Lanteri Thauvin"),
 		_get_credit_text("Special Thanks", "Alexis"),
 		_get_credit_text("Special Thanks", "Kenney"),
-		_get_credit_text("Special Thanks", "Deep-fold"),
 		_get_credit_text("Special Thanks", "Mark Brown"),
 
 		_get_credit_text("Made using", "Godot Engine"),

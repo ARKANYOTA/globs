@@ -3,8 +3,6 @@ class_name Main
 
 @onready var game = $Game
 
-var credit_names = ["ArkanYota", "Notgoyome", "Strochnis", "Theobosse", "Yolwoocle"]
-
 var paused = false
 var clicked = false
 
@@ -31,13 +29,14 @@ func _set_version_text():
 	else:
 		%VersionText.text = ""
 
+
+
 func _randomize_credits():
 	var credits: Label = %CreditsText
 	if not credits:
 		return
 
-	credit_names.shuffle()
-	credits.text = credits.text.format(credit_names)
+	credits.text = GameManager.get_randomized_credits()
 
 # Quitting 
 func quit():

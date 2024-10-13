@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://brdyt7pbwwdpq"]
+
+[ext_resource type="PackedScene" uid="uid://dt7ylcp3vogvt" path="res://scenes/ui/menu/menu.tscn" id="1_wwlgb"]
+[ext_resource type="Script" path="res://scripts/ui/menu/acknowledgements_menu.gd" id="2_oynd4"]
+[ext_resource type="FontFile" uid="uid://btwjphxav6aet" path="res://assets/fonts/font_normal.ttf" id="3_o03hf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jomln"]
+line_spacing = 2.0
+font = ExtResource("3_o03hf")
+font_size = 6
+
+[node name="AcknowledgementsMenu" instance=ExtResource("1_wwlgb")]
+script = ExtResource("2_oynd4")
+
+[node name="Items2" type="VBoxContainer" parent="MarginContainer" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/Items2" index="0"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Credits"
+label_settings = SubResource("LabelSettings_jomln")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AcknowledgementsDescription" type="RichTextLabel" parent="MarginContainer/Items2" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_o03hf")
+bbcode_enabled = true
+text = "[center][font_size=6][u]Code:[/u] ArkanYota, Theobosse
+[u]Code, Art:[/u] NotGoyome, Yolwoocle
+[u]Music:[/u] Strochnis
+[u]Special thanks:[/u] Artichaut, Alexis, Mark Brown
+
+[u]Assets and tools:[/u] Kenney, Deep-fold, freesound, ChipTone
+[u]Libraries:[/u] DiscordRPCGodot by vaporvee, GodotPlayGameServices by Iakobs, GodotSteam by GodotSteam
+Made using Godot game engine
+Originally made for the GMTK Game Jam 2024
+[/font_size][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Items" parent="MarginContainer/AspectRatioContainer" index="0"]
+visible = false
+theme_override_constants/separation = 8
+
+[node name="Title" parent="MarginContainer/AspectRatioContainer/Items" index="0"]
+text = "Credits"
+label_settings = SubResource("LabelSettings_jomln")
+uppercase = false

@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1nuic15kbg4j"]
+
+[ext_resource type="PackedScene" uid="uid://dt7ylcp3vogvt" path="res://scenes/ui/menu/menu.tscn" id="1_v88s1"]
+[ext_resource type="Script" path="res://scripts/ui/menu/about_menu.gd" id="2_ixy4w"]
+[ext_resource type="FontFile" uid="uid://btwjphxav6aet" path="res://assets/fonts/font_normal.ttf" id="3_i173b"]
+[ext_resource type="PackedScene" uid="uid://njqkv5i1atvi" path="res://scenes/ui/ui_icon_button.tscn" id="4_d7xoe"]
+[ext_resource type="Texture2D" uid="uid://d1dga283oskd8" path="res://assets/images/ui/heart.png" id="5_ift4v"]
+[ext_resource type="Texture2D" uid="uid://b72q5n63usolb" path="res://assets/images/ui/screen.png" id="5_pjg3h"]
+[ext_resource type="Texture2D" uid="uid://dbaw5vabvlen2" path="res://assets/images/ui/twitter.png" id="6_ibavu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jomln"]
+line_spacing = 2.0
+font = ExtResource("3_i173b")
+font_size = 6
+
+[node name="AboutMenu" instance=ExtResource("1_v88s1")]
+script = ExtResource("2_ixy4w")
+
+[node name="Items" parent="MarginContainer/AspectRatioContainer" index="0"]
+theme_override_constants/separation = 8
+
+[node name="Title" parent="MarginContainer/AspectRatioContainer/Items" index="0"]
+text = "About"
+label_settings = SubResource("LabelSettings_jomln")
+uppercase = false
+
+[node name="Description" type="RichTextLabel" parent="MarginContainer/AspectRatioContainer/Items" index="1"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/normal_font = ExtResource("3_i173b")
+bbcode_enabled = true
+text = "[center][font_size=6]Ninesliced is a team of 5 students from France wishing to create
+games that bring people joy. We hope that you will enjoy our game.
+[/font_size][/center]"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="0"]
+layout_mode = 2
+
+[node name="WebsiteButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer" index="0" instance=ExtResource("4_d7xoe")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Website"
+icon = ExtResource("5_pjg3h")
+
+[node name="TwitterButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer" index="1" instance=ExtResource("4_d7xoe")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Twitter"
+icon = ExtResource("6_ibavu")
+
+[node name="AcknowledgementsButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer" index="2" instance=ExtResource("4_d7xoe")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Credits"
+icon = ExtResource("5_ift4v")
+
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer/WebsiteButton" to="." method="_on_website_button_pressed"]
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer/TwitterButton" to="." method="_on_twitter_button_pressed"]
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer/AcknowledgementsButton" to="." method="_on_acknowledgements_button_pressed"]

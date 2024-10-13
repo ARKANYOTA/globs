@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://8lw7bps1tiip"]
+[gd_scene load_steps=17 format=3 uid="uid://8lw7bps1tiip"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu/menu_manager.gd" id="1_mddol"]
 [ext_resource type="Shader" path="res://shaders/pause_menu_background.gdshader" id="2_ikevx"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://bw75q0mw8jp8b" path="res://scenes/ui/menu/support_us_menu.tscn" id="10_3njbm"]
 [ext_resource type="PackedScene" uid="uid://dq440io8erxg" path="res://scenes/ui/menu/quit_confirm_menu.tscn" id="11_p0u3w"]
 [ext_resource type="PackedScene" uid="uid://bev82uclbm1pn" path="res://scenes/ui/menu/100_percent_menu.tscn" id="12_iu1pq"]
+[ext_resource type="PackedScene" uid="uid://brdyt7pbwwdpq" path="res://scenes/ui/menu/acknowledgements_menu.tscn" id="13_sts7l"]
+[ext_resource type="PackedScene" uid="uid://d1nuic15kbg4j" path="res://scenes/ui/menu/about_menu.tscn" id="14_6i0uu"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bms1h"]
 random_pitch = 1.1
@@ -94,5 +96,13 @@ visible = false
 layout_mode = 1
 
 [node name="100PercentMenu" parent="Menus" instance=ExtResource("12_iu1pq")]
+visible = false
+layout_mode = 1
+
+[node name="AcknowledgementsMenu" parent="Menus" instance=ExtResource("13_sts7l")]
+visible = false
+layout_mode = 1
+
+[node name="AboutMenu" parent="Menus" instance=ExtResource("14_6i0uu")]
 visible = false
 layout_mode = 1

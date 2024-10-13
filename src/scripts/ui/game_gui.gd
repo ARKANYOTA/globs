@@ -123,3 +123,8 @@ func _on_undo_button_pressed():
 		return
 	if scene is Level:
 		scene.undo_action()
+
+
+func _on_info_button_pressed():
+	PauseMenuAutoload.pause_menu.set_menu("AboutMenu")
+	

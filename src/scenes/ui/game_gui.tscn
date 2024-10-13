@@ -141,6 +141,12 @@ size_flags_vertical = 0
 mouse_filter = 0
 alignment = 2
 
+[node name="InfoButton" parent="Control/LevelSelectSideActions" instance=ExtResource("2_jx3wm")]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+icon = ExtResource("9_yd4cv")
+
 [node name="AchievementsButton" parent="Control/LevelSelectSideActions" instance=ExtResource("2_jx3wm")]
 unique_name_in_owner = true
 layout_mode = 2
@@ -162,4 +168,5 @@ label_settings = SubResource("LabelSettings_wd06l")
 [connection signal="pressed" from="Control/LevelActions/UndoButton" to="." method="_on_undo_button_pressed"]
 [connection signal="pressed" from="Control/LevelActions/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="Control/LevelActions/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Control/LevelSelectSideActions/InfoButton" to="." method="_on_info_button_pressed"]
 [connection signal="pressed" from="Control/LevelSelectSideActions/AchievementsButton" to="." method="_on_achievements_button_pressed"]

@@ -14,6 +14,7 @@ font_size = 8
 script = ExtResource("2_ndb60")
 
 [node name="Title2" type="Label" parent="MarginContainer/AspectRatioContainer" index="0"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 text = "Congratulations on finishing 100% of Globs!"
@@ -21,22 +22,23 @@ label_settings = SubResource("LabelSettings_jomln")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContinueButton" parent="MarginContainer/AspectRatioContainer" index="1" instance=ExtResource("4_da2ct")]
+[node name="Items" parent="MarginContainer/AspectRatioContainer" index="1"]
+theme_override_constants/separation = 8
+
+[node name="Title" parent="MarginContainer/AspectRatioContainer/Items" index="0"]
+text = "Congratulations on finishing 100% of Globs!
+
+Thank you for playing our game!"
+label_settings = SubResource("LabelSettings_jomln")
+uppercase = false
+
+[node name="ContinueButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="0" instance=ExtResource("4_da2ct")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Continue"
 
-[node name="Items" parent="MarginContainer/AspectRatioContainer" index="2"]
-visible = false
-theme_override_constants/separation = 8
-
-[node name="Title" parent="MarginContainer/AspectRatioContainer/Items" index="0"]
-text = "Congratulations on finishing 100% of Globs!"
-label_settings = SubResource("LabelSettings_jomln")
-uppercase = false
-
 [node name="BackButton" parent="MarginContainer" index="1"]
 visible = false
 
-[connection signal="pressed" from="MarginContainer/AspectRatioContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/ContinueButton" to="." method="_on_continue_button_pressed"]
