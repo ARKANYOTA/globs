@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://cihuxl0od3y8d"]
+[gd_scene load_steps=6 format=4 uid="uid://cihuxl0od3y8d"]
 
 [ext_resource type="PackedScene" uid="uid://dajgqkks6gfke" path="res://scenes/levels/level_template.tscn" id="1_wwxyn"]
+[ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_as8ay"]
 [ext_resource type="Texture2D" uid="uid://bbtfnnfhieyks" path="res://assets/images/backgrounds/snow_background.png" id="2_i2q6b"]
 [ext_resource type="PackedScene" uid="uid://y3nsqm2pc0s7" path="res://scenes/ui/particle/snow_particle.tscn" id="3_kknnb"]
 [ext_resource type="PackedScene" uid="uid://bdttvr6awstj3" path="res://scenes/block/bloc_skin/fromage/bear_block.tscn" id="4_vvbfm"]
@@ -13,21 +14,25 @@ modulate = Color(0.689906, 0.722983, 0.819723, 1)
 [node name="Block" parent="." index="3"]
 tile_map_data = PackedByteArray("AAAAAAgAAQAFAAAAAAABAAgAAQAGAAAAAAACAAgAAQAGAAAAAAADAAgAAQAGAAAAAAAEAAgAAQAGAAAAAAAFAAgAAQAGAAAAAAAGAAgAAQAGAAAAAAAHAAgAAQAGAAAAAAAIAAgAAQAGAAAAAAAJAAgAAQAGAAAAAAAKAAgAAQAGAAAAAAALAAgAAQAGAAAAAAAMAAgAAQAGAAAAAAANAAgAAQAGAAAAAAAOAAgAAQAHAAAAAAAAAAkAAQAFAAIAAAABAAkAAQAGAAIAAAACAAkAAQAGAAIAAAADAAkAAQAGAAIAAAAEAAkAAQAGAAIAAAAGAAkAAQAGAAIAAAAFAAkAAQAGAAIAAAAHAAkAAQAGAAIAAAAJAAkAAQAGAAIAAAAIAAkAAQAGAAIAAAAKAAkAAQAGAAIAAAALAAkAAQAGAAIAAAAMAAkAAQAGAAIAAAANAAkAAQAGAAIAAAAOAAkAAQAHAAIAAAA=")
 
-[node name="Goal" parent="." index="4"]
+[node name="Block_no_coll" type="TileMapLayer" parent="." index="4"]
+tile_set = ExtResource("2_as8ay")
+collision_enabled = false
+
+[node name="Goal" parent="." index="5"]
 style = "blue"
 
-[node name="SnowParticle" parent="." index="5" instance=ExtResource("3_kknnb")]
+[node name="SnowParticle" parent="." index="6" instance=ExtResource("3_kknnb")]
 z_index = 20
 position = Vector2(-215, 64)
 amount = 160
 lifetime = 6.0
 preprocess = 6.0
 
-[node name="Block5" parent="." index="6" instance=ExtResource("4_vvbfm")]
+[node name="Block5" parent="." index="7" instance=ExtResource("4_vvbfm")]
 position = Vector2(40, 120)
 is_main_character = true
 
-[node name="Parallax2D" type="Parallax2D" parent="." index="7"]
+[node name="Parallax2D" type="Parallax2D" parent="." index="8"]
 repeat_size = Vector2(320, 0)
 repeat_times = 5
 metadata/_edit_lock_ = true
