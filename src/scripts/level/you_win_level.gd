@@ -22,7 +22,7 @@ var credits = [
 		_get_credit_text("Made using", "Godot Engine"),
 
 		_get_credit_text("", "Thank you for playing!", ""),
-		_get_credit_text("", "", "(c) 2024 All rights reseved."),
+		# _get_credit_text("", "", "(c) 2024 All rights reseved."),
 	]
 
 var current_text_i = 0
