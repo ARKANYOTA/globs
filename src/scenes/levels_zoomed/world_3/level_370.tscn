@@ -29,13 +29,13 @@ gravity = Vector2(5, 30)
 initial_velocity_max = 0.0
 color_ramp = SubResource("Gradient_mmg3h")
 
-[node name="Goal" parent="." index="4"]
+[node name="Goal" parent="." index="5"]
 position = Vector2(136, 104)
 
-[node name="SnowParticle" parent="." index="5"]
+[node name="SnowParticle" parent="." index="6"]
 visible = false
 
-[node name="Block5" parent="." index="6"]
+[node name="Block5" parent="." index="7"]
 visible = false
 position = Vector2(184, -24)
 is_gravity_enabled = false
