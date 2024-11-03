@@ -42,7 +42,6 @@ is_main_character = false
 is_gravity_enabled = true
 default_gravity_axis = 2
 max_pushs = 12
-show_eyes = false
 up_extend_range = Vector2i(8, 8)
 up_extend_block_range = Vector2i(0, 0)
 left_extendable = true

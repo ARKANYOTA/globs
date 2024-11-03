@@ -49,7 +49,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o63b0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3ju1"]
 resource_local_to_scene = true
 size = Vector2(8, 8)
 
@@ -457,7 +457,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_o63b0")
+shape = SubResource("RectangleShape2D_g3ju1")
 debug_color = Color(0, 0.509804, 0.6, 0.0509804)
 
 [node name="ClickArea" parent="." instance=ExtResource("3_h0fp2")]

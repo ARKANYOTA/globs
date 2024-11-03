@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b4nepjhqhaa6"]
+[gd_scene load_steps=19 format=4 uid="uid://b4nepjhqhaa6"]
 
 [ext_resource type="PackedScene" uid="uid://c713awkloisp6" path="res://scenes/ui/world_select/world/world.tscn" id="1_8t5qd"]
 [ext_resource type="PackedScene" uid="uid://bu78mo56i6fso" path="res://scenes/ui/world_select/level.tscn" id="2_d7p2c"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cje1nri02bvrd" path="res://assets/images/map/sleeping_bear_small.png" id="4_ji7is"]
 [ext_resource type="Script" path="res://scripts/sprite/autoplay_animated_sprite.gd" id="5_a80f5"]
 [ext_resource type="Texture2D" uid="uid://d1sgc6ft8ejni" path="res://assets/images/particle/z.png" id="6_4y3ar"]
+[ext_resource type="Script" path="res://scenes/ui/world_select/world/world_3_bear.gd" id="7_36kvt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_etwqc"]
 atlas = ExtResource("3_hfo64")
@@ -127,7 +128,7 @@ position = Vector2(89, 31)
 sprite_frames = SubResource("SpriteFrames_dd6yq")
 animation = &"big"
 frame_progress = 0.313835
-script = ExtResource("5_a80f5")
+script = ExtResource("7_36kvt")
 
 [node name="SleepParticles" type="CPUParticles2D" parent="DecoElements/SleepingBearSmall" index="0"]
 amount = 2
