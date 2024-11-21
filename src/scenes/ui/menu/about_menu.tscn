@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1nuic15kbg4j"]
+[gd_scene load_steps=10 format=3 uid="uid://d1nuic15kbg4j"]
 
 [ext_resource type="PackedScene" uid="uid://dt7ylcp3vogvt" path="res://scenes/ui/menu/menu.tscn" id="1_v88s1"]
 [ext_resource type="Script" path="res://scripts/ui/menu/about_menu.gd" id="2_ixy4w"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d1dga283oskd8" path="res://assets/images/ui/heart.png" id="5_ift4v"]
 [ext_resource type="Texture2D" uid="uid://b72q5n63usolb" path="res://assets/images/ui/screen.png" id="5_pjg3h"]
 [ext_resource type="Texture2D" uid="uid://dbaw5vabvlen2" path="res://assets/images/ui/twitter.png" id="6_ibavu"]
+[ext_resource type="Texture2D" uid="uid://cucbpeisc3e0r" path="res://assets/images/ui/bluesky.png" id="7_y8o8j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jomln"]
 line_spacing = 2.0
@@ -49,7 +50,13 @@ theme_override_font_sizes/font_size = 6
 text = "Twitter"
 icon = ExtResource("6_ibavu")
 
-[node name="AcknowledgementsButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer" index="2" instance=ExtResource("4_d7xoe")]
+[node name="BlueskyButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer" index="2" instance=ExtResource("4_d7xoe")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Bluesky"
+icon = ExtResource("7_y8o8j")
+
+[node name="AcknowledgementsButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer" index="3" instance=ExtResource("4_d7xoe")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 6
 text = "Credits"
@@ -57,4 +64,5 @@ icon = ExtResource("5_ift4v")
 
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer/WebsiteButton" to="." method="_on_website_button_pressed"]
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer/TwitterButton" to="." method="_on_twitter_button_pressed"]
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer/BlueskyButton" to="." method="_on_bluesky_button_pressed"]
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer/AcknowledgementsButton" to="." method="_on_acknowledgements_button_pressed"]

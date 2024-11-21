@@ -62,10 +62,12 @@ func _process(delta):
 		levels_scene_path = "res://scenes/main.tscn"
 		levels_button.text = "Title screen"
 		%RestartButton.hide()
+		%Title.text = "Menu"
 	else:
 		levels_scene_path = "res://scenes/ui/world_select/world_select.tscn"
 		levels_button.text = "Levels"
 		%RestartButton.show()
+		%Title.text = "Paused"
 	
 
 

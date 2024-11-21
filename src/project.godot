@@ -16,7 +16,7 @@ warnings/check_invalid_track_paths=false
 
 config/name="Globs"
 config/description="Meet the size-changing Globs in this colorful puzzle game."
-config/version="2.0.1"
+config/version="2.1.00.241121"
 run/main_scene="res://scenes/main.tscn"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.3", "GL Compatibility")

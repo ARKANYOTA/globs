@@ -9,6 +9,7 @@
 script = ExtResource("1_xt0kk")
 
 [node name="Title" parent="MarginContainer/AspectRatioContainer/Items" index="0"]
+unique_name_in_owner = true
 text = "Paused"
 
 [node name="ResumeButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="0" instance=ExtResource("4_35rns")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cni25hsbinkfw"]
+[gd_scene load_steps=15 format=3 uid="uid://cni25hsbinkfw"]
 
 [ext_resource type="Script" path="res://scripts/ui/game_gui.gd" id="1_72ffu"]
 [ext_resource type="Script" path="res://scripts/ui/world_select_gui.gd" id="2_63f6o"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dtb7kvu5i3h0i" path="res://assets/images/ui/menu_right.png" id="7_dy5u5"]
 [ext_resource type="Texture2D" uid="uid://cscjdb5vo0gxa" path="res://assets/images/ui/menu_left.png" id="8_f5tgb"]
 [ext_resource type="Texture2D" uid="uid://uod7a1l1s38g" path="res://assets/images/ui/options.png" id="8_lgh71"]
+[ext_resource type="Texture2D" uid="uid://d3snf23un03jm" path="res://assets/images/ui/menu.png" id="8_uedxp"]
 [ext_resource type="Texture2D" uid="uid://d1dga283oskd8" path="res://assets/images/ui/heart.png" id="9_yd4cv"]
 [ext_resource type="FontFile" uid="uid://btwjphxav6aet" path="res://assets/fonts/font_normal.ttf" id="11_g2c0e"]
 [ext_resource type="Texture2D" uid="uid://dxexxc42td5t" path="res://assets/images/ui/achievements.png" id="12_drn6e"]
@@ -107,7 +108,7 @@ icon = ExtResource("8_lgh71")
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-icon = ExtResource("3_klxi7")
+icon = ExtResource("8_uedxp")
 
 [node name="LevelActions" type="HBoxContainer" parent="Control"]
 unique_name_in_owner = true
