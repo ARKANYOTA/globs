@@ -228,9 +228,13 @@ func open_achievements_menu() -> bool:
 			return false
 
 
-func get_randomized_credits() -> String:
+func get_randomized_credits():
 	credit_names.shuffle()
-	return credits_template.format(credit_names)
+	return credit_names
+
+
+func get_randomized_credits_string() -> String:
+	return credits_template.format(get_randomized_credits())
 
 
 ## Saves an option and returns whether it was saved successfully.  

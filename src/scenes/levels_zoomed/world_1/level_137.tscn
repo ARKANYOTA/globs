@@ -19,8 +19,7 @@ z_index = 610
 offset_top = 104.0
 offset_right = 240.0
 offset_bottom = 131.0
-text = "💡The maximum extent of a Glob 
-can depend on the selected direction"
+text = "LEVEL_TIPS_1_6"
 label_settings = SubResource("LabelSettings_ntprx")
 horizontal_alignment = 1
 

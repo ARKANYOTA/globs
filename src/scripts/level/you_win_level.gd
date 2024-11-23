@@ -4,24 +4,24 @@ extends Level
 @onready var animation_player = $AnimationPlayer
 
 var main_contributors = [
-	_get_credit_text("Programming", "ArkanYota", "Nolan Carlisi"),
-	_get_credit_text("Programming", "Theobosse", "Théodore Billotte"),
-	_get_credit_text("Programming, art", "Yolwoocle", "Léo Bernard"),
-	_get_credit_text("Programming, art", "Notgoyome", "Guillaume Tran"),
-	_get_credit_text("Music", "Strochnis"),
+	_get_credit_text("CREDITS_CODE", "ArkanYota", "Nolan Carlisi"),
+	_get_credit_text("CREDITS_CODE", "Theobosse", "Théodore Billotte"),
+	_get_credit_text("CREDITS_CODE_ART", "Yolwoocle", "Léo Bernard"),
+	_get_credit_text("CREDITS_CODE_ART", "Notgoyome", "Guillaume Tran"),
+	_get_credit_text("MENU_LABEL_MUSIC", "Strochnis"),
 ]
 
 var credits = [
-		_get_credit_text("A game by", "Ninesliced"),
+		_get_credit_text("CREDITS_A_GAME_BY", "Ninesliced"),
 	] + _get_main_contributors() + [
-		_get_credit_text("Special Thanks", "Artichaut", "Léo Lanteri Thauvin"),
-		_get_credit_text("Special Thanks", "Alexis"),
-		_get_credit_text("Special Thanks", "Kenney"),
-		_get_credit_text("Special Thanks", "Mark Brown"),
+		_get_credit_text("CREDITS_SPECIAL_THANKS", "Artichaut", "Léo Lanteri Thauvin"),
+		_get_credit_text("CREDITS_SPECIAL_THANKS", "Alexis"),
+		_get_credit_text("CREDITS_SPECIAL_THANKS", "Kenney"),
+		_get_credit_text("CREDITS_SPECIAL_THANKS", "Mark Brown"),
 
-		_get_credit_text("Made using", "Godot Engine"),
+		_get_credit_text("CREDITS_MADE_USING", "Godot Engine"),
 
-		_get_credit_text("", "Thank you for playing!", ""),
+		_get_credit_text("", "MENU_THANK_YOU", ""),
 		# _get_credit_text("", "", "(c) 2024 All rights reseved."),
 	]
 
@@ -33,7 +33,7 @@ func _get_credit_text(role = "", title = "", subtitle = ""):
 	{1}[/font_size][font_size=8]
 	{2}[/font_size][/center]"""
 	
-	return template.format([role, title, subtitle])
+	return template.format([tr(role), tr(title), tr(subtitle)])
 
 func _get_main_contributors():
 	main_contributors.shuffle()

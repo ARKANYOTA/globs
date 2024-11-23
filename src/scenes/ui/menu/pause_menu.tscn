@@ -10,16 +10,16 @@ script = ExtResource("1_xt0kk")
 
 [node name="Title" parent="MarginContainer/AspectRatioContainer/Items" index="0"]
 unique_name_in_owner = true
-text = "Paused"
+text = "MENU_PAUSED"
 
 [node name="ResumeButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="0" instance=ExtResource("4_35rns")]
 layout_mode = 2
-text = "Continue"
+text = "MENU_CONTINUE"
 
 [node name="RestartButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="1" instance=ExtResource("4_35rns")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Retry"
+text = "MENU_RETRY"
 
 [node name="SkipButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="2" instance=ExtResource("4_35rns")]
 unique_name_in_owner = true
@@ -29,12 +29,12 @@ text = "Skip level"
 
 [node name="OptionsButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="3" instance=ExtResource("4_35rns")]
 layout_mode = 2
-text = "Options"
+text = "MENU_OPTIONS"
 
 [node name="LevelsButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="4" instance=ExtResource("4_35rns")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Levels"
+text = "MENU_LEVELS"
 
 [node name="LevelName" type="Label" parent="MarginContainer/AspectRatioContainer" index="1"]
 unique_name_in_owner = true
@@ -69,7 +69,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-text = "Quit"
+text = "MENU_QUIT"
 
 [node name="SkipButtonREMOVEME" parent="MarginContainer" index="3" instance=ExtResource("4_35rns")]
 unique_name_in_owner = true

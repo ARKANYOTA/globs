@@ -24,9 +24,11 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 1
 
 [node name="Label" type="Label" parent="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions/MasterVolume" index="0"]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-text = "Master volume"
+text = "MENU_OPTIONS_SOUND_VOLUME"
 label_settings = ExtResource("3_t0dhi")
+autowrap_mode = 3
 
 [node name="MasterVolumeSlider" parent="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions/MasterVolume" index="1" instance=ExtResource("6_gllis")]
 layout_mode = 2
@@ -37,9 +39,11 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 1
 
 [node name="Label" type="Label" parent="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions/MusicVolume" index="0"]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-text = "Music volume"
+text = "MENU_LABEL_MUSIC"
 label_settings = ExtResource("3_t0dhi")
+autowrap_mode = 3
 
 [node name="MasterVolumeSlider" parent="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions/MusicVolume" index="1" instance=ExtResource("6_gllis")]
 layout_mode = 2
@@ -48,11 +52,16 @@ audio_bus_name = "Music"
 [node name="FullscreenButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="1" instance=ExtResource("7_t2eu6")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Toggle fullscreen"
+text = "MENU_OPTIONS_FULLSCREEN"
 icon = null
 
-[node name="ResetProgress" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="2" instance=ExtResource("5_jwcs2")]
+[node name="Language" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="2" instance=ExtResource("5_jwcs2")]
 layout_mode = 2
-text = "Reset progress"
+text = "MENU_OPTIONS_LANGUAGE"
 
+[node name="ResetProgress" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="3" instance=ExtResource("5_jwcs2")]
+layout_mode = 2
+text = "MENU_RESET_PROGRESS"
+
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/Language" to="." method="_on_language_pressed"]
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/ResetProgress" to="." method="_on_reset_progress_pressed"]

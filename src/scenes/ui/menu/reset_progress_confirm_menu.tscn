@@ -8,9 +8,8 @@
 script = ExtResource("2_7fdx7")
 
 [node name="Title" parent="MarginContainer/AspectRatioContainer/Items" index="0"]
-text = "Are you sure you want to 
-reset your progress? 
-This cannot be undone."
+size_flags_horizontal = 4
+text = "MENU_RESET_SAVE_DATA"
 uppercase = false
 
 [node name="VolumeOptions" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="0"]
@@ -20,12 +19,11 @@ theme_override_constants/separation = 12
 
 [node name="Yes" parent="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions" index="0" instance=ExtResource("7_mgrve")]
 layout_mode = 2
-text = "Yes
-"
+text = "MENU_YES"
 
 [node name="No" parent="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions" index="1" instance=ExtResource("7_mgrve")]
 layout_mode = 2
-text = "No"
+text = "MENU_NO"
 
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions/Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions/No" to="." method="_on_no_pressed"]

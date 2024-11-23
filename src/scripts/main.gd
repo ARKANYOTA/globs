@@ -6,6 +6,8 @@ class_name Main
 var paused = false
 var clicked = false
 
+var credits_names
+
 func _ready():
 	if PauseMenuAutoload.game_gui:
 		PauseMenuAutoload.game_gui.show_title_gui()
@@ -30,13 +32,16 @@ func _set_version_text():
 		%VersionText.text = ""
 
 
+func _process(delta):
+	var credits: Label = %CreditsText
+	if credits:
+		credits.text = tr("CREDITS_A_GAME_BY_LIST").format(credits_names)
 
 func _randomize_credits():
+	credits_names = GameManager.get_randomized_credits()
 	var credits: Label = %CreditsText
 	if not credits:
 		return
-
-	credits.text = GameManager.get_randomized_credits()
 
 # Quitting 
 func quit():

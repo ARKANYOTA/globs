@@ -8,8 +8,7 @@
 script = ExtResource("2_4m1nn")
 
 [node name="Title" parent="MarginContainer/AspectRatioContainer/Items" index="0"]
-text = "Are you sure you want to 
-quit the game?"
+text = "MENU_QUIT_CONFIRM"
 uppercase = false
 
 [node name="VolumeOptions" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="0"]
@@ -19,12 +18,11 @@ theme_override_constants/separation = 12
 
 [node name="Yes" parent="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions" index="0" instance=ExtResource("3_st6qq")]
 layout_mode = 2
-text = "Yes
-"
+text = "MENU_YES"
 
 [node name="No" parent="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions" index="1" instance=ExtResource("3_st6qq")]
 layout_mode = 2
-text = "No"
+text = "MENU_NO"
 
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions/Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/VolumeOptions/No" to="." method="_on_no_pressed"]

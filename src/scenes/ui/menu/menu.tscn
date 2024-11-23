@@ -36,16 +36,19 @@ ratio = 1.7778
 
 [node name="Items" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 12
 alignment = 1
 
 [node name="Title" type="Label" parent="MarginContainer/AspectRatioContainer/Items"]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_vertical = 0
-text = "menu"
+text = "menu with a very long namemenu with a very long namemenu with a very long name"
 label_settings = SubResource("LabelSettings_ahekt")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 uppercase = true
 
 [node name="Buttons" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer/Items"]
