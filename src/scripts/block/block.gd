@@ -162,9 +162,9 @@ var tween_list = []
 
 ###### SLEEP animation #######
 @onready var sleep_timer : Timer = $Sleep/SleepTimer
-var time_before_sleeping_min := 5
-var time_before_sleeping_max := 5
-var time_before_sleeping := 7 #don't change it 
+var time_before_sleeping_min := 5 # useless
+var time_before_sleeping_max := 5 # useless
+var time_before_sleeping := 5
 
 ################################################
 
@@ -1042,6 +1042,7 @@ func get_random_sleeping_time():
 	return time_before_sleeping_min + randi() % (time_before_sleeping_max - time_before_sleeping_min)
 
 func wake_up():
+	sleep_timer.stop()
 	if not is_asleep:
 		return
 	is_asleep = false
