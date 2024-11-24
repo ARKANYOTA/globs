@@ -72,6 +72,8 @@ var is_fullscreen: bool = true:
 		save_option("graphics", "is_fullscreen", is_fullscreen)
 var is_on_win_animation = false
 
+var locales
+
 func _init():
 	print("GameManager INITIALIZED")
 
@@ -83,6 +85,8 @@ func _ready():
 	}))
 	print("---------------------------")
 	print("Currently loaded extensions:", GDExtensionManager.get_loaded_extensions())
+
+	locales = TranslationServer.get_loaded_locales()
 
 	options_manager = OptionsManager.new()
 	_init_window()
@@ -112,6 +116,14 @@ func _process(delta):
 
 		for bus in ["Master", "Music"]:
 			set_bus_volume(bus, load_option("volume", bus, 1.0))
+		
+
+# pinnn
+func set_locale(locale):
+	tjzeroijzerio todo
+	var standardized_locale = TranslationServer.standardize_locale(locale)
+	TranslationServer.set_locale(standardized_locale)
+	
 
 
 func _init_window():

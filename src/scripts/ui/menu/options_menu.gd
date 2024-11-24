@@ -9,4 +9,4 @@ func _on_back_button_pressed():
 
 
 func _on_language_pressed():
-	TranslationServer.set_locale("xx")
+	nkjsdfknjsdf todo 2 
