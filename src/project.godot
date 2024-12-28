@@ -58,6 +58,7 @@ window/size/viewport_height=135
 window/size/mode=2
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
+window/handheld/orientation=4
 mouse_cursor/custom_image="res://assets/images/ui/cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2(1, 1)
 
