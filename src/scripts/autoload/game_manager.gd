@@ -72,7 +72,9 @@ var is_fullscreen: bool = true:
 		save_option("graphics", "is_fullscreen", is_fullscreen)
 var is_on_win_animation = false
 
-var locales
+var locales: PackedStringArray
+var current_locale: String
+var current_locale_index: int = -1
 
 func _init():
 	print("GameManager INITIALIZED")
@@ -86,10 +88,18 @@ func _ready():
 	print("---------------------------")
 	print("Currently loaded extensions:", GDExtensionManager.get_loaded_extensions())
 
-	locales = TranslationServer.get_loaded_locales()
-
 	options_manager = OptionsManager.new()
 	_init_window()
+
+	locales = TranslationServer.get_loaded_locales()
+
+	var saved_locale = load_option("game", "locale", "")
+	if saved_locale != "":
+		current_locale_index = _find_locale_index(saved_locale)
+	if current_locale_index == -1:
+		current_locale_index = _find_closest_locale_index(_get_user_locale(), locales)
+
+	_refresh_locales()
 
 	camera = global_camera_scene.instantiate()
 	add_child(camera)
@@ -107,8 +117,6 @@ func _ready():
 	_init_google_play()
 	_init_achievement_manager()
 
-	set_locale("fr_FR")
-
 
 func _process(delta):
 	# It is necessary to wait one frame after the scene has been instanciated to avoid an ugly gray frame
@@ -120,11 +128,45 @@ func _process(delta):
 			set_bus_volume(bus, load_option("volume", bus, 1.0))
 		
 
-# pinnn
+func _get_user_locale() -> String:
+	var locale = OS.get_locale_language()
+	return locale
+
+
+func _find_locale_index(locale: String) -> int:
+	for i in range(len(locales)):
+		if locales[i] == locale:
+			return i
+	return -1
+
+
+func _find_closest_locale_index(locale: String, supported_locales: PackedStringArray) -> int:
+	assert(len(supported_locales) > 0, "No locale is supported!")
+
+	var closest_locale_index = 0
+	var closest_distance = -1
+	for i in range(len(supported_locales)):
+		var dist = TranslationServer.compare_locales(locale, supported_locales[i])
+		if dist > closest_distance:
+			closest_locale_index = i
+			closest_distance = dist
+
+	return closest_locale_index
+
+
 func set_locale(locale):
 	var standardized_locale = TranslationServer.standardize_locale(locale)
 	TranslationServer.set_locale(standardized_locale)
-	
+
+
+func next_locale():
+	current_locale_index = (current_locale_index + 1) % len(locales)
+	save_option("game", "locale", locales[current_locale_index])
+	_refresh_locales()
+
+
+func _refresh_locales():
+	set_locale(locales[current_locale_index])
 
 
 func _init_window():
