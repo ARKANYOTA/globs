@@ -1,56 +1,51 @@
-key,en,fr,xx
-LANGUAGE_CODE,enUS enGB,frFR,xxXX
-LANGUAGE_NAME,English,Français,xxx
-LANGUAGE_DIRECTION,ltr,ltr,xxx
-LIST_START,"{0}, {1}","{0}, {1}",
-LIST_MIDDLE,"{0}, {1}","{0}, {1}",
-LIST_END,{0} and {1},{0} et {1},
-LIST_TWO,{0} and {1},{0} et {1},
-MENU_PRESS_ANYWHERE,Press anywhere,Appuyez sur l'écran,xxx
-MENU_CONTINUE,Continue,Continuer,xxx
-MENU_RETRY,Retry,Réessayer,xxx
-MENU_OPTIONS,Options,Options,xxx
-MENU_LEVELS,Levels,Niveaux,xxx
-MENU_MENU,Menu,Menu,xxx
-MENU_LEVELS,Levels,Niveaux,xxx
-MENU_PAUSED,Paused,En pause,xxx
-MENU_TITLE_SCREEN,Title screen,Menu principal,xxx
-MENU_QUIT,Quit,Quitter,xxx
-MENU_QUIT_CONFIRM,"Are you sure you want to 
-quit the game?",Êtes-vous certain de vouloir quitter ?,xxx
-MENU_OPTIONS_SOUND_VOLUME,Volume,Volume,xxx
-MENU_OPTIONS_MUSIC_VOLUME,Music volume,Volume de la musique,xxx
-MENU_OPTIONS_FULLSCREEN,Fullscreen,Plein écran,xxx
-MENU_OPTIONS_LANGUAGE,Language,Langue,xxx
-MENU_RESET_PROGRESS,Reset all progress,Réinitialiser la progression,xxx
-MENU_RESET_SAVE_DATA,Are you sure you want to reset your progress? This cannot be undone.,Êtes-vous sûr de vouloir réinitialiser votre progression ? Cette action ne peut pas être annulée.,xxx
-MENU_LABEL_ARE_YOU_REALLY_SURE,Are you really sure?,Êtes-vous vraiment sûr ?,xxx
-MENU_YES,Yes,Oui,xxx
-MENU_NO,No,Non,xxx
-MENU_100_PERCENT_CONGRATS,"Congratulations on finishing 100% of Globs! 
+"key","en","fr","xx"
+"LANGUAGE_CODE","enUS enGB","frFR","xxXX"
+"LANGUAGE_NAME","English","Français","xxx"
+"LANGUAGE_DIRECTION","ltr","ltr","xxx"
+"MENU_PRESS_ANYWHERE","Press anywhere","Appuyez sur l'écran","xxx"
+"MENU_CONTINUE","Continue","Continuer","xxx"
+"MENU_RETRY","Retry","Réessayer","xxx"
+"MENU_OPTIONS","Options","Options","xxx"
+"MENU_LEVELS","Levels","Niveaux","xxx"
+"MENU_MENU","Menu","Menu","xxx"
+"MENU_LEVELS","Levels","Niveaux","xxx"
+"MENU_PAUSED","Paused","En pause","xxx"
+"MENU_TITLE_SCREEN","Title screen","Menu principal","xxx"
+"MENU_QUIT","Quit","Quitter","xxx"
+"MENU_QUIT_CONFIRM","Are you sure you want to 
+quit the game?","Êtes-vous certain de vouloir quitter le jeu ?","xxx"
+"MENU_OPTIONS_SOUND_VOLUME","Volume","Volume","xxx"
+"MENU_OPTIONS_MUSIC_VOLUME","Music volume","Volume de la musique","xxx"
+"MENU_OPTIONS_FULLSCREEN","Fullscreen","Plein écran","xxx"
+"MENU_OPTIONS_LANGUAGE","Language","Langue","xxx"
+"MENU_RESET_PROGRESS","Reset all progress","Réinitialiser la progression","xxx"
+"MENU_RESET_SAVE_DATA","Are you sure you want to reset your progress? This cannot be undone.","Êtes-vous sûr de vouloir réinitialiser votre progression ? Cette action ne peut pas être annulée.","xxx"
+"MENU_LABEL_ARE_YOU_REALLY_SURE","Are you really sure?","Êtes-vous vraiment sûr ?","xxx"
+"MENU_YES","Yes","Oui","xxx"
+"MENU_NO","No","Non","xxx"
+"MENU_100_PERCENT_CONGRATS","Congratulations on finishing 100% of Globs! 
 
 Thank you for playing our game!","Félicitations pour avoir complété 100 % de Globs !
 
-Merci d'avoir joué à notre jeu !",xxx
-MENU_CREDITS,Credits,Crédits,xxx
-CREDITS_A_GAME_BY_LIST,"A game by {0}, {1}, {2}, {3}, and {4}","Un jeu par {0}, {1}, {2}, {3}, et {4}","xxx {0}, {1}, {2}, {3}, xx {4}"
-CREDITS_A_GAME_BY,A game by,Un jeu par,xxx
-CREDITS_CODE,Code,Code,xxx
-CREDITS_ART,Art,Art,xxx
-CREDITS_CODE_ART,"Code, Art","Code, Art",xxx
-MENU_LABEL_MUSIC,Music,Musique,xxx
-CREDITS_MADE_USING,Made using,Créé avec,xxx
-CREDITS_SPECIAL_THANKS,Special thanks,Remerciements,xxx
-MENU_CREDITS_ASSETS_TOOLS,Assets and tools,Assets et outils,xxx
-MENU_CREDITS_LIBRARIES,Libraries,Librairies,xxx
-MENU_CREDITS_GODOT,Made using Godot game engine,Réalisé avec le moteur de jeu Godot,xxx
-MENU_CREDITS_GMTK,Originally made for the GMTK Game Jam 2024,Réalisé à l'origine pour le GMTK Game Jam 2024,xxx
-MENU_THANK_YOU,Thank you!,Merci !,¡Gracias!
-MENU_CREDITS_ABOUT,Ninesliced is a team of 5 students from France wishing to create games that bring people joy. We hope that you will enjoy our game.,Ninesliced est une équipe de 5 étudiants français souhaitant créer des jeux qui apportent de la joie aux gens. Nous espérons que vous aimerez notre jeu.,xxx
-MENU_ABOUT,About,À propos,xxx
-MENU_WEBSITE,Website,Site web,xxx
-MENU_TWITTER,Twitter,Twitter,xxx
-MENU_BLUESKY,Bluesky,Bluesky,xxx
-LEVEL_TIPS_1_4,💡 The length of the arrow represents how far the Glob can extend in this direction,,xxx
-LEVEL_TIPS_1_6,"💡The maximum extent of a Glob 
-can depend on the selected direction",,xxx
+Merci d'avoir joué à notre jeu !","xxx"
+"MENU_CREDITS","Credits","Crédits","xxx"
+"CREDITS_A_GAME_BY_LIST","A game by {0}, {1}, {2}, {3}, and {4}","Un jeu par {0}, {1}, {2}, {3}, et {4}","xxx {0}, {1}, {2}, {3}, xx {4}"
+"CREDITS_A_GAME_BY","A game by","Un jeu par","xxx"
+"CREDITS_CODE","Code","Code","xxx"
+"CREDITS_ART","Art","Art","xxx"
+"CREDITS_CODE_ART","Code, Art","Code, Art","xxx"
+"MENU_LABEL_MUSIC","Music","Musique","xxx"
+"CREDITS_MADE_USING","Made using","Créé avec","xxx"
+"CREDITS_SPECIAL_THANKS","Special thanks","Remerciements","xxx"
+"MENU_CREDITS_ASSETS_TOOLS","Assets and tools","Assets et outils","xxx"
+"MENU_CREDITS_LIBRARIES","Libraries","Librairies","xxx"
+"MENU_CREDITS_GODOT","Made using Godot game engine","Réalisé avec le moteur de jeu Godot","xxx"
+"MENU_CREDITS_GMTK","Originally made for the GMTK Game Jam 2024","Réalisé à l'origine pour le GMTK Game Jam 2024","xxx"
+"MENU_THANK_YOU","Thank you!","Merci !","¡Gracias!"
+"MENU_CREDITS_ABOUT","Ninesliced is a team of 5 students from France wishing to create games that bring people joy. We hope that you will enjoy our game.","Ninesliced est une équipe de 5 étudiants français souhaitant créer des jeux qui apportent de la joie aux gens. Nous espérons que vous aimerez notre jeu.","xxx"
+"MENU_ABOUT","About","À propos","xxx"
+"MENU_WEBSITE","Website","Site web","xxx"
+"MENU_TWITTER","Twitter","Twitter","xxx"
+"MENU_BLUESKY","Bluesky","Bluesky","xxx"
+"LEVEL_TIPS_1_4","💡 The length of the arrow represents how far the Glob can extend in this direction","💡 La longueur de la flèche indique l’étendue que le Glob peut atteindre dans cette direction","xxx"
+"LEVEL_TIPS_1_6","💡 The maximum extent of a Glob can depend on the selected direction","💡 L'étendue maximale d'un Glob peut dépendre de la direction choisie","xxx"

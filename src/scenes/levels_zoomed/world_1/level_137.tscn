@@ -22,6 +22,7 @@ offset_bottom = 131.0
 text = "LEVEL_TIPS_1_6"
 label_settings = SubResource("LabelSettings_ntprx")
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Background" parent="." index="4"]
 z_index = 0

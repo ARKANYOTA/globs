@@ -9,4 +9,4 @@ func _on_back_button_pressed():
 
 
 func _on_language_pressed():
-	nkjsdfknjsdf todo 2 
+	pass

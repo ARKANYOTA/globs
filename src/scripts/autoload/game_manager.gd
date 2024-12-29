@@ -107,6 +107,8 @@ func _ready():
 	_init_google_play()
 	_init_achievement_manager()
 
+	set_locale("fr_FR")
+
 
 func _process(delta):
 	# It is necessary to wait one frame after the scene has been instanciated to avoid an ugly gray frame
@@ -120,7 +122,6 @@ func _process(delta):
 
 # pinnn
 func set_locale(locale):
-	tjzeroijzerio todo
 	var standardized_locale = TranslationServer.standardize_locale(locale)
 	TranslationServer.set_locale(standardized_locale)
 	
