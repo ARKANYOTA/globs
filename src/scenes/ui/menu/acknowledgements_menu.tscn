@@ -20,7 +20,7 @@ alignment = 1
 [node name="Title" type="Label" parent="MarginContainer/Items2" index="0"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Credits"
+text = "MENU_CREDITS"
 label_settings = SubResource("LabelSettings_jomln")
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -201,7 +201,7 @@ offset_top = -10.0
 offset_right = 121.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "A game by {0}, {1}, {2}, {3}, and {4}"
+text = "CREDITS_A_GAME_BY_LIST"
 label_settings = SubResource("LabelSettings_u3bde")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -223,6 +223,7 @@ label_settings = SubResource("LabelSettings_u3bde")
 horizontal_alignment = 2
 
 [node name="ClickAnywhere" type="Label" parent="CanvasLayer/Control"]
+z_index = 85
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -235,7 +236,7 @@ offset_right = 39.0
 offset_bottom = 39.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Press anywhere"
+text = "MENU_PRESS_ANYWHERE"
 label_settings = SubResource("LabelSettings_txos7")
 horizontal_alignment = 1
 vertical_alignment = 2

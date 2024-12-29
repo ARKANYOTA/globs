@@ -19,10 +19,10 @@ z_index = 610
 offset_top = 104.0
 offset_right = 240.0
 offset_bottom = 128.0
-text = "💡 The length of the arrow represents 
-how far the Glob can extend in this direction"
+text = "LEVEL_TIPS_1_4"
 label_settings = SubResource("LabelSettings_qh1rj")
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Background" parent="." index="4"]
 z_index = 0

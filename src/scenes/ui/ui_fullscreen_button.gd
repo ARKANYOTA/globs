@@ -19,8 +19,10 @@ func _on_pressed():
 func update_icon():
 	if GameManager.is_fullscreen:
 		icon = icon_off
+		text = (tr("MENU_OPTIONS_FULLSCREEN") + " · " + tr("MENU_NO"))
 	else:
 		icon = icon_on
+		text = (tr("MENU_OPTIONS_FULLSCREEN") + " · " + tr("MENU_YES"))
 
 func _on_mouse_entered():
 	super._on_mouse_entered()

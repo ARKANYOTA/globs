@@ -60,14 +60,14 @@ func _process(delta):
 	%SkipButton.disabled = is_on_level_select
 	if is_on_level_select:
 		levels_scene_path = "res://scenes/main.tscn"
-		levels_button.text = "Title screen"
+		levels_button.text = "MENU_TITLE_SCREEN"
 		%RestartButton.hide()
-		%Title.text = "Menu"
+		%Title.text = "MENU_MENU"
 	else:
 		levels_scene_path = "res://scenes/ui/world_select/world_select.tscn"
-		levels_button.text = "Levels"
+		levels_button.text = "MENU_LEVELS"
 		%RestartButton.show()
-		%Title.text = "Paused"
+		%Title.text = "MENU_PAUSED"
 	
 
 

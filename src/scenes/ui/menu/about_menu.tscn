@@ -21,17 +21,17 @@ script = ExtResource("2_ixy4w")
 theme_override_constants/separation = 8
 
 [node name="Title" parent="MarginContainer/AspectRatioContainer/Items" index="0"]
-text = "About"
+text = "MENU_ABOUT"
 label_settings = SubResource("LabelSettings_jomln")
 uppercase = false
 
 [node name="Description" type="RichTextLabel" parent="MarginContainer/AspectRatioContainer/Items" index="1"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/normal_font = ExtResource("3_i173b")
 bbcode_enabled = true
-text = "[center][font_size=6]Ninesliced is a team of 5 students from France wishing to create
-games that bring people joy. We hope that you will enjoy our game.
+text = "[center][font_size=6]{0}
 [/font_size][/center]"
 fit_content = true
 
@@ -41,25 +41,25 @@ layout_mode = 2
 [node name="WebsiteButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer" index="0" instance=ExtResource("4_d7xoe")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 6
-text = "Website"
+text = "MENU_WEBSITE"
 icon = ExtResource("5_pjg3h")
 
 [node name="TwitterButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer" index="1" instance=ExtResource("4_d7xoe")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 6
-text = "Twitter"
+text = "MENU_TWITTER"
 icon = ExtResource("6_ibavu")
 
 [node name="BlueskyButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer" index="2" instance=ExtResource("4_d7xoe")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 6
-text = "Bluesky"
+text = "MENU_BLUESKY"
 icon = ExtResource("7_y8o8j")
 
 [node name="AcknowledgementsButton" parent="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer" index="3" instance=ExtResource("4_d7xoe")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 6
-text = "Credits"
+text = "MENU_CREDITS"
 icon = ExtResource("5_ift4v")
 
 [connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/HBoxContainer/WebsiteButton" to="." method="_on_website_button_pressed"]
