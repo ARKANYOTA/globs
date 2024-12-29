@@ -122,6 +122,8 @@ func change_world(index: int, in_out = true, disable=true) -> void:
 		LevelData.disable_level_button = false
 		return
 	for i in range(0, world.size()):
+		if !get_tree():
+			return
 		tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 		if in_out:
 			tween.tween_property(node_worlds[i], "position:x", (i-world_index) * 16*15, 0.40).set_ease(Tween.EASE_IN_OUT)
