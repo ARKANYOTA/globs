@@ -10,7 +10,7 @@ var fps_limit_value: int
 func _ready():
 	max_value = client_hz * 2
 	value = client_hz
-	label.text = slide_name + str(client_hz)
+	label.text = slide_name + str(int(client_hz))
 
 func _on_value_changed(value):
 	fps_limit_value = value
