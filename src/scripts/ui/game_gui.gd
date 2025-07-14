@@ -36,7 +36,7 @@ func _ready():
 
 	GameManager.on_win_animation.connect(_on_win_animation)
 
-	achievements_button.visible = (GameManager.distribution_platform == GameManager.DistributionPlatform.PLAY_STORE)
+	achievements_button.visible = (GameManager.distribution_platform == GameManager.DistributionPlatform.PLAY_STORE || GameManager.distribution_platform == GameManager.DistributionPlatform.GAME_CENTER)
 
 var disable_time_undo := 0.05
 func _process(delta):

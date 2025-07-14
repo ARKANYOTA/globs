@@ -33,6 +33,11 @@ func grant(achievement_name: String) -> bool:
 func revoke(achievement_name: String) -> bool:
 	return false
 
+func open_achievements_menu():
+	var res = game_center.show_game_center({ "view": "achievements" })
+	print("open achievements menu ", res)
+	return
+
 """
 func update_achievement(item_name:String, progress:float):
 	if not game_center:

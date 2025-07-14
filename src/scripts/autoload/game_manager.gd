@@ -282,6 +282,13 @@ func open_achievements_menu() -> bool:
 				return true
 		
 			return false
+		DistributionPlatform.GAME_CENTER:
+			if not GameManager.achievement_manager or GameManager.achievement_manager is not AchievementManagerGamecenter:
+				return false
+				
+			GameManager.achievement_manager.open_achievements_menu()
+		
+			return false
 		_:
 			return false
 

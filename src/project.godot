@@ -43,7 +43,6 @@ AchievementsClient="*res://addons/GodotPlayGameServices/autoloads/achievements_c
 LeaderboardsClient="*res://addons/GodotPlayGameServices/autoloads/leaderboards_client.gd"
 SnapshotsClient="*res://addons/GodotPlayGameServices/autoloads/snapshots_client.gd"
 EventsClient="*res://addons/GodotPlayGameServices/autoloads/events_client.gd"
-AchivementGameCenter="*res://scripts/achievements/achievement_manager_game_center.gd"
 
 [debug]
 
