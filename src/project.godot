@@ -19,11 +19,11 @@ config/description="Meet the size-changing Globs in this colorful puzzle game."
 config/version="2.2"
 run/main_scene="res://scenes/main.tscn"
 config/quit_on_go_back=false
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0.913725, 0.992157, 0.870588, 1)
-boot_splash/image="res://assets/images/splash.png"
 boot_splash/fullsize=false
+boot_splash/image="res://assets/images/splash.png"
 config/icon="res://assets/images/icon_big.png"
 
 [autoload]
@@ -43,6 +43,7 @@ AchievementsClient="*res://addons/GodotPlayGameServices/autoloads/achievements_c
 LeaderboardsClient="*res://addons/GodotPlayGameServices/autoloads/leaderboards_client.gd"
 SnapshotsClient="*res://addons/GodotPlayGameServices/autoloads/snapshots_client.gd"
 EventsClient="*res://addons/GodotPlayGameServices/autoloads/events_client.gd"
+AchivementGameCenter="*res://scripts/achievements/achievement_manager_game_center.gd"
 
 [debug]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://b46xje0fhose4"]
 
 [ext_resource type="Texture2D" uid="uid://cdobcanxgd3ov" path="res://assets/images/ui/world_index_dot.png" id="1_ch11f"]
-[ext_resource type="Script" path="res://scripts/ui/menu/World/button_index.gd" id="3_75wuc"]
+[ext_resource type="Script" uid="uid://cp7mpxliuttab" path="res://scripts/ui/menu/World/button_index.gd" id="3_75wuc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2k4yr"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://be2pfyt8dng63"]
 
-[ext_resource type="Script" path="res://scripts/integration/google_play_interface.gd" id="1_mc10k"]
+[ext_resource type="Script" uid="uid://bumug4y3oin0c" path="res://scripts/integration/google_play_interface.gd" id="1_mc10k"]
 
 [node name="GooglePlayInterface" type="Node"]
 script = ExtResource("1_mc10k")

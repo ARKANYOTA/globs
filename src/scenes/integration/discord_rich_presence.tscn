@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://diurodejj5ytq"]
 
-[ext_resource type="Script" path="res://scripts/integration/discord_rich_presence.gd" id="1_ybopi"]
+[ext_resource type="Script" uid="uid://bvlujc5ewdama" path="res://scripts/integration/discord_rich_presence.gd" id="1_ybopi"]
 
 [node name="DiscordRichPresence" type="Node"]
 process_mode = 3

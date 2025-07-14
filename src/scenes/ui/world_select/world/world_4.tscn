@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c713awkloisp6" path="res://scenes/ui/world_select/world/world.tscn" id="1_addor"]
 [ext_resource type="PackedScene" uid="uid://bu78mo56i6fso" path="res://scenes/ui/world_select/level.tscn" id="2_ib75g"]
 [ext_resource type="Texture2D" uid="uid://c158dcm052fbf" path="res://assets/images/map/spacemap.png" id="2_wm5pa"]
-[ext_resource type="Script" path="res://scripts/props/falling_star.gd" id="4_y0ytb"]
+[ext_resource type="Script" uid="uid://dyfj3gqgfk3mf" path="res://scripts/props/falling_star.gd" id="4_y0ytb"]
 [ext_resource type="PackedScene" uid="uid://biolau0l821nq" path="res://scenes/sprite/floating_sprite.tscn" id="5_pe7qv"]
 [ext_resource type="Texture2D" uid="uid://b5agcmyi1curm" path="res://assets/images/map/space_fragment_1.png" id="6_csvgj"]
 [ext_resource type="Texture2D" uid="uid://dknp2g7asujia" path="res://assets/images/map/space_fragment_2.png" id="6_su302"]

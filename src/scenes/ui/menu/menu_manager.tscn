@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://8lw7bps1tiip"]
 
-[ext_resource type="Script" path="res://scripts/ui/menu/menu_manager.gd" id="1_mddol"]
-[ext_resource type="Shader" path="res://shaders/pause_menu_background.gdshader" id="2_ikevx"]
+[ext_resource type="Script" uid="uid://4g50n10x10y1" path="res://scripts/ui/menu/menu_manager.gd" id="1_mddol"]
+[ext_resource type="Shader" uid="uid://bnx317ape4tvo" path="res://shaders/pause_menu_background.gdshader" id="2_ikevx"]
 [ext_resource type="AudioStream" uid="uid://r2gup7mm76vx" path="res://assets/sounds/block/block_slide_new_1.ogg" id="2_nncd1"]
 [ext_resource type="AudioStream" uid="uid://vwa3xcwftoc1" path="res://assets/sounds/block/block_slide_new_2.ogg" id="3_4hmjs"]
 [ext_resource type="PackedScene" uid="uid://bmdbgomhamteh" path="res://scenes/ui/menu/pause_menu.tscn" id="3_751oy"]

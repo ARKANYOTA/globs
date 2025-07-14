@@ -1,12 +1,12 @@
 [gd_scene load_steps=29 format=3 uid="uid://clib81weo65vk"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_ngeyx"]
+[ext_resource type="Script" uid="uid://yqqtjge5b0ju" path="res://scripts/main.gd" id="1_ngeyx"]
 [ext_resource type="PackedScene" uid="uid://bpqekaydn06nf" path="res://scenes/ui/scene_transition.tscn" id="4_mholn"]
 [ext_resource type="PackedScene" uid="uid://d3nt0ouwhyl50" path="res://scenes/block/block_manager.tscn" id="4_orfkg"]
 [ext_resource type="FontFile" uid="uid://btwjphxav6aet" path="res://assets/fonts/font_normal.ttf" id="5_v4ddl"]
-[ext_resource type="Script" path="res://scripts/ui/click_anywhere_text.gd" id="7_h54yi"]
+[ext_resource type="Script" uid="uid://bqrlcda5cdw23" path="res://scripts/ui/click_anywhere_text.gd" id="7_h54yi"]
 [ext_resource type="Texture2D" uid="uid://cwaagsgub0jyn" path="res://assets/images/animated_logo.png" id="8_n3wvm"]
-[ext_resource type="Script" path="res://scripts/sprite/autoplay_animated_sprite.gd" id="9_58k4f"]
+[ext_resource type="Script" uid="uid://b7ms0s8x026d6" path="res://scripts/sprite/autoplay_animated_sprite.gd" id="9_58k4f"]
 [ext_resource type="LabelSettings" uid="uid://b5nxegdlm352f" path="res://assets/resources/label_warning.tres" id="9_nsas2"]
 [ext_resource type="Texture2D" uid="uid://suc0rt2bm8q3" path="res://assets/images/animated_logo_golden.png" id="9_xkvud"]
 [ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels_zoomed/visuals/city_visuals.tscn" id="10_m3m4d"]
@@ -287,8 +287,8 @@ z_index = 846
 material = SubResource("CanvasItemMaterial_6lj7v")
 position = Vector2(18, 3.5)
 amount = 4
-lifetime_randomness = 0.2
 texture = ExtResource("11_8ecd0")
+lifetime_randomness = 0.2
 emission_shape = 3
 emission_rect_extents = Vector2(64, 21)
 gravity = Vector2(0, 0)

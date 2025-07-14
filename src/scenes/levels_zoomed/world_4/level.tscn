@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_yk5bi"]
 [ext_resource type="PackedScene" uid="uid://cyuc4qkh71ogh" path="res://scenes/block/bloc_skin/space/alien.tscn" id="3_lpsvi"]
 [ext_resource type="Texture2D" uid="uid://b7ff4xlcvrlcx" path="res://assets/images/particle/stars/star3.png" id="4_j41v4"]
-[ext_resource type="Script" path="res://scripts/props/falling_star.gd" id="4_w300t"]
+[ext_resource type="Script" uid="uid://dyfj3gqgfk3mf" path="res://scripts/props/falling_star.gd" id="4_w300t"]
 [ext_resource type="Texture2D" uid="uid://3pdk6888x74k" path="res://assets/images/particle/stars/star_common.png" id="5_7yuri"]
 [ext_resource type="PackedScene" uid="uid://dkrrlyxmespqf" path="res://scenes/ui/particle/star.tscn" id="6_dp76n"]
 

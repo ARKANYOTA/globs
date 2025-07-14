@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=4 uid="uid://ccjk1ofyxucqh"]
+[gd_scene load_steps=8 format=4 uid="uid://ccjk1ofyxucqh"]
 
 [ext_resource type="PackedScene" uid="uid://brsha6qauan46" path="res://scenes/levels_zoomed/world_4/level.tscn" id="1_nwl20"]
 [ext_resource type="PackedScene" uid="uid://cyuc4qkh71ogh" path="res://scenes/block/bloc_skin/space/alien.tscn" id="2_4dyqk"]
 [ext_resource type="PackedScene" uid="uid://id7bhi4xpwux" path="res://scenes/block/change_gravity_zone.tscn" id="3_j6pea"]
-[ext_resource type="PackedScene" uid="uid://7um00gtvgjdy" path="res://scenes/block/retry_block_alien_achievement.tscn" id="4_1qxho"]
+
+[sub_resource type="Resource" id="Resource_suyet"]
+metadata/__load_path__ = "res://scenes/block/retry_block_alien_achievement.tscn"
+
+[sub_resource type="Resource" id="Resource_4ahpw"]
+metadata/__load_path__ = "res://scenes/block/retry_block_alien_achievement.tscn"
+
+[sub_resource type="Resource" id="Resource_smn42"]
+metadata/__load_path__ = "res://scenes/block/retry_block_alien_achievement.tscn"
+
+[sub_resource type="Resource" id="Resource_ds3pe"]
+metadata/__load_path__ = "res://scenes/block/retry_block_alien_achievement.tscn"
 
 [node name="Level5" instance=ExtResource("1_nwl20")]
 
@@ -68,18 +79,18 @@ up_extendable = true
 left_extendable = true
 right_extendable = true
 
-[node name="RetryBlock" parent="." index="17" instance=ExtResource("4_1qxho")]
+[node name="RetryBlock" parent="." index="17"]
 position = Vector2(0, 48)
 size = Vector2i(2, 6)
 
-[node name="RetryBlock2" parent="." index="18" instance=ExtResource("4_1qxho")]
+[node name="RetryBlock2" parent="." index="18"]
 position = Vector2(56, 8)
 size = Vector2i(5, 1)
 
-[node name="RetryBlock3" parent="." index="19" instance=ExtResource("4_1qxho")]
+[node name="RetryBlock3" parent="." index="19"]
 position = Vector2(192, 8)
 size = Vector2i(6, 1)
 
-[node name="RetryBlock4" parent="." index="20" instance=ExtResource("4_1qxho")]
+[node name="RetryBlock4" parent="." index="20"]
 position = Vector2(232, 56)
 size = Vector2i(1, 5)

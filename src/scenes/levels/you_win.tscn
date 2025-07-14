@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bolbefhicktwp" path="res://scenes/block/bloc_skin/Frost/bat.tscn" id="9_pyx41"]
 [ext_resource type="FontFile" uid="uid://btwjphxav6aet" path="res://assets/fonts/font_normal.ttf" id="11_06exw"]
 [ext_resource type="Texture2D" uid="uid://b3l0i7o6emx6i" path="res://assets/images/logo.png" id="12_rvxq1"]
-[ext_resource type="Shader" path="res://shaders/pause_menu_background.gdshader" id="13_uhqbu"]
+[ext_resource type="Shader" uid="uid://bnx317ape4tvo" path="res://shaders/pause_menu_background.gdshader" id="13_uhqbu"]
 [ext_resource type="Texture2D" uid="uid://bsuxxmkm78ho5" path="res://assets/images/backgrounds/planet.png" id="14_k7ilc"]
 
 [sub_resource type="GDScript" id="GDScript_lq71j"]
@@ -79,9 +79,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ygkpm"]
 _data = {
-"RESET": SubResource("Animation_gkfhx"),
-"play_credits": SubResource("Animation_vbu0s"),
-"scroll_text": SubResource("Animation_2pqpi")
+&"RESET": SubResource("Animation_gkfhx"),
+&"play_credits": SubResource("Animation_vbu0s"),
+&"scroll_text": SubResource("Animation_2pqpi")
 }
 
 [sub_resource type="GDScript" id="GDScript_ookyf"]
@@ -109,7 +109,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k607s"]
 shader = ExtResource("13_uhqbu")
-shader_parameter/amount = null
+shader_parameter/amount = 0.0
 
 [node name="YouWinLevel" instance=ExtResource("1_ntcnh")]
 

@@ -1,13 +1,13 @@
 [gd_scene load_steps=35 format=3 uid="uid://cmps4e380d2e8"]
 
-[ext_resource type="Script" path="res://scripts/block/goal.gd" id="1_0dqw8"]
-[ext_resource type="Shader" path="res://scripts/block/goal.gdshader" id="2_c8q4o"]
-[ext_resource type="Script" path="res://scripts/ui/goal_animation.gd" id="3_0g71m"]
+[ext_resource type="Script" uid="uid://bh52f0vhe2sv1" path="res://scripts/block/goal.gd" id="1_0dqw8"]
+[ext_resource type="Shader" uid="uid://co3ik7jsxab1v" path="res://scripts/block/goal.gdshader" id="2_c8q4o"]
+[ext_resource type="Script" uid="uid://bkg1osqsn1si2" path="res://scripts/ui/goal_animation.gd" id="3_0g71m"]
 [ext_resource type="Texture2D" uid="uid://bi22in1k1pej8" path="res://assets/images/spritesheet/goal_blue.png" id="3_ectt5"]
 [ext_resource type="Texture2D" uid="uid://cpfsxdmfy3a4k" path="res://assets/images/spritesheet/goal_green.png" id="3_g4bvs"]
 [ext_resource type="Texture2D" uid="uid://c3va0eyxx6mg8" path="res://assets/images/spritesheet/goal_dotted.png" id="4_64rkq"]
 [ext_resource type="Texture2D" uid="uid://d0swovs3gis62" path="res://assets/images/spritesheet/goal_yellow.png" id="4_dgplb"]
-[ext_resource type="Script" path="res://scripts/autoplay_animation_player.gd" id="5_3tuuk"]
+[ext_resource type="Script" uid="uid://dgxb8liac3dy1" path="res://scripts/autoplay_animation_player.gd" id="5_3tuuk"]
 [ext_resource type="Texture2D" uid="uid://v0rkxal3vlub" path="res://assets/images/particle/particle_sparkle.png" id="5_21xut"]
 [ext_resource type="Texture2D" uid="uid://bl35ujvbyaqo8" path="res://assets/images/spritesheet/goal_red.png" id="5_gyw0k"]
 [ext_resource type="AudioStream" uid="uid://bmjyb0neb266e" path="res://assets/sounds/block/goal_fly.ogg" id="11_y11qb"]
@@ -368,9 +368,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6h61u"]
 _data = {
-"RESET": SubResource("Animation_aa8jn"),
-"collected": SubResource("Animation_sc7av"),
-"float": SubResource("Animation_tkwvv")
+&"RESET": SubResource("Animation_aa8jn"),
+&"collected": SubResource("Animation_sc7av"),
+&"float": SubResource("Animation_tkwvv")
 }
 
 [node name="Goal" type="Area2D"]

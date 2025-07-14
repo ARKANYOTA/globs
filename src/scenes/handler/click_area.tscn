@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://catrwka02j1g0"]
 
-[ext_resource type="Script" path="res://scripts/handler/click_area.gd" id="1_lsa4i"]
+[ext_resource type="Script" uid="uid://bupaap2dws34s" path="res://scripts/handler/click_area.gd" id="1_lsa4i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s0h0j"]
 

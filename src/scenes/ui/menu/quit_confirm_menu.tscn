@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dq440io8erxg"]
 
 [ext_resource type="PackedScene" uid="uid://dt7ylcp3vogvt" path="res://scenes/ui/menu/menu.tscn" id="1_5d52s"]
-[ext_resource type="Script" path="res://scripts/ui/menu/quit_confirm_menu.gd" id="2_4m1nn"]
+[ext_resource type="Script" uid="uid://ckqlf2h0ovhpn" path="res://scripts/ui/menu/quit_confirm_menu.gd" id="2_4m1nn"]
 [ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui/ui_button.tscn" id="3_st6qq"]
 
 [node name="QuitConfirmMenu" instance=ExtResource("1_5d52s")]
