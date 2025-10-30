@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c713awkloisp6"]
 
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="1_imaqt"]
-[ext_resource type="Script" path="res://scripts/ui/menu/World/world.gd" id="1_suump"]
+[ext_resource type="Script" uid="uid://b38breca1leop" path="res://scripts/ui/menu/World/world.gd" id="1_suump"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_suump")

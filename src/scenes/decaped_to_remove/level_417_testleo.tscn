@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_hmx7m"]
 [ext_resource type="PackedScene" uid="uid://cyuc4qkh71ogh" path="res://scenes/block/bloc_skin/space/alien.tscn" id="2_q6lrs"]
 [ext_resource type="PackedScene" uid="uid://id7bhi4xpwux" path="res://scenes/block/change_gravity_zone.tscn" id="3_nvmah"]
-[ext_resource type="Script" path="res://scripts/props/falling_star.gd" id="5_ifepw"]
+[ext_resource type="Script" uid="uid://dyfj3gqgfk3mf" path="res://scripts/props/falling_star.gd" id="5_ifepw"]
 
 [sub_resource type="Curve" id="Curve_4qb8h"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.292208, 0.648352), 0.0, 0.0, 0, 0, Vector2(0.428571, 0.769231), 0.0, 0.0, 0, 0, Vector2(0.603896, 0.373626), 0.0, 0.0, 0, 0, Vector2(0.779221, 0.450549), 0.0, 0.0, 0, 0, Vector2(0.941558, 0.230769), 0.0, 0.0, 0, 0]

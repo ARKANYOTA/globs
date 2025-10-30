@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=4 uid="uid://cpf3mrcp2lm12"]
 
 [ext_resource type="PackedScene" uid="uid://dajgqkks6gfke" path="res://scenes/levels/level_template.tscn" id="1_snos6"]
-[ext_resource type="Script" path="res://scripts/level/you_win_level.gd" id="2_4q5vi"]
+[ext_resource type="Script" uid="uid://dgwe5lh27b3hm" path="res://scripts/level/you_win_level.gd" id="2_4q5vi"]
 [ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels_zoomed/visuals/city_visuals.tscn" id="2_q111u"]
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_yl61w"]
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="3_2jk2t"]
@@ -45,8 +45,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yo32q"]
 _data = {
-"RESET": SubResource("Animation_g5ypf"),
-"fade_in_text": SubResource("Animation_10ckj")
+&"RESET": SubResource("Animation_g5ypf"),
+&"fade_in_text": SubResource("Animation_10ckj")
 }
 
 [node name="Level" instance=ExtResource("1_snos6")]

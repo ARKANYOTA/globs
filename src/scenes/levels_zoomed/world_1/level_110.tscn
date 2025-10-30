@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bt58nkodr7coo" path="res://scenes/levels_zoomed/world_1/level_100_template.tscn" id="1_4ge2e"]
 [ext_resource type="Texture2D" uid="uid://5enjsrrvtv4k" path="res://assets/images/spritesheet/world_1_decoration2.png" id="2_f7chm"]
 [ext_resource type="PackedScene" uid="uid://cuhl4onv4df40" path="res://scenes/props/bird.tscn" id="3_qrr7o"]
-[ext_resource type="Script" path="res://scripts/ui/drag_tutorial.gd" id="4_lkncf"]
+[ext_resource type="Script" uid="uid://8tumayyldajt" path="res://scripts/ui/drag_tutorial.gd" id="4_lkncf"]
 [ext_resource type="Texture2D" uid="uid://v5jnql0u0b23" path="res://assets/images/ui/cursor.png" id="4_s8mtn"]
 
 [sub_resource type="Animation" id="Animation_avb2j"]
@@ -78,8 +78,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ntijy"]
 _data = {
-"RESET": SubResource("Animation_avb2j"),
-"drag_tutorial": SubResource("Animation_q24qj")
+&"RESET": SubResource("Animation_avb2j"),
+&"drag_tutorial": SubResource("Animation_q24qj")
 }
 
 [node name="Level" instance=ExtResource("1_4ge2e")]

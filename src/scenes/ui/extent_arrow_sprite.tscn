@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cf3id752iqcto"]
 
-[ext_resource type="Script" path="res://scripts/ui/extent_arrow_sprite.gd" id="1_5xol8"]
+[ext_resource type="Script" uid="uid://dferbihvtfmie" path="res://scripts/ui/extent_arrow_sprite.gd" id="1_5xol8"]
 [ext_resource type="Texture2D" uid="uid://cxwd6aj0mj2ew" path="res://assets/images/ui/extent_indicator.png" id="1_ei2h0"]
 
 [sub_resource type="Animation" id="Animation_q6311"]
@@ -83,8 +83,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_chdh4"]
 _data = {
-"RESET": SubResource("Animation_q6311"),
-"max_reached": SubResource("Animation_fqknl")
+&"RESET": SubResource("Animation_q6311"),
+&"max_reached": SubResource("Animation_fqknl")
 }
 
 [node name="ArrowSprite" type="Node2D"]

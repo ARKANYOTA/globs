@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=4 uid="uid://bgegqenxkqbo6"]
 
-[ext_resource type="Script" path="res://scripts/level/level.gd" id="1_hwdsf"]
+[ext_resource type="Script" uid="uid://cadjeg7i7283v" path="res://scripts/level/level.gd" id="1_hwdsf"]
 [ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels_zoomed/visuals/city_visuals.tscn" id="2_q111u"]
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_yl61w"]
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="3_2jk2t"]
-[ext_resource type="Script" path="res://scripts/camera/camera_follow.gd" id="4_y2r5q"]
+[ext_resource type="Script" uid="uid://cnk60ehed2qdi" path="res://scripts/camera/camera_follow.gd" id="4_y2r5q"]
 [ext_resource type="PackedScene" uid="uid://mfybqoo28hl2" path="res://scenes/block/bloc_skin/fromage/mouse_block.tscn" id="5_twg7n"]
 [ext_resource type="PackedScene" uid="uid://bdttvr6awstj3" path="res://scenes/block/bloc_skin/fromage/bear_block.tscn" id="7_y7rac"]
 [ext_resource type="PackedScene" uid="uid://duqpgsulnccc7" path="res://scenes/block/bloc_skin/fromage/ice_block.tscn" id="8_8j2jt"]

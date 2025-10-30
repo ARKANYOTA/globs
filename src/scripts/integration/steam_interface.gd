@@ -9,10 +9,10 @@ func initialize() -> bool:
 	var initialize_response: Dictionary = Steam.steamInitEx(true, GameManager.STEAM_APP_ID)
 	_print("SteamInterface: GodotSteam returned code %d: \"%s\"" % [initialize_response["status"], initialize_response["verbal"]])
 	# Return codes:
-    # 0 - Successfully initialized
-    # 1 - Some other failure
-    # 2 - We cannot connect to Steam, steam probably isn't running
-    # 3 - Steam client appears to be out of date
+	# 0 - Successfully initialized
+	# 1 - Some other failure
+	# 2 - We cannot connect to Steam, steam probably isn't running
+	# 3 - Steam client appears to be out of date
 
 	steam_initialized_correctly = initialize_response["status"] == 0
 	is_enabled = steam_initialized_correctly
@@ -20,10 +20,10 @@ func initialize() -> bool:
 		return false
 	
 	# is_on_steam_deck = Steam.isSteamRunningOnSteamDeck()
-    # is_online = Steam.loggedOn()
-    # is_owned = Steam.isSubscribed()
-    # steam_id = Steam.getSteamID()
-    # steam_username = Steam.getPersonaName()
+	# is_online = Steam.loggedOn()
+	# is_owned = Steam.isSubscribed()
+	# steam_id = Steam.getSteamID()
+	# steam_username = Steam.getPersonaName()
 
 	Steam.current_stats_received.connect(_on_steam_stats_ready)
 	return true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ce5mm6q67h08x"]
 
-[ext_resource type="Script" path="res://scenes/block/area_component/retry_component.gd" id="1_qcj6u"]
+[ext_resource type="Script" uid="uid://et744ptckmwq" path="res://scenes/block/area_component/retry_component.gd" id="1_qcj6u"]
 
 [node name="RetryComponent" type="Node2D"]
 script = ExtResource("1_qcj6u")

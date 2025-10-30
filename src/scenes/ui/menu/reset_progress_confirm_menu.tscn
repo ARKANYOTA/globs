@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7majswqbd6mf"]
 
 [ext_resource type="PackedScene" uid="uid://dt7ylcp3vogvt" path="res://scenes/ui/menu/menu.tscn" id="1_p3n4o"]
-[ext_resource type="Script" path="res://scripts/ui/menu/reset_progress_confirm_menu.gd" id="2_7fdx7"]
+[ext_resource type="Script" uid="uid://se1flk0j0mq5" path="res://scripts/ui/menu/reset_progress_confirm_menu.gd" id="2_7fdx7"]
 [ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui/ui_button.tscn" id="7_mgrve"]
 
 [node name="ResetProgressConfirmMenu" instance=ExtResource("1_p3n4o")]

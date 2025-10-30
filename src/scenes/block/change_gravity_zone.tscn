@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://id7bhi4xpwux"]
 
-[ext_resource type="Script" path="res://scripts/block/change_gravity_zone.gd" id="1_nvhnp"]
+[ext_resource type="Script" uid="uid://g30xd0i74b5d" path="res://scripts/block/change_gravity_zone.gd" id="1_nvhnp"]
 [ext_resource type="Texture2D" uid="uid://b2b587l88oucl" path="res://assets/images/spritesheet/gravity_zone.png" id="2_krj7r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5803m"]

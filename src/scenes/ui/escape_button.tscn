@@ -1,11 +1,11 @@
 [gd_scene load_steps=17 format=3 uid="uid://2nkl8ep25jgk"]
 
-[ext_resource type="FontFile" uid="uid://djmgql28si3cf" path="res://assets/fonts/font_normal.ttf" id="1_0napy"]
+[ext_resource type="FontFile" uid="uid://btwjphxav6aet" path="res://assets/fonts/font_normal.ttf" id="1_0napy"]
 [ext_resource type="StyleBox" uid="uid://dv3miaelc86gy" path="res://assets/textures/option_button_texture_pressed.tres" id="2_0iqod"]
 [ext_resource type="StyleBox" uid="uid://dbwx70quhf42b" path="res://assets/textures/option_button_texture_hover.tres" id="3_sj47v"]
 [ext_resource type="StyleBox" uid="uid://d1obvum2g2cax" path="res://assets/textures/option_button_texture.tres" id="4_to3es"]
 [ext_resource type="Texture2D" uid="uid://cfccdei10ptjn" path="res://assets/images/ui/pause.png" id="5_kmbaj"]
-[ext_resource type="Script" path="res://scripts/ui/escape_button.gd" id="5_vkv6p"]
+[ext_resource type="Script" uid="uid://bnq0jfd2n2se2" path="res://scripts/ui/escape_button.gd" id="5_vkv6p"]
 [ext_resource type="AudioStream" uid="uid://lgkwwx64ps4o" path="res://assets/sounds/ui/button_click_1.ogg" id="6_rcd1y"]
 [ext_resource type="AudioStream" uid="uid://dqr8ttoiwibip" path="res://assets/sounds/ui/button_hover.ogg" id="7_tjwse"]
 

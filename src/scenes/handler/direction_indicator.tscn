@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cysde5kl7s4e0"]
 
-[ext_resource type="Script" path="res://scripts/handler/direction_indicator.gd" id="2_qh88b"]
+[ext_resource type="Script" uid="uid://dr8i0em8nfgqx" path="res://scripts/handler/direction_indicator.gd" id="2_qh88b"]
 [ext_resource type="PackedScene" uid="uid://cf3id752iqcto" path="res://scenes/ui/extent_arrow_sprite.tscn" id="4_ai0ts"]
 [ext_resource type="Texture2D" uid="uid://br7rbtjdickl6" path="res://assets/images/ui/dotted_line.png" id="4_h1al5"]
-[ext_resource type="Shader" path="res://shaders/direction_indicator.gdshader" id="4_uioxl"]
+[ext_resource type="Shader" uid="uid://bd6570mqloe0s" path="res://shaders/direction_indicator.gdshader" id="4_uioxl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g0v1w"]
 shader = ExtResource("4_uioxl")

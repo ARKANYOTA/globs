@@ -5,9 +5,9 @@
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_lx340"]
 [ext_resource type="Texture2D" uid="uid://bwe6mjfyq10gg" path="res://assets/images/map/sleeping_bear.png" id="3_hfo64"]
 [ext_resource type="Texture2D" uid="uid://cje1nri02bvrd" path="res://assets/images/map/sleeping_bear_small.png" id="4_ji7is"]
-[ext_resource type="Script" path="res://scripts/sprite/autoplay_animated_sprite.gd" id="5_a80f5"]
+[ext_resource type="Script" uid="uid://b7ms0s8x026d6" path="res://scripts/sprite/autoplay_animated_sprite.gd" id="5_a80f5"]
 [ext_resource type="Texture2D" uid="uid://d1sgc6ft8ejni" path="res://assets/images/particle/z.png" id="6_4y3ar"]
-[ext_resource type="Script" path="res://scenes/ui/world_select/world/world_3_bear.gd" id="7_36kvt"]
+[ext_resource type="Script" uid="uid://du8uesfq1qwhc" path="res://scenes/ui/world_select/world/world_3_bear.gd" id="7_36kvt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_etwqc"]
 atlas = ExtResource("3_hfo64")

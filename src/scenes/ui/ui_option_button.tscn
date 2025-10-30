@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpa2ry7etmeii"]
 
 [ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui/ui_button.tscn" id="1_t0m20"]
-[ext_resource type="Script" path="res://scripts/ui/ui_option_button.gd" id="2_hnqoh"]
+[ext_resource type="Script" uid="uid://clssfkkiqxtue" path="res://scripts/ui/ui_option_button.gd" id="2_hnqoh"]
 
 [node name="UiButton" instance=ExtResource("1_t0m20")]
 text = "Option: ON"

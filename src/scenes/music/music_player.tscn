@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://x3xrm4cf0on4"]
 
-[ext_resource type="Script" path="res://scripts/music/music_player.gd" id="1_5krxd"]
+[ext_resource type="Script" uid="uid://dhxri4n2gtby5" path="res://scripts/music/music_player.gd" id="1_5krxd"]
 [ext_resource type="AudioStream" uid="uid://ndqjixdonlwd" path="res://assets/sounds/music/music_city.ogg" id="2_8kn24"]
 
 [node name="MusicPlayer" type="Node2D"]

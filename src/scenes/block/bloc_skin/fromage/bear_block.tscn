@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="1_iuvq1"]
 [ext_resource type="Texture2D" uid="uid://cbb0cie1kixop" path="res://assets/images/spritesheet/black_frost_sprite_sheet2.png" id="2_lp0vd"]
-[ext_resource type="Script" path="res://scripts/block/mouse_block_sound.gd" id="4_u7l0a"]
+[ext_resource type="Script" uid="uid://c4xy3tn7y1fx4" path="res://scripts/block/mouse_block_sound.gd" id="4_u7l0a"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nbgqd"]
 resource_local_to_scene = true

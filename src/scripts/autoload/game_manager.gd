@@ -20,6 +20,7 @@ enum DistributionPlatform {
 	NATIVE,
 	STEAM,
 	PLAY_STORE,
+	GAME_CENTER,
 }
 
 var rng = RandomNumberGenerator.new()
@@ -31,6 +32,8 @@ var distribution_platform: DistributionPlatform = DistributionPlatform.UNDEFINED
 				distribution_platform = DistributionPlatform.STEAM
 			elif is_google_play_supported():
 				distribution_platform = DistributionPlatform.PLAY_STORE
+			elif is_game_center_supported():
+				distribution_platform = DistributionPlatform.GAME_CENTER
 			else:
 				distribution_platform = DistributionPlatform.NATIVE
 		return distribution_platform
@@ -279,6 +282,13 @@ func open_achievements_menu() -> bool:
 				return true
 		
 			return false
+		DistributionPlatform.GAME_CENTER:
+			if not GameManager.achievement_manager or GameManager.achievement_manager is not AchievementManagerGamecenter:
+				return false
+				
+			GameManager.achievement_manager.open_achievements_menu()
+		
+			return false
 		_:
 			return false
 
@@ -352,6 +362,10 @@ func _init_steam():
 func is_google_play_supported() -> bool:
 	return game_platform == GamePlatform.MOBILE and OS.get_name() == "Android" and OS.has_feature("playstore")
 
+func is_game_center_supported() -> bool:
+	return game_platform == GamePlatform.MOBILE and OS.get_name() == "iOS" and Engine.has_singleton("GameCenter")
+
+
 func _init_google_play():
 	if distribution_platform != DistributionPlatform.PLAY_STORE:
 		print("Google Play: not initialized.")
@@ -378,6 +392,10 @@ func _init_achievement_manager():
 		DistributionPlatform.PLAY_STORE:
 			print("Creating Play Store achievement manager")
 			scene = load("res://scenes/achievements/achievement_manager_google_play.tscn")
+		
+		DistributionPlatform.GAME_CENTER:
+			print("Creating Play Store achievement manager")
+			scene = load("res://scenes/achievements/achievement_manager_game_center.tscn")
 
 		_:
 			#TODO

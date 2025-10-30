@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2m2evjute318"]
 
 [ext_resource type="PackedScene" uid="uid://clch7rqviicn6" path="res://scenes/achievements/achievement_manager.tscn" id="1_v32yi"]
-[ext_resource type="Script" path="res://scripts/achievements/achievement_manager_google_play.gd" id="2_pc3vh"]
+[ext_resource type="Script" uid="uid://bl3qd01qqlhxj" path="res://scripts/achievements/achievement_manager_google_play.gd" id="2_pc3vh"]
 
 [node name="AchievementManagerSteam" instance=ExtResource("1_v32yi")]
 script = ExtResource("2_pc3vh")

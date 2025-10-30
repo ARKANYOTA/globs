@@ -1,13 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnputu7c8onjn"]
-
-[ext_resource type="FontFile" uid="uid://bmdive65vbval" path="res://assets/fonts/font_normal_2.ttf" id="1_1hr3e"]
+[gd_scene load_steps=3 format=3 uid="uid://dnputu7c8onjn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_swk2v"]
-font = ExtResource("1_1hr3e")
 font_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_701ue"]
-font = ExtResource("1_1hr3e")
 font_size = 8
 
 [node name="Control" type="Control"]

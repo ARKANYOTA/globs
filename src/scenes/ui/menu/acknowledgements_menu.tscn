@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://brdyt7pbwwdpq"]
 
 [ext_resource type="PackedScene" uid="uid://dt7ylcp3vogvt" path="res://scenes/ui/menu/menu.tscn" id="1_wwlgb"]
-[ext_resource type="Script" path="res://scripts/ui/menu/acknowledgements_menu.gd" id="2_oynd4"]
+[ext_resource type="Script" uid="uid://dsxnhc6qxnij2" path="res://scripts/ui/menu/acknowledgements_menu.gd" id="2_oynd4"]
 [ext_resource type="FontFile" uid="uid://btwjphxav6aet" path="res://assets/fonts/font_normal.ttf" id="3_o03hf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jomln"]

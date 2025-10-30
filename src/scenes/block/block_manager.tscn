@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d3nt0ouwhyl50"]
 
-[ext_resource type="Script" path="res://scripts/block/block_manager.gd" id="1_ifvq7"]
+[ext_resource type="Script" uid="uid://c4a6as548pcur" path="res://scripts/block/block_manager.gd" id="1_ifvq7"]
 
 [node name="BlockManager" type="Node2D"]
 script = ExtResource("1_ifvq7")

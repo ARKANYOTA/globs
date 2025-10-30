@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bpqekaydn06nf"]
 
-[ext_resource type="FontFile" uid="uid://cjyup1ooil314" path="res://assets/fonts/font_normal.ttf" id="1_yne4o"]
+[ext_resource type="FontFile" uid="uid://btwjphxav6aet" path="res://assets/fonts/font_normal.ttf" id="1_yne4o"]
 [ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="2_eb5k4"]
 [ext_resource type="AudioStream" uid="uid://cvlf1rqc1ws02" path="res://assets/sounds/level/scene_transition.ogg" id="3_e4mfm"]
 
@@ -112,9 +112,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0rxcp"]
 _data = {
-"RESET": SubResource("Animation_cc6n1"),
-"bloc_in": SubResource("Animation_qjplt"),
-"block_in_vertical": SubResource("Animation_23jsm")
+&"RESET": SubResource("Animation_cc6n1"),
+&"bloc_in": SubResource("Animation_qjplt"),
+&"block_in_vertical": SubResource("Animation_23jsm")
 }
 
 [node name="SceneTransition" type="CanvasLayer"]

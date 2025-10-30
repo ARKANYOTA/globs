@@ -1,7 +1,7 @@
 # Globs
 ![Cover image](readme/banner_wide_cover.gif)
 
-[**Google Play**](https://play.google.com/store/apps/details?id=com.yolwoocle.globs) · [**Steam**](https://s.team/a/3219110) · [**itch.io**](https://yolwoocle.itch.io/globs) · [**GitHub**](https://github.com/ARKANYOTA/gmtk2024/)
+[**Apple App Store**](https://apps.apple.com/us/app/globs-a-colorful-puzzle-game/id6738417089) · [**Google Play Store**](https://play.google.com/store/apps/details?id=com.yolwoocle.globs) · [**Steam**](https://s.team/a/3219110) · [**itch.io**](https://yolwoocle.itch.io/globs) · [**GitHub**](https://github.com/ARKANYOTA/gmtk2024/)
 
 Meet the size-changing Globs in this colorful puzzle game. Use the curious properties of their bodies at your advantage to solve a variety of puzzles, all in a expressive pixel art aesthetic and upbeat soundtrack.
 
