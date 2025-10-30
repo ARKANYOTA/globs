@@ -16,10 +16,10 @@ warnings/check_invalid_track_paths=false
 
 config/name="Globs"
 config/description="Meet the size-changing Globs in this colorful puzzle game."
-config/version="2.2"
+config/version="2.1"
 run/main_scene="res://scenes/main.tscn"
 config/quit_on_go_back=false
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0.913725, 0.992157, 0.870588, 1)
 boot_splash/fullsize=false
@@ -184,7 +184,7 @@ removeme_achievement_revokeall={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://assets/translations/translations.en.translation", "res://assets/translations/translations.fr.translation", "res://assets/translations/translations.xx.translation")
+locale/translations=PackedStringArray("res://assets/translations/translations.en.translation", "res://assets/translations/translations.fr.translation")
 pseudolocalization/use_pseudolocalization=true
 pseudolocalization/replace_with_accents=false
 pseudolocalization/prefix=""

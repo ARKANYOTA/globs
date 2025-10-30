@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c0vf1vyo26r55"]
 
 [ext_resource type="PackedScene" uid="uid://dt7ylcp3vogvt" path="res://scenes/ui/menu/menu.tscn" id="1_w3j1j"]
-[ext_resource type="Script" uid="uid://xoxtf3qk3vyx" path="res://scripts/ui/menu/options_menu.gd" id="1_wjxn1"]
+[ext_resource type="Script" uid="uid://lxf82q44uc3m" path="res://scripts/ui/menu/options_menu.gd" id="1_wjxn1"]
 [ext_resource type="LabelSettings" uid="uid://cl1yg37xye2ku" path="res://assets/resources/label_settings.tres" id="3_t0dhi"]
 [ext_resource type="PackedScene" uid="uid://l4uy665qgi6n" path="res://scenes/ui/ui_button.tscn" id="5_jwcs2"]
 [ext_resource type="PackedScene" uid="uid://dqqi0ixflctdy" path="res://scenes/ui/fps_slider.tscn" id="5_mpshi"]
@@ -51,6 +51,7 @@ layout_mode = 2
 audio_bus_name = "Music"
 
 [node name="FpsSliderContainer" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="1"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/AspectRatioContainer/Items/Buttons/FpsSliderContainer" index="0"]
@@ -69,17 +70,17 @@ layout_mode = 2
 text = "MENU_OPTIONS_FULLSCREEN"
 icon = null
 
-[node name="OptionsContainer" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="3"]
-layout_mode = 2
-
-[node name="Language" parent="MarginContainer/AspectRatioContainer/Items/Buttons/OptionsContainer" index="0" instance=ExtResource("5_jwcs2")]
+[node name="Language" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="3" instance=ExtResource("5_jwcs2")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "MENU_OPTIONS_LANGUAGE"
 
-[node name="ResetProgress" parent="MarginContainer/AspectRatioContainer/Items/Buttons/OptionsContainer" index="1" instance=ExtResource("5_jwcs2")]
+[node name="ResetProgress" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="4" instance=ExtResource("5_jwcs2")]
 layout_mode = 2
 text = "MENU_RESET_PROGRESS"
 
-[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/OptionsContainer/Language" to="." method="_on_language_pressed"]
-[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/OptionsContainer/ResetProgress" to="." method="_on_reset_progress_pressed"]
+[node name="OptionsContainer" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/Items/Buttons" index="5"]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/Language" to="." method="_on_language_pressed"]
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Items/Buttons/ResetProgress" to="." method="_on_reset_progress_pressed"]
