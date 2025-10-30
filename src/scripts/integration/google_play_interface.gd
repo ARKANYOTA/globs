@@ -14,9 +14,12 @@ func initialize() -> bool:
 
 	SignInClient.user_authenticated.connect(_on_user_autheticated)
 
-	if GameManager.achievement_manager and GameManager.achievement_manager is AchievementManagerGooglePlay:
+	if GameManager.achievement_manager and (GameManager.achievement_manager is AchievementManagerGooglePlay):
+		_print("Loading achievements...")
 		AchievementsClient.achievements_loaded.connect(_on_achievements_loaded)
 		AchievementsClient.load_achievements(true)
+	else:
+		_print("Failed loading achievments: " + str([GameManager.achievement_manager, GameManager.achievement_manager, AchievementManagerGooglePlay]))
 
 	_print("Finished initialization")
 	is_enabled = true
@@ -76,6 +79,7 @@ func revoke_achievement(value: String) -> bool:
 	return false
 
 func _on_achievements_loaded(remote_achievements: Array[AchievementsClient.Achievement]):
+	_print("_on_achievements_loaded called.")
 	if not GameManager.achievement_manager or GameManager.achievement_manager is not AchievementManagerGooglePlay:
 		return 
 
@@ -92,6 +96,11 @@ func _on_achievements_loaded(remote_achievements: Array[AchievementsClient.Achie
 		
 	GameManager.achievement_manager.load_achievements(loaded_achievements)
 	GameManager.achievement_manager.grant_offline_achievements()
+
+	_print("Achievements loaded.")
+
+func _on_achievement_unlocked(_is_unlocked: bool, _achievement_id: String):
+	AchievementsClient.load_achievements(true)
 
 
 # func _on_steam_stats_ready(game_id: int, result: int, user_id: int):

@@ -3,11 +3,13 @@
 importer="csv_translation"
 type="Translation"
 uid="uid://6kpf72kkyrkm"
-valid=false
 
 [deps]
 
+files=["res://assets/translations/translations.en.translation", "res://assets/translations/translations.fr.translation", "res://assets/translations/translations.zh.translation"]
+
 source_file="res://assets/translations/translations.csv"
+dest_files=["res://assets/translations/translations.en.translation", "res://assets/translations/translations.fr.translation", "res://assets/translations/translations.zh.translation"]
 
 [params]
 

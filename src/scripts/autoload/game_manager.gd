@@ -112,10 +112,10 @@ func _ready():
 	if not load_option("misc", "is_logo_golden", false):
 		save_option("misc", "is_logo_golden", false)
 
+	_init_achievement_manager()
 	_init_discord_rpc()
 	_init_steam()
 	_init_google_play()
-	_init_achievement_manager()
 
 
 func _process(delta):
