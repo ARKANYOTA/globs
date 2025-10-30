@@ -5,19 +5,24 @@ var steam_initialized_correctly: bool = false
 
 var _sign_in_retries := 1
 
+@onready var achievements_client = $PlayGamesAchievementsClient
+@onready var sign_in_client = $PlayGamesSignInClient
+
 func initialize() -> bool:
 	_print("Entered initialize")
+	
+	GodotPlayGameServices.initialize()
 	
 	_print("Checking 'not GodotPlayGameServices.android_plugin'")
 	if not GodotPlayGameServices.android_plugin:
 		_print("Android plugin Not Found! Features may not work properly.")
 
-	SignInClient.user_authenticated.connect(_on_user_autheticated)
+	sign_in_client.user_authenticated.connect(_on_user_autheticated)
 
 	if GameManager.achievement_manager and (GameManager.achievement_manager is AchievementManagerGooglePlay):
 		_print("Loading achievements...")
-		AchievementsClient.achievements_loaded.connect(_on_achievements_loaded)
-		AchievementsClient.load_achievements(true)
+		achievements_client.achievements_loaded.connect(_on_achievements_loaded)
+		achievements_client.load_achievements(true)
 	else:
 		_print("Failed loading achievments: " + str([GameManager.achievement_manager, GameManager.achievement_manager, AchievementManagerGooglePlay]))
 
@@ -36,14 +41,14 @@ func popup_is_authenticated() -> void:
 	if not is_enabled:
 		return
 	
-	return SignInClient.is_authenticated()
+	return sign_in_client.is_authenticated()
 
 
 func _on_user_autheticated(is_authenticated: bool):
 	_print("user_authenticated signal called")
 	if _sign_in_retries > 0 and not is_authenticated:
 		_print("Trying to sign in!")
-		SignInClient.sign_in()
+		sign_in_client.sign_in()
 		_sign_in_retries -= 1
 	
 	if _sign_in_retries == 0:
@@ -58,11 +63,12 @@ func _on_user_autheticated(is_authenticated: bool):
 
 func open_achievements_menu():
 	_print("open_achievements_menu 1")
+	_print("GodotPlayGameServices.android_plugin  " + str(GodotPlayGameServices.android_plugin))
 	if not is_enabled:
 		return
 
 	_print("open_achievements_menu 2")
-	AchievementsClient.show_achievements()
+	achievements_client.show_achievements()
 
 # func achievement_exists(value: String) -> bool:
 # 	return false
@@ -72,13 +78,14 @@ func open_achievements_menu():
 # 	return false
 
 func grant_achievement(achievement_id: String) -> bool:
-	AchievementsClient.unlock_achievement(achievement_id)
+	achievements_client.unlock_achievement(achievement_id)
 	return true
 
 func revoke_achievement(value: String) -> bool:
 	return false
 
-func _on_achievements_loaded(remote_achievements: Array[AchievementsClient.Achievement]):
+# remote_achievements:  Array[achievements_client.Achievement]
+func _on_achievements_loaded(remote_achievements):
 	_print("_on_achievements_loaded called.")
 	if not GameManager.achievement_manager or GameManager.achievement_manager is not AchievementManagerGooglePlay:
 		return 
@@ -91,7 +98,7 @@ func _on_achievements_loaded(remote_achievements: Array[AchievementsClient.Achie
 		if google_play_id_to_achievement.has(remote_achievement.achievement_id):
 			var achievement = google_play_id_to_achievement[remote_achievement.achievement_id] 
 			loaded_achievements[achievement["id"]] = {
-				achieved = (remote_achievement.state == AchievementsClient.State.STATE_UNLOCKED)
+				achieved = (remote_achievement.state == achievements_client.State.STATE_UNLOCKED)
 			}
 		
 	GameManager.achievement_manager.load_achievements(loaded_achievements)
@@ -100,7 +107,7 @@ func _on_achievements_loaded(remote_achievements: Array[AchievementsClient.Achie
 	_print("Achievements loaded.")
 
 func _on_achievement_unlocked(_is_unlocked: bool, _achievement_id: String):
-	AchievementsClient.load_achievements(true)
+	achievements_client.load_achievements(true)
 
 
 # func _on_steam_stats_ready(game_id: int, result: int, user_id: int):

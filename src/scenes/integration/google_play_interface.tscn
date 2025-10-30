@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://be2pfyt8dng63"]
+[gd_scene load_steps=4 format=3 uid="uid://be2pfyt8dng63"]
 
 [ext_resource type="Script" uid="uid://bumug4y3oin0c" path="res://scripts/integration/google_play_interface.gd" id="1_mc10k"]
+[ext_resource type="Script" uid="uid://g5111j0u107d" path="res://addons/GodotPlayGameServices/scripts/achievements/achievements_client.gd" id="2_6wlj4"]
+[ext_resource type="Script" uid="uid://dscqhfapcptlu" path="res://addons/GodotPlayGameServices/scripts/sign_in/sign_in_client.gd" id="3_atxwr"]
 
 [node name="GooglePlayInterface" type="Node"]
 script = ExtResource("1_mc10k")
+
+[node name="PlayGamesAchievementsClient" type="Node" parent="."]
+script = ExtResource("2_6wlj4")
+metadata/_custom_type_script = "uid://g5111j0u107d"
+
+[node name="PlayGamesSignInClient" type="Node" parent="."]
+script = ExtResource("3_atxwr")
+metadata/_custom_type_script = "uid://dscqhfapcptlu"

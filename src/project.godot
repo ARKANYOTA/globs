@@ -36,13 +36,13 @@ BlockManagerAutoload="*res://scripts/autoload/block_manager_autoload.gd"
 Util="*res://scripts/autoload/util.gd"
 MusicManager="*res://scripts/autoload/music_manager.gd"
 AchievementData="*res://scripts/autoload/achievement_data.gd"
-GodotPlayGameServices="*res://addons/GodotPlayGameServices/autoloads/godot_play_game_services.gd"
-SignInClient="*res://addons/GodotPlayGameServices/autoloads/sign_in_client.gd"
-PlayersClient="*res://addons/GodotPlayGameServices/autoloads/players_client.gd"
-AchievementsClient="*res://addons/GodotPlayGameServices/autoloads/achievements_client.gd"
-LeaderboardsClient="*res://addons/GodotPlayGameServices/autoloads/leaderboards_client.gd"
-SnapshotsClient="*res://addons/GodotPlayGameServices/autoloads/snapshots_client.gd"
-EventsClient="*res://addons/GodotPlayGameServices/autoloads/events_client.gd"
+GodotPlayGameServices="*res://addons/GodotPlayGameServices/scripts/autoloads/godot_play_game_services.gd"
+SignInClient="res://addons/GodotPlayGameServices/autoloads/sign_in_client.gd"
+PlayersClient="res://addons/GodotPlayGameServices/autoloads/players_client.gd"
+AchievementsClient="res://addons/GodotPlayGameServices/autoloads/achievements_client.gd"
+LeaderboardsClient="res://addons/GodotPlayGameServices/autoloads/leaderboards_client.gd"
+SnapshotsClient="res://addons/GodotPlayGameServices/autoloads/snapshots_client.gd"
+EventsClient="res://addons/GodotPlayGameServices/autoloads/events_client.gd"
 
 [debug]
 
@@ -184,7 +184,7 @@ removeme_achievement_revokeall={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://assets/translations/translations.en.translation", "res://assets/translations/translations.fr.translation")
+locale/translations=PackedStringArray("res://assets/translations/translations.en.translation", "res://assets/translations/translations.fr.translation", "res://assets/translations/translations.zh.translation")
 pseudolocalization/use_pseudolocalization=true
 pseudolocalization/replace_with_accents=false
 pseudolocalization/prefix=""
