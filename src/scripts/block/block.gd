@@ -370,7 +370,7 @@ func get_grid_rect() -> Rect2i:
 func get_center():
 	return $CollisionShape.position
 
-func get_all_tree_nodes(node = get_tree().get_root(), list = []):
+func get_all_tree_nodes():
 	return get_tree().get_nodes_in_group("level_element")
 
 func enter_gravity_zone(direction: Direction, default: bool):
