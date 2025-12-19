@@ -135,9 +135,17 @@ var direction_indicator: PackedScene = preload("res://scenes/handler/direction_i
 
 var animation = "o_face"
 var is_asleep := true
-var is_moving := false
+var is_moving := false:
+	set(value):
+		is_moving = value
+		if not value and not is_falling:
+			remaining_pushs = -1
 var moving_direction := Direction.INVALID
-var is_falling := false
+var is_falling := false:
+	set(value):
+		is_falling = value
+		if not value and not is_moving:
+			remaining_pushs = -1
 
 var drag_start_position: Vector2
 var drag_mouse_dead_zone = 8
