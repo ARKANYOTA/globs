@@ -371,10 +371,7 @@ func get_center():
 	return $CollisionShape.position
 
 func get_all_tree_nodes(node = get_tree().get_root(), list = []):
-	list.append(node)
-	for childNode in node.get_children():
-		list = get_all_tree_nodes(childNode, list)
-	return list
+	return get_tree().get_nodes_in_group("level_element")
 
 func enter_gravity_zone(direction: Direction, default: bool):
 	gravity_axis = direction
@@ -687,6 +684,7 @@ func stop_grow():
 ################################################
 
 func _ready():
+	add_to_group("level_element")
 	$CollisionShape.shape = $CollisionShape.shape.duplicate()
 	
 	if Engine.is_editor_hint():

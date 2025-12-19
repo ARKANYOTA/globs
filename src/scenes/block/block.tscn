@@ -419,7 +419,7 @@ stream_1/stream = ExtResource("15_vyus6")
 stream_2/stream = ExtResource("14_3ir7h")
 stream_3/stream = ExtResource("17_aqiwb")
 
-[node name="Block" type="Area2D"]
+[node name="Block" type="Area2D" groups=["level_element"]]
 collision_layer = 6
 collision_mask = 2
 script = ExtResource("1_eflyf")
