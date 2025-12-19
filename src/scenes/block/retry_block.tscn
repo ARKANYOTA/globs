@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://3wsygloksbdv"]
+[gd_scene load_steps=6 format=3 uid="uid://3wsygloksbdv"]
 
 [ext_resource type="PackedScene" uid="uid://cxhetbc47owgx" path="res://scenes/block/area_block.tscn" id="1_gmcpu"]
 [ext_resource type="PackedScene" uid="uid://ce5mm6q67h08x" path="res://scenes/block/area_component/retry_component.tscn" id="2_lg6a2"]
+[ext_resource type="Script" uid="uid://bdbrmma53ko54" path="res://scenes/block/area_component/area_block_depop_component.gd" id="3_06get"]
+[ext_resource type="PackedScene" uid="uid://k3lhg17ygr02" path="res://scenes/ui/particle/smoke.tscn" id="4_bkupw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij2yy"]
 size = Vector2(0, 0)
@@ -13,4 +15,8 @@ size = Vector2(0, 0)
 [node name="CollisionShape" parent="." index="1"]
 shape = SubResource("RectangleShape2D_ij2yy")
 
-[connection signal="on_glob_touched" from="." to="RetryComponent" method="_on_retry_block_on_glob_touched"]
+[node name="AreaBlockDepopComponent" type="Node2D" parent="." index="2"]
+script = ExtResource("3_06get")
+smoke_scene = ExtResource("4_bkupw")
+
+[connection signal="on_glob_touched" from="." to="AreaBlockDepopComponent" method="_on_glob_touched"]
