@@ -1,8 +1,10 @@
 ["arkanyota.github.io",
+"arkanyota.com",
 "yolwoocle.itch.io",
 "yolwoocle.com",
 "yolwoocle.github.io",
 "ninesliced.github.io",
+"ninesliced.com",
 "localhost",
 "html.itch.zone",
 ""]
