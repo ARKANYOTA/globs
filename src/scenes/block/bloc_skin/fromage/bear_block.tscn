@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="1_iuvq1"]
 [ext_resource type="Texture2D" uid="uid://cbb0cie1kixop" path="res://assets/images/spritesheet/black_frost_sprite_sheet2.png" id="2_lp0vd"]
-[ext_resource type="Script" uid="uid://c4xy3tn7y1fx4" path="res://scripts/block/mouse_block_sound.gd" id="4_u7l0a"]
+[ext_resource type="Script" uid="uid://mbepvj6v1qbs" path="res://scripts/block/mouse_block_sound.gd" id="4_u7l0a"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nbgqd"]
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2e81"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ti3hq"]
 size = Vector2(32, 32)
 
 [node name="Block5" instance=ExtResource("1_iuvq1")]
@@ -25,7 +25,7 @@ axis_stretch_horizontal = 0
 axis_stretch_vertical = 2
 
 [node name="CollisionShape" parent="." index="3"]
-shape = SubResource("RectangleShape2D_p2e81")
+shape = SubResource("RectangleShape2D_ti3hq")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7"]
 volume_db = -13.915

@@ -84,6 +84,7 @@ folder_colors={
 [global_group]
 
 Blocks=""
+level_element="Level elements, aka Blocks and Tilemaps"
 
 [input]
 

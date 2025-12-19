@@ -217,9 +217,9 @@ func _input(event):
 	# 	print("about to revoke all achievements")
 	# 	achievement_manager.revoke_all()
 	
-	# if event.is_action_pressed("removeme_winlevel"):
-	# 	print("about to win level")
-	# 	win()
+	if event.is_action_pressed("removeme_winlevel") and OS.is_debug_build():
+		print("about to win level")
+		win()
 
 
 func win():
