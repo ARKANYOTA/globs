@@ -1,34 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://k3lhg17ygr02"]
+[gd_scene load_steps=6 format=3 uid="uid://k3lhg17ygr02"]
 
 [ext_resource type="Script" uid="uid://mn5i6613agn4" path="res://scenes/ui/particle/smoke.gd" id="2_alc6v"]
+[ext_resource type="Texture2D" uid="uid://cw6sddghpc2ll" path="res://assets/images/particle/smoke_circle.png" id="2_lanvy"]
+[ext_resource type="Gradient" uid="uid://bmgr4srus7x0g" path="res://scenes/ui/particle/smoke_ramp.tres" id="3_lanvy"]
+[ext_resource type="AudioStream" uid="uid://bi7rcpeubf71i" path="res://assets/sounds/player/bear_sound.mp3" id="4_bvwgh"]
 
-[sub_resource type="Curve" id="Curve_alc6v"]
-_data = [Vector2(0, 0.652801), 0.0, 0.0, 0, 0, Vector2(0.353811, 0.733854), 0.34133, 0.34133, 0, 0, Vector2(0.704209, 0.692962), -1.15778, -1.15778, 0, 0, Vector2(1, 0.272069), -1.73076, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="Gradient" id="Gradient_lanvy"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.813814)
-colors = PackedColorArray(0.352941, 0.411765, 0.533333, 1, 0.227451, 0.266667, 0.4, 1)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bvwgh"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [node name="Smoke" type="CanvasGroup"]
 script = ExtResource("2_alc6v")
 
 [node name="CpuParticles2D" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
-amount = 16
+material = SubResource("CanvasItemMaterial_bvwgh")
+amount = 20
+texture = ExtResource("2_lanvy")
 lifetime = 1.2
 speed_scale = 1.4
 explosiveness = 0.9
-randomness = 0.44
-lifetime_randomness = 0.47
+randomness = 1.0
+lifetime_randomness = 0.62
 emission_shape = 1
 emission_sphere_radius = 24.0
 spread = 180.0
-gravity = Vector2(0, -50)
+gravity = Vector2(0, -20)
 initial_velocity_min = 10.0
 initial_velocity_max = 20.0
-scale_amount_min = 8.0
-scale_amount_max = 16.0
-scale_amount_curve = SubResource("Curve_alc6v")
-color_initial_ramp = SubResource("Gradient_lanvy")
+color_ramp = ExtResource("3_lanvy")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_bvwgh")
