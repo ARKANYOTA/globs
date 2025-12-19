@@ -58,11 +58,18 @@ func _process(delta):
 		else:
 			disable_time_undo -= delta
 	
-	if scene != null and scene is Level:
-		%UndoButtonGlove.set_visible(scene.num_globs_hidden > 0)
+	var glove = %UndoButtonGlove
+	if scene != null and scene is Level and glove.hidden:
+		glove.set_visible(scene.num_globs_hidden > 0)
+		glove.modulate = Color.TRANSPARENT
+		var tween = glove.create_tween()
+		tween.tween_property(glove, "modulate", Color.WHITE, 0.3)
+		# tween.tween_property(self, "self_modulate:a", 0.0, 1.0)
+		
 		var anim_player: AnimationPlayer = %UndoButtonGlove.get_node("AnimationPlayer")
 		if not anim_player.is_playing():
 			anim_player.play("float")
+		
 	else:
 		%UndoButtonGlove.set_visible(false)
 
