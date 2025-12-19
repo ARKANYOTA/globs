@@ -1,6 +1,7 @@
 extends Node
 
 signal on_win_animation
+signal on_globs_hidden(globs: Block)
 
 var credit_names = ["ArkanYota", "Notgoyome", "Strochnis", "Theobosse", "Yolwoocle"]
 const credits_template = "A game by {0}, {1}, {2}, {3}, and {4}"

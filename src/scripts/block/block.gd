@@ -227,6 +227,10 @@ func can_extend_or_retract(side: Direction, movement_dir: Direction) -> bool:
 
 	return output
 
+func hide_block():
+	hide()
+	GameManager.on_globs_hidden.emit(self)
+
 func can_retract(dir: Direction, val) -> bool:
 	if dir == Direction.LEFT:
 		return left_extend_range.x < val

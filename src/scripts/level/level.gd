@@ -5,11 +5,17 @@ var block_data = preload("res://scripts/block/block_data.gd")
 
 var last_awake_block: Block
 var awake_count: int
+var num_globs_hidden = 0
 
 var actions: Array = []
 
 func _ready():
 	actions = []
+	GameManager.on_globs_hidden.connect(_on_globs_hidden)
+
+func _on_globs_hidden(block: Block):
+	num_globs_hidden += 1
+
 
 func is_multiple_of_8_plus_16n(i: float):
 	var value = fmod((i + 8.0), 16.0)
@@ -56,6 +62,8 @@ func undo_action():
 			block.is_falling = false
 			var toundo_action_on_this_block = toundo_actions[block]
 			if toundo_action_on_this_block.is_visible:
+				if block.visible == false:
+					num_globs_hidden -= 1
 				block.show()
 			else:
 				block.hide()
