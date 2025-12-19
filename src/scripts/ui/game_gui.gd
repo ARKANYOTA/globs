@@ -47,7 +47,7 @@ func _process(delta):
 	if (GameManager.is_on_win_animation) or (not scene is Level) or (scene is Level and len(scene.actions) == 0):
 		undo_button.disabled = true
 	else: 
-		for elt in scene.get_children():
+		for elt in get_tree().get_nodes_in_group("level_element"):
 			if elt is Block:
 				if elt.is_moving:
 					undo_button.disabled = true
@@ -57,11 +57,18 @@ func _process(delta):
 			undo_button.disabled = false
 		else:
 			disable_time_undo -= delta
+	
+	if scene != null and scene is Level:
+		%UndoButtonGlove.set_visible(scene.num_globs_hidden > 0)
+		var anim_player: AnimationPlayer = %UndoButtonGlove.get_node("AnimationPlayer")
+		if not anim_player.is_playing():
+			anim_player.play("float")
+	else:
+		%UndoButtonGlove.set_visible(false)
 
 func _input(event):
 	if event.is_action_pressed("toggle_gui"):
 		set_shown(not is_shown)
-	pass
 
 func set_shown(shown: bool):
 	is_shown = shown
