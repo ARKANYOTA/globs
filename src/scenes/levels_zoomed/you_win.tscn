@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=4 uid="uid://cpf3mrcp2lm12"]
 
 [ext_resource type="PackedScene" uid="uid://dajgqkks6gfke" path="res://scenes/levels/level_template.tscn" id="1_snos6"]
-[ext_resource type="Script" uid="uid://dgwe5lh27b3hm" path="res://scripts/level/you_win_level.gd" id="2_4q5vi"]
+[ext_resource type="Script" uid="uid://dk8xfv1mtit7n" path="res://scripts/level/you_win_level.gd" id="2_4q5vi"]
 [ext_resource type="PackedScene" uid="uid://wmysu03x830w" path="res://scenes/levels_zoomed/visuals/city_visuals.tscn" id="2_q111u"]
 [ext_resource type="TileSet" uid="uid://ba88x5t1rhers" path="res://assets/tileset/base_tileset.tres" id="2_yl61w"]
 [ext_resource type="PackedScene" uid="uid://bxmyi1g5jjvs3" path="res://scenes/block/block.tscn" id="3_2jk2t"]
@@ -72,11 +72,11 @@ tile_map_data = PackedByteArray("AAAFAAgAAgAGAAMAAAAJAAgAAQAFAAsAAAAAAAgAAAAJAAI
 
 [node name="Label" type="RichTextLabel" parent="." index="6"]
 z_index = 2000
-offset_top = 80.0
+offset_top = 72.0
 offset_right = 240.0
-offset_bottom = 135.0
-theme_override_constants/outline_size = 3
+offset_bottom = 130.0
 theme_override_constants/line_separation = -1
+theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("5_6wwhi")
 theme_override_font_sizes/normal_font_size = 0
 bbcode_enabled = true
@@ -85,7 +85,6 @@ text = "[center][font_size=6][color=gray]
 	{1111111111111111111}[/font_size][font_size=8]
 	{222222222222222222}[/font_size][/center]"
 fit_content = true
-metadata/_edit_lock_ = true
 
 [node name="SnowBackground" type="Sprite2D" parent="." index="7"]
 z_index = -110
@@ -106,7 +105,7 @@ collision_enabled = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="10"]
 libraries = {
-"": SubResource("AnimationLibrary_yo32q")
+&"": SubResource("AnimationLibrary_yo32q")
 }
 
 [node name="Goal" parent="." index="11"]
