@@ -1,11 +1,11 @@
 [gd_scene load_steps=72 format=3 uid="uid://bxmyi1g5jjvs3"]
 
-[ext_resource type="Script" uid="uid://cu8vepc846nrl" path="res://scripts/block/block.gd" id="1_eflyf"]
+[ext_resource type="Script" uid="uid://ds16mlpa0wpoq" path="res://scripts/block/block.gd" id="1_eflyf"]
 [ext_resource type="PackedScene" uid="uid://cf0mams6nnmhx" path="res://scenes/block/light/block_occluder.tscn" id="2_doa3v"]
 [ext_resource type="PackedScene" uid="uid://catrwka02j1g0" path="res://scenes/handler/click_area.tscn" id="3_h0fp2"]
 [ext_resource type="Texture2D" uid="uid://7nk8tmq0rg35" path="res://assets/images/face_animation/scared.png" id="3_pr5jj"]
 [ext_resource type="Texture2D" uid="uid://dpnudelfeooh7" path="res://assets/images/props/crown.png" id="3_vf1y5"]
-[ext_resource type="Script" uid="uid://dcapmegwn8h1w" path="res://scripts/block/block_props.gd" id="4_0laty"]
+[ext_resource type="Script" uid="uid://dy3rq1yfr1kkd" path="res://scripts/block/block_props.gd" id="4_0laty"]
 [ext_resource type="Texture2D" uid="uid://cym2u0ca0y3ve" path="res://assets/images/face_animation/fat.png" id="4_3fhqr"]
 [ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="5_afbxe"]
 [ext_resource type="Texture2D" uid="uid://dblb1xh7ytipc" path="res://assets/images/face_animation/o_face.png" id="5_ltiqe"]
@@ -49,7 +49,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfjol"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrfpm"]
 resource_local_to_scene = true
 size = Vector2(8, 8)
 
@@ -457,7 +457,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_wfjol")
+shape = SubResource("RectangleShape2D_xrfpm")
 debug_color = Color(0, 0.509804, 0.6, 0.0509804)
 
 [node name="ClickArea" parent="." instance=ExtResource("3_h0fp2")]
@@ -475,10 +475,10 @@ animation = &"happy"
 [node name="SleepParticles" type="CPUParticles2D" parent="Sleep"]
 position = Vector2(0, -7)
 amount = 2
+texture = ExtResource("9_ortey")
 lifetime = 1.2
 preprocess = 45.28
 speed_scale = 0.7
-texture = ExtResource("9_ortey")
 spread = 180.0
 gravity = Vector2(0, -20)
 initial_velocity_min = 3.5
