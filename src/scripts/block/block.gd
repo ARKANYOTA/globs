@@ -25,14 +25,6 @@ const dir_map = [
 			is_gravity_enabled = false
 		_update_sprite()
 
-
-# @export var rotatable: bool = false
-# @export_range(-360, 360) var angle: float = 0:
-# 	set(value):
-# 		angle = value
-# 		#$CollisionShape.rotation_degrees = value
-# 		#$Sprite.rotation_degrees = value
-
 @export var is_gravity_enabled := true:
 	set(value):
 		is_gravity_enabled = value
@@ -244,6 +236,9 @@ func can_retract(dir: Direction, val) -> bool:
 
 # SCOTCH!
 func can_extend(dir: Direction) -> bool:
+	if is_moving or is_falling:
+		return false
+	
 	if dir == Direction.LEFT:
 		return left_extendable and  left_extend_value < left_extend_range.y
 	elif dir == Direction.RIGHT:
@@ -714,6 +709,9 @@ func _process(delta):
 	
 	$CenterIndicator.play(animation)
 
+	# DEBUG
+	# $Label.text = str(is_moving or is_falling)
+
 func same_axis(dir1, dir2):
 	if dir1 == Direction.LEFT or dir1 == Direction.RIGHT:
 		return dir2 == Direction.LEFT or dir2 == Direction.RIGHT
@@ -780,7 +778,7 @@ func _physics_process(delta):
 ##### CLICK AREA
 ############################################################################################################################################
 
-func _on_click_area_start_drag():	
+func _on_click_area_start_drag():
 	start_grow()
 
 func _on_click_area_end_drag():
