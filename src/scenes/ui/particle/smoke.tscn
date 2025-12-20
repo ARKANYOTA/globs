@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://k3lhg17ygr02"]
+[gd_scene load_steps=5 format=3 uid="uid://k3lhg17ygr02"]
 
 [ext_resource type="Script" uid="uid://mn5i6613agn4" path="res://scenes/ui/particle/smoke.gd" id="2_alc6v"]
-[ext_resource type="Texture2D" uid="uid://cw6sddghpc2ll" path="res://assets/images/particle/smoke_circle.png" id="2_lanvy"]
+[ext_resource type="Texture2D" uid="uid://cw5thjjiamkos" path="res://assets/images/particle/smoke_circle.png" id="2_lanvy"]
 [ext_resource type="Gradient" uid="uid://bmgr4srus7x0g" path="res://scenes/ui/particle/smoke_ramp.tres" id="3_lanvy"]
-[ext_resource type="AudioStream" uid="uid://bi7rcpeubf71i" path="res://assets/sounds/player/bear_sound.mp3" id="4_bvwgh"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bvwgh"]
 particles_animation = true
@@ -36,4 +35,3 @@ anim_speed_max = 1.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("4_bvwgh")
