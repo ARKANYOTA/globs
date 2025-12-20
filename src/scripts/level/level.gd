@@ -48,7 +48,13 @@ func upgrade_time_to_everyone(block: Block):
 					if child.time_left == 0:
 						child.hide()
 
-	
+func can_undo() -> bool:
+	for elt in get_children():
+		if elt is Block:
+			if elt.is_moving or elt.is_falling:
+				return false
+	return len(actions) > 0
+
 func undo_action():
 	if len(actions) == 0:
 		return

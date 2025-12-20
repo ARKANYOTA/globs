@@ -47,12 +47,16 @@ func _process(delta):
 	if (GameManager.is_on_win_animation) or (not scene is Level) or (scene is Level and len(scene.actions) == 0):
 		undo_button.disabled = true
 	else: 
-		for elt in get_tree().get_nodes_in_group("level_element"):
-			if elt is Block:
-				if elt.is_moving:
-					undo_button.disabled = true
-					disable_time_undo = 0.05
-					return 
+		# for elt in get_tree().get_nodes_in_group("level_element"):
+		# 	if elt is Block:
+		# 		if elt.is_moving:
+		# 			undo_button.disabled = true
+		# 			disable_time_undo = 0.05
+		# 			return 
+		if !scene.can_undo():
+			undo_button.disabled = true
+			disable_time_undo = 0.05
+		
 		if disable_time_undo < 0.0:
 			undo_button.disabled = false
 		else:
@@ -146,11 +150,7 @@ func _on_undo_button_pressed():
 	var scene = get_tree().get_current_scene()
 	if scene == null: 
 		return
-	if scene is Level:
-		for elt in scene.get_children():
-			if elt is Block:
-				if elt.is_moving:
-					return 
+	if scene.can_undo():
 		scene.undo_action()
 
 
