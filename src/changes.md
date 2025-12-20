@@ -1,4 +1,5 @@
 # 2.1.1
+- Redesigned levels 4-4 and 4-7
 - Changed brown Globs' design to be accessible to colorblind players
 - Significant optimization to Globs' code, which should result in higher FPS
 - A level no longer restarts after a Glob goes offscreen, instead prompting you 
