@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://dcwkw2i0g5w6n"]
+[gd_scene load_steps=4 format=4 uid="uid://bbs0nwgi5oswa"]
 
 [ext_resource type="PackedScene" uid="uid://brsha6qauan46" path="res://scenes/levels_zoomed/world_4/level.tscn" id="1_a7a12"]
 [ext_resource type="PackedScene" uid="uid://id7bhi4xpwux" path="res://scenes/block/change_gravity_zone.tscn" id="2_r5uo3"]
