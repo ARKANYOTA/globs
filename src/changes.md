@@ -7,7 +7,7 @@ to undo
 - Changed some of the conditions for being able to undo
 
 # 2.1
-- Fixed android achievements
+- Fixed achievements on Android
 - Added French and Simplified Chinese localization
 
 # 2.0.1
