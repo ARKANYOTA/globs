@@ -8,7 +8,7 @@
 resource_local_to_scene = true
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jch77"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yg4ff"]
 size = Vector2(40, 24)
 
 [node name="Block2" instance=ExtResource("1_xdr48")]
@@ -28,10 +28,9 @@ axis_stretch_horizontal = 0
 axis_stretch_vertical = 2
 
 [node name="CollisionShape" parent="." index="3"]
-shape = SubResource("RectangleShape2D_jch77")
+shape = SubResource("RectangleShape2D_yg4ff")
 
 [node name="ClickAudio" parent="Audio" index="0"]
-volume_db = -15.0
 pitch_scale = 0.7
 
 [node name="WakeUpAudio" parent="Audio" index="2"]
