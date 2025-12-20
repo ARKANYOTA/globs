@@ -231,17 +231,6 @@ func hide_block():
 	hide()
 	GameManager.on_globs_hidden.emit(self)
 
-func can_retract(dir: Direction, val) -> bool:
-	if dir == Direction.LEFT:
-		return left_extend_range.x < val
-	elif dir == Direction.RIGHT:
-		return right_extend_range.x < val
-	elif dir == Direction.UP:
-		return up_extend_range.x < val
-	elif dir == Direction.DOWN:
-		return down_extend_range.x < val
-	return false
-
 # SCOTCH!
 func can_extend(dir: Direction) -> bool:
 	if is_moving or is_falling:
@@ -872,7 +861,7 @@ func _on_cannot_extend(direction: Direction):
 		if handles[direction].is_highlighted:
 			handles[direction].play_max_extent_animation()
 
-func extend_block(variation: int, direction: Direction, push: bool):
+func extend_block(variation: int, direction: Direction, push: bool):	
 	var extend = push or can_extend(direction)
 	
 	if get_tree() == null:
@@ -938,7 +927,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 	if reverse and push and not push_bounce:
 		remaining_pushs = -1
 		return
-	
+
 	if is_moving:
 		return
 
