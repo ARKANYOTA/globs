@@ -942,7 +942,6 @@ func extend_block(variation: int, direction: Direction, push: bool):
 	if is_moving:
 		return
 
-	is_moving = true
 	var mul = -1 if reverse else 1
 	var off = mul * 16 if direction == Direction.RIGHT or direction == Direction.DOWN else mul * -16
 
@@ -950,6 +949,7 @@ func extend_block(variation: int, direction: Direction, push: bool):
 
 	if not push and val != -8:
 		get_parent().go_to_next_actions()
+	is_moving = true
 
 	var tween_transition = get_tree().create_tween().set_trans(Tween.TRANS_CIRC)
 	tween_list.append(tween_transition)

@@ -34,6 +34,8 @@ func go_to_next_actions():
 		if child is Block and child.is_visible():
 			if not is_on_good_position(child):
 				return
+			if child.is_falling or child.is_moving:
+				return
 			dico[child] = block_data.new(child)
 	actions.append(dico)
 
