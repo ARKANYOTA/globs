@@ -204,7 +204,7 @@ func _input(event):
 		if scene == null:
 			return
 		
-		if scene is Level:
+		if scene is Level and scene.can_undo():
 			scene.undo_action()
 	
 	if event.is_action_pressed("toggle_fullscreen"):
