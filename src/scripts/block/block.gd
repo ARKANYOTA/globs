@@ -862,9 +862,6 @@ func _on_cannot_extend(direction: Direction):
 			handles[direction].play_max_extent_animation()
 
 func extend_block(variation: int, direction: Direction, push: bool):	
-	if is_moving or is_falling:
-		return
-
 	var extend = push or can_extend(direction)
 	
 	if get_tree() == null:
@@ -929,6 +926,9 @@ func extend_block(variation: int, direction: Direction, push: bool):
 
 	if reverse and push and not push_bounce:
 		remaining_pushs = -1
+		return
+
+	if is_moving:
 		return
 
 	var mul = -1 if reverse else 1
