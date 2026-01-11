@@ -7,3 +7,5 @@ func _on_glob_touched(area:Block):
 	smoke.global_position = area.global_position
 	get_tree().current_scene.add_child(smoke)
 	area.hide_block()
+
+	AchievementData.increment_retry_area_count()
