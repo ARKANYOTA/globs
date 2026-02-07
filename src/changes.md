@@ -1,3 +1,6 @@
+# 2.1.2
+- Fixed bug related to "Throw Globs into the void" achievement not being granted
+
 # 2.1.1
 - Redesigned levels 4-4 and 4-7
 - Changed brown Globs' design to be accessible to colorblind players
