@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=41 format=3 uid="uid://ba88x5t1rhers"]
+[gd_resource type="TileSet" format=3 uid="uid://ba88x5t1rhers"]
 
 [ext_resource type="Texture2D" uid="uid://dtqqhkvtq3l2o" path="res://assets/images/spritesheet/spritesheet.png" id="1_5ej0x"]
 [ext_resource type="Texture2D" uid="uid://cbb0cie1kixop" path="res://assets/images/spritesheet/black_frost_sprite_sheet2.png" id="2_7f04h"]

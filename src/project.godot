@@ -11,20 +11,25 @@ config_version=5
 [animation]
 
 warnings/check_invalid_track_paths=false
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
 config/name="Globs"
 config/description="Meet the size-changing Globs in this colorful puzzle game."
-config/version="2.1.1"
+config/version="2.1.2"
 run/main_scene="res://scenes/main.tscn"
 config/quit_on_go_back=false
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0.913725, 0.992157, 0.870588, 1)
-boot_splash/fullsize=false
+boot_splash/stretch_mode=0
 boot_splash/image="res://assets/images/splash.png"
 config/icon="res://assets/images/icon_big.png"
+
+[audio]
+
+buses/default_bus_layout="uid://dndtgr3ar30w0"
 
 [autoload]
 
@@ -36,7 +41,7 @@ BlockManagerAutoload="*res://scripts/autoload/block_manager_autoload.gd"
 Util="*res://scripts/autoload/util.gd"
 MusicManager="*res://scripts/autoload/music_manager.gd"
 AchievementData="*res://scripts/autoload/achievement_data.gd"
-GodotPlayGameServices="*res://addons/GodotPlayGameServices/scripts/autoloads/godot_play_game_services.gd"
+GodotPlayGameServices="*uid://ddd0tqv0w6w75"
 SignInClient="res://addons/GodotPlayGameServices/autoloads/sign_in_client.gd"
 PlayersClient="res://addons/GodotPlayGameServices/autoloads/players_client.gd"
 AchievementsClient="res://addons/GodotPlayGameServices/autoloads/achievements_client.gd"
